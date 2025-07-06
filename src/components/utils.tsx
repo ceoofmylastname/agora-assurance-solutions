@@ -1,6 +1,6 @@
 
-// Import icons from lucide-react
-import { Cpu, Server, Database, BrainCircuit, Cloud, Rocket } from "lucide-react";
+// Import icons from lucide-react for insurance agency
+import { Shield, Home, Car, MessageSquare, ArrowRight, Users } from "lucide-react";
 
 // Export icons so they can be used in other components
-export { Cpu, Server, Database, BrainCircuit, Cloud, Rocket };
+export { Shield, Home, Car, MessageSquare, ArrowRight, Users };

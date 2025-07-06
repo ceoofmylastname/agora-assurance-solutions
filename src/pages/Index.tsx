@@ -21,10 +21,10 @@ const Index = () => {
   return (
     <PageLayout>
       <SEO 
-        title="WRLDS - Smart Textile Technology" 
-        description="WRLDS Technologies: Pioneering smart engineering solutions with textile sensors for sports, safety, and performance monitoring."
-        imageUrl="/lovable-uploads/526dc38a-25fa-40d4-b520-425b23ae0464.png"
-        keywords={['smart textiles', 'wearable technology', 'textile sensors', 'sports tech', 'safety monitoring', 'performance analytics', 'manufacturing']}
+        title="SecureGuard Insurance - Protecting Your Family's Future" 
+        description="Comprehensive insurance solutions for life, auto, home, and business protection. Get personalized coverage with trusted local agents."
+        imageUrl="https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=1200&h=630&fit=crop"
+        keywords={['insurance', 'life insurance', 'auto insurance', 'home insurance', 'business insurance', 'family protection', 'insurance quotes']}
       />
       <Hero />
       <Features />
