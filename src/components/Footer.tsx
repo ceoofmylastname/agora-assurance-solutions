@@ -1,5 +1,5 @@
 
-import { ArrowRight, Linkedin } from "lucide-react";
+import { ArrowRight, Linkedin, Mail, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
@@ -33,8 +33,8 @@ const Footer = () => {
       const templateParams = {
         from_name: "Website Subscriber",
         from_email: email,
-        message: `New subscription request from the website footer.`,
-        to_name: 'WRLDS Team',
+        message: `New subscription request from the Agora Assurance website footer.`,
+        to_name: 'Agora Assurance Team',
         reply_to: email
       };
       
@@ -70,24 +70,27 @@ const Footer = () => {
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 pb-10 border-b border-gray-700">
           <div className="lg:col-span-2">
-            <img 
-              src="/lovable-uploads/7d120ee6-3614-4b75-9c35-716d54490d67.png" 
-              alt="WRLDS Technologies Logo" 
-              className="h-10 w-auto mb-6 invert" // Added invert to make logo white
-            />
+            <div className="mb-6">
+              <h3 className="text-2xl font-bold text-yellow-500 mb-2">Agora Assurance Solutions</h3>
+              <p className="text-sm text-gray-400">Discover Truth & Transparency</p>
+            </div>
             <p className="text-gray-300 mb-6">
-              WRLDS Technologies provides an end-to-end platform for the creation and deployment of AI-powered smart sensor devices, giving customers 100% ownership while handling the complete technological development.
+              Supporting your family's assurance and well-being by streamlining the buying process with advanced systems and AI—so you can make informed protection decisions in one convenient place.
             </p>
-            <p className="text-gray-300 mb-6">
-              Hornsgatan 110<br />
-              117 26, Stockholm Sweden
-            </p>
+            <div className="space-y-2 mb-6">
+              <div className="flex items-center text-gray-300">
+                <Mail className="w-4 h-4 mr-2" />
+                <a href="mailto:info@agoraassurancesolutions.com" className="hover:text-yellow-500 transition-colors">
+                  info@agoraassurancesolutions.com
+                </a>
+              </div>
+            </div>
             <div className="flex space-x-4">
               <a 
-                href="https://www.linkedin.com/company/wrldstechnologies/" 
+                href="https://www.linkedin.com/company/agora-assurance-solutions/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 transition-colors hover:bg-gray-700 hover:text-white"
+                className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 transition-colors hover:bg-yellow-500 hover:text-black"
               >
                 <Linkedin size={20} />
               </a>
@@ -95,22 +98,24 @@ const Footer = () => {
           </div>
           
           <div>
-            <h3 className="text-lg font-bold mb-4 text-white">Company</h3>
+            <h3 className="text-lg font-bold mb-4 text-white">Our Services</h3>
             <ul className="space-y-3">
-              <li><Link to="/about" className="text-gray-300 hover:text-white transition-colors">About Us</Link></li>
-              <li><Link to="/careers" className="text-gray-300 hover:text-white transition-colors">Careers</Link></li>
-              <li><Link to="/privacy-policy" className="text-gray-300 hover:text-white transition-colors">Privacy Policy</Link></li>
+              <li><Link to="/term-life" className="text-gray-300 hover:text-yellow-500 transition-colors">Term Life Insurance</Link></li>
+              <li><Link to="/mortgage-protection" className="text-gray-300 hover:text-yellow-500 transition-colors">Mortgage Protection</Link></li>
+              <li><Link to="/final-expense" className="text-gray-300 hover:text-yellow-500 transition-colors">Final Expense</Link></li>
+              <li><Link to="/annuities" className="text-gray-300 hover:text-yellow-500 transition-colors">Annuity Solutions</Link></li>
+              <li><Link to="/tax-solutions" className="text-gray-300 hover:text-yellow-500 transition-colors">Tax Solutions</Link></li>
             </ul>
           </div>
           
           <div>
-            <h3 className="text-lg font-bold mb-4 text-white">Get in Touch</h3>
+            <h3 className="text-lg font-bold mb-4 text-white">Get Updates</h3>
             <form className="space-y-4" onSubmit={handleSubscribe}>
               <div>
                 <input 
                   type="email" 
                   placeholder="Your email" 
-                  className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600 text-white placeholder-gray-400"
+                  className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 text-white placeholder-gray-400"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={isSubmitting}
@@ -118,7 +123,7 @@ const Footer = () => {
               </div>
               <button 
                 type="submit" 
-                className="w-full px-4 py-2 bg-gray-700 text-white rounded-md hover:bg-gray-600 transition-colors flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-4 py-2 bg-yellow-500 text-black rounded-md hover:bg-yellow-400 transition-colors flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed font-medium"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Subscribing..." : (
@@ -134,10 +139,11 @@ const Footer = () => {
         
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            © {new Date().getFullYear()} WRLDS Technologies. All rights reserved.
+            © {new Date().getFullYear()} Agora Assurance Solutions. All rights reserved.
           </p>
           <div className="flex space-x-6">
-            <Link to="/privacy-policy" className="text-sm text-gray-400 hover:text-white transition-colors">Privacy Policy</Link>
+            <Link to="/privacy-policy" className="text-sm text-gray-400 hover:text-yellow-500 transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="text-sm text-gray-400 hover:text-yellow-500 transition-colors">Terms & Conditions</Link>
           </div>
         </div>
       </div>
