@@ -1,4 +1,3 @@
-
 import { ArrowRight, Shield, Home, Calculator, MessageSquare } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { motion } from "framer-motion";
@@ -46,25 +45,11 @@ const Hero = () => {
   return <motion.div className="relative w-full" initial="hidden" animate="visible" variants={containerVariants}>
       <div className="banner-container bg-yellow-500 relative overflow-hidden h-[50vh] sm:h-[60vh] md:h-[500px] lg:h-[550px] xl:h-[600px] w-full">
         <div className="absolute inset-0 bg-yellow-500 w-full">
-          <video 
-            autoPlay 
-            loop 
-            muted 
-            playsInline 
-            preload="metadata"
-            className={`w-full h-full object-cover opacity-60 ${isMobile ? 'object-right' : 'object-center'}`}
-            poster="https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=1200&h=600&fit=crop"
-          >
-            {/* Placeholder for Agora insurance videos */}
-            <source src="/videos/grandparents-vacation.mp4" type="video/mp4" />
-            <source src="/videos/insurance-agents-family.mp4" type="video/mp4" />
-            {/* Fallback image for insurance theme */}
-            <img 
-              src="https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=1200&h=600&fit=crop" 
-              alt="Happy family with insurance protection" 
-              className={`w-full h-full object-cover opacity-60 ${isMobile ? 'object-right' : 'object-center'}`} 
-            />
-          </video>
+          <img 
+            src="/lovable-uploads/3e95af8d-5845-4810-af42-d9884a4e67bb.png" 
+            alt="Happy multi-generational family sitting together on couch - representing family protection and insurance security" 
+            className={`w-full h-full object-cover opacity-70 ${isMobile ? 'object-center' : 'object-center'}`} 
+          />
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-white"></div>
         </div>
         
