@@ -71,7 +71,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 pb-10 border-b border-gray-700">
           <div className="lg:col-span-2">
             <div className="mb-6">
-              <h3 className="text-2xl font-bold text-yellow-500 mb-2">Agora Assurance Solutions</h3>
+              <h3 className="text-2xl font-bold text-[#15AFF7] mb-2">Agora Assurance Solutions</h3>
               <p className="text-sm text-gray-400">Discover Truth & Transparency</p>
             </div>
             <p className="text-gray-300 mb-6">
@@ -80,7 +80,7 @@ const Footer = () => {
             <div className="space-y-2 mb-6">
               <div className="flex items-center text-gray-300">
                 <Mail className="w-4 h-4 mr-2" />
-                <a href="mailto:info@agoraassurancesolutions.com" className="hover:text-yellow-500 transition-colors">
+                <a href="mailto:info@agoraassurancesolutions.com" className="hover:text-[#15AFF7] transition-colors">
                   info@agoraassurancesolutions.com
                 </a>
               </div>
@@ -90,7 +90,7 @@ const Footer = () => {
                 href="https://www.linkedin.com/company/agora-assurance-solutions/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 transition-colors hover:bg-yellow-500 hover:text-black"
+                className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 transition-colors hover:bg-[#15AFF7] hover:text-white"
               >
                 <Linkedin size={20} />
               </a>
@@ -100,11 +100,11 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold mb-4 text-white">Our Services</h3>
             <ul className="space-y-3">
-              <li><Link to="/term-life" className="text-gray-300 hover:text-yellow-500 transition-colors">Term Life Insurance</Link></li>
-              <li><Link to="/mortgage-protection" className="text-gray-300 hover:text-yellow-500 transition-colors">Mortgage Protection</Link></li>
-              <li><Link to="/final-expense" className="text-gray-300 hover:text-yellow-500 transition-colors">Final Expense</Link></li>
-              <li><Link to="/annuities" className="text-gray-300 hover:text-yellow-500 transition-colors">Annuity Solutions</Link></li>
-              <li><Link to="/tax-solutions" className="text-gray-300 hover:text-yellow-500 transition-colors">Tax Solutions</Link></li>
+              <li><Link to="/term-life" className="text-gray-300 hover:text-[#15AFF7] transition-colors">Term Life Insurance</Link></li>
+              <li><Link to="/mortgage-protection" className="text-gray-300 hover:text-[#15AFF7] transition-colors">Mortgage Protection</Link></li>
+              <li><Link to="/final-expense" className="text-gray-300 hover:text-[#15AFF7] transition-colors">Final Expense</Link></li>
+              <li><Link to="/annuities" className="text-gray-300 hover:text-[#15AFF7] transition-colors">Annuity Solutions</Link></li>
+              <li><Link to="/tax-solutions" className="text-gray-300 hover:text-[#15AFF7] transition-colors">Tax Solutions</Link></li>
             </ul>
           </div>
           
@@ -115,7 +115,7 @@ const Footer = () => {
                 <input 
                   type="email" 
                   placeholder="Your email" 
-                  className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 text-white placeholder-gray-400"
+                  className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#15AFF7] text-white placeholder-gray-400"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={isSubmitting}
@@ -123,7 +123,7 @@ const Footer = () => {
               </div>
               <button 
                 type="submit" 
-                className="w-full px-4 py-2 bg-yellow-500 text-black rounded-md hover:bg-yellow-400 transition-colors flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed font-medium"
+                className="w-full px-4 py-2 bg-[#15AFF7] text-white rounded-md hover:bg-[#0D94D1] transition-colors flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed font-medium"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Subscribing..." : (
@@ -142,8 +142,8 @@ const Footer = () => {
             © {new Date().getFullYear()} Agora Assurance Solutions. All rights reserved.
           </p>
           <div className="flex space-x-6">
-            <Link to="/privacy-policy" className="text-sm text-gray-400 hover:text-yellow-500 transition-colors">Privacy Policy</Link>
-            <Link to="/terms" className="text-sm text-gray-400 hover:text-yellow-500 transition-colors">Terms & Conditions</Link>
+            <Link to="/privacy-policy" className="text-sm text-gray-400 hover:text-[#15AFF7] transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="text-sm text-gray-400 hover:text-[#15AFF7] transition-colors">Terms & Conditions</Link>
           </div>
         </div>
       </div>

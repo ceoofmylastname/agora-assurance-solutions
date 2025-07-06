@@ -98,9 +98,9 @@ const WhyAgora = () => {
         once: true,
         margin: "-100px"
       }} variants={containerVariants}>
-          <motion.div variants={itemVariants} className="bg-yellow-50 p-6 rounded-xl border border-yellow-200 text-center hover:bg-yellow-100 transition-all">
-            <div className="w-16 h-16 rounded-full bg-yellow-200 flex items-center justify-center mx-auto mb-4">
-              <Users className="w-8 h-8 text-yellow-700" />
+          <motion.div variants={itemVariants} className="bg-blue-50 p-6 rounded-xl border border-blue-200 text-center hover:bg-blue-100 transition-all">
+            <div className="w-16 h-16 rounded-full bg-blue-200 flex items-center justify-center mx-auto mb-4">
+              <Users className="w-8 h-8 text-[#15AFF7]" />
             </div>
             <h3 className="text-gray-900 text-2xl lg:text-3xl font-bold mb-3">
               <AnimatedCounter end={50} suffix="+" /> Years
@@ -108,9 +108,9 @@ const WhyAgora = () => {
             <p className="text-gray-700">Combined experience protecting families and building financial security</p>
           </motion.div>
           
-          <motion.div variants={itemVariants} className="bg-yellow-50 p-6 rounded-xl border border-yellow-200 text-center hover:bg-yellow-100 transition-all">
-            <div className="w-16 h-16 rounded-full bg-yellow-200 flex items-center justify-center mx-auto mb-4">
-              <Target className="w-8 h-8 text-yellow-700" />
+          <motion.div variants={itemVariants} className="bg-blue-50 p-6 rounded-xl border border-blue-200 text-center hover:bg-blue-100 transition-all">
+            <div className="w-16 h-16 rounded-full bg-blue-200 flex items-center justify-center mx-auto mb-4">
+              <Target className="w-8 h-8 text-[#15AFF7]" />
             </div>
             <h3 className="text-gray-900 text-2xl lg:text-3xl font-bold mb-3">
               <AnimatedCounter end={2500} suffix="+" /> 
@@ -120,9 +120,9 @@ const WhyAgora = () => {
             </p>
           </motion.div>
           
-          <motion.div variants={itemVariants} className="bg-yellow-50 p-6 rounded-xl border border-yellow-200 text-center hover:bg-yellow-100 transition-all">
-            <div className="w-16 h-16 rounded-full bg-yellow-200 flex items-center justify-center mx-auto mb-4">
-              <TrendingUp className="w-8 h-8 text-yellow-700" />
+          <motion.div variants={itemVariants} className="bg-blue-50 p-6 rounded-xl border border-blue-200 text-center hover:bg-blue-100 transition-all">
+            <div className="w-16 h-16 rounded-full bg-blue-200 flex items-center justify-center mx-auto mb-4">
+              <TrendingUp className="w-8 h-8 text-[#15AFF7]" />
             </div>
             <h3 className="text-gray-900 text-2xl lg:text-3xl font-bold mb-3">
               <AnimatedCounter end={500} suffix="M" prefix="$" />
@@ -147,10 +147,10 @@ const WhyAgora = () => {
           </motion.div>
           
           <motion.div variants={containerVariants} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <motion.div variants={itemVariants} className="bg-gradient-to-r from-yellow-50 to-yellow-100 p-6 rounded-xl border border-yellow-200 hover:shadow-lg transition-all">
+            <motion.div variants={itemVariants} className="bg-gradient-to-r from-blue-50 to-blue-100 p-6 rounded-xl border border-blue-200 hover:shadow-lg transition-all">
               <div className="flex items-start">
-                <div className="bg-yellow-200 rounded-full p-3 mr-4">
-                  <Calculator className="w-6 h-6 text-yellow-700" />
+                <div className="bg-blue-200 rounded-full p-3 mr-4">
+                  <Calculator className="w-6 h-6 text-[#15AFF7]" />
                 </div>
                 <div>
                   <h4 className="text-xl font-bold text-gray-900 mb-2">Technology-Driven</h4>
@@ -159,10 +159,10 @@ const WhyAgora = () => {
               </div>
             </motion.div>
             
-            <motion.div variants={itemVariants} className="bg-gradient-to-r from-yellow-50 to-yellow-100 p-6 rounded-xl border border-yellow-200 hover:shadow-lg transition-all">
+            <motion.div variants={itemVariants} className="bg-gradient-to-r from-blue-50 to-blue-100 p-6 rounded-xl border border-blue-200 hover:shadow-lg transition-all">
               <div className="flex items-start">
-                <div className="bg-yellow-200 rounded-full p-3 mr-4">
-                  <Shield className="w-6 h-6 text-yellow-700" />
+                <div className="bg-blue-200 rounded-full p-3 mr-4">
+                  <Shield className="w-6 h-6 text-[#15AFF7]" />
                 </div>
                 <div>
                   <h4 className="text-xl font-bold text-gray-900 mb-2">Consumer-First Advocacy</h4>
@@ -171,10 +171,10 @@ const WhyAgora = () => {
               </div>
             </motion.div>
             
-            <motion.div variants={itemVariants} className="bg-gradient-to-r from-yellow-50 to-yellow-100 p-6 rounded-xl border border-yellow-200 hover:shadow-lg transition-all">
+            <motion.div variants={itemVariants} className="bg-gradient-to-r from-blue-50 to-blue-100 p-6 rounded-xl border border-blue-200 hover:shadow-lg transition-all">
               <div className="flex items-start">
-                <div className="bg-yellow-200 rounded-full p-3 mr-4">
-                  <Award className="w-6 h-6 text-yellow-700" />
+                <div className="bg-blue-200 rounded-full p-3 mr-4">
+                  <Award className="w-6 h-6 text-[#15AFF7]" />
                 </div>
                 <div>
                   <h4 className="text-xl font-bold text-gray-900 mb-2">Licensed Experts</h4>
@@ -183,10 +183,10 @@ const WhyAgora = () => {
               </div>
             </motion.div>
             
-            <motion.div variants={itemVariants} className="bg-gradient-to-r from-yellow-50 to-yellow-100 p-6 rounded-xl border border-yellow-200 hover:shadow-lg transition-all">
+            <motion.div variants={itemVariants} className="bg-gradient-to-r from-blue-50 to-blue-100 p-6 rounded-xl border border-blue-200 hover:shadow-lg transition-all">
               <div className="flex items-start">
-                <div className="bg-yellow-200 rounded-full p-3 mr-4">
-                  <CheckCircle className="w-6 h-6 text-yellow-700" />
+                <div className="bg-blue-200 rounded-full p-3 mr-4">
+                  <CheckCircle className="w-6 h-6 text-[#15AFF7]" />
                 </div>
                 <div>
                   <h4 className="text-xl font-bold text-gray-900 mb-2">Peace of Mind</h4>
@@ -204,7 +204,7 @@ const WhyAgora = () => {
                   contactSection.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="inline-flex items-center px-6 py-3 bg-yellow-500 text-black rounded-lg hover:bg-yellow-400 transition-all group font-medium"
+              className="inline-flex items-center px-6 py-3 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-all group font-medium"
             >
               Get Your Personalized Quote Today
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
