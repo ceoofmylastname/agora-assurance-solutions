@@ -1,8 +1,8 @@
-
 import { ArrowRight, Shield, Home, Calculator, MessageSquare } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+
 const Hero = () => {
   const isMobile = useIsMobile();
   const containerVariants = {
@@ -50,7 +50,16 @@ const Hero = () => {
         <div className="banner-overlay bg-transparent pt-20 sm:pt-24 md:pt-32 w-full">
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center h-full">
             <motion.div className="w-full max-w-4xl text-center" variants={itemVariants}>
-              <motion.h1 className="banner-title text-white" variants={itemVariants}>You Deserve Clarity—Instant Insurance, Zero Confusion</motion.h1>
+              <motion.h1 
+                className="font-extrabold text-white leading-tight tracking-tight text-4xl sm:text-5xl md:text-6xl lg:text-7xl bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent drop-shadow-2xl" 
+                variants={itemVariants}
+                style={{
+                  fontFamily: '"Inter", "Helvetica Neue", Arial, sans-serif',
+                  textShadow: '0 4px 20px rgba(0,0,0,0.5)'
+                }}
+              >
+                You Deserve Clarity—Instant Insurance, Zero Confusion
+              </motion.h1>
               <motion.p className="banner-subtitle text-blue-100 mt-4 sm:mt-6" variants={itemVariants}>
                 We are dedicated to supporting your family's assurance and well-being by streamlining the buying process with advanced systems and AI—so you can make informed protection decisions in one convenient place.
               </motion.p>
@@ -119,4 +128,5 @@ const Hero = () => {
       </div>
     </motion.div>;
 };
+
 export default Hero;
