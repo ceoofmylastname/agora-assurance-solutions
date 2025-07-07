@@ -169,6 +169,9 @@ const MissionLeadership = () => {
                     </div>
                     <ChevronDown className={`w-5 h-5 text-gray-600 transition-transform duration-300 flex-shrink-0 ${visionExpanded ? 'rotate-180' : ''}`} />
                   </div>
+                  <p className="text-gray-700 text-sm md:text-base leading-relaxed">
+                    Equipping independent agents across America with cutting-edge technology and resources.
+                  </p>
                 </CollapsibleTrigger>
                 
                 <CollapsibleContent className="mt-4 md:mt-5">
