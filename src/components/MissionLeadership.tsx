@@ -1,6 +1,6 @@
 
 import { motion } from "framer-motion";
-import { Target, Eye, Users, Award, Star, ChevronDown, Linkedin, Mail } from "lucide-react";
+import { Target, Eye, Users, Award, Star, ChevronDown, Linkedin, Mail, MapPin } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { useState } from "react";
@@ -41,84 +41,87 @@ const MissionLeadership = () => {
 
   const cardVariants = {
     hidden: {
-      y: 30,
+      y: 40,
       opacity: 0,
-      scale: 0.9
+      scale: 0.95
     },
     visible: {
       y: 0,
       opacity: 1,
       scale: 1,
       transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    },
-    hover: {
-      y: -8,
-      scale: 1.02,
-      transition: {
-        duration: 0.3,
-        ease: "easeOut"
+        duration: 0.7,
+        ease: [0.25, 0.46, 0.45, 0.94]
       }
     }
   };
 
-  const leaders = [{
-    name: "Kevin Jenson",
-    title: "CEO",
-    experience: "20 years in life & annuity leadership",
-    background: "Ex-pro baseball athlete, founder of Agora in 2024",
-    icon: Award,
-    gradient: "from-blue-500 to-purple-600",
-    bgGradient: "from-blue-50 to-purple-50"
-  }, {
-    name: "Benjamin Schroeder",
-    title: "Director of Communications",
-    experience: "15 years in coaching and corporate strategy",
-    background: "Storyteller and partnership builder",
-    icon: Users,
-    gradient: "from-green-500 to-teal-600",
-    bgGradient: "from-green-50 to-teal-50"
-  }, {
-    name: "Olga Lomova",
-    title: "Chief Strategy Officer",
-    experience: "10 years scaling marketing & financial services",
-    background: "Architect of global growth and inclusion",
-    icon: Star,
-    gradient: "from-pink-500 to-rose-600",
-    bgGradient: "from-pink-50 to-rose-50"
-  }];
+  const leaders = [
+    {
+      name: "Kevin Jenson",
+      title: "Chief Executive Officer",
+      experience: "20+ years in life & annuity leadership",
+      background: "Former professional baseball athlete who founded Agora in 2024 with a vision to revolutionize insurance technology.",
+      location: "Denver, Colorado",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
+      gradient: "from-blue-600 to-indigo-700",
+      bgColor: "bg-blue-50",
+      borderColor: "border-blue-200",
+      hoverColor: "hover:border-blue-300"
+    },
+    {
+      name: "Benjamin Schroeder",
+      title: "Director of Communications",
+      experience: "15+ years in coaching and corporate strategy",
+      background: "Master storyteller and partnership builder, specializing in creating meaningful connections between brands and communities.",
+      location: "Austin, Texas",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+      gradient: "from-emerald-600 to-teal-700",
+      bgColor: "bg-emerald-50",
+      borderColor: "border-emerald-200",
+      hoverColor: "hover:border-emerald-300"
+    },
+    {
+      name: "Olga Lomova",
+      title: "Chief Strategy Officer",
+      experience: "10+ years scaling marketing & financial services",
+      background: "Global growth architect with expertise in scaling marketing operations and building inclusive financial solutions worldwide.",
+      location: "San Francisco, California",
+      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face",
+      gradient: "from-purple-600 to-pink-700",
+      bgColor: "bg-purple-50",
+      borderColor: "border-purple-200",
+      hoverColor: "hover:border-purple-300"
+    }
+  ];
 
   return (
-    <section id="mission" className="relative py-12 md:py-16 lg:py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50 overflow-hidden">
+    <section id="mission" className="relative py-16 md:py-20 lg:py-24 bg-gradient-to-br from-gray-50 via-white to-blue-50 overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse-slow"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse-slow animation-delay-300"></div>
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-blue-200/30 to-purple-200/30 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-emerald-200/30 to-blue-200/30 rounded-full blur-3xl animate-pulse-slow animation-delay-300"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-br from-blue-100/20 to-purple-100/20 rounded-full blur-3xl animate-rotate-slow"></div>
       </div>
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         {/* Header */}
         <motion.div 
-          className="text-center mb-10 md:mb-14 lg:mb-16" 
+          className="text-center mb-12 md:mb-16 lg:mb-20" 
           initial="hidden" 
           whileInView="visible" 
-          viewport={{
-            once: true,
-            margin: "-50px"
-          }} 
+          viewport={{ once: true, margin: "-50px" }} 
           variants={containerVariants}
         >
           <motion.h2 
             variants={itemVariants} 
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent mb-3 md:mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent mb-4 md:mb-6"
           >
             Our Mission & Leadership
           </motion.h2>
           <motion.p 
             variants={itemVariants} 
-            className="text-gray-600 text-base sm:text-lg md:text-xl max-w-2xl lg:max-w-3xl mx-auto leading-relaxed"
+            className="text-gray-600 text-lg sm:text-xl md:text-2xl max-w-3xl lg:max-w-4xl mx-auto leading-relaxed"
           >
             Built by industry pioneers and powered by AI-driven systems
           </motion.p>
@@ -126,67 +129,47 @@ const MissionLeadership = () => {
 
         {/* Mission & Vision Cards */}
         <motion.div 
-          className="grid grid-cols-1 xl:grid-cols-2 gap-4 md:gap-6 lg:gap-8 mb-16 md:mb-20 lg:mb-24" 
+          className="grid grid-cols-1 xl:grid-cols-2 gap-6 md:gap-8 lg:gap-10 mb-20 md:mb-24 lg:mb-32" 
           initial="hidden" 
           whileInView="visible" 
-          viewport={{
-            once: true,
-            margin: "-50px"
-          }} 
+          viewport={{ once: true, margin: "-50px" }} 
           variants={containerVariants}
         >
-          
           {/* Mission Card */}
           <motion.div variants={itemVariants} className="w-full">
             <Collapsible open={missionExpanded} onOpenChange={setMissionExpanded}>
-              <div className="bg-gradient-to-br from-blue-50 via-blue-100 to-blue-50 p-4 md:p-6 lg:p-7 rounded-xl md:rounded-2xl border border-blue-200 cursor-pointer hover:shadow-lg hover:border-blue-300 transition-all duration-300 h-full">
+              <div className="bg-gradient-to-br from-blue-50 via-blue-100 to-blue-50 p-6 md:p-8 lg:p-10 rounded-2xl md:rounded-3xl border border-blue-200 cursor-pointer hover:shadow-xl hover:border-blue-300 transition-all duration-500 h-full backdrop-blur-sm">
                 <CollapsibleTrigger className="w-full text-left">
-                  <div className="flex items-center justify-between mb-3 md:mb-4">
+                  <div className="flex items-center justify-between mb-4 md:mb-6">
                     <div className="flex items-center">
-                      <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-blue-200 to-blue-300 rounded-xl flex items-center justify-center mr-3 md:mr-4 shadow-sm">
-                        <Target className="w-5 h-5 md:w-6 md:h-6 text-[#15AFF7]" />
+                      <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-blue-200 to-blue-300 rounded-2xl flex items-center justify-center mr-4 md:mr-5 shadow-lg">
+                        <Target className="w-6 h-6 md:w-7 md:h-7 text-[#15AFF7]" />
                       </div>
-                      <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-900">Our Mission</h3>
+                      <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900">Our Mission</h3>
                     </div>
-                    <ChevronDown className={`w-5 h-5 text-gray-600 transition-transform duration-300 flex-shrink-0 ${missionExpanded ? 'rotate-180' : ''}`} />
+                    <ChevronDown className={`w-6 h-6 text-gray-600 transition-transform duration-300 flex-shrink-0 ${missionExpanded ? 'rotate-180' : ''}`} />
                   </div>
-                  <p className="text-gray-700 text-sm md:text-base leading-relaxed">
+                  <p className="text-gray-700 text-base md:text-lg leading-relaxed">
                     Agora Advisor Solution is dedicated to supporting your family's assurance and well-being.
                   </p>
                 </CollapsibleTrigger>
                 
-                <CollapsibleContent className="mt-4 md:mt-5">
-                  <div className="space-y-2 md:space-y-3 pt-2 border-t border-blue-200/50">
-                    <div className="flex items-start">
-                      <span className="font-bold text-[#15AFF7] mr-2 mt-1 flex-shrink-0">•</span>
-                      <div className="text-sm md:text-base">
-                        <span className="font-semibold text-gray-800">Dedicated</span> - Faithfully providing you appropriate solutions
+                <CollapsibleContent className="mt-6 md:mt-8">
+                  <div className="space-y-4 pt-4 border-t border-blue-200/50">
+                    {[
+                      { key: "Dedicated", desc: "Faithfully providing you appropriate solutions" },
+                      { key: "Supporting", desc: "Realize your needs and wants" },
+                      { key: "Family", desc: "Fortifying your family's financial legacy" },
+                      { key: "Assurance", desc: "Protecting your family's peace of mind" },
+                      { key: "Well-being", desc: "Safeguarding your loved one's future" }
+                    ].map((item, index) => (
+                      <div key={index} className="flex items-start">
+                        <span className="font-bold text-[#15AFF7] mr-3 mt-1 flex-shrink-0">•</span>
+                        <div className="text-base md:text-lg">
+                          <span className="font-semibold text-gray-800">{item.key}</span> - {item.desc}
+                        </div>
                       </div>
-                    </div>
-                    <div className="flex items-start">
-                      <span className="font-bold text-[#15AFF7] mr-2 mt-1 flex-shrink-0">•</span>
-                      <div className="text-sm md:text-base">
-                        <span className="font-semibold text-gray-800">Supporting</span> - Realize your needs and wants
-                      </div>
-                    </div>
-                    <div className="flex items-start">
-                      <span className="font-bold text-[#15AFF7] mr-2 mt-1 flex-shrink-0">•</span>
-                      <div className="text-sm md:text-base">
-                        <span className="font-semibold text-gray-800">Family</span> - Fortifying your family's financial legacy
-                      </div>
-                    </div>
-                    <div className="flex items-start">
-                      <span className="font-bold text-[#15AFF7] mr-2 mt-1 flex-shrink-0">•</span>
-                      <div className="text-sm md:text-base">
-                        <span className="font-semibold text-gray-800">Assurance</span> - Protecting your family's peace of mind
-                      </div>
-                    </div>
-                    <div className="flex items-start">
-                      <span className="font-bold text-[#15AFF7] mr-2 mt-1 flex-shrink-0">•</span>
-                      <div className="text-sm md:text-base">
-                        <span className="font-semibold text-gray-800">Well-being</span> - Safeguarding your love's one future
-                      </div>
-                    </div>
+                    ))}
                   </div>
                 </CollapsibleContent>
               </div>
@@ -196,25 +179,25 @@ const MissionLeadership = () => {
           {/* Vision Card */}
           <motion.div variants={itemVariants} className="w-full">
             <Collapsible open={visionExpanded} onOpenChange={setVisionExpanded}>
-              <div className="bg-gradient-to-br from-blue-50 via-blue-100 to-blue-50 p-4 md:p-6 lg:p-7 rounded-xl md:rounded-2xl border border-blue-200 cursor-pointer hover:shadow-lg hover:border-blue-300 transition-all duration-300 h-full">
+              <div className="bg-gradient-to-br from-blue-50 via-blue-100 to-blue-50 p-6 md:p-8 lg:p-10 rounded-2xl md:rounded-3xl border border-blue-200 cursor-pointer hover:shadow-xl hover:border-blue-300 transition-all duration-500 h-full backdrop-blur-sm">
                 <CollapsibleTrigger className="w-full text-left">
-                  <div className="flex items-center justify-between mb-3 md:mb-4">
+                  <div className="flex items-center justify-between mb-4 md:mb-6">
                     <div className="flex items-center">
-                      <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-blue-200 to-blue-300 rounded-xl flex items-center justify-center mr-3 md:mr-4 shadow-sm">
-                        <Eye className="w-5 h-5 md:w-6 md:h-6 text-[#15AFF7]" />
+                      <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-blue-200 to-blue-300 rounded-2xl flex items-center justify-center mr-4 md:mr-5 shadow-lg">
+                        <Eye className="w-6 h-6 md:w-7 md:h-7 text-[#15AFF7]" />
                       </div>
-                      <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-900">Our Vision</h3>
+                      <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900">Our Vision</h3>
                     </div>
-                    <ChevronDown className={`w-5 h-5 text-gray-600 transition-transform duration-300 flex-shrink-0 ${visionExpanded ? 'rotate-180' : ''}`} />
+                    <ChevronDown className={`w-6 h-6 text-gray-600 transition-transform duration-300 flex-shrink-0 ${visionExpanded ? 'rotate-180' : ''}`} />
                   </div>
-                  <p className="text-gray-700 text-sm md:text-base leading-relaxed">
+                  <p className="text-gray-700 text-base md:text-lg leading-relaxed">
                     Equipping independent agents across America with cutting-edge technology and resources.
                   </p>
                 </CollapsibleTrigger>
                 
-                <CollapsibleContent className="mt-4 md:mt-5">
-                  <div className="pt-2 border-t border-blue-200/50">
-                    <p className="text-gray-700 text-sm md:text-base leading-relaxed">
+                <CollapsibleContent className="mt-6 md:mt-8">
+                  <div className="pt-4 border-t border-blue-200/50">
+                    <p className="text-gray-700 text-base md:text-lg leading-relaxed">
                       Agora Advisor Solutions is determined to equip independent agents and agencies across America with carriers, leads, and technology packages to ensure they are leading their competitors.
                     </p>
                   </div>
@@ -224,90 +207,109 @@ const MissionLeadership = () => {
           </motion.div>
         </motion.div>
 
-        {/* Modern Leadership Team Section */}
+        {/* Leadership Team Section */}
         <motion.div 
           initial="hidden" 
           whileInView="visible" 
-          viewport={{
-            once: true,
-            margin: "-50px"
-          }} 
+          viewport={{ once: true, margin: "-100px" }} 
           variants={containerVariants}
-          className="mt-20 md:mt-24 lg:mt-28"
+          className="mt-32 md:mt-40 lg:mt-48"
         >
           <motion.div 
             variants={itemVariants} 
-            className="text-center mb-12 md:mb-16 lg:mb-20"
+            className="text-center mb-16 md:mb-20 lg:mb-24"
           >
-            <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent mb-4 md:mb-6">
+            <h3 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent mb-6 md:mb-8">
               Our Team
             </h3>
-            <p className="text-gray-600 text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto leading-relaxed">
+            <p className="text-gray-600 text-xl md:text-2xl lg:text-3xl max-w-4xl mx-auto leading-relaxed">
               Meet the visionaries driving innovation in insurance technology
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-12">
             {leaders.map((leader, index) => (
               <motion.div
                 key={index}
                 variants={cardVariants}
-                whileHover="hover"
+                whileHover={{ 
+                  y: -12, 
+                  scale: 1.02,
+                  transition: { duration: 0.4, ease: "easeOut" }
+                }}
                 className="group relative"
               >
-                {/* Glassmorphism Card */}
-                <div className={`relative bg-gradient-to-br ${leader.bgGradient} backdrop-blur-sm border border-white/20 rounded-2xl md:rounded-3xl p-6 md:p-8 lg:p-10 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden`}>
+                <div className={`relative ${leader.bgColor} backdrop-blur-lg border ${leader.borderColor} ${leader.hoverColor} rounded-3xl p-8 md:p-10 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden`}>
                   
-                  {/* Background Pattern */}
-                  <div className="absolute inset-0 opacity-5">
-                    <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/10 to-transparent"></div>
+                  {/* Decorative Background */}
+                  <div className="absolute inset-0 opacity-30">
+                    <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${leader.gradient} rounded-full blur-2xl transform translate-x-16 -translate-y-16 group-hover:scale-150 transition-transform duration-700`}></div>
+                    <div className={`absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr ${leader.gradient} rounded-full blur-xl transform -translate-x-12 translate-y-12 group-hover:scale-125 transition-transform duration-700`}></div>
                   </div>
                   
                   {/* Content */}
                   <div className="relative z-10 text-center">
                     
-                    {/* Icon Container */}
-                    <div className="relative mb-6 md:mb-8">
-                      <div className={`w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 bg-gradient-to-br ${leader.gradient} rounded-full flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-all duration-500 group-hover:scale-110`}>
-                        <leader.icon className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 text-white" />
+                    {/* Profile Image */}
+                    <div className="relative mb-8">
+                      <div className="w-32 h-32 md:w-36 md:h-36 mx-auto rounded-3xl overflow-hidden shadow-2xl group-hover:shadow-3xl transition-all duration-500">
+                        <img 
+                          src={leader.image} 
+                          alt={leader.name}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        />
                       </div>
                       {/* Floating Ring */}
-                      <div className={`absolute inset-0 w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 bg-gradient-to-br ${leader.gradient} rounded-full mx-auto opacity-20 scale-125 group-hover:scale-150 transition-transform duration-700`}></div>
+                      <div className={`absolute inset-0 w-32 h-32 md:w-36 md:h-36 mx-auto rounded-3xl bg-gradient-to-br ${leader.gradient} opacity-20 scale-110 group-hover:scale-125 transition-transform duration-700`}></div>
                     </div>
 
                     {/* Name */}
-                    <h4 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 md:mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-gray-900 group-hover:to-blue-900 group-hover:bg-clip-text transition-all duration-300">
+                    <h4 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-gray-900 group-hover:to-blue-900 group-hover:bg-clip-text transition-all duration-300">
                       {leader.name}
                     </h4>
 
                     {/* Title */}
-                    <div className={`inline-block px-4 py-2 bg-gradient-to-r ${leader.gradient} text-white text-sm md:text-base font-semibold rounded-full mb-4 md:mb-6 shadow-lg group-hover:shadow-xl transition-all duration-300`}>
+                    <div className={`inline-block px-6 py-3 bg-gradient-to-r ${leader.gradient} text-white text-sm md:text-base font-semibold rounded-2xl mb-6 shadow-lg group-hover:shadow-xl transition-all duration-300`}>
                       {leader.title}
                     </div>
 
+                    {/* Location */}
+                    <div className="flex items-center justify-center text-gray-500 text-sm mb-6">
+                      <MapPin className="w-4 h-4 mr-2" />
+                      {leader.location}
+                    </div>
+
                     {/* Experience */}
-                    <p className="text-gray-700 text-sm md:text-base lg:text-lg font-medium mb-3 md:mb-4 leading-relaxed">
+                    <p className="text-gray-700 text-lg font-medium mb-4 leading-relaxed">
                       {leader.experience}
                     </p>
 
                     {/* Background */}
-                    <p className="text-gray-600 text-xs md:text-sm lg:text-base leading-relaxed mb-6 md:mb-8">
+                    <p className="text-gray-600 text-base leading-relaxed mb-8">
                       {leader.background}
                     </p>
 
                     {/* Social Links */}
-                    <div className="flex justify-center space-x-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                      <button className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all duration-300">
+                    <div className="flex justify-center space-x-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                      <motion.button 
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="w-12 h-12 bg-white/80 backdrop-blur-sm rounded-2xl flex items-center justify-center hover:bg-white transition-all duration-300 shadow-lg hover:shadow-xl"
+                      >
                         <Linkedin className="w-5 h-5 text-gray-700" />
-                      </button>
-                      <button className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all duration-300">
+                      </motion.button>
+                      <motion.button 
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="w-12 h-12 bg-white/80 backdrop-blur-sm rounded-2xl flex items-center justify-center hover:bg-white transition-all duration-300 shadow-lg hover:shadow-xl"
+                      >
                         <Mail className="w-5 h-5 text-gray-700" />
-                      </button>
+                      </motion.button>
                     </div>
                   </div>
 
                   {/* Hover Glow Effect */}
-                  <div className={`absolute inset-0 rounded-2xl md:rounded-3xl bg-gradient-to-br ${leader.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+                  <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${leader.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
                 </div>
               </motion.div>
             ))}
