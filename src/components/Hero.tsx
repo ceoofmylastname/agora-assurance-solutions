@@ -60,8 +60,8 @@ const Hero = () => {
       <div className="banner-container bg-[#15AFF7] relative overflow-hidden h-[65vh] sm:h-[70vh] md:h-[500px] lg:h-[550px] xl:h-[600px] w-full">
         <div className="absolute inset-0 bg-[#15AFF7] w-full">
           <img 
-            src="https://cdn.pixabay.com/photo/2017/08/06/12/06/people-2591874_1280.jpg" 
-            alt="Happy multi-generational family sitting together showing life insurance protection and family financial security planning" 
+            src="/lovable-uploads/3e95af8d-5845-4810-af42-d9884a4e67bb.png" 
+            alt="Happy multi-generational family sitting together on couch - representing family protection and insurance security" 
             className={`w-full h-full object-cover opacity-70 ${isMobile ? 'object-center' : 'object-center'}`}
             loading="eager"
             decoding="async"
