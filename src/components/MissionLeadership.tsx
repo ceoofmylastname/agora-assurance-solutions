@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Target, Eye, Users, Award, Star, ChevronDown, Linkedin, Mail, MapPin } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -211,16 +210,16 @@ const MissionLeadership = () => {
           whileInView="visible" 
           viewport={{ once: true, margin: "-50px" }} 
           variants={containerVariants}
-          className="mt-20"
+          className="mt-16"
         >
           <motion.div 
             variants={itemVariants} 
-            className="text-center mb-12"
+            className="text-center mb-10"
           >
-            <h3 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent mb-4">
+            <h3 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent mb-3">
               Our Team
             </h3>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
+            <p className="text-gray-600 text-base max-w-2xl mx-auto leading-relaxed">
               Meet the visionaries driving innovation in insurance technology
             </p>
           </motion.div>
@@ -231,56 +230,61 @@ const MissionLeadership = () => {
                 key={index}
                 variants={cardVariants}
                 whileHover={{ 
-                  y: -8, 
+                  y: -4, 
                   scale: 1.02,
                   transition: { duration: 0.3, ease: "easeOut" }
                 }}
-                className="group"
+                className="group h-full"
               >
-                <div className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-blue-300 h-full">
+                <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-lg transition-all duration-300 hover:border-blue-300 h-full flex flex-col">
                   
-                  {/* Profile Image */}
-                  <div className="relative mb-4">
-                    <div className="w-20 h-20 mx-auto rounded-2xl overflow-hidden shadow-lg">
+                  {/* Profile Image - Fixed Height Container */}
+                  <div className="flex justify-center mb-4">
+                    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-md">
                       <img 
                         src={leader.image} 
                         alt={leader.name}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
-                    <div className={`absolute inset-0 w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br ${leader.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-300`}></div>
                   </div>
 
-                  {/* Name */}
-                  <h4 className="text-lg font-bold text-gray-900 mb-2 text-center group-hover:text-blue-600 transition-colors duration-300">
-                    {leader.name}
-                  </h4>
-
-                  {/* Title */}
-                  <div className={`inline-block w-full text-center px-3 py-2 bg-gradient-to-r ${leader.gradient} text-white text-sm font-medium rounded-xl mb-3 shadow-md`}>
-                    {leader.title}
+                  {/* Name - Fixed Height */}
+                  <div className="h-12 flex items-center justify-center mb-3">
+                    <h4 className="text-base font-bold text-gray-900 text-center leading-tight group-hover:text-blue-600 transition-colors duration-300">
+                      {leader.name}
+                    </h4>
                   </div>
 
-                  {/* Experience */}
-                  <p className="text-gray-600 text-sm text-center leading-relaxed mb-4">
-                    {leader.experience}
-                  </p>
+                  {/* Title - Fixed Height */}
+                  <div className="h-16 flex items-center justify-center mb-3">
+                    <div className={`w-full text-center px-3 py-2 bg-gradient-to-r ${leader.gradient} text-white text-xs font-medium rounded-lg shadow-sm`}>
+                      <span className="leading-tight block">{leader.title}</span>
+                    </div>
+                  </div>
 
-                  {/* Social Links */}
-                  <div className="flex justify-center space-x-3 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                  {/* Experience - Fixed Height */}
+                  <div className="h-12 flex items-center justify-center mb-4 flex-grow">
+                    <p className="text-gray-600 text-xs text-center leading-relaxed">
+                      {leader.experience}
+                    </p>
+                  </div>
+
+                  {/* Social Links - Fixed Height */}
+                  <div className="h-8 flex justify-center space-x-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
                     <motion.button 
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}
-                      className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-blue-100 transition-all duration-300"
+                      className="w-7 h-7 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-blue-100 transition-all duration-300"
                     >
-                      <Linkedin className="w-4 h-4 text-gray-600" />
+                      <Linkedin className="w-3 h-3 text-gray-600" />
                     </motion.button>
                     <motion.button 
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}
-                      className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-blue-100 transition-all duration-300"
+                      className="w-7 h-7 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-blue-100 transition-all duration-300"
                     >
-                      <Mail className="w-4 h-4 text-gray-600" />
+                      <Mail className="w-3 h-3 text-gray-600" />
                     </motion.button>
                   </div>
                 </div>
