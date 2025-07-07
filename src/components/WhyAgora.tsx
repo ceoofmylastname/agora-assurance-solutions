@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Shield, Calculator, Users, Award, Target, TrendingUp, CheckCircle, ArrowRight } from "lucide-react";
@@ -80,123 +79,123 @@ const WhyAgora = () => {
       }
     }
   };
-  return <section id="why-agora" className="relative py-16 md:py-24 bg-white overflow-hidden">
-      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div className="text-center mb-12 md:mb-16" initial="hidden" whileInView="visible" viewport={{
+  return <section id="why-agora" className="relative py-12 md:py-16 lg:py-24 bg-white overflow-hidden">
+      <div className="container relative z-10 mx-auto px-3 sm:px-4 lg:px-8">
+        <motion.div className="text-center mb-8 md:mb-12 lg:mb-16" initial="hidden" whileInView="visible" viewport={{
         once: true,
         margin: "-100px"
       }} variants={containerVariants}>
-          <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3">
+          <motion.h2 variants={itemVariants} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 px-2">
             Why Agora Assurance?
           </motion.h2>
-          <motion.p variants={itemVariants} className="text-gray-600 text-lg max-w-3xl mx-auto">
+          <motion.p variants={itemVariants} className="text-gray-600 text-base sm:text-lg max-w-3xl mx-auto px-3">
             Supporting your family's assurance and well-being with transparency, technology, and trusted expertise
           </motion.p>
         </motion.div>
         
-        <motion.div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16" initial="hidden" whileInView="visible" viewport={{
+        <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12 lg:mb-16" initial="hidden" whileInView="visible" viewport={{
         once: true,
         margin: "-100px"
       }} variants={containerVariants}>
-          <motion.div variants={itemVariants} className="bg-blue-50 p-6 rounded-xl border border-blue-200 text-center hover:bg-blue-100 transition-all">
-            <div className="w-16 h-16 rounded-full bg-blue-200 flex items-center justify-center mx-auto mb-4">
-              <Users className="w-8 h-8 text-[#15AFF7]" />
+          <motion.div variants={itemVariants} className="bg-blue-50 p-4 sm:p-6 rounded-xl border border-blue-200 text-center hover:bg-blue-100 transition-all">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-blue-200 flex items-center justify-center mx-auto mb-3 sm:mb-4">
+              <Users className="w-6 h-6 sm:w-8 sm:h-8 text-[#15AFF7]" />
             </div>
-            <h3 className="text-gray-900 text-2xl lg:text-3xl font-bold mb-3">
+            <h3 className="text-gray-900 text-xl sm:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3">
               <AnimatedCounter end={50} suffix="+" /> Years
             </h3>
-            <p className="text-gray-700">Combined experience protecting families and building financial security</p>
+            <p className="text-gray-700 text-sm sm:text-base">Combined experience protecting families and building financial security</p>
           </motion.div>
           
-          <motion.div variants={itemVariants} className="bg-blue-50 p-6 rounded-xl border border-blue-200 text-center hover:bg-blue-100 transition-all">
-            <div className="w-16 h-16 rounded-full bg-blue-200 flex items-center justify-center mx-auto mb-4">
-              <Target className="w-8 h-8 text-[#15AFF7]" />
+          <motion.div variants={itemVariants} className="bg-blue-50 p-4 sm:p-6 rounded-xl border border-blue-200 text-center hover:bg-blue-100 transition-all">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-blue-200 flex items-center justify-center mx-auto mb-3 sm:mb-4">
+              <Target className="w-6 h-6 sm:w-8 sm:h-8 text-[#15AFF7]" />
             </div>
-            <h3 className="text-gray-900 text-2xl lg:text-3xl font-bold mb-3">
+            <h3 className="text-gray-900 text-xl sm:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3">
               <AnimatedCounter end={2500} suffix="+" /> 
             </h3>
-            <p className="text-gray-700">
+            <p className="text-gray-700 text-sm sm:text-base">
               Lives protected through our comprehensive insurance and financial solutions
             </p>
           </motion.div>
           
-          <motion.div variants={itemVariants} className="bg-blue-50 p-6 rounded-xl border border-blue-200 text-center hover:bg-blue-100 transition-all">
-            <div className="w-16 h-16 rounded-full bg-blue-200 flex items-center justify-center mx-auto mb-4">
-              <TrendingUp className="w-8 h-8 text-[#15AFF7]" />
+          <motion.div variants={itemVariants} className="bg-blue-50 p-4 sm:p-6 rounded-xl border border-blue-200 text-center hover:bg-blue-100 transition-all sm:col-span-2 lg:col-span-1">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-blue-200 flex items-center justify-center mx-auto mb-3 sm:mb-4">
+              <TrendingUp className="w-6 h-6 sm:w-8 sm:h-8 text-[#15AFF7]" />
             </div>
-            <h3 className="text-gray-900 text-2xl lg:text-3xl font-bold mb-3">
+            <h3 className="text-gray-900 text-xl sm:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3">
               <AnimatedCounter end={500} suffix="M" prefix="$" />
             </h3>
-            <p className="text-gray-700">
+            <p className="text-gray-700 text-sm sm:text-base">
               In tax-free benefits created for our clients and their families
             </p>
           </motion.div>
         </motion.div>
         
-        <motion.div className="mb-12" initial="hidden" whileInView="visible" viewport={{
+        <motion.div className="mb-8 sm:mb-12" initial="hidden" whileInView="visible" viewport={{
           once: true,
           margin: "-100px"
         }} variants={containerVariants}>
-          <motion.div variants={itemVariants} className="text-center mb-8">
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+          <motion.div variants={itemVariants} className="text-center mb-6 sm:mb-8">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 sm:mb-3 px-2">
               What Makes Agora Different
             </h3>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto px-3">
               Our unique approach combines cutting-edge technology with human expertise for transparent, personalized service
             </p>
           </motion.div>
           
-          <motion.div variants={containerVariants} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <motion.div variants={itemVariants} className="bg-gradient-to-r from-blue-50 to-blue-100 p-6 rounded-xl border border-blue-200 hover:shadow-lg transition-all">
+          <motion.div variants={containerVariants} className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+            <motion.div variants={itemVariants} className="bg-gradient-to-r from-blue-50 to-blue-100 p-4 sm:p-6 rounded-xl border border-blue-200 hover:shadow-lg transition-all">
               <div className="flex items-start">
-                <div className="bg-blue-200 rounded-full p-3 mr-4">
-                  <Calculator className="w-6 h-6 text-[#15AFF7]" />
+                <div className="bg-blue-200 rounded-full p-2 sm:p-3 mr-3 sm:mr-4 flex-shrink-0">
+                  <Calculator className="w-5 h-5 sm:w-6 sm:h-6 text-[#15AFF7]" />
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold text-gray-900 mb-2">Technology-Driven</h4>
-                  <p className="text-gray-700">We leverage AI and proprietary systems to compare a wide range of products at once, giving you clarity without overwhelm.</p>
+                  <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">Technology-Driven</h4>
+                  <p className="text-gray-700 text-sm sm:text-base">We leverage AI and proprietary systems to compare a wide range of products at once, giving you clarity without overwhelm.</p>
                 </div>
               </div>
             </motion.div>
             
-            <motion.div variants={itemVariants} className="bg-gradient-to-r from-blue-50 to-blue-100 p-6 rounded-xl border border-blue-200 hover:shadow-lg transition-all">
+            <motion.div variants={itemVariants} className="bg-gradient-to-r from-blue-50 to-blue-100 p-4 sm:p-6 rounded-xl border border-blue-200 hover:shadow-lg transition-all">
               <div className="flex items-start">
-                <div className="bg-blue-200 rounded-full p-3 mr-4">
-                  <Shield className="w-6 h-6 text-[#15AFF7]" />
+                <div className="bg-blue-200 rounded-full p-2 sm:p-3 mr-3 sm:mr-4 flex-shrink-0">
+                  <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-[#15AFF7]" />
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold text-gray-900 mb-2">Consumer-First Advocacy</h4>
-                  <p className="text-gray-700">As an independent consumer advocate, our mission is centered on transparency, not commission.</p>
+                  <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">Consumer-First Advocacy</h4>
+                  <p className="text-gray-700 text-sm sm:text-base">As an independent consumer advocate, our mission is centered on transparency, not commission.</p>
                 </div>
               </div>
             </motion.div>
             
-            <motion.div variants={itemVariants} className="bg-gradient-to-r from-blue-50 to-blue-100 p-6 rounded-xl border border-blue-200 hover:shadow-lg transition-all">
+            <motion.div variants={itemVariants} className="bg-gradient-to-r from-blue-50 to-blue-100 p-4 sm:p-6 rounded-xl border border-blue-200 hover:shadow-lg transition-all">
               <div className="flex items-start">
-                <div className="bg-blue-200 rounded-full p-3 mr-4">
-                  <Award className="w-6 h-6 text-[#15AFF7]" />
+                <div className="bg-blue-200 rounded-full p-2 sm:p-3 mr-3 sm:mr-4 flex-shrink-0">
+                  <Award className="w-5 h-5 sm:w-6 sm:h-6 text-[#15AFF7]" />
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold text-gray-900 mb-2">Licensed Experts</h4>
-                  <p className="text-gray-700">We connect you directly to vetted, state-regulated advisors—no bots, no middlemen.</p>
+                  <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">Licensed Experts</h4>
+                  <p className="text-gray-700 text-sm sm:text-base">We connect you directly to vetted, state-regulated advisors—no bots, no middlemen.</p>
                 </div>
               </div>
             </motion.div>
             
-            <motion.div variants={itemVariants} className="bg-gradient-to-r from-blue-50 to-blue-100 p-6 rounded-xl border border-blue-200 hover:shadow-lg transition-all">
+            <motion.div variants={itemVariants} className="bg-gradient-to-r from-blue-50 to-blue-100 p-4 sm:p-6 rounded-xl border border-blue-200 hover:shadow-lg transition-all">
               <div className="flex items-start">
-                <div className="bg-blue-200 rounded-full p-3 mr-4">
-                  <CheckCircle className="w-6 h-6 text-[#15AFF7]" />
+                <div className="bg-blue-200 rounded-full p-2 sm:p-3 mr-3 sm:mr-4 flex-shrink-0">
+                  <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-[#15AFF7]" />
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold text-gray-900 mb-2">Peace of Mind</h4>
-                  <p className="text-gray-700">Over 50 years of combined experience, 100+ business partners, and proven results you can trust.</p>
+                  <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">Peace of Mind</h4>
+                  <p className="text-gray-700 text-sm sm:text-base">Over 50 years of combined experience, 100+ business partners, and proven results you can trust.</p>
                 </div>
               </div>
             </motion.div>
           </motion.div>
           
-          <motion.div variants={itemVariants} className="text-center mt-10">
+          <motion.div variants={itemVariants} className="text-center mt-8 sm:mt-10 px-3">
             <button 
               onClick={() => {
                 const contactSection = document.getElementById('contact');
@@ -204,7 +203,7 @@ const WhyAgora = () => {
                   contactSection.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="inline-flex items-center px-6 py-3 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-all group font-medium"
+              className="inline-flex items-center px-4 sm:px-6 py-3 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-all group font-medium text-sm sm:text-base"
             >
               Get Your Personalized Quote Today
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
