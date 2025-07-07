@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { Target, Eye, Users, Award, Star, Calendar, ChevronDown } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -198,25 +199,77 @@ const MissionLeadership = () => {
           >
             Leadership Team
           </motion.h3>
+          
+          {/* Hexagonal Grid Layout */}
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8"
+            className="relative max-w-6xl mx-auto"
             variants={containerVariants}
           >
-            {leaders.map((leader, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className="bg-white p-6 sm:p-8 rounded-2xl border border-blue-200 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-center active:scale-95 touch-manipulation"
-              >
-                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                  <leader.icon className="w-8 h-8 sm:w-10 sm:h-10 text-[#15AFF7]" />
-                </div>
-                <h4 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">{leader.name}</h4>
-                <p className="text-[#15AFF7] font-semibold text-base sm:text-lg mb-3">{leader.title}</p>
-                <p className="text-gray-700 text-sm sm:text-base mb-2">{leader.experience}</p>
-                <p className="text-gray-600 text-sm leading-relaxed">{leader.background}</p>
-              </motion.div>
-            ))}
+            {/* First Row - 2 hexagons */}
+            <div className="flex justify-center gap-4 sm:gap-8 mb-4 sm:mb-8">
+              {leaders.slice(0, 2).map((leader, index) => (
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  className="group relative"
+                >
+                  {/* Hexagon Container */}
+                  <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72">
+                    {/* Hexagon Background */}
+                    <div 
+                      className="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100 transform rotate-12 group-hover:rotate-6 transition-transform duration-500"
+                      style={{
+                        clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)"
+                      }}
+                    />
+                    
+                    {/* Content Container */}
+                    <div className="absolute inset-4 sm:inset-6 bg-white rounded-2xl shadow-lg p-4 sm:p-6 flex flex-col items-center justify-center text-center group-hover:shadow-xl transition-all duration-300">
+                      <div className="w-12 h-12 sm:w-16 sm:h-16 bg-blue-100 rounded-full flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <leader.icon className="w-6 h-6 sm:w-8 sm:h-8 text-[#15AFF7]" />
+                      </div>
+                      <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">{leader.name}</h4>
+                      <p className="text-[#15AFF7] font-semibold text-sm sm:text-base mb-2">{leader.title}</p>
+                      <p className="text-gray-700 text-xs sm:text-sm mb-1 leading-tight">{leader.experience}</p>
+                      <p className="text-gray-600 text-xs leading-tight">{leader.background}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Second Row - 1 hexagon centered */}
+            <div className="flex justify-center">
+              {leaders.slice(2, 3).map((leader, index) => (
+                <motion.div
+                  key={index + 2}
+                  variants={itemVariants}
+                  className="group relative"
+                >
+                  {/* Hexagon Container */}
+                  <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72">
+                    {/* Hexagon Background */}
+                    <div 
+                      className="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100 transform -rotate-12 group-hover:-rotate-6 transition-transform duration-500"
+                      style={{
+                        clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)"
+                      }}
+                    />
+                    
+                    {/* Content Container */}
+                    <div className="absolute inset-4 sm:inset-6 bg-white rounded-2xl shadow-lg p-4 sm:p-6 flex flex-col items-center justify-center text-center group-hover:shadow-xl transition-all duration-300">
+                      <div className="w-12 h-12 sm:w-16 sm:h-16 bg-blue-100 rounded-full flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <leader.icon className="w-6 h-6 sm:w-8 sm:h-8 text-[#15AFF7]" />
+                      </div>
+                      <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">{leader.name}</h4>
+                      <p className="text-[#15AFF7] font-semibold text-sm sm:text-base mb-2">{leader.title}</p>
+                      <p className="text-gray-700 text-xs sm:text-sm mb-1 leading-tight">{leader.experience}</p>
+                      <p className="text-gray-600 text-xs leading-tight">{leader.background}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </motion.div>
       </div>
