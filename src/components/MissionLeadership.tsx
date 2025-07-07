@@ -149,9 +149,6 @@ const MissionLeadership = () => {
                     </div>
                     <ChevronDown className={`w-5 h-5 text-gray-600 transition-transform duration-200 ${visionExpanded ? 'rotate-180' : ''}`} />
                   </div>
-                  <p className="text-gray-700 text-sm sm:text-base leading-relaxed line-clamp-2">
-                    Agora Advisor Solutions is determined to equip independent agents and agencies...
-                  </p>
                 </CollapsibleTrigger>
                 
                 <CollapsibleContent className="mt-4">
