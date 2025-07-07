@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { Target, Eye } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -204,14 +205,14 @@ const MissionLeadership = () => {
         >
           <motion.h3 
             variants={itemVariants} 
-            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 text-center mb-8 md:mb-10 lg:mb-12"
+            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 text-center mb-16 md:mb-20 lg:mb-24"
           >
             Our Team
           </motion.h3>
           
           <motion.div 
             variants={containerVariants}
-            className="relative mx-auto"
+            className="relative mx-auto mt-16"
             style={{ maxWidth: '75vw' }}
           >
             <ul className="list-none p-0 m-0 relative">
