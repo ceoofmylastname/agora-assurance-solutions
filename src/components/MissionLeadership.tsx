@@ -1,8 +1,14 @@
 import { motion } from "framer-motion";
-import { Target, Eye, Users, Award, Star, Calendar } from "lucide-react";
+import { Target, Eye, Users, Award, Star, Calendar, ChevronDown } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { useState } from "react";
+
 const MissionLeadership = () => {
   const isMobile = useIsMobile();
+  const [missionExpanded, setMissionExpanded] = useState(false);
+  const [visionExpanded, setVisionExpanded] = useState(false);
+
   const containerVariants = {
     hidden: {
       opacity: 0
@@ -16,6 +22,7 @@ const MissionLeadership = () => {
       }
     }
   };
+
   const itemVariants = {
     hidden: {
       y: isMobile ? 15 : 20,
@@ -30,6 +37,7 @@ const MissionLeadership = () => {
       }
     }
   };
+
   const leaders = [{
     name: "Kevin Jenson",
     title: "CEO",
@@ -49,6 +57,7 @@ const MissionLeadership = () => {
     background: "Architect of global growth and inclusion",
     icon: Star
   }];
+
   return <section id="mission" className="relative py-16 md:py-20 lg:py-24 bg-white overflow-hidden">
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div className="text-center mb-12 md:mb-16 lg:mb-20" initial="hidden" whileInView="visible" viewport={{
@@ -63,64 +72,95 @@ const MissionLeadership = () => {
           </motion.p>
         </motion.div>
 
-        {/* Mission & Vision */}
-        <motion.div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 mb-16 lg:mb-20" initial="hidden" whileInView="visible" viewport={{
+        {/* Mission & Vision - Compact Cards */}
+        <motion.div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-16 lg:mb-20" initial="hidden" whileInView="visible" viewport={{
         once: true,
         margin: "-50px"
       }} variants={containerVariants}>
-          <motion.div variants={itemVariants} className="bg-gradient-to-r from-blue-50 to-blue-100 p-6 sm:p-8 md:p-10 rounded-2xl border border-blue-200">
-            <div className="flex items-center mb-6">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-blue-200 rounded-full flex items-center justify-center mr-4">
-                <Target className="w-6 h-6 sm:w-7 sm:h-7 text-[#15AFF7]" />
+          
+          {/* Mission Card */}
+          <motion.div variants={itemVariants}>
+            <Collapsible open={missionExpanded} onOpenChange={setMissionExpanded}>
+              <div className="bg-gradient-to-r from-blue-50 to-blue-100 p-4 sm:p-6 rounded-2xl border border-blue-200 cursor-pointer hover:shadow-md transition-shadow">
+                <CollapsibleTrigger className="w-full text-left">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-200 rounded-full flex items-center justify-center mr-3">
+                        <Target className="w-5 h-5 sm:w-6 sm:h-6 text-[#15AFF7]" />
+                      </div>
+                      <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Our Mission</h3>
+                    </div>
+                    <ChevronDown className={`w-5 h-5 text-gray-600 transition-transform duration-200 ${missionExpanded ? 'rotate-180' : ''}`} />
+                  </div>
+                  <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+                    Agora Advisor Solution is dedicated to supporting your family's assurance and well-being.
+                  </p>
+                </CollapsibleTrigger>
+                
+                <CollapsibleContent className="mt-4">
+                  <div className="space-y-2 sm:space-y-3">
+                    <div className="flex items-start">
+                      <span className="font-bold text-[#15AFF7] mr-2">•</span>
+                      <div className="text-sm sm:text-base">
+                        <span className="font-semibold text-gray-800">Dedicated</span> - Faithfully providing you appropriate solutions
+                      </div>
+                    </div>
+                    <div className="flex items-start">
+                      <span className="font-bold text-[#15AFF7] mr-2">•</span>
+                      <div className="text-sm sm:text-base">
+                        <span className="font-semibold text-gray-800">Supporting</span> - Realize your needs and wants
+                      </div>
+                    </div>
+                    <div className="flex items-start">
+                      <span className="font-bold text-[#15AFF7] mr-2">•</span>
+                      <div className="text-sm sm:text-base">
+                        <span className="font-semibold text-gray-800">Family</span> - Fortifying your family's financial legacy
+                      </div>
+                    </div>
+                    <div className="flex items-start">
+                      <span className="font-bold text-[#15AFF7] mr-2">•</span>
+                      <div className="text-sm sm:text-base">
+                        <span className="font-semibold text-gray-800">Assurance</span> - Protecting your family's peace of mind
+                      </div>
+                    </div>
+                    <div className="flex items-start">
+                      <span className="font-bold text-[#15AFF7] mr-2">•</span>
+                      <div className="text-sm sm:text-base">
+                        <span className="font-semibold text-gray-800">Well-being</span> - Safeguarding your love's one future
+                      </div>
+                    </div>
+                  </div>
+                </CollapsibleContent>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">Our Mission</h3>
-            </div>
-            <p className="text-gray-700 text-base sm:text-lg leading-relaxed mb-6">
-              Agora Advisor Solution is dedicated to supporting your family's assurance and well-being.
-            </p>
-            <div className="space-y-3">
-              <div className="flex items-start">
-                <span className="font-bold text-[#15AFF7] mr-2">•</span>
-                <div>
-                  <span className="font-semibold text-gray-800">Dedicated</span> - Faithfully providing you appropriate solutions
-                </div>
-              </div>
-              <div className="flex items-start">
-                <span className="font-bold text-[#15AFF7] mr-2">•</span>
-                <div>
-                  <span className="font-semibold text-gray-800">Supporting</span> - Realize your needs and wants
-                </div>
-              </div>
-              <div className="flex items-start">
-                <span className="font-bold text-[#15AFF7] mr-2">•</span>
-                <div>
-                  <span className="font-semibold text-gray-800">Family</span> - Fortifying your family's financial legacy
-                </div>
-              </div>
-              <div className="flex items-start">
-                <span className="font-bold text-[#15AFF7] mr-2">•</span>
-                <div>
-                  <span className="font-semibold text-gray-800">Assurance</span> - Protecting your family's peace of mind
-                </div>
-              </div>
-              <div className="flex items-start">
-                <span className="font-bold text-[#15AFF7] mr-2">•</span>
-                <div>
-                  <span className="font-semibold text-gray-800">Well-being</span> - Safeguarding your love's one future
-                </div>
-              </div>
-            </div>
+            </Collapsible>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="bg-gradient-to-r from-blue-50 to-blue-100 p-6 sm:p-8 md:p-10 rounded-2xl border border-blue-200">
-            <div className="flex items-center mb-6">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-blue-200 rounded-full flex items-center justify-center mr-4">
-                <Eye className="w-6 h-6 sm:w-7 sm:h-7 text-[#15AFF7]" />
+          {/* Vision Card */}
+          <motion.div variants={itemVariants}>
+            <Collapsible open={visionExpanded} onOpenChange={setVisionExpanded}>
+              <div className="bg-gradient-to-r from-blue-50 to-blue-100 p-4 sm:p-6 rounded-2xl border border-blue-200 cursor-pointer hover:shadow-md transition-shadow">
+                <CollapsibleTrigger className="w-full text-left">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-200 rounded-full flex items-center justify-center mr-3">
+                        <Eye className="w-5 h-5 sm:w-6 sm:h-6 text-[#15AFF7]" />
+                      </div>
+                      <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Our Vision</h3>
+                    </div>
+                    <ChevronDown className={`w-5 h-5 text-gray-600 transition-transform duration-200 ${visionExpanded ? 'rotate-180' : ''}`} />
+                  </div>
+                  <p className="text-gray-700 text-sm sm:text-base leading-relaxed line-clamp-2">
+                    Agora Advisor Solutions is determined to equip independent agents and agencies...
+                  </p>
+                </CollapsibleTrigger>
+                
+                <CollapsibleContent className="mt-4">
+                  <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+                    Agora Advisor Solutions is determined to equip independent agents and agencies across America with carriers, leads, and technology packages to ensure they are leading their competitors.
+                  </p>
+                </CollapsibleContent>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">Our Vision</h3>
-            </div>
-            <p className="text-gray-700 text-base sm:text-lg leading-relaxed"> Agora Advisor Solutions is determined to equip independent agents and agencies across America with carriers, leads, and technology packages to ensure they are leading their competitors.
-          </p>
+            </Collapsible>
           </motion.div>
         </motion.div>
 
@@ -147,4 +187,5 @@ const MissionLeadership = () => {
       </div>
     </section>;
 };
+
 export default MissionLeadership;
