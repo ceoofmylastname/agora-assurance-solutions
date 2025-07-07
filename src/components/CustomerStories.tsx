@@ -1,5 +1,6 @@
+
 import { motion } from "framer-motion";
-import { Quote, Star } from "lucide-react";
+import { Quote, Star, Sparkles } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const CustomerStories = () => {
@@ -10,20 +11,21 @@ const CustomerStories = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: isMobile ? 0.1 : 0.15,
-        delayChildren: isMobile ? 0.2 : 0.3,
+        staggerChildren: isMobile ? 0.1 : 0.2,
+        delayChildren: isMobile ? 0.2 : 0.4,
         duration: isMobile ? 0.6 : 0.8
       }
     }
   };
 
   const itemVariants = {
-    hidden: { y: isMobile ? 15 : 20, opacity: 0 },
+    hidden: { y: isMobile ? 20 : 30, opacity: 0, scale: 0.9 },
     visible: {
       y: 0,
       opacity: 1,
+      scale: 1,
       transition: {
-        duration: isMobile ? 0.4 : 0.6,
+        duration: isMobile ? 0.5 : 0.7,
         ease: "easeOut"
       }
     }
@@ -51,48 +53,66 @@ const CustomerStories = () => {
       title: "They Made It Simple",
       quote: "Agora's side-by-side comparison saved me hours of research—and I still got the best rate.",
       author: "Mark R.",
-      location: "CA"
+      location: "CA",
+      gradient: "from-blue-500 via-purple-500 to-pink-500",
+      bgGradient: "from-blue-50/80 via-purple-50/60 to-pink-50/80"
     },
     {
       title: "A True Advocate", 
       quote: "Their advisor fought for my needs, not commissions. I finally feel protected.",
       author: "Sarah T.",
-      location: "TX"
+      location: "TX",
+      gradient: "from-emerald-500 via-teal-500 to-cyan-500",
+      bgGradient: "from-emerald-50/80 via-teal-50/60 to-cyan-50/80"
     },
     {
       title: "Instant Peace of Mind",
       quote: "I clicked a few buttons and had a comprehensive plan in minutes—no stress.",
       author: "Emily K.", 
-      location: "FL"
+      location: "FL",
+      gradient: "from-orange-500 via-red-500 to-pink-500",
+      bgGradient: "from-orange-50/80 via-red-50/60 to-pink-50/80"
     }
   ];
 
   return (
-    <section id="testimonials" className="relative py-16 md:py-20 lg:py-24 bg-gradient-to-b from-blue-50 to-white overflow-hidden">
+    <section id="testimonials" className="relative py-20 md:py-24 lg:py-28 bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-100/50 overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-pink-400/20 to-orange-400/20 rounded-full blur-3xl animate-pulse-slow animation-delay-300"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-emerald-400/15 to-teal-400/15 rounded-full blur-3xl animate-pulse-slow animation-delay-500"></div>
+      </div>
+
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
-          className="text-center mb-12 md:mb-16 lg:mb-20"
+          className="text-center mb-16 md:mb-20 lg:mb-24"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           variants={containerVariants}
         >
+          <motion.div variants={itemVariants} className="flex items-center justify-center mb-6">
+            <Sparkles className="w-8 h-8 text-[#15AFF7] mr-3 animate-pulse" />
+            <span className="text-[#15AFF7] font-semibold text-lg tracking-wide uppercase">Success Stories</span>
+            <Sparkles className="w-8 h-8 text-[#15AFF7] ml-3 animate-pulse" />
+          </motion.div>
           <motion.h2 
             variants={itemVariants}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 px-2"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 bg-clip-text text-transparent mb-6 px-2"
           >
-            Customer Success Stories
+            Real People, Real Results
           </motion.h2>
           <motion.p 
             variants={itemVariants}
-            className="text-gray-600 text-lg sm:text-xl max-w-3xl mx-auto px-4 leading-relaxed"
+            className="text-gray-600 text-xl sm:text-2xl max-w-4xl mx-auto px-4 leading-relaxed"
           >
-            Real families sharing their experience with Agora Assurance Solutions
+            Discover how Agora Assurance has transformed the insurance experience for families across America
           </motion.p>
         </motion.div>
 
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 perspective-1000"
+          className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-12"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
@@ -105,109 +125,106 @@ const CustomerStories = () => {
               initial="rest"
               whileHover="hover"
               animate="rest"
-              className="relative perspective-1000 h-full"
+              className="relative perspective-1000 h-full group"
             >
               <motion.div
                 variants={cardHoverVariants}
-                className="relative bg-white h-full min-h-[420px] p-8 rounded-3xl text-center transition-all duration-500 transform-gpu flex flex-col"
+                className="relative h-full min-h-[420px] p-8 sm:p-10 rounded-3xl transition-all duration-500 transform-gpu flex flex-col"
                 style={{
                   transformStyle: 'preserve-3d',
-                  boxShadow: '0 35px 80px -15px rgba(59, 130, 246, 0.4), 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 15px 35px -10px rgba(21, 175, 247, 0.3)'
                 }}
               >
-                {/* Enhanced glass morphism backdrop */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/95 via-white/90 to-blue-50/40 backdrop-blur-sm rounded-3xl border border-white/60"></div>
+                {/* Glassmorphism background with gradient */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${story.bgGradient} backdrop-blur-xl rounded-3xl border border-white/30 shadow-2xl`}></div>
                 
-                {/* 3D Quote Icon with enhanced depth */}
-                <div className="absolute -top-6 left-8 w-12 h-12 bg-gradient-to-br from-[#15AFF7] via-[#1FA2E4] to-[#0D94D1] rounded-full flex items-center justify-center shadow-2xl z-10 transform rotate-3"
-                     style={{ 
-                       boxShadow: '0 20px 40px -8px rgba(21, 175, 247, 0.6), 0 12px 25px -5px rgba(21, 175, 247, 0.4), inset 0 2px 4px rgba(255,255,255,0.3)' 
-                     }}>
+                {/* Enhanced shadow layers */}
+                <div className="absolute inset-0 bg-white/10 rounded-3xl shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] group-hover:shadow-[0_50px_80px_-15px_rgba(0,0,0,0.4)] transition-all duration-500"></div>
+                <div className="absolute inset-0 bg-white/5 rounded-3xl shadow-[0_20px_40px_-10px_rgba(59,130,246,0.4)] group-hover:shadow-[0_30px_60px_-10px_rgba(59,130,246,0.6)] transition-all duration-500"></div>
+                
+                {/* Floating quote icon with gradient */}
+                <div className={`absolute -top-6 left-8 w-12 h-12 bg-gradient-to-r ${story.gradient} rounded-2xl flex items-center justify-center shadow-xl transform rotate-12 group-hover:rotate-0 transition-transform duration-300`}>
                   <Quote className="w-6 h-6 text-white drop-shadow-lg" />
                 </div>
 
-                {/* Enhanced Star Rating with 3D effect */}
-                <div className="flex justify-center mb-6 mt-8 relative z-10">
+                {/* Animated star rating */}
+                <div className="relative flex justify-center mb-6 mt-8 z-10">
                   {[...Array(5)].map((_, i) => (
                     <motion.div
                       key={i}
                       initial={{ scale: 0, rotate: -180 }}
                       animate={{ scale: 1, rotate: 0 }}
-                      transition={{ delay: i * 0.1, duration: 0.5, ease: "backOut" }}
+                      transition={{ delay: 0.1 * i, duration: 0.5, ease: "backOut" }}
                     >
-                      <Star className="w-6 h-6 text-yellow-400 fill-current mx-0.5 drop-shadow-md" 
-                            style={{ filter: 'drop-shadow(0 4px 8px rgba(255, 193, 7, 0.3))' }} />
+                      <Star className="w-6 h-6 text-yellow-400 fill-current mx-1 drop-shadow-sm hover:scale-110 transition-transform duration-200" />
                     </motion.div>
                   ))}
                 </div>
 
-                {/* Content with enhanced 3D styling */}
-                <div className="relative z-10 flex-1 flex flex-col justify-between">
+                {/* Content with enhanced typography */}
+                <div className="relative z-10 flex-1 flex flex-col justify-between text-center">
                   <div>
-                    <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 min-h-[70px] flex items-center justify-center leading-tight"
-                        style={{ textShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
-                      {story.title}
-                    </h3>
-
+                    <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 leading-tight">{story.title}</h3>
+                    
+                    {/* Enhanced quote styling */}
                     <div className="relative mb-8">
-                      {/* Enhanced quote styling */}
-                      <p className="text-gray-700 text-lg sm:text-xl leading-relaxed text-center italic relative z-10"
-                         style={{ textShadow: '0 1px 2px rgba(0,0,0,0.05)' }}>
-                        "{story.quote}"
+                      <div className="absolute -top-2 -left-2 text-6xl text-gray-300/50 font-serif">"</div>
+                      <p className="text-gray-700 text-lg sm:text-xl leading-relaxed italic relative z-10 px-4">
+                        {story.quote}
                       </p>
-                      
-                      {/* Decorative quote marks */}
-                      <div className="absolute -top-4 -left-2 text-6xl text-blue-100 font-serif leading-none pointer-events-none">
-                        "
-                      </div>
-                      <div className="absolute -bottom-8 -right-2 text-6xl text-blue-100 font-serif leading-none pointer-events-none rotate-180">
-                        "
-                      </div>
+                      <div className="absolute -bottom-6 -right-2 text-6xl text-gray-300/50 font-serif rotate-180">"</div>
                     </div>
                   </div>
 
-                  {/* Enhanced Author section */}
-                  <div className="text-center relative z-10">
-                    <div className="w-16 h-0.5 bg-gradient-to-r from-[#15AFF7] to-[#0D94D1] mx-auto mb-4 rounded-full"></div>
-                    <p className="text-[#15AFF7] font-bold text-lg sm:text-xl"
-                       style={{ textShadow: '0 2px 4px rgba(21, 175, 247, 0.2)' }}>
-                      {story.author}, {story.location}
-                    </p>
+                  {/* Author with enhanced styling */}
+                  <div className="relative">
+                    <div className={`inline-block px-6 py-3 bg-gradient-to-r ${story.gradient} rounded-full shadow-lg`}>
+                      <p className="text-white font-bold text-lg tracking-wide">
+                        {story.author}, {story.location}
+                      </p>
+                    </div>
                   </div>
                 </div>
 
-                {/* Enhanced 3D border effect */}
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-200/20 via-transparent to-blue-300/20 pointer-events-none"></div>
+                {/* Subtle border glow effect */}
+                <div className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${story.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl`}></div>
               </motion.div>
             </motion.div>
           ))}
         </motion.div>
 
+        {/* Enhanced Trust Indicators */}
         <motion.div 
-          className="mt-12 sm:mt-16 text-center"
+          className="mt-16 sm:mt-20 text-center"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           variants={containerVariants}
         >
-          <motion.div variants={itemVariants} className="bg-gradient-to-r from-blue-50 to-blue-100 p-6 sm:p-8 rounded-2xl border border-blue-200 max-w-4xl mx-auto">
-            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Why Choose Agora?</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-              <div className="text-center">
-                <div className="text-xl sm:text-2xl font-bold text-[#15AFF7] mb-1">Total Transparency</div>
-                <p className="text-gray-600 text-sm sm:text-base">No hidden fees, no confusing fine print. Ever.</p>
-              </div>
-              <div className="text-center">
-                <div className="text-xl sm:text-2xl font-bold text-[#15AFF7] mb-1">Speed & Convenience</div>
-                <p className="text-gray-600 text-sm sm:text-base">Compare and quote in under a minute—get covered today.</p>
-              </div>
-              <div className="text-center">
-                <div className="text-xl sm:text-2xl font-bold text-[#15AFF7] mb-1">Human-First Support</div>
-                <p className="text-gray-600 text-sm sm:text-base">Real people, real expertise, ready when you need them.</p>
-              </div>
-              <div className="text-center">
-                <div className="text-xl sm:text-2xl font-bold text-[#15AFF7] mb-1">Proven Track Record</div>
-                <p className="text-gray-600 text-sm sm:text-base">50+ years experience, 100+ carrier partners, $500M in benefits.</p>
+          <motion.div variants={itemVariants} className="relative bg-white/70 backdrop-blur-xl p-8 sm:p-12 rounded-3xl border border-white/40 max-w-6xl mx-auto shadow-2xl">
+            {/* Gradient border effect */}
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 blur-xl opacity-50"></div>
+            
+            <div className="relative z-10">
+              <h3 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-gray-900 to-blue-900 bg-clip-text text-transparent mb-8">
+                Why Choose Agora?
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                {[
+                  { title: "Total Transparency", desc: "No hidden fees, no confusing fine print. Ever.", icon: "🔍" },
+                  { title: "Speed & Convenience", desc: "Compare and quote in under a minute—get covered today.", icon: "⚡" },
+                  { title: "Human-First Support", desc: "Real people, real expertise, ready when you need them.", icon: "💝" },
+                  { title: "Proven Track Record", desc: "50+ years experience, 100+ carrier partners, $500M in benefits.", icon: "🏆" }
+                ].map((item, index) => (
+                  <motion.div 
+                    key={index}
+                    variants={itemVariants}
+                    className="text-center group hover:scale-105 transition-transform duration-300"
+                  >
+                    <div className="text-4xl mb-4 group-hover:animate-bounce">{item.icon}</div>
+                    <div className="text-xl sm:text-2xl font-bold text-[#15AFF7] mb-3">{item.title}</div>
+                    <p className="text-gray-600 text-sm sm:text-base leading-relaxed">{item.desc}</p>
+                  </motion.div>
+                ))}
               </div>
             </div>
           </motion.div>
