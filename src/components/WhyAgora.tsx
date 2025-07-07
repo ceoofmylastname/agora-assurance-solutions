@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Shield, Calculator, Users, Award, Target, TrendingUp, CheckCircle, ArrowRight } from "lucide-react";
@@ -98,9 +99,21 @@ const WhyAgora = () => {
         once: true,
         margin: "-50px"
       }} variants={containerVariants}>
-          <motion.div variants={itemVariants} className="bg-blue-50 p-6 sm:p-8 rounded-2xl border border-blue-200 text-center hover:bg-blue-100 transition-all duration-300 hover:shadow-lg active:scale-95 touch-manipulation">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-blue-200 flex items-center justify-center mx-auto mb-4 sm:mb-6">
-              <Users className="w-8 h-8 sm:w-10 sm:h-10 text-[#15AFF7]" />
+          <motion.div 
+            variants={itemVariants} 
+            whileHover={{ 
+              y: -8, 
+              rotateX: 5,
+              transition: { duration: 0.3, ease: "easeOut" }
+            }}
+            className="bg-gradient-to-br from-blue-50 via-white to-blue-50 p-6 sm:p-8 rounded-2xl border border-blue-200 text-center transition-all duration-300 shadow-[0_10px_30px_-5px_rgba(59,130,246,0.15)] hover:shadow-[0_20px_50px_-5px_rgba(59,130,246,0.25)] transform perspective-1000 active:scale-95 touch-manipulation"
+            style={{
+              transformStyle: 'preserve-3d',
+              boxShadow: '0 15px 35px -5px rgba(59, 130, 246, 0.2), 0 8px 15px -8px rgba(59, 130, 246, 0.3)'
+            }}
+          >
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-blue-200 to-[#15AFF7] flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-lg transform-gpu">
+              <Users className="w-8 h-8 sm:w-10 sm:h-10 text-white drop-shadow-sm" />
             </div>
             <h3 className="text-gray-900 text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">
               <AnimatedCounter end={50} suffix="+" /> Years
@@ -108,9 +121,21 @@ const WhyAgora = () => {
             <p className="text-gray-700 text-base sm:text-lg leading-relaxed">Combined experience protecting families and building financial security</p>
           </motion.div>
           
-          <motion.div variants={itemVariants} className="bg-blue-50 p-6 sm:p-8 rounded-2xl border border-blue-200 text-center hover:bg-blue-100 transition-all duration-300 hover:shadow-lg active:scale-95 touch-manipulation">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-blue-200 flex items-center justify-center mx-auto mb-4 sm:mb-6">
-              <Target className="w-8 h-8 sm:w-10 sm:h-10 text-[#15AFF7]" />
+          <motion.div 
+            variants={itemVariants} 
+            whileHover={{ 
+              y: -8, 
+              rotateX: 5,
+              transition: { duration: 0.3, ease: "easeOut" }
+            }}
+            className="bg-gradient-to-br from-blue-50 via-white to-blue-50 p-6 sm:p-8 rounded-2xl border border-blue-200 text-center transition-all duration-300 shadow-[0_10px_30px_-5px_rgba(59,130,246,0.15)] hover:shadow-[0_20px_50px_-5px_rgba(59,130,246,0.25)] transform perspective-1000 active:scale-95 touch-manipulation"
+            style={{
+              transformStyle: 'preserve-3d',
+              boxShadow: '0 15px 35px -5px rgba(59, 130, 246, 0.2), 0 8px 15px -8px rgba(59, 130, 246, 0.3)'
+            }}
+          >
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-blue-200 to-[#15AFF7] flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-lg transform-gpu">
+              <Target className="w-8 h-8 sm:w-10 sm:h-10 text-white drop-shadow-sm" />
             </div>
             <h3 className="text-gray-900 text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">
               <AnimatedCounter end={2500} suffix="+" /> 
@@ -120,9 +145,21 @@ const WhyAgora = () => {
             </p>
           </motion.div>
           
-          <motion.div variants={itemVariants} className="bg-blue-50 p-6 sm:p-8 rounded-2xl border border-blue-200 text-center hover:bg-blue-100 transition-all duration-300 hover:shadow-lg sm:col-span-2 lg:col-span-1 active:scale-95 touch-manipulation">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-blue-200 flex items-center justify-center mx-auto mb-4 sm:mb-6">
-              <TrendingUp className="w-8 h-8 sm:w-10 sm:h-10 text-[#15AFF7]" />
+          <motion.div 
+            variants={itemVariants} 
+            whileHover={{ 
+              y: -8, 
+              rotateX: 5,
+              transition: { duration: 0.3, ease: "easeOut" }
+            }}
+            className="bg-gradient-to-br from-blue-50 via-white to-blue-50 p-6 sm:p-8 rounded-2xl border border-blue-200 text-center transition-all duration-300 shadow-[0_10px_30px_-5px_rgba(59,130,246,0.15)] hover:shadow-[0_20px_50px_-5px_rgba(59,130,246,0.25)] transform perspective-1000 sm:col-span-2 lg:col-span-1 active:scale-95 touch-manipulation"
+            style={{
+              transformStyle: 'preserve-3d',
+              boxShadow: '0 15px 35px -5px rgba(59, 130, 246, 0.2), 0 8px 15px -8px rgba(59, 130, 246, 0.3)'
+            }}
+          >
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-blue-200 to-[#15AFF7] flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-lg transform-gpu">
+              <TrendingUp className="w-8 h-8 sm:w-10 sm:h-10 text-white drop-shadow-sm" />
             </div>
             <h3 className="text-gray-900 text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">
               <AnimatedCounter end={500} suffix="M" prefix="$" />
