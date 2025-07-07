@@ -96,9 +96,41 @@ const MissionLeadership = () => {
               </div>
               <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">Our Mission</h3>
             </div>
-            <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
-              To bring <strong>clarity</strong>, <strong>speed</strong>, and <strong>consumer-first advocacy</strong> to the insurance market, so every family can make informed protection decisions—without hidden fees, jargon, or high-pressure sales.
+            <p className="text-gray-700 text-base sm:text-lg leading-relaxed mb-6">
+              Agora Advisor Solution is dedicated to supporting your family's assurance and well-being.
             </p>
+            <div className="space-y-3">
+              <div className="flex items-start">
+                <span className="font-bold text-[#15AFF7] mr-2">•</span>
+                <div>
+                  <span className="font-semibold text-gray-800">Dedicated</span> - Faithfully providing you appropriate solutions
+                </div>
+              </div>
+              <div className="flex items-start">
+                <span className="font-bold text-[#15AFF7] mr-2">•</span>
+                <div>
+                  <span className="font-semibold text-gray-800">Supporting</span> - Realize your needs and wants
+                </div>
+              </div>
+              <div className="flex items-start">
+                <span className="font-bold text-[#15AFF7] mr-2">•</span>
+                <div>
+                  <span className="font-semibold text-gray-800">Family</span> - Fortifying your family's financial legacy
+                </div>
+              </div>
+              <div className="flex items-start">
+                <span className="font-bold text-[#15AFF7] mr-2">•</span>
+                <div>
+                  <span className="font-semibold text-gray-800">Assurance</span> - Protecting your family's peace of mind
+                </div>
+              </div>
+              <div className="flex items-start">
+                <span className="font-bold text-[#15AFF7] mr-2">•</span>
+                <div>
+                  <span className="font-semibold text-gray-800">Well-being</span> - Safeguarding your love's one future
+                </div>
+              </div>
+            </div>
           </motion.div>
 
           <motion.div 
