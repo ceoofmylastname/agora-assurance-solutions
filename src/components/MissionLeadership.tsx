@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Target, Eye } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -61,7 +60,7 @@ const MissionLeadership = () => {
       bio: "Michael oversees our day-to-day operations and ensures every client receives exceptional service. His background in process optimization and customer relations helps streamline our service delivery across all departments."
     },
     {
-      photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face",
+      photo: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=300&h=300&fit=crop&crop=face",
       name: "Emily Rodriguez",
       title: "Director of Client Relations",
       bio: "Emily leads our client relations team, ensuring every family receives personalized attention and support throughout their insurance journey. Her expertise in family financial planning helps clients make informed decisions."
@@ -202,17 +201,18 @@ const MissionLeadership = () => {
             margin: "-50px"
           }} 
           variants={containerVariants}
+          className="mt-24 md:mt-32 lg:mt-40"
         >
           <motion.h3 
             variants={itemVariants} 
-            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 text-center mb-16 md:mb-20 lg:mb-24"
+            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 text-center mb-20 md:mb-24 lg:mb-28"
           >
             Our Team
           </motion.h3>
           
           <motion.div 
             variants={containerVariants}
-            className="relative mx-auto mt-16"
+            className="relative mx-auto mt-20"
             style={{ maxWidth: '75vw' }}
           >
             <ul className="list-none p-0 m-0 relative">
