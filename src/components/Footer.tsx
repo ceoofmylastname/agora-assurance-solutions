@@ -66,21 +66,21 @@ const Footer = () => {
   };
 
   return (
-    <footer id="contact" className="bg-black text-white pt-12 sm:pt-16 pb-6 sm:pb-8 w-full">
-      <div className="w-full px-3 sm:px-4 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 pb-8 sm:pb-10 border-b border-gray-700">
+    <footer id="contact" className="bg-black text-white pt-16 sm:pt-20 pb-8 sm:pb-10 w-full">
+      <div className="w-full px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12 pb-10 sm:pb-12 border-b border-gray-700">
           <div className="sm:col-span-2 lg:col-span-2">
-            <div className="mb-4 sm:mb-6">
-              <h3 className="text-xl sm:text-2xl font-bold text-[#15AFF7] mb-2">Agora Assurance Solutions</h3>
-              <p className="text-sm text-gray-400">Discover Truth & Transparency</p>
+            <div className="mb-6 sm:mb-8">
+              <h3 className="text-2xl sm:text-3xl font-bold text-[#15AFF7] mb-3">Agora Assurance Solutions</h3>
+              <p className="text-base text-gray-400">Discover Truth & Transparency</p>
             </div>
-            <p className="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base">
+            <p className="text-gray-300 mb-6 sm:mb-8 text-base sm:text-lg leading-relaxed">
               Supporting your family's assurance and well-being by streamlining the buying process with advanced systems and AI—so you can make informed protection decisions in one convenient place.
             </p>
-            <div className="space-y-2 mb-4 sm:mb-6">
+            <div className="space-y-3 mb-6 sm:mb-8">
               <div className="flex items-center text-gray-300">
-                <Mail className="w-4 h-4 mr-2 flex-shrink-0" />
-                <a href="mailto:info@agoraassurancesolutions.com" className="hover:text-[#15AFF7] transition-colors text-sm sm:text-base break-all">
+                <Mail className="w-5 h-5 mr-3 flex-shrink-0" />
+                <a href="mailto:info@agoraassurancesolutions.com" className="hover:text-[#15AFF7] transition-colors duration-300 text-base sm:text-lg break-all">
                   info@agoraassurancesolutions.com
                 </a>
               </div>
@@ -90,32 +90,32 @@ const Footer = () => {
                 href="https://www.linkedin.com/company/agora-assurance-solutions/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 transition-colors hover:bg-[#15AFF7] hover:text-white"
+                className="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 transition-all duration-300 hover:bg-[#15AFF7] hover:text-white active:scale-95 touch-manipulation"
               >
-                <Linkedin size={20} />
+                <Linkedin size={24} />
               </a>
             </div>
           </div>
           
           <div className="sm:col-span-1">
-            <h3 className="text-base sm:text-lg font-bold mb-3 sm:mb-4 text-white">Our Services</h3>
-            <ul className="space-y-2 sm:space-y-3">
-              <li><Link to="/term-life" className="text-gray-300 hover:text-[#15AFF7] transition-colors text-sm sm:text-base">Term Life Insurance</Link></li>
-              <li><Link to="/mortgage-protection" className="text-gray-300 hover:text-[#15AFF7] transition-colors text-sm sm:text-base">Mortgage Protection</Link></li>
-              <li><Link to="/final-expense" className="text-gray-300 hover:text-[#15AFF7] transition-colors text-sm sm:text-base">Final Expense</Link></li>
-              <li><Link to="/annuities" className="text-gray-300 hover:text-[#15AFF7] transition-colors text-sm sm:text-base">Annuity Solutions</Link></li>
-              <li><Link to="/tax-solutions" className="text-gray-300 hover:text-[#15AFF7] transition-colors text-sm sm:text-base">Tax Solutions</Link></li>
+            <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-white">Our Services</h3>
+            <ul className="space-y-3 sm:space-y-4">
+              <li><Link to="/term-life" className="text-gray-300 hover:text-[#15AFF7] transition-colors duration-300 text-base sm:text-lg">Term Life Insurance</Link></li>
+              <li><Link to="/mortgage-protection" className="text-gray-300 hover:text-[#15AFF7] transition-colors duration-300 text-base sm:text-lg">Mortgage Protection</Link></li>
+              <li><Link to="/final-expense" className="text-gray-300 hover:text-[#15AFF7] transition-colors duration-300 text-base sm:text-lg">Final Expense</Link></li>
+              <li><Link to="/annuities" className="text-gray-300 hover:text-[#15AFF7] transition-colors duration-300 text-base sm:text-lg">Annuity Solutions</Link></li>
+              <li><Link to="/tax-solutions" className="text-gray-300 hover:text-[#15AFF7] transition-colors duration-300 text-base sm:text-lg">Tax Solutions</Link></li>
             </ul>
           </div>
           
           <div className="sm:col-span-1">
-            <h3 className="text-base sm:text-lg font-bold mb-3 sm:mb-4 text-white">Get Updates</h3>
-            <form className="space-y-3 sm:space-y-4" onSubmit={handleSubscribe}>
+            <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-white">Get Updates</h3>
+            <form className="space-y-4 sm:space-y-6" onSubmit={handleSubscribe}>
               <div>
                 <input 
                   type="email" 
                   placeholder="Your email" 
-                  className="w-full px-3 sm:px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#15AFF7] text-white placeholder-gray-400 text-sm sm:text-base"
+                  className="w-full px-4 sm:px-5 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#15AFF7] text-white placeholder-gray-400 text-base sm:text-lg transition-all duration-300"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={isSubmitting}
@@ -123,13 +123,13 @@ const Footer = () => {
               </div>
               <button 
                 type="submit" 
-                className="w-full px-3 sm:px-4 py-2 bg-[#15AFF7] text-white rounded-md hover:bg-[#0D94D1] transition-colors flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed font-medium text-sm sm:text-base"
+                className="w-full px-4 sm:px-5 py-3 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-all duration-300 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed font-medium text-base sm:text-lg shadow-lg hover:shadow-xl active:scale-95 touch-manipulation"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Subscribing..." : (
                   <>
                     Subscribe
-                    <ArrowRight className="ml-2 w-4 h-4" />
+                    <ArrowRight className="ml-2 w-5 h-5" />
                   </>
                 )}
               </button>
@@ -137,13 +137,13 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="pt-6 sm:pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <p className="text-gray-400 text-xs sm:text-sm text-center md:text-left">
+        <div className="pt-8 sm:pt-10 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+          <p className="text-gray-400 text-sm sm:text-base text-center md:text-left">
             © {new Date().getFullYear()} Agora Assurance Solutions. All rights reserved.
           </p>
-          <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6 text-center">
-            <Link to="/privacy-policy" className="text-xs sm:text-sm text-gray-400 hover:text-[#15AFF7] transition-colors">Privacy Policy</Link>
-            <Link to="/terms" className="text-xs sm:text-sm text-gray-400 hover:text-[#15AFF7] transition-colors">Terms & Conditions</Link>
+          <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-8 text-center">
+            <Link to="/privacy-policy" className="text-sm sm:text-base text-gray-400 hover:text-[#15AFF7] transition-colors duration-300">Privacy Policy</Link>
+            <Link to="/terms" className="text-sm sm:text-base text-gray-400 hover:text-[#15AFF7] transition-colors duration-300">Terms & Conditions</Link>
           </div>
         </div>
       </div>
