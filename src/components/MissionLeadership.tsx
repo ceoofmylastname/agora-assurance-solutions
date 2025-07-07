@@ -1,8 +1,8 @@
-
 import { motion } from "framer-motion";
 import { Target, Eye } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { useState } from "react";
 
 const MissionLeadership = () => {
@@ -39,20 +39,32 @@ const MissionLeadership = () => {
     }
   };
 
-  // Team member photos - using placeholder images for now
-  const teamPhotos = [
-    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
-    "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face",
-    "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face",
-    "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face",
-    "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=face",
-    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&h=300&fit=crop&crop=face",
-    "https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=300&h=300&fit=crop&crop=face",
-    "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=300&h=300&fit=crop&crop=face",
-    "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=300&h=300&fit=crop&crop=face",
-    "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&h=300&fit=crop&crop=face",
-    "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300&h=300&fit=crop&crop=face",
-    "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&h=300&fit=crop&crop=face"
+  // Team member data with photos and bios
+  const teamMembers = [
+    {
+      photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
+      name: "John Smith",
+      title: "Chief Executive Officer",
+      bio: "John has over 15 years of experience in the insurance industry, leading teams and driving innovation in customer service excellence. He founded Agora Advisor Solutions with a vision to revolutionize how families approach financial security."
+    },
+    {
+      photo: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face",
+      name: "Sarah Johnson",
+      title: "Chief Technology Officer",
+      bio: "Sarah brings cutting-edge technology expertise to our platform, ensuring our AI-driven systems deliver the most accurate and personalized insurance solutions. She has led tech teams at Fortune 500 companies for over a decade."
+    },
+    {
+      photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face",
+      name: "Michael Chen",
+      title: "Head of Operations",
+      bio: "Michael oversees our day-to-day operations and ensures every client receives exceptional service. His background in process optimization and customer relations helps streamline our service delivery across all departments."
+    },
+    {
+      photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face",
+      name: "Emily Rodriguez",
+      title: "Director of Client Relations",
+      bio: "Emily leads our client relations team, ensuring every family receives personalized attention and support throughout their insurance journey. Her expertise in family financial planning helps clients make informed decisions."
+    }
   ];
 
   return (
@@ -203,7 +215,7 @@ const MissionLeadership = () => {
             style={{ maxWidth: '75vw' }}
           >
             <ul className="list-none p-0 m-0 relative">
-              {teamPhotos.map((photo, index) => (
+              {teamMembers.map((member, index) => (
                 <li
                   key={index}
                   className="float-left relative"
@@ -219,19 +231,45 @@ const MissionLeadership = () => {
                     })
                   }}
                 >
-                  <img
-                    src={photo}
-                    alt={`Team member ${index + 1}`}
-                    className="w-full h-full object-cover"
-                    style={{ objectPosition: '50% 50%' }}
-                  />
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <button className="w-full h-full cursor-pointer hover:opacity-80 transition-opacity">
+                        <img
+                          src={member.photo}
+                          alt={`${member.name} - ${member.title}`}
+                          className="w-full h-full object-cover"
+                          style={{ objectPosition: '50% 50%' }}
+                        />
+                      </button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[425px]">
+                      <DialogHeader>
+                        <DialogTitle className="text-xl font-bold text-gray-900">
+                          {member.name}
+                        </DialogTitle>
+                        <p className="text-sm font-medium text-[#15AFF7] mb-4">
+                          {member.title}
+                        </p>
+                      </DialogHeader>
+                      <div className="flex flex-col items-center space-y-4">
+                        <img
+                          src={member.photo}
+                          alt={member.name}
+                          className="w-24 h-24 rounded-full object-cover"
+                        />
+                        <p className="text-gray-700 leading-relaxed text-center">
+                          {member.bio}
+                        </p>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
                 </li>
               ))}
             </ul>
             
             <div className="clear-both pt-8">
               <p className="text-sm text-gray-600 text-right pr-4">
-                Professional team photos showcase our diverse leadership
+                Click on any team member to learn more about their background
               </p>
             </div>
           </motion.div>
