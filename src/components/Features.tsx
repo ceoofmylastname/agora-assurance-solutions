@@ -2,7 +2,6 @@
 import { motion } from "framer-motion";
 import { Shield, Calculator, Users, Award, Target, TrendingUp, Heart, DollarSign, Home, Umbrella, PiggyBank, FileText } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
-import InsuranceImageSection from "@/components/InsuranceImageSection";
 
 const Features = () => {
   const isMobile = useIsMobile();
@@ -111,14 +110,6 @@ const Features = () => {
           </motion.p>
         </motion.div>
 
-        {/* Family Protection Images */}
-        <InsuranceImageSection
-          searchQuery="happy family home protection insurance"
-          title="Protecting What Matters Most"
-          description="See how families like yours find peace of mind with comprehensive insurance coverage"
-          altTextBase="Happy family protected by insurance coverage showing home and life protection"
-        />
-
         {/* Core Products */}
         <motion.div 
           className="mb-16 lg:mb-20"
@@ -153,14 +144,6 @@ const Features = () => {
           </motion.div>
         </motion.div>
 
-        {/* Life Insurance & Retirement Images */}
-        <InsuranceImageSection
-          searchQuery="senior retirement planning financial security life insurance"
-          title="Planning for Every Life Stage"
-          description="From young families to retirement planning, find the right coverage for your life's journey"
-          altTextBase="Senior couple and families planning retirement and life insurance for financial security"
-        />
-
         {/* Supporting Services */}
         <motion.div
           initial="hidden"
@@ -193,14 +176,6 @@ const Features = () => {
             ))}
           </motion.div>
         </motion.div>
-
-        {/* Financial Technology Images */}
-        <InsuranceImageSection
-          searchQuery="digital technology financial planning insurance calculator modern"
-          title="Technology That Works for You"
-          description="Experience the future of insurance with our AI-powered comparison tools and instant quotes"
-          altTextBase="Modern technology and digital tools for insurance planning and financial calculations"
-        />
       </div>
     </section>
   );
