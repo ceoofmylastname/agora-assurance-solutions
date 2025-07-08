@@ -38,9 +38,9 @@ const HowItWorks = () => {
       transition: { duration: 0.3, ease: "easeOut" }
     },
     hover: { 
-      y: -16, 
-      rotateX: 8,
-      scale: 1.03,
+      y: -12, 
+      rotateX: 5,
+      scale: 1.02,
       transition: { duration: 0.3, ease: "easeOut" }
     }
   };
@@ -100,7 +100,7 @@ const HowItWorks = () => {
         </motion.div>
 
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
@@ -113,44 +113,42 @@ const HowItWorks = () => {
               initial="rest"
               whileHover="hover"
               animate="rest"
-              className="relative perspective-1000 h-full"
+              className="relative perspective-1000"
             >
               <motion.div
                 variants={cardHoverVariants}
-                className="relative bg-white h-full min-h-[380px] p-8 rounded-3xl border border-blue-100/60 text-center transition-all duration-500 transform-gpu flex flex-col"
+                className="relative bg-gradient-to-br from-white via-white to-blue-50/30 p-6 sm:p-8 rounded-3xl border border-blue-200/50 text-center transition-all duration-500 transform-gpu"
                 style={{
                   transformStyle: 'preserve-3d',
-                  boxShadow: '0 25px 60px -12px rgba(59, 130, 246, 0.25), 0 15px 35px -15px rgba(59, 130, 246, 0.3), 0 8px 20px -8px rgba(0, 0, 0, 0.1)'
+                  boxShadow: '0 25px 50px -12px rgba(59, 130, 246, 0.25), 0 15px 30px -15px rgba(59, 130, 246, 0.3), 0 8px 16px -8px rgba(0, 0, 0, 0.1)'
                 }}
               >
-                {/* Glass morphism backdrop */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/95 via-white/90 to-blue-50/30 backdrop-blur-sm rounded-3xl"></div>
+                {/* Enhanced backdrop blur effect */}
+                <div className="absolute inset-0 bg-white/80 backdrop-blur-sm rounded-3xl"></div>
                 
                 {/* Step Number with enhanced 3D effect */}
-                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-gradient-to-br from-[#15AFF7] to-[#0D94D1] text-white rounded-full flex items-center justify-center font-bold text-lg shadow-xl z-10"
-                     style={{ boxShadow: '0 12px 30px -8px rgba(21, 175, 247, 0.6), 0 6px 16px -4px rgba(21, 175, 247, 0.4)' }}>
+                <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-gradient-to-br from-[#15AFF7] to-[#0D94D1] text-white rounded-full flex items-center justify-center font-bold text-sm shadow-lg z-10"
+                     style={{ boxShadow: '0 8px 25px -8px rgba(21, 175, 247, 0.6), 0 4px 12px -4px rgba(21, 175, 247, 0.4)' }}>
                   {step.step}
                 </div>
                 
-                {/* Icon with consistent sizing */}
-                <div className="relative w-24 h-24 bg-gradient-to-br from-blue-100 via-blue-50 to-white rounded-full flex items-center justify-center mx-auto mb-8 mt-8 shadow-inner">
-                  <div className="w-20 h-20 bg-gradient-to-br from-blue-200/50 to-blue-100/30 rounded-full flex items-center justify-center">
-                    <step.icon className="w-10 h-10 text-[#15AFF7] drop-shadow-sm" />
+                {/* Icon with enhanced styling */}
+                <div className="relative w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-blue-100 via-blue-50 to-white rounded-full flex items-center justify-center mx-auto mb-6 sm:mb-8 mt-6 shadow-inner">
+                  <div className="w-16 h-16 sm:w-18 sm:h-18 bg-gradient-to-br from-blue-200/50 to-blue-100/30 rounded-full flex items-center justify-center">
+                    <step.icon className="w-8 h-8 sm:w-10 sm:h-10 text-[#15AFF7] drop-shadow-sm" />
                   </div>
                 </div>
                 
-                {/* Content with consistent spacing */}
-                <div className="relative z-10 flex-1 flex flex-col justify-between">
-                  <div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-6 min-h-[60px] flex items-center justify-center">{step.title}</h3>
-                    <p className="text-gray-600 text-base leading-relaxed">{step.description}</p>
-                  </div>
+                {/* Content with relative positioning */}
+                <div className="relative z-10">
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-5">{step.title}</h3>
+                  <p className="text-gray-600 text-sm sm:text-base leading-relaxed">{step.description}</p>
                 </div>
                 
                 {/* Arrow (except for last item) with enhanced styling */}
                 {index < steps.length - 1 && (
                   <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-20">
-                    <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-xl border border-blue-100">
+                    <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg border border-blue-100">
                       <ArrowRight className="w-5 h-5 text-[#15AFF7]" />
                     </div>
                   </div>
