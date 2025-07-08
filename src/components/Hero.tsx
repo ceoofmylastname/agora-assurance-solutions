@@ -1,4 +1,5 @@
 
+
 import { ArrowRight, Shield, Home, Calculator, MessageSquare } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { motion } from "framer-motion";
@@ -54,7 +55,7 @@ const Hero = () => {
               <motion.h1 className="banner-title text-white" variants={itemVariants}>Cut the Chaos. Get Covered.
             </motion.h1>
               <motion.p className="banner-subtitle text-blue-100 mt-4 sm:mt-6" variants={itemVariants}>
-                Transparent plans. Nationwide coverage. Zero confusion—just real protection.
+                We're rewriting the insurance experience—no confusing terms, no endless forms, just fast, reliable coverage that puts you in control from the very first click.
               </motion.p>
               <motion.div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-6 sm:mt-8 justify-center items-center" variants={itemVariants}>
                 <button className="w-full sm:w-auto min-h-[44px] px-6 sm:px-8 py-3 bg-[#15AFF7] text-white rounded-md hover:bg-[#0D94D1] transition-all shadow-lg hover:shadow-xl hover:shadow-blue-300/20 flex items-center justify-center group text-sm sm:text-base font-medium" onClick={e => {
@@ -121,3 +122,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
