@@ -17,7 +17,7 @@ const FloatingContactButton = () => {
       }
     };
     
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   
@@ -26,8 +26,7 @@ const FloatingContactButton = () => {
     const contactSection = document.getElementById('contact-info');
     if (contactSection) {
       contactSection.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
+        behavior: 'smooth'
       });
     }
   };
@@ -37,7 +36,7 @@ const FloatingContactButton = () => {
   return (
     <Button
       onClick={scrollToContact}
-      className="fixed bottom-6 right-6 z-50 bg-gray-800 hover:bg-gray-700 text-white rounded-full p-4 shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95 touch-manipulation"
+      className="fixed bottom-6 right-6 z-50 bg-gray-800 hover:bg-gray-700 text-white rounded-full p-3 shadow-lg hover:shadow-xl transition-all"
       size="icon"
       aria-label="Contact Us"
     >

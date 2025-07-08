@@ -7,7 +7,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import TermLife from "./pages/TermLife";
 import FireCatProject from "./pages/FireCatProject";
 import SportRetailProject from "./pages/SportRetailProject";
 import WorkwearProject from "./pages/WorkwearProject";
@@ -32,7 +31,6 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/term-life" element={<TermLife />} />
             <Route path="/projects/firecat" element={<FireCatProject />} />
             <Route path="/projects/sport-retail" element={<SportRetailProject />} />
             <Route path="/projects/workwear" element={<WorkwearProject />} />
