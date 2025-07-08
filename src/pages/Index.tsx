@@ -2,8 +2,10 @@
 import PageLayout from '@/components/PageLayout';
 import Hero from '@/components/Hero';
 import Features from '@/components/Features';
-import Projects from '@/components/Projects';
+import ProductsSection from '@/components/ProductsSection';
+import HowItWorks from '@/components/HowItWorks';
 import WhyAgora from '@/components/WhyAgora';
+import CustomerStories from '@/components/CustomerStories';
 import BlogPreview from '@/components/BlogPreview';
 import SEO from '@/components/SEO';
 import { useEffect } from 'react';
@@ -21,15 +23,17 @@ const Index = () => {
   return (
     <PageLayout>
       <SEO 
-        title="Agora Assurance Solutions - Discover Truth & Transparency" 
-        description="Supporting your family's assurance and well-being with advanced systems and AI. Compare insurance plans, get personalized quotes, and connect with licensed advisors."
+        title="Agora Assurance Solutions - Your Independent Insurance Partner" 
+        description="Get instant quotes, compare plans, and connect with licensed advisors. Term life, mortgage protection, final expense, annuities & more. Zero confusion, total peace of mind."
         imageUrl="https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=1200&h=630&fit=crop"
-        keywords={['insurance', 'life insurance', 'mortgage protection', 'final expense', 'annuities', 'tax solutions', 'insurance quotes', 'licensed advisors']}
+        keywords={['insurance', 'life insurance', 'mortgage protection', 'final expense', 'annuities', 'tax solutions', 'insurance quotes', 'licensed advisors', 'instant quotes', 'family protection']}
       />
       <Hero />
+      <ProductsSection />
+      <HowItWorks />
       <Features />
       <WhyAgora />
-      <Projects />
+      <CustomerStories />
       <BlogPreview />
     </PageLayout>
   );
