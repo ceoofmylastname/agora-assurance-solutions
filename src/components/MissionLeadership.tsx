@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { Target, Eye, Users, Award, Star, ChevronDown, Linkedin, Mail, MapPin } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -61,35 +62,40 @@ const MissionLeadership = () => {
       title: "Chief Executive Officer",
       experience: "20+ years in life & annuity leadership",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face",
-      gradient: "from-blue-500 to-blue-600"
+      gradient: "from-slate-600 to-slate-700",
+      bgAccent: "bg-slate-50"
     },
     {
-      name: "Benjamin Schroeder",
+      name: "Benjamin Schroeder", 
       title: "Director of Communications",
       experience: "15+ years in coaching and corporate strategy",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
-      gradient: "from-emerald-500 to-emerald-600"
+      gradient: "from-blue-600 to-blue-700",
+      bgAccent: "bg-blue-50"
     },
     {
       name: "Olga Lomova",
-      title: "Chief Strategy Officer",
+      title: "Chief Strategy Officer", 
       experience: "10+ years scaling marketing & financial services",
       image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face",
-      gradient: "from-purple-500 to-purple-600"
+      gradient: "from-violet-600 to-violet-700",
+      bgAccent: "bg-violet-50"
     },
     {
       name: "Sarah Chen",
       title: "Head of Technology",
-      experience: "12+ years in fintech and AI solutions",
+      experience: "12+ years in fintech and AI solutions", 
       image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&h=300&fit=crop&crop=face",
-      gradient: "from-indigo-500 to-indigo-600"
+      gradient: "from-emerald-600 to-emerald-700",
+      bgAccent: "bg-emerald-50"
     },
     {
       name: "Michael Rodriguez",
       title: "VP of Client Relations",
       experience: "8+ years in customer success and operations",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop&crop=face",
-      gradient: "from-teal-500 to-teal-600"
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop&crop=face", 
+      gradient: "from-amber-600 to-amber-700",
+      bgAccent: "bg-amber-50"
     }
   ];
 
@@ -214,78 +220,91 @@ const MissionLeadership = () => {
         >
           <motion.div 
             variants={itemVariants} 
-            className="text-center mb-10"
+            className="text-center mb-12"
           >
-            <h3 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent mb-3">
-              Our Team
+            <h3 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent mb-4">
+              Our Leadership Team
             </h3>
-            <p className="text-gray-600 text-base max-w-2xl mx-auto leading-relaxed">
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
               Meet the visionaries driving innovation in insurance technology
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
             {leaders.map((leader, index) => (
               <motion.div
                 key={index}
                 variants={cardVariants}
                 whileHover={{ 
-                  y: -4, 
-                  scale: 1.02,
+                  y: -8, 
+                  scale: 1.03,
                   transition: { duration: 0.3, ease: "easeOut" }
                 }}
                 className="group h-full"
               >
-                <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-lg transition-all duration-300 hover:border-blue-300 h-full flex flex-col">
+                <div className={`relative bg-white ${leader.bgAccent} border-0 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col backdrop-blur-sm`}>
                   
-                  {/* Profile Image - Fixed Height Container */}
-                  <div className="flex justify-center mb-4">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-md">
-                      <img 
-                        src={leader.image} 
-                        alt={leader.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
+                  {/* Gradient Border Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-gray-200 via-transparent to-gray-300 rounded-2xl p-px">
+                    <div className={`w-full h-full bg-white ${leader.bgAccent} rounded-2xl`}></div>
+                  </div>
+                  
+                  {/* Content Container */}
+                  <div className="relative z-10 flex flex-col h-full">
+                    
+                    {/* Profile Image with Enhanced Styling */}
+                    <div className="flex justify-center mb-6">
+                      <div className="relative">
+                        <div className={`w-20 h-20 rounded-2xl overflow-hidden shadow-xl bg-gradient-to-br ${leader.gradient} p-1`}>
+                          <img 
+                            src={leader.image} 
+                            alt={leader.name}
+                            className="w-full h-full object-cover rounded-xl group-hover:scale-110 transition-transform duration-500"
+                          />
+                        </div>
+                        {/* Status Indicator */}
+                        <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 border-3 border-white rounded-full shadow-lg"></div>
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Name - Fixed Height */}
-                  <div className="h-12 flex items-center justify-center mb-3">
-                    <h4 className="text-base font-bold text-gray-900 text-center leading-tight group-hover:text-blue-600 transition-colors duration-300">
-                      {leader.name}
-                    </h4>
-                  </div>
-
-                  {/* Title - Fixed Height */}
-                  <div className="h-16 flex items-center justify-center mb-3">
-                    <div className={`w-full text-center px-3 py-2 bg-gradient-to-r ${leader.gradient} text-white text-xs font-medium rounded-lg shadow-sm`}>
-                      <span className="leading-tight block">{leader.title}</span>
+                    {/* Name with Enhanced Typography */}
+                    <div className="text-center mb-4">
+                      <h4 className="text-xl font-bold text-gray-900 group-hover:text-blue-700 transition-colors duration-300 leading-tight">
+                        {leader.name}
+                      </h4>
                     </div>
-                  </div>
 
-                  {/* Experience - Fixed Height */}
-                  <div className="h-12 flex items-center justify-center mb-4 flex-grow">
-                    <p className="text-gray-600 text-xs text-center leading-relaxed">
-                      {leader.experience}
-                    </p>
-                  </div>
+                    {/* Title with Gradient Badge */}
+                    <div className="text-center mb-4">
+                      <div className={`inline-block px-4 py-2 bg-gradient-to-r ${leader.gradient} text-white text-sm font-semibold rounded-full shadow-md transform group-hover:scale-105 transition-transform duration-300`}>
+                        {leader.title}
+                      </div>
+                    </div>
 
-                  {/* Social Links - Fixed Height */}
-                  <div className="h-8 flex justify-center space-x-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    <motion.button 
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="w-7 h-7 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-blue-100 transition-all duration-300"
-                    >
-                      <Linkedin className="w-3 h-3 text-gray-600" />
-                    </motion.button>
-                    <motion.button 
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="w-7 h-7 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-blue-100 transition-all duration-300"
-                    >
-                      <Mail className="w-3 h-3 text-gray-600" />
-                    </motion.button>
+                    {/* Experience - Enhanced Typography */}
+                    <div className="text-center mb-6 flex-grow flex items-center justify-center">
+                      <p className="text-gray-600 text-sm leading-relaxed font-medium">
+                        {leader.experience}
+                      </p>
+                    </div>
+
+                    {/* Social Links with Enhanced Hover Effects */}
+                    <div className="flex justify-center space-x-3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
+                      <motion.button 
+                        whileHover={{ scale: 1.15, rotate: 5 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 text-white"
+                      >
+                        <Linkedin className="w-4 h-4" />
+                      </motion.button>
+                      <motion.button 
+                        whileHover={{ scale: 1.15, rotate: -5 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="w-10 h-10 bg-gradient-to-br from-gray-600 to-gray-700 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 text-white"
+                      >
+                        <Mail className="w-4 h-4" />
+                      </motion.button>
+                    </div>
                   </div>
                 </div>
               </motion.div>
