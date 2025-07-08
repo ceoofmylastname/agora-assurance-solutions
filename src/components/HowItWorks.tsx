@@ -30,21 +30,6 @@ const HowItWorks = () => {
     }
   };
 
-  const cardHoverVariants = {
-    rest: { 
-      y: 0, 
-      rotateX: 0,
-      scale: 1,
-      transition: { duration: 0.3, ease: "easeOut" }
-    },
-    hover: { 
-      y: -16, 
-      rotateX: 8,
-      scale: 1.03,
-      transition: { duration: 0.3, ease: "easeOut" }
-    }
-  };
-
   const steps = [
     {
       step: "1",
@@ -73,10 +58,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section id="how-it-works" className="relative py-16 md:py-20 lg:py-24 bg-gradient-to-b from-white via-blue-50/30 to-blue-100/50 overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-50/20 to-transparent"></div>
-      
+    <section id="how-it-works" className="relative py-16 md:py-20 lg:py-24 bg-gradient-to-b from-white to-blue-50 overflow-hidden">
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           className="text-center mb-12 md:mb-16 lg:mb-20"
@@ -100,7 +82,7 @@ const HowItWorks = () => {
         </motion.div>
 
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
@@ -110,57 +92,33 @@ const HowItWorks = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              initial="rest"
-              whileHover="hover"
-              animate="rest"
-              className="relative perspective-1000 h-full"
+              className="relative bg-white p-6 sm:p-8 rounded-2xl border border-blue-200 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-center active:scale-95 touch-manipulation"
             >
-              <motion.div
-                variants={cardHoverVariants}
-                className="relative bg-white h-full min-h-[380px] p-8 rounded-3xl border border-blue-100/60 text-center transition-all duration-500 transform-gpu flex flex-col"
-                style={{
-                  transformStyle: 'preserve-3d',
-                  boxShadow: '0 25px 60px -12px rgba(59, 130, 246, 0.25), 0 15px 35px -15px rgba(59, 130, 246, 0.3), 0 8px 20px -8px rgba(0, 0, 0, 0.1)'
-                }}
-              >
-                {/* Glass morphism backdrop */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/95 via-white/90 to-blue-50/30 backdrop-blur-sm rounded-3xl"></div>
-                
-                {/* Step Number with enhanced 3D effect */}
-                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-gradient-to-br from-[#15AFF7] to-[#0D94D1] text-white rounded-full flex items-center justify-center font-bold text-lg shadow-xl z-10"
-                     style={{ boxShadow: '0 12px 30px -8px rgba(21, 175, 247, 0.6), 0 6px 16px -4px rgba(21, 175, 247, 0.4)' }}>
-                  {step.step}
+              {/* Step Number */}
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-[#15AFF7] text-white rounded-full flex items-center justify-center font-bold text-sm">
+                {step.step}
+              </div>
+              
+              {/* Icon */}
+              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 mt-4">
+                <step.icon className="w-8 h-8 sm:w-10 sm:h-10 text-[#15AFF7]" />
+              </div>
+              
+              {/* Content */}
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">{step.title}</h3>
+              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">{step.description}</p>
+              
+              {/* Arrow (except for last item) */}
+              {index < steps.length - 1 && (
+                <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2">
+                  <ArrowRight className="w-6 h-6 text-[#15AFF7]" />
                 </div>
-                
-                {/* Icon with consistent sizing */}
-                <div className="relative w-24 h-24 bg-gradient-to-br from-blue-100 via-blue-50 to-white rounded-full flex items-center justify-center mx-auto mb-8 mt-8 shadow-inner">
-                  <div className="w-20 h-20 bg-gradient-to-br from-blue-200/50 to-blue-100/30 rounded-full flex items-center justify-center">
-                    <step.icon className="w-10 h-10 text-[#15AFF7] drop-shadow-sm" />
-                  </div>
-                </div>
-                
-                {/* Content with consistent spacing */}
-                <div className="relative z-10 flex-1 flex flex-col justify-between">
-                  <div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-6 min-h-[60px] flex items-center justify-center">{step.title}</h3>
-                    <p className="text-gray-600 text-base leading-relaxed">{step.description}</p>
-                  </div>
-                </div>
-                
-                {/* Arrow (except for last item) with enhanced styling */}
-                {index < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-20">
-                    <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-xl border border-blue-100">
-                      <ArrowRight className="w-5 h-5 text-[#15AFF7]" />
-                    </div>
-                  </div>
-                )}
-              </motion.div>
+              )}
             </motion.div>
           ))}
         </motion.div>
 
-        {/* CTA Section with enhanced styling */}
+        {/* CTA Section */}
         <motion.div 
           className="text-center mt-12 sm:mt-16 px-4"
           initial="hidden"
@@ -169,35 +127,30 @@ const HowItWorks = () => {
           variants={containerVariants}
         >
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
-            <motion.button 
+            <button 
               onClick={() => {
                 const contactSection = document.getElementById('contact');
                 if (contactSection) {
                   contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
               }}
-              whileHover={{ y: -2, scale: 1.02 }}
-              whileTap={{ y: 0, scale: 0.98 }}
-              className="w-full sm:w-auto px-6 sm:px-8 py-4 bg-gradient-to-r from-[#15AFF7] to-[#0D94D1] text-white rounded-xl hover:from-[#0D94D1] hover:to-[#0A7BA8] transition-all duration-300 group font-medium text-base sm:text-lg transform-gpu"
-              style={{ boxShadow: '0 20px 40px -12px rgba(21, 175, 247, 0.4), 0 8px 16px -8px rgba(21, 175, 247, 0.3)' }}
+              className="w-full sm:w-auto px-6 sm:px-8 py-4 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-all duration-300 group font-medium text-base sm:text-lg shadow-lg hover:shadow-xl active:scale-95 touch-manipulation"
             >
               Get an Instant Quote
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200 inline" />
-            </motion.button>
+            </button>
             
-            <motion.button 
+            <button 
               onClick={() => {
                 const contactSection = document.getElementById('contact');
                 if (contactSection) {
                   contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
               }}
-              whileHover={{ y: -2, scale: 1.02 }}
-              whileTap={{ y: 0, scale: 0.98 }}
-              className="w-full sm:w-auto px-6 sm:px-8 py-4 bg-white text-[#15AFF7] border-2 border-[#15AFF7] rounded-xl hover:bg-gradient-to-r hover:from-[#15AFF7] hover:to-[#0D94D1] hover:text-white hover:border-transparent transition-all duration-300 group font-medium text-base sm:text-lg transform-gpu shadow-lg hover:shadow-xl"
+              className="w-full sm:w-auto px-6 sm:px-8 py-4 bg-white text-[#15AFF7] border-2 border-[#15AFF7] rounded-lg hover:bg-[#15AFF7] hover:text-white transition-all duration-300 group font-medium text-base sm:text-lg shadow-lg hover:shadow-xl active:scale-95 touch-manipulation"
             >
               Book a Free Appointment
-            </motion.button>
+            </button>
           </motion.div>
         </motion.div>
       </div>
