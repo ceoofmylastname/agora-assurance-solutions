@@ -1,34 +1,35 @@
 
-import { ArrowRight, Shield, Home, Calculator, MessageSquare, Sparkles } from "lucide-react";
+import { ArrowRight, Shield, Home, Calculator, MessageSquare } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Hero = () => {
   const isMobile = useIsMobile();
-  const { elementRef: heroRef, isVisible } = useScrollAnimation({ threshold: 0.2 });
-  
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: {
+      opacity: 0
+    },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: isMobile ? 0.1 : 0.2,
-        delayChildren: 0.3,
-        duration: 0.8
+        staggerChildren: isMobile ? 0.1 : 0.15,
+        delayChildren: isMobile ? 0.2 : 0.3,
+        duration: isMobile ? 0.6 : 0.8
       }
     }
   };
-
   const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
+    hidden: {
+      y: isMobile ? 15 : 20,
+      opacity: 0
+    },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.8,
-        ease: [0.4, 0, 0.2, 1]
+        duration: isMobile ? 0.4 : 0.6,
+        ease: "easeOut"
       }
     }
   };
@@ -55,122 +56,105 @@ const Hero = () => {
     }
   };
 
-  return (
-    <motion.div 
-      ref={heroRef}
-      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden"
-      initial="hidden" 
-      animate="visible" 
-      variants={containerVariants}
-    >
-      {/* Background with gradient and animated elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--brand-primary)/0.1),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,hsl(var(--brand-secondary)/0.1),transparent_50%)]" />
-      </div>
-
-      {/* Floating background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-brand-primary/5 rounded-full blur-xl animate-float" />
-        <div className="absolute top-60 right-20 w-24 h-24 bg-brand-secondary/5 rounded-full blur-xl animate-float animate-delay-200" />
-        <div className="absolute bottom-40 left-1/4 w-40 h-40 bg-brand-tertiary/5 rounded-full blur-xl animate-float animate-delay-400" />
+  return <motion.div className="relative w-full" initial="hidden" animate="visible" variants={containerVariants}>
+      <div className="banner-container bg-[#15AFF7] relative overflow-hidden h-[65vh] sm:h-[70vh] md:h-[500px] lg:h-[550px] xl:h-[600px] w-full">
+        <div className="absolute inset-0 bg-[#15AFF7] w-full">
+          <img 
+            src="/lovable-uploads/3e95af8d-5845-4810-af42-d9884a4e67bb.png" 
+            alt="Happy multi-generational family sitting together on couch - representing family protection and insurance security" 
+            className={`w-full h-full object-cover opacity-70 ${isMobile ? 'object-center' : 'object-center'}`}
+            loading="eager"
+            decoding="async"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-white"></div>
+        </div>
+        
+        <div className="banner-overlay bg-transparent pt-20 sm:pt-24 md:pt-32 w-full">
+          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center h-full">
+            <motion.div className="w-full max-w-4xl text-center" variants={itemVariants}>
+              <motion.h1 
+                className="font-extrabold text-white leading-tight tracking-tight text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent drop-shadow-2xl px-2" 
+                variants={itemVariants}
+                style={{
+                  fontFamily: '"Inter", "Helvetica Neue", Arial, sans-serif',
+                  textShadow: '0 4px 20px rgba(0,0,0,0.5)',
+                  WebkitBackfaceVisibility: 'hidden',
+                  transform: 'translateZ(0)'
+                }}
+              >
+                You Deserve Clarity—Instant Insurance, Zero Confusion
+              </motion.h1>
+              <motion.p className="text-blue-100 mt-4 sm:mt-6 md:mt-8 text-sm sm:text-base md:text-lg max-w-3xl mx-auto px-4" variants={itemVariants}>
+                We are dedicated to supporting your family's assurance and well-being by streamlining the buying process with advanced systems and AI—so you can make informed protection decisions in one convenient place.
+              </motion.p>
+              <motion.div className="flex flex-col sm:flex-row gap-4 mt-6 sm:mt-8 md:mt-10 justify-center items-center px-4" variants={itemVariants}>
+                {/* Discover More button */}
+                <button 
+                  className="w-full sm:w-auto min-h-[48px] px-6 md:px-8 py-3 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-blue-300/20 flex items-center justify-center group text-base font-medium active:scale-95 touch-manipulation" 
+                  onClick={scrollToProjects}
+                >
+                  Discover More
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
+                </button>
+                
+                {/* Contact Us button */}
+                <button 
+                  className="w-full sm:w-auto min-h-[48px] px-6 md:px-8 py-3 bg-white text-black rounded-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-blue-300/20 flex items-center justify-center group text-base font-medium border-2 border-white active:scale-95 touch-manipulation" 
+                  onClick={scrollToContact}
+                >
+                  Contact Us
+                  <MessageSquare className="ml-2 w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
+                </button>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
       </div>
       
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
-        <div className="text-center">
-          <motion.div variants={itemVariants} className="mb-6">
-            <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium brand-gradient text-white shadow-lg">
-              <Sparkles className="w-4 h-4 mr-2" />
-              The Operating System for Modern Insurance
-            </span>
-          </motion.div>
-
-          <motion.h1 
-            variants={itemVariants}
-            className="text-display font-bold text-foreground mb-6 max-w-5xl mx-auto"
-          >
-            You Deserve{" "}
-            <span className="brand-text bg-gradient-to-r from-[hsl(var(--brand-primary))] to-[hsl(var(--brand-secondary))] bg-clip-text text-transparent">
-              Clarity
-            </span>
-            —Instant Insurance, Zero Confusion
-          </motion.h1>
-
-          <motion.p 
-            variants={itemVariants}
-            className="text-subheading text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed"
-          >
-            All-in-one platform to protect your family's future. Everything from instant quotes to expert guidance with built-in transparency, premium coverage, and consumer-first advocacy.
-          </motion.p>
-
-          <motion.div 
-            variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
-          >
-            <Button 
-              onClick={scrollToProjects}
-              size="lg"
-              className="btn-brand px-8 py-4 text-lg font-medium shadow-2xl hover:shadow-brand-primary/20 transition-all duration-300"
-            >
-              See It In Action
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            
-            <Button 
-              onClick={scrollToContact}
-              variant="outline"
-              size="lg"
-              className="px-8 py-4 text-lg font-medium border-2 hover:bg-accent/50 transition-all duration-300"
-            >
-              Book a Demo Call
-              <MessageSquare className="ml-2 w-5 h-5" />
-            </Button>
-          </motion.div>
-        </div>
-
-        {/* Feature highlight cards */}
+      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 mx-auto">
         <motion.div 
-          variants={containerVariants}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto"
+          className="mt-6 sm:mt-8 md:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6" 
+          variants={containerVariants} 
+          initial="hidden" 
+          animate="visible" 
+          transition={{
+            delay: 0.6
+          }}
         >
-          {[
-            {
-              icon: Shield,
-              title: "Compare Plans",
-              description: "Life, mortgage, final expense, and annuity solutions in one place"
-            },
-            {
-              icon: Calculator,
-              title: "Instant Quotes",
-              description: "Personalized rates from top carriers—no phone calls required"
-            },
-            {
-              icon: MessageSquare,
-              title: "Licensed Experts",
-              description: "Connect with state-regulated professionals when you need guidance"
-            },
-            {
-              icon: Home,
-              title: "Complete Protection",
-              description: "Tax solutions, asset protection, and comprehensive coverage"
-            }
-          ].map((feature, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className="glass p-6 rounded-2xl border border-border/50 card-hover group"
-            >
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-[hsl(var(--brand-primary))] to-[hsl(var(--brand-secondary))] p-3 mb-4 group-hover:animate-glow">
-                <feature.icon className="w-full h-full text-white" />
-              </div>
-              <h3 className="text-lg font-semibold mb-2 text-foreground">{feature.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
-            </motion.div>
-          ))}
+          <motion.div className="bg-white p-4 sm:p-5 md:p-6 rounded-xl shadow-sm border border-blue-200 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg active:scale-95 touch-manipulation" variants={itemVariants}>
+            <div className="w-12 h-12 md:w-14 md:h-14 bg-blue-100 flex items-center justify-center rounded-lg text-[#15AFF7] mb-3 md:mb-4">
+              <Shield className="w-6 h-6 md:w-7 md:h-7" />
+            </div>
+            <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-2 md:mb-3 text-gray-800">Compare Insurance Plans</h3>
+            <p className="text-gray-600 text-sm sm:text-base leading-relaxed">Explore a variety of tailored life, mortgage-protection, final expense, annuity, and tax-solutions plans.</p>
+          </motion.div>
+          
+          <motion.div className="bg-white p-4 sm:p-5 md:p-6 rounded-xl shadow-sm border border-blue-200 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg active:scale-95 touch-manipulation" variants={itemVariants}>
+            <div className="w-12 h-12 md:w-14 md:h-14 bg-blue-100 flex items-center justify-center rounded-lg text-[#15AFF7] mb-3 md:mb-4">
+              <Calculator className="w-6 h-6 md:w-7 md:h-7" />
+            </div>
+            <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-2 md:mb-3 text-gray-800">Get Personalized Quote</h3>
+            <p className="text-gray-600 text-sm sm:text-base leading-relaxed">Instantly receive customized quotes from top carriers—no phone calls required.</p>
+          </motion.div>
+          
+          <motion.div className="bg-white p-4 sm:p-5 md:p-6 rounded-xl shadow-sm border border-blue-200 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg active:scale-95 touch-manipulation" variants={itemVariants}>
+            <div className="w-12 h-12 md:w-14 md:h-14 bg-blue-100 flex items-center justify-center rounded-lg text-[#15AFF7] mb-3 md:mb-4">
+              <MessageSquare className="w-6 h-6 md:w-7 md:h-7" />
+            </div>
+            <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-2 md:mb-3 text-gray-800">Licensed Advisor</h3>
+            <p className="text-gray-600 text-sm sm:text-base leading-relaxed">Hands-on guidance from state-regulated professionals, ensuring solutions aligned with your family's goals.</p>
+          </motion.div>
+          
+          <motion.div className="bg-white p-4 sm:p-5 md:p-6 rounded-xl shadow-sm border border-blue-200 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg active:scale-95 touch-manipulation" variants={itemVariants}>
+            <div className="w-12 h-12 md:w-14 md:h-14 bg-blue-100 flex items-center justify-center rounded-lg text-[#15AFF7] mb-3 md:mb-4">
+              <Home className="w-6 h-6 md:w-7 md:h-7" />
+            </div>
+            <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-2 md:mb-3 text-gray-800">Learn Our Services</h3>
+            <p className="text-gray-600 text-sm sm:text-base leading-relaxed">Deep dive into our full suite—tax, asset protection, annuities, life settlements, and more.</p>
+          </motion.div>
         </motion.div>
       </div>
-    </motion.div>
-  );
+    </motion.div>;
 };
 
 export default Hero;

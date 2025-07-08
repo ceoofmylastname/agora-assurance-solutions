@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect, TouchEvent } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -8,52 +7,52 @@ import { useIsMobile } from "@/hooks/use-mobile";
 const projects = [
   {
     id: 1,
-    title: "6th SENSE Safety System",
-    brand: "FireCat Group",
-    description: "AI-driven sensor solution integrated into uniforms for law enforcement, military and firefighters, providing real-time vital monitoring and situational awareness in high-risk environments.",
-    tags: ["Safety", "Military", "AI Sensors", "Real-time Monitoring"],
-    imageUrl: "/lovable-uploads/93ab0638-8190-4ccf-897f-21fda7f4f5ad.png",
+    title: "Life Insurance Protection",
+    brand: "The Johnson Family", 
+    description: "Sarah secured $500,000 in life insurance coverage for just $45/month, ensuring her children's future is protected no matter what happens.",
+    tags: ["Life Insurance", "Family Protection", "Affordable Coverage", "Peace of Mind"],
+    imageUrl: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=400&h=300&fit=crop",
     isFeatured: true,
-    link: "/projects/firecat",
+    link: "/term-life",
     details: `
-      FireCat Group aimed to enhance safety in high-risk environments. WRLDS Technologies provided the 6th SENSE solution with secure real-time data transmission, high-quality sensors resistant to extreme conditions, integrated AI-powered clothing, and a centralized control unit. Features include Man Down Alarm, GPS positioning, vital sign monitoring, and Panic Button. Benefits: life-saving technology, machine learning preventing false alarms, durable hardware with 7-10 year lifespan, washable sensors, and Plug & Play installation with 12-20 hours of operation per charge.
+      Sarah Johnson, a working mother of two, needed comprehensive life insurance but was worried about high premiums. Through Agora's comparison platform, she discovered affordable term life options from top-rated carriers. Features include instant quotes, no medical exam options, and flexible coverage amounts. Benefits: $500,000 coverage for under $50/month, application completed in 15 minutes, policy issued within 48 hours, and peace of mind knowing her family is financially protected.
     `
   },
   {
     id: 2,
-    title: "Performance Athletic Footwear",
-    brand: "Global Sports Retail Leader",
-    description: "Smart Footwear R&D aiming to revolutionize development, fitting, and testing of athletic footwear.",
-    tags: ["Sports", "R&D", "Footwear", "Athletic Performance"],
-    imageUrl: "/lovable-uploads/b0622048-17b4-4c75-a3f0-6c9e17de1d09.png",
-    link: "/projects/sport-retail"
+    title: "Mortgage Protection Success",
+    brand: "The Martinez Family",
+    description: "Carlos found mortgage protection insurance that costs 60% less than what his bank offered, securing his family's home for just $32/month.",
+    tags: ["Mortgage Protection", "Home Security", "Cost Savings", "Family Safety"],
+    imageUrl: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=400&h=300&fit=crop",
+    link: "/mortgage-protection"
   },
   {
     id: 3,
-    title: "Workwear Climate Control",
-    brand: "European Multinational Textile Producer",
-    description: "Fully integrated temperature controls for professionals working in extreme heat and cold. Modular approach to enable full-body systems.",
-    tags: ["Climate Control", "Workwear", "Temperature Regulation", "Extreme Conditions"],
-    imageUrl: "/lovable-uploads/6b0637e9-4a7b-40d0-b219-c8b7f879f93e.png",
-    link: "/projects/workwear"
+    title: "Final Expense Planning",
+    brand: "Robert & Mary Thompson",
+    description: "This retired couple secured $25,000 in final expense coverage with no medical exams required, ensuring their children won't face financial burden.",
+    tags: ["Final Expense", "Senior Coverage", "No Medical Exam", "Guaranteed Acceptance"],
+    imageUrl: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop",
+    link: "/final-expense"
   },
   {
     id: 4,
-    title: "Ice Hockey Elite Skill Tracker",
-    brand: "Mars Blades",
-    description: "R&D product evaluating data from single IMU embedded in the hockey shoe. Aim: establish motion patterns that lead to ultimate acceleration, speed, and maneuverability.",
-    tags: ["Ice Hockey", "Motion Analysis", "Performance Tracking", "Sports"],
-    imageUrl: "/lovable-uploads/c30e0487-2fa0-41d1-9a0b-699cb2855388.png",
-    link: "/projects/hockey"
+    title: "Retirement Annuity Success",
+    brand: "David Chen",
+    description: "David secured a guaranteed 5.2% annual return on his retirement savings through a fixed annuity, ensuring steady income for life.",
+    tags: ["Annuities", "Retirement Planning", "Guaranteed Income", "Financial Security"],
+    imageUrl: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=300&fit=crop",
+    link: "/annuities"
   },
   {
     id: 5,
-    title: "Dog Activity Counter",
-    brand: "UK Insurance Giant",
-    description: "R&D project embedding a step counter in a dog collar. Measures daily activity and sends real-time data to the cloud for veterinary consultancies.",
-    tags: ["Pet Technology", "Insurance", "Activity Tracking", "R&D"],
-    imageUrl: "/lovable-uploads/d5ce901e-2ce0-4f2a-bce1-f0ca5d6192df.png",
-    link: "/projects/pet-tracker"
+    title: "Small Business Protection",
+    brand: "Green Valley Landscaping",
+    description: "This family business saved $3,600 annually on their business insurance while increasing their liability coverage by 50%.",
+    tags: ["Business Insurance", "Liability Coverage", "Cost Reduction", "Small Business"],
+    imageUrl: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=300&fit=crop",
+    link: "/business-insurance"
   }
 ];
 
@@ -126,17 +125,17 @@ const Projects = () => {
     return "scale-90 opacity-0";
   };
   
-  return <section id="projects" ref={projectsRef} className="bg-white py-[50px] w-full">
+  return <section id="success-stories" ref={projectsRef} className="bg-white py-[50px] w-full">
       <div className="w-full px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className={`text-center mb-10 max-w-3xl mx-auto transition-all duration-1000 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="inline-block mb-2 px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm font-medium">
-            Customer Cases
+          <div className="inline-block mb-2 px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium">
+            Customer Success Stories
           </div>
           <h2 className="text-3xl font-bold mb-3">
-            From Textile to Intelligence
+            Real Solutions, Real Results
           </h2>
           <p className="text-gray-600">
-            Explore how our textile sensor technology is revolutionizing multiple industries with intelligent fabric solutions tailored to specific needs.
+            Discover how Agora Assurance Solutions has helped families and businesses across the country find the perfect insurance coverage at unbeatable prices.
           </p>
           {isMobile && (
             <div className="flex items-center justify-center mt-4 animate-pulse-slow">
@@ -167,15 +166,15 @@ const Projects = () => {
               >
                 <Card className="overflow-hidden h-[500px] border border-gray-100 shadow-sm hover:shadow-md flex flex-col">
                   <div 
-                    className="relative bg-black p-6 flex items-center justify-center h-48 overflow-hidden"
+                    className="relative bg-gradient-to-br from-blue-600 to-blue-800 p-6 flex items-center justify-center h-48 overflow-hidden"
                     style={{
-                      backgroundImage: `url(${project.imageUrl})`,
+                      backgroundImage: `linear-gradient(rgba(37, 99, 235, 0.8), rgba(29, 78, 216, 0.8)), url(${project.imageUrl})`,
                       backgroundSize: 'cover',
                       backgroundPosition: 'center'
                     }}
                   >
-                    <div className="absolute inset-0 bg-black/50"></div>
-                    <div className="relative z-10 flex flex-col items-center justify-center">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-600/80 to-blue-800/80"></div>
+                    <div className="relative z-10 flex flex-col items-center justify-center text-center">
                       <h3 className="text-2xl font-bold text-white mb-2">{project.brand.toUpperCase()}</h3>
                       <div className="w-12 h-1 bg-white mb-2"></div>
                       <p className="text-white/90 text-sm">{project.title}</p>
@@ -187,7 +186,7 @@ const Projects = () => {
                       <h3 className="text-xl font-bold mb-1 text-gray-800 group-hover:text-gray-500 transition-colors">
                         {project.title}
                       </h3>
-                      <p className="text-gray-500 text-sm font-medium">{project.brand}</p>
+                      <p className="text-blue-600 text-sm font-medium">{project.brand}</p>
                     </div>
                     
                     <p className="text-gray-600 text-sm mb-4 flex-grow">{project.description}</p>
@@ -197,7 +196,7 @@ const Projects = () => {
                         {project.tags.map((tag, idx) => (
                           <span 
                             key={idx} 
-                            className="px-2 py-1 bg-gray-50 text-gray-600 rounded-full text-xs animate-pulse-slow" 
+                            className="px-2 py-1 bg-blue-50 text-blue-600 rounded-full text-xs animate-pulse-slow" 
                             style={{ animationDelay: `${idx * 300}ms` }}
                           >
                             {tag}
@@ -207,16 +206,16 @@ const Projects = () => {
                       
                       <Link 
                         to={project.link} 
-                        className="text-gray-500 flex items-center hover:underline relative overflow-hidden group"
+                        className="text-blue-600 flex items-center hover:underline relative overflow-hidden group font-medium"
                         onClick={() => {
                           if (project.link.startsWith('/')) {
                             window.scrollTo(0, 0);
                           }
                         }}
                       >
-                        <span className="relative z-10">Learn more</span>
+                        <span className="relative z-10">Get Your Quote</span>
                         <ArrowRight className="ml-2 w-4 h-4 relative z-10 transition-transform group-hover:translate-x-1" />
-                        <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gray-500 transition-all duration-300 group-hover:w-full"></span>
+                        <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
                       </Link>
                     </div>
                   </CardContent>
@@ -230,7 +229,7 @@ const Projects = () => {
               <button 
                 className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 rounded-full flex items-center justify-center text-gray-500 hover:bg-white z-30 shadow-md transition-all duration-300 hover:scale-110" 
                 onClick={() => setActiveProject(prev => (prev - 1 + projects.length) % projects.length)}
-                aria-label="Previous project"
+                aria-label="Previous success story"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
@@ -238,7 +237,7 @@ const Projects = () => {
               <button 
                 className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 rounded-full flex items-center justify-center text-gray-500 hover:bg-white z-30 shadow-md transition-all duration-300 hover:scale-110" 
                 onClick={() => setActiveProject(prev => (prev + 1) % projects.length)}
-                aria-label="Next project"
+                aria-label="Next success story"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>
@@ -249,9 +248,9 @@ const Projects = () => {
             {projects.map((_, idx) => (
               <button 
                 key={idx} 
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${activeProject === idx ? 'bg-gray-500 w-5' : 'bg-gray-200 hover:bg-gray-300'}`} 
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${activeProject === idx ? 'bg-blue-600 w-5' : 'bg-gray-200 hover:bg-gray-300'}`} 
                 onClick={() => setActiveProject(idx)}
-                aria-label={`Go to project ${idx + 1}`}
+                aria-label={`Go to success story ${idx + 1}`}
               />
             ))}
           </div>
