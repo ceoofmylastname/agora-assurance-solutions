@@ -143,7 +143,10 @@ const HowItWorks = () => {
               Join thousands of families who trust Agora Assurance for their protection needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-6 py-3 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-colors font-medium">
+              <button 
+                onClick={() => window.open('https://quickstart.assurity.com/agoraassurancesolutions', '_blank')}
+                className="px-6 py-3 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-colors font-medium"
+              >
                 Get an Instant Quote
               </button>
               <button 
