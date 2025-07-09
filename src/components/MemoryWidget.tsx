@@ -129,7 +129,7 @@ const MemoryWidget = () => {
                 />
               </div>
               <div>
-                <h3 className="font-medium text-sm">Memory</h3>
+                <h3 className="font-medium text-sm">Agora AI</h3>
                 <p className="text-xs text-white/70">AI Assistant</p>
               </div>
             </div>
@@ -147,7 +147,7 @@ const MemoryWidget = () => {
           <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-muted/30">
             {messages.length === 0 && (
               <div className="text-center text-muted-foreground text-sm py-8">
-                <p>Start a conversation with Memory</p>
+                <p>Start a conversation with Agora AI</p>
               </div>
             )}
             
