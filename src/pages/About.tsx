@@ -1,4 +1,3 @@
-
 import { ArrowLeft, CheckCircle, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
@@ -6,15 +5,12 @@ import { useEffect } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
-
 const About = () => {
   // Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  
-  return (
-    <PageLayout>
+  return <PageLayout>
       <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
         <div className="container mx-auto">
           <div className="max-w-6xl mx-auto">
@@ -27,21 +23,26 @@ const About = () => {
             <div className="relative mb-16">
               <div className="absolute inset-0 bg-gradient-to-r from-[#15AFF7]/10 to-blue-600/10 rounded-3xl transform rotate-1 scale-105"></div>
               <div className="relative bg-white rounded-2xl shadow-2xl border border-gray-100 p-8 md:p-12 transform -rotate-1">
-                <motion.h1 
-                  initial={{ opacity: 0, y: -20 }} 
-                  animate={{ opacity: 1, y: 0 }} 
-                  transition={{ duration: 0.6 }} 
-                  className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent"
-                >
+                <motion.h1 initial={{
+                opacity: 0,
+                y: -20
+              }} animate={{
+                opacity: 1,
+                y: 0
+              }} transition={{
+                duration: 0.6
+              }} className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
                   About Agora Assurance Solutions
                 </motion.h1>
                 
-                <motion.div 
-                  initial={{ opacity: 0 }} 
-                  animate={{ opacity: 1 }} 
-                  transition={{ duration: 0.5, delay: 0.2 }} 
-                  className="space-y-6"
-                >
+                <motion.div initial={{
+                opacity: 0
+              }} animate={{
+                opacity: 1
+              }} transition={{
+                duration: 0.5,
+                delay: 0.2
+              }} className="space-y-6">
                   <p className="text-xl md:text-2xl text-gray-600 font-light">
                     A Smarter Way to Protect What Matters
                   </p>
@@ -60,24 +61,31 @@ const About = () => {
             <div className="prose prose-lg max-w-none">
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
-                <motion.div 
-                  initial={{ opacity: 0, x: -20 }} 
-                  animate={{ opacity: 1, x: 0 }} 
-                  transition={{ duration: 0.6 }}
-                  className="space-y-6"
-                >
+                <motion.div initial={{
+                opacity: 0,
+                x: -20
+              }} animate={{
+                opacity: 1,
+                x: 0
+              }} transition={{
+                duration: 0.6
+              }} className="space-y-6">
                   <h2 className="text-3xl font-bold">Our Mission</h2>
                   <p className="text-gray-600">
                     To empower families with <em>clarity, confidence, and control</em> when it comes to life's most important financial decisions. We combine cutting-edge technology with licensed, compassionate professionals to simplify insurance for the modern consumer.
                   </p>
                 </motion.div>
                 
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }} 
-                  animate={{ opacity: 1, x: 0 }} 
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className="relative"
-                >
+                <motion.div initial={{
+                opacity: 0,
+                x: 20
+              }} animate={{
+                opacity: 1,
+                x: 0
+              }} transition={{
+                duration: 0.6,
+                delay: 0.2
+              }} className="relative">
                   <div className="absolute inset-0 bg-gradient-to-br from-[#15AFF7]/5 to-blue-600/5 rounded-2xl transform rotate-2 scale-105"></div>
                   <div className="relative bg-white rounded-2xl p-8 border border-gray-100 shadow-xl transform -rotate-1 hover:rotate-0 transition-transform duration-300">
                     <h3 className="text-2xl font-bold mb-6 text-gray-900">What Makes Us Different</h3>
@@ -111,28 +119,32 @@ const About = () => {
                 </motion.div>
               </div>
               
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }} 
-                animate={{ opacity: 1, y: 0 }} 
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="mb-16"
-              >
+              <motion.div initial={{
+              opacity: 0,
+              y: 20
+            }} animate={{
+              opacity: 1,
+              y: 0
+            }} transition={{
+              duration: 0.6,
+              delay: 0.4
+            }} className="mb-16">
                 <h2 className="text-3xl font-bold mb-8 text-center">Leadership with Vision</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  <motion.div 
-                    initial={{ opacity: 0, x: -20 }} 
-                    animate={{ opacity: 1, x: 0 }} 
-                    transition={{ duration: 0.6, delay: 0.5 }}
-                    className="relative group"
-                  >
+                  <motion.div initial={{
+                  opacity: 0,
+                  x: -20
+                }} animate={{
+                  opacity: 1,
+                  x: 0
+                }} transition={{
+                  duration: 0.6,
+                  delay: 0.5
+                }} className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-br from-[#15AFF7]/5 to-blue-600/5 rounded-2xl transform rotate-1 scale-105 group-hover:rotate-2 transition-transform duration-300"></div>
                     <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300">
                       <div className="h-20 w-20 rounded-full overflow-hidden mb-4 border-2 border-[#15AFF7]/20">
-                        <img 
-                          src="/lovable-uploads/cafc6b7d-ba31-4ea6-a4af-78c38e87092b.png" 
-                          alt="Kevin Jenson - Founder & CEO" 
-                          className="w-full h-full object-cover"
-                        />
+                        <img alt="Kevin Jenson - Founder & CEO" className="w-full h-full object-cover" src="https://storage.googleapis.com/msgsndr/TLhrYb7SRrWrly615tCI/media/686eb76d038ba82a1245496a.jpeg" />
                       </div>
                       <h3 className="text-xl font-bold text-gray-900 mb-1">Kevin Jenson</h3>
                       <p className="text-[#15AFF7] font-medium mb-3">Founder & CEO</p>
@@ -142,12 +154,16 @@ const About = () => {
                     </div>
                   </motion.div>
                   
-                  <motion.div 
-                    initial={{ opacity: 0, y: 20 }} 
-                    animate={{ opacity: 1, y: 0 }} 
-                    transition={{ duration: 0.6, delay: 0.6 }}
-                    className="relative group"
-                  >
+                  <motion.div initial={{
+                  opacity: 0,
+                  y: 20
+                }} animate={{
+                  opacity: 1,
+                  y: 0
+                }} transition={{
+                  duration: 0.6,
+                  delay: 0.6
+                }} className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-600/5 rounded-2xl transform -rotate-1 scale-105 group-hover:-rotate-2 transition-transform duration-300"></div>
                     <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform rotate-1 group-hover:rotate-0 transition-transform duration-300">
                       <div className="h-12 w-12 bg-blue-500/10 rounded-full flex items-center justify-center mb-4">
@@ -161,12 +177,16 @@ const About = () => {
                     </div>
                   </motion.div>
                   
-                  <motion.div 
-                    initial={{ opacity: 0, x: 20 }} 
-                    animate={{ opacity: 1, x: 0 }} 
-                    transition={{ duration: 0.6, delay: 0.7 }}
-                    className="relative group"
-                  >
+                  <motion.div initial={{
+                  opacity: 0,
+                  x: 20
+                }} animate={{
+                  opacity: 1,
+                  x: 0
+                }} transition={{
+                  duration: 0.6,
+                  delay: 0.7
+                }} className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-600/5 rounded-2xl transform rotate-1 scale-105 group-hover:rotate-2 transition-transform duration-300"></div>
                     <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300">
                       <div className="h-12 w-12 bg-purple-500/10 rounded-full flex items-center justify-center mb-4">
@@ -182,56 +202,76 @@ const About = () => {
                 </div>
               </motion.div>
               
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }} 
-                animate={{ opacity: 1, y: 0 }} 
-                transition={{ duration: 0.6, delay: 0.6 }}
-                className="mb-16"
-              >
+              <motion.div initial={{
+              opacity: 0,
+              y: 20
+            }} animate={{
+              opacity: 1,
+              y: 0
+            }} transition={{
+              duration: 0.6,
+              delay: 0.6
+            }} className="mb-16">
                 <h2 className="text-3xl font-bold mb-8 text-center">By the Numbers</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  <motion.div 
-                    initial={{ opacity: 0, scale: 0.9 }} 
-                    animate={{ opacity: 1, scale: 1 }} 
-                    transition={{ duration: 0.4, delay: 0.7 }}
-                    className="relative group"
-                  >
+                  <motion.div initial={{
+                  opacity: 0,
+                  scale: 0.9
+                }} animate={{
+                  opacity: 1,
+                  scale: 1
+                }} transition={{
+                  duration: 0.4,
+                  delay: 0.7
+                }} className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-br from-[#15AFF7]/10 to-blue-600/10 rounded-xl transform rotate-2 scale-105 group-hover:rotate-3 transition-transform duration-300"></div>
                     <div className="relative bg-white rounded-xl border border-gray-100 p-6 text-center shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300">
                       <div className="text-3xl font-bold text-[#15AFF7] mb-2">50+</div>
                       <div className="text-gray-600 text-sm">years combined leadership experience</div>
                     </div>
                   </motion.div>
-                  <motion.div 
-                    initial={{ opacity: 0, scale: 0.9 }} 
-                    animate={{ opacity: 1, scale: 1 }} 
-                    transition={{ duration: 0.4, delay: 0.8 }}
-                    className="relative group"
-                  >
+                  <motion.div initial={{
+                  opacity: 0,
+                  scale: 0.9
+                }} animate={{
+                  opacity: 1,
+                  scale: 1
+                }} transition={{
+                  duration: 0.4,
+                  delay: 0.8
+                }} className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-emerald-600/10 rounded-xl transform -rotate-2 scale-105 group-hover:-rotate-3 transition-transform duration-300"></div>
                     <div className="relative bg-white rounded-xl border border-gray-100 p-6 text-center shadow-lg transform rotate-1 group-hover:rotate-0 transition-transform duration-300">
                       <div className="text-3xl font-bold text-green-500 mb-2">$500M+</div>
                       <div className="text-gray-600 text-sm">in tax-free benefits created</div>
                     </div>
                   </motion.div>
-                  <motion.div 
-                    initial={{ opacity: 0, scale: 0.9 }} 
-                    animate={{ opacity: 1, scale: 1 }} 
-                    transition={{ duration: 0.4, delay: 0.9 }}
-                    className="relative group"
-                  >
+                  <motion.div initial={{
+                  opacity: 0,
+                  scale: 0.9
+                }} animate={{
+                  opacity: 1,
+                  scale: 1
+                }} transition={{
+                  duration: 0.4,
+                  delay: 0.9
+                }} className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-600/10 rounded-xl transform rotate-2 scale-105 group-hover:rotate-3 transition-transform duration-300"></div>
                     <div className="relative bg-white rounded-xl border border-gray-100 p-6 text-center shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300">
                       <div className="text-3xl font-bold text-purple-500 mb-2">2,500+</div>
                       <div className="text-gray-600 text-sm">lives protected and counting</div>
                     </div>
                   </motion.div>
-                  <motion.div 
-                    initial={{ opacity: 0, scale: 0.9 }} 
-                    animate={{ opacity: 1, scale: 1 }} 
-                    transition={{ duration: 0.4, delay: 1.0 }}
-                    className="relative group"
-                  >
+                  <motion.div initial={{
+                  opacity: 0,
+                  scale: 0.9
+                }} animate={{
+                  opacity: 1,
+                  scale: 1
+                }} transition={{
+                  duration: 0.4,
+                  delay: 1.0
+                }} className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-red-600/10 rounded-xl transform -rotate-2 scale-105 group-hover:-rotate-3 transition-transform duration-300"></div>
                     <div className="relative bg-white rounded-xl border border-gray-100 p-6 text-center shadow-lg transform rotate-1 group-hover:rotate-0 transition-transform duration-300">
                       <div className="text-3xl font-bold text-orange-500 mb-2">100+</div>
@@ -241,12 +281,16 @@ const About = () => {
                 </div>
               </motion.div>
               
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }} 
-                animate={{ opacity: 1, y: 0 }} 
-                transition={{ duration: 0.6, delay: 0.8 }}
-                className="mb-16 relative"
-              >
+              <motion.div initial={{
+              opacity: 0,
+              y: 20
+            }} animate={{
+              opacity: 1,
+              y: 0
+            }} transition={{
+              duration: 0.6,
+              delay: 0.8
+            }} className="mb-16 relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-[#15AFF7]/5 to-blue-600/5 rounded-3xl transform rotate-1 scale-105"></div>
                 <div className="relative bg-white rounded-2xl border border-gray-200 p-12 shadow-2xl text-center transform -rotate-1">
                   <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-[#15AFF7] to-blue-600 bg-clip-text text-transparent">
@@ -260,17 +304,18 @@ const About = () => {
             </div>
             
             <div className="mt-16 pt-8 border-t border-gray-200">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }} 
-                animate={{ opacity: 1, y: 0 }} 
-                transition={{ duration: 0.6, delay: 1.2 }}
-                className="relative group"
-              >
+              <motion.div initial={{
+              opacity: 0,
+              y: 20
+            }} animate={{
+              opacity: 1,
+              y: 0
+            }} transition={{
+              duration: 0.6,
+              delay: 1.2
+            }} className="relative group">
                 <div className="absolute inset-0 bg-gradient-to-r from-[#15AFF7]/20 to-blue-600/20 rounded-lg transform rotate-1 scale-105 group-hover:rotate-2 transition-transform duration-300"></div>
-                <Link 
-                  to="/careers" 
-                  className="relative inline-flex items-center px-8 py-4 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-all transform -rotate-1 group-hover:rotate-0 shadow-lg font-medium"
-                >
+                <Link to="/careers" className="relative inline-flex items-center px-8 py-4 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-all transform -rotate-1 group-hover:rotate-0 shadow-lg font-medium">
                   Join Our Team
                   <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
@@ -279,8 +324,6 @@ const About = () => {
           </div>
         </div>
       </section>
-    </PageLayout>
-  );
+    </PageLayout>;
 };
-
 export default About;
