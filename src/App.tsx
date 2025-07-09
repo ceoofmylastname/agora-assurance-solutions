@@ -10,6 +10,7 @@ import NotFound from "./pages/NotFound";
 import About from "./pages/About";
 import Careers from "./pages/Careers";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsConditions from "./pages/TermsConditions";
 import TermLife from "./pages/services/TermLife";
 import WholeLife from "./pages/services/WholeLife";
 import UniversalLife from "./pages/services/UniversalLife";
@@ -34,6 +35,7 @@ const App = () => {
             <Route path="/about" element={<About />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<TermsConditions />} />
             <Route path="/services/term-life" element={<TermLife />} />
             <Route path="/services/whole-life" element={<WholeLife />} />
             <Route path="/services/universal-life" element={<UniversalLife />} />
