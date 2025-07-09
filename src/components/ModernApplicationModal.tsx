@@ -42,9 +42,19 @@ const steps = [
     subtitle: 'Select the director who recommended you',
     type: 'select',
     options: [
-      { value: 'director1', label: 'Director Johnson' },
-      { value: 'director2', label: 'Director Smith' },
-      { value: 'director3', label: 'Director Williams' }
+      { value: 'adam-t', label: 'Adam T.' },
+      { value: 'benjamin-s', label: 'Benjamin S.' },
+      { value: 'jalil-d', label: 'Jalil D.' },
+      { value: 'jeff-u', label: 'Jeff U.' },
+      { value: 'john-m', label: 'John M.' },
+      { value: 'paul-j', label: 'Paul J.' },
+      { value: 'shahid-s', label: 'Shahid S.' },
+      { value: 'sean-f', label: 'Sean F.' },
+      { value: 'suhail-h', label: 'Suhail H.' },
+      { value: 'tonya-m', label: 'Tonya M.' },
+      { value: 'smith-e', label: 'Smith E.' },
+      { value: 'agora-direct', label: 'Agora Direct' },
+      { value: 'other', label: 'Other' }
     ]
   },
   {
