@@ -6,7 +6,6 @@ import ProductsSection from '@/components/ProductsSection';
 import HowItWorks from '@/components/HowItWorks';
 import WhyAgora from '@/components/WhyAgora';
 import CustomerStories from '@/components/CustomerStories';
-import BlogPreview from '@/components/BlogPreview';
 import ModernContactForm from '@/components/ModernContactForm';
 import SEO from '@/components/SEO';
 import { useEffect } from 'react';
@@ -35,7 +34,6 @@ const Index = () => {
       <Features />
       <WhyAgora />
       <CustomerStories />
-      <BlogPreview />
       <ModernContactForm />
     </PageLayout>
   );
