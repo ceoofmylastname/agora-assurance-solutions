@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Send, Mail, User, MessageSquare, ArrowRight, ArrowLeft, CheckCircle } from 'lucide-react';
+import { Send, Mail, User, MessageSquare, ArrowRight, ArrowLeft, CheckCircle, Shield, Home, Heart, TrendingUp, DollarSign, FileText } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
@@ -12,14 +12,25 @@ import { motion, AnimatePresence } from 'framer-motion';
 import emailjs from 'emailjs-com';
 
 const formSchema = z.object({
-  name: z.string().min(2, 'Name must be at least 2 characters'),
+  firstName: z.string().min(2, 'First name must be at least 2 characters'),
+  lastName: z.string().min(2, 'Last name must be at least 2 characters'),
   email: z.string().email('Please enter a valid email address'),
+  service: z.string().min(1, 'Please select a service'),
   message: z.string().min(10, 'Message must be at least 10 characters'),
   honeypot: z.string().max(0, 'Bot detected'),
   timestamp: z.number()
 });
 
 type FormValues = z.infer<typeof formSchema>;
+
+const insuranceServices = [
+  { id: 'term-life', name: 'Term Life Insurance', icon: Shield },
+  { id: 'mortgage-protection', name: 'Mortgage Protection', icon: Home },
+  { id: 'final-expense', name: 'Final Expense Insurance', icon: Heart },
+  { id: 'annuities', name: 'Annuity Solutions', icon: TrendingUp },
+  { id: 'life-settlements', name: 'Life Settlements', icon: DollarSign },
+  { id: 'tax-asset-protection', name: 'Tax & Asset Protection', icon: FileText }
+];
 
 const EMAILJS_SERVICE_ID = "service_i3h66xg";
 const EMAILJS_TEMPLATE_ID = "template_fgq53nh";
@@ -29,23 +40,32 @@ const steps = [
   {
     id: 'welcome',
     title: 'Hi there! 👋',
-    subtitle: 'Let\'s get to know each other',
-    description: 'We\'d love to hear from you. This will only take a minute.',
+    subtitle: 'Ready to protect what matters most?',
+    description: 'Let\'s find the perfect insurance solution for you. This will only take a few minutes.',
     isQuestion: false
   },
   {
-    id: 'name',
-    title: 'What\'s your name?',
-    subtitle: 'Just so we know what to call you',
-    field: 'name',
+    id: 'firstName',
+    title: 'What\'s your first name?',
+    subtitle: 'We\'d love to know what to call you',
+    field: 'firstName',
     icon: User,
-    placeholder: 'Enter your name',
+    placeholder: 'Enter your first name',
+    isQuestion: true
+  },
+  {
+    id: 'lastName',
+    title: 'And your last name?',
+    subtitle: 'Just to complete your information',
+    field: 'lastName',
+    icon: User,
+    placeholder: 'Enter your last name',
     isQuestion: true
   },
   {
     id: 'email',
-    title: 'What\'s your email?',
-    subtitle: 'We\'ll use this to get back to you',
+    title: 'What\'s your email address?',
+    subtitle: 'We\'ll use this to send you your quote and follow up',
     field: 'email',
     icon: Mail,
     placeholder: 'your.email@example.com',
@@ -53,20 +73,28 @@ const steps = [
     isQuestion: true
   },
   {
+    id: 'service',
+    title: 'Which insurance service interests you?',
+    subtitle: 'Select the service you\'d like to learn more about',
+    field: 'service',
+    isServiceSelection: true,
+    isQuestion: true
+  },
+  {
     id: 'message',
-    title: 'Tell us about your project',
-    subtitle: 'What can we help you with?',
+    title: 'Tell us about your insurance needs',
+    subtitle: 'What questions do you have? Any specific requirements?',
     field: 'message',
     icon: MessageSquare,
-    placeholder: 'Describe your project, question, or how we can help...',
+    placeholder: 'Tell us about your current situation, coverage needs, budget considerations, or any questions you have about our services...',
     isTextarea: true,
     isQuestion: true
   },
   {
     id: 'submit',
     title: 'Perfect! ✨',
-    subtitle: 'Ready to send your message?',
-    description: 'We\'ll get back to you within 24 hours.',
+    subtitle: 'Ready to get your personalized quote?',
+    description: 'We\'ll review your information and get back to you within 24 hours with a customized insurance solution.',
     isQuestion: false
   }
 ];
@@ -82,8 +110,10 @@ const ModernContactForm = () => {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: '',
+      firstName: '',
+      lastName: '',
       email: '',
+      service: '',
       message: '',
       honeypot: '',
       timestamp: formStartTime
@@ -162,9 +192,10 @@ const ModernContactForm = () => {
       const { honeypot, timestamp, ...emailData } = data;
       
       const templateParams = {
-        from_name: emailData.name,
+        from_name: emailData.firstName + ' ' + emailData.lastName,
         from_email: emailData.email,
         message: emailData.message,
+        service: emailData.service,
         to_name: 'WRLDS Team',
         reply_to: emailData.email
       };
@@ -185,8 +216,10 @@ const ModernContactForm = () => {
       });
 
       form.reset({
-        name: '',
+        firstName: '',
+        lastName: '',
         email: '',
+        service: '',
         message: '',
         honeypot: '',
         timestamp: Date.now()
@@ -295,7 +328,45 @@ const ModernContactForm = () => {
               {/* Form Fields */}
               <Form {...form}>
                 <div className="space-y-6">
-                  {currentStepData.isQuestion && (
+                  {currentStepData.isServiceSelection && (
+                    <FormField
+                      control={form.control}
+                      name="service"
+                      render={({ field }) => (
+                        <FormItem>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {insuranceServices.map((service) => (
+                              <div
+                                key={service.id}
+                                className={`p-4 rounded-xl border-2 cursor-pointer transition-all hover:shadow-lg ${
+                                  field.value === service.id
+                                    ? 'border-[#15AFF7] bg-blue-50'
+                                    : 'border-gray-200 bg-white hover:border-gray-300'
+                                }`}
+                                onClick={() => field.onChange(service.id)}
+                              >
+                                <div className="flex items-center space-x-3">
+                                  <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
+                                    field.value === service.id
+                                      ? 'bg-[#15AFF7] text-white'
+                                      : 'bg-gray-100 text-gray-600'
+                                  }`}>
+                                    <service.icon className="w-5 h-5" />
+                                  </div>
+                                  <div>
+                                    <h4 className="font-medium text-gray-900">{service.name}</h4>
+                                  </div>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  )}
+                  
+                  {currentStepData.isQuestion && !currentStepData.isServiceSelection && (
                     <FormField
                       control={form.control}
                       name={currentStepData.field as keyof FormValues}
