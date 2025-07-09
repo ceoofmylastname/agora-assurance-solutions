@@ -92,23 +92,54 @@ const ProductsSection = () => {
     return () => observer.disconnect();
   }, []);
 
-  const containerVariants = {
+const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
+        staggerChildren: 0.08,
+        delayChildren: 0.1
       }
     }
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { 
+      y: 60, 
+      opacity: 0,
+      scale: 0.8,
+      rotateX: 15
+    },
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.6 }
+      scale: 1,
+      rotateX: 0,
+      transition: { 
+        type: "spring",
+        stiffness: 100,
+        damping: 15,
+        duration: 0.8
+      }
+    }
+  };
+
+  const mobileItemVariants = {
+    hidden: { 
+      y: 40, 
+      opacity: 0,
+      scale: 0.9
+    },
+    visible: {
+      y: 0,
+      opacity: 1,
+      scale: 1,
+      transition: { 
+        type: "spring",
+        stiffness: 120,
+        damping: 20,
+        duration: 0.6
+      }
     }
   };
 
@@ -139,22 +170,51 @@ const ProductsSection = () => {
           variants={containerVariants}
         >
           {products.map((product, index) => (
-            <motion.div key={product.id} variants={itemVariants}>
-              <Card className="group relative overflow-hidden bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-full">
+            <motion.div 
+              key={product.id} 
+              variants={window.innerWidth <= 768 ? mobileItemVariants : itemVariants}
+              whileHover={{ 
+                scale: 1.02,
+                rotateY: 2,
+                transition: { duration: 0.3 }
+              }}
+              whileTap={{ scale: 0.98 }}
+              style={{ perspective: "1000px" }}
+            >
+              <Card className="group relative overflow-hidden bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-full transform-gpu will-change-transform">
                 <CardContent className="p-0">
                   {/* Hero Image */}
                   <div className="relative h-48 overflow-hidden">
-                    <img 
+                    <motion.img 
                       src={product.image} 
                       alt={`${product.title} visual representation`}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 transform-gpu"
+                      initial={{ scale: 1.1, opacity: 0.8 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ delay: index * 0.1, duration: 0.8 }}
                     />
-                    <div className={`absolute inset-0 bg-gradient-to-t ${product.gradient} opacity-80`}></div>
-                    <div className="absolute top-4 left-4">
-                      <div className={`w-12 h-12 rounded-full bg-gradient-to-r ${product.accent} flex items-center justify-center text-white shadow-lg`}>
+                    <motion.div 
+                      className={`absolute inset-0 bg-gradient-to-t ${product.gradient} opacity-80`}
+                      initial={{ opacity: 0.9 }}
+                      animate={{ opacity: 0.8 }}
+                      transition={{ delay: index * 0.1 + 0.2 }}
+                    ></motion.div>
+                    <motion.div 
+                      className="absolute top-4 left-4"
+                      initial={{ scale: 0, rotate: -180 }}
+                      animate={{ scale: 1, rotate: 0 }}
+                      transition={{ 
+                        delay: index * 0.1 + 0.4, 
+                        type: "spring", 
+                        stiffness: 200, 
+                        damping: 15 
+                      }}
+                      whileHover={{ rotate: 360, transition: { duration: 0.6 } }}
+                    >
+                      <div className={`w-12 h-12 rounded-full bg-gradient-to-r ${product.accent} flex items-center justify-center text-white shadow-lg transform-gpu`}>
                         {product.icon}
                       </div>
-                    </div>
+                    </motion.div>
                   </div>
                   
                   {/* Content */}
@@ -176,10 +236,17 @@ const ProductsSection = () => {
                       ))}
                     </div>
                     
-                    <button className="w-full bg-gradient-to-r from-[#15AFF7] to-[#0D94D1] text-white px-4 py-3 rounded-lg hover:from-[#0D94D1] hover:to-[#0A7FB0] transition-all duration-300 flex items-center justify-center group/btn font-medium shadow-lg hover:shadow-xl">
+                    <motion.button 
+                      className="w-full bg-gradient-to-r from-[#15AFF7] to-[#0D94D1] text-white px-4 py-3 rounded-lg hover:from-[#0D94D1] hover:to-[#0A7FB0] transition-all duration-300 flex items-center justify-center group/btn font-medium shadow-lg hover:shadow-xl transform-gpu"
+                      whileHover={{ scale: 1.02, y: -1 }}
+                      whileTap={{ scale: 0.98 }}
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ delay: index * 0.1 + 0.6, type: "spring", stiffness: 150 }}
+                    >
                       Get Quote
                       <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                    </button>
+                    </motion.button>
                   </div>
                 </CardContent>
               </Card>

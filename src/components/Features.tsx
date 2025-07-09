@@ -7,6 +7,7 @@ import { Progress } from "@/components/ui/progress";
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Button } from "@/components/ui/button";
 import AnimatedCounter from "@/components/ui/animated-counter";
+import { motion } from "framer-motion";
 
 const Features = () => {
   const featuresRef = useRef<HTMLDivElement>(null);
@@ -118,15 +119,58 @@ const Features = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
               {stepFlowItems.map((item, index) => <HoverCard key={index}>
                   <HoverCardTrigger asChild>
-                    <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 h-full cursor-pointer">
+                    <motion.div 
+                      className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 h-full cursor-pointer transform-gpu"
+                      initial={{ y: 30, opacity: 0, rotateY: -10 }}
+                      animate={{ y: 0, opacity: 1, rotateY: 0 }}
+                      transition={{ 
+                        delay: index * 0.15,
+                        type: "spring",
+                        stiffness: 100,
+                        damping: 15,
+                        duration: 0.6
+                      }}
+                      whileHover={{ 
+                        scale: 1.03,
+                        rotateY: 3,
+                        transition: { duration: 0.3 }
+                      }}
+                      whileTap={{ scale: 0.97 }}
+                      style={{ perspective: "1000px" }}
+                    >
                       <div className="flex flex-col items-center text-center">
-                        <div className="bg-gray-50 rounded-full p-4 mb-4">
+                        <motion.div 
+                          className="bg-gray-50 rounded-full p-4 mb-4"
+                          initial={{ scale: 0, rotate: -180 }}
+                          animate={{ scale: 1, rotate: 0 }}
+                          transition={{ 
+                            delay: index * 0.15 + 0.3,
+                            type: "spring",
+                            stiffness: 200,
+                            damping: 15
+                          }}
+                          whileHover={{ rotate: 5, scale: 1.1 }}
+                        >
                           {item.icon}
-                        </div>
-                        <h3 className="text-lg font-bold mb-2">{item.title}</h3>
-                        <p className="text-sm text-gray-600">{item.description}</p>
+                        </motion.div>
+                        <motion.h3 
+                          className="text-lg font-bold mb-2"
+                          initial={{ y: 10, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          transition={{ delay: index * 0.15 + 0.4 }}
+                        >
+                          {item.title}
+                        </motion.h3>
+                        <motion.p 
+                          className="text-sm text-gray-600"
+                          initial={{ y: 10, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          transition={{ delay: index * 0.15 + 0.5 }}
+                        >
+                          {item.description}
+                        </motion.p>
                       </div>
-                    </div>
+                    </motion.div>
                   </HoverCardTrigger>
                   <HoverCardContent className="w-80 shadow-lg">
                     <div className="space-y-2">

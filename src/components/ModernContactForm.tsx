@@ -396,14 +396,19 @@ const ModernContactForm = () => {
                         <FormItem>
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {insuranceServices.map((service) => (
-                              <div
+                              <motion.div
                                 key={service.id}
-                                className={`p-4 rounded-xl border-2 cursor-pointer transition-all hover:shadow-lg ${
+                                className={`p-4 rounded-xl border-2 cursor-pointer transition-all hover:shadow-lg transform-gpu ${
                                   field.value === service.id
                                     ? 'border-[#15AFF7] bg-blue-50'
                                     : 'border-gray-200 bg-white hover:border-gray-300'
                                 }`}
                                 onClick={() => field.onChange(service.id)}
+                                whileHover={{ scale: 1.02, y: -2 }}
+                                whileTap={{ scale: 0.98 }}
+                                initial={{ y: 20, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{ delay: service.id.length * 0.05 }}
                               >
                                 <div className="flex items-center space-x-3">
                                   <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
@@ -417,7 +422,7 @@ const ModernContactForm = () => {
                                     <h4 className="font-medium text-gray-900">{service.name}</h4>
                                   </div>
                                 </div>
-                              </div>
+                              </motion.div>
                             ))}
                           </div>
                           <FormMessage />
@@ -438,20 +443,26 @@ const ModernContactForm = () => {
                             )}
                             <FormControl>
                               {currentStepData.isTextarea ? (
-                                <Textarea
-                                  placeholder={currentStepData.placeholder}
-                                  className="min-h-[120px] pl-12 text-lg border-2 border-gray-200 rounded-xl focus:border-[#15AFF7] focus:ring-0 resize-none"
-                                  onKeyDown={handleKeyPress}
-                                  {...field}
-                                />
+                                <motion.div>
+                                  <Textarea
+                                    placeholder={currentStepData.placeholder}
+                                    className="min-h-[120px] pl-12 text-lg border-2 border-gray-200 rounded-xl focus:border-[#15AFF7] focus:ring-0 resize-none transform-gpu"
+                                    onKeyDown={handleKeyPress}
+                                    {...field}
+                                  />
+                                </motion.div>
                               ) : (
-                                <Input
-                                  type={currentStepData.type || 'text'}
-                                  placeholder={currentStepData.placeholder}
-                                  className="pl-12 text-lg h-14 border-2 border-gray-200 rounded-xl focus:border-[#15AFF7] focus:ring-0"
-                                  onKeyDown={handleKeyPress}
-                                  {...field}
-                                />
+                                <motion.div>
+                                  <Input
+                                    type={currentStepData.type || 'text'}
+                                    placeholder={currentStepData.placeholder}
+                                    className="pl-12 text-lg h-14 border-2 border-gray-200 rounded-xl focus:border-[#15AFF7] focus:ring-0 transform-gpu"
+                                    onKeyDown={handleKeyPress}
+                                    onFocus={() => {}}
+                                    onBlur={() => {}}
+                                    {...field}
+                                  />
+                                </motion.div>
                               )}
                             </FormControl>
                           </div>

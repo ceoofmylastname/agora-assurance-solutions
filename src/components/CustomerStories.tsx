@@ -68,11 +68,32 @@ const CustomerStories = () => {
   };
 
   const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
+    hidden: { y: 40, opacity: 0, rotateY: -10 },
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.6 }
+      rotateY: 0,
+      transition: { 
+        type: "spring",
+        stiffness: 80,
+        damping: 15,
+        duration: 0.8
+      }
+    }
+  };
+
+  const mobileCardVariants = {
+    hidden: { y: 30, opacity: 0, scale: 0.9 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      scale: 1,
+      transition: { 
+        type: "spring",
+        stiffness: 100,
+        damping: 18,
+        duration: 0.7
+      }
     }
   };
 
@@ -103,14 +124,42 @@ const CustomerStories = () => {
           variants={containerVariants}
         >
           {testimonials.map((testimonial, index) => (
-            <motion.div key={testimonial.id} variants={itemVariants}>
-              <Card className="h-full bg-white border-2 border-gray-100 hover:border-[#15AFF7]/30 hover:shadow-lg transition-all duration-300">
+            <motion.div 
+              key={testimonial.id} 
+              variants={window.innerWidth <= 768 ? mobileCardVariants : itemVariants}
+              whileHover={{ 
+                scale: 1.02, 
+                rotateY: 2,
+                z: 10,
+                transition: { duration: 0.3 }
+              }}
+              whileTap={{ scale: 0.98 }}
+              style={{ perspective: "1000px" }}
+            >
+              <Card className="h-full bg-white border-2 border-gray-100 hover:border-[#15AFF7]/30 hover:shadow-lg transition-all duration-300 transform-gpu will-change-transform">
                 <CardContent className="p-6">
                   <div className="flex items-center mb-4">
-                    <Quote className="w-8 h-8 text-[#15AFF7] mr-3" />
+                    <motion.div
+                      initial={{ scale: 0, rotate: -90 }}
+                      animate={{ scale: 1, rotate: 0 }}
+                      transition={{ delay: index * 0.1 + 0.3, type: "spring", stiffness: 200 }}
+                    >
+                      <Quote className="w-8 h-8 text-[#15AFF7] mr-3" />
+                    </motion.div>
                     <div className="flex text-yellow-400">
                       {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-current" />
+                        <motion.div
+                          key={i}
+                          initial={{ scale: 0, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          transition={{ 
+                            delay: index * 0.1 + 0.4 + i * 0.1, 
+                            type: "spring", 
+                            stiffness: 300 
+                          }}
+                        >
+                          <Star className="w-4 h-4 fill-current" />
+                        </motion.div>
                       ))}
                     </div>
                   </div>

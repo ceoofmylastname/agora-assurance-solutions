@@ -67,11 +67,32 @@ const HowItWorks = () => {
   };
 
   const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
+    hidden: { y: 50, opacity: 0, scale: 0.8 },
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.6 }
+      scale: 1,
+      transition: { 
+        type: "spring",
+        stiffness: 100,
+        damping: 12,
+        duration: 0.8
+      }
+    }
+  };
+
+  const mobileStepVariants = {
+    hidden: { y: 30, opacity: 0, rotateX: 20 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      rotateX: 0,
+      transition: { 
+        type: "spring",
+        stiffness: 120,
+        damping: 15,
+        duration: 0.6
+      }
     }
   };
 
@@ -106,14 +127,43 @@ const HowItWorks = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4 relative z-10">
             {steps.map((step, index) => (
-              <motion.div key={step.id} className="text-center" variants={itemVariants}>
+              <motion.div 
+                key={step.id} 
+                className="text-center" 
+                variants={window.innerWidth <= 768 ? mobileStepVariants : itemVariants}
+                style={{ perspective: "1000px" }}
+              >
                 <div className="relative mb-6">
-                  <div className={`w-20 h-20 ${step.color} rounded-full flex items-center justify-center text-white mx-auto shadow-lg`}>
+                  <motion.div 
+                    className={`w-20 h-20 ${step.color} rounded-full flex items-center justify-center text-white mx-auto shadow-lg transform-gpu`}
+                    initial={{ scale: 0, rotate: -180 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    transition={{ 
+                      delay: index * 0.15 + 0.3, 
+                      type: "spring", 
+                      stiffness: 200, 
+                      damping: 15 
+                    }}
+                    whileHover={{ 
+                      scale: 1.1, 
+                      rotate: 5,
+                      transition: { duration: 0.3 }
+                    }}
+                  >
                     {step.icon}
-                  </div>
-                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-gray-900 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                  </motion.div>
+                  <motion.div 
+                    className="absolute -top-2 -right-2 w-8 h-8 bg-gray-900 text-white rounded-full flex items-center justify-center text-sm font-bold transform-gpu"
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ 
+                      delay: index * 0.15 + 0.5, 
+                      type: "spring", 
+                      stiffness: 300 
+                    }}
+                  >
                     {step.id}
-                  </div>
+                  </motion.div>
                 </div>
                 
                 <h3 className="text-xl font-bold text-gray-900 mb-3">
