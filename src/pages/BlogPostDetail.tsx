@@ -45,15 +45,15 @@ const BlogPostDetail = () => {
       
       <article className="w-full pt-16 pb-16">
         {/* Hero Section - Taller to accommodate text content */}
-        <div className="banner-container h-96 sm:h-[450px] md:h-[500px] lg:h-[550px] relative">
+        <div className="banner-container h-96 sm:h-[450px] md:h-[500px] lg:h-[550px] bg-[#15AFF7] relative">
           {post.imageUrl && (
             <img 
               src={post.imageUrl} 
               alt={post.title}
-              className="absolute inset-0 w-full h-full object-cover filter grayscale"
+              className="absolute inset-0 w-full h-full object-cover opacity-70"
             />
           )}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-white"></div>
           
           <div className="banner-overlay">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex items-center justify-start md:justify-center">
