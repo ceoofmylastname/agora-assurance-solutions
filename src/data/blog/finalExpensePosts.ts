@@ -10,7 +10,7 @@ export const finalExpensePosts: BlogPost[] = [
     date: 'January 15, 2025',
     author: 'Agora Assurance',
     category: 'Final Expense',
-    imageUrl: '/src/assets/final-expense-hero.jpg',
+    imageUrl: '/src/assets/final-expense-hero-couple.jpg',
     keywords: [
       'final expense insurance',
       'burial insurance',
