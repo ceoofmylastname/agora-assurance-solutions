@@ -66,8 +66,8 @@ const Footer = () => {
   };
 
   return (
-    <footer id="contact" className="bg-[#15AFF7] text-white pt-16 pb-8 w-full relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-white"></div>
+    <footer id="contact" className="bg-[#15AFF7] text-white pt-0 pb-8 w-full relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/80"></div>
       <div className="w-full px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 pb-10 border-b border-gray-700">
           <div className="lg:col-span-2">

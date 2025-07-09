@@ -4,7 +4,7 @@ import { Mail, Linkedin, Phone } from 'lucide-react';
 
 const ContactInfo = () => {
   return (
-    <section id="contact-info" className="bg-[#15AFF7] text-white relative py-[15px] md:py-[25px]">
+    <section id="contact-info" className="bg-[#15AFF7] text-white relative py-[15px] md:pt-[25px] md:pb-0">
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-white"></div>
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-10 md:mb-16">
