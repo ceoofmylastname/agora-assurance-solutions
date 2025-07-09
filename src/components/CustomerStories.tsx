@@ -162,7 +162,7 @@ const CustomerStories = () => {
               4.9/5 Customer Rating
             </h3>
             <p className="text-gray-600 text-sm mb-6">
-              Based on 2,500+ verified customer reviews
+              Based on 25,000+ verified customer reviews
             </p>
             <button 
               onClick={() => {

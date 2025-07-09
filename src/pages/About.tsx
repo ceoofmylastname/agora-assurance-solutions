@@ -258,7 +258,7 @@ const About = () => {
                 }} className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-600/10 rounded-xl transform rotate-2 scale-105 group-hover:rotate-3 transition-transform duration-300"></div>
                     <div className="relative bg-white rounded-xl border border-gray-100 p-6 text-center shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300">
-                      <div className="text-3xl font-bold text-purple-500 mb-2">2,500+</div>
+                      <div className="text-3xl font-bold text-purple-500 mb-2">25,000+</div>
                       <div className="text-gray-600 text-sm">lives protected and counting</div>
                     </div>
                   </motion.div>
