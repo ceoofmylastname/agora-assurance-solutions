@@ -1,6 +1,5 @@
-
 import { useEffect, useRef, useState } from 'react';
-import { ArrowRight, Box, Code, CheckCircle, Rocket, Factory, Microchip, Handshake, RefreshCcw, MessageSquare } from "lucide-react";
+import { ArrowRight, Search, Shield, Building, Calculator, BarChart3, FileText, CheckCircle, MessageSquare } from "lucide-react";
 import { cn } from '@/lib/utils';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Progress } from "@/components/ui/progress";
@@ -73,30 +72,30 @@ const Features = () => {
   }, []);
 
   const stepFlowItems = [{
-    icon: <Microchip className="h-10 w-10 text-gray-700" />,
-    title: "WRLDS Proprietary Modules",
-    description: "Our core technology components developed in-house"
+    icon: <Search className="h-10 w-10 text-gray-700" />,
+    title: "Smart Comparison Engine",
+    description: "AI-powered tool that instantly compares plans from 100+ carriers"
   }, {
-    icon: <Factory className="h-10 w-10 text-gray-700" />,
-    title: "Vetted Off-the-Shelf Hardware",
-    description: "Carefully selected components that complement our technology"
+    icon: <Shield className="h-10 w-10 text-gray-700" />,
+    title: "Licensed Expert Guidance",
+    description: "State-licensed advisors who advocate for your best interests, not commissions"
   }, {
-    icon: <Handshake className="h-10 w-10 text-gray-700" />,
-    title: "Vetted Production Partners",
-    description: "Expert manufacturing partners for quality and reliability"
+    icon: <Building className="h-10 w-10 text-gray-700" />,
+    title: "Trusted Carrier Network",
+    description: "A-rated insurance companies with proven financial stability"
   }];
   const sprintPhases = [{
-    name: "Planning",
-    icon: <CheckCircle className="h-4 w-4" />
+    name: "Quote",
+    icon: <Calculator className="h-4 w-4" />
   }, {
-    name: "Development",
-    icon: <Code className="h-4 w-4" />
+    name: "Compare",
+    icon: <BarChart3 className="h-4 w-4" />
   }, {
-    name: "Testing",
-    icon: <Box className="h-4 w-4" />
+    name: "Apply",
+    icon: <FileText className="h-4 w-4" />
   }, {
-    name: "Review",
-    icon: <RefreshCcw className="h-4 w-4" />
+    name: "Protect",
+    icon: <Shield className="h-4 w-4" />
   }];
 
   return <>
@@ -104,12 +103,12 @@ const Features = () => {
         <div className="w-full px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <div className="inline-block mb-2 px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">
-              Our Approach
+              Our Process
             </div>
-            <h2 className="text-3xl font-bold mb-4">How our technology works</h2>
+            <h2 className="text-3xl font-bold mb-4">How Agora Makes Insurance Simple</h2>
             <p className="text-gray-600 max-w-3xl mx-auto">
-              WRLDS builds hardware and software with proprietary and off-the-shelf modules, 
-              allowing us to develop completely unique solutions at high speed and lower risk.
+              From initial quote to final coverage, we've streamlined every step to give you transparent, 
+              fast, and reliable insurance protection.
             </p>
           </div>
           
@@ -131,9 +130,9 @@ const Features = () => {
                     <div className="space-y-2">
                       <h4 className="text-sm font-semibold">{item.title}</h4>
                       <p className="text-sm">{item.description}</p>
-                      {index === 0 && <p className="text-xs text-gray-500">Our proprietary technology provides the core foundation of every solution we build.</p>}
-                      {index === 1 && <p className="text-xs text-gray-500">We carefully select the best off-the-shelf components to complement our proprietary technology.</p>}
-                      {index === 2 && <p className="text-xs text-gray-500">Our network of production partners ensures quality manufacturing at scale.</p>}
+                      {index === 0 && <p className="text-xs text-gray-500">Our AI analyzes your profile against hundreds of insurance plans to find your perfect match in seconds.</p>}
+                      {index === 1 && <p className="text-xs text-gray-500">Licensed professionals who are legally bound to put your interests first, with no carrier bias or commission pressure.</p>}
+                      {index === 2 && <p className="text-xs text-gray-500">We only work with financially stable, A-rated carriers with proven track records of paying claims.</p>}
                     </div>
                   </HoverCardContent>
                 </HoverCard>)}
@@ -160,15 +159,15 @@ const Features = () => {
               <div className="max-w-3xl mx-auto">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3 gap-2">
                   <div className="flex items-center">
-                    <h3 className="text-xl font-bold">Adaptation Project</h3>
+                    <h3 className="text-xl font-bold">Your Insurance Journey</h3>
                   </div>
                   <div className="flex items-center">
-                    <span className="text-sm text-gray-500 mr-2">Iterative Development</span>
+                    <span className="text-sm text-gray-500 mr-2">From quote to coverage in 24 hours</span>
                     <RefreshCcw className="h-5 w-5 text-gray-600 animate-rotate-slow" />
                   </div>
                 </div>
                 
-                <p className="text-gray-600 mb-4">Working iteratively with customers to tailor solutions to their needs</p>
+                <p className="text-gray-600 mb-4">Transparent process with real-time updates at every step</p>
                 
                 <div className="relative mb-2">
                   <Progress value={progressValue} className="h-3 bg-gray-200" />
@@ -190,7 +189,7 @@ const Features = () => {
                     <div className="bg-green-100 rounded-full p-1 mr-2 shrink-0">
                       <CheckCircle className="h-4 w-4 text-green-600" />
                     </div>
-                    <span className="text-sm text-gray-600">Customer feedback integrated at every stage</span>
+                    <span className="text-sm text-gray-600">Real-time updates and transparent communication</span>
                   </div>
                   <div className="text-sm text-gray-500 flex items-center mt-2 sm:mt-0">
                     <span className="mr-2">Continuous improvement</span>
@@ -225,11 +224,11 @@ const Features = () => {
               <div className="relative inline-block mb-4">
                 <div className="absolute inset-0 bg-black/10 rounded-full animate-pulse-slow"></div>
                 <div className="relative bg-white rounded-full p-4 border border-gray-200 shadow-md">
-                  <Rocket className="h-10 w-10 text-gray-700" />
+                  <Shield className="h-10 w-10 text-gray-700" />
                 </div>
               </div>
-              <h3 className="text-xl font-bold mb-2">Hitting the Market</h3>
-              <p className="text-gray-700">Ready to scale, produce, and launch</p>
+              <h3 className="text-xl font-bold mb-2">Protected & Secure</h3>
+              <p className="text-gray-700">Your family's financial future is now protected</p>
               <div className="flex justify-center mt-4 space-x-2">
                 <span className="inline-block w-3 h-3 rounded-full bg-gray-300 animate-pulse"></span>
                 <span className="inline-block w-3 h-3 rounded-full bg-gray-500 animate-pulse animation-delay-200"></span>
@@ -241,7 +240,7 @@ const Features = () => {
           <div className="text-center">
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
               <Button onClick={scrollToContact} className="inline-flex items-center px-4 sm:px-6 py-3 bg-gray-700 hover:bg-gray-800 text-white rounded-lg shadow-md hover:shadow-lg transition-all group w-full sm:w-auto justify-center">
-                Contact Our Experts
+                Get Your Free Quote
                 <MessageSquare className="ml-2 w-4 h-4 group-hover:scale-110 transition-transform" />
               </Button>
             </div>
