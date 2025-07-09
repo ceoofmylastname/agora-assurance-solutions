@@ -36,6 +36,7 @@ const insuranceServices = [
 const EMAILJS_SERVICE_ID = "service_i3h66xg";
 const EMAILJS_TEMPLATE_ID = "template_fgq53nh";
 const EMAILJS_PUBLIC_KEY = "wQmcZvoOqTAhGnRZ3";
+const WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/TLhrYb7SRrWrly615tCI/webhook-trigger/198f9752-05be-412e-b5dc-4dd58a596f56";
 
 const steps = [
   {
@@ -240,6 +241,31 @@ const ModernContactForm = () => {
       
       const { honeypot, timestamp, ...emailData } = data;
       
+      // Send to webhook
+      const webhookData = {
+        firstName: emailData.firstName,
+        lastName: emailData.lastName,
+        email: emailData.email,
+        service: emailData.service,
+        message: emailData.message,
+        timestamp: new Date().toISOString(),
+        source: 'contact_form'
+      };
+
+      try {
+        await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(webhookData),
+        });
+      } catch (webhookError) {
+        console.error('Error sending to webhook:', webhookError);
+        // Continue with form submission even if webhook fails
+      }
+      
+      // Send email via EmailJS
       const templateParams = {
         from_name: emailData.firstName + ' ' + emailData.lastName,
         from_email: emailData.email,
