@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from "@/components/ui/card";
 import SEO from '@/components/SEO';
+import retirementPlanningCouple from '@/assets/retirement-planning-couple.webp';
 
 const Annuities = () => {
   useEffect(() => {
@@ -36,13 +37,13 @@ const Annuities = () => {
       <SEO 
         title="Annuities - Guaranteed Retirement Income | Agora Assurance Solutions"
         description="Secure your retirement with annuities that provide guaranteed income for life. Fixed, indexed, immediate, and deferred annuity options available."
-        imageUrl="/assets/annuities-retirement-hero.jpg"
+        imageUrl={retirementPlanningCouple}
         keywords={['annuities', 'retirement income', 'guaranteed income', 'fixed annuity', 'indexed annuity', 'retirement planning']}
       />
       
-      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white min-h-screen">
+      <section className="pt-20 sm:pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white min-h-screen">
         <div className="container mx-auto max-w-6xl">
-          <Link to="/" className="inline-flex items-center text-gray-500 hover:text-[#15AFF7] mb-8 transition-all duration-300 hover:translate-x-1">
+          <Link to="/" className="inline-flex items-center text-gray-500 hover:text-[#15AFF7] mb-6 sm:mb-8 transition-all duration-300 hover:translate-x-1 touch-manipulation">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Home
           </Link>
@@ -88,7 +89,7 @@ const Annuities = () => {
                 <motion.div className="relative" variants={itemVariants}>
                   <div className="absolute inset-0 bg-gradient-to-br from-[#15AFF7]/20 to-blue-600/20 rounded-2xl transform rotate-3 scale-105"></div>
                   <img 
-                    src="/assets/annuities-retirement-hero.jpg" 
+                    src={retirementPlanningCouple} 
                     alt="Secure retirement with guaranteed annuity income"
                     className="relative rounded-2xl shadow-xl transform -rotate-1 hover:rotate-0 transition-transform duration-300"
                   />

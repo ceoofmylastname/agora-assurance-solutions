@@ -185,54 +185,67 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Navigation Menu - Reduced height and simplified */}
-      <div className={cn("md:hidden transition-all duration-300 overflow-hidden w-full", isMenuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0")}>
-        <div className={cn("px-3 pt-2 pb-3 space-y-1 shadow-sm overflow-y-auto max-h-80", isScrolled ? "bg-white" : "bg-black")}>
-          <Link to="/" className={cn("block px-3 py-1.5 rounded-md text-sm", isScrolled ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-900")} onClick={() => {
+      {/* Mobile Navigation Menu - Enhanced for better touch targets */}
+      <div className={cn("md:hidden transition-all duration-300 overflow-hidden w-full", isMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0")}>
+        <div className={cn("px-4 pt-4 pb-6 space-y-2 shadow-lg overflow-y-auto max-h-screen", isScrolled ? "bg-white" : "bg-black")}>
+          <Link to="/" className={cn("block px-4 py-3 rounded-lg text-base font-medium touch-manipulation", isScrolled ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-900")} onClick={() => {
             setIsMenuOpen(false);
             window.scrollTo(0, 0);
           }}>
             Home
           </Link>
           
-          <Link to="/about" className={cn("block px-3 py-1.5 rounded-md text-sm", isScrolled ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-900")} onClick={() => {
+          <Link to="/about" className={cn("block px-4 py-3 rounded-lg text-base font-medium touch-manipulation", isScrolled ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-900")} onClick={() => {
             setIsMenuOpen(false);
             window.scrollTo(0, 0);
           }}>
             About Us
           </Link>
           
-          {/* Simplified Services - no dropdown */}
-          <Link to="/services/term-life" className={cn("block px-3 py-1.5 rounded-md text-sm", isScrolled ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-900")} onClick={() => {
-            setIsMenuOpen(false);
-            window.scrollTo(0, 0);
-          }}>
-            Services
-          </Link>
+          {/* Services with better mobile UX */}
+          <div className="space-y-1">
+            <div className={cn("px-4 py-2 text-sm font-semibold", isScrolled ? "text-gray-500" : "text-gray-400")}>Services</div>
+            <Link to="/services/term-life" className={cn("block px-4 py-2 rounded-md text-sm touch-manipulation", isScrolled ? "text-gray-600 hover:bg-gray-50" : "text-gray-300 hover:bg-gray-900")} onClick={() => {
+              setIsMenuOpen(false);
+              window.scrollTo(0, 0);
+            }}>
+              Term Life Insurance
+            </Link>
+            <Link to="/services/whole-life" className={cn("block px-4 py-2 rounded-md text-sm touch-manipulation", isScrolled ? "text-gray-600 hover:bg-gray-50" : "text-gray-300 hover:bg-gray-900")} onClick={() => {
+              setIsMenuOpen(false);
+              window.scrollTo(0, 0);
+            }}>
+              Whole Life Insurance
+            </Link>
+            <Link to="/services/annuities" className={cn("block px-4 py-2 rounded-md text-sm touch-manipulation", isScrolled ? "text-gray-600 hover:bg-gray-50" : "text-gray-300 hover:bg-gray-900")} onClick={() => {
+              setIsMenuOpen(false);
+              window.scrollTo(0, 0);
+            }}>
+              Annuities
+            </Link>
+            <Link to="/services/final-expense" className={cn("block px-4 py-2 rounded-md text-sm touch-manipulation", isScrolled ? "text-gray-600 hover:bg-gray-50" : "text-gray-300 hover:bg-gray-900")} onClick={() => {
+              setIsMenuOpen(false);
+              window.scrollTo(0, 0);
+            }}>
+              Final Expense
+            </Link>
+          </div>
           
-          {/* Simplified Learn More - no dropdown */}
-          <Link to="/tech-details" className={cn("block px-3 py-1.5 rounded-md text-sm", isScrolled ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-900")} onClick={() => {
-            setIsMenuOpen(false);
-            window.scrollTo(0, 0);
-          }}>
-            Learn More
-          </Link>
-          
-          <Link to="/blog" className={cn("block px-3 py-1.5 rounded-md text-sm", isScrolled ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-900")} onClick={() => {
+          <Link to="/blog" className={cn("block px-4 py-3 rounded-lg text-base font-medium touch-manipulation", isScrolled ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-900")} onClick={() => {
             setIsMenuOpen(false);
             window.scrollTo(0, 0);
           }}>
             News
           </Link>
           
-          <Link to="/careers" className={cn("block px-3 py-1.5 rounded-md text-sm", isScrolled ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-900")} onClick={() => {
+          <Link to="/careers" className={cn("block px-4 py-3 rounded-lg text-base font-medium touch-manipulation", isScrolled ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-900")} onClick={() => {
             setIsMenuOpen(false);
             window.scrollTo(0, 0);
           }}>
             Careers
           </Link>
           
-          <button onClick={() => scrollToSection('contact')} className={cn("block w-full text-left px-3 py-1.5 rounded-md text-sm", isScrolled ? "text-gray-700 bg-gray-200 hover:bg-gray-300" : "text-white bg-gray-700 hover:bg-gray-600")}>
+          <button onClick={() => scrollToSection('contact')} className={cn("block w-full text-left px-4 py-3 rounded-lg text-base font-medium touch-manipulation", isScrolled ? "text-white bg-[#15AFF7] hover:bg-[#0D94D1]" : "text-black bg-white hover:bg-gray-100")}>
             Contact Us
           </button>
         </div>

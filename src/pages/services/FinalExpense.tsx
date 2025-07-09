@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from "@/components/ui/card";
 import SEO from '@/components/SEO';
+import finalExpenseCouple from '@/assets/final-expense-couple.webp';
 
 const FinalExpense = () => {
   useEffect(() => {
@@ -36,13 +37,13 @@ const FinalExpense = () => {
       <SEO 
         title="Final Expense Insurance - Easy End-of-Life Coverage | Agora Assurance Solutions"
         description="Simple final expense insurance with guaranteed acceptance. Cover funeral costs, medical bills, and debts with no medical exam required."
-        imageUrl="/assets/final-expense-hero-couple.jpg"
+        imageUrl={finalExpenseCouple}
         keywords={['final expense insurance', 'burial insurance', 'funeral insurance', 'guaranteed acceptance', 'no medical exam life insurance']}
       />
       
-      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white min-h-screen">
+      <section className="pt-20 sm:pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white min-h-screen">
         <div className="container mx-auto max-w-6xl">
-          <Link to="/" className="inline-flex items-center text-gray-500 hover:text-[#15AFF7] mb-8 transition-all duration-300 hover:translate-x-1">
+          <Link to="/" className="inline-flex items-center text-gray-500 hover:text-[#15AFF7] mb-6 sm:mb-8 transition-all duration-300 hover:translate-x-1 touch-manipulation">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Home
           </Link>
@@ -88,7 +89,7 @@ const FinalExpense = () => {
                 <motion.div className="relative" variants={itemVariants}>
                   <div className="absolute inset-0 bg-gradient-to-br from-[#15AFF7]/20 to-blue-600/20 rounded-2xl transform rotate-3 scale-105"></div>
                   <img 
-                    src="/assets/final-expense-hero-couple.jpg" 
+                    src={finalExpenseCouple} 
                     alt="Senior couple planning for final expenses"
                     className="relative rounded-2xl shadow-xl transform -rotate-1 hover:rotate-0 transition-transform duration-300"
                   />

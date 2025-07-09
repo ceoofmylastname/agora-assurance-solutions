@@ -4,6 +4,7 @@ import { ArrowRight, Shield, Home, Calculator, MessageSquare } from "lucide-reac
 import { useIsMobile } from "@/hooks/use-mobile";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import heroFamilyProtection from "@/assets/hero-family-protection.webp";
 
 const Hero = () => {
   const isMobile = useIsMobile();
@@ -43,22 +44,23 @@ const Hero = () => {
     }
   };
   return <motion.div className="relative w-full" initial="hidden" animate="visible" variants={containerVariants}>
-      <div className="banner-container bg-[#15AFF7] relative overflow-hidden h-[50vh] sm:h-[60vh] md:h-[500px] lg:h-[550px] xl:h-[600px] w-full">
+      <div className="banner-container bg-[#15AFF7] relative overflow-hidden h-[60vh] sm:h-[70vh] md:h-[500px] lg:h-[550px] xl:h-[600px] w-full">
         <div className="absolute inset-0 bg-[#15AFF7] w-full">
-          <img src="/lovable-uploads/3e95af8d-5845-4810-af42-d9884a4e67bb.png" alt="Happy multi-generational family sitting together on couch - representing family protection and insurance security" className={`w-full h-full object-cover opacity-70 ${isMobile ? 'object-center' : 'object-center'}`} />
+          <img src={heroFamilyProtection} alt="Happy multi-generational family sitting together on couch - representing family protection and insurance security" className={`w-full h-full object-cover opacity-70 ${isMobile ? 'object-center' : 'object-center'}`} />
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-white"></div>
         </div>
         
-        <div className="banner-overlay bg-transparent pt-20 sm:pt-24 md:pt-32 w-full">
+        <div className="banner-overlay bg-transparent pt-16 sm:pt-20 md:pt-24 lg:pt-32 w-full">
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center h-full">
             <motion.div className="w-full max-w-4xl text-center" variants={itemVariants}>
-              <motion.h1 className="banner-title text-white" variants={itemVariants}>Cut the Chaos. Get Covered.
-            </motion.h1>
-              <motion.p className="banner-subtitle text-blue-100 mt-4 sm:mt-6" variants={itemVariants}>
+              <motion.h1 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 leading-tight break-words" variants={itemVariants}>
+                Cut the Chaos. Get Covered.
+              </motion.h1>
+              <motion.p className="text-blue-100 text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed max-w-3xl mx-auto font-light px-2 sm:px-4 mt-4 sm:mt-6" variants={itemVariants}>
                 We're rewriting the insurance experience—no confusing terms, no endless forms, just fast, reliable coverage that puts you in control from the very first click.
               </motion.p>
-              <motion.div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-6 sm:mt-8 justify-center items-center" variants={itemVariants}>
-                <button className="w-full sm:w-auto min-h-[44px] px-6 sm:px-8 py-3 bg-[#15AFF7] text-white rounded-md hover:bg-[#0D94D1] transition-all shadow-lg hover:shadow-xl hover:shadow-blue-300/20 flex items-center justify-center group text-sm sm:text-base font-medium" onClick={e => {
+              <motion.div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-6 sm:mt-8 justify-center items-center px-4 sm:px-0" variants={itemVariants}>
+                <button className="w-full sm:w-auto min-h-[48px] px-6 sm:px-8 py-3 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-all shadow-lg hover:shadow-xl hover:shadow-blue-300/20 flex items-center justify-center group text-sm sm:text-base font-medium touch-manipulation" onClick={e => {
                 e.preventDefault();
                 const featuresSection = document.getElementById('features');
                 if (featuresSection) {
@@ -71,7 +73,7 @@ const Hero = () => {
                   <Calculator className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform" />
                 </button>
                 
-                <button className="w-full sm:w-auto min-h-[44px] px-6 sm:px-8 py-3 bg-white text-black rounded-md hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl hover:shadow-blue-300/20 flex items-center justify-center group text-sm sm:text-base font-medium border-2 border-white" onClick={scrollToContact}>
+                <button className="w-full sm:w-auto min-h-[48px] px-6 sm:px-8 py-3 bg-white text-black rounded-lg hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl hover:shadow-blue-300/20 flex items-center justify-center group text-sm sm:text-base font-medium border-2 border-white touch-manipulation" onClick={scrollToContact}>
                   Book Free Appointment
                   <MessageSquare className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform" />
                 </button>
@@ -82,39 +84,39 @@ const Hero = () => {
       </div>
       
       <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 mx-auto">
-        <motion.div className="mt-6 md:mt-8 grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-4" variants={containerVariants} initial="hidden" animate="visible" transition={{
+        <motion.div className="mt-6 md:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6" variants={containerVariants} initial="hidden" animate="visible" transition={{
         delay: 0.6
       }}>
-          <motion.div className="bg-white p-4 md:p-5 rounded-xl shadow-sm border border-blue-200 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md" variants={itemVariants}>
-            <div className="w-10 h-10 md:w-12 md:h-12 bg-blue-100 flex items-center justify-center rounded-lg text-[#15AFF7] mb-2 md:mb-3">
-              <Shield className="w-5 h-5 md:w-6 md:h-6" />
+          <motion.div className="bg-white p-5 md:p-6 rounded-xl shadow-sm border border-blue-200 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md" variants={itemVariants}>
+            <div className="w-12 h-12 md:w-14 md:h-14 bg-blue-100 flex items-center justify-center rounded-lg text-[#15AFF7] mb-3 md:mb-4">
+              <Shield className="w-6 h-6 md:w-7 md:h-7" />
             </div>
-            <h3 className="text-base md:text-lg font-semibold mb-1 md:mb-2 text-gray-800">Compare Insurance Plans</h3>
-            <p className="text-gray-600 text-xs md:text-sm">Explore a variety of tailored life, mortgage-protection, final expense, annuity, and tax-solutions plans.</p>
+            <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-gray-800">Compare Insurance Plans</h3>
+            <p className="text-gray-600 text-sm md:text-base leading-relaxed">Explore a variety of tailored life, mortgage-protection, final expense, annuity, and tax-solutions plans.</p>
           </motion.div>
           
-          <motion.div className="bg-white p-4 md:p-5 rounded-xl shadow-sm border border-blue-200 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md" variants={itemVariants}>
-            <div className="w-10 h-10 md:w-12 md:h-12 bg-blue-100 flex items-center justify-center rounded-lg text-[#15AFF7] mb-2 md:mb-3">
-              <Calculator className="w-5 h-5 md:w-6 md:h-6" />
+          <motion.div className="bg-white p-5 md:p-6 rounded-xl shadow-sm border border-blue-200 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md" variants={itemVariants}>
+            <div className="w-12 h-12 md:w-14 md:h-14 bg-blue-100 flex items-center justify-center rounded-lg text-[#15AFF7] mb-3 md:mb-4">
+              <Calculator className="w-6 h-6 md:w-7 md:h-7" />
             </div>
-            <h3 className="text-base md:text-lg font-semibold mb-1 md:mb-2 text-gray-800">Get Personalized Quote</h3>
-            <p className="text-gray-600 text-xs md:text-sm">Instantly receive customized quotes from top carriers—no phone calls required.</p>
+            <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-gray-800">Get Personalized Quote</h3>
+            <p className="text-gray-600 text-sm md:text-base leading-relaxed">Instantly receive customized quotes from top carriers—no phone calls required.</p>
           </motion.div>
           
-          <motion.div className="bg-white p-4 md:p-5 rounded-xl shadow-sm border border-blue-200 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md" variants={itemVariants}>
-            <div className="w-10 h-10 md:w-12 md:h-12 bg-blue-100 flex items-center justify-center rounded-lg text-[#15AFF7] mb-2 md:mb-3">
-              <MessageSquare className="w-5 h-5 md:w-6 md:h-6" />
+          <motion.div className="bg-white p-5 md:p-6 rounded-xl shadow-sm border border-blue-200 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md" variants={itemVariants}>
+            <div className="w-12 h-12 md:w-14 md:h-14 bg-blue-100 flex items-center justify-center rounded-lg text-[#15AFF7] mb-3 md:mb-4">
+              <MessageSquare className="w-6 h-6 md:w-7 md:h-7" />
             </div>
-            <h3 className="text-base md:text-lg font-semibold mb-1 md:mb-2 text-gray-800">Licensed Advisor</h3>
-            <p className="text-gray-600 text-xs md:text-sm">Hands-on guidance from state-regulated professionals, ensuring solutions aligned with your family's goals.</p>
+            <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-gray-800">Licensed Advisor</h3>
+            <p className="text-gray-600 text-sm md:text-base leading-relaxed">Hands-on guidance from state-regulated professionals, ensuring solutions aligned with your family's goals.</p>
           </motion.div>
           
-          <motion.div className="bg-white p-4 md:p-5 rounded-xl shadow-sm border border-blue-200 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md" variants={itemVariants}>
-            <div className="w-10 h-10 md:w-12 md:h-12 bg-blue-100 flex items-center justify-center rounded-lg text-[#15AFF7] mb-2 md:mb-3">
-              <Home className="w-5 h-5 md:w-6 md:h-6" />
+          <motion.div className="bg-white p-5 md:p-6 rounded-xl shadow-sm border border-blue-200 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md" variants={itemVariants}>
+            <div className="w-12 h-12 md:w-14 md:h-14 bg-blue-100 flex items-center justify-center rounded-lg text-[#15AFF7] mb-3 md:mb-4">
+              <Home className="w-6 h-6 md:w-7 md:h-7" />
             </div>
-            <h3 className="text-base md:text-lg font-semibold mb-1 md:mb-2 text-gray-800">Learn Our Services</h3>
-            <p className="text-gray-600 text-xs md:text-sm">Deep dive into our full suite—tax, asset protection, annuities, life settlements, and more.</p>
+            <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-gray-800">Learn Our Services</h3>
+            <p className="text-gray-600 text-sm md:text-base leading-relaxed">Deep dive into our full suite—tax, asset protection, annuities, life settlements, and more.</p>
           </motion.div>
         </motion.div>
       </div>
