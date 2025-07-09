@@ -82,14 +82,19 @@ const ProductsSection = () => {
           setIsInView(true);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.1, rootMargin: '50px' }
     );
 
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
 
-    return () => observer.disconnect();
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+      observer.disconnect();
+    };
   }, []);
 
 const containerVariants = {
@@ -105,30 +110,9 @@ const containerVariants = {
 
   const itemVariants = {
     hidden: { 
-      y: 60, 
-      opacity: 0,
-      scale: 0.8,
-      rotateX: 15
-    },
-    visible: {
-      y: 0,
-      opacity: 1,
-      scale: 1,
-      rotateX: 0,
-      transition: { 
-        type: "spring",
-        stiffness: 100,
-        damping: 15,
-        duration: 0.8
-      }
-    }
-  };
-
-  const mobileItemVariants = {
-    hidden: { 
       y: 40, 
       opacity: 0,
-      scale: 0.9
+      scale: 0.95
     },
     visible: {
       y: 0,
@@ -172,14 +156,12 @@ const containerVariants = {
           {products.map((product, index) => (
             <motion.div 
               key={product.id} 
-              variants={window.innerWidth <= 768 ? mobileItemVariants : itemVariants}
+              variants={itemVariants}
               whileHover={{ 
                 scale: 1.02,
-                rotateY: 2,
                 transition: { duration: 0.3 }
               }}
               whileTap={{ scale: 0.98 }}
-              style={{ perspective: "1000px" }}
             >
               <Card className="group relative overflow-hidden bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-full transform-gpu will-change-transform">
                 <CardContent className="p-0">
