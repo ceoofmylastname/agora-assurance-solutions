@@ -127,8 +127,12 @@ const About = () => {
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-[#15AFF7]/5 to-blue-600/5 rounded-2xl transform rotate-1 scale-105 group-hover:rotate-2 transition-transform duration-300"></div>
                     <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300">
-                      <div className="h-12 w-12 bg-[#15AFF7]/10 rounded-full flex items-center justify-center mb-4">
-                        <div className="h-6 w-6 bg-[#15AFF7] rounded-full"></div>
+                      <div className="h-20 w-20 rounded-full overflow-hidden mb-4 border-2 border-[#15AFF7]/20">
+                        <img 
+                          src="/lovable-uploads/cafc6b7d-ba31-4ea6-a4af-78c38e87092b.png" 
+                          alt="Kevin Jenson - Founder & CEO" 
+                          className="w-full h-full object-cover"
+                        />
                       </div>
                       <h3 className="text-xl font-bold text-gray-900 mb-1">Kevin Jenson</h3>
                       <p className="text-[#15AFF7] font-medium mb-3">Founder & CEO</p>
