@@ -109,7 +109,7 @@ const Navbar = () => {
             <div className="flex-shrink-0">
               <Link to="/" className="flex items-center">
                 <img 
-                  src={isScrolled ? "/lovable-uploads/3e95af8d-5845-4810-af42-d9884a4e67bb.png" : "/lovable-uploads/b09383f5-a02b-439b-b5de-34a1fe9f2a1f.png"} 
+                  src={isScrolled ? "/lovable-uploads/610dc05e-0552-4a89-97b1-852580e78ec0.png" : "/lovable-uploads/b09383f5-a02b-439b-b5de-34a1fe9f2a1f.png"} 
                   alt="Agora Assurance Solutions Logo" 
                   className="h-8 w-auto" 
                 />
@@ -252,7 +252,7 @@ const Navbar = () => {
             {/* Header with close button */}
             <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
               <img 
-                src={isScrolled ? "/lovable-uploads/3e95af8d-5845-4810-af42-d9884a4e67bb.png" : "/lovable-uploads/b09383f5-a02b-439b-b5de-34a1fe9f2a1f.png"} 
+                src={isScrolled ? "/lovable-uploads/610dc05e-0552-4a89-97b1-852580e78ec0.png" : "/lovable-uploads/b09383f5-a02b-439b-b5de-34a1fe9f2a1f.png"} 
                 alt="Agora Logo" 
                 className="h-8 w-auto" 
               />
