@@ -2,11 +2,14 @@ import PageLayout from '@/components/PageLayout';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { ApplicationModal } from '@/components/ApplicationModal';
 import businessMeetingImage from '@/assets/business-meeting-advisors.jpg';
 
 const Careers = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -64,6 +67,7 @@ const Careers = () => {
                   >
                     <Button 
                       size="lg" 
+                      onClick={() => setIsModalOpen(true)}
                       className="bg-[#15AFF7] hover:bg-[#0D94D1] text-white px-8 py-3 text-lg font-semibold"
                     >
                       APPLY NOW
@@ -89,6 +93,11 @@ const Careers = () => {
           </div>
         </section>
       </PageLayout>
+      
+      <ApplicationModal 
+        open={isModalOpen} 
+        onOpenChange={setIsModalOpen} 
+      />
     </div>
   );
 };
