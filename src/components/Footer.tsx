@@ -100,11 +100,14 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold mb-4 text-black">Our Services</h3>
             <ul className="space-y-3">
-              <li><Link to="/term-life" className="text-black hover:text-white transition-colors">Term Life Insurance</Link></li>
-              <li><Link to="/mortgage-protection" className="text-black hover:text-white transition-colors">Mortgage Protection</Link></li>
-              <li><Link to="/final-expense" className="text-black hover:text-white transition-colors">Final Expense</Link></li>
-              <li><Link to="/annuities" className="text-black hover:text-white transition-colors">Annuity Solutions</Link></li>
-              <li><Link to="/tax-solutions" className="text-black hover:text-white transition-colors">Tax Solutions</Link></li>
+              <li><Link to="/services/term-life" className="text-black hover:text-white transition-colors">Term Life Insurance</Link></li>
+              <li><Link to="/services/whole-life" className="text-black hover:text-white transition-colors">Whole Life Insurance</Link></li>
+              <li><Link to="/services/universal-life" className="text-black hover:text-white transition-colors">Universal Life Insurance</Link></li>
+              <li><Link to="/services/mortgage-protection" className="text-black hover:text-white transition-colors">Mortgage Protection</Link></li>
+              <li><Link to="/services/final-expense" className="text-black hover:text-white transition-colors">Final Expense</Link></li>
+              <li><Link to="/services/annuities" className="text-black hover:text-white transition-colors">Annuity Solutions</Link></li>
+              <li><Link to="/services/life-settlements" className="text-black hover:text-white transition-colors">Life Settlements</Link></li>
+              <li><Link to="/services/tax-asset-protection" className="text-black hover:text-white transition-colors">Tax & Asset Protection</Link></li>
             </ul>
           </div>
           
