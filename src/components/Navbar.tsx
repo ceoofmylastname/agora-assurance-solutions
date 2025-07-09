@@ -131,7 +131,7 @@ const Navbar = () => {
                 <NavigationMenuItem>
                   <Link to="/careers">
                     <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), isScrolled ? "text-gray-700 hover:text-gray-900" : "text-gray-100 hover:text-white bg-transparent hover:bg-gray-800")}>
-                      Careers
+                      Agora Advisor Solutions
                     </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
@@ -205,7 +205,7 @@ const Navbar = () => {
             setIsMenuOpen(false);
             window.scrollTo(0, 0);
           }}>
-            Careers
+            Agora Advisor Solutions
           </Link>
           
           <button onClick={() => scrollToSection('contact')} className={cn("block w-full text-left px-4 py-3 rounded-lg text-base font-medium touch-manipulation", isScrolled ? "text-white bg-[#15AFF7] hover:bg-[#0D94D1]" : "text-black bg-white hover:bg-gray-100")}>
