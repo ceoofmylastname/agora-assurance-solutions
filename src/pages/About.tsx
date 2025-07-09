@@ -166,8 +166,8 @@ const About = () => {
                 }} className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-600/5 rounded-2xl transform -rotate-1 scale-105 group-hover:-rotate-2 transition-transform duration-300"></div>
                     <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform rotate-1 group-hover:rotate-0 transition-transform duration-300">
-                      <div className="h-12 w-12 bg-blue-500/10 rounded-full flex items-center justify-center mb-4">
-                        <div className="h-6 w-6 bg-blue-500 rounded-full"></div>
+                      <div className="h-20 w-20 rounded-full overflow-hidden mb-4 border-2 border-blue-500/20">
+                        <img alt="Benjamin Schroeder - Director of Communications" className="w-full h-full object-cover" src="/lovable-uploads/8a8c0896-4865-4bb8-aa18-10e30d79d044.png" />
                       </div>
                       <h3 className="text-xl font-bold text-gray-900 mb-1">Benjamin Schroeder</h3>
                       <p className="text-blue-500 font-medium mb-3">Director of Communications</p>
