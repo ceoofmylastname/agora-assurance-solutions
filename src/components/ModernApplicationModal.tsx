@@ -247,7 +247,7 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
             <textarea
               {...register(step.id as keyof ApplicationFormData)}
               rows={4}
-              className="w-full text-2xl bg-transparent border-b-2 border-gray-300 focus:border-blue-500 outline-none p-4 resize-none placeholder-gray-400"
+              className="w-full text-lg md:text-2xl bg-transparent border-b-2 border-gray-300 focus:border-blue-500 outline-none p-3 md:p-4 resize-none placeholder-gray-400"
               placeholder={step.placeholder}
               onKeyDown={handleKeyPress}
               autoFocus
@@ -270,12 +270,12 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
                     setValue(step.id as keyof ApplicationFormData, option.value as any);
                     setTimeout(nextStep, 300);
                   }}
-                  className="w-full text-left p-6 rounded-xl border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-all duration-200 text-xl hover:scale-105 transform"
+                  className="w-full text-left p-4 md:p-6 rounded-xl border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-all duration-200 text-lg md:text-xl hover:scale-105 transform min-h-[60px] flex items-center"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  <div className="flex items-center justify-between">
-                    <span>{option.label}</span>
-                    <ChevronRight className="w-6 h-6 text-gray-400" />
+                  <div className="flex items-center justify-between w-full">
+                    <span className="flex-1 pr-2">{option.label}</span>
+                    <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-gray-400 flex-shrink-0" />
                   </div>
                 </button>
               ))}
@@ -289,12 +289,12 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
       case 'name-split':
         return (
           <div className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 gap-4 md:gap-6">
               <div>
                 <input
                   {...register('firstName')}
                   type="text"
-                  className="w-full text-2xl bg-transparent border-b-2 border-gray-300 focus:border-blue-500 outline-none p-4 placeholder-gray-400"
+                  className="w-full text-lg md:text-2xl bg-transparent border-b-2 border-gray-300 focus:border-blue-500 outline-none p-3 md:p-4 placeholder-gray-400"
                   placeholder="First name"
                   onKeyDown={handleKeyPress}
                   autoFocus
@@ -304,7 +304,7 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
                 <input
                   {...register('lastName')}
                   type="text"
-                  className="w-full text-2xl bg-transparent border-b-2 border-gray-300 focus:border-blue-500 outline-none p-4 placeholder-gray-400"
+                  className="w-full text-lg md:text-2xl bg-transparent border-b-2 border-gray-300 focus:border-blue-500 outline-none p-3 md:p-4 placeholder-gray-400"
                   placeholder="Last name"
                   onKeyDown={handleKeyPress}
                 />
@@ -325,7 +325,7 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
               <input
                 {...register('state')}
                 type="text"
-                className="w-full text-2xl bg-transparent border-b-2 border-gray-300 focus:border-blue-500 outline-none p-4 placeholder-gray-400"
+                className="w-full text-lg md:text-2xl bg-transparent border-b-2 border-gray-300 focus:border-blue-500 outline-none p-3 md:p-4 placeholder-gray-400"
                 placeholder="State"
                 onKeyDown={handleKeyPress}
                 autoFocus
@@ -335,7 +335,7 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
               <input
                 {...register('address')}
                 type="text"
-                className="w-full text-2xl bg-transparent border-b-2 border-gray-300 focus:border-blue-500 outline-none p-4 placeholder-gray-400"
+                className="w-full text-lg md:text-2xl bg-transparent border-b-2 border-gray-300 focus:border-blue-500 outline-none p-3 md:p-4 placeholder-gray-400"
                 placeholder="Full address"
                 onKeyDown={handleKeyPress}
               />
@@ -352,7 +352,7 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
         return (
           <div className="space-y-6">
             <div 
-              className="flex items-start space-x-4 p-6 rounded-xl border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-all duration-200 cursor-pointer"
+              className="flex items-start space-x-3 md:space-x-4 p-4 md:p-6 rounded-xl border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-all duration-200 cursor-pointer"
               onClick={() => {
                 const currentValue = watchedValues.consent;
                 setValue('consent', !currentValue);
@@ -363,7 +363,7 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
               }`}>
                 {watchedValues.consent && <Check className="w-4 h-4 text-white" />}
               </div>
-              <div className="text-lg text-gray-700 leading-relaxed">
+              <div className="text-base md:text-lg text-gray-700 leading-relaxed">
                 I consent to being contacted by Agora Assurance Solutions regarding my inquiry. 
                 I understand that my information will be used in accordance with the privacy policy.
               </div>
@@ -380,7 +380,7 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
             <input
               {...register(step.id as keyof ApplicationFormData)}
               type={step.type}
-              className="w-full text-2xl bg-transparent border-b-2 border-gray-300 focus:border-blue-500 outline-none p-4 placeholder-gray-400"
+              className="w-full text-lg md:text-2xl bg-transparent border-b-2 border-gray-300 focus:border-blue-500 outline-none p-3 md:p-4 placeholder-gray-400"
               placeholder={step.placeholder}
               onKeyDown={handleKeyPress}
               autoFocus
@@ -402,7 +402,7 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
       />
       
       {/* Modal */}
-      <div className="relative w-full max-w-4xl mx-4 h-[80vh] bg-white rounded-3xl shadow-2xl overflow-hidden animate-scale-in">
+      <div className="relative w-full max-w-4xl mx-2 md:mx-4 h-[85vh] md:h-[80vh] bg-white rounded-2xl md:rounded-3xl shadow-2xl overflow-hidden animate-scale-in">
         {/* Progress Bar */}
         <div className="absolute top-0 left-0 right-0 h-2 bg-gray-200">
           <div 
@@ -414,10 +414,10 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 z-10 p-3 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-full transition-all duration-200 hover:scale-110"
+          className="absolute top-4 md:top-6 right-4 md:right-6 z-10 p-2 md:p-3 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-full transition-all duration-200 hover:scale-110"
           aria-label="Close modal"
         >
-          <X size={24} />
+          <X size={20} />
         </button>
 
         {/* Content */}
@@ -436,21 +436,21 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
             </div>
           ) : (
             <>
-              <div className="flex-1 p-12 flex flex-col justify-center overflow-y-auto max-h-[70vh]">
-                <div className="max-w-3xl mx-auto w-full">
-                  <div className="mb-12 animate-fade-in">
-                    <div className="flex items-center space-x-4 mb-6">
-                      <span className="text-2xl font-bold text-blue-500">
+              <div className="flex-1 p-4 md:p-12 flex flex-col justify-center overflow-y-auto max-h-[70vh]">
+                <div className="max-w-3xl mx-auto w-full px-2 md:px-0">
+                  <div className="mb-8 md:mb-12 animate-fade-in">
+                    <div className="flex items-center space-x-3 md:space-x-4 mb-4 md:mb-6">
+                      <span className="text-xl md:text-2xl font-bold text-blue-500">
                         {currentStep + 1}
                       </span>
-                      <span className="text-lg text-gray-400">
+                      <span className="text-base md:text-lg text-gray-400">
                         of {steps.length}
                       </span>
                     </div>
-                    <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+                    <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-4 leading-tight">
                       {currentStepData.title}
                     </h1>
-                    <p className="text-xl text-gray-600 mb-8">
+                    <p className="text-lg md:text-xl text-gray-600 mb-6 md:mb-8">
                       {currentStepData.subtitle}
                     </p>
                   </div>
@@ -462,23 +462,23 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
               </div>
               
               {/* Navigation */}
-              <div className="p-8 border-t border-gray-200 bg-gray-50">
+              <div className="p-4 md:p-8 border-t border-gray-200 bg-gray-50">
                 <div className="flex justify-between items-center max-w-3xl mx-auto">
                   <button
                     type="button"
                     onClick={prevStep}
                     disabled={currentStep === 0}
-                    className="flex items-center space-x-2 px-6 py-3 text-gray-600 hover:text-gray-900 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    className="flex items-center space-x-1 md:space-x-2 px-4 md:px-6 py-2 md:py-3 text-gray-600 hover:text-gray-900 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-sm md:text-base"
                   >
-                    <ChevronLeft size={20} />
+                    <ChevronLeft size={16} className="md:w-5 md:h-5" />
                     <span>Back</span>
                   </button>
                   
-                  <div className="flex space-x-2">
+                  <div className="flex space-x-1 md:space-x-2">
                     {steps.map((_, index) => (
                       <div
                         key={index}
-                        className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                        className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
                           index <= currentStep ? 'bg-blue-500' : 'bg-gray-300'
                         }`}
                       />
@@ -490,17 +490,17 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
                       type="button"
                       onClick={handleSubmit(onSubmit)}
                       disabled={isSubmitting || !watchedValues.consent}
-                      className="flex items-center space-x-2 px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl hover:from-blue-600 hover:to-purple-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 hover:scale-105 transform font-semibold"
+                      className="flex items-center space-x-1 md:space-x-2 px-4 md:px-8 py-2 md:py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg md:rounded-xl hover:from-blue-600 hover:to-purple-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 hover:scale-105 transform font-semibold text-sm md:text-base"
                     >
                       {isSubmitting ? (
                         <>
-                          <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                          <div className="w-4 h-4 md:w-5 md:h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                           <span>Submitting...</span>
                         </>
                       ) : (
                         <>
                           <span>Submit Application</span>
-                          <Check size={20} />
+                          <Check size={16} className="md:w-5 md:h-5" />
                         </>
                       )}
                     </button>
@@ -508,10 +508,10 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
                     <button
                       type="button"
                       onClick={nextStep}
-                      className="flex items-center space-x-2 px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-200 hover:scale-105 transform font-semibold"
+                      className="flex items-center space-x-1 md:space-x-2 px-4 md:px-8 py-2 md:py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg md:rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-200 hover:scale-105 transform font-semibold text-sm md:text-base"
                     >
                       <span>Continue</span>
-                      <ChevronRight size={20} />
+                      <ChevronRight size={16} className="md:w-5 md:h-5" />
                     </button>
                   )}
                 </div>
