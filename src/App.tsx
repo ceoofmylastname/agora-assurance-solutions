@@ -12,6 +12,10 @@ import Careers from "./pages/Careers";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Blog from "./pages/Blog";
 import BlogPostDetail from "./pages/BlogPostDetail";
+import TermLife from "./pages/services/TermLife";
+import WholeLife from "./pages/services/WholeLife";
+import Annuities from "./pages/services/Annuities";
+import FinalExpense from "./pages/services/FinalExpense";
 
 const App = () => {
   const [queryClient] = useState(() => new QueryClient());
@@ -29,6 +33,10 @@ const App = () => {
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPostDetail />} />
+            <Route path="/services/term-life" element={<TermLife />} />
+            <Route path="/services/whole-life" element={<WholeLife />} />
+            <Route path="/services/annuities" element={<Annuities />} />
+            <Route path="/services/final-expense" element={<FinalExpense />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

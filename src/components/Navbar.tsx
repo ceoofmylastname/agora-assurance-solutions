@@ -74,41 +74,55 @@ const Navbar = () => {
                 
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className={cn(isScrolled ? "text-gray-700 hover:text-gray-900" : "text-gray-100 hover:text-white bg-transparent hover:bg-gray-800")}>
-                    Customer Cases
+                    Services
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid gap-3 p-4 w-[400px]">
-                      <li>
-                        <Link to="/projects/firecat" className="block p-3 space-y-1 rounded-md hover:bg-gray-100">
-                          <div className="font-medium">FireCat 6th SENSE</div>
-                          <p className="text-sm text-gray-500">Smart textiles for firefighter safety</p>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/projects/sport-retail" className="block p-3 space-y-1 rounded-md hover:bg-gray-100">
-                          <div className="font-medium">Sports Performance</div>
-                          <p className="text-sm text-gray-500">Advanced tracking for athletes</p>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/projects/workwear" className="block p-3 space-y-1 rounded-md hover:bg-gray-100">
-                          <div className="font-medium">Workwear Climate Control</div>
-                          <p className="text-sm text-gray-500">Temperature regulation for extreme environments</p>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/projects/hockey" className="block p-3 space-y-1 rounded-md hover:bg-gray-100">
-                          <div className="font-medium">Ice Hockey Elite Tracker</div>
-                          <p className="text-sm text-gray-500">Performance tracking for ice hockey</p>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/projects/pet-tracker" className="block p-3 space-y-1 rounded-md hover:bg-gray-100">
-                          <div className="font-medium">Pet Activity Counter</div>
-                          <p className="text-sm text-gray-500">Smart collars for pet activity monitoring</p>
-                        </Link>
-                      </li>
-                    </ul>
+                    <div className="w-[600px] p-6">
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="space-y-3">
+                          <h4 className="font-semibold text-lg text-[#15AFF7] mb-3">Life Insurance</h4>
+                          <Link to="/services/term-life" className="block p-3 space-y-1 rounded-lg hover:bg-gradient-to-r hover:from-[#15AFF7]/10 hover:to-blue-600/10 transition-all duration-300 border border-transparent hover:border-[#15AFF7]/20">
+                            <div className="font-medium">Term Life Insurance</div>
+                            <p className="text-sm text-gray-500">Affordable protection for your family's future</p>
+                          </Link>
+                          <Link to="/services/whole-life" className="block p-3 space-y-1 rounded-lg hover:bg-gradient-to-r hover:from-[#15AFF7]/10 hover:to-blue-600/10 transition-all duration-300 border border-transparent hover:border-[#15AFF7]/20">
+                            <div className="font-medium">Whole Life Insurance</div>
+                            <p className="text-sm text-gray-500">Lifelong protection with cash value growth</p>
+                          </Link>
+                          <Link to="/services/universal-life" className="block p-3 space-y-1 rounded-lg hover:bg-gradient-to-r hover:from-[#15AFF7]/10 hover:to-blue-600/10 transition-all duration-300 border border-transparent hover:border-[#15AFF7]/20">
+                            <div className="font-medium">Universal Life Insurance</div>
+                            <p className="text-sm text-gray-500">Flexible premiums with investment options</p>
+                          </Link>
+                          <Link to="/services/indexed-universal-life" className="block p-3 space-y-1 rounded-lg hover:bg-gradient-to-r hover:from-[#15AFF7]/10 hover:to-blue-600/10 transition-all duration-300 border border-transparent hover:border-[#15AFF7]/20">
+                            <div className="font-medium">Indexed Universal Life</div>
+                            <p className="text-sm text-gray-500">Market-linked growth with downside protection</p>
+                          </Link>
+                        </div>
+                        <div className="space-y-3">
+                          <h4 className="font-semibold text-lg text-[#15AFF7] mb-3">Specialized Protection</h4>
+                          <Link to="/services/final-expense" className="block p-3 space-y-1 rounded-lg hover:bg-gradient-to-r hover:from-[#15AFF7]/10 hover:to-blue-600/10 transition-all duration-300 border border-transparent hover:border-[#15AFF7]/20">
+                            <div className="font-medium">Final Expense Insurance</div>
+                            <p className="text-sm text-gray-500">End-of-life coverage made simple</p>
+                          </Link>
+                          <Link to="/services/mortgage-protection" className="block p-3 space-y-1 rounded-lg hover:bg-gradient-to-r hover:from-[#15AFF7]/10 hover:to-blue-600/10 transition-all duration-300 border border-transparent hover:border-[#15AFF7]/20">
+                            <div className="font-medium">Mortgage Protection</div>
+                            <p className="text-sm text-gray-500">Keep your home in the family</p>
+                          </Link>
+                          <Link to="/services/annuities" className="block p-3 space-y-1 rounded-lg hover:bg-gradient-to-r hover:from-[#15AFF7]/10 hover:to-blue-600/10 transition-all duration-300 border border-transparent hover:border-[#15AFF7]/20">
+                            <div className="font-medium">Annuities</div>
+                            <p className="text-sm text-gray-500">Guaranteed retirement income solutions</p>
+                          </Link>
+                          <Link to="/services/life-settlements" className="block p-3 space-y-1 rounded-lg hover:bg-gradient-to-r hover:from-[#15AFF7]/10 hover:to-blue-600/10 transition-all duration-300 border border-transparent hover:border-[#15AFF7]/20">
+                            <div className="font-medium">Life Settlements</div>
+                            <p className="text-sm text-gray-500">Unlock value from existing policies</p>
+                          </Link>
+                          <Link to="/services/tax-asset-protection" className="block p-3 space-y-1 rounded-lg hover:bg-gradient-to-r hover:from-[#15AFF7]/10 hover:to-blue-600/10 transition-all duration-300 border border-transparent hover:border-[#15AFF7]/20">
+                            <div className="font-medium">Tax & Asset Protection</div>
+                            <p className="text-sm text-gray-500">Strategic wealth preservation solutions</p>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 
@@ -188,12 +202,12 @@ const Navbar = () => {
             About Us
           </Link>
           
-          {/* Simplified Customer Cases - no dropdown */}
-          <Link to="/projects/firecat" className={cn("block px-3 py-1.5 rounded-md text-sm", isScrolled ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-900")} onClick={() => {
+          {/* Simplified Services - no dropdown */}
+          <Link to="/services/term-life" className={cn("block px-3 py-1.5 rounded-md text-sm", isScrolled ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-900")} onClick={() => {
             setIsMenuOpen(false);
             window.scrollTo(0, 0);
           }}>
-            Customer Cases
+            Services
           </Link>
           
           {/* Simplified Learn More - no dropdown */}
