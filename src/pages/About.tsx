@@ -29,7 +29,7 @@ const About = () => {
               transition={{ duration: 0.5 }} 
               className="text-4xl font-bold mb-6"
             >
-              About WRLDS Technologies
+              About Agora Assurance Solutions
             </motion.h1>
             
             <div className="prose prose-lg max-w-none">
@@ -39,7 +39,25 @@ const About = () => {
                 transition={{ duration: 0.5, delay: 0.2 }} 
                 className="text-xl text-gray-600 mb-12"
               >
-                We're a team of innovators dedicated to revolutionizing smart textile technology for industries worldwide.
+                A Smarter Way to Protect What Matters
+              </motion.p>
+              
+              <motion.p 
+                initial={{ opacity: 0 }} 
+                animate={{ opacity: 1 }} 
+                transition={{ duration: 0.5, delay: 0.3 }} 
+                className="text-lg text-gray-600 mb-12"
+              >
+                At Agora, we believe the insurance industry needed a reset—so we built one.
+              </motion.p>
+              
+              <motion.p 
+                initial={{ opacity: 0 }} 
+                animate={{ opacity: 1 }} 
+                transition={{ duration: 0.5, delay: 0.4 }} 
+                className="text-lg text-gray-600 mb-12"
+              >
+                We're a tech-powered, people-first assurance company on a mission to remove the complexity, pressure, and confusion from buying insurance. Whether you're protecting your home, your income, your retirement, or your family's legacy—we give you the tools, transparency, and human guidance to make the right choice.
               </motion.p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
@@ -51,12 +69,7 @@ const About = () => {
                 >
                   <h2 className="text-3xl font-bold">Our Mission</h2>
                   <p className="text-gray-600">
-                    At WRLDS Technologies, we're on a mission to transform ordinary textiles into intelligent, 
-                    data-driven solutions that improve safety, performance, and quality of life across industries.
-                  </p>
-                  <p className="text-gray-600">
-                    We believe that by embedding intelligence into everyday fabrics, we can create a more 
-                    connected, responsive, and safer world.
+                    To empower families with <em>clarity, confidence, and control</em> when it comes to life's most important financial decisions. We combine cutting-edge technology with licensed, compassionate professionals to simplify insurance for the modern consumer.
                   </p>
                 </motion.div>
                 
@@ -66,23 +79,23 @@ const About = () => {
                   transition={{ duration: 0.6, delay: 0.2 }}
                   className="bg-gray-50 rounded-2xl p-8 border border-gray-100"
                 >
-                  <h3 className="text-2xl font-bold mb-4">Our Values</h3>
+                  <h3 className="text-2xl font-bold mb-4">What Makes Us Different</h3>
                   <ul className="space-y-3">
                     <li className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-gray-700 mt-1 mr-3 flex-shrink-0" />
-                      <span><strong>Innovation:</strong> We push boundaries to create solutions that weren't possible before.</span>
+                      <span><strong>Independent & Unbiased:</strong> We don't push one carrier or product. We're your advocate—not a salesperson.</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-gray-700 mt-1 mr-3 flex-shrink-0" />
-                      <span><strong>Quality:</strong> We're committed to excellence in every sensor, algorithm, and solution we deliver.</span>
+                      <span><strong>Built with AI + Heart:</strong> Our proprietary tech delivers quotes and comparisons in seconds—but every decision is guided by real humans who care.</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-gray-700 mt-1 mr-3 flex-shrink-0" />
-                      <span><strong>Collaboration:</strong> We work closely with our clients to ensure their unique needs are met.</span>
+                      <span><strong>Full-Service Protection:</strong> From term life to annuities, mortgage protection to tax planning—we cover the full spectrum of financial protection.</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-gray-700 mt-1 mr-3 flex-shrink-0" />
-                      <span><strong>Impact:</strong> We measure success by the tangible differences our technology makes in the real world.</span>
+                      <span><strong>Real People, Real Help:</strong> Our licensed advisors offer hands-on support with no pressure and no fluff—just honest help when you need it.</span>
                     </li>
                   </ul>
                 </motion.div>
@@ -94,23 +107,28 @@ const About = () => {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="mb-16"
               >
-                <h2 className="text-3xl font-bold mb-6">Our Story</h2>
-                <div className="bg-white rounded-xl border border-gray-200 p-8 shadow-sm">
-                  <p className="text-gray-600 mb-4">
-                    We started with the ambition to make an inherently scattered and complex development area modular, 
-                    smart and available to analog brands. After successfully raising millions of dollars for development, 
-                    we spent the first two years in full code mode.
-                  </p>
-                  <p className="text-gray-600 mb-4">
-                    The goal was to turn all the scattered hardware and building blocks into simple modules to be 
-                    assembled like Lego. During this time we took in a range of customers for whom we built prototypes - 
-                    a way for us to make sure what we built had bearing in real world use cases.
-                  </p>
-                  <p className="text-gray-600">
-                    In 2023 we felt we had reached a technology level allowing us to start working on enterprise level. 
-                    Since then, we have focused on textile integrations because of the enormous potential smart textiles 
-                    have across multiple industries from healthcare to public safety.
-                  </p>
+                <h2 className="text-3xl font-bold mb-6">Leadership with Vision</h2>
+                <div className="space-y-8">
+                  <div className="bg-white rounded-xl border border-gray-200 p-8 shadow-sm">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Kevin Jenson – <span className="text-gray-600 font-normal italic">Founder & CEO</span></h3>
+                    <p className="text-gray-600">
+                      With nearly two decades in life insurance and annuities—including executive leadership at Quility—Kevin founded Agora in 2024 to reinvent the client experience with technology, speed, and service.
+                    </p>
+                  </div>
+                  
+                  <div className="bg-white rounded-xl border border-gray-200 p-8 shadow-sm">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Benjamin Schroeder – <span className="text-gray-600 font-normal italic">Director of Communications</span></h3>
+                    <p className="text-gray-600">
+                      A skilled strategist with a background in coaching and corporate leadership, Ben ensures our mission stays aligned across every channel—from brand to partnership.
+                    </p>
+                  </div>
+                  
+                  <div className="bg-white rounded-xl border border-gray-200 p-8 shadow-sm">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Olga Lomova – <span className="text-gray-600 font-normal italic">Chief Strategy Officer</span></h3>
+                    <p className="text-gray-600">
+                      An immigrant entrepreneur with deep expertise in financial marketing, Olga leads Agora's growth with a passion for inclusion, innovation, and intelligent expansion.
+                    </p>
+                  </div>
                 </div>
               </motion.div>
               
@@ -120,56 +138,38 @@ const About = () => {
                 transition={{ duration: 0.6, delay: 0.6 }}
                 className="mb-16"
               >
-                <h2 className="text-3xl font-bold mb-6">Our Team</h2>
-                <p className="text-gray-600 mb-8">
-                  Our diverse team combines expertise in textile engineering, electronics, software development, 
-                  artificial intelligence, and industry-specific knowledge to deliver holistic solutions.
-                </p>
-                
+                <h2 className="text-3xl font-bold mb-6">By the Numbers</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {[
-                    {
-                      name: "Felix von Heland",
-                      role: "CEO and Founder",
-                      bio: "Leading WRLDS Technologies with a vision to transform the future of smart textiles.",
-                      image: "/lovable-uploads/aa5291bd-2417-4c1e-9a02-0bcc71a92507.png"
-                    },
-                    {
-                      name: "Niek Bijman",
-                      role: "Software Lead",
-                      bio: "Specializing in cloud infrastructure and APIs for seamless data integration.",
-                      image: "/lovable-uploads/e502f601-c519-43a8-86f5-5fa89ae50d2f.png"
-                    },
-                    {
-                      name: "Chengjie Li",
-                      role: "Hardware Lead",
-                      bio: "Expert in embedded systems engineering, leading our hardware development efforts.",
-                      image: "/lovable-uploads/3de85ddd-15e1-4216-9697-f91abb9a47ce.png"
-                    },
-                    {
-                      name: "Love",
-                      role: "COO",
-                      bio: "Overseeing daily operations and ensuring business objectives are met effectively.",
-                      image: "/lovable-uploads/a9bb9110-964a-43b0-a5ab-7162140cd133.png"
-                    }
-                  ].map((member, i) => (
-                    <Card key={i} className="bg-gray-50 border border-gray-100 overflow-hidden">
-                      <CardContent className="p-6">
-                        <div className="flex flex-col items-center text-center">
-                          <div className="w-32 h-32 relative mb-4 rounded-full overflow-hidden">
-                            <img 
-                              src={member.image} 
-                              alt={member.name} 
-                              className="w-full h-full object-cover filter grayscale" 
-                            />
-                          </div>
-                          <h3 className="font-bold text-lg">{member.name}</h3>
-                          <p className="text-gray-500 text-sm mb-2">{member.role}</p>
-                          <p className="text-gray-600 text-sm">{member.bio}</p>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
+                  <div className="bg-gray-50 rounded-xl border border-gray-100 p-6 text-center">
+                    <div className="text-2xl font-bold text-gray-900 mb-2">50+</div>
+                    <div className="text-gray-600">years combined leadership experience</div>
+                  </div>
+                  <div className="bg-gray-50 rounded-xl border border-gray-100 p-6 text-center">
+                    <div className="text-2xl font-bold text-gray-900 mb-2">$500M+</div>
+                    <div className="text-gray-600">in tax-free benefits created</div>
+                  </div>
+                  <div className="bg-gray-50 rounded-xl border border-gray-100 p-6 text-center">
+                    <div className="text-2xl font-bold text-gray-900 mb-2">2,500+</div>
+                    <div className="text-gray-600">lives protected and counting</div>
+                  </div>
+                  <div className="bg-gray-50 rounded-xl border border-gray-100 p-6 text-center">
+                    <div className="text-2xl font-bold text-gray-900 mb-2">100+</div>
+                    <div className="text-gray-600">business and carrier partnerships</div>
+                  </div>
+                </div>
+              </motion.div>
+              
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                transition={{ duration: 0.6, delay: 0.8 }}
+                className="mb-16"
+              >
+                <div className="bg-white rounded-xl border border-gray-200 p-8 shadow-sm text-center">
+                  <h2 className="text-3xl font-bold mb-4">The Future of Insurance Starts Here</h2>
+                  <p className="text-gray-600 text-lg">
+                    We're not here to sell you a policy. We're here to help you protect your future, your way. Welcome to Agora—where modern insurance meets timeless care.
+                  </p>
                 </div>
               </motion.div>
             </div>
