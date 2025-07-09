@@ -4,61 +4,70 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Shield, Home, Heart, TrendingUp, DollarSign, FileText } from 'lucide-react';
 import { motion } from "framer-motion";
 import annuitiesCard from '@/assets/annuities-card.jpg';
+import termLifeFamily from '@/assets/term-life-family.webp';
+import heroFamilyProtection from '@/assets/hero-family-protection.webp';
+import finalExpenseCouple from '@/assets/final-expense-couple.webp';
 
 const products = [
   {
     id: 1,
     title: "Term Life Insurance",
     description: "Flexible, affordable coverage for a set term—compare multiple policies side-by-side to protect your loved ones.",
-    icon: <Shield className="w-8 h-8" />,
+    icon: <Shield className="w-6 h-6" />,
     features: ["Affordable premiums", "Flexible terms", "Multiple carrier options", "Instant quotes"],
-    color: "bg-blue-50 border-blue-200",
-    iconColor: "text-blue-600 bg-blue-100"
+    image: termLifeFamily,
+    gradient: "from-slate-900 to-slate-700",
+    accent: "from-blue-500 to-blue-600"
   },
   {
     id: 2,
     title: "Mortgage Protection Insurance",
     description: "Pays off your mortgage if something happens—guaranteed peace of mind that your family keeps the home.",
-    icon: <Home className="w-8 h-8" />,
+    icon: <Home className="w-6 h-6" />,
     features: ["Mortgage payoff guarantee", "Family home protection", "Decreasing term options", "Quick approval"],
-    color: "bg-green-50 border-green-200",
-    iconColor: "text-green-600 bg-green-100"
+    image: heroFamilyProtection,
+    gradient: "from-emerald-900 to-emerald-700",
+    accent: "from-emerald-500 to-emerald-600"
   },
   {
     id: 3,
     title: "Final Expense Insurance",
     description: "Lifetime coverage to cover funeral costs and end-of-life expenses with simple, guaranteed benefits.",
-    icon: <Heart className="w-8 h-8" />,
+    icon: <Heart className="w-6 h-6" />,
     features: ["Guaranteed acceptance", "No medical exams", "Fixed premiums", "Immediate coverage"],
-    color: "bg-purple-50 border-purple-200",
-    iconColor: "text-purple-600 bg-purple-100"
+    image: finalExpenseCouple,
+    gradient: "from-purple-900 to-purple-700",
+    accent: "from-purple-500 to-purple-600"
   },
   {
     id: 4,
     title: "Annuity Solutions",
     description: "Fixed & indexed annuities that turn savings into reliable retirement income, with customizable living benefits.",
-    icon: <TrendingUp className="w-8 h-8" />,
+    icon: <TrendingUp className="w-6 h-6" />,
     features: ["Guaranteed income", "Market protection", "Tax advantages", "Flexible withdrawals"],
-    color: "bg-orange-50 border-orange-200",
-    iconColor: "text-orange-600 bg-orange-100"
+    image: annuitiesCard,
+    gradient: "from-orange-900 to-orange-700",
+    accent: "from-orange-500 to-orange-600"
   },
   {
     id: 5,
     title: "Life Settlements",
     description: "Unlock cash value by selling an unneeded life policy—turn a dormant asset into spendable funds.",
-    icon: <DollarSign className="w-8 h-8" />,
+    icon: <DollarSign className="w-6 h-6" />,
     features: ["Cash for unused policies", "Free evaluations", "No ongoing premiums", "Immediate liquidity"],
-    color: "bg-emerald-50 border-emerald-200",
-    iconColor: "text-emerald-600 bg-emerald-100"
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop",
+    gradient: "from-teal-900 to-teal-700",
+    accent: "from-teal-500 to-teal-600"
   },
   {
     id: 6,
     title: "Tax & Asset Protection",
     description: "Strategic planning to minimize taxes, shield assets, and safeguard your wealth against life's uncertainties.",
-    icon: <FileText className="w-8 h-8" />,
+    icon: <FileText className="w-6 h-6" />,
     features: ["Tax minimization", "Asset shielding", "Estate planning", "Wealth preservation"],
-    color: "bg-indigo-50 border-indigo-200",
-    iconColor: "text-indigo-600 bg-indigo-100"
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=400&fit=crop",
+    gradient: "from-indigo-900 to-indigo-700",
+    accent: "from-indigo-500 to-indigo-600"
   }
 ];
 
@@ -124,49 +133,54 @@ const ProductsSection = () => {
         </motion.div>
 
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={containerVariants}
         >
           {products.map((product, index) => (
             <motion.div key={product.id} variants={itemVariants}>
-              <Card className={`${product.color} h-full hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-2`}>
-                <CardContent className="p-6">
-                  {product.title === "Annuity Solutions" && (
-                    <div className="mb-4 rounded-lg overflow-hidden">
-                      <img 
-                        src={annuitiesCard} 
-                        alt="Annuity financial planning" 
-                        className="w-full h-32 object-cover"
-                      />
-                    </div>
-                  )}
-                  <div className={`w-16 h-16 rounded-full ${product.iconColor} flex items-center justify-center mb-4`}>
-                    {product.icon}
-                  </div>
-                  
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">
-                    {product.title}
-                  </h3>
-                  
-                  <p className="text-gray-700 mb-4 text-sm leading-relaxed">
-                    {product.description}
-                  </p>
-                  
-                  <div className="space-y-2 mb-6">
-                    {product.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center text-sm text-gray-600">
-                        <div className="w-1.5 h-1.5 bg-[#15AFF7] rounded-full mr-2 flex-shrink-0"></div>
-                        {feature}
+              <Card className="group relative overflow-hidden bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-full">
+                <CardContent className="p-0">
+                  {/* Hero Image */}
+                  <div className="relative h-48 overflow-hidden">
+                    <img 
+                      src={product.image} 
+                      alt={`${product.title} visual representation`}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className={`absolute inset-0 bg-gradient-to-t ${product.gradient} opacity-80`}></div>
+                    <div className="absolute top-4 left-4">
+                      <div className={`w-12 h-12 rounded-full bg-gradient-to-r ${product.accent} flex items-center justify-center text-white shadow-lg`}>
+                        {product.icon}
                       </div>
-                    ))}
+                    </div>
                   </div>
                   
-                  <button className="w-full bg-[#15AFF7] text-white px-4 py-2 rounded-lg hover:bg-[#0D94D1] transition-colors flex items-center justify-center group font-medium">
-                    Get Quote
-                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  {/* Content */}
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-gray-800 transition-colors">
+                      {product.title}
+                    </h3>
+                    
+                    <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+                      {product.description}
+                    </p>
+                    
+                    <div className="space-y-2 mb-6">
+                      {product.features.map((feature, idx) => (
+                        <div key={idx} className="flex items-center text-sm text-gray-600">
+                          <div className="w-1.5 h-1.5 bg-[#15AFF7] rounded-full mr-3 flex-shrink-0"></div>
+                          {feature}
+                        </div>
+                      ))}
+                    </div>
+                    
+                    <button className="w-full bg-gradient-to-r from-[#15AFF7] to-[#0D94D1] text-white px-4 py-3 rounded-lg hover:from-[#0D94D1] hover:to-[#0A7FB0] transition-all duration-300 flex items-center justify-center group/btn font-medium shadow-lg hover:shadow-xl">
+                      Get Quote
+                      <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                    </button>
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>
