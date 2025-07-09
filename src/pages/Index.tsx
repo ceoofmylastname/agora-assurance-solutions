@@ -25,7 +25,7 @@ const Index = () => {
       <SEO 
         title="Agora Assurance Solutions - Your Independent Insurance Partner" 
         description="Get instant quotes, compare plans, and connect with licensed advisors. Term life, mortgage protection, final expense, annuities & more. Zero confusion, total peace of mind."
-        imageUrl="https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=1200&h=630&fit=crop"
+        imageUrl="/lovable-uploads/99f03d19-d521-4882-9c68-a2bbe122b1f9.png"
         keywords={['insurance', 'life insurance', 'mortgage protection', 'final expense', 'annuities', 'tax solutions', 'insurance quotes', 'licensed advisors', 'instant quotes', 'family protection']}
       />
       <Hero />
