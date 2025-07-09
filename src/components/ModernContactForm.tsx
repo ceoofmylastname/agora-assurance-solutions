@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import confetti from 'canvas-confetti';
 import { Send, Mail, User, MessageSquare, ArrowRight, ArrowLeft, CheckCircle, Shield, Home, Heart, TrendingUp, DollarSign, FileText } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
@@ -159,6 +160,54 @@ const ModernContactForm = () => {
     }
   };
 
+  const fireConfetti = () => {
+    const duration = 3000;
+    const animationEnd = Date.now() + duration;
+    
+    const randomInRange = (min: number, max: number) => {
+      return Math.random() * (max - min) + min;
+    };
+
+    const colors = ['#15AFF7', '#0D94D1', '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7', '#DDA0DD'];
+
+    const interval = setInterval(() => {
+      const timeLeft = animationEnd - Date.now();
+
+      if (timeLeft <= 0) {
+        clearInterval(interval);
+        return;
+      }
+
+      const particleCount = 3;
+
+      // Left side confetti
+      confetti({
+        particleCount,
+        startVelocity: 30,
+        spread: 70,
+        origin: { x: 0, y: 0.6 },
+        colors: colors,
+        shapes: ['circle', 'square'],
+        scalar: randomInRange(0.8, 1.2),
+        gravity: randomInRange(0.4, 0.6),
+        drift: randomInRange(-0.4, 0.4),
+      });
+
+      // Right side confetti
+      confetti({
+        particleCount,
+        startVelocity: 30,
+        spread: 70,
+        origin: { x: 1, y: 0.6 },
+        colors: colors,
+        shapes: ['circle', 'square'],
+        scalar: randomInRange(0.8, 1.2),
+        gravity: randomInRange(0.4, 0.6),
+        drift: randomInRange(-0.4, 0.4),
+      });
+    }, 250);
+  };
+
   const handleSubmit = async () => {
     const isValid = await form.trigger();
     if (!isValid) return;
@@ -208,6 +257,9 @@ const ModernContactForm = () => {
       );
       
       setIsSubmitted(true);
+      
+      // Fire confetti celebration
+      fireConfetti();
       
       toast({
         title: "Message sent!",
