@@ -189,8 +189,8 @@ const About = () => {
                 }} className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-600/5 rounded-2xl transform rotate-1 scale-105 group-hover:rotate-2 transition-transform duration-300"></div>
                     <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300">
-                      <div className="h-12 w-12 bg-purple-500/10 rounded-full flex items-center justify-center mb-4">
-                        <div className="h-6 w-6 bg-purple-500 rounded-full"></div>
+                      <div className="h-20 w-20 rounded-full overflow-hidden mb-4 border-2 border-purple-500/20">
+                        <img alt="Olga Lomova - Chief Strategy Officer" className="w-full h-full object-cover" src="/lovable-uploads/a2fbd740-44fc-4440-90f2-d0ea3ac39d55.png" />
                       </div>
                       <h3 className="text-xl font-bold text-gray-900 mb-1">Olga Lomova</h3>
                       <p className="text-purple-500 font-medium mb-3">Chief Strategy Officer</p>
