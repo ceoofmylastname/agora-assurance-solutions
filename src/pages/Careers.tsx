@@ -67,7 +67,10 @@ const Careers = () => {
                   >
                     <Button 
                       size="lg" 
-                      onClick={() => setIsModalOpen(true)}
+                      onClick={() => {
+                        console.log("Button clicked, opening modal");
+                        setIsModalOpen(true);
+                      }}
                       className="bg-[#15AFF7] hover:bg-[#0D94D1] text-white px-8 py-3 text-lg font-semibold"
                     >
                       APPLY NOW

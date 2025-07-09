@@ -57,6 +57,7 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
   open,
   onOpenChange,
 }) => {
+  console.log("ApplicationModal render:", { open });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<ApplicationFormData>({
