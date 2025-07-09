@@ -69,13 +69,12 @@ const Careers = () => {
                     transition={{ duration: 0.6, delay: 0.4 }}
                   >
                     <button 
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        console.log("APPLY NOW button clicked!");
+                      type="button"
+                      onClick={() => {
+                        console.log("APPLY NOW clicked - opening modal");
                         setIsModalOpen(true);
                       }}
-                      className="bg-[#15AFF7] hover:bg-[#0D94D1] text-white px-8 py-3 text-lg font-semibold rounded transition-colors"
+                      className="bg-[#15AFF7] hover:bg-[#0D94D1] text-white px-8 py-3 text-lg font-semibold rounded transition-colors cursor-pointer"
                     >
                       APPLY NOW
                     </button>
