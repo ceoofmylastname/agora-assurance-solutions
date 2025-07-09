@@ -1,0 +1,403 @@
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Send, Mail, User, MessageSquare, ArrowRight, ArrowLeft, CheckCircle } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
+import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Button } from '@/components/ui/button';
+import { motion, AnimatePresence } from 'framer-motion';
+import emailjs from 'emailjs-com';
+
+const formSchema = z.object({
+  name: z.string().min(2, 'Name must be at least 2 characters'),
+  email: z.string().email('Please enter a valid email address'),
+  message: z.string().min(10, 'Message must be at least 10 characters'),
+  honeypot: z.string().max(0, 'Bot detected'),
+  timestamp: z.number()
+});
+
+type FormValues = z.infer<typeof formSchema>;
+
+const EMAILJS_SERVICE_ID = "service_i3h66xg";
+const EMAILJS_TEMPLATE_ID = "template_fgq53nh";
+const EMAILJS_PUBLIC_KEY = "wQmcZvoOqTAhGnRZ3";
+
+const steps = [
+  {
+    id: 'welcome',
+    title: 'Hi there! 👋',
+    subtitle: 'Let\'s get to know each other',
+    description: 'We\'d love to hear from you. This will only take a minute.',
+    isQuestion: false
+  },
+  {
+    id: 'name',
+    title: 'What\'s your name?',
+    subtitle: 'Just so we know what to call you',
+    field: 'name',
+    icon: User,
+    placeholder: 'Enter your name',
+    isQuestion: true
+  },
+  {
+    id: 'email',
+    title: 'What\'s your email?',
+    subtitle: 'We\'ll use this to get back to you',
+    field: 'email',
+    icon: Mail,
+    placeholder: 'your.email@example.com',
+    type: 'email',
+    isQuestion: true
+  },
+  {
+    id: 'message',
+    title: 'Tell us about your project',
+    subtitle: 'What can we help you with?',
+    field: 'message',
+    icon: MessageSquare,
+    placeholder: 'Describe your project, question, or how we can help...',
+    isTextarea: true,
+    isQuestion: true
+  },
+  {
+    id: 'submit',
+    title: 'Perfect! ✨',
+    subtitle: 'Ready to send your message?',
+    description: 'We\'ll get back to you within 24 hours.',
+    isQuestion: false
+  }
+];
+
+const ModernContactForm = () => {
+  const [currentStep, setCurrentStep] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formStartTime] = useState<number>(Date.now());
+  
+  const { toast } = useToast();
+  
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: '',
+      email: '',
+      message: '',
+      honeypot: '',
+      timestamp: formStartTime
+    }
+  });
+
+  const nextStep = () => {
+    if (currentStep < steps.length - 1) {
+      setCurrentStep(currentStep + 1);
+    }
+  };
+
+  const prevStep = () => {
+    if (currentStep > 0) {
+      setCurrentStep(currentStep - 1);
+    }
+  };
+
+  const validateCurrentStep = async () => {
+    const step = steps[currentStep];
+    if (!step.isQuestion) return true;
+    
+    const fieldName = step.field as keyof FormValues;
+    const result = await form.trigger(fieldName);
+    return result;
+  };
+
+  const handleNext = async () => {
+    const isValid = await validateCurrentStep();
+    if (isValid) {
+      nextStep();
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      if (currentStep === steps.length - 1) {
+        handleSubmit();
+      } else {
+        handleNext();
+      }
+    }
+  };
+
+  const handleSubmit = async () => {
+    const isValid = await form.trigger();
+    if (!isValid) return;
+
+    setIsSubmitting(true);
+    
+    try {
+      const data = form.getValues();
+      
+      // Bot checks
+      if (data.honeypot) {
+        toast({
+          title: "Error",
+          description: "There was a problem with your submission. Please try again.",
+          variant: "destructive"
+        });
+        return;
+      }
+      
+      const timeDiff = Date.now() - data.timestamp;
+      if (timeDiff < 3000) {
+        toast({
+          title: "Error",
+          description: "Please take a moment to review your message before submitting.",
+          variant: "destructive"
+        });
+        setIsSubmitting(false);
+        return;
+      }
+      
+      const { honeypot, timestamp, ...emailData } = data;
+      
+      const templateParams = {
+        from_name: emailData.name,
+        from_email: emailData.email,
+        message: emailData.message,
+        to_name: 'WRLDS Team',
+        reply_to: emailData.email
+      };
+      
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
+      
+      setIsSubmitted(true);
+      
+      toast({
+        title: "Message sent!",
+        description: "We've received your message and will get back to you soon.",
+        variant: "default"
+      });
+
+      form.reset({
+        name: '',
+        email: '',
+        message: '',
+        honeypot: '',
+        timestamp: Date.now()
+      });
+    } catch (error) {
+      console.error('Error sending email:', error);
+      
+      toast({
+        title: "Error",
+        description: "There was a problem sending your message. Please try again later.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const progress = ((currentStep + 1) / steps.length) * 100;
+  const currentStepData = steps[currentStep];
+
+  if (isSubmitted) {
+    return (
+      <section id="contact" className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center py-12">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="max-w-md mx-auto text-center bg-white rounded-2xl shadow-2xl p-8"
+        >
+          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <CheckCircle className="w-8 h-8 text-green-600" />
+          </div>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Message Sent!</h2>
+          <p className="text-gray-600 mb-6">
+            Thank you for reaching out. We'll get back to you within 24 hours.
+          </p>
+          <Button 
+            onClick={() => {
+              setIsSubmitted(false);
+              setCurrentStep(0);
+            }}
+            className="bg-[#15AFF7] hover:bg-[#0D94D1]"
+          >
+            Send Another Message
+          </Button>
+        </motion.div>
+      </section>
+    );
+  }
+
+  return (
+    <section id="contact" className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center py-12">
+      <div className="w-full max-w-2xl mx-auto px-4">
+        {/* Progress Bar */}
+        <div className="mb-8">
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <motion.div
+              className="bg-gradient-to-r from-[#15AFF7] to-[#0D94D1] h-2 rounded-full"
+              initial={{ width: 0 }}
+              animate={{ width: `${progress}%` }}
+              transition={{ duration: 0.5 }}
+            />
+          </div>
+          <div className="text-sm text-gray-500 mt-2 text-center">
+            Step {currentStep + 1} of {steps.length}
+          </div>
+        </div>
+
+        {/* Form Container */}
+        <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentStep}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -50 }}
+              transition={{ duration: 0.3 }}
+              className="space-y-8"
+            >
+              {/* Step Content */}
+              <div className="text-center md:text-left">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                  {currentStepData.title}
+                </h2>
+                <p className="text-lg text-gray-600 mb-2">
+                  {currentStepData.subtitle}
+                </p>
+                {currentStepData.description && (
+                  <p className="text-gray-500">
+                    {currentStepData.description}
+                  </p>
+                )}
+              </div>
+
+              {/* Form Fields */}
+              <Form {...form}>
+                <div className="space-y-6">
+                  {currentStepData.isQuestion && (
+                    <FormField
+                      control={form.control}
+                      name={currentStepData.field as keyof FormValues}
+                      render={({ field }) => (
+                        <FormItem>
+                          <div className="relative">
+                            {currentStepData.icon && (
+                              <currentStepData.icon className="absolute left-4 top-4 h-5 w-5 text-gray-400" />
+                            )}
+                            <FormControl>
+                              {currentStepData.isTextarea ? (
+                                <Textarea
+                                  placeholder={currentStepData.placeholder}
+                                  className="min-h-[120px] pl-12 text-lg border-2 border-gray-200 rounded-xl focus:border-[#15AFF7] focus:ring-0 resize-none"
+                                  onKeyDown={handleKeyPress}
+                                  {...field}
+                                />
+                              ) : (
+                                <Input
+                                  type={currentStepData.type || 'text'}
+                                  placeholder={currentStepData.placeholder}
+                                  className="pl-12 text-lg h-14 border-2 border-gray-200 rounded-xl focus:border-[#15AFF7] focus:ring-0"
+                                  onKeyDown={handleKeyPress}
+                                  {...field}
+                                />
+                              )}
+                            </FormControl>
+                          </div>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  )}
+
+                  {/* Hidden fields */}
+                  <FormField
+                    control={form.control}
+                    name="honeypot"
+                    render={({ field }) => (
+                      <FormItem className="hidden">
+                        <FormControl>
+                          <Input {...field} tabIndex={-1} />
+                        </FormControl>
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="timestamp"
+                    render={({ field }) => (
+                      <FormItem className="hidden">
+                        <FormControl>
+                          <Input type="hidden" {...field} />
+                        </FormControl>
+                      </FormItem>
+                    )}
+                  />
+                </div>
+              </Form>
+
+              {/* Navigation */}
+              <div className="flex justify-between items-center pt-8">
+                <Button
+                  type="button"
+                  variant="ghost"
+                  onClick={prevStep}
+                  disabled={currentStep === 0}
+                  className="flex items-center gap-2 text-gray-600 hover:text-gray-900"
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                  Back
+                </Button>
+
+                {currentStep === steps.length - 1 ? (
+                  <Button
+                    type="button"
+                    onClick={handleSubmit}
+                    disabled={isSubmitting}
+                    className="bg-gradient-to-r from-[#15AFF7] to-[#0D94D1] hover:from-[#0D94D1] hover:to-[#0A7FB0] text-white px-8 py-3 rounded-xl font-medium shadow-lg hover:shadow-xl transition-all flex items-center gap-2"
+                  >
+                    {isSubmitting ? (
+                      "Sending..."
+                    ) : (
+                      <>
+                        Send Message
+                        <Send className="w-4 h-4" />
+                      </>
+                    )}
+                  </Button>
+                ) : (
+                  <Button
+                    type="button"
+                    onClick={handleNext}
+                    className="bg-gradient-to-r from-[#15AFF7] to-[#0D94D1] hover:from-[#0D94D1] hover:to-[#0A7FB0] text-white px-8 py-3 rounded-xl font-medium shadow-lg hover:shadow-xl transition-all flex items-center gap-2"
+                  >
+                    {currentStep === 0 ? 'Get Started' : 'Continue'}
+                    <ArrowRight className="w-4 h-4" />
+                  </Button>
+                )}
+              </div>
+
+              {/* Hint */}
+              {currentStepData.isQuestion && (
+                <p className="text-sm text-gray-400 text-center">
+                  Press Enter to continue
+                </p>
+              )}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ModernContactForm;
