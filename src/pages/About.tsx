@@ -15,50 +15,49 @@ const About = () => {
   
   return (
     <PageLayout>
-      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
         <div className="container mx-auto">
           <div className="max-w-6xl mx-auto">
-            <Link to="/" className="inline-flex items-center text-gray-500 hover:text-gray-700 mb-6 transition-colors">
+            <Link to="/" className="inline-flex items-center text-gray-500 hover:text-[#15AFF7] mb-8 transition-all duration-300 hover:translate-x-1">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Home
             </Link>
             
-            <motion.h1 
-              initial={{ opacity: 0, y: -10 }} 
-              animate={{ opacity: 1, y: 0 }} 
-              transition={{ duration: 0.5 }} 
-              className="text-4xl font-bold mb-6"
-            >
-              About Agora Assurance Solutions
-            </motion.h1>
+            {/* Hero Section with 3D Effect */}
+            <div className="relative mb-16">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#15AFF7]/10 to-blue-600/10 rounded-3xl transform rotate-1 scale-105"></div>
+              <div className="relative bg-white rounded-2xl shadow-2xl border border-gray-100 p-8 md:p-12 transform -rotate-1">
+                <motion.h1 
+                  initial={{ opacity: 0, y: -20 }} 
+                  animate={{ opacity: 1, y: 0 }} 
+                  transition={{ duration: 0.6 }} 
+                  className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent"
+                >
+                  About Agora Assurance Solutions
+                </motion.h1>
+                
+                <motion.div 
+                  initial={{ opacity: 0 }} 
+                  animate={{ opacity: 1 }} 
+                  transition={{ duration: 0.5, delay: 0.2 }} 
+                  className="space-y-6"
+                >
+                  <p className="text-xl md:text-2xl text-gray-600 font-light">
+                    A Smarter Way to Protect What Matters
+                  </p>
+                  
+                  <p className="text-lg text-gray-600">
+                    At Agora, we believe the insurance industry needed a reset—so we built one.
+                  </p>
+                  
+                  <p className="text-lg text-gray-600">
+                    We're a tech-powered, people-first assurance company on a mission to remove the complexity, pressure, and confusion from buying insurance. Whether you're protecting your home, your income, your retirement, or your family's legacy—we give you the tools, transparency, and human guidance to make the right choice.
+                  </p>
+                </motion.div>
+              </div>
+            </div>
             
             <div className="prose prose-lg max-w-none">
-              <motion.p 
-                initial={{ opacity: 0 }} 
-                animate={{ opacity: 1 }} 
-                transition={{ duration: 0.5, delay: 0.2 }} 
-                className="text-xl text-gray-600 mb-12"
-              >
-                A Smarter Way to Protect What Matters
-              </motion.p>
-              
-              <motion.p 
-                initial={{ opacity: 0 }} 
-                animate={{ opacity: 1 }} 
-                transition={{ duration: 0.5, delay: 0.3 }} 
-                className="text-lg text-gray-600 mb-12"
-              >
-                At Agora, we believe the insurance industry needed a reset—so we built one.
-              </motion.p>
-              
-              <motion.p 
-                initial={{ opacity: 0 }} 
-                animate={{ opacity: 1 }} 
-                transition={{ duration: 0.5, delay: 0.4 }} 
-                className="text-lg text-gray-600 mb-12"
-              >
-                We're a tech-powered, people-first assurance company on a mission to remove the complexity, pressure, and confusion from buying insurance. Whether you're protecting your home, your income, your retirement, or your family's legacy—we give you the tools, transparency, and human guidance to make the right choice.
-              </motion.p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
                 <motion.div 
@@ -77,27 +76,38 @@ const About = () => {
                   initial={{ opacity: 0, x: 20 }} 
                   animate={{ opacity: 1, x: 0 }} 
                   transition={{ duration: 0.6, delay: 0.2 }}
-                  className="bg-gray-50 rounded-2xl p-8 border border-gray-100"
+                  className="relative"
                 >
-                  <h3 className="text-2xl font-bold mb-4">What Makes Us Different</h3>
-                  <ul className="space-y-3">
-                    <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-gray-700 mt-1 mr-3 flex-shrink-0" />
-                      <span><strong>Independent & Unbiased:</strong> We don't push one carrier or product. We're your advocate—not a salesperson.</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-gray-700 mt-1 mr-3 flex-shrink-0" />
-                      <span><strong>Built with AI + Heart:</strong> Our proprietary tech delivers quotes and comparisons in seconds—but every decision is guided by real humans who care.</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-gray-700 mt-1 mr-3 flex-shrink-0" />
-                      <span><strong>Full-Service Protection:</strong> From term life to annuities, mortgage protection to tax planning—we cover the full spectrum of financial protection.</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-gray-700 mt-1 mr-3 flex-shrink-0" />
-                      <span><strong>Real People, Real Help:</strong> Our licensed advisors offer hands-on support with no pressure and no fluff—just honest help when you need it.</span>
-                    </li>
-                  </ul>
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#15AFF7]/5 to-blue-600/5 rounded-2xl transform rotate-2 scale-105"></div>
+                  <div className="relative bg-white rounded-2xl p-8 border border-gray-100 shadow-xl transform -rotate-1 hover:rotate-0 transition-transform duration-300">
+                    <h3 className="text-2xl font-bold mb-6 text-gray-900">What Makes Us Different</h3>
+                    <ul className="space-y-4">
+                      <li className="flex items-start group">
+                        <div className="h-6 w-6 rounded-full bg-[#15AFF7]/20 flex items-center justify-center mt-1 mr-4 flex-shrink-0 group-hover:bg-[#15AFF7]/30 transition-colors">
+                          <CheckCircle className="h-4 w-4 text-[#15AFF7]" />
+                        </div>
+                        <span><strong className="text-gray-900">Independent & Unbiased:</strong> <span className="text-gray-600">We don't push one carrier or product. We're your advocate—not a salesperson.</span></span>
+                      </li>
+                      <li className="flex items-start group">
+                        <div className="h-6 w-6 rounded-full bg-[#15AFF7]/20 flex items-center justify-center mt-1 mr-4 flex-shrink-0 group-hover:bg-[#15AFF7]/30 transition-colors">
+                          <CheckCircle className="h-4 w-4 text-[#15AFF7]" />
+                        </div>
+                        <span><strong className="text-gray-900">Built with AI + Heart:</strong> <span className="text-gray-600">Our proprietary tech delivers quotes and comparisons in seconds—but every decision is guided by real humans who care.</span></span>
+                      </li>
+                      <li className="flex items-start group">
+                        <div className="h-6 w-6 rounded-full bg-[#15AFF7]/20 flex items-center justify-center mt-1 mr-4 flex-shrink-0 group-hover:bg-[#15AFF7]/30 transition-colors">
+                          <CheckCircle className="h-4 w-4 text-[#15AFF7]" />
+                        </div>
+                        <span><strong className="text-gray-900">Full-Service Protection:</strong> <span className="text-gray-600">From term life to annuities, mortgage protection to tax planning—we cover the full spectrum of financial protection.</span></span>
+                      </li>
+                      <li className="flex items-start group">
+                        <div className="h-6 w-6 rounded-full bg-[#15AFF7]/20 flex items-center justify-center mt-1 mr-4 flex-shrink-0 group-hover:bg-[#15AFF7]/30 transition-colors">
+                          <CheckCircle className="h-4 w-4 text-[#15AFF7]" />
+                        </div>
+                        <span><strong className="text-gray-900">Real People, Real Help:</strong> <span className="text-gray-600">Our licensed advisors offer hands-on support with no pressure and no fluff—just honest help when you need it.</span></span>
+                      </li>
+                    </ul>
+                  </div>
                 </motion.div>
               </div>
               
@@ -107,28 +117,64 @@ const About = () => {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="mb-16"
               >
-                <h2 className="text-3xl font-bold mb-6">Leadership with Vision</h2>
-                <div className="space-y-8">
-                  <div className="bg-white rounded-xl border border-gray-200 p-8 shadow-sm">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Kevin Jenson – <span className="text-gray-600 font-normal italic">Founder & CEO</span></h3>
-                    <p className="text-gray-600">
-                      With nearly two decades in life insurance and annuities—including executive leadership at Quility—Kevin founded Agora in 2024 to reinvent the client experience with technology, speed, and service.
-                    </p>
-                  </div>
+                <h2 className="text-3xl font-bold mb-8 text-center">Leadership with Vision</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  <motion.div 
+                    initial={{ opacity: 0, x: -20 }} 
+                    animate={{ opacity: 1, x: 0 }} 
+                    transition={{ duration: 0.6, delay: 0.5 }}
+                    className="relative group"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#15AFF7]/5 to-blue-600/5 rounded-2xl transform rotate-1 scale-105 group-hover:rotate-2 transition-transform duration-300"></div>
+                    <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300">
+                      <div className="h-12 w-12 bg-[#15AFF7]/10 rounded-full flex items-center justify-center mb-4">
+                        <div className="h-6 w-6 bg-[#15AFF7] rounded-full"></div>
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-1">Kevin Jenson</h3>
+                      <p className="text-[#15AFF7] font-medium mb-3">Founder & CEO</p>
+                      <p className="text-gray-600 text-sm leading-relaxed">
+                        With nearly two decades in life insurance and annuities—including executive leadership at Quility—Kevin founded Agora in 2024 to reinvent the client experience with technology, speed, and service.
+                      </p>
+                    </div>
+                  </motion.div>
                   
-                  <div className="bg-white rounded-xl border border-gray-200 p-8 shadow-sm">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Benjamin Schroeder – <span className="text-gray-600 font-normal italic">Director of Communications</span></h3>
-                    <p className="text-gray-600">
-                      A skilled strategist with a background in coaching and corporate leadership, Ben ensures our mission stays aligned across every channel—from brand to partnership.
-                    </p>
-                  </div>
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }} 
+                    animate={{ opacity: 1, y: 0 }} 
+                    transition={{ duration: 0.6, delay: 0.6 }}
+                    className="relative group"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-600/5 rounded-2xl transform -rotate-1 scale-105 group-hover:-rotate-2 transition-transform duration-300"></div>
+                    <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform rotate-1 group-hover:rotate-0 transition-transform duration-300">
+                      <div className="h-12 w-12 bg-blue-500/10 rounded-full flex items-center justify-center mb-4">
+                        <div className="h-6 w-6 bg-blue-500 rounded-full"></div>
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-1">Benjamin Schroeder</h3>
+                      <p className="text-blue-500 font-medium mb-3">Director of Communications</p>
+                      <p className="text-gray-600 text-sm leading-relaxed">
+                        A skilled strategist with a background in coaching and corporate leadership, Ben ensures our mission stays aligned across every channel—from brand to partnership.
+                      </p>
+                    </div>
+                  </motion.div>
                   
-                  <div className="bg-white rounded-xl border border-gray-200 p-8 shadow-sm">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Olga Lomova – <span className="text-gray-600 font-normal italic">Chief Strategy Officer</span></h3>
-                    <p className="text-gray-600">
-                      An immigrant entrepreneur with deep expertise in financial marketing, Olga leads Agora's growth with a passion for inclusion, innovation, and intelligent expansion.
-                    </p>
-                  </div>
+                  <motion.div 
+                    initial={{ opacity: 0, x: 20 }} 
+                    animate={{ opacity: 1, x: 0 }} 
+                    transition={{ duration: 0.6, delay: 0.7 }}
+                    className="relative group"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-600/5 rounded-2xl transform rotate-1 scale-105 group-hover:rotate-2 transition-transform duration-300"></div>
+                    <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300">
+                      <div className="h-12 w-12 bg-purple-500/10 rounded-full flex items-center justify-center mb-4">
+                        <div className="h-6 w-6 bg-purple-500 rounded-full"></div>
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-1">Olga Lomova</h3>
+                      <p className="text-purple-500 font-medium mb-3">Chief Strategy Officer</p>
+                      <p className="text-gray-600 text-sm leading-relaxed">
+                        An immigrant entrepreneur with deep expertise in financial marketing, Olga leads Agora's growth with a passion for inclusion, innovation, and intelligent expansion.
+                      </p>
+                    </div>
+                  </motion.div>
                 </div>
               </motion.div>
               
@@ -138,24 +184,56 @@ const About = () => {
                 transition={{ duration: 0.6, delay: 0.6 }}
                 className="mb-16"
               >
-                <h2 className="text-3xl font-bold mb-6">By the Numbers</h2>
+                <h2 className="text-3xl font-bold mb-8 text-center">By the Numbers</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  <div className="bg-gray-50 rounded-xl border border-gray-100 p-6 text-center">
-                    <div className="text-2xl font-bold text-gray-900 mb-2">50+</div>
-                    <div className="text-gray-600">years combined leadership experience</div>
-                  </div>
-                  <div className="bg-gray-50 rounded-xl border border-gray-100 p-6 text-center">
-                    <div className="text-2xl font-bold text-gray-900 mb-2">$500M+</div>
-                    <div className="text-gray-600">in tax-free benefits created</div>
-                  </div>
-                  <div className="bg-gray-50 rounded-xl border border-gray-100 p-6 text-center">
-                    <div className="text-2xl font-bold text-gray-900 mb-2">2,500+</div>
-                    <div className="text-gray-600">lives protected and counting</div>
-                  </div>
-                  <div className="bg-gray-50 rounded-xl border border-gray-100 p-6 text-center">
-                    <div className="text-2xl font-bold text-gray-900 mb-2">100+</div>
-                    <div className="text-gray-600">business and carrier partnerships</div>
-                  </div>
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.9 }} 
+                    animate={{ opacity: 1, scale: 1 }} 
+                    transition={{ duration: 0.4, delay: 0.7 }}
+                    className="relative group"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#15AFF7]/10 to-blue-600/10 rounded-xl transform rotate-2 scale-105 group-hover:rotate-3 transition-transform duration-300"></div>
+                    <div className="relative bg-white rounded-xl border border-gray-100 p-6 text-center shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300">
+                      <div className="text-3xl font-bold text-[#15AFF7] mb-2">50+</div>
+                      <div className="text-gray-600 text-sm">years combined leadership experience</div>
+                    </div>
+                  </motion.div>
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.9 }} 
+                    animate={{ opacity: 1, scale: 1 }} 
+                    transition={{ duration: 0.4, delay: 0.8 }}
+                    className="relative group"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-emerald-600/10 rounded-xl transform -rotate-2 scale-105 group-hover:-rotate-3 transition-transform duration-300"></div>
+                    <div className="relative bg-white rounded-xl border border-gray-100 p-6 text-center shadow-lg transform rotate-1 group-hover:rotate-0 transition-transform duration-300">
+                      <div className="text-3xl font-bold text-green-500 mb-2">$500M+</div>
+                      <div className="text-gray-600 text-sm">in tax-free benefits created</div>
+                    </div>
+                  </motion.div>
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.9 }} 
+                    animate={{ opacity: 1, scale: 1 }} 
+                    transition={{ duration: 0.4, delay: 0.9 }}
+                    className="relative group"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-600/10 rounded-xl transform rotate-2 scale-105 group-hover:rotate-3 transition-transform duration-300"></div>
+                    <div className="relative bg-white rounded-xl border border-gray-100 p-6 text-center shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300">
+                      <div className="text-3xl font-bold text-purple-500 mb-2">2,500+</div>
+                      <div className="text-gray-600 text-sm">lives protected and counting</div>
+                    </div>
+                  </motion.div>
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.9 }} 
+                    animate={{ opacity: 1, scale: 1 }} 
+                    transition={{ duration: 0.4, delay: 1.0 }}
+                    className="relative group"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-red-600/10 rounded-xl transform -rotate-2 scale-105 group-hover:-rotate-3 transition-transform duration-300"></div>
+                    <div className="relative bg-white rounded-xl border border-gray-100 p-6 text-center shadow-lg transform rotate-1 group-hover:rotate-0 transition-transform duration-300">
+                      <div className="text-3xl font-bold text-orange-500 mb-2">100+</div>
+                      <div className="text-gray-600 text-sm">business and carrier partnerships</div>
+                    </div>
+                  </motion.div>
                 </div>
               </motion.div>
               
@@ -163,11 +241,14 @@ const About = () => {
                 initial={{ opacity: 0, y: 20 }} 
                 animate={{ opacity: 1, y: 0 }} 
                 transition={{ duration: 0.6, delay: 0.8 }}
-                className="mb-16"
+                className="mb-16 relative"
               >
-                <div className="bg-white rounded-xl border border-gray-200 p-8 shadow-sm text-center">
-                  <h2 className="text-3xl font-bold mb-4">The Future of Insurance Starts Here</h2>
-                  <p className="text-gray-600 text-lg">
+                <div className="absolute inset-0 bg-gradient-to-r from-[#15AFF7]/5 to-blue-600/5 rounded-3xl transform rotate-1 scale-105"></div>
+                <div className="relative bg-white rounded-2xl border border-gray-200 p-12 shadow-2xl text-center transform -rotate-1">
+                  <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-[#15AFF7] to-blue-600 bg-clip-text text-transparent">
+                    The Future of Insurance Starts Here
+                  </h2>
+                  <p className="text-gray-600 text-xl leading-relaxed max-w-3xl mx-auto">
                     We're not here to sell you a policy. We're here to help you protect your future, your way. Welcome to Agora—where modern insurance meets timeless care.
                   </p>
                 </div>
@@ -175,10 +256,21 @@ const About = () => {
             </div>
             
             <div className="mt-16 pt-8 border-t border-gray-200">
-              <Link to="/careers" className="inline-flex items-center px-5 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-all group">
-                Join Our Team
-                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                transition={{ duration: 0.6, delay: 1.2 }}
+                className="relative group"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-[#15AFF7]/20 to-blue-600/20 rounded-lg transform rotate-1 scale-105 group-hover:rotate-2 transition-transform duration-300"></div>
+                <Link 
+                  to="/careers" 
+                  className="relative inline-flex items-center px-8 py-4 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-all transform -rotate-1 group-hover:rotate-0 shadow-lg font-medium"
+                >
+                  Join Our Team
+                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </motion.div>
             </div>
           </div>
         </div>
