@@ -1,3 +1,4 @@
+
 export interface BlogPost {
   id: string;
   title: string;
@@ -34,586 +35,720 @@ export interface ContentSection {
 export const blogPosts: BlogPost[] = [
   {
     id: '6',
-    title: 'Wearable Safety Tech: Protecting Workers While Delivering Real ROI',
-    slug: 'wearable-safety-tech-protecting-workers-roi',
-    excerpt: 'Discover how wearable safety technology puts worker wellbeing first while delivering measurable business benefits through injury prevention and enhanced workplace safety.',
-    date: 'June 12, 2025',
-    author: 'WRLDS Technologies',
-    category: 'Business',
+    title: 'Final Expense Insurance: Protecting Your Family from Financial Burden',
+    slug: 'final-expense-insurance-protecting-family',
+    excerpt: 'Learn how final expense insurance can provide peace of mind by covering end-of-life costs and protecting your loved ones from unexpected financial burdens.',
+    date: 'January 15, 2025',
+    author: 'Agora Assurance',
+    category: 'Final Expense',
     imageUrl: '/lovable-uploads/078a129e-0f98-4d91-af61-873687db1a04.png',
     keywords: [
-      'wearable safety technology',
-      'workplace injury prevention',
-      'worker safety',
-      'safety ROI',
-      'ergonomic sensors',
-      'workplace safety investment',
-      'industrial wearables',
-      'occupational safety',
-      'safety technology partnerships',
-      'worker protection',
-      'safety innovation',
-      'workplace wellbeing'
+      'final expense insurance',
+      'burial insurance',
+      'funeral costs',
+      'end of life planning',
+      'life insurance',
+      'family protection',
+      'funeral expenses',
+      'death benefits',
+      'affordable life insurance',
+      'senior insurance'
     ],
-    metaDescription: 'Learn how wearable safety technology prioritizes worker protection while delivering proven business benefits. Real data shows significant injury reduction and improved workplace safety.',
+    metaDescription: 'Discover how final expense insurance protects your family from funeral and burial costs. Learn about coverage options, benefits, and how to choose the right policy.',
     content: [
       {
         type: 'paragraph',
-        content: 'Every worker deserves to go home safe at the end of their shift. That fundamental principle drives the evolution of workplace safety technology, where protecting people has always been the primary goal. What\'s remarkable about today\'s wearable safety technology is how it achieves this mission while also delivering tangible business benefits.'
+        content: 'When we think about protecting our families, we often focus on major expenses like mortgages, education, or income replacement. However, one significant cost that many overlook is the financial burden that comes with end-of-life expenses. Final expense insurance provides a compassionate solution to ensure your family isn\'t left struggling with these costs during an already difficult time.'
       },
       {
         type: 'stats',
         statsData: [
           {
-            value: '2.2',
-            label: 'Workplace injuries per 100 workers annually',
-            icon: 'Users'
-          },
-          {
-            value: '$43K',
-            label: 'Average cost per medically consulted injury',
+            value: '$7,848',
+            label: 'Average funeral cost in the United States',
             icon: 'DollarSign'
           },
           {
-            value: '58%',
-            label: 'Injury reduction reported by early adopters',
+            value: '$12,000',
+            label: 'Total end-of-life expenses including burial',
+            icon: 'TrendingUp'
+          },
+          {
+            value: '68%',
+            label: 'Of Americans who haven\'t planned for funeral costs',
+            icon: 'Users'
+          }
+        ]
+      },
+      {
+        type: 'heading',
+        content: 'What is Final Expense Insurance?'
+      },
+      {
+        type: 'paragraph',
+        content: 'Final expense insurance, also known as burial or funeral insurance, is a type of whole life insurance designed specifically to cover end-of-life costs. Unlike traditional life insurance policies that may require medical exams and extensive underwriting, final expense insurance typically offers simplified underwriting with guaranteed acceptance options for qualifying applicants.'
+      },
+      {
+        type: 'subheading',
+        content: 'Key Features of Final Expense Insurance'
+      },
+      {
+        type: 'icon-list',
+        items: [
+          'Smaller coverage amounts typically ranging from $5,000 to $25,000, designed to cover funeral and burial expenses',
+          'Simplified application process with minimal health questions and often no medical exam required',
+          'Permanent coverage that builds cash value over time, similar to whole life insurance',
+          'Premiums that remain level throughout the life of the policy, providing predictable costs'
+        ]
+      },
+      {
+        type: 'heading',
+        content: 'Who Should Consider Final Expense Insurance?'
+      },
+      {
+        type: 'paragraph',
+        content: 'Final expense insurance is particularly valuable for seniors and individuals who want to ensure their end-of-life costs are covered without burdening their families. It\'s an excellent option for those who may not qualify for traditional life insurance due to age or health conditions.'
+      },
+      {
+        type: 'table',
+        tableData: {
+          headers: ['Age Group', 'Typical Coverage', 'Primary Benefits'],
+          rows: [
+            ['Ages 50-65', '$10,000 - $25,000', 'Mortgage protection, family support, funeral costs'],
+            ['Ages 65-75', '$5,000 - $15,000', 'Funeral expenses, outstanding debts, family assistance'],
+            ['Ages 75+', '$5,000 - $10,000', 'Burial costs, final medical bills, immediate family needs']
+          ]
+        }
+      },
+      {
+        type: 'heading',
+        content: 'The Financial Impact on Families'
+      },
+      {
+        type: 'paragraph',
+        content: 'Without proper planning, families often face significant financial stress during grief. Final expense insurance provides immediate cash benefits that can be used for funeral services, burial or cremation costs, outstanding medical bills, and other end-of-life expenses.'
+      },
+      {
+        type: 'heading',
+        content: 'Choosing the Right Final Expense Policy'
+      },
+      {
+        type: 'paragraph',
+        content: 'When selecting a final expense insurance policy, consider factors such as coverage amount needed, premium affordability, the insurance company\'s financial stability, and the specific terms of the policy. Working with a licensed insurance professional can help you navigate these decisions and find the most suitable coverage for your situation.'
+      },
+      {
+        type: 'quote',
+        content: 'Final expense insurance is a gift of love – ensuring that your family can focus on healing and remembering you, rather than worrying about how to pay for your final arrangements.'
+      }
+    ]
+  },
+  {
+    id: '5',
+    title: 'Understanding Annuities: Your Guide to Retirement Income Security',
+    slug: 'understanding-annuities-retirement-income-security',
+    excerpt: 'Explore how annuities can provide guaranteed retirement income and financial security. Learn about different types of annuities and how they fit into your retirement planning strategy.',
+    date: 'January 10, 2025',
+    author: 'Agora Assurance',
+    category: 'Retirement',
+    imageUrl: '/lovable-uploads/927dae7e-6aaf-4b76-add2-1287a1dd9dc0.png',
+    keywords: [
+      'annuities',
+      'retirement income',
+      'guaranteed income',
+      'retirement planning',
+      'fixed annuities',
+      'variable annuities',
+      'immediate annuities',
+      'deferred annuities',
+      'retirement security',
+      'income planning'
+    ],
+    metaDescription: 'Learn how annuities can provide guaranteed retirement income. Understand different types of annuities and how they can secure your financial future.',
+    content: [
+      {
+        type: 'paragraph',
+        content: 'As traditional pension plans become increasingly rare and Social Security faces long-term sustainability questions, many Americans are looking for ways to create their own guaranteed retirement income. Annuities offer a unique solution by providing a stream of payments that can last for life, helping to ensure you never outlive your money.'
+      },
+      {
+        type: 'heading',
+        content: 'What Are Annuities?'
+      },
+      {
+        type: 'paragraph',
+        content: 'An annuity is a financial contract between you and an insurance company. You make one or more payments to the insurance company, and in return, the insurer provides you with regular payments that can begin immediately or at some point in the future. Annuities are designed to help protect you against the risk of outliving your retirement savings.'
+      },
+      {
+        type: 'subheading',
+        content: 'Types of Annuities'
+      },
+      {
+        type: 'icon-list',
+        items: [
+          'Fixed Annuities: Provide guaranteed returns and predictable income payments, offering stability and protection from market volatility',
+          'Variable Annuities: Allow you to invest in various investment options, with returns and payments that vary based on market performance',
+          'Immediate Annuities: Begin paying income within one year of purchase, ideal for those already in or near retirement',
+          'Deferred Annuities: Accumulate value over time before beginning income payments, suitable for long-term retirement planning'
+        ]
+      },
+      {
+        type: 'heading',
+        content: 'The Benefits of Annuities in Retirement Planning'
+      },
+      {
+        type: 'paragraph',
+        content: 'Annuities can play a crucial role in creating a comprehensive retirement income strategy. They offer unique benefits that other retirement savings vehicles cannot provide, including guaranteed lifetime income, tax-deferred growth, and protection from market volatility.'
+      },
+      {
+        type: 'stats',
+        statsData: [
+          {
+            value: '10,000',
+            label: 'Americans turning 65 every day',
+            icon: 'Users'
+          },
+          {
+            value: '20 years',
+            label: 'Average retirement length for 65-year-olds',
+            icon: 'TrendingUp'
+          },
+          {
+            value: '40%',
+            label: 'Of retirees who fear outliving their money',
+            icon: 'Shield'
+          }
+        ]
+      },
+      {
+        type: 'heading',
+        content: 'How Annuities Complement Other Retirement Savings'
+      },
+      {
+        type: 'paragraph',
+        content: 'Annuities work best as part of a diversified retirement strategy. While 401(k)s and IRAs provide growth potential and flexibility, annuities add the security of guaranteed income. This combination can help ensure you have both the growth needed to combat inflation and the security to cover essential expenses.'
+      },
+      {
+        type: 'table',
+        tableData: {
+          headers: ['Retirement Tool', 'Primary Benefit', 'Best Used For'],
+          rows: [
+            ['401(k)/403(b)', 'Employer matching, tax advantages', 'Long-term growth and accumulation'],
+            ['Traditional/Roth IRA', 'Tax benefits, investment flexibility', 'Additional retirement savings'],
+            ['Annuities', 'Guaranteed lifetime income', 'Income security and longevity protection'],
+            ['Social Security', 'Inflation-adjusted government benefit', 'Foundation of retirement income']
+          ]
+        }
+      },
+      {
+        type: 'heading',
+        content: 'Is an Annuity Right for You?'
+      },
+      {
+        type: 'paragraph',
+        content: 'Annuities aren\'t suitable for everyone, but they can be valuable for individuals who want to guarantee a portion of their retirement income, are concerned about market volatility, or want to ensure they don\'t outlive their savings. The decision should be based on your individual financial situation, risk tolerance, and retirement goals.'
+      },
+      {
+        type: 'quote',
+        content: 'An annuity can provide the peace of mind that comes with knowing you\'ll have guaranteed income for life, allowing you to enjoy retirement without constantly worrying about your financial security.'
+      }
+    ]
+  },
+  {
+    id: '4',
+    title: 'Mortgage Protection Insurance: Securing Your Family\'s Home',
+    slug: 'mortgage-protection-insurance-securing-family-home',
+    excerpt: 'Learn how mortgage protection insurance can ensure your family keeps their home if the unexpected happens. Understand the benefits and how it differs from other types of life insurance.',
+    date: 'January 5, 2025',
+    author: 'Agora Assurance',
+    category: 'Life Insurance',
+    imageUrl: '/lovable-uploads/6b0637e9-4a7b-40d0-b219-c8b7f879f93e.png',
+    keywords: [
+      'mortgage protection insurance',
+      'mortgage life insurance',
+      'home protection',
+      'family security',
+      'mortgage payoff',
+      'life insurance',
+      'homeowner protection',
+      'mortgage insurance',
+      'decreasing term life',
+      'family home security'
+    ],
+    metaDescription: 'Discover how mortgage protection insurance can safeguard your family\'s home. Learn about coverage options, benefits, and how to protect your most important investment.',
+    content: [
+      {
+        type: 'paragraph',
+        content: 'Your home is likely your family\'s most significant investment and the foundation of your financial security. Mortgage protection insurance ensures that if something unexpected happens to you, your family can keep their home by paying off the remaining mortgage balance. This specialized form of life insurance provides targeted protection for your most important asset.'
+      },
+      {
+        type: 'heading',
+        content: 'What is Mortgage Protection Insurance?'
+      },
+      {
+        type: 'paragraph',
+        content: 'Mortgage protection insurance is a type of decreasing term life insurance specifically designed to pay off your mortgage if you pass away during the policy term. As you pay down your mortgage principal, the insurance coverage decreases accordingly, ensuring that the death benefit matches your outstanding mortgage balance.'
+      },
+      {
+        type: 'subheading',
+        content: 'Key Features'
+      },
+      {
+        type: 'icon-list',
+        items: [
+          'Coverage amount that decreases in line with your mortgage balance, ensuring precise protection',
+          'Simplified underwriting process with minimal health questions for qualifying applicants',
+          'Fixed premiums that remain level throughout the policy term, providing budget predictability',
+          'Death benefit paid directly to your beneficiaries, giving them flexibility in how to use the funds'
+        ]
+      },
+      {
+        type: 'heading',
+        content: 'The Importance of Protecting Your Home'
+      },
+      {
+        type: 'paragraph',
+        content: 'For most families, the mortgage payment represents the largest monthly expense. Without mortgage protection, surviving family members might be forced to sell the home or struggle with payments they cannot afford. This insurance ensures your family can remain in their home during an already difficult time.'
+      },
+      {
+        type: 'stats',
+        statsData: [
+          {
+            value: '$200,000',
+            label: 'Average mortgage balance in the United States',
+            icon: 'DollarSign'
+          },
+          {
+            value: '28%',
+            label: 'Of household income typically spent on housing',
+            icon: 'TrendingUp'
+          },
+          {
+            value: '64%',
+            label: 'Of Americans who own their homes',
+            icon: 'Users'
+          }
+        ]
+      },
+      {
+        type: 'heading',
+        content: 'Mortgage Protection vs. Traditional Life Insurance'
+      },
+      {
+        type: 'paragraph',
+        content: 'While both provide death benefits, mortgage protection insurance is specifically tailored to cover your mortgage debt. Traditional life insurance offers more flexibility but may be more expensive. The choice depends on your specific needs and financial situation.'
+      },
+      {
+        type: 'table',
+        tableData: {
+          headers: ['Feature', 'Mortgage Protection', 'Traditional Term Life'],
+          rows: [
+            ['Coverage Amount', 'Decreases with mortgage balance', 'Remains level throughout term'],
+            ['Premiums', 'Often lower cost', 'May be higher but offers more coverage'],
+            ['Beneficiary Control', 'Full control over death benefit', 'Full control over death benefit'],
+            ['Underwriting', 'Simplified process', 'More comprehensive health review']
+          ]
+        }
+      },
+      {
+        type: 'heading',
+        content: 'Who Should Consider Mortgage Protection Insurance?'
+      },
+      {
+        type: 'paragraph',
+        content: 'Mortgage protection insurance is particularly valuable for new homeowners, families with limited savings, single-income households, or anyone who wants affordable, targeted protection for their mortgage debt. It\'s also suitable for those who may not qualify for traditional life insurance due to health conditions.'
+      },
+      {
+        type: 'heading',
+        content: 'Making the Right Choice for Your Family'
+      },
+      {
+        type: 'paragraph',
+        content: 'When considering mortgage protection insurance, evaluate your overall life insurance needs, compare costs with traditional term life insurance, and consider your family\'s ability to make mortgage payments without your income. A licensed insurance professional can help you determine the best approach for your situation.'
+      },
+      {
+        type: 'quote',
+        content: 'Protecting your family\'s home is about more than financial security—it\'s about preserving the place where memories are made and ensuring your loved ones have stability when they need it most.'
+      }
+    ]
+  },
+  {
+    id: '3',
+    title: 'Life Insurance 101: Protecting Your Family\'s Financial Future',
+    slug: 'life-insurance-101-protecting-family-financial-future',
+    excerpt: 'A comprehensive guide to understanding life insurance, including term vs. whole life options, coverage amounts, and how to choose the right policy for your family\'s needs.',
+    date: 'December 28, 2024',
+    author: 'Agora Assurance',
+    category: 'Life Insurance',
+    imageUrl: '/lovable-uploads/5262afdb-dd24-4d5e-be66-7c6717adbca9.png',
+    keywords: [
+      'life insurance basics',
+      'term life insurance',
+      'whole life insurance',
+      'family protection',
+      'death benefits',
+      'life insurance coverage',
+      'insurance planning',
+      'financial security',
+      'beneficiaries',
+      'insurance premiums'
+    ],
+    metaDescription: 'Learn the fundamentals of life insurance, including types of policies, coverage options, and how to choose the right protection for your family.',
+    content: [
+      {
+        type: 'paragraph',
+        content: 'Life insurance is one of the most important financial tools for protecting your family\'s future. Yet many people find it confusing or put off making this crucial decision. Understanding the basics of life insurance can help you make informed choices that provide security and peace of mind for your loved ones.'
+      },
+      {
+        type: 'heading',
+        content: 'Why Life Insurance Matters'
+      },
+      {
+        type: 'paragraph',
+        content: 'Life insurance serves as a financial safety net for your family if you pass away unexpectedly. It can help replace lost income, pay off debts, cover funeral expenses, and provide funds for future needs like your children\'s education. Without adequate life insurance, your family might face significant financial hardship during an already difficult time.'
+      },
+      {
+        type: 'stats',
+        statsData: [
+          {
+            value: '54%',
+            label: 'Of Americans who have life insurance coverage',
+            icon: 'Users'
+          },
+          {
+            value: '$168,000',
+            label: 'Average life insurance coverage per household',
+            icon: 'DollarSign'
+          },
+          {
+            value: '40%',
+            label: 'Of households that would face financial hardship within 6 months',
             icon: 'TrendingUp'
           }
         ]
       },
       {
         type: 'heading',
-        content: 'The Human Cost Behind the Numbers'
-      },
-      {
-        type: 'paragraph',
-        content: 'Behind every workplace injury statistic is a person: someone\'s parent, partner, or child. The data tells a sobering story about workplace safety in America. When we can prevent injuries before they happen, we\'re not just protecting company assets. We\'re preserving families and communities.'
-      },
-      {
-        type: 'heading',
-        content: 'Real Results from Wearable Safety Technology'
-      },
-      {
-        type: 'paragraph',
-        content: 'The effectiveness of wearable safety technology becomes clear when we examine documented case studies and vendor-reported results. These implementations show real workers in demanding environments using technology that helps them stay safe while doing their jobs effectively.'
+        content: 'Types of Life Insurance'
       },
       {
         type: 'subheading',
-        content: 'Documented Industry Results'
-      },
-      {
-        type: 'icon-list',
-        items: [
-          'Companies report significant reductions in workplace injuries with consistent wearable device usage',
-          'Workers feel more confident and supported knowing technology is monitoring their safety',
-          'Safety managers gain real-time insights into workplace hazards and risk patterns',
-          'Insurance providers recognize the value with bundled policies for high-adoption organizations'
-        ]
-      },
-      {
-        type: 'heading',
-        content: 'When Safety and Business Align'
+        content: 'Term Life Insurance'
       },
       {
         type: 'paragraph',
-        content: 'Effective safety technology creates a virtuous cycle where prioritizing people leads to positive business outcomes. When injuries decrease, so do workers\' compensation claims, replacement worker costs, and operational disruptions.'
+        content: 'Term life insurance provides coverage for a specific period, typically 10, 20, or 30 years. It offers the highest amount of coverage for the lowest premium, making it an excellent choice for young families with tight budgets who need maximum protection.'
+      },
+      {
+        type: 'subheading',
+        content: 'Whole Life Insurance'
+      },
+      {
+        type: 'paragraph',
+        content: 'Whole life insurance provides permanent coverage that lasts your entire life, as long as premiums are paid. It also builds cash value that you can borrow against or withdraw, making it both insurance and an investment vehicle.'
       },
       {
         type: 'table',
         tableData: {
-          headers: ['Safety Outcome', 'Human Impact', 'Business Benefit'],
+          headers: ['Feature', 'Term Life Insurance', 'Whole Life Insurance'],
           rows: [
-            ['Fewer back injuries', 'Workers maintain mobility and quality of life', 'Reduced comp claims and medical costs'],
-            ['Better ergonomic awareness', 'Less fatigue and chronic pain', 'Higher productivity and retention'],
-            ['Early hazard detection', 'Prevention of serious accidents', 'Avoided downtime and investigations'],
-            ['Real-time feedback', 'Workers feel supported and valued', 'Improved safety culture and morale']
+            ['Coverage Duration', '10, 20, or 30 years', 'Lifetime (permanent)'],
+            ['Premium Cost', 'Lower, increases with age', 'Higher, but level'],
+            ['Cash Value', 'None', 'Builds over time'],
+            ['Best For', 'Maximum coverage on budget', 'Permanent needs, estate planning']
           ]
         }
       },
       {
         type: 'heading',
-        content: 'Growing Market for Worker-Centered Safety'
+        content: 'How Much Life Insurance Do You Need?'
       },
       {
         type: 'paragraph',
-        content: 'The market for wearable safety technology is expanding rapidly, reflecting a cultural shift toward prioritizing worker safety and wellbeing. Technology serves as an enabler rather than a replacement for human judgment and care.'
-      },
-      {
-        type: 'paragraph',
-        content: 'Industry analysts project substantial growth in the wearable safety market over the coming years. Starting from a market value of $1.6 billion in 2023, the sector is expected to grow steadily to $2.1 billion in 2024, reaching $2.7 billion by 2025. This growth trajectory continues with projections of $3.3 billion in 2026, $3.8 billion in 2027, and $4.2 billion by 2028. This expansion reflects increasing organizational commitment to worker safety and the proven value of wearable safety solutions.'
-      },
-      {
-        type: 'heading',
-        content: 'How WRLDS Supports Your Safety Mission'
-      },
-      {
-        type: 'paragraph',
-        content: 'We understand that every organization\'s safety challenges are unique. That\'s why we\'ve built a flexible platform that can adapt to your specific needs while maintaining our core focus on worker protection.'
-      },
-      {
-        type: 'subheading',
-        content: 'Our Collaborative Approach'
+        content: 'The amount of life insurance you need depends on several factors including your income, debts, family size, and financial goals. A common rule of thumb is to have coverage equal to 10-12 times your annual income, but your specific needs may vary significantly.'
       },
       {
         type: 'icon-list',
         items: [
-          'Flexible integration that works with your existing safety programs and doesn\'t disrupt worker routines',
-          'White-label solutions that let you maintain your brand identity while providing cutting-edge safety technology',
-          'Proven supply chain partnerships that ensure reliable, high-quality components for long-term deployment',
-          'Data insights that help you understand and improve your safety culture, not just track compliance metrics'
+          'Calculate your family\'s ongoing expenses including mortgage, utilities, food, and other living costs',
+          'Consider future financial goals such as children\'s education, spouse\'s retirement needs',
+          'Account for existing debts including credit cards, car loans, and other obligations',
+          'Factor in funeral and final expense costs, which can range from $7,000 to $15,000 or more'
         ]
       },
       {
         type: 'heading',
-        content: 'Start the Conversation'
+        content: 'Choosing the Right Policy'
       },
       {
         type: 'paragraph',
-        content: 'We\'d love to learn about your safety goals and specific challenges. Whether you\'re looking to reduce particular types of injuries, improve safety culture, or explore how technology can support your existing programs, we\'re here to listen and collaborate.'
+        content: 'Selecting the right life insurance policy involves balancing your family\'s protection needs with your budget constraints. Consider factors such as your age, health, financial obligations, and long-term goals. Working with a licensed insurance professional can help you navigate these decisions and find the most suitable coverage.'
+      },
+      {
+        type: 'heading',
+        content: 'Getting Started'
       },
       {
         type: 'paragraph',
-        content: 'Bring your organization\'s injury and loss data, and we\'ll work together to calculate potential benefits using your actual numbers. We can help you explore how wearable technology might fit into your comprehensive safety strategy. No hard sell, no one-size-fits-all solutions: just an honest conversation about protecting the people who make your organization successful.'
+        content: 'The application process for life insurance typically involves completing an application, answering health questions, and possibly undergoing a medical exam. The good news is that many insurers now offer simplified underwriting for smaller coverage amounts, making it easier and faster to get the protection you need.'
       },
       {
         type: 'quote',
-        content: 'Great safety partnerships start with shared values: putting workers first, building trust through transparency, and believing that everyone deserves to work in an environment where they can thrive safely.'
-      },
-      {
-        type: 'heading',
-        content: 'Sources and References'
-      },
-      {
-        type: 'bibliography',
-        items: [
-          'National Safety Council, Work Injury Costs, Injury Facts, 2024 edition. Available at: injuryfacts.nsc.org',
-          'US Bureau of Labor Statistics, Employer-Reported Workplace Injuries and Illnesses, 2023, Table 1. Available at: bls.gov',
-          'Occupational Safety and Health Administration, Safety Pays Individual Injury Estimator. Available at: osha.gov',
-          'Digi International, "Kinetic Creates an Innovative Wearable That Reduces Workplace Injuries," customer story, 2024. Available at: digi.com',
-          '"Want Wearable Tech With That Workers\' Comp Policy?" Insurance Journal, 2021. Available at: insurancejournal.com',
-          '"Nationwide, Kinetic Team on Wearable Workplace Safety Technology," Carrier Management, 2021. Available at: carriermanagement.com',
-          'Markets and Markets, "Wearable Sensors Market Size, Share, Industry Report," 2024 update. Available at: marketsandmarkets.com'
-        ]
-      }
-    ]
-  },
-  {
-    id: '5',
-    title: 'Smart PPE Revolution: How Safety Technology is Transforming Worker Protection',
-    slug: 'smart-ppe-revolution-safety-technology',
-    excerpt: 'Discover how smart textiles and sensor technology are revolutionizing personal protective equipment, creating safer workplaces and preventing accidents before they happen.',
-    date: 'June 5, 2025',
-    author: 'WRLDS Technologies',
-    category: 'Innovation',
-    imageUrl: '/lovable-uploads/927dae7e-6aaf-4b76-add2-1287a1dd9dc0.png',
-    keywords: [
-      'smart PPE',
-      'safety technology',
-      'personal protective equipment',
-      'smart textiles',
-      'workplace safety',
-      'wearable sensors',
-      'construction safety',
-      'industrial IoT',
-      'worker protection',
-      'safety monitoring',
-      'smart helmets',
-      'connected safety gear',
-      'occupational safety',
-      'safety innovation',
-      'protective equipment technology'
-    ],
-    metaDescription: 'Learn how smart PPE with integrated sensors is revolutionizing workplace safety. Discover the latest innovations in intelligent personal protective equipment that prevent accidents and save lives.',
-    content: [
-      {
-        type: 'paragraph',
-        content: 'The realm of personal protective equipment (PPE) is undergoing a significant transformation, driven by advancements in smart textiles and sensor technology. Traditional PPE, designed as a passive barrier against workplace hazards, is evolving into intelligent, interconnected systems that actively monitor conditions and provide real-time alerts. This shift is creating safer work environments and preventing accidents before they occur.'
-      },
-      {
-        type: 'heading',
-        content: 'The Evolution of PPE: From Passive to Proactive'
-      },
-      {
-        type: 'paragraph',
-        content: 'For decades, PPE has primarily served as a last line of defense, offering limited protection and often failing to address the underlying causes of accidents. However, the integration of smart technology is enabling a proactive approach to safety, where PPE not only protects but also anticipates and mitigates risks.'
-      },
-      {
-        type: 'subheading',
-        content: 'Key Components of Smart PPE'
-      },
-      {
-        type: 'list',
-        items: [
-          'Embedded Sensors: Detecting environmental conditions, physiological parameters, and potential hazards.',
-          'Connectivity: Enabling real-time data transmission and communication between workers, supervisors, and emergency responders.',
-          'Data Analytics: Providing insights into worker performance, risk factors, and safety trends.',
-          'Alert Systems: Triggering automated warnings and notifications to prevent accidents and ensure timely intervention.'
-        ]
-      },
-      {
-        type: 'heading',
-        content: 'Real-World Applications of Smart PPE'
-      },
-      {
-        type: 'subheading',
-        content: 'Construction Industry'
-      },
-      {
-        type: 'paragraph',
-        content: 'In construction, smart helmets equipped with sensors can detect falls, monitor head impacts, and alert emergency services. Smart vests can track worker location, monitor vital signs, and detect exposure to hazardous substances.'
-      },
-      {
-        type: 'subheading',
-        content: 'Manufacturing Sector'
-      },
-      {
-        type: 'paragraph',
-        content: 'In manufacturing, smart gloves can provide real-time feedback on worker movements, preventing repetitive strain injuries. Smart eyewear can offer augmented reality overlays, guiding workers through complex tasks and reducing errors.'
-      },
-      {
-        type: 'subheading',
-        content: 'Healthcare Environment'
-      },
-      {
-        type: 'paragraph',
-        content: 'In healthcare, smart gowns can monitor patient vital signs, detect infections, and alert medical staff. Smart masks can track air quality, filter out harmful particles, and provide real-time feedback on respiratory function.'
-      },
-      {
-        type: 'heading',
-        content: 'The Future of Worker Protection'
-      },
-      {
-        type: 'paragraph',
-        content: 'As technology continues to advance, smart PPE is poised to become an indispensable tool for ensuring worker safety and well-being. By providing real-time data, automated alerts, and proactive risk mitigation, smart PPE is transforming the way we approach safety in the workplace.'
-      },
-      {
-        type: 'quote',
-        content: 'Smart PPE is not just about protecting workers; it\'s about empowering them with the knowledge and tools they need to stay safe and productive.'
-      }
-    ]
-  },
-  {
-    id: '4',
-    title: 'Leveraging Sensor Technology in Product Development: A Strategic Approach',
-    slug: 'leveraging-sensor-technology-product-development',
-    excerpt: 'Explore how sensor technology is revolutionizing product development across industries, from smart textiles to IoT devices, and learn strategic approaches for implementation.',
-    date: 'May 8, 2025',
-    author: 'WRLDS Technologies',
-    category: 'Technology',
-    imageUrl: '/lovable-uploads/6b0637e9-4a7b-40d0-b219-c8b7f879f93e.png',
-    keywords: [
-      'sensor technology',
-      'product development',
-      'smart textiles',
-      'IoT sensors',
-      'wearable technology',
-      'textile sensors',
-      'manufacturing innovation',
-      'embedded sensors',
-      'smart fabrics',
-      'sensor integration'
-    ],
-    metaDescription: 'Discover how sensor technology is transforming product development. Learn strategic approaches for integrating sensors into textiles and manufacturing processes.',
-    content: [
-      {
-        type: 'paragraph',
-        content: 'Sensor technology is rapidly transforming product development across various industries. From smart textiles that monitor vital signs to IoT devices that automate home functions, sensors are enabling a new era of intelligent and responsive products. This article explores how businesses can strategically leverage sensor technology to enhance their product development processes.'
-      },
-      {
-        type: 'heading',
-        content: 'The Shift from Manual Testing to Sensor-Driven Insights'
-      },
-      {
-        type: 'paragraph',
-        content: 'Traditional product development often relies on manual testing and subjective feedback, which can be time-consuming and prone to errors. Sensor technology offers a more objective and data-driven approach, providing real-time insights into product performance and user behavior. By embedding sensors into prototypes and early-stage products, developers can gather valuable data on usage patterns, environmental conditions, and potential failure points.'
-      },
-      {
-        type: 'subheading',
-        content: 'Key Benefits of Sensor Integration'
-      },
-      {
-        type: 'list',
-        items: [
-          'Real-time Performance Measurement: Sensors provide continuous data on product performance, allowing developers to identify and address issues quickly.',
-          'Automated Testing: Sensors can automate testing processes, reducing the need for manual intervention and accelerating development cycles.',
-          'Data-Driven Insights: Sensor data provides valuable insights into user behavior, enabling developers to optimize product design and functionality.',
-          'Predictive Maintenance: Sensors can detect early signs of wear and tear, allowing for proactive maintenance and preventing costly downtime.'
-        ]
-      },
-      {
-        type: 'heading',
-        content: 'Real-time Performance Measurement Made Easy'
-      },
-      {
-        type: 'paragraph',
-        content: 'One of the most significant advantages of sensor technology is its ability to provide real-time performance measurement. By embedding sensors into products, developers can continuously monitor key metrics such as temperature, pressure, vibration, and strain. This data can be used to identify potential issues, optimize product performance, and ensure that products meet design specifications.'
-      },
-      {
-        type: 'heading',
-        content: 'Faster Iterations Through Automated Testing and AI'
-      },
-      {
-        type: 'paragraph',
-        content: 'Sensor technology can also be used to automate testing processes, reducing the need for manual intervention and accelerating development cycles. By integrating sensors with AI algorithms, developers can create intelligent testing systems that automatically identify and diagnose issues. These systems can also be used to predict product failures, allowing for proactive maintenance and preventing costly downtime.'
-      },
-      {
-        type: 'heading',
-        content: 'Key Business Benefits'
-      },
-      {
-        type: 'table',
-        tableData: {
-          headers: ['Industry', 'Challenge', 'Sensor Solution'],
-          rows: [
-            ['Construction', 'Monitoring worker safety on construction sites', 'Wearable sensors that detect falls, monitor vital signs, and alert emergency services.'],
-            ['Manufacturing', 'Preventing equipment failures in manufacturing plants', 'Embedded sensors that monitor equipment performance, detect early signs of wear and tear, and trigger maintenance alerts.'],
-            ['Healthcare', 'Monitoring patient health in hospitals and clinics', 'Wearable sensors that track vital signs, detect infections, and alert medical staff.'],
-          ],
-        },
-      },
-      {
-        type: 'heading',
-        content: 'Ready to Transform Your Product Development?'
-      },
-      {
-        type: 'paragraph',
-        content: 'Sensor technology is revolutionizing product development across industries, offering a more objective, data-driven, and efficient approach. By strategically leveraging sensor technology, businesses can enhance their product development processes, improve product performance, and gain a competitive edge.'
-      },
-    ]
-  },
-  {
-    id: '3',
-    title: 'From Idea to Launch: Our Smart Product Development Process',
-    slug: 'from-idea-to-launch-development-process',
-    excerpt: 'Take a behind-the-scenes look at how WRLDS transforms ideas into market-ready smart products through our proven 5-step development process.',
-    date: 'May 15, 2025',
-    author: 'WRLDS Technologies',
-    category: 'Process',
-    imageUrl: '/lovable-uploads/5262afdb-dd24-4d5e-be66-7c6717adbca9.png',
-    keywords: [
-      'product development',
-      'smart product design',
-      'development process',
-      'prototyping',
-      'manufacturing',
-      'product launch',
-      'innovation process',
-      'textile development',
-      'smart textiles'
-    ],
-    metaDescription: 'Learn about WRLDS proven 5-step process for developing smart products from initial concept to market launch. Discover how we turn ideas into reality.',
-    content: [
-      {
-        type: 'paragraph',
-        content: 'At WRLDS, we simplify the journey from an idea to a finished smart product. Whether you\'re starting from scratch or already have a clear concept ready to scale, we\'re here to support you exactly where you need us.'
-      },
-      {
-        type: 'paragraph',
-        content: 'Let\'s walk through our process with an example: Imagine you come to us with the idea of a smart glove. This glove automatically senses the outside temperature and adjusts its own warmth accordingly. It also connects to an app where you can control settings and view temperature information.'
-      },
-      {
-        type: 'heading',
-        content: 'Step 1: Understanding Your Idea'
-      },
-      {
-        type: 'paragraph',
-        content: 'It all starts with a clear conversation. When you bring us your glove idea, we first meet to fully understand your vision and requirements. We\'ll discuss key points: What problem does the product solve? Who will use it? After that, we set a clear and practical roadmap.'
-      },
-      {
-        type: 'paragraph',
-        content: 'If you already have a basic prototype or idea, we\'ll quickly identify how we can help scale it effectively.'
-      },
-      {
-        type: 'heading',
-        content: 'Step 2: Building the First Prototype'
-      },
-      {
-        type: 'paragraph',
-        content: 'Once the plan is set, our team moves quickly to develop the first working prototype. For your smart glove, we design temperature sensors, heating elements, electronics, and the companion app to work seamlessly together.'
-      },
-      {
-        type: 'paragraph',
-        content: 'We use rapid prototyping techniques like 3D printing and quick electronics integration. Within weeks, you get a tangible product to test and gather feedback.'
-      },
-      {
-        type: 'heading',
-        content: 'Step 3: Testing & Refinement'
-      },
-      {
-        type: 'paragraph',
-        content: 'With your prototype ready, we jump into testing. You\'ll evaluate the glove under real-world conditions to identify improvements. Together, we\'ll adjust designs, optimize the heating response, enhance the app, and retest frequently.'
-      },
-      {
-        type: 'paragraph',
-        content: 'This process is quick, iterative, and practical, bringing you closer to a reliable, user-friendly product.'
-      },
-      {
-        type: 'heading',
-        content: 'Step 4: Preparing for Production'
-      },
-      {
-        type: 'paragraph',
-        content: 'Next, we prepare the glove for large-scale manufacturing. We refine the design for efficient production, select reliable components, and ensure quality at scale.'
-      },
-      {
-        type: 'paragraph',
-        content: 'If you already have a manufacturing partner, we\'ll work closely with them. If not, we\'ll help you find the best production solution. In either case, we\'ll integrate the technology smoothly into the production process.'
-      },
-      {
-        type: 'heading',
-        content: 'Step 5: Product Launch'
-      },
-      {
-        type: 'paragraph',
-        content: 'Finally, it\'s launch day. You introduce your smart glove, thoroughly tested and production-ready, to the market. WRLDS provides ongoing support to ensure a smooth launch—from technical documentation to supporting the app\'s release.'
-      },
-      {
-        type: 'heading',
-        content: 'Why Choose WRLDS?'
-      },
-      {
-        type: 'paragraph',
-        content: 'Developing smart products can be complex, but we make it simple. Clients choose us because:'
-      },
-      {
-        type: 'list',
-        items: [
-          'Clear Process: Simple steps, clear timelines, and reduced risks.',
-          'Speed & Flexibility: Rapid prototyping and agile iterations get your product to market faster.',
-          'Comprehensive Expertise: Hardware, software, and design experts under one roof.',
-          'Practical Results: Real-world testing ensures your final product meets user needs.'
-        ]
-      },
-      {
-        type: 'paragraph',
-        content: 'Have an idea or ready to scale an existing product? We\'d love to hear from you and help bring your vision to life. Reach out and let\'s get started!'
+        content: 'Life insurance isn\'t for you—it\'s for the people you love. It\'s a final act of love that ensures your family\'s financial security even when you\'re no longer there to provide for them.'
       }
     ]
   },
   {
     id: '2',
-    title: 'AI-Powered Uniforms: The Future of Emergency Response and Worker Safety',
-    slug: 'ai-powered-uniforms-emergency-alerts',
-    excerpt: 'Explore how AI-integrated uniforms are revolutionizing emergency response by providing real-time health monitoring and automated alert systems for first responders and industrial workers.',
-    date: 'May 8, 2025',
-    author: 'WRLDS Technologies',
-    category: 'Innovation',
+    title: 'Retirement Planning Strategies: Building Your Financial Security',
+    slug: 'retirement-planning-strategies-financial-security',
+    excerpt: 'Discover essential retirement planning strategies including 401(k) optimization, IRA contributions, Social Security planning, and creating multiple income streams for a secure retirement.',
+    date: 'December 20, 2024',
+    author: 'Agora Assurance',
+    category: 'Retirement',
     imageUrl: '/lovable-uploads/4187f423-ba69-4043-be76-c43098488348.png',
     keywords: [
-      'AI uniforms',
-      'emergency response',
-      'worker safety',
-      'smart uniforms',
-      'health monitoring',
-      'first responders',
-      'safety technology',
-      'wearable AI'
+      'retirement planning',
+      '401k strategies',
+      'IRA contributions',
+      'social security planning',
+      'retirement income',
+      'pension planning',
+      'retirement savings',
+      'financial planning',
+      'retirement security',
+      'investment strategies'
     ],
-    metaDescription: 'Discover how AI-powered uniforms are transforming emergency response and worker safety with real-time monitoring and automated alerts.',
+    metaDescription: 'Learn essential retirement planning strategies to build long-term financial security. Discover how to maximize your savings and create reliable retirement income.',
     content: [
       {
         type: 'paragraph',
-        content: 'The integration of artificial intelligence (AI) into everyday workwear is no longer a futuristic concept but a rapidly evolving reality. AI-powered uniforms are poised to revolutionize emergency response and worker safety by providing real-time health monitoring and automated alert systems for first responders and industrial workers.'
+        content: 'Retirement planning is one of the most critical aspects of financial security, yet many Americans feel unprepared for their golden years. With proper planning and the right strategies, you can build a robust retirement foundation that provides financial independence and peace of mind. The key is starting early and making informed decisions about your retirement savings and income strategies.'
       },
       {
         type: 'heading',
-        content: 'The Convergence of AI and Wearable Technology'
+        content: 'The Current Retirement Landscape'
       },
       {
         type: 'paragraph',
-        content: 'The convergence of AI and wearable technology has paved the way for the development of smart uniforms capable of collecting and analyzing vast amounts of data. These uniforms are equipped with an array of sensors that monitor vital signs, environmental conditions, and potential hazards.'
+        content: 'Today\'s retirees face unique challenges that previous generations didn\'t encounter. Traditional pension plans are becoming rare, Social Security faces long-term funding concerns, and people are living longer than ever before. This means individuals must take greater responsibility for funding their own retirement through personal savings and strategic planning.'
       },
       {
-        type: 'subheading',
-        content: 'Key Features of AI-Powered Uniforms'
-      },
-      {
-        type: 'list',
-        items: [
-          'Real-time Health Monitoring: AI-powered uniforms continuously monitor vital signs such as heart rate, body temperature, and blood pressure, providing early warnings of potential health issues.',
-          'Automated Alert Systems: In the event of a medical emergency or hazardous situation, AI-powered uniforms can automatically alert emergency responders, providing critical information about the worker\'s location and condition.',
-          'Environmental Monitoring: AI-powered uniforms can detect exposure to hazardous substances, such as toxic gases or radiation, and provide real-time alerts to workers and supervisors.',
-          'Performance Optimization: AI-powered uniforms can track worker movements and provide feedback on posture and ergonomics, helping to prevent injuries and improve performance.'
+        type: 'stats',
+        statsData: [
+          {
+            value: '$65,000',
+            label: 'Recommended annual retirement income for comfortable living',
+            icon: 'DollarSign'
+          },
+          {
+            value: '1.3M',
+            label: 'Estimated savings needed for retirement at age 67',
+            icon: 'TrendingUp'
+          },
+          {
+            value: '36%',
+            label: 'Of Americans who have less than $1,000 saved for retirement',
+            icon: 'Users'
+          }
         ]
       },
       {
         type: 'heading',
-        content: 'Transforming Emergency Response'
+        content: 'Essential Retirement Planning Strategies'
+      },
+      {
+        type: 'subheading',
+        content: 'Maximize Employer-Sponsored Plans'
       },
       {
         type: 'paragraph',
-        content: 'AI-powered uniforms are particularly valuable in emergency response scenarios, where time is of the essence. By providing real-time health monitoring and automated alert systems, these uniforms can help first responders quickly identify and address medical emergencies, potentially saving lives.'
+        content: 'If your employer offers a 401(k) or 403(b) plan, this should be your first priority, especially if there\'s a company match. Employer matching is essentially free money that can significantly boost your retirement savings over time.'
+      },
+      {
+        type: 'subheading',
+        content: 'Leverage IRAs for Additional Savings'
+      },
+      {
+        type: 'paragraph',
+        content: 'Individual Retirement Accounts (IRAs) provide additional tax-advantaged savings opportunities. Traditional IRAs offer tax deductions now with taxable withdrawals later, while Roth IRAs provide tax-free growth and withdrawals in retirement.'
+      },
+      {
+        type: 'icon-list',
+        items: [
+          'Contribute enough to your 401(k) to get the full employer match - this is free money you shouldn\'t leave on the table',
+          'Maximize IRA contributions annually, choosing between traditional and Roth based on your current and expected future tax situation',
+          'Consider catch-up contributions if you\'re 50 or older, allowing additional savings beyond standard limits',
+          'Create multiple income streams through annuities, rental properties, or part-time work in retirement'
+        ]
       },
       {
         type: 'heading',
-        content: 'Enhancing Worker Safety'
+        content: 'The Three-Legged Stool of Retirement'
       },
       {
         type: 'paragraph',
-        content: 'AI-powered uniforms can also play a crucial role in enhancing worker safety in industrial settings. By monitoring environmental conditions and worker movements, these uniforms can help prevent accidents and injuries, creating a safer and more productive work environment.'
+        content: 'Traditional retirement planning was built on a three-legged stool: employer pensions, Social Security, and personal savings. While pensions have largely disappeared, understanding how to optimize the remaining two legs—plus creating additional income sources—is crucial for retirement security.'
+      },
+      {
+        type: 'table',
+        tableData: {
+          headers: ['Income Source', 'Typical Contribution', 'Key Strategy'],
+          rows: [
+            ['Social Security', '40% of pre-retirement income', 'Delay benefits to age 70 for maximum payouts'],
+            ['401(k)/403(b)', '20-30% of retirement needs', 'Contribute enough for full employer match'],
+            ['Personal Savings/IRA', '20-30% of retirement needs', 'Maximize annual contributions consistently'],
+            ['Annuities/Other', '10-20% of retirement needs', 'Create guaranteed income streams']
+          ]
+        }
+      },
+      {
+        type: 'heading',
+        content: 'Social Security Optimization'
+      },
+      {
+        type: 'paragraph',
+        content: 'Social Security benefits form the foundation of most Americans\' retirement income. Understanding when and how to claim benefits can significantly impact your lifetime income. While you can start receiving benefits as early as age 62, waiting until full retirement age or even age 70 can substantially increase your monthly payments.'
+      },
+      {
+        type: 'heading',
+        content: 'Creating Guaranteed Income in Retirement'
+      },
+      {
+        type: 'paragraph',
+        content: 'One of the biggest risks in retirement is outliving your money. Creating sources of guaranteed income—through annuities, permanent life insurance with cash value, or other products—can provide the security of knowing you\'ll have income for life, regardless of market conditions.'
+      },
+      {
+        type: 'heading',
+        content: 'Start Planning Today'
+      },
+      {
+        type: 'paragraph',
+        content: 'The most important step in retirement planning is simply to begin. Time is your greatest ally when it comes to building retirement wealth through compound growth. Even small contributions made consistently over many years can grow into substantial retirement funds.'
       },
       {
         type: 'quote',
-        content: 'AI-powered uniforms are not just about protecting workers; they\'re about empowering them with the knowledge and tools they need to stay safe and healthy.'
+        content: 'Retirement isn\'t an age, it\'s a financial number. The question isn\'t when you want to retire, but when you can afford to retire comfortably.'
       }
     ]
   },
   {
     id: '1',
-    title: 'The Rise of Sensor-Integrated Textiles: A New Era in Smart Manufacturing',
-    slug: 'sensor-integrated-textiles-trend',
-    excerpt: 'Discover how sensor-integrated textiles are transforming industries from healthcare to sports, creating new possibilities for smart, responsive products.',
-    date: 'May 2, 2025',
-    author: 'WRLDS Technologies',
-    category: 'Technology',
+    title: 'The Importance of Life Insurance for Young Families',
+    slug: 'importance-life-insurance-young-families',
+    excerpt: 'Learn why young families need life insurance protection and how to choose affordable coverage that grows with your family. Discover term life options and coverage strategies.',
+    date: 'December 15, 2024',
+    author: 'Agora Assurance',
+    category: 'Life Insurance',
     imageUrl: '/lovable-uploads/48ecf6e2-5a98-4a9d-af6f-ae2265cd4098.png',
     keywords: [
-      'smart textiles',
-      'sensor integration',
-      'smart manufacturing',
-      'wearable technology',
-      'textile innovation',
-      'smart fabrics',
-      'textile sensors'
+      'young family life insurance',
+      'term life insurance',
+      'family protection',
+      'affordable life insurance',
+      'new parent insurance',
+      'child protection',
+      'income replacement',
+      'family financial planning',
+      'life insurance for millennials',
+      'budget life insurance'
     ],
-    metaDescription: 'Learn about the revolutionary trend of sensor-integrated textiles and how they are creating new possibilities in smart manufacturing.',
+    metaDescription: 'Discover why young families need life insurance and how to find affordable coverage that protects your growing family\'s financial future.',
     content: [
       {
         type: 'paragraph',
-        content: 'Sensor-integrated textiles are rapidly emerging as a transformative technology, poised to revolutionize industries ranging from healthcare to sports. By seamlessly embedding sensors into fabrics, these innovative textiles are creating new possibilities for smart, responsive products that can monitor vital signs, track performance, and enhance safety.'
+        content: 'Starting a family is one of life\'s greatest joys, but it also brings new financial responsibilities and concerns. Young families often operate on tight budgets while facing significant future expenses like childcare, education, and homeownership. This makes life insurance both more important and seemingly more challenging to afford. Understanding why life insurance is crucial for young families—and how to make it affordable—can help you protect your loved ones without breaking your budget.'
       },
       {
         type: 'heading',
-        content: 'The Convergence of Textiles and Technology'
+        content: 'Why Young Families Need Life Insurance Most'
       },
       {
         type: 'paragraph',
-        content: 'The convergence of textiles and technology has led to the development of sensor-integrated textiles, which combine the comfort and flexibility of fabrics with the intelligence and connectivity of sensors. These textiles are created by weaving or knitting sensors directly into the fabric structure, allowing them to conform to the body and provide continuous, real-time data.'
+        content: 'Young families typically have the greatest need for life insurance because they have the most to lose financially if a breadwinner passes away unexpectedly. Young parents often have mortgages, car loans, and other debts, plus limited savings to fall back on. Additionally, they have decades of potential income that would be lost, and children who will need financial support for many years to come.'
       },
       {
-        type: 'subheading',
-        content: 'Key Applications of Sensor-Integrated Textiles'
-      },
-      {
-        type: 'list',
-        items: [
-          'Healthcare: Sensor-integrated textiles can monitor vital signs such as heart rate, body temperature, and blood pressure, providing early warnings of potential health issues.',
-          'Sports: Sensor-integrated textiles can track athletic performance, measuring metrics such as speed, distance, and acceleration, helping athletes optimize their training and prevent injuries.',
-          'Safety: Sensor-integrated textiles can detect exposure to hazardous substances, such as toxic gases or radiation, providing real-time alerts to workers and supervisors.',
-          'Fashion: Sensor-integrated textiles can create interactive and responsive garments that change color, shape, or function based on the wearer\'s movements or environment.'
+        type: 'stats',
+        statsData: [
+          {
+            value: '$250,000',
+            label: 'Average cost to raise a child to age 18',
+            icon: 'DollarSign'
+          },
+          {
+            value: '20-30',
+            label: 'Years of income replacement typically needed',
+            icon: 'TrendingUp'
+          },
+          {
+            value: '43%',
+            label: 'Of families who would struggle financially within 6 months without primary income',
+            icon: 'Users'
+          }
         ]
       },
       {
         type: 'heading',
-        content: 'Transforming Industries'
+        content: 'The Advantages of Buying Life Insurance Young'
       },
       {
         type: 'paragraph',
-        content: 'Sensor-integrated textiles are poised to transform a wide range of industries, creating new possibilities for smart, responsive products that enhance health, safety, and performance. As the technology continues to evolve, we can expect to see even more innovative applications emerge, further blurring the lines between textiles and technology.'
+        content: 'Age is one of the most significant factors in life insurance pricing. Purchasing coverage while you\'re young and healthy can lock in low premiums for the entire term of the policy. Additionally, you\'re more likely to qualify for coverage before health issues arise.'
+      },
+      {
+        type: 'icon-list',
+        items: [
+          'Significantly lower premiums when purchased at younger ages, potentially saving thousands over the life of the policy',
+          'Higher likelihood of approval since health issues are less common in younger applicants',
+          'Ability to secure large amounts of coverage at affordable rates when your family\'s needs are greatest',
+          'Level premiums that won\'t increase even as you age, providing budget predictability for young families'
+        ]
+      },
+      {
+        type: 'heading',
+        content: 'Term Life Insurance: The Young Family Solution'
+      },
+      {
+        type: 'paragraph',
+        content: 'For most young families, term life insurance offers the best combination of maximum coverage and affordable premiums. Term life provides substantial death benefits for 10, 20, or 30 years—exactly when your family needs protection most—at a fraction of the cost of permanent life insurance.'
+      },
+      {
+        type: 'table',
+        tableData: {
+          headers: ['Age', '20-Year Term ($500k)', '30-Year Term ($500k)'],
+          rows: [
+            ['25 years old', '$25/month', '$35/month'],
+            ['30 years old', '$30/month', '$42/month'],
+            ['35 years old', '$38/month', '$55/month'],
+            ['40 years old', '$55/month', '$85/month']
+          ]
+        }
+      },
+      {
+        type: 'heading',
+        content: 'How Much Coverage Do Young Families Need?'
+      },
+      {
+        type: 'paragraph',
+        content: 'Young families often need more life insurance than they think. Consider not just current expenses, but future needs like your children\'s education, your spouse\'s retirement if they\'re out of the workforce, and inflation over time. A good starting point is 10-15 times your annual income, but your specific needs may vary.'
+      },
+      {
+        type: 'heading',
+        content: 'Making Life Insurance Affordable'
+      },
+      {
+        type: 'paragraph',
+        content: 'Even on a tight budget, there are strategies to make life insurance affordable for young families. Consider starting with a smaller amount and increasing coverage as your income grows, or look into simplified issue policies that require no medical exam for smaller coverage amounts.'
+      },
+      {
+        type: 'heading',
+        content: 'Don\'t Wait - Protect Your Family Today'
+      },
+      {
+        type: 'paragraph',
+        content: 'The best time to buy life insurance is when you don\'t need it yet. Young, healthy families can secure substantial coverage at remarkably affordable rates. Waiting until health issues arise or financial pressures increase can make coverage more expensive or even unavailable.'
       },
       {
         type: 'quote',
-        content: 'Sensor-integrated textiles are not just about creating smart fabrics; they\'re about creating a new era of smart manufacturing, where textiles are seamlessly integrated with technology to enhance our lives.'
+        content: 'Life insurance for young families isn\'t about planning for the worst—it\'s about ensuring the best possible outcome for your loved ones, no matter what life brings.'
       }
     ]
   }
