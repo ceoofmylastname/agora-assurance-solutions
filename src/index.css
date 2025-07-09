@@ -277,3 +277,34 @@
 .animate-pulse-slow {
   animation: pulse-slow 4s ease-in-out infinite;
 }
+
+/* Hide any third-party cookie banners or consent widgets */
+[id*="cookie" i],
+[class*="cookie" i],
+[id*="consent" i], 
+[class*="consent" i],
+[id*="gdpr" i],
+[class*="gdpr" i],
+[data-testid*="cookie" i],
+[data-cy*="cookie" i],
+div[style*="position: fixed"][style*="bottom"],
+div[style*="position: fixed"][style*="z-index"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Specific overrides for common cookie banner patterns */
+.cc-window,
+.cc-banner,
+.cookieConsentContainer,
+.cookie-consent,
+.gdpr-banner,
+.consent-banner,
+#cookieConsent,
+#cookie-banner,
+#gdpr-consent {
+  display: none !important;
+  visibility: hidden !important;
+}
