@@ -68,16 +68,17 @@ const Careers = () => {
                     animate={{ opacity: 1, y: 0 }} 
                     transition={{ duration: 0.6, delay: 0.4 }}
                   >
-                    <Button 
-                      size="lg" 
-                      onClick={() => {
-                        console.log("Button clicked, opening modal");
+                    <button 
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log("APPLY NOW button clicked!");
                         setIsModalOpen(true);
                       }}
-                      className="bg-[#15AFF7] hover:bg-[#0D94D1] text-white px-8 py-3 text-lg font-semibold"
+                      className="bg-[#15AFF7] hover:bg-[#0D94D1] text-white px-8 py-3 text-lg font-semibold rounded transition-colors"
                     >
                       APPLY NOW
-                    </Button>
+                    </button>
                   </motion.div>
                 </div>
                 
