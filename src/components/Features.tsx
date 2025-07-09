@@ -1,5 +1,6 @@
+
 import { useEffect, useRef, useState } from 'react';
-import { ArrowRight, Search, Shield, Building, Calculator, BarChart3, FileText, CheckCircle, MessageSquare } from "lucide-react";
+import { ArrowRight, Search, Shield, Building, Calculator, BarChart3, FileText, CheckCircle, MessageSquare, RefreshCcw } from "lucide-react";
 import { cn } from '@/lib/utils';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Progress } from "@/components/ui/progress";
