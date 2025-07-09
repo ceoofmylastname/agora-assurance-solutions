@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import businessMeetingImage from '@/assets/business-meeting-advisors.jpg';
 
 const Careers = () => {
   useEffect(() => {
@@ -78,7 +79,7 @@ const Careers = () => {
                   className="relative"
                 >
                   <img 
-                    src="/lovable-uploads/idea_to_launch_blog_post_pic"
+                    src={businessMeetingImage}
                     alt="Financial advisor meeting with clients"
                     className="w-full h-auto rounded-xl shadow-2xl"
                   />
