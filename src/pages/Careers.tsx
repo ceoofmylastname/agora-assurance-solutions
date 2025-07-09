@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { TestModal } from '@/components/TestModal';
+import { ModernApplicationModal } from '@/components/ModernApplicationModal';
 import businessMeetingImage from '@/assets/business-meeting-advisors.jpg';
 
 const Careers = () => {
@@ -70,17 +70,8 @@ const Careers = () => {
                   >
                     <button 
                       type="button"
-                      onClick={(e) => {
-                        console.log("=== BUTTON CLICKED ===");
-                        console.log("Event:", e);
-                        console.log("Current isModalOpen:", isModalOpen);
-                        setIsModalOpen(true);
-                        console.log("setIsModalOpen(true) called");
-                        setTimeout(() => {
-                          console.log("After timeout, isModalOpen should be:", true);
-                        }, 100);
-                      }}
-                      className="bg-[#15AFF7] hover:bg-[#0D94D1] text-white px-8 py-3 text-lg font-semibold rounded transition-colors cursor-pointer"
+                      onClick={() => setIsModalOpen(true)}
+                      className="bg-[#15AFF7] hover:bg-[#0D94D1] text-white px-8 py-3 text-lg font-semibold rounded transition-colors cursor-pointer shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
                     >
                       APPLY NOW
                     </button>
@@ -106,9 +97,9 @@ const Careers = () => {
         </section>
       </PageLayout>
       
-      <TestModal 
-        open={isModalOpen} 
-        onOpenChange={setIsModalOpen} 
+      <ModernApplicationModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
       />
     </div>
   );
