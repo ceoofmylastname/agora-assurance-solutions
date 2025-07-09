@@ -79,7 +79,7 @@ const Careers = () => {
                   className="relative"
                 >
                   <img 
-                    src={businessMeetingImage}
+                    src="/lovable-uploads/5c7ac1b7-a207-4223-b39e-d5e0e16bef31.png"
                     alt="Financial advisor meeting with clients"
                     className="w-full h-auto rounded-xl shadow-2xl"
                   />
