@@ -239,6 +239,18 @@ const ModernContactForm = () => {
   return (
     <section id="contact" className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center py-12">
       <div className="w-full max-w-2xl mx-auto px-4">
+        {/* Section Header */}
+        <div className="text-center mb-12">
+          <div className="inline-block mb-3 px-4 py-2 bg-[#15AFF7] text-white rounded-full text-sm font-medium">
+            Get In Touch
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            CONTACT US
+          </h2>
+          <p className="text-lg text-gray-600 max-w-xl mx-auto">
+            Ready to protect what matters most? Let's discuss your insurance needs and find the perfect solution for you.
+          </p>
+        </div>
         {/* Progress Bar */}
         <div className="mb-8">
           <div className="w-full bg-gray-200 rounded-full h-2">
