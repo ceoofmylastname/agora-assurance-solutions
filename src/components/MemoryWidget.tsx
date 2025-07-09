@@ -129,7 +129,7 @@ const MemoryWidget = () => {
                 />
               </div>
               <div>
-                <h3 className="font-medium text-sm">Agora AI</h3>
+                <h3 className="font-medium text-sm">Agora</h3>
                 <p className="text-xs text-white/70">AI Assistant</p>
               </div>
             </div>
