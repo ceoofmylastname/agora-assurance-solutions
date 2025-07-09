@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Star, Quote } from 'lucide-react';
 import { motion } from "framer-motion";
+import AnimatedCounter from "@/components/ui/animated-counter";
 
 const testimonials = [
   {
@@ -162,7 +163,7 @@ const CustomerStories = () => {
               4.9/5 Customer Rating
             </h3>
             <p className="text-gray-600 text-sm mb-6">
-              Based on 25,000+ verified customer reviews
+              Based on <AnimatedCounter end={25000} suffix="+" className="text-gray-600" /> verified customer reviews
             </p>
             <button 
               onClick={() => {

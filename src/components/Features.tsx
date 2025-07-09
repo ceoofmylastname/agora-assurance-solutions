@@ -6,6 +6,7 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/h
 import { Progress } from "@/components/ui/progress";
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Button } from "@/components/ui/button";
+import AnimatedCounter from "@/components/ui/animated-counter";
 
 const Features = () => {
   const featuresRef = useRef<HTMLDivElement>(null);

@@ -4,53 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { Shield, Calculator, Users, Award, Target, TrendingUp, CheckCircle, ArrowRight } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Link } from "react-router-dom";
-
-const AnimatedCounter = ({
-  end,
-  duration = 2000,
-  prefix = "",
-  suffix = "",
-  decimals = 0
-}: {
-  end: number;
-  duration?: number;
-  prefix?: string;
-  suffix?: string;
-  decimals?: number;
-}) => {
-  const [count, setCount] = useState(0);
-  const countRef = useRef(null);
-  const inView = useInView(countRef, {
-    once: true,
-    margin: "-100px"
-  });
-  useEffect(() => {
-    if (!inView) return;
-    let startTime: number;
-    let animationFrame: number;
-    const startAnimation = (timestamp: number) => {
-      startTime = timestamp;
-      animate(timestamp);
-    };
-    const animate = (timestamp: number) => {
-      const progress = Math.min((timestamp - startTime) / duration, 1);
-      const currentCount = progress * end;
-      setCount(currentCount);
-      if (progress < 1) {
-        animationFrame = requestAnimationFrame(animate);
-      }
-    };
-    animationFrame = requestAnimationFrame(startAnimation);
-    return () => {
-      if (animationFrame) {
-        cancelAnimationFrame(animationFrame);
-      }
-    };
-  }, [end, duration, inView]);
-  return <span ref={countRef} className="font-bold tabular-nums">
-      {prefix}{count.toFixed(decimals)}{suffix}
-    </span>;
-};
+import AnimatedCounter from "@/components/ui/animated-counter";
 
 const WhyAgora = () => {
   const isMobile = useIsMobile();
@@ -190,7 +144,7 @@ const WhyAgora = () => {
                 </div>
                 <div>
                   <h4 className="text-xl font-bold text-gray-900 mb-2">Peace of Mind</h4>
-                  <p className="text-gray-700">Over 50 years of combined experience, 100+ business partners, and proven results you can trust.</p>
+                  <p className="text-gray-700">Over <AnimatedCounter end={50} className="text-gray-700" /> years of combined experience, <AnimatedCounter end={100} suffix="+" className="text-gray-700" /> business partners, and proven results you can trust.</p>
                 </div>
               </div>
             </motion.div>

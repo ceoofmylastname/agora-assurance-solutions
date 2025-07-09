@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
+import AnimatedCounter from "@/components/ui/animated-counter";
 const About = () => {
   // Scroll to top on mount
   useEffect(() => {
@@ -226,7 +227,9 @@ const About = () => {
                 }} className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-br from-[#15AFF7]/10 to-blue-600/10 rounded-xl transform rotate-2 scale-105 group-hover:rotate-3 transition-transform duration-300"></div>
                     <div className="relative bg-white rounded-xl border border-gray-100 p-6 text-center shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300">
-                      <div className="text-3xl font-bold text-[#15AFF7] mb-2">50+</div>
+                      <div className="text-3xl font-bold text-[#15AFF7] mb-2">
+                        <AnimatedCounter end={50} suffix="+" />
+                      </div>
                       <div className="text-gray-600 text-sm">years combined leadership experience</div>
                     </div>
                   </motion.div>
@@ -242,7 +245,9 @@ const About = () => {
                 }} className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-emerald-600/10 rounded-xl transform -rotate-2 scale-105 group-hover:-rotate-3 transition-transform duration-300"></div>
                     <div className="relative bg-white rounded-xl border border-gray-100 p-6 text-center shadow-lg transform rotate-1 group-hover:rotate-0 transition-transform duration-300">
-                      <div className="text-3xl font-bold text-green-500 mb-2">$500M+</div>
+                      <div className="text-3xl font-bold text-green-500 mb-2">
+                        <AnimatedCounter end={500} prefix="$" suffix="M+" />
+                      </div>
                       <div className="text-gray-600 text-sm">in tax-free benefits created</div>
                     </div>
                   </motion.div>
@@ -258,7 +263,9 @@ const About = () => {
                 }} className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-600/10 rounded-xl transform rotate-2 scale-105 group-hover:rotate-3 transition-transform duration-300"></div>
                     <div className="relative bg-white rounded-xl border border-gray-100 p-6 text-center shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300">
-                      <div className="text-3xl font-bold text-purple-500 mb-2">25,000+</div>
+                      <div className="text-3xl font-bold text-purple-500 mb-2">
+                        <AnimatedCounter end={25000} suffix="+" />
+                      </div>
                       <div className="text-gray-600 text-sm">lives protected and counting</div>
                     </div>
                   </motion.div>
@@ -274,7 +281,9 @@ const About = () => {
                 }} className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-red-600/10 rounded-xl transform -rotate-2 scale-105 group-hover:-rotate-3 transition-transform duration-300"></div>
                     <div className="relative bg-white rounded-xl border border-gray-100 p-6 text-center shadow-lg transform rotate-1 group-hover:rotate-0 transition-transform duration-300">
-                      <div className="text-3xl font-bold text-orange-500 mb-2">100+</div>
+                      <div className="text-3xl font-bold text-orange-500 mb-2">
+                        <AnimatedCounter end={100} suffix="+" />
+                      </div>
                       <div className="text-gray-600 text-sm">business and carrier partnerships</div>
                     </div>
                   </motion.div>
