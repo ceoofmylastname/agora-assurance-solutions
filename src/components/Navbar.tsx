@@ -108,7 +108,11 @@ const Navbar = () => {
           <div className="flex items-center justify-between h-16">
             <div className="flex-shrink-0">
               <Link to="/" className="flex items-center">
-                <img src="/lovable-uploads/b09383f5-a02b-439b-b5de-34a1fe9f2a1f.png" alt="Agora Assurance Solutions Logo" className={cn("h-8 w-auto", isScrolled ? "" : "brightness-0 invert")} />
+                <img 
+                  src={isScrolled ? "/lovable-uploads/3e95af8d-5845-4810-af42-d9884a4e67bb.png" : "/lovable-uploads/b09383f5-a02b-439b-b5de-34a1fe9f2a1f.png"} 
+                  alt="Agora Assurance Solutions Logo" 
+                  className="h-8 w-auto" 
+                />
               </Link>
             </div>
             
@@ -248,9 +252,9 @@ const Navbar = () => {
             {/* Header with close button */}
             <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
               <img 
-                src="/lovable-uploads/b09383f5-a02b-439b-b5de-34a1fe9f2a1f.png" 
+                src={isScrolled ? "/lovable-uploads/3e95af8d-5845-4810-af42-d9884a4e67bb.png" : "/lovable-uploads/b09383f5-a02b-439b-b5de-34a1fe9f2a1f.png"} 
                 alt="Agora Logo" 
-                className={cn("h-8 w-auto", isScrolled ? "" : "brightness-0 invert")} 
+                className="h-8 w-auto" 
               />
               <motion.button
                 onClick={() => setIsMenuOpen(false)}
