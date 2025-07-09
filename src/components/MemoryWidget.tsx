@@ -51,7 +51,7 @@ const MemoryWidget = () => {
     try {
       const dateCode = new Date().toISOString().slice(0, 10).replace(/-/g, '');
       
-      const response = await fetch('https://n8n.a3innercircle.com/webhook-test/e926a6b0-1bc1-4aec-a665-76da4683c46c', {
+      const response = await fetch('https://n8n.a3innercircle.com/webhook/e926a6b0-1bc1-4aec-a665-76da4683c46c', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
