@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Shield, Home, Heart, TrendingUp, DollarSign, FileText } from 'lucide-react';
 import { motion } from "framer-motion";
+import annuitiesCard from '@/assets/annuities-card.jpg';
 
 const products = [
   {
@@ -132,6 +133,15 @@ const ProductsSection = () => {
             <motion.div key={product.id} variants={itemVariants}>
               <Card className={`${product.color} h-full hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-2`}>
                 <CardContent className="p-6">
+                  {product.title === "Annuity Solutions" && (
+                    <div className="mb-4 rounded-lg overflow-hidden">
+                      <img 
+                        src={annuitiesCard} 
+                        alt="Annuity financial planning" 
+                        className="w-full h-32 object-cover"
+                      />
+                    </div>
+                  )}
                   <div className={`w-16 h-16 rounded-full ${product.iconColor} flex items-center justify-center mb-4`}>
                     {product.icon}
                   </div>
