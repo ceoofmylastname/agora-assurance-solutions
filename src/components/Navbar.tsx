@@ -126,30 +126,6 @@ const Navbar = () => {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className={cn(isScrolled ? "text-gray-700 hover:text-gray-900" : "text-gray-100 hover:text-white bg-transparent hover:bg-gray-800")}>
-                    Learn More
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid gap-3 p-4 w-[400px]">
-                      <li>
-                        <Link to="/tech-details" className="block p-3 space-y-1 rounded-md hover:bg-gray-100">
-                          <div className="font-medium">Technology Details</div>
-                          <p className="text-sm text-gray-500">How our smart textile platform works</p>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/development-process" className="block p-3 space-y-1 rounded-md hover:bg-gray-100">
-                          <div className="font-medium">Development Process</div>
-                          <p className="text-sm text-gray-500">Our approach to creating custom solutions</p>
-                        </Link>
-                      </li>
-                      <li>
-                        
-                      </li>
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
                 
                 <NavigationMenuItem>
                   <Link to="/blog">
