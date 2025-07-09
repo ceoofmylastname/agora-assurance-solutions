@@ -113,7 +113,7 @@ const WhyAgora = () => {
               <Target className="w-8 h-8 text-[#15AFF7]" />
             </div>
             <h3 className="text-gray-900 text-2xl lg:text-3xl font-bold mb-3">
-              <AnimatedCounter end={2500} suffix="+" /> 
+              <AnimatedCounter end={25000} suffix="+" /> 
             </h3>
             <p className="text-gray-700">
               Lives protected through our comprehensive insurance and financial solutions
