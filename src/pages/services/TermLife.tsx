@@ -1,5 +1,5 @@
 import { ArrowLeft, CheckCircle, Clock, DollarSign, Shield, Users, TrendingUp, Heart } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { useEffect } from 'react';
 import PageLayout from '@/components/PageLayout';
@@ -8,6 +8,7 @@ import SEO from '@/components/SEO';
 import termLifeFamily from '@/assets/term-life-family.webp';
 
 const TermLife = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -291,7 +292,13 @@ const TermLife = () => {
                 </button>
                 <button 
                   onClick={() => {
-                    window.open('https://quickstart.assurity.com/agoraassurancesolutions', '_blank');
+                    navigate('/');
+                    setTimeout(() => {
+                      const contactSection = document.getElementById('contact');
+                      if (contactSection) {
+                        contactSection.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }, 100);
                   }}
                   className="px-8 py-4 border-2 border-[#15AFF7] text-[#15AFF7] rounded-lg hover:bg-[#15AFF7] hover:text-white transition-all font-medium"
                 >
