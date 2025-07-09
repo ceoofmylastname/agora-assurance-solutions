@@ -1,4 +1,3 @@
-
 import { BlogPost } from './types';
 
 export const lifeInsurancePosts: BlogPost[] = [
@@ -10,7 +9,7 @@ export const lifeInsurancePosts: BlogPost[] = [
     date: 'January 5, 2025',
     author: 'Agora Assurance',
     category: 'Life Insurance',
-    imageUrl: '/lovable-uploads/6b0637e9-4a7b-40d0-b219-c8b7f879f93e.png',
+    imageUrl: 'https://cdn.pixabay.com/photo/2017/09/07/08/54/money-2724241_960_720.jpg',
     keywords: [
       'mortgage protection insurance',
       'mortgage life insurance',
@@ -128,7 +127,7 @@ export const lifeInsurancePosts: BlogPost[] = [
     date: 'December 28, 2024',
     author: 'Agora Assurance',
     category: 'Life Insurance',
-    imageUrl: '/lovable-uploads/5262afdb-dd24-4d5e-be66-7c6717adbca9.png',
+    imageUrl: 'https://cdn.pixabay.com/photo/2015/01/09/11/08/startup-594090_960_720.jpg',
     keywords: [
       'life insurance basics',
       'term life insurance',
@@ -254,7 +253,7 @@ export const lifeInsurancePosts: BlogPost[] = [
     date: 'December 15, 2024',
     author: 'Agora Assurance',
     category: 'Life Insurance',
-    imageUrl: '/lovable-uploads/48ecf6e2-5a98-4a9d-af6f-ae2265cd4098.png',
+    imageUrl: 'https://cdn.pixabay.com/photo/2016/03/27/07/32/businessman-1282449_960_720.jpg',
     keywords: [
       'young family life insurance',
       'term life insurance',

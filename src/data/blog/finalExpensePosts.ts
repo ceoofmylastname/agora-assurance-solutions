@@ -1,4 +1,3 @@
-
 import { BlogPost } from './types';
 
 export const finalExpensePosts: BlogPost[] = [
@@ -10,7 +9,7 @@ export const finalExpensePosts: BlogPost[] = [
     date: 'January 15, 2025',
     author: 'Agora Assurance',
     category: 'Final Expense',
-    imageUrl: '/lovable-uploads/078a129e-0f98-4d91-af61-873687db1a04.png',
+    imageUrl: 'https://cdn.pixabay.com/photo/2016/11/29/06/15/family-1867470_960_720.jpg',
     keywords: [
       'final expense insurance',
       'burial insurance',
