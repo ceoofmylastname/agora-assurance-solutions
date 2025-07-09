@@ -260,24 +260,26 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
         
       case 'select':
         return (
-          <div className="space-y-4">
-            {step.options?.map((option, index) => (
-              <button
-                key={option.value}
-                type="button"
-                onClick={() => {
-                  setValue(step.id as keyof ApplicationFormData, option.value as any);
-                  setTimeout(nextStep, 300);
-                }}
-                className="w-full text-left p-6 rounded-xl border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-all duration-200 text-xl hover:scale-105 transform"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="flex items-center justify-between">
-                  <span>{option.label}</span>
-                  <ChevronRight className="w-6 h-6 text-gray-400" />
-                </div>
-              </button>
-            ))}
+          <div className="space-y-4 max-h-[50vh] overflow-y-auto pr-4">
+            <div className="space-y-4">
+              {step.options?.map((option, index) => (
+                <button
+                  key={option.value}
+                  type="button"
+                  onClick={() => {
+                    setValue(step.id as keyof ApplicationFormData, option.value as any);
+                    setTimeout(nextStep, 300);
+                  }}
+                  className="w-full text-left p-6 rounded-xl border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-all duration-200 text-xl hover:scale-105 transform"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <div className="flex items-center justify-between">
+                    <span>{option.label}</span>
+                    <ChevronRight className="w-6 h-6 text-gray-400" />
+                  </div>
+                </button>
+              ))}
+            </div>
             {fieldError && (
               <p className="text-red-500 text-lg animate-fade-in">{fieldError.message}</p>
             )}
@@ -434,7 +436,7 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
             </div>
           ) : (
             <>
-              <div className="flex-1 p-12 flex flex-col justify-center">
+              <div className="flex-1 p-12 flex flex-col justify-center overflow-y-auto max-h-[70vh]">
                 <div className="max-w-3xl mx-auto w-full">
                   <div className="mb-12 animate-fade-in">
                     <div className="flex items-center space-x-4 mb-6">
