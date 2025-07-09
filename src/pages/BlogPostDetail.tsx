@@ -7,6 +7,7 @@ import EnhancedBlogContent from '@/components/EnhancedBlogContent';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Calendar, User } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import annuitiesRetirementHero from '@/assets/annuities-retirement-hero.jpg';
 
 const BlogPostDetail = () => {
   const { slug } = useParams();
@@ -46,13 +47,20 @@ const BlogPostDetail = () => {
       <article className="w-full pt-16 pb-16">
         {/* Hero Section - Taller to accommodate text content */}
         <div className="banner-container h-96 sm:h-[450px] md:h-[500px] lg:h-[550px] bg-[#15AFF7] relative">
-          {post.imageUrl && (
+          {/* Use annuities image for relevant posts or fallback to post image */}
+          {(post.slug === 'understanding-annuities-retirement-income-security' || post.category === 'Retirement') ? (
+            <img 
+              src={annuitiesRetirementHero} 
+              alt="Retirement planning and annuities"
+              className="absolute inset-0 w-full h-full object-cover opacity-70"
+            />
+          ) : post.imageUrl ? (
             <img 
               src={post.imageUrl} 
               alt={post.title}
               className="absolute inset-0 w-full h-full object-cover opacity-70"
             />
-          )}
+          ) : null}
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-white"></div>
           
           <div className="banner-overlay">
