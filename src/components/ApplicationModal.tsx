@@ -102,10 +102,7 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
     }
   };
 
-  if (!open) {
-    console.log("Modal not open, returning null");
-    return null;
-  }
+  console.log("ApplicationModal rendering with open:", open);
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
