@@ -13,6 +13,9 @@ const Careers = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // Debug logging
+  console.log("Careers component render, isModalOpen:", isModalOpen);
   
   return (
     <div className="min-h-screen bg-white">

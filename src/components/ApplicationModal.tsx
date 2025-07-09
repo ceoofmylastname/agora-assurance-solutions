@@ -28,7 +28,6 @@ import {
 } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
 import { toast } from '@/hooks/use-toast';
-import { X } from 'lucide-react';
 
 const applicationSchema = z.object({
   referredBy: z.string().min(1, 'Please list who referred you'),
@@ -103,19 +102,18 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
     }
   };
 
+  if (!open) {
+    console.log("Modal not open, returning null");
+    return null;
+  }
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-slate-700">
-        <DialogHeader className="relative pb-6">
+      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-slate-700 text-white">
+        <DialogHeader className="pb-6">
           <DialogTitle className="text-2xl font-bold text-white text-center">
             Apply to become an Agora Advisor Today
           </DialogTitle>
-          <button
-            onClick={() => onOpenChange(false)}
-            className="absolute right-0 top-0 text-white/70 hover:text-white transition-colors"
-          >
-            <X className="h-6 w-6" />
-          </button>
         </DialogHeader>
         
         <Form {...form}>
@@ -219,9 +217,9 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent className="bg-slate-800 border-slate-600">
-                          <SelectItem value="yes" className="text-white">Yes</SelectItem>
-                          <SelectItem value="no" className="text-white">No</SelectItem>
-                          <SelectItem value="in-progress" className="text-white">In Progress</SelectItem>
+                          <SelectItem value="yes" className="text-white focus:bg-slate-700 focus:text-white">Yes</SelectItem>
+                          <SelectItem value="no" className="text-white focus:bg-slate-700 focus:text-white">No</SelectItem>
+                          <SelectItem value="in-progress" className="text-white focus:bg-slate-700 focus:text-white">In Progress</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage className="text-red-400" />
@@ -244,8 +242,8 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent className="bg-slate-800 border-slate-600">
-                          <SelectItem value="yes" className="text-white">Yes</SelectItem>
-                          <SelectItem value="no" className="text-white">No</SelectItem>
+                          <SelectItem value="yes" className="text-white focus:bg-slate-700 focus:text-white">Yes</SelectItem>
+                          <SelectItem value="no" className="text-white focus:bg-slate-700 focus:text-white">No</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage className="text-red-400" />
@@ -271,9 +269,9 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent className="bg-slate-800 border-slate-600">
-                          <SelectItem value="director1" className="text-white">Director 1</SelectItem>
-                          <SelectItem value="director2" className="text-white">Director 2</SelectItem>
-                          <SelectItem value="director3" className="text-white">Director 3</SelectItem>
+                          <SelectItem value="director1" className="text-white focus:bg-slate-700 focus:text-white">Director 1</SelectItem>
+                          <SelectItem value="director2" className="text-white focus:bg-slate-700 focus:text-white">Director 2</SelectItem>
+                          <SelectItem value="director3" className="text-white focus:bg-slate-700 focus:text-white">Director 3</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage className="text-red-400" />
@@ -376,8 +374,8 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent className="bg-slate-800 border-slate-600">
-                          <SelectItem value="yes" className="text-white">Yes</SelectItem>
-                          <SelectItem value="no" className="text-white">No</SelectItem>
+                          <SelectItem value="yes" className="text-white focus:bg-slate-700 focus:text-white">Yes</SelectItem>
+                          <SelectItem value="no" className="text-white focus:bg-slate-700 focus:text-white">No</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage className="text-red-400" />
