@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { ApplicationModal } from '@/components/ApplicationModal';
+import { TestModal } from '@/components/TestModal';
 import businessMeetingImage from '@/assets/business-meeting-advisors.jpg';
 
 const Careers = () => {
@@ -70,9 +70,15 @@ const Careers = () => {
                   >
                     <button 
                       type="button"
-                      onClick={() => {
-                        console.log("APPLY NOW clicked - opening modal");
+                      onClick={(e) => {
+                        console.log("=== BUTTON CLICKED ===");
+                        console.log("Event:", e);
+                        console.log("Current isModalOpen:", isModalOpen);
                         setIsModalOpen(true);
+                        console.log("setIsModalOpen(true) called");
+                        setTimeout(() => {
+                          console.log("After timeout, isModalOpen should be:", true);
+                        }, 100);
                       }}
                       className="bg-[#15AFF7] hover:bg-[#0D94D1] text-white px-8 py-3 text-lg font-semibold rounded transition-colors cursor-pointer"
                     >
@@ -100,7 +106,7 @@ const Careers = () => {
         </section>
       </PageLayout>
       
-      <ApplicationModal 
+      <TestModal 
         open={isModalOpen} 
         onOpenChange={setIsModalOpen} 
       />
