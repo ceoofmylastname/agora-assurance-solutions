@@ -241,7 +241,7 @@ const ModernContactForm = () => {
       
       const { honeypot, timestamp, ...emailData } = data;
       
-      // Send to webhook
+      // Send to webhook (primary method)
       const webhookData = {
         firstName: emailData.firstName,
         lastName: emailData.lastName,
@@ -252,35 +252,17 @@ const ModernContactForm = () => {
         source: 'contact_form'
       };
 
-      try {
-        await fetch(WEBHOOK_URL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(webhookData),
-        });
-      } catch (webhookError) {
-        console.error('Error sending to webhook:', webhookError);
-        // Continue with form submission even if webhook fails
+      const response = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(webhookData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Webhook submission failed');
       }
-      
-      // Send email via EmailJS
-      const templateParams = {
-        from_name: emailData.firstName + ' ' + emailData.lastName,
-        from_email: emailData.email,
-        message: emailData.message,
-        service: emailData.service,
-        to_name: 'WRLDS Team',
-        reply_to: emailData.email
-      };
-      
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        templateParams,
-        EMAILJS_PUBLIC_KEY
-      );
       
       setIsSubmitted(true);
       
