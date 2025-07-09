@@ -1,54 +1,18 @@
+
 import { useEffect, useRef, useState } from 'react';
-import { Activity, Shield, HardHat, Zap, ArrowRight, Box, Truck, Code, CheckCircle, Rocket, Factory, Microchip, Handshake, RefreshCcw, MessageSquare } from "lucide-react";
+import { ArrowRight, Box, Code, CheckCircle, Rocket, Factory, Microchip, Handshake, RefreshCcw, MessageSquare } from "lucide-react";
 import { cn } from '@/lib/utils';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Card, CardContent } from "@/components/ui/card";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { Link } from 'react-router-dom';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Progress } from "@/components/ui/progress";
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Button } from "@/components/ui/button";
-import { useScrollHijack } from '@/hooks/useScrollHijack';
 
 const Features = () => {
   const featuresRef = useRef<HTMLDivElement>(null);
-  const hijackSectionRef = useRef<HTMLDivElement>(null);
-  const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
   const [progressValue, setProgressValue] = useState(0);
   const [currentSprint, setCurrentSprint] = useState(1);
   const totalSprints = 3;
   const isMobile = useIsMobile();
-
-  const features = [
-    {
-      icon: <Activity className="w-10 h-10 text-white transition-transform duration-300 transform" />,
-      title: "Sports Performance",
-      description: "Specialized fabrics that analyze form, provide instant feedback, and help prevent injuries in athletic equipment.",
-      image: "/lovable-uploads/48e540e5-6a25-44e4-b3f7-80f3bfc2777a.png"
-    },
-    {
-      icon: <Shield className="w-10 h-10 text-white transition-transform duration-300 transform" />,
-      title: "Military & Defense",
-      description: "Tactical gear with embedded sensors for soldier health monitoring, environmental awareness, and enhanced safety.",
-      image: "/lovable-uploads/48ecf6e2-5a98-4a9d-af6f-ae2265cd4098.png"
-    },
-    {
-      icon: <HardHat className="w-10 h-10 text-white transition-transform duration-300 transform" />,
-      title: "Industrial Safety",
-      description: "Protective workwear that detects hazards, monitors fatigue, and prevents workplace injuries through early intervention.",
-      image: "/lovable-uploads/cf8966e3-de0d-445f-9fbd-ee6c48daa7ff.png"
-    },
-    {
-      icon: <Zap className="w-10 h-10 text-white transition-transform duration-300 transform" />,
-      title: "Thermal Regulation",
-      description: "Adaptive heating and cooling textiles that respond to body temperature and environmental conditions.",
-      image: "/lovable-uploads/6739bd63-bf19-4abd-bb23-0b613bbf7ac8.png"
-    }
-  ];
-
-  const { isHijacked, currentIndex } = useScrollHijack(hijackSectionRef, features.length);
 
   const scrollToContact = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -108,19 +72,6 @@ const Features = () => {
     };
   }, []);
 
-  const sensorCaseStudies = [{
-    image: "/lovable-uploads/843446fe-638e-4efb-b885-ed3cd505325a.png",
-    title: "Firefighter Safety",
-    description: "Advanced protective gear with gas, temperature, positioning, and motion sensors for safer emergency response."
-  }, {
-    image: "/lovable-uploads/5463c9c5-0946-4280-a14b-17636ff69a98.png",
-    title: "Industrial Worker Protection",
-    description: "Safety workwear with vibration, pressure, and heating sensors to prevent injuries and monitor environmental hazards."
-  }, {
-    image: "/lovable-uploads/c5f8ee24-9815-4ebe-b65d-6f3d449feb8b.png",
-    title: "Sports Performance",
-    description: "Smart athletic wear with temperature and pressure sensors that track hydration, foot strike patterns, and performance metrics."
-  }];
   const stepFlowItems = [{
     icon: <Microchip className="h-10 w-10 text-gray-700" />,
     title: "WRLDS Proprietary Modules",
@@ -149,186 +100,6 @@ const Features = () => {
   }];
 
   return <>
-      <section id="features" className="relative bg-white overflow-hidden py-10 md:py-[50px] w-full">
-        <div className="w-full px-4 sm:px-6 lg:px-8" ref={featuresRef}> 
-          <div className="text-center mb-10 max-w-3xl mx-auto feature-item">
-            <div className="inline-block mb-2 px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">
-              Textile Sensor Applications
-            </div>
-            <p className="text-gray-600 mt-4">
-              Our textile sensor technology transforms ordinary fabrics into intelligent interfaces that collect data, monitor conditions, and enhance performance across diverse sectors.
-            </p>
-          </div>
-          
-          {/* Scroll-hijacked features section */}
-          <div 
-            ref={hijackSectionRef}
-            className={cn(
-              "relative transition-all duration-500",
-              isHijacked ? "fixed inset-0 z-50 bg-black" : "grid grid-cols-1 md:grid-cols-2 gap-5"
-            )}
-            style={{ height: isHijacked ? '100vh' : 'auto' }}
-          >
-            {isHijacked && (
-              <div className="absolute top-4 right-4 z-10 text-white text-sm opacity-70">
-                {currentIndex + 1} / {features.length}
-              </div>
-            )}
-            
-            {features.map((feature, index) => (
-              <div 
-                key={index} 
-                className={cn(
-                  "feature-item rounded-xl overflow-hidden transform transition-all duration-500 relative shadow-lg",
-                  isHijacked 
-                    ? cn(
-                        "absolute inset-0 w-full h-full",
-                        index === currentIndex 
-                          ? "opacity-100 translate-x-0" 
-                          : index < currentIndex 
-                            ? "opacity-0 -translate-x-full" 
-                            : "opacity-0 translate-x-full"
-                      )
-                    : "hover:-translate-y-1 h-[280px]"
-                )}
-                style={{
-                  transitionDelay: isHijacked ? '0ms' : `${index * 100}ms`
-                }}
-                onMouseEnter={() => !isHijacked && setHoveredFeature(index)} 
-                onMouseLeave={() => !isHijacked && setHoveredFeature(null)}
-              >
-                <div className="absolute inset-0 w-full h-full">
-                  <img 
-                    src={feature.image} 
-                    alt={feature.title} 
-                    className={cn(
-                      "w-full h-full object-cover transition-all duration-300",
-                      isHijacked ? "grayscale-0" : "grayscale"
-                    )} 
-                  />
-                  <div className={cn(
-                    "absolute inset-0 transition-opacity duration-300",
-                    isHijacked 
-                      ? "bg-black/40" 
-                      : hoveredFeature === index 
-                        ? "bg-black/50" 
-                        : "bg-black/70"
-                  )}></div>
-                </div>
-                
-                <div className={cn(
-                  "relative z-10 flex flex-col justify-center",
-                  isHijacked 
-                    ? "p-16 h-full text-center items-center" 
-                    : "p-6 h-full justify-between"
-                )}>
-                  <div className={isHijacked ? "space-y-8" : ""}>
-                    <div className={cn(
-                      "inline-block p-3 bg-gray-800/40 backdrop-blur-sm rounded-lg transition-all duration-300 transform",
-                      isHijacked 
-                        ? "mb-6 scale-150" 
-                        : hoveredFeature === index 
-                          ? "mb-4 hover:scale-110" 
-                          : "mb-4"
-                    )}>
-                      <div className={`transform transition-transform duration-300 ${!isHijacked && hoveredFeature === index ? 'rotate-12' : ''}`}>
-                        {feature.icon}
-                      </div>
-                    </div>
-                    <h3 className={cn(
-                      "font-semibold text-white",
-                      isHijacked ? "text-4xl mb-6" : "text-xl mb-2"
-                    )}>
-                      {feature.title}
-                    </h3>
-                    <p className={cn(
-                      "text-white/90",
-                      isHijacked ? "text-lg max-w-2xl" : "text-sm"
-                    )}>
-                      {feature.description}
-                    </p>
-                  </div>
-                  {!isHijacked && (
-                    <div className={`h-0.5 bg-white/70 mt-3 transition-all duration-500 ${hoveredFeature === index ? 'w-full' : 'w-0'}`}></div>
-                  )}
-                </div>
-              </div>
-            ))}
-            
-            {isHijacked && (
-              <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white text-center">
-                <div className="flex space-x-2 mb-4">
-                  {features.map((_, index) => (
-                    <div 
-                      key={index}
-                      className={cn(
-                        "w-2 h-2 rounded-full transition-all duration-300",
-                        index === currentIndex ? "bg-white w-8" : "bg-white/50"
-                      )}
-                    />
-                  ))}
-                </div>
-                <p className="text-sm opacity-70">
-                  {isMobile ? "Swipe" : "Scroll"} to continue • Press ESC to exit
-                </p>
-              </div>
-            )}
-          </div>
-
-          <div className="mt-16 mb-8 feature-item">
-            <div className="text-center mb-8">
-              <div className="inline-block mb-2 px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">
-                Textile Sensor Applications
-              </div>
-              <h3 className="text-2xl font-bold">Real-World Use Cases</h3>
-              <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
-                Explore how our textile sensors are applied in different professional contexts, 
-                from emergency response to construction and athletics.
-                <span className="block text-sm mt-1 text-blue-500">Scroll horizontally to see more examples →</span>
-              </p>
-            </div>
-            
-            <div className="rounded-xl overflow-hidden bg-white p-4 feature-item">
-              <Carousel className="w-full max-w-7xl mx-auto">
-                <CarouselContent className="flex">
-                  {sensorCaseStudies.map((study, index) => <CarouselItem key={index} className="md:basis-1/3 flex-shrink-0">
-                      <Card className="border border-gray-100 shadow-md">
-                        <CardContent className="p-0">
-                          <div className="w-full h-full">
-                            <img src={study.image} alt={study.title} className="w-full h-auto object-contain" />
-                          </div>
-                          <div className="p-4">
-                            <h4 className="font-semibold text-lg">{study.title}</h4>
-                            <p className="text-sm text-gray-600 mt-2">{study.description}</p>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </CarouselItem>)}
-                </CarouselContent>
-                <div className="flex justify-center mt-6 gap-2">
-                  <CarouselPrevious className="relative static left-auto translate-y-0 hover:bg-gray-100" />
-                  <CarouselNext className="relative static right-auto translate-y-0 hover:bg-gray-100" />
-                </div>
-              </Carousel>
-              <div className="text-center mt-6 text-sm text-gray-600">
-                <p className="font-medium">These examples showcase just a few ways our textile sensors can enhance safety and performance</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="text-center mt-12 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
-          <Button onClick={scrollToContact} className="inline-flex items-center px-4 sm:px-6 py-3 bg-gray-700 hover:bg-gray-800 text-white rounded-lg shadow-md hover:shadow-lg transition-all group w-full sm:w-auto">
-            Need Custom Solutions?
-            <MessageSquare className="ml-2 w-4 h-4 group-hover:animate-pulse" />
-          </Button>
-          
-          <Button onClick={() => window.scrollTo(0, 0)} className="inline-flex items-center px-4 sm:px-6 py-3 bg-white text-gray-700 rounded-lg border border-gray-200 hover:bg-gray-50 hover:shadow-md transition-all group w-full sm:w-auto">
-            Learn More About Our Technology
-            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Button>
-        </div>
-      </section>
-      
       <section id="technology" className="bg-gray-50 py-10 md:py-16">
         <div className="w-full px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
           <div className="text-center mb-12">
@@ -469,11 +240,6 @@ const Features = () => {
           
           <div className="text-center">
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-              <Link to="/tech-details" onClick={() => window.scrollTo(0, 0)} className="inline-flex items-center px-4 sm:px-6 bg-white text-gray-700 rounded-lg border border-gray-200 hover:bg-gray-50 hover:shadow-md transition-all group py-3 w-full sm:w-auto justify-center">
-                Learn More About Our Technology
-                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              
               <Button onClick={scrollToContact} className="inline-flex items-center px-4 sm:px-6 py-3 bg-gray-700 hover:bg-gray-800 text-white rounded-lg shadow-md hover:shadow-lg transition-all group w-full sm:w-auto justify-center">
                 Contact Our Experts
                 <MessageSquare className="ml-2 w-4 h-4 group-hover:scale-110 transition-transform" />
