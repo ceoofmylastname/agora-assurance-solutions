@@ -1,3 +1,4 @@
+
 import { BlogPost } from './types';
 
 export const retirementPosts: BlogPost[] = [
@@ -9,7 +10,7 @@ export const retirementPosts: BlogPost[] = [
     date: 'January 10, 2025',
     author: 'Agora Assurance',
     category: 'Retirement',
-    imageUrl: 'https://cdn.pixabay.com/photo/2017/08/01/11/48/people-2564425_960_720.jpg',
+    imageUrl: 'https://cdn.pixabay.com/photo/2017/08/01/11/48/people-2564425_1280.jpg',
     keywords: [
       'annuities',
       'retirement income',
@@ -119,7 +120,7 @@ export const retirementPosts: BlogPost[] = [
     date: 'December 20, 2024',
     author: 'Agora Assurance',
     category: 'Retirement',
-    imageUrl: 'https://cdn.pixabay.com/photo/2018/03/22/10/55/training-3250007_960_720.jpg',
+    imageUrl: 'https://cdn.pixabay.com/photo/2018/03/22/10/55/training-3250007_1280.jpg',
     keywords: [
       'retirement planning',
       '401k strategies',
