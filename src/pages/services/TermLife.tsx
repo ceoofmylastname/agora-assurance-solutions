@@ -72,10 +72,7 @@ const TermLife = () => {
                   <motion.div className="flex flex-col sm:flex-row gap-4" variants={itemVariants}>
                     <button 
                       onClick={() => {
-                        const contactSection = document.getElementById('contact');
-                        if (contactSection) {
-                          contactSection.scrollIntoView({ behavior: 'smooth' });
-                        }
+                        window.open('https://quickstart.assurity.com/agoraassurancesolutions', '_blank');
                       }}
                       className="px-8 py-4 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-all transform hover:scale-105 shadow-lg font-medium"
                     >
