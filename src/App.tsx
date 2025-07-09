@@ -12,6 +12,7 @@ import Careers from "./pages/Careers";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermLife from "./pages/services/TermLife";
 import WholeLife from "./pages/services/WholeLife";
+import UniversalLife from "./pages/services/UniversalLife";
 import IndexedUniversalLife from "./pages/services/IndexedUniversalLife";
 import Annuities from "./pages/services/Annuities";
 import FinalExpense from "./pages/services/FinalExpense";
@@ -32,6 +33,7 @@ const App = () => {
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/services/term-life" element={<TermLife />} />
             <Route path="/services/whole-life" element={<WholeLife />} />
+            <Route path="/services/universal-life" element={<UniversalLife />} />
             <Route path="/services/indexed-universal-life" element={<IndexedUniversalLife />} />
             <Route path="/services/annuities" element={<Annuities />} />
             <Route path="/services/final-expense" element={<FinalExpense />} />
