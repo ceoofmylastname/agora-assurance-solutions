@@ -15,6 +15,7 @@ import WholeLife from "./pages/services/WholeLife";
 import UniversalLife from "./pages/services/UniversalLife";
 import IndexedUniversalLife from "./pages/services/IndexedUniversalLife";
 import MortgageProtection from "./pages/services/MortgageProtection";
+import LifeSettlements from "./pages/services/LifeSettlements";
 import Annuities from "./pages/services/Annuities";
 import FinalExpense from "./pages/services/FinalExpense";
 
@@ -37,6 +38,7 @@ const App = () => {
             <Route path="/services/universal-life" element={<UniversalLife />} />
             <Route path="/services/indexed-universal-life" element={<IndexedUniversalLife />} />
             <Route path="/services/mortgage-protection" element={<MortgageProtection />} />
+            <Route path="/services/life-settlements" element={<LifeSettlements />} />
             <Route path="/services/annuities" element={<Annuities />} />
             <Route path="/services/final-expense" element={<FinalExpense />} />
             <Route path="*" element={<NotFound />} />
