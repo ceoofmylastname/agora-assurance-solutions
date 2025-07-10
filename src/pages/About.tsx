@@ -134,7 +134,7 @@ const About = () => {
               delay: 0.4
             }} className="mb-16">
                 <h2 className="text-3xl font-bold mb-8 text-center">Leadership with Vision</h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                   <Dialog>
                     <DialogTrigger asChild>
                       <motion.div initial={{
@@ -676,6 +676,215 @@ const About = () => {
                           <div className="flex items-center justify-center gap-2 text-sm text-gray-500">
                             <Heart className="h-4 w-4" />
                             <span>Building bridges between cultures, communities, and comprehensive coverage</span>
+                          </div>
+                        </div>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                  
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <motion.div initial={{
+                      opacity: 0,
+                      x: 20
+                    }} animate={{
+                      opacity: 1,
+                      x: 0
+                    }} transition={{
+                      duration: 0.6,
+                      delay: 0.9
+                    }} className="relative group cursor-pointer">
+                        <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-amber-600/5 rounded-2xl transform rotate-1 scale-105 group-hover:rotate-2 transition-transform duration-300"></div>
+                        <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300">
+                          <div className="h-20 w-20 rounded-full overflow-hidden mb-4 border-2 border-orange-500/20">
+                            <img alt="Jeff Utley - Director of Advanced Markets" className="w-full h-full object-cover object-center" src="/lovable-uploads/4020c004-3f22-4c03-891b-11e71f0bffbc.png" />
+                          </div>
+                          <h3 className="text-xl font-bold text-gray-900 mb-1">Jeff Utley</h3>
+                          <p className="text-orange-500 font-medium mb-3">Director of Advanced Markets</p>
+                          <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                            A distinguished 25+ year veteran from New York Life and MassMutual, Jeff brings unparalleled expertise in advanced financial planning and client relationship management.
+                          </p>
+                          <Button variant="outline" size="sm" className="w-full group-hover:bg-orange-500 group-hover:text-white transition-colors">
+                            Learn More
+                          </Button>
+                        </div>
+                      </motion.div>
+                    </DialogTrigger>
+                    
+                    <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-white/95 backdrop-blur-xl border border-white/20 shadow-2xl">
+                      <div className="relative">
+                        {/* Hero Header */}
+                        <div className="relative mb-8 -mx-6 -mt-6 p-8 bg-gradient-to-br from-orange-500/10 to-amber-600/20 rounded-t-lg">
+                          <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-amber-600/10 backdrop-blur-sm"></div>
+                          <div className="relative flex flex-col md:flex-row items-center gap-6">
+                            <div className="relative">
+                              <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-amber-600 rounded-full blur-lg opacity-30 scale-110"></div>
+                              <img 
+                                src="/lovable-uploads/4020c004-3f22-4c03-891b-11e71f0bffbc.png" 
+                                alt="Jeff Utley - Director of Advanced Markets" 
+                                className="relative w-32 h-32 rounded-full object-cover object-center border-4 border-white shadow-xl"
+                              />
+                            </div>
+                            <div className="text-center md:text-left">
+                              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Jeff Utley</h1>
+                              <div className="flex items-center justify-center md:justify-start gap-2 mb-4">
+                                <Badge variant="default" className="bg-orange-500 hover:bg-orange-500/90">
+                                  Director of Advanced Markets
+                                </Badge>
+                                <Badge variant="outline">
+                                  Industry Veteran
+                                </Badge>
+                              </div>
+                              <p className="text-gray-600 text-lg italic">
+                                "25+ years of excellence—building lasting relationships and crafting tailored financial solutions for lasting security."
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Content Grid */}
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                          {/* Main Biography */}
+                          <div className="lg:col-span-2 space-y-6">
+                            <div className="bg-gradient-to-br from-orange-50 to-white rounded-xl p-6 border border-orange-100">
+                              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <Trophy className="h-5 w-5 text-orange-500" />
+                                A Remarkable Career Journey
+                              </h3>
+                              <div className="space-y-4 text-gray-600 leading-relaxed">
+                                <p>
+                                  Jeff embarked on a remarkable journey in the insurance industry in 1999, when he joined New York Life as a Financial Representative and soon was promoted to Partner with the firm. Jeff has held many positions with several firms including MassMutual where he was the Managing Partner. Jeff has established a distinguished career, becoming a highly respected figure in the insurance industry.
+                                </p>
+                                <p>
+                                  From the outset, Jeff demonstrated an exceptional aptitude for understanding client needs and crafting tailored financial solutions. His early success at MassMutual was driven by a commitment to integrity, client-focused service, and a deep understanding of complex financial products. This dedication quickly set him apart as a rising star in the industry.
+                                </p>
+                              </div>
+                            </div>
+
+                            <div className="bg-gradient-to-br from-amber-50 to-white rounded-xl p-6 border border-amber-100">
+                              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <TrendingUp className="h-5 w-5 text-amber-600" />
+                                Excellence & Innovation
+                              </h3>
+                              <div className="space-y-4 text-gray-600 leading-relaxed">
+                                <p>
+                                  As Jeff progressed through his career he took on increasingly responsible roles, earning accolades for his innovative approach to financial planning and his ability to build lasting relationships with clients. By combining expert knowledge with a genuine passion for helping individuals and families achieve their financial goals, Jeff has become known for his exceptional service and personalized attention.
+                                </p>
+                                <p>
+                                  Throughout his career, Jeff has been a sought-after advisor, known for his strategic thinking and dedication to client success. He has consistently achieved top performance rankings within the company and has been honored with numerous awards recognizing his excellence in insurance sales and client service.
+                                </p>
+                              </div>
+                            </div>
+
+                            <div className="bg-gradient-to-br from-yellow-50 to-white rounded-xl p-6 border border-yellow-100">
+                              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <Heart className="h-5 w-5 text-yellow-600" />
+                                Legacy of Impact
+                              </h3>
+                              <div className="space-y-4 text-gray-600 leading-relaxed">
+                                <p>
+                                  Jeff's career is a testament to his hard work, perseverance, and dedication to his clients and the insurance industry. His story is one of outstanding achievement and an enduring legacy of positive impact on both clients and the broader community.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Sidebar Content */}
+                          <div className="space-y-6">
+                            <div className="bg-gradient-to-br from-orange-500/5 to-amber-600/10 rounded-xl p-6 border border-orange-500/20">
+                              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <Target className="h-5 w-5 text-orange-500" />
+                                Core Expertise
+                              </h3>
+                              <div className="space-y-3">
+                                <div className="flex items-center gap-2">
+                                  <div className="w-2 h-2 rounded-full bg-orange-500"></div>
+                                  <span className="text-sm text-gray-600">Advanced Financial Planning</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <div className="w-2 h-2 rounded-full bg-amber-500"></div>
+                                  <span className="text-sm text-gray-600">Client Relationship Management</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
+                                  <span className="text-sm text-gray-600">Complex Financial Products</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <div className="w-2 h-2 rounded-full bg-red-500"></div>
+                                  <span className="text-sm text-gray-600">Strategic Financial Solutions</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <div className="w-2 h-2 rounded-full bg-orange-600"></div>
+                                  <span className="text-sm text-gray-600">Life Insurance & Annuities</span>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="bg-gradient-to-br from-emerald-50 to-white rounded-xl p-6 border border-emerald-100">
+                              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <Trophy className="h-5 w-5 text-emerald-600" />
+                                Career Timeline
+                              </h3>
+                              <div className="space-y-3 text-sm">
+                                <div className="flex items-start gap-3">
+                                  <div className="w-2 h-2 rounded-full bg-orange-500 mt-2 flex-shrink-0"></div>
+                                  <div>
+                                    <strong className="text-gray-900">2024:</strong>
+                                    <span className="text-gray-600"> Director of Advanced Markets, Agora</span>
+                                  </div>
+                                </div>
+                                <div className="flex items-start gap-3">
+                                  <div className="w-2 h-2 rounded-full bg-amber-500 mt-2 flex-shrink-0"></div>
+                                  <div>
+                                    <strong className="text-gray-900">2010-2023:</strong>
+                                    <span className="text-gray-600"> Managing Partner, MassMutual</span>
+                                  </div>
+                                </div>
+                                <div className="flex items-start gap-3">
+                                  <div className="w-2 h-2 rounded-full bg-yellow-500 mt-2 flex-shrink-0"></div>
+                                  <div>
+                                    <strong className="text-gray-900">1999-2010:</strong>
+                                    <span className="text-gray-600"> Financial Representative → Partner, New York Life</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="bg-gradient-to-br from-blue-50 to-white rounded-xl p-6 border border-blue-100">
+                              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <Users className="h-5 w-5 text-blue-600" />
+                                Key Achievements
+                              </h3>
+                              <div className="space-y-3 text-sm">
+                                <div className="flex items-start gap-3">
+                                  <div className="w-2 h-2 rounded-full bg-orange-500 mt-2 flex-shrink-0"></div>
+                                  <span className="text-gray-600">25+ years of industry leadership</span>
+                                </div>
+                                <div className="flex items-start gap-3">
+                                  <div className="w-2 h-2 rounded-full bg-amber-500 mt-2 flex-shrink-0"></div>
+                                  <span className="text-gray-600">Consistently top performance rankings</span>
+                                </div>
+                                <div className="flex items-start gap-3">
+                                  <div className="w-2 h-2 rounded-full bg-yellow-500 mt-2 flex-shrink-0"></div>
+                                  <span className="text-gray-600">Multiple industry awards & recognition</span>
+                                </div>
+                                <div className="flex items-start gap-3">
+                                  <div className="w-2 h-2 rounded-full bg-emerald-500 mt-2 flex-shrink-0"></div>
+                                  <span className="text-gray-600">Expert in tailored financial solutions</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Bottom Quote */}
+                        <div className="mt-8 p-6 bg-gradient-to-r from-orange-500/10 to-amber-600/10 rounded-xl border border-orange-500/20 text-center">
+                          <p className="text-lg italic text-gray-700 mb-2">
+                            "Jeff's quarter-century of dedication to excellence and client-focused service represents the gold standard in financial planning and relationship building."
+                          </p>
+                          <div className="flex items-center justify-center gap-2 text-sm text-gray-500">
+                            <Trophy className="h-4 w-4" />
+                            <span>Building trust, delivering excellence, creating lasting financial security</span>
                           </div>
                         </div>
                       </div>
