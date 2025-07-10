@@ -7,6 +7,7 @@ import annuitiesCard from '@/assets/annuities-card.webp';
 import termLifeFamily from '@/assets/term-life-family.webp';
 import heroFamilyProtection from '@/assets/hero-family-protection.webp';
 import finalExpenseCouple from '@/assets/final-expense-couple.webp';
+import retirementPlanningCouple from '@/assets/retirement-planning-couple.webp';
 
 const products = [
   {
@@ -45,7 +46,7 @@ const products = [
     description: "Fixed & indexed annuities that turn savings into reliable retirement income, with customizable living benefits.",
     icon: <TrendingUp className="w-6 h-6" />,
     features: ["Guaranteed income", "Market protection", "Tax advantages", "Flexible withdrawals"],
-    image: annuitiesCard,
+    image: retirementPlanningCouple,
     gradient: "from-orange-900 to-orange-700",
     accent: "from-orange-500 to-orange-600"
   },
