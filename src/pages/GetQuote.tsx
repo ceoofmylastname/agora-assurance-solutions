@@ -103,7 +103,7 @@ const GetQuote = () => {
                 Why Choose an Independent Agency?
               </Badge>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground leading-tight mb-6">
-                One Agent, <span className="text-primary">50+ Companies</span>
+                One Agent, <span className="text-primary">40+ Companies</span>
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
                 Unlike captive agents who only sell one company's products, Agora Assurance Solutions represents 
