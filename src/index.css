@@ -358,3 +358,21 @@ iframe[src*="consent"],
   height: 0 !important;
   overflow: hidden !important;
 }
+
+/* Custom utilities for modern slide-up animations */
+@layer utilities {
+  .duration-600 {
+    transition-duration: 600ms;
+  }
+  
+  .bg-grid-slate-100 {
+    background-image: 
+      linear-gradient(rgba(203, 213, 225, 0.3) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(203, 213, 225, 0.3) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  
+  .will-change-transform {
+    will-change: transform;
+  }
+}
