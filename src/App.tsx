@@ -23,6 +23,7 @@ import TaxAssetProtection from "./pages/services/TaxAssetProtection";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import FAQ from "./pages/FAQ";
+import Booking from "./pages/Booking";
 
 const App = () => {
   const [queryClient] = useState(() => new QueryClient());
@@ -51,6 +52,7 @@ const App = () => {
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/faq" element={<FAQ />} />
+            <Route path="/booking" element={<Booking />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

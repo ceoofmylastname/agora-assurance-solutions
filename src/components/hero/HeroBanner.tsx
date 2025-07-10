@@ -1,11 +1,13 @@
 import { motion } from "framer-motion";
 import { Calculator, MessageSquare } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
 import heroFamilyProtection from "@/assets/hero-family-protection.webp";
 import { itemVariants } from "./HeroAnimations";
 
 const HeroBanner = () => {
   const isMobile = useIsMobile();
+  const navigate = useNavigate();
 
   return (
     <div className="banner-container bg-[#15AFF7] relative overflow-hidden h-[calc(55vh+4rem)] sm:h-[calc(70vh+4rem)] md:h-[calc(500px+4rem)] lg:h-[calc(550px+4rem)] xl:h-[calc(600px+4rem)] w-full">
@@ -42,7 +44,7 @@ const HeroBanner = () => {
               
               <button 
                 className="w-full sm:w-auto min-h-[48px] px-6 sm:px-8 py-3 bg-white text-black rounded-lg hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl hover:shadow-blue-300/20 flex items-center justify-center group text-sm sm:text-base font-medium border-2 border-white touch-manipulation" 
-                onClick={() => window.open('https://crm.agoraassurancesolutions.com/widget/booking/foZnFDUFuB2fu0X5eDZn', '_blank')}
+                onClick={() => navigate('/booking')}
               >
                 Book Free Appointment
                 <MessageSquare className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform" />
