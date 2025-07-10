@@ -104,7 +104,7 @@ const blogPostsData: Record<string, BlogPostData> = {
     readTime: '8 min read',
     author: 'Sarah Johnson, CLU',
     authorBio: 'Sarah is a Chartered Life Underwriter with 15+ years of experience in the life insurance industry. She specializes in market analysis and has helped over 2,000 families secure appropriate coverage.',
-     publishDate: 'December 15, 2025',
+     publishDate: 'June 15, 2025',
      slug: '2025-life-insurance-rate-analysis',
     tags: ['life insurance', 'rates', 'market trends', 'underwriting'],
     tableOfContents: [
@@ -201,7 +201,7 @@ const blogPostsData: Record<string, BlogPostData> = {
     readTime: '6 min read',
     author: 'Michael Chen, CFP',
     authorBio: 'Michael is a Certified Financial Planner and licensed insurance agent with expertise in mortgage protection and debt elimination strategies. He has saved clients over $2.3 million in unnecessary insurance costs.',
-    publishDate: 'December 12, 2024',
+    publishDate: 'May 22, 2025',
     slug: 'hidden-costs-mortgage-protection',
     tags: ['mortgage protection', 'insurance costs', 'expert advice'],
     tableOfContents: [
@@ -321,7 +321,7 @@ const blogPostsData: Record<string, BlogPostData> = {
     readTime: '9 min read',
     author: 'Robert Kim, JD, CPA',
     authorBio: 'Robert is a tax attorney and CPA specializing in advanced wealth planning for high-net-worth families. He has structured over $500 million in tax-advantaged life insurance strategies.',
-    publishDate: 'December 5, 2024',
+    publishDate: 'February 28, 2025',
     slug: 'tax-advantaged-life-insurance-strategies',
     tags: ['tax planning', 'estate planning', 'wealth transfer', 'high-income'],
     tableOfContents: [
@@ -555,7 +555,7 @@ const blogPostsData: Record<string, BlogPostData> = {
     readTime: '7 min read',
     author: 'Jennifer Walsh, RN',
     authorBio: 'Jennifer is a registered nurse with 12+ years of experience conducting life insurance medical exams. She has helped thousands of applicants optimize their exam results and secure better rates.',
-     publishDate: 'December 3, 2025',
+     publishDate: 'January 15, 2025',
      slug: 'life-insurance-medical-exam-tips',
      tags: ['medical exam', 'application process', 'premium optimization'],
      tableOfContents: [
@@ -842,7 +842,7 @@ const blogPostsData: Record<string, BlogPostData> = {
     readTime: '10 min read',
     author: 'David Rodriguez, ChFC',
     authorBio: 'David is a Chartered Financial Consultant specializing in retirement income planning. With 18+ years of experience, he has helped over 3,000 clients optimize their retirement strategies using comprehensive financial analysis.',
-     publishDate: 'December 10, 2025',
+     publishDate: 'April 18, 2025',
      slug: 'annuities-vs-401k-2025-analysis',
     tags: ['annuities', '401k', 'retirement planning', 'tax strategies'],
     tableOfContents: [

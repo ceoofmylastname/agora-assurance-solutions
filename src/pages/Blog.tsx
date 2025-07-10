@@ -36,7 +36,7 @@ const allBlogPosts: BlogPost[] = [
     category: 'Market Analysis',
     readTime: '8 min read',
     author: 'Sarah Johnson, CLU',
-    publishDate: 'December 15, 2025',
+    publishDate: 'June 15, 2025',
     slug: '2025-life-insurance-rate-analysis',
     tags: ['life insurance', 'rates', 'market trends', 'underwriting']
   },
@@ -48,7 +48,7 @@ const allBlogPosts: BlogPost[] = [
     category: 'Expert Insights',
     readTime: '6 min read',
     author: 'Michael Chen, CFP',
-    publishDate: 'December 12, 2025',
+    publishDate: 'May 22, 2025',
     slug: 'hidden-costs-mortgage-protection',
     tags: ['mortgage protection', 'insurance costs', 'expert advice']
   },
@@ -60,7 +60,7 @@ const allBlogPosts: BlogPost[] = [
     category: 'Retirement Planning',
     readTime: '10 min read',
     author: 'David Rodriguez, ChFC',
-    publishDate: 'December 10, 2025',
+    publishDate: 'April 18, 2025',
     slug: 'annuities-vs-401k-2025-analysis',
     tags: ['annuities', '401k', 'retirement planning', 'tax strategies']
   },
@@ -72,7 +72,7 @@ const allBlogPosts: BlogPost[] = [
     category: 'Insurance Guide',
     readTime: '12 min read',
     author: 'Lisa Thompson, LUTCF',
-    publishDate: 'December 8, 2025',
+    publishDate: 'March 12, 2025',
     slug: 'complete-final-expense-insurance-guide',
     tags: ['final expense', 'burial insurance', 'family protection']
   },
@@ -84,7 +84,7 @@ const allBlogPosts: BlogPost[] = [
     category: 'Tax Planning',
     readTime: '9 min read',
     author: 'Robert Kim, JD, CPA',
-    publishDate: 'December 5, 2025',
+    publishDate: 'February 28, 2025',
     slug: 'tax-advantaged-life-insurance-strategies',
     tags: ['tax planning', 'estate planning', 'wealth transfer', 'high-income']
   },
@@ -96,7 +96,7 @@ const allBlogPosts: BlogPost[] = [
     category: 'Application Tips',
     readTime: '7 min read',
     author: 'Jennifer Walsh, RN',
-    publishDate: 'December 3, 2025',
+    publishDate: 'January 15, 2025',
     slug: 'life-insurance-medical-exam-tips',
     tags: ['medical exam', 'application process', 'premium optimization']
   }
