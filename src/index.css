@@ -359,34 +359,14 @@ iframe[src*="consent"],
   overflow: hidden !important;
 }
 
-/* Advanced animation utilities with 3D transforms */
+/* Custom utilities for modern slide-up animations */
 @layer utilities {
   .duration-600 {
     transition-duration: 600ms;
   }
   
-  .duration-700 {
-    transition-duration: 700ms;
-  }
-  
   .duration-800 {
     transition-duration: 800ms;
-  }
-  
-  .ease-spring {
-    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-  
-  .will-change-transform {
-    will-change: transform;
-  }
-  
-  .rotateY-0 {
-    transform: rotateY(0deg);
-  }
-  
-  .rotateY-90 {
-    transform: rotateY(90deg);
   }
   
   .bg-grid-slate-100 {
@@ -396,24 +376,7 @@ iframe[src*="consent"],
     background-size: 20px 20px;
   }
   
-  /* Custom delay utilities */
-  .delay-50 {
-    transition-delay: 50ms;
-  }
-  
-  .delay-150 {
-    transition-delay: 150ms;
-  }
-  
-  .delay-300 {
-    transition-delay: 300ms;
-  }
-  
-  .delay-400 {
-    transition-delay: 400ms;
-  }
-  
-  .delay-500 {
-    transition-delay: 500ms;
+  .will-change-transform {
+    will-change: transform;
   }
 }
