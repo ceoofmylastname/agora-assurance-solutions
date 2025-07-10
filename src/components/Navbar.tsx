@@ -100,7 +100,7 @@ const Navbar = () => {
   return (
     <>
       <motion.nav 
-        className={cn("fixed top-0 left-0 right-0 z-40 transition-all duration-300 w-full", isScrolled ? "bg-white shadow-sm" : "bg-black")} 
+        className={cn("fixed top-0 left-0 right-0 z-40 transition-all duration-300 w-full", isScrolled ? "bg-white shadow-sm" : "bg-primary")} 
         initial={{ opacity: 1, y: 0 }} 
         animate={{ opacity: 1, y: 0 }}
       >
@@ -246,7 +246,7 @@ const Navbar = () => {
           
           {/* Menu Content */}
           <motion.div
-            className={cn("absolute right-0 top-0 h-full w-80 shadow-2xl", isScrolled ? "bg-white" : "bg-black")}
+            className={cn("absolute right-0 top-0 h-full w-80 shadow-2xl", isScrolled ? "bg-white" : "bg-primary")}
             variants={menuVariants}
           >
             {/* Header with close button */}
