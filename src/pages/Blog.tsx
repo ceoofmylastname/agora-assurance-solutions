@@ -139,7 +139,7 @@ const Blog = () => {
               transition={{ duration: 0.6 }}
               className="text-center mb-12"
             >
-              <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
+              <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 font-inter">
                 Insurance{' '}
                 <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
                   Insights
