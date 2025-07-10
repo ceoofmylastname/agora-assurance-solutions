@@ -150,7 +150,7 @@ const About = () => {
                       <h3 className="text-xl font-bold text-gray-900 mb-1">Kevin Jenson</h3>
                       <p className="text-[#15AFF7] font-medium mb-3">Founder & CEO</p>
                       <p className="text-gray-600 text-sm leading-relaxed">
-                        With nearly two decades in life insurance and annuities—including executive leadership at Quility—Kevin founded Agora in 2024 to reinvent the client experience with technology, speed, and service.
+                        With nearly two decades in life insurance and annuities—including executive leadership at Quility—Kevin founded Agora in 2025 to reinvent the client experience with technology, speed, and service.
                       </p>
                     </div>
                   </motion.div>

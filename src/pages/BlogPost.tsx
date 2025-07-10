@@ -29,13 +29,13 @@ interface BlogPostData {
 }
 
 const blogPostsData: Record<string, BlogPostData> = {
-  '2024-life-insurance-rate-analysis': {
+  '2025-life-insurance-rate-analysis': {
     id: '1',
-    title: '2024 Life Insurance Rate Analysis: What You Need to Know',
+    title: '2025 Life Insurance Rate Analysis: What You Need to Know',
     content: `
       <div class="prose prose-lg max-w-none">
         <h2 id="market-overview">Market Overview: A Year of Significant Changes</h2>
-        <p>The life insurance industry has experienced unprecedented shifts in 2024, with rate adjustments affecting millions of policyholders and new applicants. According to our analysis of over 50 major insurers, premium rates have increased an average of 8-12% across most age groups and coverage amounts.</p>
+        <p>The life insurance industry has experienced unprecedented shifts in 2025, with rate adjustments affecting millions of policyholders and new applicants. According to our analysis of over 50 major insurers, premium rates have increased an average of 8-12% across most age groups and coverage amounts.</p>
         
         <h3>Key Rate Trends by Age Group</h3>
         <div class="bg-secondary/20 p-6 rounded-lg my-6">
@@ -50,7 +50,7 @@ const blogPostsData: Record<string, BlogPostData> = {
         </div>
 
         <h2 id="underwriting-changes">Revolutionary Underwriting Changes</h2>
-        <p>2024 has brought the most significant underwriting innovations in decades. Here's what licensed agents need to know:</p>
+        <p>2025 has brought the most significant underwriting innovations in decades. Here's what licensed agents need to know:</p>
         
         <h3>Accelerated Underwriting Expansion</h3>
         <p>Major insurers now offer no-exam policies up to $2 million for qualified applicants (previously $500,000-$1 million). This represents a 300% increase in coverage availability without medical exams.</p>
@@ -72,7 +72,7 @@ const blogPostsData: Record<string, BlogPostData> = {
         <h3>3. Payment Frequency Optimization</h3>
         <p>Annual premium payments typically offer 3-8% savings compared to monthly payments. For a $500,000 policy, this can mean $200-400 in annual savings.</p>
 
-        <h2 id="market-predictions">2025 Market Predictions</h2>
+        <h2 id="market-predictions">2026 Market Predictions</h2>
         <p>Based on our industry analysis and conversations with underwriters at major carriers, here's what we expect:</p>
         
         <ul>
@@ -87,7 +87,7 @@ const blogPostsData: Record<string, BlogPostData> = {
           <p>Rate increases are typically implemented on specific dates throughout the year. If you're considering life insurance, applying before rate increase dates can save thousands in premiums over the policy's lifetime.</p>
         </div>
 
-        <h2 id="action-plan">Your Action Plan for 2024</h2>
+        <h2 id="action-plan">Your Action Plan for 2025</h2>
         <p>Whether you're shopping for new coverage or reviewing existing policies, here's your step-by-step action plan:</p>
         
         <ol>
@@ -104,15 +104,15 @@ const blogPostsData: Record<string, BlogPostData> = {
     readTime: '8 min read',
     author: 'Sarah Johnson, CLU',
     authorBio: 'Sarah is a Chartered Life Underwriter with 15+ years of experience in the life insurance industry. She specializes in market analysis and has helped over 2,000 families secure appropriate coverage.',
-    publishDate: 'December 15, 2024',
-    slug: '2024-life-insurance-rate-analysis',
+     publishDate: 'December 15, 2025',
+     slug: '2025-life-insurance-rate-analysis',
     tags: ['life insurance', 'rates', 'market trends', 'underwriting'],
     tableOfContents: [
       { id: 'market-overview', title: 'Market Overview: A Year of Significant Changes' },
-      { id: 'underwriting-changes', title: 'Revolutionary Underwriting Changes' },
-      { id: 'rate-strategies', title: 'Proven Strategies to Secure Better Rates' },
-      { id: 'market-predictions', title: '2025 Market Predictions' },
-      { id: 'action-plan', title: 'Your Action Plan for 2024' }
+       { id: 'underwriting-changes', title: 'Revolutionary Underwriting Changes' },
+       { id: 'rate-strategies', title: 'Proven Strategies to Secure Better Rates' },
+       { id: 'market-predictions', title: '2026 Market Predictions' },
+       { id: 'action-plan', title: 'Your Action Plan for 2025' }
     ]
   },
   'hidden-costs-mortgage-protection': {
@@ -555,29 +555,29 @@ const blogPostsData: Record<string, BlogPostData> = {
     readTime: '7 min read',
     author: 'Jennifer Walsh, RN',
     authorBio: 'Jennifer is a registered nurse with 12+ years of experience conducting life insurance medical exams. She has helped thousands of applicants optimize their exam results and secure better rates.',
-    publishDate: 'December 3, 2024',
-    slug: 'life-insurance-medical-exam-tips',
-    tags: ['medical exam', 'application process', 'premium optimization'],
-    tableOfContents: [
-      { id: 'exam-overview', title: 'Understanding the Life Insurance Medical Exam' },
-      { id: 'preparation-timeline', title: 'The 30-Day Preparation Timeline' },
-      { id: 'exam-day-strategies', title: 'Exam Day Strategies That Work' },
-      { id: 'critical-measurements', title: 'Optimizing Critical Measurements' },
-      { id: 'blood-test-optimization', title: 'Blood Test Optimization' },
-      { id: 'common-mistakes', title: 'Common Mistakes That Hurt Your Rates' },
-      { id: 'special-situations', title: 'Special Situations and Strategies' },
-      { id: 'post-exam-strategies', title: 'Post-Exam Strategies' },
-      { id: 'examiner-interaction', title: 'Working with Your Examiner' },
-      { id: 'final-checklist', title: 'Final Pre-Exam Checklist' }
-    ]
-  },
-  'annuities-vs-401k-2024-analysis': {
+     publishDate: 'December 3, 2025',
+     slug: 'life-insurance-medical-exam-tips',
+     tags: ['medical exam', 'application process', 'premium optimization'],
+     tableOfContents: [
+       { id: 'exam-overview', title: 'Understanding the Life Insurance Medical Exam' },
+       { id: 'preparation-timeline', title: 'The 30-Day Preparation Timeline' },
+       { id: 'exam-day-strategies', title: 'Exam Day Strategies That Work' },
+       { id: 'critical-measurements', title: 'Optimizing Critical Measurements' },
+       { id: 'blood-test-optimization', title: 'Blood Test Optimization' },
+       { id: 'common-mistakes', title: 'Common Mistakes That Hurt Your Rates' },
+       { id: 'special-situations', title: 'Special Situations and Strategies' },
+       { id: 'post-exam-strategies', title: 'Post-Exam Strategies' },
+       { id: 'examiner-interaction', title: 'Working with Your Examiner' },
+       { id: 'final-checklist', title: 'Final Pre-Exam Checklist' }
+     ]
+   },
+   'annuities-vs-401k-2025-analysis': {
     id: '3',
-    title: 'Annuities vs. 401(k): Which Retirement Strategy Wins in 2024?',
-    content: `
-      <div class="prose prose-lg max-w-none">
-        <h2 id="retirement-dilemma">The Modern Retirement Dilemma</h2>
-        <p>With traditional pensions nearly extinct and Social Security's long-term viability questioned, Americans face critical decisions about retirement planning. Two popular strategies dominate the conversation: 401(k) plans and annuities. But which delivers better results in 2024's economic environment?</p>
+     title: 'Annuities vs. 401(k): Which Retirement Strategy Wins in 2025?',
+     content: `
+       <div class="prose prose-lg max-w-none">
+         <h2 id="retirement-dilemma">The Modern Retirement Dilemma</h2>
+         <p>With traditional pensions nearly extinct and Social Security's long-term viability questioned, Americans face critical decisions about retirement planning. Two popular strategies dominate the conversation: 401(k) plans and annuities. But which delivers better results in 2025's economic environment?</p>
         
         <p>After analyzing thousands of retirement scenarios and current market data, the answer isn't simple. The "winner" depends on your age, risk tolerance, tax situation, and retirement timeline. Here's the comprehensive analysis you need to make an informed decision.</p>
 
@@ -799,10 +799,10 @@ const blogPostsData: Record<string, BlogPostData> = {
           <li><strong>Wrong product type:</strong> Complex products with unnecessary features</li>
         </ul>
 
-        <h2 id="2024-recommendations">2024 Specific Recommendations</h2>
-        
-        <h3>Current Economic Environment</h3>
-        <p>2024 presents unique opportunities and challenges:</p>
+         <h2 id="2025-recommendations">2025 Specific Recommendations</h2>
+         
+         <h3>Current Economic Environment</h3>
+         <p>2025 presents unique opportunities and challenges:</p>
         <ul>
           <li><strong>Higher Interest Rates:</strong> Annuity rates are more attractive than they've been in 15 years</li>
           <li><strong>Market Uncertainty:</strong> Geopolitical tensions and inflation concerns support guaranteed income</li>
@@ -811,7 +811,7 @@ const blogPostsData: Record<string, BlogPostData> = {
         </ul>
 
         <div class="bg-primary/10 border-l-4 border-primary p-6 my-6">
-          <h4>💡 2024 Action Plan</h4>
+          <h4>💡 2025 Action Plan</h4>
           <p>If you're within 10 years of retirement, seriously consider locking in today's attractive annuity rates for a portion of your portfolio. If you're younger, maximize 401(k) contributions while rates are high and consider annuities as you approach retirement.</p>
         </div>
 
@@ -842,8 +842,8 @@ const blogPostsData: Record<string, BlogPostData> = {
     readTime: '10 min read',
     author: 'David Rodriguez, ChFC',
     authorBio: 'David is a Chartered Financial Consultant specializing in retirement income planning. With 18+ years of experience, he has helped over 3,000 clients optimize their retirement strategies using comprehensive financial analysis.',
-    publishDate: 'December 10, 2024',
-    slug: 'annuities-vs-401k-2024-analysis',
+     publishDate: 'December 10, 2025',
+     slug: 'annuities-vs-401k-2025-analysis',
     tags: ['annuities', '401k', 'retirement planning', 'tax strategies'],
     tableOfContents: [
       { id: 'retirement-dilemma', title: 'The Modern Retirement Dilemma' },
@@ -855,7 +855,7 @@ const blogPostsData: Record<string, BlogPostData> = {
       { id: 'real-scenarios', title: 'Real-World Scenarios: When Each Strategy Wins' },
       { id: 'implementation-guide', title: 'Implementation Strategy Guide' },
       { id: 'common-mistakes', title: 'Common Implementation Mistakes' },
-      { id: '2024-recommendations', title: '2024 Specific Recommendations' },
+      { id: '2025-recommendations', title: '2025 Specific Recommendations' },
       { id: 'conclusion', title: 'The Verdict: There\'s No Universal Winner' }
     ]
   },
@@ -1202,7 +1202,7 @@ const blogPostsData: Record<string, BlogPostData> = {
     readTime: '12 min read',
     author: 'Lisa Thompson, LUTCF',
     authorBio: 'Lisa is a Life Underwriter Training Council Fellow with 16+ years specializing in final expense and senior market insurance. She has helped over 4,500 families secure appropriate end-of-life coverage.',
-    publishDate: 'December 8, 2024',
+    publishDate: 'December 8, 2025',
     slug: 'complete-final-expense-insurance-guide',
     tags: ['final expense', 'burial insurance', 'family protection'],
     tableOfContents: [

@@ -30,14 +30,14 @@ interface BlogPost {
 const allBlogPosts: BlogPost[] = [
   {
     id: '1',
-    title: '2024 Life Insurance Rate Analysis: What You Need to Know',
+    title: '2025 Life Insurance Rate Analysis: What You Need to Know',
     excerpt: 'Comprehensive market analysis revealing insider data on rate trends, underwriting changes, and strategies to secure the best premiums in today\'s market.',
     image: lifeInsuranceAnalysis,
     category: 'Market Analysis',
     readTime: '8 min read',
     author: 'Sarah Johnson, CLU',
-    publishDate: 'December 15, 2024',
-    slug: '2024-life-insurance-rate-analysis',
+    publishDate: 'December 15, 2025',
+    slug: '2025-life-insurance-rate-analysis',
     tags: ['life insurance', 'rates', 'market trends', 'underwriting']
   },
   {
@@ -48,20 +48,20 @@ const allBlogPosts: BlogPost[] = [
     category: 'Expert Insights',
     readTime: '6 min read',
     author: 'Michael Chen, CFP',
-    publishDate: 'December 12, 2024',
+    publishDate: 'December 12, 2025',
     slug: 'hidden-costs-mortgage-protection',
     tags: ['mortgage protection', 'insurance costs', 'expert advice']
   },
   {
     id: '3',
-    title: 'Annuities vs. 401(k): Which Retirement Strategy Wins in 2024?',
+    title: 'Annuities vs. 401(k): Which Retirement Strategy Wins in 2025?',
     excerpt: 'Data-driven comparison of retirement strategies with real numbers, tax implications, and scenarios where each option excels.',
     image: retirementStrategyComparison,
     category: 'Retirement Planning',
     readTime: '10 min read',
     author: 'David Rodriguez, ChFC',
-    publishDate: 'December 10, 2024',
-    slug: 'annuities-vs-401k-2024-analysis',
+    publishDate: 'December 10, 2025',
+    slug: 'annuities-vs-401k-2025-analysis',
     tags: ['annuities', '401k', 'retirement planning', 'tax strategies']
   },
   {
@@ -72,7 +72,7 @@ const allBlogPosts: BlogPost[] = [
     category: 'Insurance Guide',
     readTime: '12 min read',
     author: 'Lisa Thompson, LUTCF',
-    publishDate: 'December 8, 2024',
+    publishDate: 'December 8, 2025',
     slug: 'complete-final-expense-insurance-guide',
     tags: ['final expense', 'burial insurance', 'family protection']
   },
@@ -84,7 +84,7 @@ const allBlogPosts: BlogPost[] = [
     category: 'Tax Planning',
     readTime: '9 min read',
     author: 'Robert Kim, JD, CPA',
-    publishDate: 'December 5, 2024',
+    publishDate: 'December 5, 2025',
     slug: 'tax-advantaged-life-insurance-strategies',
     tags: ['tax planning', 'estate planning', 'wealth transfer', 'high-income']
   },
@@ -96,7 +96,7 @@ const allBlogPosts: BlogPost[] = [
     category: 'Application Tips',
     readTime: '7 min read',
     author: 'Jennifer Walsh, RN',
-    publishDate: 'December 3, 2024',
+    publishDate: 'December 3, 2025',
     slug: 'life-insurance-medical-exam-tips',
     tags: ['medical exam', 'application process', 'premium optimization']
   }
