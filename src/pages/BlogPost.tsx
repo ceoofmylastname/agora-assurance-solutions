@@ -194,7 +194,7 @@ const blogPostsData: Record<string, BlogPostData> = {
         </ol>
       </div>
     `,
-    image: '/lovable-uploads/mortgage-protection-truth.jpg',
+    image: mortgageProtectionTruth,
     category: 'Expert Insights',
     readTime: '6 min read',
     author: 'Michael Chen, CFP',
