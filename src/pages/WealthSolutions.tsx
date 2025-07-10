@@ -89,7 +89,7 @@ const WealthSolutions = () => {
       <SEO 
         title="Wealth Solutions - Annuities & Asset Protection | Agora Assurance Solutions"
         description="Secure retirement income and long-term financial growth with our wealth solutions. Guaranteed retirement income, tax-advantaged growth, and asset protection strategies."
-        imageUrl={retirementPlanningHero}
+        imageUrl="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2426&q=80"
         keywords={['wealth solutions', 'annuities', 'asset protection', 'retirement income', 'tax-advantaged growth', 'estate planning', 'financial planning']}
       />
       
@@ -148,8 +148,8 @@ const WealthSolutions = () => {
               <motion.div className="relative" variants={itemVariants}>
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-2xl"></div>
                 <img 
-                  src={retirementPlanningHero} 
-                  alt="Retirement planning and wealth building strategies"
+                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2426&q=80" 
+                  alt="Professional financial planning workspace with laptop and modern technology"
                   className="relative rounded-3xl shadow-2xl w-full h-auto"
                 />
               </motion.div>
