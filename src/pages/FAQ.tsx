@@ -209,45 +209,54 @@ const FAQ = () => {
           )}
 
           {/* FAQ Categories */}
-          <div className="max-w-4xl mx-auto px-4">
+          <div className="max-w-5xl mx-auto px-4 relative z-10">
             {filteredFAQs.map((category, categoryIndex) => (
-              <div key={categoryIndex} className="mb-6 md:mb-8">
-                <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-4 md:mb-6 border-b border-border pb-2 break-words">
-                  {category.category}
-                </h2>
-                <div className="space-y-3 md:space-y-4">
+              <div key={categoryIndex} className="mb-8 md:mb-12">
+                <div className="text-center mb-6 md:mb-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+                    {category.category}
+                  </h2>
+                  <div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/50 mx-auto rounded-full"></div>
+                </div>
+                
+                <div className="grid gap-4 md:gap-6">
                   {category.questions.map((item, questionIndex) => {
-                    const globalIndex = categoryIndex * 100 + questionIndex; // Unique index
+                    const globalIndex = categoryIndex * 100 + questionIndex;
                     const isOpen = openItems.has(globalIndex);
                     
                     return (
-                      <Card key={questionIndex} className="border border-border hover:shadow-md transition-all overflow-hidden">
-                        <CardContent className="p-0">
-                          <Button
-                            variant="ghost"
-                            onClick={() => toggleItem(globalIndex)}
-                            className="w-full p-3 md:p-6 text-left h-auto hover:bg-muted/50 touch-manipulation min-h-[44px] flex items-start gap-3"
-                          >
-                            <h3 className="text-sm md:text-base font-medium text-foreground leading-tight break-words hyphens-auto flex-1 text-left">
+                      <div 
+                        key={questionIndex} 
+                        className="group relative bg-background/50 backdrop-blur-sm rounded-xl border border-border/50 hover:border-primary/20 hover:shadow-lg transition-all duration-300 overflow-hidden"
+                      >
+                        <button
+                          onClick={() => toggleItem(globalIndex)}
+                          className="w-full p-4 md:p-6 text-left focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-xl transition-all duration-200 relative z-20 bg-transparent"
+                        >
+                          <div className="flex items-start justify-between gap-4">
+                            <h3 className="text-base md:text-lg font-semibold text-foreground leading-relaxed pr-2 group-hover:text-primary transition-colors duration-200 flex-1">
                               {item.question}
                             </h3>
-                            <div className="flex-shrink-0 mt-0.5">
-                              {isOpen ? (
-                                <ChevronUp className="h-4 w-4 md:h-5 md:w-5 text-muted-foreground" />
-                              ) : (
-                                <ChevronDown className="h-4 w-4 md:h-5 md:w-5 text-muted-foreground" />
-                              )}
+                            <div className="flex-shrink-0 mt-1">
+                              <div className={`p-1 rounded-full transition-all duration-200 ${isOpen ? 'bg-primary/10 rotate-180' : 'bg-muted/50 group-hover:bg-primary/10'}`}>
+                                <ChevronDown className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors duration-200" />
+                              </div>
                             </div>
-                          </Button>
-                          {isOpen && (
-                            <div className="px-4 md:px-6 pb-4 md:pb-6">
-                              <p className="text-muted-foreground leading-relaxed break-words text-sm md:text-base">
-                                {item.answer}
-                              </p>
-                            </div>
-                          )}
-                        </CardContent>
-                      </Card>
+                          </div>
+                        </button>
+                        
+                        <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+                          <div className="px-4 md:px-6 pb-4 md:pb-6 pt-0">
+                            <div className="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent mb-4"></div>
+                            <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+                              {item.answer}
+                            </p>
+                          </div>
+                        </div>
+                        
+                        {/* Subtle hover effect */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                      </div>
                     );
                   })}
                 </div>
