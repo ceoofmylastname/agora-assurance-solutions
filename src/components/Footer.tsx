@@ -77,6 +77,12 @@ const Footer = () => {
             <p className="text-white/90 text-sm mb-4 leading-relaxed">
               Supporting your family's assurance and well-being by streamlining the buying process with advanced systems and AI.
             </p>
+            <div className="mb-4">
+              <h4 className="text-sm font-semibold text-white mb-2">Service Areas</h4>
+              <p className="text-white/80 text-sm">
+                Providing comprehensive insurance solutions nationwide across all 50 states. Licensed agents available to serve families and businesses throughout the United States.
+              </p>
+            </div>
             <div className="flex items-center text-white/90 text-sm mb-4">
               <Mail className="w-4 h-4 mr-2" />
               <a href="mailto:info@agoraassurancesolutions.com" className="hover:text-white transition-colors">

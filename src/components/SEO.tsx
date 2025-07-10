@@ -17,72 +17,85 @@ interface SEOProps {
 }
 
 const SEO: React.FC<SEOProps> = ({
-  title = 'WRLDS',
-  description = 'WRLDS Technologies: Pioneering smart engineering solutions with textile sensors for sports, safety, and performance monitoring.',
+  title = 'Agora Assurance Solutions',
+  description = 'Your Independent Insurance Partner providing comprehensive life, mortgage, and annuity solutions. Get instant quotes, compare plans, and connect with licensed advisors.',
   type = 'website',
-  name = 'WRLDS Technologies',
-  imageUrl = '/lovable-uploads/48ecf6e2-5a98-4a9d-af6f-ae2265cd4098.png',
+  name = 'Agora Assurance Solutions',
+  imageUrl = '/lovable-uploads/99f03d19-d521-4882-9c68-a2bbe122b1f9.png',
   publishDate,
   modifiedDate,
   author,
   category,
-  keywords = ['smart textiles', 'wearable technology', 'textile sensors', 'sports tech', 'safety monitoring', 'performance analytics'],
+  keywords = ['insurance', 'life insurance', 'mortgage protection', 'final expense', 'annuities', 'tax solutions', 'insurance quotes', 'licensed advisors'],
   isBlogPost = false
 }) => {
   const location = useLocation();
-  const currentUrl = `https://wrlds.com${location.pathname}`;
-  const absoluteImageUrl = imageUrl.startsWith('http') ? imageUrl : `https://wrlds.com${imageUrl}`;
+  const currentUrl = `https://agora.yenomai.com${location.pathname}`;
+  const absoluteImageUrl = imageUrl.startsWith('http') ? imageUrl : `https://agora.yenomai.com${imageUrl}`;
 
-  // Enhanced keywords for specific posts
-  const enhancedKeywords = location.pathname.includes('smart-ppe-revolution') 
+  // Enhanced keywords for insurance-related pages
+  const enhancedKeywords = location.pathname.includes('life-insurance') 
     ? [
         ...keywords,
-        'personal protective equipment',
-        'workplace safety solutions',
-        'smart safety gear',
-        'construction safety technology',
-        'industrial safety monitoring',
-        'occupational health technology',
-        'safety compliance',
-        'worker protection systems',
-        'smart hard hats',
-        'connected safety equipment'
+        'term life insurance',
+        'whole life insurance',
+        'universal life insurance',
+        'life insurance quotes',
+        'family protection',
+        'income replacement',
+        'death benefit',
+        'life insurance cost',
+        'life insurance companies'
       ]
-    : location.pathname.includes('wearable-safety-tech-protecting-workers-roi')
+    : location.pathname.includes('mortgage-protection')
     ? [
         ...keywords,
-        'workplace injury costs',
-        'safety ROI',
-        'workers compensation savings',
-        'ergonomic sensors',
-        'workplace safety investment',
-        'safety technology ROI',
-        'industrial wearables',
-        'safety cost reduction',
-        'occupational safety economics',
-        'safety technology partnerships',
-        'workplace injury statistics',
-        'safety equipment financing',
-        'injury prevention technology'
+        'mortgage protection insurance',
+        'home loan protection',
+        'mortgage life insurance',
+        'mortgage payoff insurance',
+        'homeowners protection',
+        'family home security'
+      ]
+    : location.pathname.includes('annuities')
+    ? [
+        ...keywords,
+        'retirement annuities',
+        'fixed annuities',
+        'variable annuities',
+        'retirement income',
+        'pension alternatives',
+        'guaranteed income',
+        'retirement planning'
       ]
     : keywords;
 
-  // Create base Organization JSON-LD structured data
+  // Create base Organization and LocalBusiness JSON-LD structured data
   const organizationStructuredData = {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'WRLDS Technologies',
-    url: 'https://wrlds.com',
-    logo: 'https://wrlds.com/lovable-uploads/14ea3fe0-19d6-425c-b95b-4117bc41f3ca.png',
-    description: 'Pioneering smart engineering solutions with textile sensors',
+    '@type': 'InsuranceAgency',
+    name: 'Agora Assurance Solutions',
+    url: 'https://agora.yenomai.com',
+    logo: 'https://agora.yenomai.com/lovable-uploads/610dc05e-0552-4a89-97b1-852580e78ec0.png',
+    description: 'Your Independent Insurance Partner providing comprehensive life, mortgage, and annuity solutions',
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer service',
-      email: 'info@wrlds.com'
+      email: 'info@agoraassurance.com',
+      availableLanguage: 'English'
     },
-    sameAs: [
-      'https://www.linkedin.com/company/wrlds-technologies',
-      'https://twitter.com/wrldstechnologies'
+    areaServed: [
+      {
+        '@type': 'Place',
+        name: 'United States'
+      }
+    ],
+    serviceType: [
+      'Life Insurance',
+      'Mortgage Protection',
+      'Final Expense Insurance',
+      'Annuities',
+      'Tax & Asset Protection'
     ]
   };
 
@@ -105,19 +118,19 @@ const SEO: React.FC<SEOProps> = ({
     dateModified: modifiedDate || publishDate,
     author: {
       '@type': 'Organization',
-      name: author || 'WRLDS Technologies',
-      url: 'https://wrlds.com'
+      name: author || 'Agora Assurance Solutions',
+      url: 'https://agora.yenomai.com'
     },
     publisher: {
       '@type': 'Organization',
-      name: 'WRLDS Technologies',
+      name: 'Agora Assurance Solutions',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://wrlds.com/lovable-uploads/14ea3fe0-19d6-425c-b95b-4117bc41f3ca.png',
+        url: 'https://agora.yenomai.com/lovable-uploads/610dc05e-0552-4a89-97b1-852580e78ec0.png',
         width: 512,
         height: 512
       },
-      url: 'https://wrlds.com'
+      url: 'https://agora.yenomai.com'
     },
     description: description,
     keywords: enhancedKeywords.join(', '),
@@ -126,65 +139,86 @@ const SEO: React.FC<SEOProps> = ({
     isAccessibleForFree: true
   } : null;
 
-  // Add FAQ structured data for Smart PPE post
-  const smartPPEFAQData = location.pathname.includes('smart-ppe-revolution') ? {
+  // Add FAQ structured data for main FAQ page
+  const mainFAQData = location.pathname === '/' || location.pathname.includes('faq') ? {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity: [
       {
         '@type': 'Question',
-        name: 'What is Smart PPE?',
+        name: 'How much life insurance do I actually need?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Smart PPE (Personal Protective Equipment) refers to traditional safety gear enhanced with sensors, connectivity, and intelligence. Unlike ordinary PPE that acts as a passive barrier, smart PPE actively monitors conditions and provides real-time alerts to prevent accidents.'
+          text: 'The general rule is 10-12 times your annual income, but this varies based on your debts, dependents, and financial goals. Consider your mortgage, children\'s education costs, and your spouse\'s financial needs.'
         }
       },
       {
         '@type': 'Question',
-        name: 'How does smart PPE improve workplace safety?',
+        name: 'What\'s the difference between term and whole life insurance?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Smart PPE improves safety by providing real-time monitoring of environmental conditions, worker health metrics, and potential hazards. It can detect falls, monitor vital signs, sense toxic gases, and automatically alert emergency responders when needed.'
+          text: 'Term life provides temporary coverage for a specific period at lower premiums. Whole life offers permanent coverage with a cash value component that grows over time.'
         }
       },
       {
         '@type': 'Question',
-        name: 'What industries benefit from smart PPE?',
+        name: 'Are annuities a good investment for retirement?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Smart PPE benefits multiple industries including construction, manufacturing, oil & gas, fire & rescue, healthcare, mining, and any workplace where safety is paramount. Each industry can customize the technology to address specific safety challenges.'
+          text: 'Annuities can be excellent for retirement income planning, offering guaranteed payments and tax-deferred growth. They\'re particularly valuable for conservative investors seeking predictable income.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'How much does final expense insurance cost?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Final expense insurance typically costs $30-$200 monthly, depending on age, health, and coverage amount. Most policies range from $5,000-$50,000 in coverage.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'Is mortgage protection insurance worth it?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Mortgage protection can be valuable, but term life insurance often provides better value and flexibility. Term life pays your beneficiaries directly while mortgage protection only pays the lender.'
         }
       }
     ]
   } : null;
 
-  // Add FAQ structured data for Wearable Safety Tech ROI post
-  const wearableSafetyROIFAQData = location.pathname.includes('wearable-safety-tech-protecting-workers-roi') ? {
+  // Add service-specific FAQ data for service pages
+  const serviceSpecificFAQData = location.pathname.includes('term-life') ? {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity: [
       {
         '@type': 'Question',
-        name: 'How much do workplace injuries cost?',
+        name: 'How much does term life insurance cost?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'According to the National Safety Council, the average cost for a medically consulted work injury is $43,000 in 2023. With 2.2 injuries per 100 full-time workers, a 200-person site can expect about $215,000 in injury costs annually before accounting for downtime or replacement training.'
+          text: 'A healthy 30-year-old might pay $20-40/month for $500,000 in term coverage, while a 50-year-old could pay $100-200/month for the same amount. Costs vary by age, health, and coverage type.'
         }
       },
       {
         '@type': 'Question',
-        name: 'What ROI can wearable safety technology deliver?',
+        name: 'What happens when my term life insurance expires?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Real-world deployments show significant returns: one study found 54% lower OSHA recordables and 88% fewer lost workdays. Another warehouse study showed 62% of workers reduced risky movements by half, with total ergonomic hazards falling 39%.'
+          text: 'When term life insurance expires, coverage ends. You can often convert to permanent life insurance, renew at higher rates, or purchase new coverage (subject to health underwriting).'
         }
-      },
+      }
+    ]
+  } : location.pathname.includes('final-expense') ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
       {
         '@type': 'Question',
-        name: 'Do insurance companies support wearable safety technology?',
+        name: 'Can I get final expense insurance without a medical exam?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Yes, many insurers now bundle wearable device costs into workers compensation premiums. Employers keep the hardware as long as usage stays high because fewer claims leave insurers ahead financially. Regional carriers are expanding similar rebate schemes.'
+          text: 'Yes, most final expense policies don\'t require medical exams. They use simplified underwriting with basic health questions, making them accessible to seniors with health issues.'
         }
       }
     ]
@@ -211,12 +245,12 @@ const SEO: React.FC<SEOProps> = ({
       <meta property="og:image" content={absoluteImageUrl} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:site_name" content="WRLDS Technologies" />
+      <meta property="og:site_name" content="Agora Assurance Solutions" />
       <meta property="og:locale" content="en_US" />
       {isBlogPost && category && <meta property="article:section" content={category} />}
       {isBlogPost && publishDate && <meta property="article:published_time" content={publishDate} />}
       {isBlogPost && modifiedDate && <meta property="article:modified_time" content={modifiedDate} />}
-      {isBlogPost && <meta property="article:publisher" content="https://wrlds.com" />}
+      {isBlogPost && <meta property="article:publisher" content="https://agora.yenomai.com" />}
       
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -224,8 +258,8 @@ const SEO: React.FC<SEOProps> = ({
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={absoluteImageUrl} />
-      <meta name="twitter:site" content="@wrldstechnologies" />
-      <meta name="twitter:creator" content="@wrldstechnologies" />
+      <meta name="twitter:site" content="@agoraassurance" />
+      <meta name="twitter:creator" content="@agoraassurance" />
       
       {/* LinkedIn specific */}
       <meta property="og:image:secure_url" content={absoluteImageUrl} />
@@ -250,15 +284,15 @@ const SEO: React.FC<SEOProps> = ({
         </script>
       )}
       
-      {smartPPEFAQData && (
+      {mainFAQData && (
         <script type="application/ld+json">
-          {JSON.stringify(smartPPEFAQData)}
+          {JSON.stringify(mainFAQData)}
         </script>
       )}
       
-      {wearableSafetyROIFAQData && (
+      {serviceSpecificFAQData && (
         <script type="application/ld+json">
-          {JSON.stringify(wearableSafetyROIFAQData)}
+          {JSON.stringify(serviceSpecificFAQData)}
         </script>
       )}
     </Helmet>
