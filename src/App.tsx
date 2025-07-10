@@ -20,6 +20,8 @@ import LifeSettlements from "./pages/services/LifeSettlements";
 import Annuities from "./pages/services/Annuities";
 import FinalExpense from "./pages/services/FinalExpense";
 import TaxAssetProtection from "./pages/services/TaxAssetProtection";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 
 const App = () => {
   const [queryClient] = useState(() => new QueryClient());
@@ -45,6 +47,8 @@ const App = () => {
             <Route path="/services/annuities" element={<Annuities />} />
             <Route path="/services/final-expense" element={<FinalExpense />} />
             <Route path="/services/tax-asset-protection" element={<TaxAssetProtection />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
