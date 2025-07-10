@@ -114,19 +114,19 @@ const AnimatedSection: React.FC<{ section: SectionData; index: number }> = ({ se
   return (
     <div
       ref={sectionRef}
-      className={`min-h-screen flex items-center justify-center ${section.backgroundColor} relative overflow-hidden transition-all duration-700`}
+      className={`min-h-[100svh] sm:min-h-screen flex items-center justify-center ${section.backgroundColor} relative overflow-hidden transition-all duration-700`}
     >
       {/* Modern Background Elements */}
       <div className="absolute inset-0">
         <div className={`absolute inset-0 bg-gradient-to-br from-transparent via-primary/5 to-transparent`}></div>
-        <div className="absolute top-0 left-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div className="absolute bottom-0 right-0 w-48 h-48 bg-primary/5 rounded-full blur-3xl animate-pulse-slow animation-delay-300"></div>
+        <div className="absolute top-0 left-0 w-16 h-16 sm:w-24 sm:h-24 lg:w-32 lg:h-32 bg-primary/10 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div className="absolute bottom-0 right-0 w-24 h-24 sm:w-32 sm:h-32 lg:w-48 lg:h-48 bg-primary/5 rounded-full blur-3xl animate-pulse-slow animation-delay-300"></div>
       </div>
 
       {/* Main Content Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
         {/* Mobile-First Layout */}
-        <div className="flex flex-col lg:grid lg:grid-cols-12 gap-4 sm:gap-6 lg:gap-12 items-center min-h-[80vh] lg:min-h-auto py-8 lg:py-0">
+        <div className="flex flex-col lg:grid lg:grid-cols-12 gap-3 sm:gap-4 lg:gap-12 items-center min-h-[90svh] sm:min-h-[80vh] lg:min-h-auto py-4 sm:py-6 lg:py-0">
           
           {/* Mobile: Number + Icon in same row */}
           <div className="flex items-center justify-center gap-6 sm:gap-8 lg:hidden w-full">
