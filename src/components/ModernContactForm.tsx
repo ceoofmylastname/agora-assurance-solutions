@@ -41,7 +41,7 @@ const WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/TLhrYb7SRrWrly61
 const steps = [
   {
     id: 'welcome',
-    title: 'Hi there! 👋',
+    title: 'Hi there! 👋🏻',
     subtitle: 'Ready to protect what matters most?',
     description: 'Let\'s find the perfect insurance solution for you. This will only take a few minutes.',
     isQuestion: false
