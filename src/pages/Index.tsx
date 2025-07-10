@@ -1,16 +1,19 @@
 
 import PageLayout from '@/components/PageLayout';
 import Hero from '@/components/Hero';
-import Features from '@/components/Features';
-import ProductsSection from '@/components/ProductsSection';
-import HowItWorks from '@/components/HowItWorks';
-import WhyAgora from '@/components/WhyAgora';
-import CustomerStories from '@/components/CustomerStories';
-import BlogSection from '@/components/BlogSection';
-import FAQSection from '@/components/FAQSection';
-import ModernContactForm from '@/components/ModernContactForm';
 import SEO from '@/components/SEO';
-import { useEffect } from 'react';
+import { useEffect, Suspense } from 'react';
+import { 
+  LazyFeatures, 
+  LazyProductsSection, 
+  LazyHowItWorks, 
+  LazyWhyAgora, 
+  LazyCustomerStories, 
+  LazyBlogSection, 
+  LazyFAQSection, 
+  LazyModernContactForm 
+} from '@/components/LazyComponents';
+import { SectionSkeleton, CardGridSkeleton, ContactFormSkeleton } from '@/components/LoadingFallback';
 
 const Index = () => {
   // Fix any ID conflicts when the page loads
@@ -31,14 +34,30 @@ const Index = () => {
         keywords={['insurance', 'life insurance', 'mortgage protection', 'final expense', 'annuities', 'tax solutions', 'insurance quotes', 'licensed advisors', 'instant quotes', 'family protection']}
       />
       <Hero />
-      <ProductsSection />
-      <HowItWorks />
-      <Features />
-      <WhyAgora />
-      <CustomerStories />
-      <BlogSection />
-      <FAQSection />
-      <ModernContactForm />
+      <Suspense fallback={<CardGridSkeleton />}>
+        <LazyProductsSection />
+      </Suspense>
+      <Suspense fallback={<SectionSkeleton />}>
+        <LazyHowItWorks />
+      </Suspense>
+      <Suspense fallback={<SectionSkeleton />}>
+        <LazyFeatures />
+      </Suspense>
+      <Suspense fallback={<SectionSkeleton />}>
+        <LazyWhyAgora />
+      </Suspense>
+      <Suspense fallback={<SectionSkeleton />}>
+        <LazyCustomerStories />
+      </Suspense>
+      <Suspense fallback={<SectionSkeleton />}>
+        <LazyBlogSection />
+      </Suspense>
+      <Suspense fallback={<SectionSkeleton />}>
+        <LazyFAQSection />
+      </Suspense>
+      <Suspense fallback={<ContactFormSkeleton />}>
+        <LazyModernContactForm />
+      </Suspense>
     </PageLayout>
   );
 };
