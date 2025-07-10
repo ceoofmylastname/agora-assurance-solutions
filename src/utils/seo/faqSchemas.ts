@@ -4,42 +4,58 @@ export const createMainFAQSchema = () => ({
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'How much life insurance do I actually need?',
+      name: 'How can I compare insurance plans quickly?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'The general rule is 10-12 times your annual income, but this varies based on your debts, dependents, and financial goals. Consider your mortgage, children\'s education costs, and your spouse\'s financial needs.'
+        text: 'Explore tailored life, mortgage-protection, final expense, annuity, and tax-solutions plans side-by-side with instant comparisons from top carriers.'
       }
     },
     {
       '@type': 'Question',
-      name: 'What\'s the difference between term and whole life insurance?',
+      name: 'How fast can I get a personalized quote?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Term life provides temporary coverage for a specific period at lower premiums. Whole life offers permanent coverage with a cash value component that grows over time.'
+        text: 'Instantly receive customized quotes from top carriers in seconds—no phone calls, forms, or waiting required.'
       }
     },
     {
       '@type': 'Question',
-      name: 'Are annuities a good investment for retirement?',
+      name: 'Do I get expert guidance or just software?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Annuities can be excellent for retirement income planning, offering guaranteed payments and tax-deferred growth. They\'re particularly valuable for conservative investors seeking predictable income.'
+        text: 'Hands-on guidance from state-regulated professionals who ensure solutions align with your family\'s specific goals and budget.'
       }
     },
     {
       '@type': 'Question',
-      name: 'How much does final expense insurance cost?',
+      name: 'What services does Agora offer beyond life insurance?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Final expense insurance typically costs $30-$200 monthly, depending on age, health, and coverage amount. Most policies range from $5,000-$50,000 in coverage.'
+        text: 'Comprehensive financial protection including tax strategies, asset protection, annuities, life settlements, and retirement planning solutions.'
       }
     },
     {
       '@type': 'Question',
-      name: 'Is mortgage protection insurance worth it?',
+      name: 'How does Agora simplify the insurance process?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Mortgage protection can be valuable, but term life insurance often provides better value and flexibility. Term life pays your beneficiaries directly while mortgage protection only pays the lender.'
+        text: 'We streamline every step from quote to coverage in 24 hours with transparent, real-time updates and continuous communication throughout your journey.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'Why should I choose Agora Assurance Solutions?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'With 50+ years combined experience, 25,000+ lives protected, and $500M+ in tax-free benefits created, we offer technology-driven comparison tools and licensed expert guidance.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'What makes Agora different from other insurance companies?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Our unique technology-driven approach combines AI comparison tools with independent consumer advocacy and state-licensed expertise for transparent, personalized service.'
       }
     }
   ]

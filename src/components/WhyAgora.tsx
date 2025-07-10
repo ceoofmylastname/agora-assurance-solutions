@@ -40,11 +40,11 @@ const WhyAgora = () => {
         once: true,
         margin: "-100px"
       }} variants={containerVariants}>
-          <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3">
-            Why Agora Assurance?
-          </motion.h2>
+          <motion.h3 variants={itemVariants} className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3">
+            Why should I choose Agora Assurance Solutions?
+          </motion.h3>
           <motion.p variants={itemVariants} className="text-gray-600 text-lg max-w-3xl mx-auto">
-            Supporting your family's assurance and well-being with transparency, technology, and trusted expertise
+            With 50+ years combined experience, 25,000+ lives protected, and $500M+ in tax-free benefits created, we offer technology-driven comparison tools and licensed expert guidance.
           </motion.p>
         </motion.div>
         
@@ -93,10 +93,10 @@ const WhyAgora = () => {
         }} variants={containerVariants}>
           <motion.div variants={itemVariants} className="text-center mb-8">
             <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
-              What Makes Agora Different
+              What makes Agora different from other insurance companies?
             </h3>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Our unique approach combines cutting-edge technology with human expertise for transparent, personalized service
+              Our unique technology-driven approach combines AI comparison tools with independent consumer advocacy and state-licensed expertise for transparent, personalized service.
             </p>
           </motion.div>
           

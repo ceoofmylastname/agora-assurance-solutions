@@ -108,10 +108,9 @@ const Features = () => {
             <div className="inline-block mb-2 px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">
               Our Process
             </div>
-            <h2 className="text-3xl font-bold mb-4">How Agora Makes Insurance Simple</h2>
+            <h3 className="text-3xl font-bold mb-4">How does Agora simplify the insurance process?</h3>
             <p className="text-gray-600 max-w-3xl mx-auto">
-              From initial quote to final coverage, we've streamlined every step to give you transparent, 
-              fast, and reliable insurance protection.
+              We streamline every step from quote to coverage in 24 hours with transparent, real-time updates and continuous communication throughout your journey.
             </p>
           </div>
           
