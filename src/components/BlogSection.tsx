@@ -78,7 +78,7 @@ const BlogSection = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-background via-background to-secondary/5">
+    <section className="py-16 bg-gradient-to-br from-background via-background to-secondary/5">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
@@ -86,17 +86,16 @@ const BlogSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Insurance Insights &{' '}
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            Insurance{' '}
             <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-              Expert Analysis
+              Insights
             </span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Stay ahead with insider knowledge, market analysis, and professional insights 
-            from licensed insurance experts. Get the information your financial advisor won't tell you.
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Expert analysis and professional insights from licensed insurance professionals
           </p>
         </motion.div>
 
