@@ -299,6 +299,14 @@ const GetQuote = () => {
                       <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
                     </div>
                     <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500">
+                      <img src="/lovable-uploads/f712c1bf-c4fb-4903-ace2-2846fd203ae6.png" alt="National Life Group" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                    </div>
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500">
+                      <img src="/lovable-uploads/f33106b7-457f-4c48-bb57-6bfbfb5b2625.png" alt="Nationwide" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                    </div>
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500">
                       <img src="/lovable-uploads/40b3b311-a454-4074-9067-b69adf314e12.png" alt="Americo" className="max-w-24 max-h-12 object-contain" />
                       <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
                     </div>
@@ -319,6 +327,14 @@ const GetQuote = () => {
                     </div>
                     <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500">
                       <img src="/lovable-uploads/10aed62a-cf02-460a-933d-8633b52632a2.png" alt="American National" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                    </div>
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500">
+                      <img src="/lovable-uploads/f712c1bf-c4fb-4903-ace2-2846fd203ae6.png" alt="National Life Group" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                    </div>
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500">
+                      <img src="/lovable-uploads/f33106b7-457f-4c48-bb57-6bfbfb5b2625.png" alt="Nationwide" className="max-w-24 max-h-12 object-contain" />
                       <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
                     </div>
                     <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500">
@@ -346,6 +362,22 @@ const GetQuote = () => {
                       <div className="absolute -top-2 -right-2 w-4 h-4 bg-accent rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
                     </div>
                     <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-accent/20 transition-all duration-500">
+                      <img src="/lovable-uploads/250a3f28-2462-4cb0-a255-a9385911eb14.png" alt="Royal Neighbors of America" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-accent rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                    </div>
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-accent/20 transition-all duration-500">
+                      <img src="/lovable-uploads/308d0a55-7ffa-4d6e-8fbc-7d29efea5824.png" alt="Sagicor" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-accent rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                    </div>
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-accent/20 transition-all duration-500">
+                      <img src="/lovable-uploads/6cc530b7-654a-419a-ac2d-5ee670ef7507.png" alt="Aetna" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-accent rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                    </div>
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-accent/20 transition-all duration-500">
+                      <img src="/lovable-uploads/70f09933-ea03-4744-8629-6b56d50ace30.png" alt="Lincoln Financial Group" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-accent rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                    </div>
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-accent/20 transition-all duration-500">
                       <img src="/lovable-uploads/0e7ad9af-f538-47ac-8284-021a5d1febcb.png" alt="EquiTrust" className="max-w-24 max-h-12 object-contain" />
                       <div className="absolute -top-2 -right-2 w-4 h-4 bg-accent rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
                     </div>
@@ -366,6 +398,22 @@ const GetQuote = () => {
                     </div>
                     <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-accent/20 transition-all duration-500">
                       <img src="/lovable-uploads/c975ca95-369f-49e7-a165-3fa2a1167547.png" alt="Corebridge Financial" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-accent rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                    </div>
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-accent/20 transition-all duration-500">
+                      <img src="/lovable-uploads/250a3f28-2462-4cb0-a255-a9385911eb14.png" alt="Royal Neighbors of America" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-accent rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                    </div>
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-accent/20 transition-all duration-500">
+                      <img src="/lovable-uploads/308d0a55-7ffa-4d6e-8fbc-7d29efea5824.png" alt="Sagicor" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-accent rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                    </div>
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-accent/20 transition-all duration-500">
+                      <img src="/lovable-uploads/6cc530b7-654a-419a-ac2d-5ee670ef7507.png" alt="Aetna" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-accent rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                    </div>
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-accent/20 transition-all duration-500">
+                      <img src="/lovable-uploads/70f09933-ea03-4744-8629-6b56d50ace30.png" alt="Lincoln Financial Group" className="max-w-24 max-h-12 object-contain" />
                       <div className="absolute -top-2 -right-2 w-4 h-4 bg-accent rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
                     </div>
                     <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-accent/20 transition-all duration-500">
