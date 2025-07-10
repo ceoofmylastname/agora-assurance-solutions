@@ -278,7 +278,7 @@ const GetQuote = () => {
             {/* Modern Rotating Logo Showcase */}
             <div className="relative overflow-hidden">
               {/* Animated Background */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-accent/5 to-primary/10 animate-pulse"></div>
+              <div className="absolute inset-0 bg-background"></div>
               <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-bounce" style={{animationDuration: '3s'}}></div>
               <div className="absolute bottom-1/4 right-1/3 w-48 h-48 bg-accent/5 rounded-full blur-2xl animate-bounce" style={{animationDuration: '4s', animationDelay: '1s'}}></div>
               
