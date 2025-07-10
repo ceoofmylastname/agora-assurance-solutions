@@ -279,9 +279,15 @@ const AnimatedSection: React.FC<{ section: SectionData; index: number }> = ({ se
             >
               <button 
                 onClick={() => {
-                  const contactSection = document.getElementById('contact');
-                  if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                  if (section.id === 1) {
+                    // For "GET A QUOTE" section, navigate to the quote page
+                    window.location.href = '/get-quote';
+                  } else {
+                    // For other sections, scroll to contact
+                    const contactSection = document.getElementById('contact');
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: 'smooth' });
+                    }
                   }
                 }}
                 className={`
@@ -292,7 +298,7 @@ const AnimatedSection: React.FC<{ section: SectionData; index: number }> = ({ se
                 `}
               >
                 <span className="transform transition-transform duration-300 group-hover:translate-x-1">→</span>
-                <span className="ml-2">LEARN MORE</span>
+                <span className="ml-2">{section.id === 1 ? 'GET QUOTE' : 'LEARN MORE'}</span>
               </button>
             </div>
           </div>

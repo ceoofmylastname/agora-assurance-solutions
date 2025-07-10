@@ -24,6 +24,7 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import FAQ from "./pages/FAQ";
 import Booking from "./pages/Booking";
+import GetQuote from "./pages/GetQuote";
 
 const App = () => {
   const [queryClient] = useState(() => new QueryClient());
@@ -53,6 +54,7 @@ const App = () => {
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/booking" element={<Booking />} />
+            <Route path="/get-quote" element={<GetQuote />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
