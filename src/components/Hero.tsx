@@ -118,7 +118,7 @@ const Hero = () => {
   return <motion.div className="relative w-full -mt-16" initial="hidden" animate="visible" variants={containerVariants}>
       <div className="banner-container bg-[#15AFF7] relative overflow-hidden h-[calc(60vh+4rem)] sm:h-[calc(70vh+4rem)] md:h-[calc(500px+4rem)] lg:h-[calc(550px+4rem)] xl:h-[calc(600px+4rem)] w-full">
         <div className="absolute inset-0 bg-[#15AFF7] w-full">
-          <img src={heroFamilyProtection} alt="Happy multi-generational family sitting together on couch - representing family protection and insurance security" className={`w-full h-full object-cover opacity-70 ${isMobile ? 'object-top' : 'object-top'}`} />
+          <img src={heroFamilyProtection} alt="Happy multi-generational family sitting together on couch - representing family protection and insurance security" className={`w-full h-full object-cover opacity-70 ${isMobile ? 'object-center' : 'object-[center_top]'}`} />
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-white"></div>
         </div>
         
