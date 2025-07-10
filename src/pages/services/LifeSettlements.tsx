@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from "@/components/ui/card";
 import SEO from '@/components/SEO';
-import businessMeetingAdvisors from '@/assets/business-meeting-advisors.jpg';
+import businessMeetingAdvisors from '@/assets/business-meeting-advisors.webp';
 
 const LifeSettlements = () => {
   useEffect(() => {

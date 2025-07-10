@@ -4,10 +4,10 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Clock, User, Calendar } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import lifeInsuranceAnalysis from '@/assets/life-insurance-analysis.jpg';
-import mortgageProtectionTruth from '@/assets/mortgage-protection-truth.jpg';
-import retirementStrategyComparison from '@/assets/retirement-strategy-comparison.jpg';
-import finalExpenseGuide from '@/assets/final-expense-guide.jpg';
+import lifeInsuranceAnalysis from '@/assets/life-insurance-analysis.webp';
+import mortgageProtectionTruth from '@/assets/mortgage-protection-truth.webp';
+import retirementStrategyComparison from '@/assets/retirement-strategy-comparison.webp';
+import finalExpenseGuide from '@/assets/final-expense-guide.webp';
 
 interface BlogPost {
   id: string;
@@ -119,11 +119,14 @@ const BlogSection = () => {
             >
               <div className="relative h-80 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent z-10" />
-                <img 
-                  src={blogPosts[0].image} 
-                  alt={blogPosts[0].title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
+                        <img 
+                          src={blogPosts[0].image} 
+                          alt={blogPosts[0].title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                          loading="lazy"
+                          width={640}
+                          height={320}
+                        />
                 <div className="absolute top-4 left-4 z-20">
                   <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">
                     Featured
@@ -178,11 +181,14 @@ const BlogSection = () => {
                 >
                   <div className="flex h-48">
                     <div className="relative w-1/3 overflow-hidden">
-                      <img 
-                        src={post.image} 
-                        alt={post.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      />
+                        <img 
+                          src={post.image} 
+                          alt={post.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                          loading="lazy"
+                          width={320}
+                          height={192}
+                        />
                     </div>
                     <CardContent className="flex-1 p-6 flex flex-col justify-between">
                       <div>

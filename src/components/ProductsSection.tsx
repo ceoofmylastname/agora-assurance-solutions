@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Shield, Home, Heart, TrendingUp, DollarSign, FileText } from 'lucide-react';
 import { motion } from "framer-motion";
-import annuitiesCard from '@/assets/annuities-card.jpg';
+import annuitiesCard from '@/assets/annuities-card.webp';
 import termLifeFamily from '@/assets/term-life-family.webp';
 import heroFamilyProtection from '@/assets/hero-family-protection.webp';
 import finalExpenseCouple from '@/assets/final-expense-couple.webp';
@@ -171,6 +171,9 @@ const containerVariants = {
                       src={product.image} 
                       alt={`${product.title} visual representation`}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 transform-gpu"
+                      loading="lazy"
+                      width={400}
+                      height={192}
                       initial={{ scale: 1.1, opacity: 0.8 }}
                       animate={{ scale: 1, opacity: 1 }}
                       transition={{ delay: index * 0.1, duration: 0.8 }}

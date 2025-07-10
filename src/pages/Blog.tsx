@@ -7,12 +7,12 @@ import { ArrowRight, Clock, User, Calendar, Search, Filter } from 'lucide-react'
 import { useNavigate } from 'react-router-dom';
 import PageLayout from '@/components/PageLayout';
 import SEO from '@/components/SEO';
-import lifeInsuranceAnalysis from '@/assets/life-insurance-analysis.jpg';
-import mortgageProtectionTruth from '@/assets/mortgage-protection-truth.jpg';
-import retirementStrategyComparison from '@/assets/retirement-strategy-comparison.jpg';
-import finalExpenseGuide from '@/assets/final-expense-guide.jpg';
-import taxStrategies from '@/assets/tax-strategies.jpg';
-import medicalExamTips from '@/assets/medical-exam-tips.jpg';
+import lifeInsuranceAnalysis from '@/assets/life-insurance-analysis.webp';
+import mortgageProtectionTruth from '@/assets/mortgage-protection-truth.webp';
+import retirementStrategyComparison from '@/assets/retirement-strategy-comparison.webp';
+import finalExpenseGuide from '@/assets/final-expense-guide.webp';
+import taxStrategies from '@/assets/tax-strategies.webp';
+import medicalExamTips from '@/assets/medical-exam-tips.webp';
 
 interface BlogPost {
   id: string;

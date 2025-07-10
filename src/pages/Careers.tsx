@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ModernApplicationModal } from '@/components/ModernApplicationModal';
-import businessMeetingImage from '@/assets/business-meeting-advisors.jpg';
+import businessMeetingImage from '@/assets/business-meeting-advisors.webp';
 
 const Careers = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
