@@ -97,7 +97,7 @@ const blogPostsData: Record<string, BlogPostData> = {
         </ol>
       </div>
     `,
-    image: '/lovable-uploads/life-insurance-analysis.jpg',
+    image: lifeInsuranceAnalysis,
     category: 'Market Analysis',
     readTime: '8 min read',
     author: 'Sarah Johnson, CLU',
@@ -722,7 +722,7 @@ const BlogPost = () => {
                     alt={post.title}
                     className="w-full h-96 object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/10 to-transparent" />
                 </div>
               </div>
             </motion.div>
