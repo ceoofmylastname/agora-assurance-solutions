@@ -243,25 +243,33 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
     switch (step.type) {
       case 'textarea':
         return (
-          <div className="space-y-4">
-            <textarea
-              {...register(step.id as keyof ApplicationFormData)}
-              rows={4}
-              className="w-full text-lg md:text-2xl bg-transparent border-b-2 border-gray-300 focus:border-blue-500 outline-none p-3 md:p-4 resize-none placeholder-gray-400"
-              placeholder={step.placeholder}
-              onKeyDown={handleKeyPress}
-              autoFocus
-            />
+          <div className="space-y-6">
+            <div className="relative">
+              <textarea
+                {...register(step.id as keyof ApplicationFormData)}
+                rows={4}
+                className="w-full text-lg md:text-2xl bg-card/50 border-2 border-border rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none p-4 md:p-6 resize-none placeholder:text-muted-foreground transition-all duration-300 hover:border-primary/50"
+                placeholder={step.placeholder}
+                onKeyDown={handleKeyPress}
+                autoFocus
+              />
+              <div className="absolute bottom-3 right-3 text-xs text-muted-foreground">
+                Press Enter to continue
+              </div>
+            </div>
             {fieldError && (
-              <p className="text-red-500 text-lg animate-fade-in">{fieldError.message}</p>
+              <p className="text-destructive text-base md:text-lg animate-fade-in flex items-center gap-2">
+                <span className="w-4 h-4 rounded-full bg-destructive/20 flex items-center justify-center text-xs">!</span>
+                {fieldError.message}
+              </p>
             )}
           </div>
         );
         
       case 'select':
         return (
-          <div className="space-y-4 max-h-[50vh] overflow-y-auto pr-4">
-            <div className="space-y-4">
+          <div className="space-y-4 max-h-[50vh] overflow-y-auto pr-2">
+            <div className="grid gap-3">
               {step.options?.map((option, index) => (
                 <button
                   key={option.value}
@@ -270,18 +278,27 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
                     setValue(step.id as keyof ApplicationFormData, option.value as any);
                     setTimeout(nextStep, 300);
                   }}
-                  className="w-full text-left p-4 md:p-6 rounded-xl border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-all duration-200 text-lg md:text-xl hover:scale-105 transform min-h-[60px] flex items-center"
-                  style={{ animationDelay: `${index * 100}ms` }}
+                  className="group relative w-full text-left p-4 md:p-6 rounded-xl border-2 border-border bg-card/30 hover:border-primary hover:bg-primary/5 transition-all duration-300 text-base md:text-lg hover:scale-[1.02] transform min-h-[60px] flex items-center shadow-sm hover:shadow-md"
+                  style={{ 
+                    animationDelay: `${index * 100}ms`,
+                    animation: 'fade-in 0.5s ease-out forwards'
+                  }}
                 >
                   <div className="flex items-center justify-between w-full">
-                    <span className="flex-1 pr-2">{option.label}</span>
-                    <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-gray-400 flex-shrink-0" />
+                    <span className="flex-1 pr-4 font-medium text-foreground group-hover:text-primary transition-colors">{option.label}</span>
+                    <div className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-all duration-300">
+                      <ChevronRight className="w-4 h-4 text-primary group-hover:translate-x-0.5 transition-all duration-300" />
+                    </div>
                   </div>
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-primary/0 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </button>
               ))}
             </div>
             {fieldError && (
-              <p className="text-red-500 text-lg animate-fade-in">{fieldError.message}</p>
+              <p className="text-destructive text-base md:text-lg animate-fade-in flex items-center gap-2 mt-4">
+                <span className="w-4 h-4 rounded-full bg-destructive/20 flex items-center justify-center text-xs">!</span>
+                {fieldError.message}
+              </p>
             )}
           </div>
         );
@@ -289,29 +306,32 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
       case 'name-split':
         return (
           <div className="space-y-6">
-            <div className="grid grid-cols-1 gap-4 md:gap-6">
-              <div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+              <div className="group">
+                <label className="block text-sm font-medium text-muted-foreground mb-2">First Name</label>
                 <input
                   {...register('firstName')}
                   type="text"
-                  className="w-full text-lg md:text-2xl bg-transparent border-b-2 border-gray-300 focus:border-blue-500 outline-none p-3 md:p-4 placeholder-gray-400"
-                  placeholder="First name"
+                  className="w-full text-lg md:text-xl bg-card/50 border-2 border-border rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none p-4 md:p-5 placeholder:text-muted-foreground transition-all duration-300 hover:border-primary/50 group-hover:shadow-md"
+                  placeholder="Enter your first name"
                   onKeyDown={handleKeyPress}
                   autoFocus
                 />
               </div>
-              <div>
+              <div className="group">
+                <label className="block text-sm font-medium text-muted-foreground mb-2">Last Name</label>
                 <input
                   {...register('lastName')}
                   type="text"
-                  className="w-full text-lg md:text-2xl bg-transparent border-b-2 border-gray-300 focus:border-blue-500 outline-none p-3 md:p-4 placeholder-gray-400"
-                  placeholder="Last name"
+                  className="w-full text-lg md:text-xl bg-card/50 border-2 border-border rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none p-4 md:p-5 placeholder:text-muted-foreground transition-all duration-300 hover:border-primary/50 group-hover:shadow-md"
+                  placeholder="Enter your last name"
                   onKeyDown={handleKeyPress}
                 />
               </div>
             </div>
             {nameErrors && (
-              <p className="text-red-500 text-lg animate-fade-in">
+              <p className="text-destructive text-base md:text-lg animate-fade-in flex items-center gap-2">
+                <span className="w-4 h-4 rounded-full bg-destructive/20 flex items-center justify-center text-xs">!</span>
                 {errors.firstName?.message || errors.lastName?.message}
               </p>
             )}
@@ -321,27 +341,30 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
       case 'location-split':
         return (
           <div className="space-y-6">
-            <div>
+            <div className="group">
+              <label className="block text-sm font-medium text-muted-foreground mb-2">State</label>
               <input
                 {...register('state')}
                 type="text"
-                className="w-full text-lg md:text-2xl bg-transparent border-b-2 border-gray-300 focus:border-blue-500 outline-none p-3 md:p-4 placeholder-gray-400"
-                placeholder="State"
+                className="w-full text-lg md:text-xl bg-card/50 border-2 border-border rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none p-4 md:p-5 placeholder:text-muted-foreground transition-all duration-300 hover:border-primary/50 group-hover:shadow-md"
+                placeholder="Enter your state"
                 onKeyDown={handleKeyPress}
                 autoFocus
               />
             </div>
-            <div>
+            <div className="group">
+              <label className="block text-sm font-medium text-muted-foreground mb-2">Full Address</label>
               <input
                 {...register('address')}
                 type="text"
-                className="w-full text-lg md:text-2xl bg-transparent border-b-2 border-gray-300 focus:border-blue-500 outline-none p-3 md:p-4 placeholder-gray-400"
-                placeholder="Full address"
+                className="w-full text-lg md:text-xl bg-card/50 border-2 border-border rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none p-4 md:p-5 placeholder:text-muted-foreground transition-all duration-300 hover:border-primary/50 group-hover:shadow-md"
+                placeholder="Enter your full address"
                 onKeyDown={handleKeyPress}
               />
             </div>
             {locationErrors && (
-              <p className="text-red-500 text-lg animate-fade-in">
+              <p className="text-destructive text-base md:text-lg animate-fade-in flex items-center gap-2">
+                <span className="w-4 h-4 rounded-full bg-destructive/20 flex items-center justify-center text-xs">!</span>
                 {errors.state?.message || errors.address?.message}
               </p>
             )}
@@ -352,41 +375,55 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
         return (
           <div className="space-y-6">
             <div 
-              className="flex items-start space-x-3 md:space-x-4 p-4 md:p-6 rounded-xl border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-all duration-200 cursor-pointer"
+              className="group flex items-start space-x-4 md:space-x-5 p-6 md:p-8 rounded-2xl border-2 border-border bg-card/30 hover:border-primary hover:bg-primary/5 transition-all duration-300 cursor-pointer shadow-sm hover:shadow-lg"
               onClick={() => {
                 const currentValue = watchedValues.consent;
                 setValue('consent', !currentValue);
               }}
             >
-              <div className={`w-6 h-6 rounded border-2 flex items-center justify-center transition-all duration-200 ${
-                watchedValues.consent ? 'bg-blue-500 border-blue-500' : 'border-gray-300'
+              <div className={`w-7 h-7 rounded-lg border-2 flex items-center justify-center transition-all duration-300 ${
+                watchedValues.consent 
+                  ? 'bg-primary border-primary shadow-lg scale-110' 
+                  : 'border-border group-hover:border-primary/50 group-hover:bg-primary/5'
               }`}>
-                {watchedValues.consent && <Check className="w-4 h-4 text-white" />}
+                {watchedValues.consent && <Check className="w-4 h-4 text-primary-foreground" />}
               </div>
-              <div className="text-base md:text-lg text-gray-700 leading-relaxed">
-                I consent to being contacted by Agora Assurance Solutions regarding my inquiry. 
-                I understand that my information will be used in accordance with the privacy policy.
+              <div className="text-base md:text-lg text-muted-foreground group-hover:text-foreground leading-relaxed transition-colors duration-300">
+                <span className="font-medium text-foreground">I consent</span> to being contacted by Agora Assurance Solutions regarding my inquiry. 
+                I understand that my information will be used in accordance with the{' '}
+                <span className="text-primary hover:underline cursor-pointer">privacy policy</span>.
               </div>
             </div>
             {errors.consent && (
-              <p className="text-red-500 text-lg animate-fade-in">{errors.consent.message}</p>
+              <p className="text-destructive text-base md:text-lg animate-fade-in flex items-center gap-2">
+                <span className="w-4 h-4 rounded-full bg-destructive/20 flex items-center justify-center text-xs">!</span>
+                {errors.consent.message}
+              </p>
             )}
           </div>
         );
         
       default:
         return (
-          <div className="space-y-4">
-            <input
-              {...register(step.id as keyof ApplicationFormData)}
-              type={step.type}
-              className="w-full text-lg md:text-2xl bg-transparent border-b-2 border-gray-300 focus:border-blue-500 outline-none p-3 md:p-4 placeholder-gray-400"
-              placeholder={step.placeholder}
-              onKeyDown={handleKeyPress}
-              autoFocus
-            />
+          <div className="space-y-6">
+            <div className="relative group">
+              <input
+                {...register(step.id as keyof ApplicationFormData)}
+                type={step.type}
+                className="w-full text-lg md:text-2xl bg-card/50 border-2 border-border rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none p-4 md:p-6 placeholder:text-muted-foreground transition-all duration-300 hover:border-primary/50 group-hover:shadow-md"
+                placeholder={step.placeholder}
+                onKeyDown={handleKeyPress}
+                autoFocus
+              />
+              <div className="absolute bottom-3 right-3 text-xs text-muted-foreground">
+                Press Enter to continue
+              </div>
+            </div>
             {fieldError && (
-              <p className="text-red-500 text-lg animate-fade-in">{fieldError.message}</p>
+              <p className="text-destructive text-base md:text-lg animate-fade-in flex items-center gap-2">
+                <span className="w-4 h-4 rounded-full bg-destructive/20 flex items-center justify-center text-xs">!</span>
+                {fieldError.message}
+              </p>
             )}
           </div>
         );
@@ -397,16 +434,16 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       {/* Overlay */}
       <div 
-        className="absolute inset-0 bg-gradient-to-br from-blue-900/80 to-purple-900/80 backdrop-blur-sm animate-fade-in"
+        className="absolute inset-0 bg-gradient-to-br from-background/95 via-background/90 to-muted/95 backdrop-blur-md animate-fade-in"
         onClick={onClose}
       />
       
       {/* Modal */}
-      <div className="relative w-full max-w-4xl mx-2 md:mx-4 h-[85vh] md:h-[80vh] bg-white rounded-2xl md:rounded-3xl shadow-2xl overflow-hidden animate-scale-in">
+      <div className="relative w-full max-w-5xl mx-4 md:mx-6 h-[90vh] md:h-[85vh] bg-background/95 backdrop-blur-sm border border-border rounded-3xl shadow-2xl overflow-hidden animate-scale-in">
         {/* Progress Bar */}
-        <div className="absolute top-0 left-0 right-0 h-2 bg-gray-200">
+        <div className="absolute top-0 left-0 right-0 h-1.5 bg-muted">
           <div 
-            className="h-full bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-500 ease-out"
+            className="h-full bg-gradient-to-r from-primary via-primary/90 to-accent transition-all duration-700 ease-out rounded-r-full"
             style={{ width: `${progress}%` }}
           />
         </div>
@@ -414,23 +451,25 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 md:top-6 right-4 md:right-6 z-10 p-2 md:p-3 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-full transition-all duration-200 hover:scale-110"
+          className="absolute top-6 right-6 z-10 p-3 text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-full transition-all duration-300 hover:scale-110 group"
           aria-label="Close modal"
         >
-          <X size={20} />
+          <X size={20} className="group-hover:rotate-90 transition-transform duration-300" />
         </button>
 
         {/* Content */}
         <div className="h-full flex flex-col">
           {isComplete ? (
-            <div className="flex-1 flex items-center justify-center">
-              <div className="text-center space-y-6 animate-fade-in">
-                <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto">
-                  <Check className="w-10 h-10 text-white" />
+            <div className="flex-1 flex items-center justify-center p-8">
+              <div className="text-center space-y-8 animate-fade-in">
+                <div className="w-24 h-24 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mx-auto shadow-lg">
+                  <Check className="w-12 h-12 text-primary-foreground" />
                 </div>
-                <div>
-                  <h2 className="text-4xl font-bold text-gray-900 mb-2">Perfect!</h2>
-                  <p className="text-xl text-gray-600">Your application has been submitted successfully.</p>
+                <div className="space-y-4">
+                  <h2 className="text-3xl md:text-4xl font-bold text-foreground">Perfect!</h2>
+                  <p className="text-lg md:text-xl text-muted-foreground max-w-md mx-auto leading-relaxed">
+                    Your application has been submitted successfully. We'll be in touch soon.
+                  </p>
                 </div>
               </div>
             </div>
@@ -439,18 +478,16 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
               <div className="flex-1 p-4 md:p-12 flex flex-col justify-center overflow-y-auto max-h-[70vh]">
                 <div className="max-w-3xl mx-auto w-full px-2 md:px-0">
                   <div className="mb-8 md:mb-12 animate-fade-in">
-                    <div className="flex items-center space-x-3 md:space-x-4 mb-4 md:mb-6">
-                      <span className="text-xl md:text-2xl font-bold text-blue-500">
-                        {currentStep + 1}
-                      </span>
-                      <span className="text-base md:text-lg text-gray-400">
-                        of {steps.length}
-                      </span>
+                    <div className="flex items-center space-x-4 mb-6 md:mb-8">
+                      <div className="px-3 py-1.5 bg-primary/10 text-primary rounded-full text-sm md:text-base font-bold">
+                        {currentStep + 1} of {steps.length}
+                      </div>
+                      <div className="h-px flex-1 bg-border"></div>
                     </div>
-                    <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-4 leading-tight">
+                    <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 md:mb-4 leading-tight">
                       {currentStepData.title}
                     </h1>
-                    <p className="text-lg md:text-xl text-gray-600 mb-6 md:mb-8">
+                    <p className="text-base md:text-xl text-muted-foreground mb-6 md:mb-8 leading-relaxed">
                       {currentStepData.subtitle}
                     </p>
                   </div>
@@ -462,24 +499,28 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
               </div>
               
               {/* Navigation */}
-              <div className="p-4 md:p-8 border-t border-gray-200 bg-gray-50">
+              <div className="p-6 md:p-8 border-t border-border bg-muted/30 backdrop-blur-sm">
                 <div className="flex justify-between items-center max-w-3xl mx-auto">
                   <button
                     type="button"
                     onClick={prevStep}
                     disabled={currentStep === 0}
-                    className="flex items-center space-x-1 md:space-x-2 px-4 md:px-6 py-2 md:py-3 text-gray-600 hover:text-gray-900 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-sm md:text-base"
+                    className="group flex items-center space-x-2 px-4 py-3 text-muted-foreground hover:text-foreground disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-300 text-sm md:text-base font-medium hover:bg-background/50 rounded-xl"
                   >
-                    <ChevronLeft size={16} className="md:w-5 md:h-5" />
+                    <ChevronLeft size={16} className="md:w-5 md:h-5 group-hover:-translate-x-0.5 transition-transform duration-300" />
                     <span>Back</span>
                   </button>
                   
-                  <div className="flex space-x-1 md:space-x-2">
+                  <div className="flex space-x-2">
                     {steps.map((_, index) => (
                       <div
                         key={index}
-                        className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
-                          index <= currentStep ? 'bg-blue-500' : 'bg-gray-300'
+                        className={`w-2.5 h-2.5 rounded-full transition-all duration-500 ${
+                          index < currentStep 
+                            ? 'bg-primary scale-110' 
+                            : index === currentStep 
+                            ? 'bg-primary/70 scale-125 animate-pulse' 
+                            : 'bg-border'
                         }`}
                       />
                     ))}
@@ -490,17 +531,17 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
                       type="button"
                       onClick={handleSubmit(onSubmit)}
                       disabled={isSubmitting || !watchedValues.consent}
-                      className="flex items-center space-x-1 md:space-x-2 px-4 md:px-8 py-2 md:py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg md:rounded-xl hover:from-blue-600 hover:to-purple-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 hover:scale-105 transform font-semibold text-sm md:text-base"
+                      className="group flex items-center space-x-2 px-6 md:px-8 py-3 bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-xl hover:shadow-lg hover:shadow-primary/25 disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none transition-all duration-300 hover:scale-[1.02] transform font-semibold text-sm md:text-base"
                     >
                       {isSubmitting ? (
                         <>
-                          <div className="w-4 h-4 md:w-5 md:h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                          <div className="w-4 h-4 md:w-5 md:h-5 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin" />
                           <span>Submitting...</span>
                         </>
                       ) : (
                         <>
                           <span>Submit Application</span>
-                          <Check size={16} className="md:w-5 md:h-5" />
+                          <Check size={16} className="md:w-5 md:h-5 group-hover:scale-110 transition-transform duration-300" />
                         </>
                       )}
                     </button>
@@ -508,10 +549,10 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
                     <button
                       type="button"
                       onClick={nextStep}
-                      className="flex items-center space-x-1 md:space-x-2 px-4 md:px-8 py-2 md:py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg md:rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-200 hover:scale-105 transform font-semibold text-sm md:text-base"
+                      className="group flex items-center space-x-2 px-6 md:px-8 py-3 bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 hover:scale-[1.02] transform font-semibold text-sm md:text-base"
                     >
                       <span>Continue</span>
-                      <ChevronRight size={16} className="md:w-5 md:h-5" />
+                      <ChevronRight size={16} className="md:w-5 md:h-5 group-hover:translate-x-0.5 transition-transform duration-300" />
                     </button>
                   )}
                 </div>
