@@ -7,6 +7,10 @@ import { ArrowRight, Clock, User, Calendar, Search, Filter } from 'lucide-react'
 import { useNavigate } from 'react-router-dom';
 import PageLayout from '@/components/PageLayout';
 import SEO from '@/components/SEO';
+import lifeInsuranceAnalysis from '@/assets/life-insurance-analysis.jpg';
+import mortgageProtectionTruth from '@/assets/mortgage-protection-truth.jpg';
+import retirementStrategyComparison from '@/assets/retirement-strategy-comparison.jpg';
+import finalExpenseGuide from '@/assets/final-expense-guide.jpg';
 
 interface BlogPost {
   id: string;
@@ -26,7 +30,7 @@ const allBlogPosts: BlogPost[] = [
     id: '1',
     title: '2024 Life Insurance Rate Analysis: What You Need to Know',
     excerpt: 'Comprehensive market analysis revealing insider data on rate trends, underwriting changes, and strategies to secure the best premiums in today\'s market.',
-    image: '/lovable-uploads/life-insurance-analysis.jpg',
+    image: lifeInsuranceAnalysis,
     category: 'Market Analysis',
     readTime: '8 min read',
     author: 'Sarah Johnson, CLU',
@@ -38,7 +42,7 @@ const allBlogPosts: BlogPost[] = [
     id: '2',
     title: 'The Hidden Costs of Mortgage Protection: A Licensed Agent\'s Perspective',
     excerpt: 'Industry secrets revealed: Why mortgage protection insurance might not be your best option and what licensed agents won\'t tell you.',
-    image: '/lovable-uploads/mortgage-protection-truth.jpg',
+    image: mortgageProtectionTruth,
     category: 'Expert Insights',
     readTime: '6 min read',
     author: 'Michael Chen, CFP',
@@ -50,7 +54,7 @@ const allBlogPosts: BlogPost[] = [
     id: '3',
     title: 'Annuities vs. 401(k): Which Retirement Strategy Wins in 2024?',
     excerpt: 'Data-driven comparison of retirement strategies with real numbers, tax implications, and scenarios where each option excels.',
-    image: '/lovable-uploads/retirement-strategy-comparison.jpg',
+    image: retirementStrategyComparison,
     category: 'Retirement Planning',
     readTime: '10 min read',
     author: 'David Rodriguez, ChFC',
@@ -62,7 +66,7 @@ const allBlogPosts: BlogPost[] = [
     id: '4',
     title: 'Final Expense Insurance: The Complete Guide to Protecting Your Family\'s Future',
     excerpt: 'Everything you need to know about final expense insurance, including cost breakdowns, coverage options, and application strategies.',
-    image: '/lovable-uploads/final-expense-guide.jpg',
+    image: finalExpenseGuide,
     category: 'Insurance Guide',
     readTime: '12 min read',
     author: 'Lisa Thompson, LUTCF',

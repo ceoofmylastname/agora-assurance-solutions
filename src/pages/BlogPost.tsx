@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft, Clock, User, Calendar, Share2, BookOpen, TrendingUp, Shield, Heart } from 'lucide-react';
 import PageLayout from '@/components/PageLayout';
 import SEO from '@/components/SEO';
+import lifeInsuranceAnalysis from '@/assets/life-insurance-analysis.jpg';
+import mortgageProtectionTruth from '@/assets/mortgage-protection-truth.jpg';
 
 interface BlogPostData {
   id: string;
