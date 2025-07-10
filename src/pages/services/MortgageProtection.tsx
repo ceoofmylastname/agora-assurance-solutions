@@ -64,10 +64,10 @@ const MortgageProtection = () => {
                     Mortgage Protection Insurance
                   </motion.div>
                   <motion.h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent" variants={itemVariants}>
-                    Protect Your Family's Home Forever
+                    Cheapest Way to Protect Your Family's Home if You Die
                   </motion.h1>
                   <motion.p className="text-xl text-gray-600 mb-8 leading-relaxed" variants={itemVariants}>
-                    Mortgage protection insurance ensures your family can stay in their home even if you're no longer there to make payments. Affordable coverage that gives you peace of mind.
+                    Mortgage protection insurance vs term life insurance comparison: Get the cheapest coverage to pay off your mortgage if something happens. Rates start at $15/month for new homeowners.
                   </motion.p>
                   <motion.div className="flex flex-col sm:flex-row gap-4" variants={itemVariants}>
                     <button 

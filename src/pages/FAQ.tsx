@@ -54,16 +54,16 @@ const FAQ = () => {
           answer: "Comprehensive financial protection including tax strategies, asset protection, annuities, life settlements, and retirement planning solutions tailored to your unique financial situation."
         },
         {
-          question: "How much does term life insurance cost?",
-          answer: "A healthy 30-year-old might pay $20-40/month for $500,000 in term coverage, while a 50-year-old could pay $100-200/month for the same amount. Costs vary by age, health, and coverage type."
+          question: "How much does $500k term life insurance cost for a 35-year-old?",
+          answer: "Healthy 35-year-olds typically pay $25-50 monthly for $500k term life coverage, depending on term length and health factors."
         },
         {
           question: "What happens when my term life insurance expires?",
           answer: "When term life insurance expires, coverage ends. You can often convert to permanent life insurance, renew at higher rates, or purchase new coverage subject to health underwriting."
         },
         {
-          question: "Can I get final expense insurance without a medical exam?",
-          answer: "Yes, most final expense policies don't require medical exams. They use simplified underwriting with basic health questions, making them accessible to seniors with health issues."
+          question: "Can I get life insurance if I have diabetes and high blood pressure?",
+          answer: "Yes, many carriers offer coverage for controlled diabetes and hypertension. We specialize in finding policies for pre-existing conditions."
         },
         {
           question: "What's the difference between term and whole life insurance?",
@@ -83,16 +83,16 @@ const FAQ = () => {
           answer: "Basic personal information including age, health status, coverage amount needed, and beneficiary details. Our smart questionnaire guides you through each step efficiently."
         },
         {
-          question: "How quickly can I get covered with Agora?",
-          answer: "Most clients go from quote to coverage in 24 hours with our streamlined digital process and instant underwriting approvals for qualifying applicants."
+          question: "How long does it take to get approved for term life insurance?",
+          answer: "Simple term life policies can be approved in 24-48 hours, while larger amounts may take 2-4 weeks for medical underwriting."
         },
         {
-          question: "Do I need a medical exam for life insurance?",
-          answer: "Not always. Many policies now offer simplified underwriting or instant approval based on health questionnaires. Medical exams are typically required for larger coverage amounts or older applicants."
+          question: "How to buy life insurance online without talking to a salesman?",
+          answer: "Our digital platform offers complete online application with optional expert support. No pushy sales tactics—just transparent information and choice."
         },
         {
-          question: "Can I apply for insurance online completely?",
-          answer: "Yes, our digital platform handles the entire application process online, from initial quotes through final approval, with optional phone support when needed."
+          question: "Best life insurance companies for people with pre-existing conditions?",
+          answer: "We work with carriers like Mutual of Omaha, Foresters, and American National who specialize in covering diabetes, heart conditions, and other health issues."
         }
       ]
     },

@@ -65,10 +65,10 @@ const TermLife = () => {
                     Term Life Insurance
                   </motion.div>
                   <motion.h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent" variants={itemVariants}>
-                    Affordable Protection for Your Family's Future
+                    Best Term Life Insurance for Young Families on a Budget
                   </motion.h1>
                   <motion.p className="text-xl text-gray-600 mb-8 leading-relaxed" variants={itemVariants}>
-                    Term life insurance provides temporary coverage for a specific number of years. If you pass away during that term, your beneficiaries receive a tax-free death benefit to secure their financial future.
+                    Get affordable term life insurance that covers 10-30 years with rates starting at $20/month for healthy 30-year-olds. Perfect for young parents who need maximum coverage during income-earning years.
                   </motion.p>
                   <motion.div className="flex flex-col sm:flex-row gap-4" variants={itemVariants}>
                     <button 

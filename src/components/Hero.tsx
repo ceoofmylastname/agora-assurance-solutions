@@ -174,8 +174,8 @@ const Hero = () => {
               >
                 <Shield className="w-6 h-6 md:w-7 md:h-7" />
               </motion.div>
-              <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-gray-800 relative z-10">How can I compare insurance plans quickly?</h3>
-              <p className="text-gray-600 text-sm md:text-base leading-relaxed relative z-10">Explore tailored life, mortgage-protection, final expense, annuity, and tax-solutions plans side-by-side with instant comparisons from top carriers.</p>
+              <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-gray-800 relative z-10">What's the best way to compare term life insurance for young families in Florida?</h3>
+              <p className="text-gray-600 text-sm md:text-base leading-relaxed relative z-10">Compare tailored life, mortgage-protection, final expense, and annuity plans side-by-side with instant quotes from top-rated carriers across all 50 states.</p>
             </motion.div>
           
             <motion.div 
@@ -198,8 +198,8 @@ const Hero = () => {
               >
                 <Calculator className="w-6 h-6 md:w-7 md:h-7" />
               </motion.div>
-              <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-gray-800 relative z-10">How fast can I get a personalized quote?</h3>
-              <p className="text-gray-600 text-sm md:text-base leading-relaxed relative z-10">Instantly receive customized quotes from top carriers in seconds—no phone calls, forms, or waiting required.</p>
+              <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-gray-800 relative z-10">How to get instant life insurance quotes for 30-year-olds without medical exam?</h3>
+              <p className="text-gray-600 text-sm md:text-base leading-relaxed relative z-10">Get personalized quotes from top carriers in under 60 seconds—no medical exams, lengthy forms, or phone calls required.</p>
             </motion.div>
           
             <motion.div 
@@ -222,8 +222,8 @@ const Hero = () => {
               >
                 <MessageSquare className="w-6 h-6 md:w-7 md:h-7" />
               </motion.div>
-              <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-gray-800 relative z-10">Do I get expert guidance or just software?</h3>
-              <p className="text-gray-600 text-sm md:text-base leading-relaxed relative z-10">Hands-on guidance from state-regulated professionals who ensure solutions align with your family's specific goals and budget.</p>
+              <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-gray-800 relative z-10">Can I speak with licensed insurance agents who understand my state's requirements?</h3>
+              <p className="text-gray-600 text-sm md:text-base leading-relaxed relative z-10">Connect with state-licensed professionals who understand local regulations and ensure coverage meets your family's specific needs and budget.</p>
             </motion.div>
           
             <motion.div 
@@ -246,8 +246,8 @@ const Hero = () => {
               >
                 <Home className="w-6 h-6 md:w-7 md:h-7" />
               </motion.div>
-              <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-gray-800 relative z-10">What services does Agora offer beyond life insurance?</h3>
-              <p className="text-gray-600 text-sm md:text-base leading-relaxed relative z-10">Comprehensive financial protection including tax strategies, asset protection, annuities, life settlements, and retirement planning solutions.</p>
+              <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-gray-800 relative z-10">Best mortgage protection insurance for new homeowners in Texas - what are my options?</h3>
+              <p className="text-gray-600 text-sm md:text-base leading-relaxed relative z-10">Complete financial protection including mortgage protection, tax strategies, asset protection, annuities, and retirement planning tailored to your state.</p>
             </motion.div>
         </motion.div>
       </div>

@@ -65,10 +65,10 @@ const FinalExpense = () => {
                     Final Expense Insurance
                   </motion.div>
                   <motion.h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent" variants={itemVariants}>
-                    End-of-Life Coverage Made Simple
+                    Cheapest Final Expense Insurance for Seniors Without Medical Exam
                   </motion.h1>
                   <motion.p className="text-xl text-gray-600 mb-8 leading-relaxed" variants={itemVariants}>
-                    Final expense insurance (also called burial insurance) is a small whole life policy designed to cover end-of-life costs, including funerals, medical bills, and debts. Easy approval with no medical exam required.
+                    Get guaranteed acceptance burial insurance for ages 50-85 with no medical exam. Cover funeral costs ($7,000-$15,000) and debts with fixed premiums that never increase.
                   </motion.p>
                   <motion.div className="flex flex-col sm:flex-row gap-4" variants={itemVariants}>
                     <button 
