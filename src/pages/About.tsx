@@ -134,7 +134,7 @@ const About = () => {
               delay: 0.4
             }} className="mb-16">
                 <h2 className="text-3xl font-bold mb-8 text-center">Leadership with Vision</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
                   <Dialog>
                     <DialogTrigger asChild>
                       <motion.div initial={{
@@ -146,17 +146,17 @@ const About = () => {
                     }} transition={{
                       duration: 0.6,
                       delay: 0.5
-                    }} className="relative group cursor-pointer">
+                     }} className="relative group cursor-pointer h-full flex flex-col">
                         <div className="absolute inset-0 bg-gradient-to-br from-[#15AFF7]/5 to-blue-600/5 rounded-2xl transform rotate-1 scale-105 group-hover:rotate-2 transition-transform duration-300"></div>
-                        <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300">
+                         <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300 h-full flex flex-col min-h-[400px]">
                           <div className="h-20 w-20 rounded-full overflow-hidden mb-4 border-2 border-[#15AFF7]/20">
                             <img alt="Kevin Jenson - Founder & CEO" className="w-full h-full object-cover" src="https://storage.googleapis.com/msgsndr/TLhrYb7SRrWrly615tCI/media/686eb76d038ba82a1245496a.jpeg" />
                           </div>
                           <h3 className="text-xl font-bold text-gray-900 mb-1">Kevin Jenson</h3>
                           <p className="text-[#15AFF7] font-medium mb-3">Founder & CEO</p>
-                          <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                            With nearly two decades in life insurance and annuities—including executive leadership at Quility—Kevin founded Agora in 2025 to reinvent the client experience with technology, speed, and service.
-                          </p>
+                           <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">
+                             With nearly two decades in life insurance and annuities—including executive leadership at Quility—Kevin founded Agora in 2025 to reinvent the client experience with technology, speed, and service.
+                           </p>
                           <Button variant="outline" size="sm" className="w-full group-hover:bg-[#15AFF7] group-hover:text-white transition-colors">
                             Learn More
                           </Button>
@@ -316,17 +316,17 @@ const About = () => {
                     }} transition={{
                       duration: 0.6,
                       delay: 0.6
-                    }} className="relative group cursor-pointer">
+                     }} className="relative group cursor-pointer h-full flex flex-col">
                         <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-600/5 rounded-2xl transform -rotate-1 scale-105 group-hover:-rotate-2 transition-transform duration-300"></div>
-                        <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform rotate-1 group-hover:rotate-0 transition-transform duration-300">
+                        <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform rotate-1 group-hover:rotate-0 transition-transform duration-300 h-full flex flex-col min-h-[400px]">
                           <div className="h-20 w-20 rounded-full overflow-hidden mb-4 border-2 border-blue-500/20">
                             <img alt="Benjamin Schroeder - Director of Communications" className="w-full h-full object-cover object-top" src="/lovable-uploads/8a8c0896-4865-4bb8-aa18-10e30d79d044.png" />
                           </div>
                           <h3 className="text-xl font-bold text-gray-900 mb-1">Benjamin Schroeder</h3>
                           <p className="text-blue-500 font-medium mb-3">Director of Communications</p>
-                          <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                            A skilled strategist with a background in coaching and corporate leadership, Ben ensures our mission stays aligned across every channel—from brand to partnership.
-                          </p>
+                           <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">
+                             A skilled strategist with a background in coaching and corporate leadership, Ben ensures our mission stays aligned across every channel—from brand to partnership.
+                           </p>
                           <Button variant="outline" size="sm" className="w-full group-hover:bg-blue-500 group-hover:text-white transition-colors">
                             Learn More
                           </Button>
@@ -493,17 +493,17 @@ const About = () => {
                     }} transition={{
                       duration: 0.6,
                       delay: 0.7
-                    }} className="relative group cursor-pointer">
+                     }} className="relative group cursor-pointer h-full flex flex-col">
                         <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-600/5 rounded-2xl transform rotate-1 scale-105 group-hover:rotate-2 transition-transform duration-300"></div>
-                        <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300">
+                         <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300 h-full flex flex-col min-h-[400px]">
                           <div className="h-20 w-20 rounded-full overflow-hidden mb-4 border-2 border-purple-500/20">
                             <img alt="Olga Lomova - Chief Strategy Officer" className="w-full h-full object-cover object-top" src="/lovable-uploads/a2fbd740-44fc-4440-90f2-d0ea3ac39d55.png" />
                           </div>
                           <h3 className="text-xl font-bold text-gray-900 mb-1">Olga Lomova</h3>
                           <p className="text-purple-500 font-medium mb-3">Chief Strategy Officer</p>
-                          <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                            An immigrant entrepreneur with deep expertise in financial marketing, Olga leads Agora's growth with a passion for inclusion, innovation, and intelligent expansion.
-                          </p>
+                           <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">
+                             An immigrant entrepreneur with deep expertise in financial marketing, Olga leads Agora's growth with a passion for inclusion, innovation, and intelligent expansion.
+                           </p>
                           <Button variant="outline" size="sm" className="w-full group-hover:bg-purple-500 group-hover:text-white transition-colors">
                             Learn More
                           </Button>
@@ -693,17 +693,17 @@ const About = () => {
                     }} transition={{
                       duration: 0.6,
                       delay: 0.9
-                    }} className="relative group cursor-pointer">
+                    }} className="relative group cursor-pointer h-full flex flex-col">
                         <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-amber-600/5 rounded-2xl transform rotate-1 scale-105 group-hover:rotate-2 transition-transform duration-300"></div>
-                        <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300">
+                        <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300 h-full flex flex-col min-h-[400px]">
                           <div className="h-20 w-20 rounded-full overflow-hidden mb-4 border-2 border-orange-500/20">
                             <img alt="Jeff Utley - Director of Advanced Markets" className="w-full h-full object-cover object-center" src="/lovable-uploads/4020c004-3f22-4c03-891b-11e71f0bffbc.png" />
                           </div>
                           <h3 className="text-xl font-bold text-gray-900 mb-1">Jeff Utley</h3>
                           <p className="text-orange-500 font-medium mb-3">Director of Advanced Markets</p>
-                          <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                            A distinguished 25+ year veteran from New York Life and MassMutual, Jeff brings unparalleled expertise in advanced financial planning and client relationship management.
-                          </p>
+                           <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">
+                             A distinguished 25+ year veteran from New York Life and MassMutual, Jeff brings unparalleled expertise in advanced financial planning and client relationship management.
+                           </p>
                           <Button variant="outline" size="sm" className="w-full group-hover:bg-orange-500 group-hover:text-white transition-colors">
                             Learn More
                           </Button>
