@@ -124,11 +124,46 @@ const AnimatedSection: React.FC<{ section: SectionData; index: number }> = ({ se
       </div>
 
       {/* Main Content Container */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+        {/* Mobile-First Layout */}
+        <div className="flex flex-col lg:grid lg:grid-cols-12 gap-4 sm:gap-6 lg:gap-12 items-center min-h-[80vh] lg:min-h-auto py-8 lg:py-0">
           
-          {/* Left Side - Number */}
-          <div className="lg:col-span-3 flex justify-center lg:justify-start">
+          {/* Mobile: Number + Icon in same row */}
+          <div className="flex items-center justify-center gap-6 sm:gap-8 lg:hidden w-full">
+            {/* Number */}
+            <div
+              className={`
+                transform transition-all duration-1000 ease-out will-change-transform
+                ${isVisible && !isExiting
+                  ? 'translate-y-0 opacity-100 scale-100' 
+                  : 'translate-y-20 opacity-0 scale-95'
+                }
+              `}
+              style={{ transitionDelay: isVisible ? '0ms' : '0ms' }}
+            >
+              <div className={`w-12 sm:w-16 h-0.5 ${section.textColor.replace('text-', 'bg-')} mb-3 sm:mb-4 rounded-full`}></div>
+              <span className={`text-4xl sm:text-6xl md:text-7xl font-black ${section.textColor} leading-none tracking-tight`}>
+                {section.number}
+              </span>
+            </div>
+            
+            {/* Icon */}
+            <div
+              className={`
+                transform transition-all duration-1000 ease-out will-change-transform
+                ${isVisible && !isExiting
+                  ? 'translate-y-0 opacity-100 rotate-0 scale-100' 
+                  : 'translate-y-16 opacity-0 rotate-45 scale-75'
+                }
+              `}
+              style={{ transitionDelay: isVisible ? '200ms' : '0ms' }}
+            >
+              <Sparkles className={`w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 ${section.textColor} drop-shadow-lg`} />
+            </div>
+          </div>
+
+          {/* Desktop: Left Side - Number */}
+          <div className="hidden lg:flex lg:col-span-3 justify-center lg:justify-start">
             <div
               className={`
                 transform transition-all duration-1000 ease-out will-change-transform
@@ -146,8 +181,8 @@ const AnimatedSection: React.FC<{ section: SectionData; index: number }> = ({ se
             </div>
           </div>
 
-          {/* Center - Icon */}
-          <div className="lg:col-span-2 flex justify-center">
+          {/* Desktop: Center - Icon */}
+          <div className="hidden lg:flex lg:col-span-2 justify-center">
             <div
               className={`
                 transform transition-all duration-1000 ease-out will-change-transform
@@ -162,8 +197,8 @@ const AnimatedSection: React.FC<{ section: SectionData; index: number }> = ({ se
             </div>
           </div>
 
-          {/* Right Side - Content */}
-          <div className="lg:col-span-7 space-y-8">
+          {/* Content - Both Mobile and Desktop */}
+          <div className="w-full lg:col-span-7 space-y-4 sm:space-y-6 lg:space-y-8 text-center lg:text-left">
             
             {/* Headline */}
             <div
@@ -176,7 +211,7 @@ const AnimatedSection: React.FC<{ section: SectionData; index: number }> = ({ se
               `}
               style={{ transitionDelay: isVisible ? '400ms' : '0ms' }}
             >
-              <h2 className={`text-5xl lg:text-7xl xl:text-8xl font-black ${section.textColor} leading-tight tracking-tight`}>
+              <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl 2xl:text-8xl font-black ${section.textColor} leading-tight tracking-tight`}>
                 {section.headline}
               </h2>
             </div>
@@ -192,7 +227,7 @@ const AnimatedSection: React.FC<{ section: SectionData; index: number }> = ({ se
               `}
               style={{ transitionDelay: isVisible ? '600ms' : '0ms' }}
             >
-              <p className={`text-xl lg:text-2xl ${section.textColor} font-medium leading-relaxed max-w-4xl`}>
+              <p className={`text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl ${section.textColor} font-medium leading-relaxed max-w-4xl mx-auto lg:mx-0`}>
                 {section.description}
               </p>
             </div>
@@ -208,12 +243,12 @@ const AnimatedSection: React.FC<{ section: SectionData; index: number }> = ({ se
               `}
               style={{ transitionDelay: isVisible ? '800ms' : '0ms' }}
             >
-              <ul className="space-y-4 max-w-4xl">
+              <ul className="space-y-2 sm:space-y-3 lg:space-y-4 max-w-4xl mx-auto lg:mx-0">
                 {section.features.map((feature, featureIndex) => (
                   <li 
                     key={featureIndex} 
                     className={`
-                      flex items-center text-lg lg:text-xl ${section.textColor} font-medium 
+                      flex items-start text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl ${section.textColor} font-medium 
                       transform transition-all duration-1000 ease-out will-change-transform
                       ${isVisible && !isExiting
                         ? 'translate-y-0 opacity-100' 
@@ -224,8 +259,8 @@ const AnimatedSection: React.FC<{ section: SectionData; index: number }> = ({ se
                       transitionDelay: isVisible ? `${1000 + (featureIndex * 150)}ms` : '0ms'
                     }}
                   >
-                    <div className={`w-3 h-3 rounded-full ${section.textColor.replace('text-', 'bg-')} mr-6 flex-shrink-0 shadow-lg`}></div>
-                    <span>{feature}</span>
+                    <div className={`w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 rounded-full ${section.textColor.replace('text-', 'bg-')} mr-3 sm:mr-4 lg:mr-6 flex-shrink-0 shadow-lg mt-1.5 sm:mt-2`}></div>
+                    <span className="text-left">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -250,9 +285,10 @@ const AnimatedSection: React.FC<{ section: SectionData; index: number }> = ({ se
                   }
                 }}
                 className={`
-                  group inline-flex items-center text-xl lg:text-2xl ${section.textColor} font-bold 
+                  group inline-flex items-center text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl ${section.textColor} font-bold 
                   transition-all duration-500 hover:translate-x-3 cursor-pointer
                   border-b-2 border-transparent hover:border-current pb-1
+                  min-h-[44px] min-w-[44px] justify-center lg:justify-start
                 `}
               >
                 <span className="transform transition-transform duration-300 group-hover:translate-x-1">→</span>
