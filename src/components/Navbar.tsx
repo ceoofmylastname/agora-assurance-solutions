@@ -3,12 +3,17 @@ import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Menu, X, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  
+  const isHomePage = location.pathname === '/';
+  const shouldUseDarkText = !isHomePage || isScrolled;
+  const shouldUseWhiteBackground = !isHomePage || isScrolled;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -100,7 +105,7 @@ const Navbar = () => {
   return (
     <>
       <motion.nav 
-        className={cn("fixed top-0 left-0 right-0 z-40 transition-all duration-300 w-full", isScrolled ? "bg-white shadow-sm" : "bg-transparent")} 
+        className={cn("fixed top-0 left-0 right-0 z-40 transition-all duration-300 w-full", shouldUseWhiteBackground ? "bg-white shadow-sm" : "bg-transparent")} 
         initial={{ opacity: 1, y: 0 }} 
         animate={{ opacity: 1, y: 0 }}
       >
@@ -109,7 +114,7 @@ const Navbar = () => {
             <div className="flex-shrink-0">
               <Link to="/" className="flex items-center">
                 <img 
-                  src={isScrolled ? "/lovable-uploads/610dc05e-0552-4a89-97b1-852580e78ec0.png" : "/lovable-uploads/b09383f5-a02b-439b-b5de-34a1fe9f2a1f.png"} 
+                  src={shouldUseDarkText ? "/lovable-uploads/610dc05e-0552-4a89-97b1-852580e78ec0.png" : "/lovable-uploads/b09383f5-a02b-439b-b5de-34a1fe9f2a1f.png"} 
                   alt="Agora Assurance Solutions Logo" 
                   className="h-8 w-auto" 
                 />
@@ -118,11 +123,11 @@ const Navbar = () => {
             
             {/* Desktop Navigation */}
             <div className="hidden md:block">
-              <NavigationMenu className={cn(isScrolled ? "" : "text-white")}>
+              <NavigationMenu className={cn(shouldUseDarkText ? "" : "text-white")}>
                 <NavigationMenuList>
                   <NavigationMenuItem>
                     <Link to="/">
-                      <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), isScrolled ? "text-gray-700 hover:text-gray-900" : "text-gray-100 hover:text-white bg-transparent hover:bg-gray-800")}>
+                      <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), shouldUseDarkText ? "text-gray-700 hover:text-gray-900" : "text-gray-100 hover:text-white bg-transparent hover:bg-gray-800")}>
                         Home
                       </NavigationMenuLink>
                     </Link>
@@ -130,14 +135,14 @@ const Navbar = () => {
                   
                   <NavigationMenuItem>
                     <Link to="/about">
-                      <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), isScrolled ? "text-gray-700 hover:text-gray-900" : "text-gray-100 hover:text-white bg-transparent hover:bg-gray-800")}>
+                      <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), shouldUseDarkText ? "text-gray-700 hover:text-gray-900" : "text-gray-100 hover:text-white bg-transparent hover:bg-gray-800")}>
                         About Us
                       </NavigationMenuLink>
                     </Link>
                   </NavigationMenuItem>
                   
                   <NavigationMenuItem>
-                    <NavigationMenuTrigger className={cn(isScrolled ? "text-gray-700 hover:text-gray-900" : "text-gray-100 hover:text-white bg-transparent hover:bg-gray-800")}>
+                    <NavigationMenuTrigger className={cn(shouldUseDarkText ? "text-gray-700 hover:text-gray-900" : "text-gray-100 hover:text-white bg-transparent hover:bg-gray-800")}>
                       Services
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
@@ -226,7 +231,7 @@ const Navbar = () => {
                   
                   <NavigationMenuItem>
                     <Link to="/faq">
-                      <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), isScrolled ? "text-gray-700 hover:text-gray-900" : "text-gray-100 hover:text-white bg-transparent hover:bg-gray-800")}>
+                      <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), shouldUseDarkText ? "text-gray-700 hover:text-gray-900" : "text-gray-100 hover:text-white bg-transparent hover:bg-gray-800")}>
                         FAQ
                       </NavigationMenuLink>
                     </Link>
@@ -234,14 +239,14 @@ const Navbar = () => {
 
                   <NavigationMenuItem>
                     <Link to="/careers">
-                      <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), isScrolled ? "text-gray-700 hover:text-gray-900" : "text-gray-100 hover:text-white bg-transparent hover:bg-gray-800")}>
+                      <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), shouldUseDarkText ? "text-gray-700 hover:text-gray-900" : "text-gray-100 hover:text-white bg-transparent hover:bg-gray-800")}>
                         Agora Advisor Solutions
                       </NavigationMenuLink>
                     </Link>
                   </NavigationMenuItem>
                   
                   <NavigationMenuItem>
-                    <button onClick={() => scrollToSection('contact')} className={cn("px-4 py-2 rounded-md transition-colors", isScrolled ? "bg-gray-200 text-gray-700 hover:bg-gray-300" : "bg-gray-700 text-white hover:bg-gray-600")}>
+                    <button onClick={() => scrollToSection('contact')} className={cn("px-4 py-2 rounded-md transition-colors", shouldUseDarkText ? "bg-gray-200 text-gray-700 hover:bg-gray-300" : "bg-gray-700 text-white hover:bg-gray-600")}>
                       Contact Us
                     </button>
                   </NavigationMenuItem>
@@ -253,7 +258,7 @@ const Navbar = () => {
             <div className="md:hidden">
               <motion.button 
                 onClick={toggleMenu} 
-                className={cn("focus:outline-none relative w-6 h-6", isScrolled ? "text-gray-700" : "text-white")}
+                className={cn("focus:outline-none relative w-6 h-6", shouldUseDarkText ? "text-gray-700" : "text-white")}
                 animate={isMenuOpen ? "open" : "closed"}
               >
                 <motion.div
@@ -288,19 +293,19 @@ const Navbar = () => {
           
           {/* Menu Content */}
           <motion.div
-            className={cn("absolute right-0 top-0 h-full w-80 shadow-2xl", isScrolled ? "bg-white" : "bg-primary")}
+            className={cn("absolute right-0 top-0 h-full w-80 shadow-2xl", shouldUseWhiteBackground ? "bg-white" : "bg-primary")}
             variants={menuVariants}
           >
             {/* Header with close button */}
             <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
               <img 
-                src={isScrolled ? "/lovable-uploads/610dc05e-0552-4a89-97b1-852580e78ec0.png" : "/lovable-uploads/b09383f5-a02b-439b-b5de-34a1fe9f2a1f.png"} 
+                src={shouldUseDarkText ? "/lovable-uploads/610dc05e-0552-4a89-97b1-852580e78ec0.png" : "/lovable-uploads/b09383f5-a02b-439b-b5de-34a1fe9f2a1f.png"} 
                 alt="Agora Logo" 
                 className="h-8 w-auto" 
               />
               <motion.button
                 onClick={() => setIsMenuOpen(false)}
-                className={cn("p-2 rounded-lg transition-colors", isScrolled ? "text-gray-700 hover:bg-gray-100" : "text-white hover:bg-gray-800")}
+                className={cn("p-2 rounded-lg transition-colors", shouldUseDarkText ? "text-gray-700 hover:bg-gray-100" : "text-white hover:bg-gray-800")}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -313,7 +318,7 @@ const Navbar = () => {
               <motion.div variants={menuItemVariants}>
                 <Link 
                   to="/" 
-                  className={cn("block px-4 py-4 rounded-lg text-lg font-medium transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", isScrolled ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-800")} 
+                  className={cn("block px-4 py-4 rounded-lg text-lg font-medium transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", shouldUseDarkText ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-800")} 
                   onClick={() => {
                     setIsMenuOpen(false);
                     window.scrollTo(0, 0);
@@ -326,7 +331,7 @@ const Navbar = () => {
               <motion.div variants={menuItemVariants}>
                 <Link 
                   to="/about" 
-                  className={cn("block px-4 py-4 rounded-lg text-lg font-medium transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", isScrolled ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-800")} 
+                  className={cn("block px-4 py-4 rounded-lg text-lg font-medium transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", shouldUseDarkText ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-800")} 
                   onClick={() => {
                     setIsMenuOpen(false);
                     window.scrollTo(0, 0);
@@ -338,13 +343,13 @@ const Navbar = () => {
               
               {/* Services Section */}
               <motion.div variants={menuItemVariants} className="space-y-2">
-                <div className={cn("px-4 py-2 text-sm font-semibold uppercase tracking-wider", isScrolled ? "text-gray-500" : "text-gray-400")}>
+                <div className={cn("px-4 py-2 text-sm font-semibold uppercase tracking-wider", shouldUseDarkText ? "text-gray-500" : "text-gray-400")}>
                   Services
                 </div>
                 <div className="pl-4 space-y-1">
                   <Link 
                     to="/services/term-life" 
-                    className={cn("block px-4 py-3 rounded-lg text-base transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", isScrolled ? "text-gray-600 hover:bg-gray-50" : "text-gray-300 hover:bg-gray-800")} 
+                    className={cn("block px-4 py-3 rounded-lg text-base transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", shouldUseDarkText ? "text-gray-600 hover:bg-gray-50" : "text-gray-300 hover:bg-gray-800")} 
                     onClick={() => {
                       setIsMenuOpen(false);
                       window.scrollTo(0, 0);
@@ -354,7 +359,7 @@ const Navbar = () => {
                   </Link>
                   <Link 
                     to="/services/whole-life" 
-                    className={cn("block px-4 py-3 rounded-lg text-base transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", isScrolled ? "text-gray-600 hover:bg-gray-50" : "text-gray-300 hover:bg-gray-800")} 
+                    className={cn("block px-4 py-3 rounded-lg text-base transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", shouldUseDarkText ? "text-gray-600 hover:bg-gray-50" : "text-gray-300 hover:bg-gray-800")} 
                     onClick={() => {
                       setIsMenuOpen(false);
                       window.scrollTo(0, 0);
@@ -364,7 +369,7 @@ const Navbar = () => {
                   </Link>
                   <Link 
                     to="/services/annuities" 
-                    className={cn("block px-4 py-3 rounded-lg text-base transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", isScrolled ? "text-gray-600 hover:bg-gray-50" : "text-gray-300 hover:bg-gray-800")} 
+                    className={cn("block px-4 py-3 rounded-lg text-base transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", shouldUseDarkText ? "text-gray-600 hover:bg-gray-50" : "text-gray-300 hover:bg-gray-800")} 
                     onClick={() => {
                       setIsMenuOpen(false);
                       window.scrollTo(0, 0);
@@ -374,7 +379,7 @@ const Navbar = () => {
                   </Link>
                   <Link 
                     to="/services/final-expense" 
-                    className={cn("block px-4 py-3 rounded-lg text-base transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", isScrolled ? "text-gray-600 hover:bg-gray-50" : "text-gray-300 hover:bg-gray-800")} 
+                    className={cn("block px-4 py-3 rounded-lg text-base transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", shouldUseDarkText ? "text-gray-600 hover:bg-gray-50" : "text-gray-300 hover:bg-gray-800")} 
                     onClick={() => {
                       setIsMenuOpen(false);
                       window.scrollTo(0, 0);
@@ -388,7 +393,7 @@ const Navbar = () => {
               <motion.div variants={menuItemVariants}>
                 <Link 
                   to="/faq" 
-                  className={cn("block px-4 py-4 rounded-lg text-lg font-medium transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", isScrolled ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-800")} 
+                  className={cn("block px-4 py-4 rounded-lg text-lg font-medium transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", shouldUseDarkText ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-800")} 
                   onClick={() => {
                     setIsMenuOpen(false);
                     window.scrollTo(0, 0);
@@ -401,7 +406,7 @@ const Navbar = () => {
               <motion.div variants={menuItemVariants}>
                 <Link 
                   to="/careers" 
-                  className={cn("block px-4 py-4 rounded-lg text-lg font-medium transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", isScrolled ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-800")} 
+                  className={cn("block px-4 py-4 rounded-lg text-lg font-medium transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", shouldUseDarkText ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-800")} 
                   onClick={() => {
                     setIsMenuOpen(false);
                     window.scrollTo(0, 0);
