@@ -1,192 +1,258 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowRight } from 'lucide-react';
-import { products } from '@/data/products';
+import { Sparkles } from 'lucide-react';
 
-interface AnimatedCardProps {
-  product: typeof products[0];
-  index: number;
+interface SectionData {
+  id: number;
+  number: string;
+  headline: string;
+  description: string;
+  features: string[];
+  backgroundColor: string;
+  textColor: string;
 }
 
-const AnimatedCard: React.FC<AnimatedCardProps> = ({ product, index }) => {
+const sectionData: SectionData[] = [
+  {
+    id: 1,
+    number: "01",
+    headline: "GET A QUOTE",
+    description: "GET YOUR PERSONALIZED LIFE INSURANCE QUOTE INSTANTLY—NO PHONE CALLS, NO WAITING.",
+    features: [
+      "INSTANT INSURANCE QUOTES",
+      "NO PHONE CALLS REQUIRED", 
+      "EXCLUSIVE TO YOU—NEVER SHARED",
+      "LICENSED PROFESSIONALS AVAILABLE IF YOU HAVE QUESTIONS",
+      "TRUSTED BY THOUSANDS OF FAMILIES"
+    ],
+    backgroundColor: "bg-muted",
+    textColor: "text-primary"
+  },
+  {
+    id: 2,
+    number: "02",
+    headline: "PROTECTION PLANS",
+    description: "COMPREHENSIVE COVERAGE OPTIONS FOR MORTGAGE PROTECTION AND FAMILY FINANCIAL SECURITY WITH FLEXIBLE TERMS.",
+    features: [
+      "MORTGAGE PROTECTION COVERAGE",
+      "FAMILY INCOME REPLACEMENT",
+      "FLEXIBLE PREMIUM OPTIONS",
+      "IMMEDIATE COVERAGE AVAILABLE",
+      "COMPETITIVE RATES GUARANTEED"
+    ],
+    backgroundColor: "bg-background",
+    textColor: "text-primary"
+  },
+  {
+    id: 3,
+    number: "03",
+    headline: "LIFE COVERAGE",
+    description: "FINAL EXPENSE AND COMPREHENSIVE LIFE INSURANCE SOLUTIONS WITH GUARANTEED ACCEPTANCE AND LIFETIME BENEFITS.",
+    features: [
+      "FINAL EXPENSE COVERAGE",
+      "GUARANTEED ACCEPTANCE", 
+      "NO MEDICAL EXAMS REQUIRED",
+      "LIFETIME BENEFIT PROTECTION",
+      "AFFORDABLE MONTHLY PREMIUMS"
+    ],
+    backgroundColor: "bg-accent",
+    textColor: "text-primary"
+  },
+  {
+    id: 4,
+    number: "04",
+    headline: "WEALTH SOLUTIONS",
+    description: "ANNUITIES AND ASSET PROTECTION STRATEGIES FOR SECURE RETIREMENT INCOME AND LONG-TERM FINANCIAL GROWTH.",
+    features: [
+      "GUARANTEED RETIREMENT INCOME",
+      "TAX-ADVANTAGED GROWTH",
+      "ASSET PROTECTION STRATEGIES", 
+      "FLEXIBLE WITHDRAWAL OPTIONS",
+      "ESTATE PLANNING BENEFITS"
+    ],
+    backgroundColor: "bg-foreground",
+    textColor: "text-background"
+  }
+];
+
+const AnimatedSection: React.FC<{ section: SectionData; index: number }> = ({ section, index }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const cardRef = useRef<HTMLDivElement>(null);
+  const [headlineVisible, setHeadlineVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
+          // Section slides up first
           setTimeout(() => {
             setIsVisible(true);
-          }, index * 100); // Staggered animation delay
+          }, index * 200);
+          
+          // Headline slides up after section with additional delay
+          setTimeout(() => {
+            setHeadlineVisible(true);
+          }, (index * 200) + 400);
         }
       },
       {
-        threshold: 0.1,
+        threshold: 0.3,
         rootMargin: '0px 0px -100px 0px'
       }
     );
 
-    if (cardRef.current) {
-      observer.observe(cardRef.current);
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
     }
 
     return () => {
-      if (cardRef.current) {
-        observer.unobserve(cardRef.current);
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
       }
     };
   }, [index]);
 
   return (
     <div
-      ref={cardRef}
-      className={`
-        transform transition-all duration-[600ms] ease-out will-change-transform
-        ${isVisible 
-          ? 'translate-y-0 opacity-100' 
-          : 'translate-y-12 opacity-0'
-        }
-      `}
+      ref={sectionRef}
+      className={`min-h-screen flex items-center justify-center ${section.backgroundColor} relative overflow-hidden`}
     >
-      <div className={`
-        relative overflow-hidden rounded-2xl bg-gradient-to-br ${product.gradient}
-        p-6 md:p-8 text-white shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl
-        border border-white/10 backdrop-blur-sm h-full transform-gpu
-        before:absolute before:inset-0 before:bg-gradient-to-t before:from-black/20 before:to-transparent before:pointer-events-none before:rounded-2xl
-      `}>
-        {/* Icon */}
-        <div className={`
-          mb-6 inline-flex h-14 w-14 md:h-16 md:w-16 items-center justify-center rounded-2xl
-          bg-gradient-to-br ${product.accent} shadow-lg transform-gpu transition-transform duration-300 hover:scale-110
-        `}>
-          <div className="h-7 w-7 md:h-8 md:w-8 text-white">
-            {product.icon}
+      {/* Main Content Container */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          {/* Left Side - Number */}
+          <div className="lg:col-span-2 flex justify-center lg:justify-end">
+            <div
+              className={`
+                transform transition-all duration-[800ms] ease-out
+                ${isVisible 
+                  ? 'translate-y-0 opacity-100' 
+                  : 'translate-y-16 opacity-0'
+                }
+              `}
+            >
+              <div className={`w-16 h-1 ${section.textColor.replace('text-', 'bg-')} mb-4`}></div>
+              <span className={`text-8xl lg:text-9xl font-black ${section.textColor} leading-none`}>
+                {section.number}
+              </span>
+            </div>
+          </div>
+
+          {/* Right Side - Content */}
+          <div className="lg:col-span-10 space-y-8">
+            
+            {/* Headline with Icon */}
+            <div className="flex items-center gap-6 flex-wrap">
+              <div
+                className={`
+                  transform transition-all duration-[800ms] ease-out
+                  ${headlineVisible 
+                    ? 'translate-y-0 opacity-100' 
+                    : 'translate-y-12 opacity-0'
+                  }
+                `}
+              >
+                <h2 className={`text-4xl lg:text-6xl xl:text-7xl font-black ${section.textColor} leading-tight tracking-tight`}>
+                  {section.headline}
+                </h2>
+              </div>
+              
+              {/* Star Icon */}
+              <div
+                className={`
+                  transform transition-all duration-[800ms] ease-out delay-200
+                  ${headlineVisible 
+                    ? 'translate-y-0 opacity-100 rotate-0' 
+                    : 'translate-y-8 opacity-0 rotate-45'
+                  }
+                `}
+              >
+                <Sparkles className={`w-12 h-12 lg:w-16 lg:h-16 ${section.textColor} flex-shrink-0`} />
+              </div>
+            </div>
+
+            {/* Description */}
+            <div
+              className={`
+                transform transition-all duration-[800ms] ease-out delay-300
+                ${isVisible 
+                  ? 'translate-y-0 opacity-100' 
+                  : 'translate-y-8 opacity-0'
+                }
+              `}
+            >
+              <p className={`text-lg lg:text-xl ${section.textColor} font-medium leading-relaxed max-w-4xl`}>
+                {section.description}
+              </p>
+            </div>
+
+            {/* Features List */}
+            <div
+              className={`
+                transform transition-all duration-[800ms] ease-out delay-500
+                ${isVisible 
+                  ? 'translate-y-0 opacity-100' 
+                  : 'translate-y-8 opacity-0'
+                }
+              `}
+            >
+              <ul className="space-y-3 max-w-3xl">
+                {section.features.map((feature, featureIndex) => (
+                  <li 
+                    key={featureIndex} 
+                    className={`flex items-center text-base lg:text-lg ${section.textColor} font-medium transform transition-all duration-[800ms] ease-out`}
+                    style={{
+                      transitionDelay: `${600 + (featureIndex * 100)}ms`
+                    }}
+                  >
+                    <div className={`w-2 h-2 rounded-full ${section.textColor.replace('text-', 'bg-')} mr-4 flex-shrink-0`}></div>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Learn More Link */}
+            <div
+              className={`
+                transform transition-all duration-[800ms] ease-out delay-700
+                ${isVisible 
+                  ? 'translate-y-0 opacity-100' 
+                  : 'translate-y-8 opacity-0'
+                }
+              `}
+            >
+              <button 
+                onClick={() => {
+                  const contactSection = document.getElementById('contact');
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                className={`inline-flex items-center text-lg lg:text-xl ${section.textColor} font-bold hover:underline transition-all duration-300 hover:translate-x-2 cursor-pointer`}
+              >
+                → LEARN MORE
+              </button>
+            </div>
           </div>
         </div>
+      </div>
 
-        {/* Title */}
-        <h3 className="mb-4 text-xl md:text-2xl font-bold leading-tight">
-          {product.title}
-        </h3>
-
-        {/* Description */}
-        <p className="mb-6 text-gray-200 leading-relaxed text-sm md:text-base">
-          {product.description}
-        </p>
-
-        {/* Features */}
-        <ul className="mb-6 md:mb-8 space-y-2 md:space-y-3">
-          {product.features.map((feature, featureIndex) => (
-            <li key={featureIndex} className="flex items-center text-sm">
-              <div className="mr-3 h-2 w-2 rounded-full bg-[#15AFF7] flex-shrink-0"></div>
-              <span className="text-gray-200">{feature}</span>
-            </li>
-          ))}
-        </ul>
-
-        {/* CTA Button */}
-        <button className={`
-          w-full rounded-xl bg-gradient-to-r ${product.accent}
-          px-6 py-3 font-semibold text-white shadow-lg transition-all duration-300
-          hover:shadow-xl hover:scale-105 hover:brightness-110 focus:outline-none focus:ring-4 focus:ring-white/20
-          transform-gpu touch-manipulation min-h-[44px] text-sm md:text-base
-        `}>
-          Get Quote
-        </button>
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-primary/10 to-transparent"></div>
       </div>
     </div>
   );
 };
 
 const ProductsSection = () => {
-  const [headerVisible, setHeaderVisible] = useState(false);
-  const headerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setHeaderVisible(true);
-        }
-      },
-      {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      }
-    );
-
-    if (headerRef.current) {
-      observer.observe(headerRef.current);
-    }
-
-    return () => {
-      if (headerRef.current) {
-        observer.unobserve(headerRef.current);
-      }
-    };
-  }, []);
-
   return (
-    <section id="products" className="relative py-16 md:py-20 lg:py-24 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] opacity-30"></div>
-      
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div
-          ref={headerRef}
-          className={`
-            text-center mb-12 md:mb-16 transform transition-all duration-[800ms] ease-out
-            ${headerVisible 
-              ? 'translate-y-0 opacity-100' 
-              : 'translate-y-8 opacity-0'
-            }
-          `}
-        >
-          {/* Badge */}
-          <div className="inline-flex items-center rounded-full bg-[#15AFF7]/10 border border-[#15AFF7]/20 px-6 py-2 text-sm font-medium text-[#15AFF7] mb-6 backdrop-blur-sm">
-            Our Products & Solutions
-          </div>
-
-          {/* Main headline */}
-          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-gray-900 mb-6 leading-tight">
-            Complete Protection for{' '}
-            <span className="bg-gradient-to-r from-[#15AFF7] to-purple-600 bg-clip-text text-transparent">
-              Every Need
-            </span>
-          </h2>
-
-          {/* Description */}
-          <p className="mx-auto max-w-3xl text-lg md:text-xl leading-8 text-gray-600">
-            From life insurance to retirement planning, we offer comprehensive solutions 
-            tailored to protect what matters most to you and your family.
-          </p>
-        </div>
-
-        {/* Cards Grid */}
-        <div className="grid gap-6 md:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-12 md:mb-16">
-          {products.map((product, index) => (
-            <AnimatedCard key={product.id} product={product} index={index} />
-          ))}
-        </div>
-
-        {/* CTA Section */}
-        <div className="text-center">
-          <button 
-            onClick={() => {
-              const contactSection = document.getElementById('contact');
-              if (contactSection) {
-                contactSection.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}
-            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#15AFF7] to-purple-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:brightness-110 focus:outline-none focus:ring-4 focus:ring-[#15AFF7]/30 transform-gpu touch-manipulation"
-          >
-            Speak with a Licensed Advisor
-            <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-          </button>
-        </div>
-      </div>
-    </section>
+    <div id="products" className="relative">
+      {sectionData.map((section, index) => (
+        <AnimatedSection key={section.id} section={section} index={index} />
+      ))}
+    </div>
   );
 };
 

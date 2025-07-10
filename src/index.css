@@ -365,6 +365,10 @@ iframe[src*="consent"],
     transition-duration: 600ms;
   }
   
+  .duration-800 {
+    transition-duration: 800ms;
+  }
+  
   .bg-grid-slate-100 {
     background-image: 
       linear-gradient(rgba(203, 213, 225, 0.3) 1px, transparent 1px),
