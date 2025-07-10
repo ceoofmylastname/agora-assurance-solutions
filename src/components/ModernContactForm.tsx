@@ -366,10 +366,8 @@ const ModernContactForm = () => {
           </div>
         </div>
 
-        {/* Form Container */}
-        <div className="relative bg-white/70 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 p-8 md:p-16 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent pointer-events-none"></div>
-          <div className="relative z-10">
+        {/* Form Container - No background, embedded look */}
+        <div className="relative">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentStep}
@@ -377,10 +375,10 @@ const ModernContactForm = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -50 }}
               transition={{ duration: 0.3 }}
-              className="space-y-8"
+              className="space-y-12"
             >
               {/* Step Content */}
-              <div className="text-center mb-12">
+              <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 bg-clip-text text-transparent mb-6 leading-tight">
                   {currentStepData.title}
                 </h2>
@@ -407,24 +405,37 @@ const ModernContactForm = () => {
                             {insuranceServices.map((service) => (
                                <motion.div
                                 key={service.id}
-                                className={`group relative p-6 rounded-2xl border cursor-pointer transition-all duration-300 overflow-hidden ${
-                                  field.value === service.id
-                                    ? 'border-primary bg-gradient-to-br from-primary/5 to-blue-500/5 shadow-lg shadow-primary/10'
-                                    : 'border-border bg-white/50 hover:border-primary/30 hover:shadow-md'
-                                }`}
+                                className={`group relative p-6 rounded-2xl cursor-pointer transition-all duration-500 overflow-hidden transform-gpu
+                                  shadow-[0_8px_32px_rgba(0,0,0,0.12),0_2px_6px_rgba(0,0,0,0.08)]
+                                  hover:shadow-[0_20px_48px_rgba(0,0,0,0.15),0_8px_16px_rgba(0,0,0,0.1)]
+                                  before:absolute before:inset-0 before:bg-gradient-to-r before:from-white/80 before:to-white/60 before:rounded-2xl
+                                  after:absolute after:inset-0 after:rounded-2xl after:shadow-inner
+                                  ${field.value === service.id
+                                    ? 'shadow-[0_12px_40px_rgba(21,175,247,0.25),0_4px_12px_rgba(21,175,247,0.15)] before:from-primary/10 before:to-blue-500/5'
+                                    : 'hover:shadow-[0_16px_44px_rgba(0,0,0,0.15),0_6px_14px_rgba(0,0,0,0.1)]'
+                                  }`}
                                 onClick={() => field.onChange(service.id)}
-                                whileHover={{ scale: 1.02, y: -3 }}
+                                whileHover={{ 
+                                  scale: 1.02, 
+                                  y: -4,
+                                  rotateX: 2,
+                                  rotateY: 1 
+                                }}
                                 whileTap={{ scale: 0.98 }}
                                 initial={{ y: 20, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 transition={{ delay: service.id.length * 0.05 }}
+                                style={{ 
+                                  transformStyle: 'preserve-3d',
+                                  perspective: '1000px'
+                                }}
                               >
-                                <div className="absolute inset-0 bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                                 <div className="relative z-10 flex items-center space-x-4">
-                                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 ${
+                                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 
+                                    shadow-[0_4px_16px_rgba(0,0,0,0.1)] ${
                                     field.value === service.id
-                                      ? 'bg-primary text-white shadow-lg'
-                                      : 'bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary'
+                                      ? 'bg-primary text-white shadow-[0_6px_20px_rgba(21,175,247,0.3)]'
+                                      : 'bg-white/90 text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary group-hover:shadow-[0_6px_20px_rgba(0,0,0,0.15)]'
                                   }`}>
                                     <service.icon className="w-6 h-6" />
                                   </div>
@@ -451,7 +462,7 @@ const ModernContactForm = () => {
                         <FormItem>
                            <div className="relative">
                              {currentStepData.icon && (
-                               <currentStepData.icon className="absolute left-6 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground/60 z-10" />
+                               <currentStepData.icon className="absolute left-6 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground/60 z-20" />
                              )}
                              <FormControl>
                                {currentStepData.isTextarea ? (
@@ -462,7 +473,16 @@ const ModernContactForm = () => {
                                  >
                                    <Textarea
                                      placeholder={currentStepData.placeholder}
-                                     className="min-h-[140px] pl-14 pr-6 py-5 text-lg border-2 border-border bg-white/70 backdrop-blur-sm rounded-2xl focus:border-primary focus:ring-0 resize-none transition-all duration-300 shadow-sm hover:shadow-md focus:shadow-lg placeholder:text-muted-foreground/60"
+                                     className="min-h-[140px] pl-14 pr-6 py-5 text-lg bg-white/90 backdrop-blur-sm rounded-2xl border-0 transition-all duration-500 resize-none placeholder:text-muted-foreground/60
+                                       shadow-[0_8px_32px_rgba(0,0,0,0.12),0_2px_6px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.8)]
+                                       hover:shadow-[0_20px_48px_rgba(0,0,0,0.15),0_8px_16px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.9)]
+                                       focus:shadow-[0_24px_56px_rgba(21,175,247,0.25),0_12px_20px_rgba(21,175,247,0.15),inset_0_1px_0_rgba(255,255,255,1)]
+                                       transform-gpu hover:scale-[1.01] focus:scale-[1.02] hover:-translate-y-1 focus:-translate-y-2
+                                       before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/20 before:to-transparent before:rounded-2xl before:pointer-events-none"
+                                     style={{ 
+                                       filter: 'drop-shadow(0 25px 50px rgba(0,0,0,0.15))',
+                                       transformStyle: 'preserve-3d'
+                                     }}
                                      onKeyDown={handleKeyPress}
                                      {...field}
                                    />
@@ -476,7 +496,16 @@ const ModernContactForm = () => {
                                    <Input
                                      type={currentStepData.type || 'text'}
                                      placeholder={currentStepData.placeholder}
-                                     className="pl-14 pr-6 text-lg h-16 border-2 border-border bg-white/70 backdrop-blur-sm rounded-2xl focus:border-primary focus:ring-0 transition-all duration-300 shadow-sm hover:shadow-md focus:shadow-lg placeholder:text-muted-foreground/60"
+                                     className="pl-14 pr-6 text-lg h-16 bg-white/90 backdrop-blur-sm rounded-2xl border-0 transition-all duration-500 placeholder:text-muted-foreground/60
+                                       shadow-[0_8px_32px_rgba(0,0,0,0.12),0_2px_6px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.8)]
+                                       hover:shadow-[0_20px_48px_rgba(0,0,0,0.15),0_8px_16px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.9)]
+                                       focus:shadow-[0_24px_56px_rgba(21,175,247,0.25),0_12px_20px_rgba(21,175,247,0.15),inset_0_1px_0_rgba(255,255,255,1)]
+                                       transform-gpu hover:scale-[1.01] focus:scale-[1.02] hover:-translate-y-1 focus:-translate-y-2
+                                       before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/20 before:to-transparent before:rounded-2xl before:pointer-events-none"
+                                     style={{ 
+                                       filter: 'drop-shadow(0 25px 50px rgba(0,0,0,0.15))',
+                                       transformStyle: 'preserve-3d'
+                                     }}
                                      onKeyDown={handleKeyPress}
                                      {...field}
                                    />
@@ -518,13 +547,19 @@ const ModernContactForm = () => {
               </Form>
 
               {/* Navigation Buttons */}
-              <div className="flex justify-between items-center pt-12 mt-12 border-t border-border/50">
+              <div className="flex justify-between items-center pt-16 mt-16">
                 {currentStep > 0 ? (
                   <Button
                     type="button"
                     variant="outline"
                     onClick={prevStep}
-                    className="flex items-center space-x-2 px-8 py-4 text-muted-foreground border-border bg-white/50 backdrop-blur-sm rounded-2xl hover:bg-muted/50 hover:border-primary/30 transition-all duration-300"
+                    className="flex items-center space-x-2 px-8 py-4 text-muted-foreground bg-white/90 backdrop-blur-sm rounded-2xl border-0 transition-all duration-500 transform-gpu hover:scale-105 hover:-translate-y-1
+                      shadow-[0_8px_32px_rgba(0,0,0,0.12),0_2px_6px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.8)]
+                      hover:shadow-[0_20px_48px_rgba(0,0,0,0.15),0_8px_16px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.9)]"
+                    style={{ 
+                      filter: 'drop-shadow(0 25px 50px rgba(0,0,0,0.15))',
+                      transformStyle: 'preserve-3d'
+                    }}
                   >
                     <ArrowLeft className="w-4 h-4" />
                     <span className="font-medium">Previous</span>
@@ -537,7 +572,14 @@ const ModernContactForm = () => {
                   <Button
                     type="button"
                     onClick={handleNext}
-                    className="flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-primary to-blue-500 hover:from-primary/90 hover:to-blue-500/90 text-white rounded-2xl font-medium transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+                    className="flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-primary to-blue-500 text-white rounded-2xl font-medium transition-all duration-500 transform-gpu hover:scale-105 hover:-translate-y-1
+                      shadow-[0_12px_40px_rgba(21,175,247,0.35),0_4px_12px_rgba(21,175,247,0.25)]
+                      hover:shadow-[0_20px_56px_rgba(21,175,247,0.4),0_8px_20px_rgba(21,175,247,0.3)]
+                      before:absolute before:inset-0 before:bg-gradient-to-r before:from-white/20 before:to-transparent before:rounded-2xl before:pointer-events-none"
+                    style={{ 
+                      filter: 'drop-shadow(0 25px 50px rgba(21,175,247,0.3))',
+                      transformStyle: 'preserve-3d'
+                    }}
                   >
                     <span>Next</span>
                     <ArrowRight className="w-4 h-4" />
@@ -547,7 +589,14 @@ const ModernContactForm = () => {
                     type="button"
                     onClick={handleSubmit}
                     disabled={isSubmitting}
-                    className="flex items-center space-x-3 px-10 py-4 bg-gradient-to-r from-primary via-blue-500 to-purple-500 hover:from-primary/90 hover:via-blue-500/90 hover:to-purple-500/90 text-white rounded-2xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 disabled:hover:scale-100"
+                    className="flex items-center space-x-3 px-10 py-4 bg-gradient-to-r from-primary via-blue-500 to-purple-500 text-white rounded-2xl font-semibold transition-all duration-500 transform-gpu hover:scale-105 hover:-translate-y-1 disabled:hover:scale-100 disabled:hover:translate-y-0
+                      shadow-[0_12px_40px_rgba(21,175,247,0.35),0_4px_12px_rgba(21,175,247,0.25)]
+                      hover:shadow-[0_24px_64px_rgba(21,175,247,0.4),0_12px_24px_rgba(21,175,247,0.3)]
+                      before:absolute before:inset-0 before:bg-gradient-to-r before:from-white/20 before:to-transparent before:rounded-2xl before:pointer-events-none"
+                    style={{ 
+                      filter: 'drop-shadow(0 25px 50px rgba(21,175,247,0.3))',
+                      transformStyle: 'preserve-3d'
+                    }}
                   >
                     {isSubmitting ? (
                       <>
@@ -572,7 +621,6 @@ const ModernContactForm = () => {
               )}
             </motion.div>
           </AnimatePresence>
-          </div>
         </div>
       </div>
     </section>
