@@ -1,6 +1,10 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
+import { createOrganizationSchema } from '@/utils/seo/organizationSchema';
+import { createBlogPostSchema } from '@/utils/seo/blogPostSchema';
+import { createMainFAQSchema, getServiceSpecificFAQSchema } from '@/utils/seo/faqSchemas';
+import { enhanceKeywordsForPath } from '@/utils/seo/keywordEnhancer';
 
 interface SEOProps {
   title?: string;
@@ -34,195 +38,29 @@ const SEO: React.FC<SEOProps> = ({
   const absoluteImageUrl = imageUrl.startsWith('http') ? imageUrl : `https://agora.yenomai.com${imageUrl}`;
 
   // Enhanced keywords for insurance-related pages
-  const enhancedKeywords = location.pathname.includes('life-insurance') 
-    ? [
-        ...keywords,
-        'term life insurance',
-        'whole life insurance',
-        'universal life insurance',
-        'life insurance quotes',
-        'family protection',
-        'income replacement',
-        'death benefit',
-        'life insurance cost',
-        'life insurance companies'
-      ]
-    : location.pathname.includes('mortgage-protection')
-    ? [
-        ...keywords,
-        'mortgage protection insurance',
-        'home loan protection',
-        'mortgage life insurance',
-        'mortgage payoff insurance',
-        'homeowners protection',
-        'family home security'
-      ]
-    : location.pathname.includes('annuities')
-    ? [
-        ...keywords,
-        'retirement annuities',
-        'fixed annuities',
-        'variable annuities',
-        'retirement income',
-        'pension alternatives',
-        'guaranteed income',
-        'retirement planning'
-      ]
-    : keywords;
+  const enhancedKeywords = enhanceKeywordsForPath(location.pathname, keywords);
 
-  // Create base Organization and LocalBusiness JSON-LD structured data
-  const organizationStructuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'InsuranceAgency',
-    name: 'Agora Assurance Solutions',
-    url: 'https://agora.yenomai.com',
-    logo: 'https://agora.yenomai.com/lovable-uploads/610dc05e-0552-4a89-97b1-852580e78ec0.png',
-    description: 'Your Independent Insurance Partner providing comprehensive life, mortgage, and annuity solutions',
-    contactPoint: {
-      '@type': 'ContactPoint',
-      contactType: 'customer service',
-      email: 'info@agoraassurance.com',
-      availableLanguage: 'English'
-    },
-    areaServed: [
-      {
-        '@type': 'Place',
-        name: 'United States'
-      }
-    ],
-    serviceType: [
-      'Life Insurance',
-      'Mortgage Protection',
-      'Final Expense Insurance',
-      'Annuities',
-      'Tax & Asset Protection'
-    ]
-  };
+  // Generate structured data schemas
+  const organizationStructuredData = createOrganizationSchema();
+  
+  const blogPostStructuredData = isBlogPost ? createBlogPostSchema({
+    title,
+    description,
+    currentUrl,
+    absoluteImageUrl,
+    publishDate,
+    modifiedDate,
+    author,
+    enhancedKeywords,
+    category
+  }) : null;
 
-  // Enhanced BlogPosting JSON-LD structured data
-  const blogPostStructuredData = isBlogPost && publishDate ? {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': currentUrl
-    },
-    headline: title,
-    image: {
-      '@type': 'ImageObject',
-      url: absoluteImageUrl,
-      width: 1200,
-      height: 630
-    },
-    datePublished: publishDate,
-    dateModified: modifiedDate || publishDate,
-    author: {
-      '@type': 'Organization',
-      name: author || 'Agora Assurance Solutions',
-      url: 'https://agora.yenomai.com'
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Agora Assurance Solutions',
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://agora.yenomai.com/lovable-uploads/610dc05e-0552-4a89-97b1-852580e78ec0.png',
-        width: 512,
-        height: 512
-      },
-      url: 'https://agora.yenomai.com'
-    },
-    description: description,
-    keywords: enhancedKeywords.join(', '),
-    articleSection: category,
-    inLanguage: 'en-US',
-    isAccessibleForFree: true
-  } : null;
-
-  // Add FAQ structured data for main FAQ page
-  const mainFAQData = location.pathname === '/' || location.pathname.includes('faq') ? {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'How much life insurance do I actually need?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'The general rule is 10-12 times your annual income, but this varies based on your debts, dependents, and financial goals. Consider your mortgage, children\'s education costs, and your spouse\'s financial needs.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'What\'s the difference between term and whole life insurance?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Term life provides temporary coverage for a specific period at lower premiums. Whole life offers permanent coverage with a cash value component that grows over time.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'Are annuities a good investment for retirement?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Annuities can be excellent for retirement income planning, offering guaranteed payments and tax-deferred growth. They\'re particularly valuable for conservative investors seeking predictable income.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'How much does final expense insurance cost?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Final expense insurance typically costs $30-$200 monthly, depending on age, health, and coverage amount. Most policies range from $5,000-$50,000 in coverage.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'Is mortgage protection insurance worth it?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Mortgage protection can be valuable, but term life insurance often provides better value and flexibility. Term life pays your beneficiaries directly while mortgage protection only pays the lender.'
-        }
-      }
-    ]
-  } : null;
-
-  // Add service-specific FAQ data for service pages
-  const serviceSpecificFAQData = location.pathname.includes('term-life') ? {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'How much does term life insurance cost?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'A healthy 30-year-old might pay $20-40/month for $500,000 in term coverage, while a 50-year-old could pay $100-200/month for the same amount. Costs vary by age, health, and coverage type.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'What happens when my term life insurance expires?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'When term life insurance expires, coverage ends. You can often convert to permanent life insurance, renew at higher rates, or purchase new coverage (subject to health underwriting).'
-        }
-      }
-    ]
-  } : location.pathname.includes('final-expense') ? {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'Can I get final expense insurance without a medical exam?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Yes, most final expense policies don\'t require medical exams. They use simplified underwriting with basic health questions, making them accessible to seniors with health issues.'
-        }
-      }
-    ]
-  } : null;
+  // FAQ schemas
+  const mainFAQData = (location.pathname === '/' || location.pathname.includes('faq')) 
+    ? createMainFAQSchema() 
+    : null;
+    
+  const serviceSpecificFAQData = getServiceSpecificFAQSchema(location.pathname);
 
   // Combine keywords with any additional category terms
   const keywordString = category 
