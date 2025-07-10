@@ -305,32 +305,32 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
         
       case 'name-split':
         return (
-          <div className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+          <div className="space-y-4 sm:space-y-6">
+            <div className="grid grid-cols-1 gap-4 sm:gap-6">
               <div className="group">
-                <label className="block text-sm font-medium text-muted-foreground mb-2">First Name</label>
+                <label className="block text-xs sm:text-sm font-medium text-muted-foreground mb-2">First Name</label>
                 <input
                   {...register('firstName')}
                   type="text"
-                  className="w-full text-lg md:text-xl bg-card/50 border-2 border-border rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none p-4 md:p-5 placeholder:text-muted-foreground transition-all duration-300 hover:border-primary/50 group-hover:shadow-md"
+                  className="w-full text-base sm:text-lg md:text-xl bg-card/50 border-2 border-border rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none p-3 sm:p-4 md:p-5 placeholder:text-muted-foreground transition-all duration-300 hover:border-primary/50 group-hover:shadow-md min-h-[48px]"
                   placeholder="Enter your first name"
                   onKeyDown={handleKeyPress}
                   autoFocus
                 />
               </div>
               <div className="group">
-                <label className="block text-sm font-medium text-muted-foreground mb-2">Last Name</label>
+                <label className="block text-xs sm:text-sm font-medium text-muted-foreground mb-2">Last Name</label>
                 <input
                   {...register('lastName')}
                   type="text"
-                  className="w-full text-lg md:text-xl bg-card/50 border-2 border-border rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none p-4 md:p-5 placeholder:text-muted-foreground transition-all duration-300 hover:border-primary/50 group-hover:shadow-md"
+                  className="w-full text-base sm:text-lg md:text-xl bg-card/50 border-2 border-border rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none p-3 sm:p-4 md:p-5 placeholder:text-muted-foreground transition-all duration-300 hover:border-primary/50 group-hover:shadow-md min-h-[48px]"
                   placeholder="Enter your last name"
                   onKeyDown={handleKeyPress}
                 />
               </div>
             </div>
             {nameErrors && (
-              <p className="text-destructive text-base md:text-lg animate-fade-in flex items-center gap-2">
+              <p className="text-destructive text-sm sm:text-base md:text-lg animate-fade-in flex items-center gap-2">
                 <span className="w-4 h-4 rounded-full bg-destructive/20 flex items-center justify-center text-xs">!</span>
                 {errors.firstName?.message || errors.lastName?.message}
               </p>
@@ -439,9 +439,9 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
       />
       
       {/* Modal */}
-      <div className="relative w-full max-w-5xl mx-4 md:mx-6 h-[90vh] md:h-[85vh] bg-background/95 backdrop-blur-sm border border-border rounded-3xl shadow-2xl overflow-hidden animate-scale-in">
+      <div className="relative w-full max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-4xl mx-4 h-[95vh] sm:h-[90vh] md:h-[85vh] bg-background/98 backdrop-blur-sm border border-border rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden animate-scale-in">
         {/* Progress Bar */}
-        <div className="absolute top-0 left-0 right-0 h-1.5 bg-muted">
+        <div className="absolute top-0 left-0 right-0 h-1 sm:h-1.5 bg-muted">
           <div 
             className="h-full bg-gradient-to-r from-primary via-primary/90 to-accent transition-all duration-700 ease-out rounded-r-full"
             style={{ width: `${progress}%` }}
@@ -451,10 +451,10 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 z-10 p-3 text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-full transition-all duration-300 hover:scale-110 group"
+          className="absolute top-4 sm:top-6 right-4 sm:right-6 z-10 p-2 sm:p-3 text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-full transition-all duration-300 hover:scale-110 group"
           aria-label="Close modal"
         >
-          <X size={20} className="group-hover:rotate-90 transition-transform duration-300" />
+          <X size={18} className="sm:w-5 sm:h-5 group-hover:rotate-90 transition-transform duration-300" />
         </button>
 
         {/* Content */}
@@ -475,19 +475,19 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
             </div>
           ) : (
             <>
-              <div className="flex-1 p-4 md:p-12 flex flex-col justify-center overflow-y-auto max-h-[70vh]">
-                <div className="max-w-3xl mx-auto w-full px-2 md:px-0">
-                  <div className="mb-8 md:mb-12 animate-fade-in">
-                    <div className="flex items-center space-x-4 mb-6 md:mb-8">
-                      <div className="px-3 py-1.5 bg-primary/10 text-primary rounded-full text-sm md:text-base font-bold">
+              <div className="flex-1 p-4 sm:p-6 md:p-8 lg:p-12 flex flex-col justify-center overflow-y-auto max-h-[75vh]">
+                <div className="max-w-2xl mx-auto w-full">
+                  <div className="mb-6 sm:mb-8 md:mb-12 animate-fade-in">
+                    <div className="flex items-center space-x-3 sm:space-x-4 mb-4 sm:mb-6 md:mb-8">
+                      <div className="px-2.5 sm:px-3 py-1 sm:py-1.5 bg-primary/10 text-primary rounded-full text-xs sm:text-sm md:text-base font-bold">
                         {currentStep + 1} of {steps.length}
                       </div>
                       <div className="h-px flex-1 bg-border"></div>
                     </div>
-                    <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 md:mb-4 leading-tight">
+                    <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground mb-2 sm:mb-3 md:mb-4 leading-tight">
                       {currentStepData.title}
                     </h1>
-                    <p className="text-base md:text-xl text-muted-foreground mb-6 md:mb-8 leading-relaxed">
+                    <p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground mb-4 sm:mb-6 md:mb-8 leading-relaxed">
                       {currentStepData.subtitle}
                     </p>
                   </div>
@@ -499,23 +499,23 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
               </div>
               
               {/* Navigation */}
-              <div className="p-6 md:p-8 border-t border-border bg-muted/30 backdrop-blur-sm">
-                <div className="flex justify-between items-center max-w-3xl mx-auto">
+              <div className="p-4 sm:p-6 md:p-8 border-t border-border bg-muted/30 backdrop-blur-sm">
+                <div className="flex justify-between items-center max-w-2xl mx-auto">
                   <button
                     type="button"
                     onClick={prevStep}
                     disabled={currentStep === 0}
-                    className="group flex items-center space-x-2 px-4 py-3 text-muted-foreground hover:text-foreground disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-300 text-sm md:text-base font-medium hover:bg-background/50 rounded-xl"
+                    className="group flex items-center space-x-1.5 sm:space-x-2 px-3 sm:px-4 py-2.5 sm:py-3 text-muted-foreground hover:text-foreground disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-300 text-sm md:text-base font-medium hover:bg-background/50 rounded-xl min-h-[44px]"
                   >
-                    <ChevronLeft size={16} className="md:w-5 md:h-5 group-hover:-translate-x-0.5 transition-transform duration-300" />
+                    <ChevronLeft size={14} className="sm:w-4 sm:h-4 md:w-5 md:h-5 group-hover:-translate-x-0.5 transition-transform duration-300" />
                     <span>Back</span>
                   </button>
                   
-                  <div className="flex space-x-2">
+                  <div className="flex space-x-1.5 sm:space-x-2">
                     {steps.map((_, index) => (
                       <div
                         key={index}
-                        className={`w-2.5 h-2.5 rounded-full transition-all duration-500 ${
+                        className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-all duration-500 ${
                           index < currentStep 
                             ? 'bg-primary scale-110' 
                             : index === currentStep 
@@ -531,17 +531,19 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
                       type="button"
                       onClick={handleSubmit(onSubmit)}
                       disabled={isSubmitting || !watchedValues.consent}
-                      className="group flex items-center space-x-2 px-6 md:px-8 py-3 bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-xl hover:shadow-lg hover:shadow-primary/25 disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none transition-all duration-300 hover:scale-[1.02] transform font-semibold text-sm md:text-base"
+                      className="group flex items-center space-x-1.5 sm:space-x-2 px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-xl hover:shadow-lg hover:shadow-primary/25 disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none transition-all duration-300 hover:scale-[1.02] transform font-semibold text-sm md:text-base min-h-[44px]"
                     >
                       {isSubmitting ? (
                         <>
-                          <div className="w-4 h-4 md:w-5 md:h-5 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin" />
-                          <span>Submitting...</span>
+                          <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin" />
+                          <span className="hidden xs:inline">Submitting...</span>
+                          <span className="xs:hidden">...</span>
                         </>
                       ) : (
                         <>
-                          <span>Submit Application</span>
-                          <Check size={16} className="md:w-5 md:h-5 group-hover:scale-110 transition-transform duration-300" />
+                          <span className="hidden xs:inline">Submit Application</span>
+                          <span className="xs:hidden">Submit</span>
+                          <Check size={14} className="sm:w-4 sm:h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform duration-300" />
                         </>
                       )}
                     </button>
@@ -549,10 +551,10 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
                     <button
                       type="button"
                       onClick={nextStep}
-                      className="group flex items-center space-x-2 px-6 md:px-8 py-3 bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 hover:scale-[1.02] transform font-semibold text-sm md:text-base"
+                      className="group flex items-center space-x-1.5 sm:space-x-2 px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 hover:scale-[1.02] transform font-semibold text-sm md:text-base min-h-[44px]"
                     >
                       <span>Continue</span>
-                      <ChevronRight size={16} className="md:w-5 md:h-5 group-hover:translate-x-0.5 transition-transform duration-300" />
+                      <ChevronRight size={14} className="sm:w-4 sm:h-4 md:w-5 md:h-5 group-hover:translate-x-0.5 transition-transform duration-300" />
                     </button>
                   )}
                 </div>
