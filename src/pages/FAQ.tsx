@@ -221,21 +221,23 @@ const FAQ = () => {
                     const isOpen = openItems.has(globalIndex);
                     
                     return (
-                      <Card key={questionIndex} className="border border-border hover:shadow-md transition-all">
+                      <Card key={questionIndex} className="border border-border hover:shadow-md transition-all overflow-hidden">
                         <CardContent className="p-0">
                           <Button
                             variant="ghost"
                             onClick={() => toggleItem(globalIndex)}
-                            className="w-full justify-between p-4 md:p-6 text-left h-auto hover:bg-muted/50 touch-manipulation min-h-[44px]"
+                            className="w-full p-3 md:p-6 text-left h-auto hover:bg-muted/50 touch-manipulation min-h-[44px] flex items-start gap-3"
                           >
-                            <h3 className="text-base md:text-lg font-medium text-foreground pr-3 md:pr-4 leading-relaxed break-words flex-1 text-left">
+                            <h3 className="text-sm md:text-base font-medium text-foreground leading-tight break-words hyphens-auto flex-1 text-left">
                               {item.question}
                             </h3>
-                            {isOpen ? (
-                              <ChevronUp className="h-5 w-5 text-muted-foreground flex-shrink-0 ml-2" />
-                            ) : (
-                              <ChevronDown className="h-5 w-5 text-muted-foreground flex-shrink-0 ml-2" />
-                            )}
+                            <div className="flex-shrink-0 mt-0.5">
+                              {isOpen ? (
+                                <ChevronUp className="h-4 w-4 md:h-5 md:w-5 text-muted-foreground" />
+                              ) : (
+                                <ChevronDown className="h-4 w-4 md:h-5 md:w-5 text-muted-foreground" />
+                              )}
+                            </div>
                           </Button>
                           {isOpen && (
                             <div className="px-4 md:px-6 pb-4 md:pb-6">
