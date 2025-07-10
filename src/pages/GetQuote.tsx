@@ -7,54 +7,87 @@ import PageLayout from '@/components/PageLayout';
 import SEO from '@/components/SEO';
 
 const GetQuote = () => {
-  // Insurance carriers organized by category
-  const lifeInsuranceCarriers = [
-    "Transamerica", "American National", "Americo", "Assurity", "National Life Group",
-    "American Life", "Integrity Life", "North American", "The Ohio State Life",
-    "Pacific Guardian Life", "Sentinel Security Life", "SILAC Insurance Company"
-  ];
-
-  const annuityCarriers = [
-    "Allianz", "American Equity", "Athene", "Corebridge Financial", "EquiTrust",
-    "FG Annuities & Life", "Foresters", "Global Atlantic Financial Group",
-    "Lincoln Financial Group", "MassMutual Ascend", "Clear Spring Life and Annuity"
-  ];
-
-  const finalExpenseCarriers = [
-    "Aetna", "Guaranty Income Life", "Liberty Bankers", "Protective",
-    "Royal Neighbors of America", "The Standard", "Oceanview"
-  ];
-
-  const comprehensiveCarriers = [
-    "Nationwide", "The Baltimore Life Companies", "American-Amicable Group",
-    "NASSAU", "OneAmerica", "Prudential", "Reliance Standard", "Sagicor",
-    "Securian Financial", "National Western Life", "Atlantic Coast Life"
-  ];
-
-  const carrierCategories = [
+  // Insurance company logos with transparent backgrounds
+  const companyLogos = [
     {
-      title: "Life Insurance Specialists",
-      carriers: lifeInsuranceCarriers,
-      description: "Term, Whole, and Universal Life Insurance",
-      color: "bg-blue-50 border-blue-200"
+      name: "Transamerica",
+      logo: "https://logos-world.net/wp-content/uploads/2021/02/Transamerica-Logo.png",
+      category: "Life Insurance"
     },
     {
-      title: "Annuity & Retirement Experts",
-      carriers: annuityCarriers,
-      description: "Fixed, Variable, and Indexed Annuities",
-      color: "bg-green-50 border-green-200"
+      name: "Allianz",
+      logo: "https://logos-world.net/wp-content/uploads/2020/11/Allianz-Logo.png",
+      category: "Annuities"
     },
     {
-      title: "Final Expense Leaders",
-      carriers: finalExpenseCarriers,
-      description: "Burial Insurance and Final Expense Coverage",
-      color: "bg-purple-50 border-purple-200"
+      name: "Prudential",
+      logo: "https://logos-world.net/wp-content/uploads/2020/11/Prudential-Logo.png",
+      category: "Life Insurance"
     },
     {
-      title: "Full-Service Providers",
-      carriers: comprehensiveCarriers,
-      description: "Complete Financial Protection Solutions",
-      color: "bg-orange-50 border-orange-200"
+      name: "American National",
+      logo: "https://www.anico.com/images/default-source/default-album/anico-logo.png",
+      category: "Life Insurance"
+    },
+    {
+      name: "Nationwide",
+      logo: "https://logos-world.net/wp-content/uploads/2020/11/Nationwide-Logo.png",
+      category: "Comprehensive"
+    },
+    {
+      name: "Lincoln Financial",
+      logo: "https://logos-world.net/wp-content/uploads/2021/02/Lincoln-Financial-Group-Logo.png",
+      category: "Annuities"
+    },
+    {
+      name: "Protective",
+      logo: "https://www.protective.com/content/dam/protective/logos/protective-logo-rgb.png",
+      category: "Final Expense"
+    },
+    {
+      name: "Assurity",
+      logo: "https://www.assurity.com/content/dam/assurity/logos/assurity-logo.png",
+      category: "Life Insurance"
+    },
+    {
+      name: "Athene",
+      logo: "https://www.athene.com/content/dam/athene/common/logos/athene-logo-primary.png",
+      category: "Annuities"
+    },
+    {
+      name: "The Standard",
+      logo: "https://logos-world.net/wp-content/uploads/2021/02/Standard-Insurance-Logo.png",
+      category: "Final Expense"
+    },
+    {
+      name: "Global Atlantic",
+      logo: "https://www.globalatlantic.com/content/dam/globalatlantic/images/logos/ga-logo.png",
+      category: "Annuities"
+    },
+    {
+      name: "OneAmerica",
+      logo: "https://www.oneamerica.com/content/dam/oneamerica/images/logos/oneamerica-logo.png",
+      category: "Comprehensive"
+    },
+    {
+      name: "Americo",
+      logo: "https://www.americo.com/content/dam/americo/logos/americo-logo.png",
+      category: "Life Insurance"
+    },
+    {
+      name: "Liberty Bankers",
+      logo: "https://www.libertybankers.com/content/dam/liberty/logos/liberty-bankers-logo.png",
+      category: "Final Expense"
+    },
+    {
+      name: "Foresters",
+      logo: "https://www.foresters.com/content/dam/foresters/logos/foresters-logo.png",
+      category: "Annuities"
+    },
+    {
+      name: "Securian Financial",
+      logo: "https://www.securian.com/content/dam/securian/logos/securian-logo.png",
+      category: "Comprehensive"
     }
   ];
 
@@ -173,46 +206,81 @@ const GetQuote = () => {
                 40+ Top-Rated Insurance Carriers
               </h2>
               <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                We represent America's most trusted insurance companies across every category. 
+                We represent America's most trusted insurance companies. 
                 Compare rates and coverage options to find your perfect match.
               </p>
             </div>
 
-            {/* Category Grid */}
-            <div className="grid lg:grid-cols-2 gap-8 mb-16">
-              {carrierCategories.map((category, categoryIndex) => (
-                <Card key={categoryIndex} className={`border-2 hover:shadow-xl transition-all duration-300 ${category.color}`}>
-                  <CardContent className="p-8">
-                    <div className="flex items-center gap-3 mb-6">
-                      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                        <Shield className="w-6 h-6 text-primary" />
+            {/* Modern Logo Showcase */}
+            <div className="relative">
+              {/* Animated Background Elements */}
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent/5 rounded-3xl blur-3xl"></div>
+              <div className="absolute top-0 left-1/4 w-32 h-32 bg-primary/10 rounded-full blur-2xl animate-pulse"></div>
+              <div className="absolute bottom-0 right-1/4 w-24 h-24 bg-accent/10 rounded-full blur-2xl animate-pulse" style={{animationDelay: '1000ms'}}></div>
+              
+              {/* Premium Logo Grid */}
+              <div className="relative bg-card/80 backdrop-blur-xl border border-border/50 rounded-3xl p-8 shadow-2xl">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-6">
+                  {companyLogos.map((company, index) => (
+                    <div
+                      key={company.name}
+                      className="group relative bg-background/60 backdrop-blur-sm rounded-2xl p-4 border border-border/30 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 hover:scale-105 hover:-translate-y-2 animate-fade-in"
+                      style={{
+                        animationDelay: `${index * 100}ms`
+                      }}
+                    >
+                      {/* Hover Glow Effect */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      
+                      {/* Logo Container */}
+                      <div className="relative aspect-square flex items-center justify-center">
+                        <img
+                          src={company.logo}
+                          alt={`${company.name} Insurance`}
+                          className="max-w-full max-h-full object-contain filter group-hover:brightness-110 transition-all duration-300"
+                          style={{
+                            filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))'
+                          }}
+                          onError={(e) => {
+                            // Fallback to company initials if logo fails to load
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'none';
+                            const fallback = document.createElement('div');
+                            fallback.className = 'w-full h-full flex items-center justify-center bg-primary/10 rounded-lg text-primary font-bold text-sm';
+                            fallback.textContent = company.name.split(' ').map(word => word[0]).join('').slice(0, 2);
+                            target.parentNode?.appendChild(fallback);
+                          }}
+                        />
                       </div>
-                      <div>
-                        <h3 className="text-xl font-bold text-foreground">{category.title}</h3>
-                        <p className="text-sm text-muted-foreground">{category.description}</p>
+                      
+                      {/* Company Info Overlay */}
+                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background/95 to-transparent rounded-b-2xl p-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                        <p className="text-xs font-semibold text-foreground text-center truncate">{company.name}</p>
+                        <p className="text-xs text-muted-foreground text-center">{company.category}</p>
                       </div>
+                      
+                      {/* Sparkle Effect */}
+                      <div className="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-ping"></div>
                     </div>
-                    
-                    {/* Carrier Grid */}
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                      {category.carriers.map((carrier, carrierIndex) => (
-                        <div 
-                          key={carrierIndex}
-                          className="bg-background/60 backdrop-blur-sm rounded-lg p-3 text-center border border-border/50 hover:border-primary/30 hover:bg-background/80 transition-all duration-200 group"
-                        >
-                          <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:bg-primary/20 transition-colors">
-                            <Shield className="w-4 h-4 text-primary" />
-                          </div>
-                          <span className="text-xs font-medium text-foreground leading-tight">{carrier}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+                  ))}
+                </div>
+                
+                {/* Floating CTA */}
+                <div className="mt-12 text-center">
+                  <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground px-6 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                    <Shield className="w-5 h-5" />
+                    <span>And Many More Premium Carriers</span>
+                    <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
+        </section>
 
-            {/* Stats Section */}
+        {/* Stats Section */}
+        <section className="py-16 bg-muted/20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 bg-card rounded-2xl p-8 border shadow-lg">
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-black text-primary mb-2">40+</div>
