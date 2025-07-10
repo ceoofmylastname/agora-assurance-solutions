@@ -379,4 +379,13 @@ iframe[src*="consent"],
   .will-change-transform {
     will-change: transform;
   }
+
+  /* 3D Transform utilities for headline flips */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
 }
