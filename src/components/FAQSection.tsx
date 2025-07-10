@@ -118,7 +118,6 @@ const faqData: FAQItem[] = [
 ];
 
 const categories = [
-  { name: 'All', icon: Users, color: 'primary' },
   { name: 'Life Insurance', icon: Shield, color: 'blue-500' },
   { name: 'Annuities', icon: TrendingUp, color: 'green-500' },
   { name: 'Final Expense', icon: Heart, color: 'red-500' },
@@ -128,7 +127,7 @@ const categories = [
 ];
 
 const FAQSection = () => {
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState('Life Insurance');
   const [searchTerm, setSearchTerm] = useState('');
   const [openItems, setOpenItems] = useState<Set<string>>(new Set());
 
@@ -143,7 +142,7 @@ const FAQSection = () => {
   };
 
   const filteredFAQs = faqData.filter(faq => {
-    const matchesCategory = selectedCategory === 'All' || faq.category === selectedCategory;
+    const matchesCategory = faq.category === selectedCategory;
     const matchesSearch = faq.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          faq.answer.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          faq.keywords.some(keyword => keyword.toLowerCase().includes(searchTerm.toLowerCase()));
