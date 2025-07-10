@@ -7,20 +7,55 @@ import PageLayout from '@/components/PageLayout';
 import SEO from '@/components/SEO';
 
 const GetQuote = () => {
-  // Placeholder company data - can be updated with actual logos
-  const companies = [
-    { name: "Mutual of Omaha", category: "Life Insurance" },
-    { name: "Prudential", category: "Investment Products" },
-    { name: "MetLife", category: "Life & Annuities" },
-    { name: "Lincoln Financial", category: "Retirement Solutions" },
-    { name: "Transamerica", category: "Life Insurance" },
-    { name: "Pacific Life", category: "Annuities" },
-    { name: "American General", category: "Life Insurance" },
-    { name: "John Hancock", category: "Investment Solutions" },
-    { name: "New York Life", category: "Insurance & Investments" },
-    { name: "Guardian Life", category: "Insurance Solutions" },
-    { name: "MassMutual", category: "Financial Services" },
-    { name: "Northwestern Mutual", category: "Financial Planning" }
+  // Insurance carriers organized by category
+  const lifeInsuranceCarriers = [
+    "Transamerica", "American National", "Americo", "Assurity", "National Life Group",
+    "American Life", "Integrity Life", "North American", "The Ohio State Life",
+    "Pacific Guardian Life", "Sentinel Security Life", "SILAC Insurance Company"
+  ];
+
+  const annuityCarriers = [
+    "Allianz", "American Equity", "Athene", "Corebridge Financial", "EquiTrust",
+    "FG Annuities & Life", "Foresters", "Global Atlantic Financial Group",
+    "Lincoln Financial Group", "MassMutual Ascend", "Clear Spring Life and Annuity"
+  ];
+
+  const finalExpenseCarriers = [
+    "Aetna", "Guaranty Income Life", "Liberty Bankers", "Protective",
+    "Royal Neighbors of America", "The Standard", "Oceanview"
+  ];
+
+  const comprehensiveCarriers = [
+    "Nationwide", "The Baltimore Life Companies", "American-Amicable Group",
+    "NASSAU", "OneAmerica", "Prudential", "Reliance Standard", "Sagicor",
+    "Securian Financial", "National Western Life", "Atlantic Coast Life"
+  ];
+
+  const carrierCategories = [
+    {
+      title: "Life Insurance Specialists",
+      carriers: lifeInsuranceCarriers,
+      description: "Term, Whole, and Universal Life Insurance",
+      color: "bg-blue-50 border-blue-200"
+    },
+    {
+      title: "Annuity & Retirement Experts",
+      carriers: annuityCarriers,
+      description: "Fixed, Variable, and Indexed Annuities",
+      color: "bg-green-50 border-green-200"
+    },
+    {
+      title: "Final Expense Leaders",
+      carriers: finalExpenseCarriers,
+      description: "Burial Insurance and Final Expense Coverage",
+      color: "bg-purple-50 border-purple-200"
+    },
+    {
+      title: "Full-Service Providers",
+      carriers: comprehensiveCarriers,
+      description: "Complete Financial Protection Solutions",
+      color: "bg-orange-50 border-orange-200"
+    }
   ];
 
   const benefits = [
@@ -131,89 +166,168 @@ const GetQuote = () => {
         </section>
 
         {/* Companies Section */}
-        <section className="py-16">
+        <section className="py-20 bg-gradient-to-b from-background to-muted/20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-black text-foreground mb-4">
-                Top-Rated Insurance Companies
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-foreground mb-6">
+                40+ Top-Rated Insurance Carriers
               </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                We work with America's most trusted insurance companies to bring you the best options.
+              <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                We represent America's most trusted insurance companies across every category. 
+                Compare rates and coverage options to find your perfect match.
               </p>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {companies.map((company, index) => (
-                <Card key={index} className="border hover:border-primary/20 transition-colors duration-300 bg-card">
-                  <CardContent className="p-6 text-center">
-                    <div className="w-16 h-16 bg-muted rounded-lg flex items-center justify-center mx-auto mb-4">
-                      <Shield className="w-8 h-8 text-primary" />
+
+            {/* Category Grid */}
+            <div className="grid lg:grid-cols-2 gap-8 mb-16">
+              {carrierCategories.map((category, categoryIndex) => (
+                <Card key={categoryIndex} className={`border-2 hover:shadow-xl transition-all duration-300 ${category.color}`}>
+                  <CardContent className="p-8">
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                        <Shield className="w-6 h-6 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-foreground">{category.title}</h3>
+                        <p className="text-sm text-muted-foreground">{category.description}</p>
+                      </div>
                     </div>
-                    <h3 className="font-semibold text-foreground mb-2">{company.name}</h3>
-                    <Badge variant="secondary" className="text-xs">
-                      {company.category}
-                    </Badge>
+                    
+                    {/* Carrier Grid */}
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                      {category.carriers.map((carrier, carrierIndex) => (
+                        <div 
+                          key={carrierIndex}
+                          className="bg-background/60 backdrop-blur-sm rounded-lg p-3 text-center border border-border/50 hover:border-primary/30 hover:bg-background/80 transition-all duration-200 group"
+                        >
+                          <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:bg-primary/20 transition-colors">
+                            <Shield className="w-4 h-4 text-primary" />
+                          </div>
+                          <span className="text-xs font-medium text-foreground leading-tight">{carrier}</span>
+                        </div>
+                      ))}
+                    </div>
                   </CardContent>
                 </Card>
               ))}
+            </div>
+
+            {/* Stats Section */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 bg-card rounded-2xl p-8 border shadow-lg">
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-black text-primary mb-2">40+</div>
+                <div className="text-sm font-medium text-muted-foreground">Insurance Carriers</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-black text-primary mb-2">15+</div>
+                <div className="text-sm font-medium text-muted-foreground">Years Experience</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-black text-primary mb-2">5K+</div>
+                <div className="text-sm font-medium text-muted-foreground">Families Protected</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-black text-primary mb-2">24/7</div>
+                <div className="text-sm font-medium text-muted-foreground">Support Available</div>
+              </div>
             </div>
           </div>
         </section>
 
         {/* Why Choose Us Section */}
-        <section className="py-16 bg-muted/30">
+        <section className="py-20 bg-gradient-to-br from-muted/30 via-background to-accent/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-3xl md:text-4xl font-black text-foreground mb-6">
-                  Why Families Choose Agora
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div className="order-2 lg:order-1">
+                <Badge variant="outline" className="mb-4 px-3 py-1">
+                  The Agora Advantage
+                </Badge>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-foreground mb-6 leading-tight">
+                  Why 5,000+ Families Choose <span className="text-primary">Agora</span>
                 </h2>
-                <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                <p className="text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed">
                   Don't settle for one-size-fits-all insurance solutions. Our independent approach 
-                  means we work for you, not the insurance companies.
+                  means we work exclusively for you, not the insurance companies.
                 </p>
-                <div className="space-y-4">
+                <div className="grid sm:grid-cols-2 gap-4 mb-8">
                   {whyChooseUs.map((item, index) => (
-                    <div key={index} className="flex items-start gap-3">
-                      <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
-                      <span className="text-muted-foreground">{item}</span>
+                    <div key={index} className="flex items-start gap-3 p-4 bg-card/50 rounded-lg border border-border/50">
+                      <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                      <span className="text-sm font-medium text-foreground">{item}</span>
                     </div>
                   ))}
                 </div>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button 
+                    size="lg" 
+                    className="px-6 py-3 font-semibold"
+                    onClick={() => window.open('https://quickstart.assurity.com/agoraassurancesolutions', '_blank')}
+                  >
+                    Compare Rates Now
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                  <Button 
+                    size="lg" 
+                    variant="outline" 
+                    className="px-6 py-3 font-semibold"
+                    onClick={() => {
+                      const bookingSection = document.getElementById('booking-section');
+                      if (bookingSection) {
+                        bookingSection.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                  >
+                    <Calendar className="mr-2 w-5 h-5" />
+                    Free Consultation
+                  </Button>
+                </div>
               </div>
-              <div className="lg:pl-8">
-                <Card className="bg-primary text-primary-foreground border-0 shadow-2xl">
-                  <CardContent className="p-8">
-                    <h3 className="text-2xl font-bold mb-4">Ready to Get Started?</h3>
-                    <p className="mb-6 opacity-90">
-                      Get your personalized quote in minutes, or speak with one of our licensed professionals.
-                    </p>
-                    <div className="space-y-4">
-                      <Button 
-                        variant="secondary" 
-                        size="lg" 
-                        className="w-full font-semibold"
-                        onClick={() => window.open('https://quickstart.assurity.com/agoraassurancesolutions', '_blank')}
-                      >
-                        Get Instant Quote
-                        <ArrowRight className="ml-2 w-5 h-5" />
-                      </Button>
-                      <Button 
-                        variant="outline" 
-                        size="lg" 
-                        className="w-full font-semibold bg-transparent border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10"
-                        onClick={() => {
-                          const bookingSection = document.getElementById('booking-section');
-                          if (bookingSection) {
-                            bookingSection.scrollIntoView({ behavior: 'smooth' });
-                          }
-                        }}
-                      >
-                        <Calendar className="mr-2 w-5 h-5" />
-                        Schedule a Call
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
+              
+              <div className="order-1 lg:order-2 relative">
+                {/* Visual Elements */}
+                <div className="relative">
+                  <Card className="bg-gradient-to-br from-primary to-primary/80 text-primary-foreground border-0 shadow-2xl transform rotate-2">
+                    <CardContent className="p-8">
+                      <div className="flex items-center gap-3 mb-6">
+                        <div className="w-12 h-12 bg-primary-foreground/20 rounded-full flex items-center justify-center">
+                          <Shield className="w-6 h-6" />
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-bold">Independent Agency</h3>
+                          <p className="text-sm opacity-90">Your interests first</p>
+                        </div>
+                      </div>
+                      <div className="space-y-3">
+                        <div className="flex justify-between items-center p-3 bg-primary-foreground/10 rounded-lg">
+                          <span className="text-sm font-medium">Average Savings</span>
+                          <span className="text-lg font-bold">$847/year</span>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-primary-foreground/10 rounded-lg">
+                          <span className="text-sm font-medium">Quote Time</span>
+                          <span className="text-lg font-bold">Under 3 min</span>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-primary-foreground/10 rounded-lg">
+                          <span className="text-sm font-medium">Options Compared</span>
+                          <span className="text-lg font-bold">40+ Carriers</span>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  
+                  <Card className="absolute -bottom-6 -left-6 bg-card border shadow-xl transform -rotate-2 z-10">
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                          <CheckCircle className="w-5 h-5 text-green-600" />
+                        </div>
+                        <div>
+                          <p className="text-sm font-bold text-foreground">5-Star Rating</p>
+                          <p className="text-xs text-muted-foreground">Trusted by families</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
               </div>
             </div>
           </div>
