@@ -275,67 +275,121 @@ const GetQuote = () => {
               </p>
             </div>
 
-            {/* Modern Logo Showcase */}
-            <div className="relative">
-              {/* Animated Background Elements */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent/5 rounded-3xl blur-3xl"></div>
-              <div className="absolute top-0 left-1/4 w-32 h-32 bg-primary/10 rounded-full blur-2xl animate-pulse"></div>
-              <div className="absolute bottom-0 right-1/4 w-24 h-24 bg-accent/10 rounded-full blur-2xl animate-pulse" style={{animationDelay: '1000ms'}}></div>
+            {/* Modern Rotating Logo Showcase */}
+            <div className="relative overflow-hidden">
+              {/* Animated Background */}
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-accent/5 to-primary/10 animate-pulse"></div>
+              <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-bounce" style={{animationDuration: '3s'}}></div>
+              <div className="absolute bottom-1/4 right-1/3 w-48 h-48 bg-accent/5 rounded-full blur-2xl animate-bounce" style={{animationDuration: '4s', animationDelay: '1s'}}></div>
               
-              {/* Premium Logo Grid */}
-              <div className="relative bg-card/80 backdrop-blur-xl border border-border/50 rounded-3xl p-8 shadow-2xl">
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-6">
-                  {companyLogos.map((company, index) => (
-                    <div
-                      key={company.name}
-                      className="group relative bg-background/60 backdrop-blur-sm rounded-2xl p-4 border border-border/30 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 hover:scale-105 hover:-translate-y-2 animate-fade-in"
-                      style={{
-                        animationDelay: `${index * 100}ms`
-                      }}
-                    >
-                      {/* Hover Glow Effect */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                      
-                      {/* Logo Container */}
-                      <div className="relative aspect-square flex items-center justify-center">
-                        <img
-                          src={company.logo}
-                          alt={`${company.name} Insurance`}
-                          className="max-w-full max-h-full object-contain filter group-hover:brightness-110 transition-all duration-300"
-                          style={{
-                            filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))'
-                          }}
-                          onError={(e) => {
-                            // Fallback to company initials if logo fails to load
-                            const target = e.target as HTMLImageElement;
-                            target.style.display = 'none';
-                            const fallback = document.createElement('div');
-                            fallback.className = 'w-full h-full flex items-center justify-center bg-primary/10 rounded-lg text-primary font-bold text-lg';
-                            fallback.textContent = company.initials;
-                            target.parentNode?.appendChild(fallback);
-                          }}
-                        />
-                      </div>
-                      
-                      {/* Company Info Overlay */}
-                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background/95 to-transparent rounded-b-2xl p-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                        <p className="text-xs font-semibold text-foreground text-center truncate">{company.name}</p>
-                        <p className="text-xs text-muted-foreground text-center">{company.category}</p>
-                      </div>
-                      
-                      {/* Sparkle Effect */}
-                      <div className="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-ping"></div>
+              {/* Upper Row - Moving Right */}
+              <div className="relative mb-8">
+                <div className="flex animate-[scroll-right_30s_linear_infinite] gap-8">
+                  <div className="flex gap-8 min-w-max">
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500">
+                      <img src="/lovable-uploads/bdc396e8-20d3-420a-a18c-86b95d2c8f3f.png" alt="Allianz" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
                     </div>
-                  ))}
-                </div>
-                
-                {/* Floating CTA */}
-                <div className="mt-12 text-center">
-                  <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground px-6 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                    <Shield className="w-5 h-5" />
-                    <span>And Many More Premium Carriers</span>
-                    <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500">
+                      <img src="/lovable-uploads/d80f077b-ae61-4d6f-ac4a-100f2e403fd2.png" alt="American Equity" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                    </div>
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500">
+                      <img src="/lovable-uploads/10aed62a-cf02-460a-933d-8633b52632a2.png" alt="American National" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                    </div>
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500">
+                      <img src="/lovable-uploads/40b3b311-a454-4074-9067-b69adf314e12.png" alt="Americo" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                    </div>
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500">
+                      <img src="/lovable-uploads/e632ce5d-0cb9-4ee1-8763-f41d31443959.png" alt="Assurity" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                    </div>
                   </div>
+                  {/* Duplicate for seamless loop */}
+                  <div className="flex gap-8 min-w-max">
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500">
+                      <img src="/lovable-uploads/bdc396e8-20d3-420a-a18c-86b95d2c8f3f.png" alt="Allianz" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                    </div>
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500">
+                      <img src="/lovable-uploads/d80f077b-ae61-4d6f-ac4a-100f2e403fd2.png" alt="American Equity" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                    </div>
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500">
+                      <img src="/lovable-uploads/10aed62a-cf02-460a-933d-8633b52632a2.png" alt="American National" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                    </div>
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500">
+                      <img src="/lovable-uploads/40b3b311-a454-4074-9067-b69adf314e12.png" alt="Americo" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                    </div>
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-primary/20 transition-all duration-500">
+                      <img src="/lovable-uploads/e632ce5d-0cb9-4ee1-8763-f41d31443959.png" alt="Assurity" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Lower Row - Moving Left */}
+              <div className="relative">
+                <div className="flex animate-[scroll-left_25s_linear_infinite] gap-8">
+                  <div className="flex gap-8 min-w-max">
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-accent/20 transition-all duration-500">
+                      <img src="/lovable-uploads/25640b9f-b025-40a3-b338-b691298eab58.png" alt="Athene" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-accent rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                    </div>
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-accent/20 transition-all duration-500">
+                      <img src="/lovable-uploads/c975ca95-369f-49e7-a165-3fa2a1167547.png" alt="Corebridge Financial" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-accent rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                    </div>
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-accent/20 transition-all duration-500">
+                      <img src="/lovable-uploads/0e7ad9af-f538-47ac-8284-021a5d1febcb.png" alt="EquiTrust" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-accent rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                    </div>
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-accent/20 transition-all duration-500">
+                      <img src="/lovable-uploads/4eb78a4a-f82b-4e19-8968-dd673108430a.png" alt="F&G Annuities & Life" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-accent rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                    </div>
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-accent/20 transition-all duration-500">
+                      <img src="/lovable-uploads/69f0b619-2561-41dd-b820-187475b5f2f2.png" alt="Foresters" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-accent rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                    </div>
+                  </div>
+                  {/* Duplicate for seamless loop */}
+                  <div className="flex gap-8 min-w-max">
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-accent/20 transition-all duration-500">
+                      <img src="/lovable-uploads/25640b9f-b025-40a3-b338-b691298eab58.png" alt="Athene" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-accent rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                    </div>
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-accent/20 transition-all duration-500">
+                      <img src="/lovable-uploads/c975ca95-369f-49e7-a165-3fa2a1167547.png" alt="Corebridge Financial" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-accent rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                    </div>
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-accent/20 transition-all duration-500">
+                      <img src="/lovable-uploads/0e7ad9af-f538-47ac-8284-021a5d1febcb.png" alt="EquiTrust" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-accent rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                    </div>
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-accent/20 transition-all duration-500">
+                      <img src="/lovable-uploads/4eb78a4a-f82b-4e19-8968-dd673108430a.png" alt="F&G Annuities & Life" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-accent rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                    </div>
+                    <div className="group relative w-32 h-20 bg-card/90 backdrop-blur-sm rounded-2xl border border-border/30 flex items-center justify-center hover:scale-110 hover:shadow-xl hover:shadow-accent/20 transition-all duration-500">
+                      <img src="/lovable-uploads/69f0b619-2561-41dd-b820-187475b5f2f2.png" alt="Foresters" className="max-w-24 max-h-12 object-contain" />
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-accent rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating Badge */}
+              <div className="mt-12 text-center">
+                <div className="inline-flex items-center gap-3 bg-gradient-to-r from-primary via-accent to-primary text-primary-foreground px-8 py-4 rounded-full font-bold shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 animate-pulse">
+                  <Shield className="w-6 h-6" />
+                  <span className="text-lg">40+ Premium Insurance Carriers</span>
+                  <div className="w-3 h-3 bg-white rounded-full animate-bounce"></div>
                 </div>
               </div>
             </div>
