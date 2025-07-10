@@ -191,6 +191,14 @@ const Navbar = () => {
                   </NavigationMenuItem>
                   
                   <NavigationMenuItem>
+                    <Link to="/faq">
+                      <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), isScrolled ? "text-gray-700 hover:text-gray-900" : "text-gray-100 hover:text-white bg-transparent hover:bg-gray-800")}>
+                        FAQ
+                      </NavigationMenuLink>
+                    </Link>
+                  </NavigationMenuItem>
+
+                  <NavigationMenuItem>
                     <Link to="/careers">
                       <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), isScrolled ? "text-gray-700 hover:text-gray-900" : "text-gray-100 hover:text-white bg-transparent hover:bg-gray-800")}>
                         Agora Advisor Solutions
@@ -343,6 +351,19 @@ const Navbar = () => {
                 </div>
               </motion.div>
               
+              <motion.div variants={menuItemVariants}>
+                <Link 
+                  to="/faq" 
+                  className={cn("block px-4 py-4 rounded-lg text-lg font-medium transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", isScrolled ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-800")} 
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    window.scrollTo(0, 0);
+                  }}
+                >
+                  FAQ
+                </Link>
+              </motion.div>
+
               <motion.div variants={menuItemVariants}>
                 <Link 
                   to="/careers" 

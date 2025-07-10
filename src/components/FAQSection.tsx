@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { ChevronDown, Search, Shield, Heart, TrendingUp, Home, DollarSign, Users } from 'lucide-react';
 import { Input } from '@/components/ui/input';
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 
 interface FAQItem {
   id: string;
@@ -470,6 +472,15 @@ const FAQSection = () => {
             </motion.div>
           )}
         </motion.div>
+        
+        {/* Link to Dedicated FAQ Page */}
+        <div className="text-center mt-12">
+          <Link to="/faq">
+            <Button size="lg" variant="outline" className="px-8 py-3">
+              View All Frequently Asked Questions
+            </Button>
+          </Link>
+        </div>
       </div>
     </section>
   );
