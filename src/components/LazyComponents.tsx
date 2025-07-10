@@ -8,4 +8,4 @@ export const LazyModernContactForm = lazy(() => import('@/components/ModernConta
 export const LazyFeatures = lazy(() => import('@/components/OptimizedFeatures'));
 export const LazyHowItWorks = lazy(() => import('@/components/OptimizedHowItWorks'));
 export const LazyWhyAgora = lazy(() => import('@/components/OptimizedWhyAgora'));
-export const LazyProductsSection = lazy(() => import('@/components/ProductsSection'));
+export const LazyProductsSection = lazy(() => import('./products/ProductsSection'));
