@@ -24,8 +24,8 @@ const sectionData: SectionData[] = [
       "LICENSED PROFESSIONALS AVAILABLE IF YOU HAVE QUESTIONS",
       "TRUSTED BY THOUSANDS OF FAMILIES"
     ],
-    backgroundColor: "bg-muted",
-    textColor: "text-primary"
+    backgroundColor: "#f8f9fa",
+    textColor: "#0ea5e9"
   },
   {
     id: 2,
@@ -39,8 +39,8 @@ const sectionData: SectionData[] = [
       "IMMEDIATE COVERAGE AVAILABLE",
       "COMPETITIVE RATES GUARANTEED"
     ],
-    backgroundColor: "bg-background",
-    textColor: "text-primary"
+    backgroundColor: "#ffffff",
+    textColor: "#0ea5e9"
   },
   {
     id: 3,
@@ -54,8 +54,8 @@ const sectionData: SectionData[] = [
       "LIFETIME BENEFIT PROTECTION",
       "AFFORDABLE MONTHLY PREMIUMS"
     ],
-    backgroundColor: "bg-accent",
-    textColor: "text-primary"
+    backgroundColor: "#fbbf24",
+    textColor: "#0ea5e9"
   },
   {
     id: 4,
@@ -69,8 +69,8 @@ const sectionData: SectionData[] = [
       "FLEXIBLE WITHDRAWAL OPTIONS",
       "ESTATE PLANNING BENEFITS"
     ],
-    backgroundColor: "bg-foreground",
-    textColor: "text-background"
+    backgroundColor: "#000000",
+    textColor: "#0ea5e9"
   }
 ];
 
