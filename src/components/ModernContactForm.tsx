@@ -330,37 +330,46 @@ const ModernContactForm = () => {
   }
 
   return (
-    <section id="contact" className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center py-12">
-      <div className="w-full max-w-2xl mx-auto px-4">
+    <section id="contact" className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30 flex items-center justify-center py-16 px-4">
+      <div className="w-full max-w-3xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <div className="inline-block mb-3 px-4 py-2 bg-[#15AFF7] text-white rounded-full text-sm font-medium">
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center mb-6 px-6 py-3 bg-gradient-to-r from-primary/10 to-blue-500/10 text-primary rounded-full text-sm font-medium border border-primary/20 backdrop-blur-sm">
+            <span className="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></span>
             Get In Touch
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent mb-6">
             CONTACT US
           </h2>
-          <p className="text-lg text-gray-600 max-w-xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Ready to protect what matters most? Let's discuss your insurance needs and find the perfect solution for you.
           </p>
         </div>
+        
         {/* Progress Bar */}
-        <div className="mb-8">
-          <div className="w-full bg-gray-200 rounded-full h-2">
+        <div className="mb-12">
+          <div className="relative w-full h-1 bg-gray-100 rounded-full overflow-hidden">
             <motion.div
-              className="bg-gradient-to-r from-[#15AFF7] to-[#0D94D1] h-2 rounded-full"
+              className="absolute top-0 left-0 h-full bg-gradient-to-r from-primary via-blue-500 to-purple-500 rounded-full"
               initial={{ width: 0 }}
               animate={{ width: `${progress}%` }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
             />
           </div>
-          <div className="text-sm text-gray-500 mt-2 text-center">
-            Step {currentStep + 1} of {steps.length}
+          <div className="flex justify-between items-center mt-4">
+            <div className="text-sm text-muted-foreground">
+              Step {currentStep + 1} of {steps.length}
+            </div>
+            <div className="text-sm font-medium text-primary">
+              {Math.round(progress)}% Complete
+            </div>
           </div>
         </div>
 
         {/* Form Container */}
-        <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12">
+        <div className="relative bg-white/70 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 p-8 md:p-16 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent pointer-events-none"></div>
+          <div className="relative z-10">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentStep}
@@ -371,15 +380,15 @@ const ModernContactForm = () => {
               className="space-y-8"
             >
               {/* Step Content */}
-              <div className="text-center md:text-left">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <div className="text-center mb-12">
+                <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 bg-clip-text text-transparent mb-6 leading-tight">
                   {currentStepData.title}
                 </h2>
-                <p className="text-lg text-gray-600 mb-2">
+                <p className="text-xl text-muted-foreground mb-4 leading-relaxed">
                   {currentStepData.subtitle}
                 </p>
                 {currentStepData.description && (
-                  <p className="text-gray-500">
+                  <p className="text-lg text-muted-foreground/80 max-w-2xl mx-auto">
                     {currentStepData.description}
                   </p>
                 )}
@@ -396,30 +405,33 @@ const ModernContactForm = () => {
                         <FormItem>
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {insuranceServices.map((service) => (
-                              <motion.div
+                               <motion.div
                                 key={service.id}
-                                className={`p-4 rounded-xl border-2 cursor-pointer transition-all hover:shadow-lg transform-gpu ${
+                                className={`group relative p-6 rounded-2xl border cursor-pointer transition-all duration-300 overflow-hidden ${
                                   field.value === service.id
-                                    ? 'border-[#15AFF7] bg-blue-50'
-                                    : 'border-gray-200 bg-white hover:border-gray-300'
+                                    ? 'border-primary bg-gradient-to-br from-primary/5 to-blue-500/5 shadow-lg shadow-primary/10'
+                                    : 'border-border bg-white/50 hover:border-primary/30 hover:shadow-md'
                                 }`}
                                 onClick={() => field.onChange(service.id)}
-                                whileHover={{ scale: 1.02, y: -2 }}
+                                whileHover={{ scale: 1.02, y: -3 }}
                                 whileTap={{ scale: 0.98 }}
                                 initial={{ y: 20, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 transition={{ delay: service.id.length * 0.05 }}
                               >
-                                <div className="flex items-center space-x-3">
-                                  <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
+                                <div className="absolute inset-0 bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                <div className="relative z-10 flex items-center space-x-4">
+                                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 ${
                                     field.value === service.id
-                                      ? 'bg-[#15AFF7] text-white'
-                                      : 'bg-gray-100 text-gray-600'
+                                      ? 'bg-primary text-white shadow-lg'
+                                      : 'bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary'
                                   }`}>
-                                    <service.icon className="w-5 h-5" />
+                                    <service.icon className="w-6 h-6" />
                                   </div>
                                   <div>
-                                    <h4 className="font-medium text-gray-900">{service.name}</h4>
+                                    <h4 className={`font-semibold transition-colors ${
+                                      field.value === service.id ? 'text-foreground' : 'text-foreground group-hover:text-primary'
+                                    }`}>{service.name}</h4>
                                   </div>
                                 </div>
                               </motion.div>
@@ -437,35 +449,41 @@ const ModernContactForm = () => {
                       name={currentStepData.field as keyof FormValues}
                       render={({ field }) => (
                         <FormItem>
-                          <div className="relative">
-                            {currentStepData.icon && (
-                              <currentStepData.icon className="absolute left-4 top-4 h-5 w-5 text-gray-400" />
-                            )}
-                            <FormControl>
-                              {currentStepData.isTextarea ? (
-                                <motion.div>
-                                  <Textarea
-                                    placeholder={currentStepData.placeholder}
-                                    className="min-h-[120px] pl-12 text-lg border-2 border-gray-200 rounded-xl focus:border-[#15AFF7] focus:ring-0 resize-none transform-gpu"
-                                    onKeyDown={handleKeyPress}
-                                    {...field}
-                                  />
-                                </motion.div>
-                              ) : (
-                                <motion.div>
-                                  <Input
-                                    type={currentStepData.type || 'text'}
-                                    placeholder={currentStepData.placeholder}
-                                    className="pl-12 text-lg h-14 border-2 border-gray-200 rounded-xl focus:border-[#15AFF7] focus:ring-0 transform-gpu"
-                                    onKeyDown={handleKeyPress}
-                                    onFocus={() => {}}
-                                    onBlur={() => {}}
-                                    {...field}
-                                  />
-                                </motion.div>
-                              )}
-                            </FormControl>
-                          </div>
+                           <div className="relative">
+                             {currentStepData.icon && (
+                               <currentStepData.icon className="absolute left-6 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground/60 z-10" />
+                             )}
+                             <FormControl>
+                               {currentStepData.isTextarea ? (
+                                 <motion.div
+                                   initial={{ opacity: 0, y: 20 }}
+                                   animate={{ opacity: 1, y: 0 }}
+                                   transition={{ duration: 0.4 }}
+                                 >
+                                   <Textarea
+                                     placeholder={currentStepData.placeholder}
+                                     className="min-h-[140px] pl-14 pr-6 py-5 text-lg border-2 border-border bg-white/70 backdrop-blur-sm rounded-2xl focus:border-primary focus:ring-0 resize-none transition-all duration-300 shadow-sm hover:shadow-md focus:shadow-lg placeholder:text-muted-foreground/60"
+                                     onKeyDown={handleKeyPress}
+                                     {...field}
+                                   />
+                                 </motion.div>
+                               ) : (
+                                 <motion.div
+                                   initial={{ opacity: 0, y: 20 }}
+                                   animate={{ opacity: 1, y: 0 }}
+                                   transition={{ duration: 0.4 }}
+                                 >
+                                   <Input
+                                     type={currentStepData.type || 'text'}
+                                     placeholder={currentStepData.placeholder}
+                                     className="pl-14 pr-6 text-lg h-16 border-2 border-border bg-white/70 backdrop-blur-sm rounded-2xl focus:border-primary focus:ring-0 transition-all duration-300 shadow-sm hover:shadow-md focus:shadow-lg placeholder:text-muted-foreground/60"
+                                     onKeyDown={handleKeyPress}
+                                     {...field}
+                                   />
+                                 </motion.div>
+                               )}
+                             </FormControl>
+                           </div>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -499,43 +517,49 @@ const ModernContactForm = () => {
                 </div>
               </Form>
 
-              {/* Navigation */}
-              <div className="flex justify-between items-center pt-8">
-                <Button
-                  type="button"
-                  variant="ghost"
-                  onClick={prevStep}
-                  disabled={currentStep === 0}
-                  className="flex items-center gap-2 text-gray-600 hover:text-gray-900"
-                >
-                  <ArrowLeft className="w-4 h-4" />
-                  Back
-                </Button>
-
-                {currentStep === steps.length - 1 ? (
+              {/* Navigation Buttons */}
+              <div className="flex justify-between items-center pt-12 mt-12 border-t border-border/50">
+                {currentStep > 0 ? (
                   <Button
                     type="button"
-                    onClick={handleSubmit}
-                    disabled={isSubmitting}
-                    className="bg-gradient-to-r from-[#15AFF7] to-[#0D94D1] hover:from-[#0D94D1] hover:to-[#0A7FB0] text-white px-8 py-3 rounded-xl font-medium shadow-lg hover:shadow-xl transition-all flex items-center gap-2"
+                    variant="outline"
+                    onClick={prevStep}
+                    className="flex items-center space-x-2 px-8 py-4 text-muted-foreground border-border bg-white/50 backdrop-blur-sm rounded-2xl hover:bg-muted/50 hover:border-primary/30 transition-all duration-300"
                   >
-                    {isSubmitting ? (
-                      "Sending..."
-                    ) : (
-                      <>
-                        Send Message
-                        <Send className="w-4 h-4" />
-                      </>
-                    )}
+                    <ArrowLeft className="w-4 h-4" />
+                    <span className="font-medium">Previous</span>
+                  </Button>
+                ) : (
+                  <div></div>
+                )}
+
+                {currentStep < steps.length - 1 ? (
+                  <Button
+                    type="button"
+                    onClick={handleNext}
+                    className="flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-primary to-blue-500 hover:from-primary/90 hover:to-blue-500/90 text-white rounded-2xl font-medium transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+                  >
+                    <span>Next</span>
+                    <ArrowRight className="w-4 h-4" />
                   </Button>
                 ) : (
                   <Button
                     type="button"
-                    onClick={handleNext}
-                    className="bg-gradient-to-r from-[#15AFF7] to-[#0D94D1] hover:from-[#0D94D1] hover:to-[#0A7FB0] text-white px-8 py-3 rounded-xl font-medium shadow-lg hover:shadow-xl transition-all flex items-center gap-2"
+                    onClick={handleSubmit}
+                    disabled={isSubmitting}
+                    className="flex items-center space-x-3 px-10 py-4 bg-gradient-to-r from-primary via-blue-500 to-purple-500 hover:from-primary/90 hover:via-blue-500/90 hover:to-purple-500/90 text-white rounded-2xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 disabled:hover:scale-100"
                   >
-                    {currentStep === 0 ? 'Get Started' : 'Continue'}
-                    <ArrowRight className="w-4 h-4" />
+                    {isSubmitting ? (
+                      <>
+                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                        <span>Sending...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-5 h-5" />
+                        <span>Send Message</span>
+                      </>
+                    )}
                   </Button>
                 )}
               </div>
@@ -548,6 +572,7 @@ const ModernContactForm = () => {
               )}
             </motion.div>
           </AnimatePresence>
+          </div>
         </div>
       </div>
     </section>
