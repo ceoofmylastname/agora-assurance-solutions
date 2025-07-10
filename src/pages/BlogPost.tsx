@@ -1202,7 +1202,7 @@ const blogPostsData: Record<string, BlogPostData> = {
     readTime: '12 min read',
     author: 'Lisa Thompson, LUTCF',
     authorBio: 'Lisa is a Life Underwriter Training Council Fellow with 16+ years specializing in final expense and senior market insurance. She has helped over 4,500 families secure appropriate end-of-life coverage.',
-    publishDate: 'December 8, 2025',
+    publishDate: 'January 8, 2025',
     slug: 'complete-final-expense-insurance-guide',
     tags: ['final expense', 'burial insurance', 'family protection'],
     tableOfContents: [
