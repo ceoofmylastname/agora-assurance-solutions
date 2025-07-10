@@ -405,43 +405,29 @@ const ModernContactForm = () => {
                             {insuranceServices.map((service) => (
                                <motion.div
                                 key={service.id}
-                                className={`group relative p-6 rounded-2xl cursor-pointer transition-all duration-500 overflow-hidden transform-gpu
-                                  shadow-[0_8px_32px_rgba(0,0,0,0.12),0_2px_6px_rgba(0,0,0,0.08)]
-                                  hover:shadow-[0_20px_48px_rgba(0,0,0,0.15),0_8px_16px_rgba(0,0,0,0.1)]
-                                  before:absolute before:inset-0 before:bg-gradient-to-r before:from-white/80 before:to-white/60 before:rounded-2xl
-                                  after:absolute after:inset-0 after:rounded-2xl after:shadow-inner
+                                className={`group relative p-6 rounded-2xl cursor-pointer transition-all duration-300 border
                                   ${field.value === service.id
-                                    ? 'shadow-[0_12px_40px_rgba(21,175,247,0.25),0_4px_12px_rgba(21,175,247,0.15)] before:from-primary/10 before:to-blue-500/5'
-                                    : 'hover:shadow-[0_16px_44px_rgba(0,0,0,0.15),0_6px_14px_rgba(0,0,0,0.1)]'
+                                    ? 'bg-primary/5 border-primary/20 shadow-lg shadow-primary/10'
+                                    : 'bg-slate-50/80 border-slate-200/50 hover:bg-slate-100/90 hover:border-slate-300/60 shadow-md hover:shadow-lg'
                                   }`}
                                 onClick={() => field.onChange(service.id)}
-                                whileHover={{ 
-                                  scale: 1.02, 
-                                  y: -4,
-                                  rotateX: 2,
-                                  rotateY: 1 
-                                }}
+                                whileHover={{ scale: 1.02, y: -2 }}
                                 whileTap={{ scale: 0.98 }}
                                 initial={{ y: 20, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 transition={{ delay: service.id.length * 0.05 }}
-                                style={{ 
-                                  transformStyle: 'preserve-3d',
-                                  perspective: '1000px'
-                                }}
                               >
-                                <div className="relative z-10 flex items-center space-x-4">
-                                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 
-                                    shadow-[0_4px_16px_rgba(0,0,0,0.1)] ${
+                                <div className="flex items-center space-x-4">
+                                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 ${
                                     field.value === service.id
-                                      ? 'bg-primary text-white shadow-[0_6px_20px_rgba(21,175,247,0.3)]'
-                                      : 'bg-white/90 text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary group-hover:shadow-[0_6px_20px_rgba(0,0,0,0.15)]'
+                                      ? 'bg-primary text-white'
+                                      : 'bg-white text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary'
                                   }`}>
                                     <service.icon className="w-6 h-6" />
                                   </div>
                                   <div>
                                     <h4 className={`font-semibold transition-colors ${
-                                      field.value === service.id ? 'text-foreground' : 'text-foreground group-hover:text-primary'
+                                      field.value === service.id ? 'text-primary' : 'text-foreground group-hover:text-primary'
                                     }`}>{service.name}</h4>
                                   </div>
                                 </div>
