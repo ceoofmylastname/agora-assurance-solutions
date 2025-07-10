@@ -285,6 +285,9 @@ const AnimatedSection: React.FC<{ section: SectionData; index: number }> = ({ se
                   } else if (section.id === 2) {
                     // For "PROTECTION PLANS" section, navigate to the protection plans page
                     window.location.href = '/protection-plans';
+                  } else if (section.id === 3) {
+                    // For "LIFE COVERAGE" section, navigate to the life coverage page
+                    window.location.href = '/life-coverage';
                   } else {
                     // For other sections, scroll to contact
                     const contactSection = document.getElementById('contact');
@@ -302,7 +305,7 @@ const AnimatedSection: React.FC<{ section: SectionData; index: number }> = ({ se
               >
                 <span className="transform transition-transform duration-300 group-hover:translate-x-1">→</span>
                 <span className="ml-2">
-                  {section.id === 1 ? 'GET QUOTE' : section.id === 2 ? 'VIEW PLANS' : 'LEARN MORE'}
+                  {section.id === 1 ? 'GET QUOTE' : section.id === 2 ? 'VIEW PLANS' : section.id === 3 ? 'VIEW COVERAGE' : 'LEARN MORE'}
                 </span>
               </button>
             </div>

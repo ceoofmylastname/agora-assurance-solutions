@@ -1,0 +1,366 @@
+import { ArrowLeft, Shield, Heart, Clock, CheckCircle, Star, Target, Users, DollarSign, Phone, FileText, Award, Umbrella, Building2, Calculator, TrendingUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { motion } from "framer-motion";
+import { useEffect } from 'react';
+import PageLayout from '@/components/PageLayout';
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import SEO from '@/components/SEO';
+import finalExpenseHero from '@/assets/final-expense-hero.jpg';
+
+const LifeCoverage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.6 }
+    }
+  };
+
+  return (
+    <PageLayout>
+      <SEO 
+        title="Life Coverage - Final Expense & Comprehensive Life Insurance | Agora Assurance Solutions"
+        description="Comprehensive life insurance solutions with guaranteed acceptance and lifetime benefits. Final expense coverage with no medical exams required and affordable monthly premiums."
+        imageUrl={finalExpenseHero}
+        keywords={['life coverage', 'final expense insurance', 'guaranteed acceptance life insurance', 'no medical exam life insurance', 'lifetime benefits', 'affordable life insurance']}
+      />
+      
+      <section className="pt-16 sm:pt-20 lg:pt-24 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-muted/30 min-h-screen">
+        <div className="container mx-auto max-w-7xl">
+          <Link to="/" className="inline-flex items-center text-muted-foreground hover:text-primary mb-4 sm:mb-6 lg:mb-8 transition-all duration-300 hover:translate-x-1 touch-manipulation text-sm sm:text-base">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back to Home
+          </Link>
+
+          {/* Hero Section */}
+          <motion.div 
+            className="relative mb-12 sm:mb-16 lg:mb-20"
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 rounded-3xl blur-3xl"></div>
+            <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center">
+              <motion.div variants={itemVariants}>
+                <Badge variant="secondary" className="mb-4 sm:mb-6 text-xs sm:text-sm font-medium">
+                  <Heart className="w-4 h-4 mr-2" />
+                  Comprehensive Life Coverage
+                </Badge>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-foreground leading-tight mb-4 sm:mb-6">
+                  Life Coverage for <span className="text-primary">Every Stage</span>
+                </h1>
+                <p className="text-base sm:text-lg lg:text-xl text-muted-foreground mb-6 sm:mb-8 leading-relaxed">
+                  Final expense and comprehensive life insurance solutions with guaranteed acceptance and lifetime benefits. No medical exams required, affordable monthly premiums.
+                </p>
+                <div className="flex flex-col gap-3 sm:gap-4">
+                  <Button 
+                    size="lg"
+                    onClick={() => window.open('https://quickstart.assurity.com/agoraassurancesolutions', '_blank')}
+                    className="text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 w-full sm:w-auto"
+                  >
+                    Get Your Quote
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    size="lg"
+                    onClick={() => {
+                      const contactSection = document.getElementById('contact');
+                      if (contactSection) {
+                        contactSection.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                    className="text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 w-full sm:w-auto"
+                  >
+                    <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                    Speak with Expert
+                  </Button>
+                </div>
+              </motion.div>
+              <motion.div className="relative" variants={itemVariants}>
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-2xl"></div>
+                <img 
+                  src={finalExpenseHero} 
+                  alt="Life insurance coverage and final expense protection"
+                  className="relative rounded-3xl shadow-2xl w-full h-auto"
+                />
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* Core Life Coverage Features */}
+          <motion.div 
+            className="mb-12 sm:mb-16 lg:mb-20"
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+          >
+            <motion.div className="text-center mb-8 sm:mb-12 lg:mb-16" variants={itemVariants}>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 sm:mb-6">Life Coverage Benefits</h2>
+              <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto">
+                Five essential benefits that make our life coverage the right choice for your peace of mind
+              </p>
+            </motion.div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6">
+              {[
+                { 
+                  icon: Umbrella, 
+                  title: "Final Expense Coverage", 
+                  description: "Cover funeral costs, burial expenses, and final medical bills to protect your family",
+                  color: "text-blue-500"
+                },
+                { 
+                  icon: CheckCircle, 
+                  title: "Guaranteed Acceptance", 
+                  description: "Get approved regardless of your health condition - no one is turned away",
+                  color: "text-green-500"
+                },
+                { 
+                  icon: FileText, 
+                  title: "No Medical Exams Required", 
+                  description: "Simple application process with no medical exams, blood work, or doctor visits",
+                  color: "text-purple-500"
+                },
+                { 
+                  icon: Shield, 
+                  title: "Lifetime Benefit Protection", 
+                  description: "Your coverage stays in force for life as long as premiums are paid",
+                  color: "text-orange-500"
+                },
+                { 
+                  icon: DollarSign, 
+                  title: "Affordable Monthly Premiums", 
+                  description: "Budget-friendly payments that fit your lifestyle and financial situation",
+                  color: "text-red-500"
+                }
+              ].map((feature, index) => (
+                <motion.div key={index} variants={itemVariants}>
+                  <Card className="h-full hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 hover:border-primary/20 bg-card/50 backdrop-blur-sm">
+                    <CardContent className="p-4 sm:p-6 text-center">
+                      <div className="mb-3 sm:mb-4">
+                        <feature.icon className={`w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 ${feature.color} mx-auto`} />
+                      </div>
+                      <h3 className="font-bold text-sm sm:text-base lg:text-lg mb-2 sm:mb-3 text-foreground">{feature.title}</h3>
+                      <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">{feature.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Coverage Types */}
+          <motion.div 
+            className="mb-12 sm:mb-16 lg:mb-20"
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+          >
+            <motion.div className="text-center mb-8 sm:mb-12 lg:mb-16" variants={itemVariants}>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 sm:mb-6">Choose Your Coverage Type</h2>
+              <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto">
+                From final expense protection to comprehensive life coverage, find the perfect solution for your needs
+              </p>
+            </motion.div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+              {[
+                {
+                  icon: Heart,
+                  title: "Final Expense",
+                  description: "Specialized coverage for end-of-life expenses",
+                  features: ["Funeral & burial costs", "Medical bills", "Outstanding debts", "Immediate coverage"],
+                  highlight: false,
+                  coverage: "$5,000 - $25,000"
+                },
+                {
+                  icon: Shield,
+                  title: "Whole Life Insurance", 
+                  description: "Permanent coverage with cash value growth",
+                  features: ["Lifetime protection", "Cash value buildup", "Guaranteed premiums", "Loan options"],
+                  highlight: true,
+                  coverage: "$25,000 - $500,000"
+                },
+                {
+                  icon: Building2,
+                  title: "Term Life Insurance",
+                  description: "Affordable temporary coverage for specific needs",
+                  features: ["High coverage amounts", "Level premiums", "Convertible options", "Flexible terms"],
+                  highlight: false,
+                  coverage: "$100,000 - $2,000,000"
+                }
+              ].map((plan, index) => (
+                <motion.div key={index} variants={itemVariants}>
+                  <Card className={`h-full relative overflow-hidden ${plan.highlight ? 'border-primary shadow-xl lg:scale-105' : 'hover:shadow-lg'} transition-all duration-300`}>
+                    {plan.highlight && (
+                      <div className="absolute top-0 left-0 right-0 bg-primary text-primary-foreground text-center py-1.5 sm:py-2 text-xs sm:text-sm font-medium">
+                        Most Popular
+                      </div>
+                    )}
+                    <CardContent className={`p-4 sm:p-6 lg:p-8 ${plan.highlight ? 'pt-8 sm:pt-10 lg:pt-12' : ''}`}>
+                      <plan.icon className={`w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 ${plan.highlight ? 'text-primary' : 'text-muted-foreground'} mb-3 sm:mb-4`} />
+                      <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-2 sm:mb-3 text-foreground">{plan.title}</h3>
+                      <p className="text-muted-foreground mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">{plan.description}</p>
+                      <div className="mb-4 sm:mb-6">
+                        <span className="text-xs sm:text-sm text-muted-foreground">Coverage Range:</span>
+                        <span className="block text-sm sm:text-base font-semibold text-primary">{plan.coverage}</span>
+                      </div>
+                      
+                      <ul className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
+                        {plan.features.map((feature, featureIndex) => (
+                          <li key={featureIndex} className="flex items-start">
+                            <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 mr-2 sm:mr-3 mt-0.5 flex-shrink-0" />
+                            <span className="text-xs sm:text-sm text-muted-foreground">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      
+                      <Button 
+                        variant={plan.highlight ? "default" : "outline"} 
+                        className="w-full text-sm sm:text-base"
+                        onClick={() => window.open('https://quickstart.assurity.com/agoraassurancesolutions', '_blank')}
+                      >
+                        Get Quote
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Who Needs Life Coverage */}
+          <motion.div 
+            className="mb-12 sm:mb-16 lg:mb-20"
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+          >
+            <motion.div className="text-center mb-8 sm:mb-12 lg:mb-16" variants={itemVariants}>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 sm:mb-6">Who Needs Life Coverage?</h2>
+              <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto">
+                Life insurance is essential for anyone who wants to protect their loved ones financially
+              </p>
+            </motion.div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+              {[
+                { icon: Users, title: "Seniors (50-85)", description: "Final expense coverage to protect family from burial costs" },
+                { icon: Heart, title: "Parents & Spouses", description: "Income replacement to maintain family's lifestyle" },
+                { icon: Target, title: "Young Adults", description: "Affordable term coverage while young and healthy" },
+                { icon: Building2, title: "Business Owners", description: "Key person insurance and business continuation" },
+                { icon: Calculator, title: "Debt Holders", description: "Coverage to pay off mortgages and outstanding debts" },
+                { icon: Award, title: "Anyone Seeking Peace of Mind", description: "Financial security for loved ones no matter what happens" }
+              ].map((item, index) => (
+                <motion.div key={index} variants={itemVariants}>
+                  <Card className="h-full text-center hover:shadow-lg transition-all duration-300 hover:scale-105 border-2 hover:border-primary/20">
+                    <CardContent className="p-4 sm:p-6">
+                      <item.icon className="w-8 h-8 sm:w-10 sm:h-10 text-primary mx-auto mb-3 sm:mb-4" />
+                      <h3 className="font-bold text-base sm:text-lg mb-2 text-foreground">{item.title}</h3>
+                      <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">{item.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Why Choose Our Life Coverage */}
+          <motion.div 
+            className="mb-12 sm:mb-16 lg:mb-20"
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+          >
+            <motion.div className="text-center mb-8 sm:mb-12 lg:mb-16" variants={itemVariants}>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 sm:mb-6">Why Choose Agora Life Coverage?</h2>
+              <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto">
+                Experience the advantage of working with an independent agency that finds you the best coverage
+              </p>
+            </motion.div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+              {[
+                { icon: Star, title: "40+ Top Insurers", description: "Access to the best life insurance companies nationwide" },
+                { icon: TrendingUp, title: "Competitive Rates", description: "Independent shopping ensures you get the best price" },
+                { icon: Clock, title: "Quick Approval", description: "Fast processing with many plans offering immediate coverage" },
+                { icon: Phone, title: "Expert Guidance", description: "Licensed professionals help you choose the right coverage" }
+              ].map((benefit, index) => (
+                <motion.div key={index} variants={itemVariants}>
+                  <Card className="text-center hover:shadow-lg transition-all duration-300 hover:scale-105 border-2 hover:border-primary/20">
+                    <CardContent className="p-4 sm:p-6">
+                      <benefit.icon className="w-8 h-8 sm:w-10 sm:h-10 text-primary mx-auto mb-3 sm:mb-4" />
+                      <h3 className="font-bold text-base sm:text-lg mb-2 text-foreground">{benefit.title}</h3>
+                      <p className="text-muted-foreground text-xs sm:text-sm">{benefit.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* CTA Section */}
+          <motion.div 
+            className="relative"
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10 rounded-3xl blur-2xl"></div>
+            <div className="relative bg-card border-2 border-primary/20 rounded-3xl p-6 sm:p-8 lg:p-12 text-center backdrop-blur-sm">
+              <motion.h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 sm:mb-6 text-foreground" variants={itemVariants}>
+                Secure Your Family's Future Today
+              </motion.h2>
+              <motion.p className="text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-6 sm:mb-8" variants={itemVariants}>
+                Don't wait to protect your loved ones. Get a personalized life insurance quote or speak with one of our licensed experts to find the perfect coverage for your needs.
+              </motion.p>
+              <motion.div className="flex flex-col gap-3 sm:gap-4 justify-center" variants={itemVariants}>
+                <Button 
+                  size="lg"
+                  onClick={() => window.open('https://quickstart.assurity.com/agoraassurancesolutions', '_blank')}
+                  className="text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 w-full sm:w-auto"
+                >
+                  Get Instant Quote
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="lg"
+                  onClick={() => {
+                    const contactSection = document.getElementById('contact');
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                  className="text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 w-full sm:w-auto"
+                >
+                  <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                  Speak with Expert
+                </Button>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    </PageLayout>
+  );
+};
+
+export default LifeCoverage;
