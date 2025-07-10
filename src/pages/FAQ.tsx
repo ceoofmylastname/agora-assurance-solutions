@@ -164,9 +164,9 @@ const FAQ = () => {
       />
       
       <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
-        <div className="container mx-auto px-2 md:px-4 py-8 md:py-16">
+        <div className="container mx-auto px-2 md:px-4 py-8 md:py-16 pt-20 md:pt-24">
           {/* Header Section */}
-          <div className="text-center mb-8 md:mb-12 px-4">
+          <div className="text-center mb-8 md:mb-12 px-4 mt-4 md:mt-0">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 leading-tight">
               Frequently Asked Questions
             </h1>
