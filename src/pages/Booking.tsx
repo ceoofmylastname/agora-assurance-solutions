@@ -49,7 +49,7 @@ const Booking = () => {
         keywords={['insurance consultation', 'free appointment', 'insurance advisor', 'book consultation', 'insurance quotes']}
       />
       
-      <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20 relative overflow-hidden">
+      <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20 relative overflow-hidden pt-16 sm:pt-20">{/* Add top padding for navbar */}
         {/* Optimized animated background for mobile */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
