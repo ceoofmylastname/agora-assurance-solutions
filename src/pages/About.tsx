@@ -1,10 +1,13 @@
-import { ArrowLeft, CheckCircle, ArrowRight } from 'lucide-react';
+import { ArrowLeft, CheckCircle, ArrowRight, Trophy, Users, Target, Heart, TrendingUp, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import AnimatedCounter from "@/components/ui/animated-counter";
 const About = () => {
   // Scroll to top on mount
@@ -132,28 +135,175 @@ const About = () => {
             }} className="mb-16">
                 <h2 className="text-3xl font-bold mb-8 text-center">Leadership with Vision</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  <motion.div initial={{
-                  opacity: 0,
-                  x: -20
-                }} animate={{
-                  opacity: 1,
-                  x: 0
-                }} transition={{
-                  duration: 0.6,
-                  delay: 0.5
-                }} className="relative group">
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#15AFF7]/5 to-blue-600/5 rounded-2xl transform rotate-1 scale-105 group-hover:rotate-2 transition-transform duration-300"></div>
-                    <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300">
-                      <div className="h-20 w-20 rounded-full overflow-hidden mb-4 border-2 border-[#15AFF7]/20">
-                        <img alt="Kevin Jenson - Founder & CEO" className="w-full h-full object-cover" src="https://storage.googleapis.com/msgsndr/TLhrYb7SRrWrly615tCI/media/686eb76d038ba82a1245496a.jpeg" />
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <motion.div initial={{
+                      opacity: 0,
+                      x: -20
+                    }} animate={{
+                      opacity: 1,
+                      x: 0
+                    }} transition={{
+                      duration: 0.6,
+                      delay: 0.5
+                    }} className="relative group cursor-pointer">
+                        <div className="absolute inset-0 bg-gradient-to-br from-[#15AFF7]/5 to-blue-600/5 rounded-2xl transform rotate-1 scale-105 group-hover:rotate-2 transition-transform duration-300"></div>
+                        <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300">
+                          <div className="h-20 w-20 rounded-full overflow-hidden mb-4 border-2 border-[#15AFF7]/20">
+                            <img alt="Kevin Jenson - Founder & CEO" className="w-full h-full object-cover" src="https://storage.googleapis.com/msgsndr/TLhrYb7SRrWrly615tCI/media/686eb76d038ba82a1245496a.jpeg" />
+                          </div>
+                          <h3 className="text-xl font-bold text-gray-900 mb-1">Kevin Jenson</h3>
+                          <p className="text-[#15AFF7] font-medium mb-3">Founder & CEO</p>
+                          <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                            With nearly two decades in life insurance and annuities—including executive leadership at Quility—Kevin founded Agora in 2025 to reinvent the client experience with technology, speed, and service.
+                          </p>
+                          <Button variant="outline" size="sm" className="w-full group-hover:bg-[#15AFF7] group-hover:text-white transition-colors">
+                            Learn More
+                          </Button>
+                        </div>
+                      </motion.div>
+                    </DialogTrigger>
+                    
+                    <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-white/95 backdrop-blur-xl border border-white/20 shadow-2xl">
+                      <div className="relative">
+                        {/* Hero Header */}
+                        <div className="relative mb-8 -mx-6 -mt-6 p-8 bg-gradient-to-br from-[#15AFF7]/10 to-blue-600/20 rounded-t-lg">
+                          <div className="absolute inset-0 bg-gradient-to-br from-[#15AFF7]/5 to-blue-600/10 backdrop-blur-sm"></div>
+                          <div className="relative flex flex-col md:flex-row items-center gap-6">
+                            <div className="relative">
+                              <div className="absolute inset-0 bg-gradient-to-br from-[#15AFF7] to-blue-600 rounded-full blur-lg opacity-30 scale-110"></div>
+                              <img 
+                                src="https://storage.googleapis.com/msgsndr/TLhrYb7SRrWrly615tCI/media/686eb76d038ba82a1245496a.jpeg" 
+                                alt="Kevin Jenson - CEO" 
+                                className="relative w-32 h-32 rounded-full object-cover border-4 border-white shadow-xl"
+                              />
+                            </div>
+                            <div className="text-center md:text-left">
+                              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Kevin Jenson</h1>
+                              <div className="flex items-center justify-center md:justify-start gap-2 mb-4">
+                                <Badge variant="default" className="bg-[#15AFF7] hover:bg-[#15AFF7]/90">
+                                  CEO & Founder
+                                </Badge>
+                                <Badge variant="outline">
+                                  Agora Assurance Solutions
+                                </Badge>
+                              </div>
+                              <p className="text-gray-600 text-lg italic">
+                                "From the baseball diamond to the boardroom—transforming insurance with vision and heart."
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Content Grid */}
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                          {/* Main Biography */}
+                          <div className="lg:col-span-2 space-y-6">
+                            <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-6 border border-gray-100">
+                              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <Trophy className="h-5 w-5 text-[#15AFF7]" />
+                                The Journey
+                              </h3>
+                              <div className="space-y-4 text-gray-600 leading-relaxed">
+                                <p>
+                                  Kevin Jenson's journey from the baseball diamond to the boardroom is a testament to his unyielding drive and visionary leadership. Launching his insurance career in 2005 after a stint in the minor leagues, Kevin has spent nearly 20 years revolutionizing the industry and propelling agencies to new heights.
+                                </p>
+                                <p>
+                                  Kevin's early triumph in mortgage protection sales quickly catapulted him into a leadership role, where he spearheaded national recruitment and team-building initiatives. His innate ability to inspire and lead was evident from the start, setting the stage for a career defined by transformative growth and innovation.
+                                </p>
+                              </div>
+                            </div>
+
+                            <div className="bg-gradient-to-br from-blue-50 to-white rounded-xl p-6 border border-blue-100">
+                              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <TrendingUp className="h-5 w-5 text-blue-600" />
+                                Industry Leadership
+                              </h3>
+                              <div className="space-y-4 text-gray-600 leading-relaxed">
+                                <p>
+                                  As President and CEO of Asurea Wholesale, Kevin led a remarkable surge in life and annuity sales, culminating in a strategic merger that birthed Quility Wholesale in 2020. As a founding shareholder and Senior Vice President, he was the driving force behind the seamless transition and continued success, solidifying his reputation as a dynamic leader and industry pioneer.
+                                </p>
+                                <p>
+                                  In 2024, Kevin took on the mantle of CEO at Agora Assurance Solutions, where he is poised to usher in the next era of consumer education. His vision for leveraging innovative marketing programs and cutting-edge technology promises to elevate the industry standard and drive significant business growth.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Sidebar Content */}
+                          <div className="space-y-6">
+                            <div className="bg-gradient-to-br from-[#15AFF7]/5 to-blue-600/10 rounded-xl p-6 border border-[#15AFF7]/20">
+                              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <Target className="h-5 w-5 text-[#15AFF7]" />
+                                Leadership Philosophy
+                              </h3>
+                              <p className="text-gray-600 text-sm leading-relaxed">
+                                Kevin's leadership philosophy is rooted in <strong>servant leadership</strong>, consistently empowering agents to achieve unprecedented success. His dedication to the craft and relentless pursuit of excellence have earned him the respect of top-tier executives across the insurance landscape.
+                              </p>
+                            </div>
+
+                            <div className="bg-gradient-to-br from-green-50 to-white rounded-xl p-6 border border-green-100">
+                              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <Heart className="h-5 w-5 text-green-600" />
+                                Community Impact
+                              </h3>
+                              <p className="text-gray-600 text-sm leading-relaxed">
+                                Beyond the corporate sphere, Kevin is a stalwart community advocate. Actively involved in youth sports and serving on the board of the local little league, his commitment to nurturing the next generation mirrors his professional ethos of mentorship and development.
+                              </p>
+                            </div>
+
+                            <div className="bg-gradient-to-br from-purple-50 to-white rounded-xl p-6 border border-purple-100">
+                              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <Users className="h-5 w-5 text-purple-600" />
+                                Career Milestones
+                              </h3>
+                              <div className="space-y-3 text-sm">
+                                <div className="flex items-start gap-3">
+                                  <div className="w-2 h-2 rounded-full bg-[#15AFF7] mt-2 flex-shrink-0"></div>
+                                  <div>
+                                    <strong className="text-gray-900">2024:</strong>
+                                    <span className="text-gray-600"> CEO, Agora Assurance Solutions</span>
+                                  </div>
+                                </div>
+                                <div className="flex items-start gap-3">
+                                  <div className="w-2 h-2 rounded-full bg-blue-600 mt-2 flex-shrink-0"></div>
+                                  <div>
+                                    <strong className="text-gray-900">2020:</strong>
+                                    <span className="text-gray-600"> Co-founded Quility Wholesale</span>
+                                  </div>
+                                </div>
+                                <div className="flex items-start gap-3">
+                                  <div className="w-2 h-2 rounded-full bg-green-600 mt-2 flex-shrink-0"></div>
+                                  <div>
+                                    <strong className="text-gray-900">2015:</strong>
+                                    <span className="text-gray-600"> President & CEO, Asurea Wholesale</span>
+                                  </div>
+                                </div>
+                                <div className="flex items-start gap-3">
+                                  <div className="w-2 h-2 rounded-full bg-purple-600 mt-2 flex-shrink-0"></div>
+                                  <div>
+                                    <strong className="text-gray-900">2005:</strong>
+                                    <span className="text-gray-600"> Entered insurance industry</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Bottom Quote */}
+                        <div className="mt-8 p-6 bg-gradient-to-r from-[#15AFF7]/10 to-blue-600/10 rounded-xl border border-[#15AFF7]/20 text-center">
+                          <p className="text-lg italic text-gray-700 mb-2">
+                            "Kevin Jenson's career is a powerful narrative of perseverance, innovation, and impact—a leader who not only transforms businesses but also enriches communities."
+                          </p>
+                          <div className="flex items-center justify-center gap-2 text-sm text-gray-500">
+                            <MapPin className="h-4 w-4" />
+                            <span>Leading the future of insurance from the heart of innovation</span>
+                          </div>
+                        </div>
                       </div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-1">Kevin Jenson</h3>
-                      <p className="text-[#15AFF7] font-medium mb-3">Founder & CEO</p>
-                      <p className="text-gray-600 text-sm leading-relaxed">
-                        With nearly two decades in life insurance and annuities—including executive leadership at Quility—Kevin founded Agora in 2025 to reinvent the client experience with technology, speed, and service.
-                      </p>
-                    </div>
-                  </motion.div>
+                    </DialogContent>
+                  </Dialog>
                   
                   <motion.div initial={{
                   opacity: 0,
