@@ -305,28 +305,182 @@ const About = () => {
                     </DialogContent>
                   </Dialog>
                   
-                  <motion.div initial={{
-                  opacity: 0,
-                  y: 20
-                }} animate={{
-                  opacity: 1,
-                  y: 0
-                }} transition={{
-                  duration: 0.6,
-                  delay: 0.6
-                }} className="relative group">
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-600/5 rounded-2xl transform -rotate-1 scale-105 group-hover:-rotate-2 transition-transform duration-300"></div>
-                    <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform rotate-1 group-hover:rotate-0 transition-transform duration-300">
-                      <div className="h-20 w-20 rounded-full overflow-hidden mb-4 border-2 border-blue-500/20">
-                        <img alt="Benjamin Schroeder - Director of Communications" className="w-full h-full object-cover object-top" src="/lovable-uploads/8a8c0896-4865-4bb8-aa18-10e30d79d044.png" />
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <motion.div initial={{
+                      opacity: 0,
+                      y: 20
+                    }} animate={{
+                      opacity: 1,
+                      y: 0
+                    }} transition={{
+                      duration: 0.6,
+                      delay: 0.6
+                    }} className="relative group cursor-pointer">
+                        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-600/5 rounded-2xl transform -rotate-1 scale-105 group-hover:-rotate-2 transition-transform duration-300"></div>
+                        <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform rotate-1 group-hover:rotate-0 transition-transform duration-300">
+                          <div className="h-20 w-20 rounded-full overflow-hidden mb-4 border-2 border-blue-500/20">
+                            <img alt="Benjamin Schroeder - Director of Communications" className="w-full h-full object-cover object-top" src="/lovable-uploads/8a8c0896-4865-4bb8-aa18-10e30d79d044.png" />
+                          </div>
+                          <h3 className="text-xl font-bold text-gray-900 mb-1">Benjamin Schroeder</h3>
+                          <p className="text-blue-500 font-medium mb-3">Director of Communications</p>
+                          <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                            A skilled strategist with a background in coaching and corporate leadership, Ben ensures our mission stays aligned across every channel—from brand to partnership.
+                          </p>
+                          <Button variant="outline" size="sm" className="w-full group-hover:bg-blue-500 group-hover:text-white transition-colors">
+                            Learn More
+                          </Button>
+                        </div>
+                      </motion.div>
+                    </DialogTrigger>
+                    
+                    <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-white/95 backdrop-blur-xl border border-white/20 shadow-2xl">
+                      <div className="relative">
+                        {/* Hero Header */}
+                        <div className="relative mb-8 -mx-6 -mt-6 p-8 bg-gradient-to-br from-blue-500/10 to-purple-600/20 rounded-t-lg">
+                          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-600/10 backdrop-blur-sm"></div>
+                          <div className="relative flex flex-col md:flex-row items-center gap-6">
+                            <div className="relative">
+                              <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full blur-lg opacity-30 scale-110"></div>
+                              <img 
+                                src="/lovable-uploads/8a8c0896-4865-4bb8-aa18-10e30d79d044.png" 
+                                alt="Benjamin Schroeder - Director of Communications" 
+                                className="relative w-32 h-32 rounded-full object-cover object-top border-4 border-white shadow-xl"
+                              />
+                            </div>
+                            <div className="text-center md:text-left">
+                              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Benjamin Schroeder</h1>
+                              <div className="flex items-center justify-center md:justify-start gap-2 mb-4">
+                                <Badge variant="default" className="bg-blue-500 hover:bg-blue-500/90">
+                                  Director of Communications
+                                </Badge>
+                                <Badge variant="outline">
+                                  Strategic Leadership
+                                </Badge>
+                              </div>
+                              <p className="text-gray-600 text-lg italic">
+                                "Transforming corporate narratives through strategic insight and collaborative leadership."
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Content Grid */}
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                          {/* Main Biography */}
+                          <div className="lg:col-span-2 space-y-6">
+                            <div className="bg-gradient-to-br from-blue-50 to-white rounded-xl p-6 border border-blue-100">
+                              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <Users className="h-5 w-5 text-blue-500" />
+                                Strategic Communications Leader
+                              </h3>
+                              <div className="space-y-4 text-gray-600 leading-relaxed">
+                                <p>
+                                  With a robust background in coaching, business development, and corporate structure, Benjamin brings a unique blend of strategic insight and practical experience to their role as Director of Communications. Over the course of 15 years, Benjamin has honed their ability to craft compelling narratives that connect businesses with their audiences, while also driving internal transformation and growth.
+                                </p>
+                                <p>
+                                  In addition to his extensive experience in communications, Benjamin has a strong track record in coaching and mentoring teams, helping individuals and leaders unlock their full potential. This expertise in personal and professional development is complemented by a deep understanding of organizational structure and how effective communication can streamline operations, foster collaboration, and align teams toward a common vision.
+                                </p>
+                              </div>
+                            </div>
+
+                            <div className="bg-gradient-to-br from-purple-50 to-white rounded-xl p-6 border border-purple-100">
+                              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <TrendingUp className="h-5 w-5 text-purple-600" />
+                                Business Development Excellence
+                              </h3>
+                              <div className="space-y-4 text-gray-600 leading-relaxed">
+                                <p>
+                                  Throughout his career, Benjamin has played a pivotal role in business development, leveraging their communication skills to create strategic partnerships and expand brand presence across various sectors. From leading internal communications strategies that enhance employee engagement, to shaping external messaging that strengthens corporate reputation, Benjamin has been instrumental in navigating complex business landscapes.
+                                </p>
+                                <p>
+                                  Known for his results-driven approach, Benjamin excels in aligning communication strategies with business objectives, ensuring that both short-term goals and long-term success are achieved. Ben's ability to lead cross-functional teams and manage multiple projects simultaneously is a testament to their strong organizational skills and leadership.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Sidebar Content */}
+                          <div className="space-y-6">
+                            <div className="bg-gradient-to-br from-blue-500/5 to-purple-600/10 rounded-xl p-6 border border-blue-500/20">
+                              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <Target className="h-5 w-5 text-blue-500" />
+                                Core Expertise
+                              </h3>
+                              <div className="space-y-3">
+                                <div className="flex items-center gap-2">
+                                  <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                                  <span className="text-sm text-gray-600">Strategic Communications</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <div className="w-2 h-2 rounded-full bg-purple-500"></div>
+                                  <span className="text-sm text-gray-600">Coaching & Mentoring</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <div className="w-2 h-2 rounded-full bg-indigo-500"></div>
+                                  <span className="text-sm text-gray-600">Business Development</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <div className="w-2 h-2 rounded-full bg-cyan-500"></div>
+                                  <span className="text-sm text-gray-600">Corporate Structure</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <div className="w-2 h-2 rounded-full bg-violet-500"></div>
+                                  <span className="text-sm text-gray-600">Cross-functional Leadership</span>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="bg-gradient-to-br from-green-50 to-white rounded-xl p-6 border border-green-100">
+                              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <Heart className="h-5 w-5 text-green-600" />
+                                Leadership Philosophy
+                              </h3>
+                              <p className="text-gray-600 text-sm leading-relaxed">
+                                With a passion for fostering positive corporate culture and a commitment to driving business success through innovative communication strategies, Benjamin is a trusted leader in the ever-evolving corporate world.
+                              </p>
+                            </div>
+
+                            <div className="bg-gradient-to-br from-orange-50 to-white rounded-xl p-6 border border-orange-100">
+                              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <Trophy className="h-5 w-5 text-orange-600" />
+                                Key Achievements
+                              </h3>
+                              <div className="space-y-3 text-sm">
+                                <div className="flex items-start gap-3">
+                                  <div className="w-2 h-2 rounded-full bg-blue-500 mt-2 flex-shrink-0"></div>
+                                  <span className="text-gray-600">15+ years of strategic communications expertise</span>
+                                </div>
+                                <div className="flex items-start gap-3">
+                                  <div className="w-2 h-2 rounded-full bg-purple-500 mt-2 flex-shrink-0"></div>
+                                  <span className="text-gray-600">Successful coaching and team development programs</span>
+                                </div>
+                                <div className="flex items-start gap-3">
+                                  <div className="w-2 h-2 rounded-full bg-green-500 mt-2 flex-shrink-0"></div>
+                                  <span className="text-gray-600">Enhanced employee engagement initiatives</span>
+                                </div>
+                                <div className="flex items-start gap-3">
+                                  <div className="w-2 h-2 rounded-full bg-orange-500 mt-2 flex-shrink-0"></div>
+                                  <span className="text-gray-600">Strengthened corporate reputation & partnerships</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Bottom Quote */}
+                        <div className="mt-8 p-6 bg-gradient-to-r from-blue-500/10 to-purple-600/10 rounded-xl border border-blue-500/20 text-center">
+                          <p className="text-lg italic text-gray-700 mb-2">
+                            "Benjamin's unique blend of strategic insight, coaching expertise, and communication mastery drives organizational success and fosters meaningful connections across all business channels."
+                          </p>
+                          <div className="flex items-center justify-center gap-2 text-sm text-gray-500">
+                            <Users className="h-4 w-4" />
+                            <span>Connecting teams, aligning visions, achieving results</span>
+                          </div>
+                        </div>
                       </div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-1">Benjamin Schroeder</h3>
-                      <p className="text-blue-500 font-medium mb-3">Director of Communications</p>
-                      <p className="text-gray-600 text-sm leading-relaxed">
-                        A skilled strategist with a background in coaching and corporate leadership, Ben ensures our mission stays aligned across every channel—from brand to partnership.
-                      </p>
-                    </div>
-                  </motion.div>
+                    </DialogContent>
+                  </Dialog>
                   
                   <motion.div initial={{
                   opacity: 0,
