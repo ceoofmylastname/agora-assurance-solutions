@@ -76,27 +76,27 @@ const sectionData: SectionData[] = [
 
 const AnimatedSection: React.FC<{ section: SectionData; index: number }> = ({ section, index }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [headlineVisible, setHeadlineVisible] = useState(false);
+  const [isExiting, setIsExiting] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          // Section slides up first
+          setIsExiting(false);
           setTimeout(() => {
             setIsVisible(true);
-          }, index * 200);
-          
-          // Headline slides up after section with additional delay
+          }, 100);
+        } else {
+          setIsExiting(true);
           setTimeout(() => {
-            setHeadlineVisible(true);
-          }, (index * 200) + 400);
+            setIsVisible(false);
+          }, 300);
         }
       },
       {
-        threshold: 0.3,
-        rootMargin: '0px 0px -100px 0px'
+        threshold: 0.4,
+        rootMargin: '-50px 0px -50px 0px'
       }
     );
 
@@ -114,74 +114,85 @@ const AnimatedSection: React.FC<{ section: SectionData; index: number }> = ({ se
   return (
     <div
       ref={sectionRef}
-      className={`min-h-screen flex items-center justify-center ${section.backgroundColor} relative overflow-hidden`}
+      className={`min-h-screen flex items-center justify-center ${section.backgroundColor} relative overflow-hidden transition-all duration-700`}
     >
+      {/* Modern Background Elements */}
+      <div className="absolute inset-0">
+        <div className={`absolute inset-0 bg-gradient-to-br from-transparent via-primary/5 to-transparent`}></div>
+        <div className="absolute top-0 left-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div className="absolute bottom-0 right-0 w-48 h-48 bg-primary/5 rounded-full blur-3xl animate-pulse-slow animation-delay-300"></div>
+      </div>
+
       {/* Main Content Container */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* Left Side - Number */}
-          <div className="lg:col-span-2 flex justify-center lg:justify-end">
+          <div className="lg:col-span-3 flex justify-center lg:justify-start">
             <div
               className={`
-                transform transition-all duration-[800ms] ease-out
-                ${isVisible 
-                  ? 'translate-y-0 opacity-100' 
-                  : 'translate-y-16 opacity-0'
+                transform transition-all duration-1000 ease-out will-change-transform
+                ${isVisible && !isExiting
+                  ? 'translate-y-0 opacity-100 scale-100' 
+                  : 'translate-y-20 opacity-0 scale-95'
                 }
               `}
+              style={{ transitionDelay: isVisible ? '0ms' : '0ms' }}
             >
-              <div className={`w-16 h-1 ${section.textColor.replace('text-', 'bg-')} mb-4`}></div>
-              <span className={`text-8xl lg:text-9xl font-black ${section.textColor} leading-none`}>
+              <div className={`w-24 h-1 ${section.textColor.replace('text-', 'bg-')} mb-6 rounded-full`}></div>
+              <span className={`text-8xl lg:text-9xl xl:text-[12rem] font-black ${section.textColor} leading-none tracking-tight`}>
                 {section.number}
               </span>
             </div>
           </div>
 
+          {/* Center - Icon */}
+          <div className="lg:col-span-2 flex justify-center">
+            <div
+              className={`
+                transform transition-all duration-1000 ease-out will-change-transform
+                ${isVisible && !isExiting
+                  ? 'translate-y-0 opacity-100 rotate-0 scale-100' 
+                  : 'translate-y-16 opacity-0 rotate-45 scale-75'
+                }
+              `}
+              style={{ transitionDelay: isVisible ? '200ms' : '0ms' }}
+            >
+              <Sparkles className={`w-16 h-16 lg:w-20 lg:h-20 ${section.textColor} drop-shadow-lg`} />
+            </div>
+          </div>
+
           {/* Right Side - Content */}
-          <div className="lg:col-span-10 space-y-8">
+          <div className="lg:col-span-7 space-y-8">
             
-            {/* Headline with Icon */}
-            <div className="flex items-center gap-6 flex-wrap">
-              <div
-                className={`
-                  transform transition-all duration-[800ms] ease-out
-                  ${headlineVisible 
-                    ? 'translate-y-0 opacity-100' 
-                    : 'translate-y-12 opacity-0'
-                  }
-                `}
-              >
-                <h2 className={`text-4xl lg:text-6xl xl:text-7xl font-black ${section.textColor} leading-tight tracking-tight`}>
-                  {section.headline}
-                </h2>
-              </div>
-              
-              {/* Star Icon */}
-              <div
-                className={`
-                  transform transition-all duration-[800ms] ease-out delay-200
-                  ${headlineVisible 
-                    ? 'translate-y-0 opacity-100 rotate-0' 
-                    : 'translate-y-8 opacity-0 rotate-45'
-                  }
-                `}
-              >
-                <Sparkles className={`w-12 h-12 lg:w-16 lg:h-16 ${section.textColor} flex-shrink-0`} />
-              </div>
+            {/* Headline */}
+            <div
+              className={`
+                transform transition-all duration-1000 ease-out will-change-transform perspective-1000
+                ${isVisible && !isExiting
+                  ? 'translate-y-0 opacity-100 rotateY-0' 
+                  : 'translate-y-12 opacity-0 rotateY-90'
+                }
+              `}
+              style={{ transitionDelay: isVisible ? '400ms' : '0ms' }}
+            >
+              <h2 className={`text-5xl lg:text-7xl xl:text-8xl font-black ${section.textColor} leading-tight tracking-tight`}>
+                {section.headline}
+              </h2>
             </div>
 
             {/* Description */}
             <div
               className={`
-                transform transition-all duration-[800ms] ease-out delay-300
-                ${isVisible 
+                transform transition-all duration-1000 ease-out will-change-transform
+                ${isVisible && !isExiting
                   ? 'translate-y-0 opacity-100' 
-                  : 'translate-y-8 opacity-0'
+                  : 'translate-y-12 opacity-0'
                 }
               `}
+              style={{ transitionDelay: isVisible ? '600ms' : '0ms' }}
             >
-              <p className={`text-lg lg:text-xl ${section.textColor} font-medium leading-relaxed max-w-4xl`}>
+              <p className={`text-xl lg:text-2xl ${section.textColor} font-medium leading-relaxed max-w-4xl`}>
                 {section.description}
               </p>
             </div>
@@ -189,23 +200,31 @@ const AnimatedSection: React.FC<{ section: SectionData; index: number }> = ({ se
             {/* Features List */}
             <div
               className={`
-                transform transition-all duration-[800ms] ease-out delay-500
-                ${isVisible 
+                transform transition-all duration-1000 ease-out will-change-transform
+                ${isVisible && !isExiting
                   ? 'translate-y-0 opacity-100' 
-                  : 'translate-y-8 opacity-0'
+                  : 'translate-y-12 opacity-0'
                 }
               `}
+              style={{ transitionDelay: isVisible ? '800ms' : '0ms' }}
             >
-              <ul className="space-y-3 max-w-3xl">
+              <ul className="space-y-4 max-w-4xl">
                 {section.features.map((feature, featureIndex) => (
                   <li 
                     key={featureIndex} 
-                    className={`flex items-center text-base lg:text-lg ${section.textColor} font-medium transform transition-all duration-[800ms] ease-out`}
+                    className={`
+                      flex items-center text-lg lg:text-xl ${section.textColor} font-medium 
+                      transform transition-all duration-1000 ease-out will-change-transform
+                      ${isVisible && !isExiting
+                        ? 'translate-y-0 opacity-100' 
+                        : 'translate-y-8 opacity-0'
+                      }
+                    `}
                     style={{
-                      transitionDelay: `${600 + (featureIndex * 100)}ms`
+                      transitionDelay: isVisible ? `${1000 + (featureIndex * 150)}ms` : '0ms'
                     }}
                   >
-                    <div className={`w-2 h-2 rounded-full ${section.textColor.replace('text-', 'bg-')} mr-4 flex-shrink-0`}></div>
+                    <div className={`w-3 h-3 rounded-full ${section.textColor.replace('text-', 'bg-')} mr-6 flex-shrink-0 shadow-lg`}></div>
                     <span>{feature}</span>
                   </li>
                 ))}
@@ -215,12 +234,13 @@ const AnimatedSection: React.FC<{ section: SectionData; index: number }> = ({ se
             {/* Learn More Link */}
             <div
               className={`
-                transform transition-all duration-[800ms] ease-out delay-700
-                ${isVisible 
+                transform transition-all duration-1000 ease-out will-change-transform
+                ${isVisible && !isExiting
                   ? 'translate-y-0 opacity-100' 
-                  : 'translate-y-8 opacity-0'
+                  : 'translate-y-12 opacity-0'
                 }
               `}
+              style={{ transitionDelay: isVisible ? `${1000 + (section.features.length * 150) + 200}ms` : '0ms' }}
             >
               <button 
                 onClick={() => {
@@ -229,18 +249,18 @@ const AnimatedSection: React.FC<{ section: SectionData; index: number }> = ({ se
                     contactSection.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}
-                className={`inline-flex items-center text-lg lg:text-xl ${section.textColor} font-bold hover:underline transition-all duration-300 hover:translate-x-2 cursor-pointer`}
+                className={`
+                  group inline-flex items-center text-xl lg:text-2xl ${section.textColor} font-bold 
+                  transition-all duration-500 hover:translate-x-3 cursor-pointer
+                  border-b-2 border-transparent hover:border-current pb-1
+                `}
               >
-                → LEARN MORE
+                <span className="transform transition-transform duration-300 group-hover:translate-x-1">→</span>
+                <span className="ml-2">LEARN MORE</span>
               </button>
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-primary/10 to-transparent"></div>
       </div>
     </div>
   );
