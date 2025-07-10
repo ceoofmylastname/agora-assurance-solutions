@@ -10,84 +10,148 @@ const GetQuote = () => {
   // Insurance company logos with transparent backgrounds
   const companyLogos = [
     {
-      name: "Transamerica",
-      logo: "https://logos-world.net/wp-content/uploads/2021/02/Transamerica-Logo.png",
-      category: "Life Insurance"
-    },
-    {
       name: "Allianz",
-      logo: "https://logos-world.net/wp-content/uploads/2020/11/Allianz-Logo.png",
-      category: "Annuities"
+      logo: "https://upload.wikimedia.org/wikipedia/commons/4/4b/Allianz.svg",
+      category: "Annuities",
+      initials: "AL"
     },
     {
-      name: "Prudential",
-      logo: "https://logos-world.net/wp-content/uploads/2020/11/Prudential-Logo.png",
-      category: "Life Insurance"
-    },
-    {
-      name: "American National",
-      logo: "https://www.anico.com/images/default-source/default-album/anico-logo.png",
-      category: "Life Insurance"
+      name: "American Equity",
+      logo: "https://logo.clearbit.com/american-equity.com",
+      category: "Life Insurance",
+      initials: "AE"
     },
     {
       name: "Nationwide",
-      logo: "https://logos-world.net/wp-content/uploads/2020/11/Nationwide-Logo.png",
-      category: "Comprehensive"
+      logo: "https://upload.wikimedia.org/wikipedia/en/1/1c/Nationwide_Mutual_Insurance_Company_logo.svg",
+      category: "Comprehensive",
+      initials: "NW"
     },
     {
-      name: "Lincoln Financial",
-      logo: "https://logos-world.net/wp-content/uploads/2021/02/Lincoln-Financial-Group-Logo.png",
-      category: "Annuities"
-    },
-    {
-      name: "Protective",
-      logo: "https://www.protective.com/content/dam/protective/logos/protective-logo-rgb.png",
-      category: "Final Expense"
-    },
-    {
-      name: "Assurity",
-      logo: "https://www.assurity.com/content/dam/assurity/logos/assurity-logo.png",
-      category: "Life Insurance"
-    },
-    {
-      name: "Athene",
-      logo: "https://www.athene.com/content/dam/athene/common/logos/athene-logo-primary.png",
-      category: "Annuities"
-    },
-    {
-      name: "The Standard",
-      logo: "https://logos-world.net/wp-content/uploads/2021/02/Standard-Insurance-Logo.png",
-      category: "Final Expense"
-    },
-    {
-      name: "Global Atlantic",
-      logo: "https://www.globalatlantic.com/content/dam/globalatlantic/images/logos/ga-logo.png",
-      category: "Annuities"
-    },
-    {
-      name: "OneAmerica",
-      logo: "https://www.oneamerica.com/content/dam/oneamerica/images/logos/oneamerica-logo.png",
-      category: "Comprehensive"
+      name: "American National",
+      logo: "https://logo.clearbit.com/americannational.com",
+      category: "Life Insurance",
+      initials: "AN"
     },
     {
       name: "Americo",
-      logo: "https://www.americo.com/content/dam/americo/logos/americo-logo.png",
-      category: "Life Insurance"
+      logo: "https://logo.clearbit.com/americo.com",
+      category: "Life Insurance",
+      initials: "AM"
     },
     {
-      name: "Liberty Bankers",
-      logo: "https://www.libertybankers.com/content/dam/liberty/logos/liberty-bankers-logo.png",
-      category: "Final Expense"
+      name: "Assurity",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/2/24/Assurity_Logo_3x3.jpg",
+      category: "Life Insurance",
+      initials: "AS"
+    },
+    {
+      name: "Athene",
+      logo: "https://logo.clearbit.com/athene.com",
+      category: "Annuities",
+      initials: "AT"
+    },
+    {
+      name: "Atlantic Coast Life",
+      logo: "https://logo.clearbit.com/aclife.com",
+      category: "Life Insurance",
+      initials: "AC"
+    },
+    {
+      name: "Guggenheim",
+      logo: "https://logo.clearbit.com/guggenheimpartners.com",
+      category: "Annuities",
+      initials: "GU"
+    },
+    {
+      name: "Western & Southern",
+      logo: "https://logo.clearbit.com/westernsouthern.com",
+      category: "Comprehensive",
+      initials: "WS"
+    },
+    {
+      name: "EquiTrust",
+      logo: "https://logo.clearbit.com/equitrust.com",
+      category: "Annuities",
+      initials: "ET"
+    },
+    {
+      name: "F&G Annuities & Life",
+      logo: "https://logo.clearbit.com/fglife.com",
+      category: "Annuities",
+      initials: "FG"
     },
     {
       name: "Foresters",
-      logo: "https://www.foresters.com/content/dam/foresters/logos/foresters-logo.png",
-      category: "Annuities"
+      logo: "https://logo.clearbit.com/foresters.com",
+      category: "Annuities",
+      initials: "FO"
+    },
+    {
+      name: "Global Atlantic",
+      logo: "https://logo.clearbit.com/globalatlantic.com",
+      category: "Annuities",
+      initials: "GA"
+    },
+    {
+      name: "Lincoln Financial",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/0/09/Lincoln_National_Corporation_logo.svg",
+      category: "Annuities",
+      initials: "LI"
+    },
+    {
+      name: "MassMutual",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/6/6f/MassMutual_logo.svg",
+      category: "Life Insurance",
+      initials: "MM"
+    },
+    {
+      name: "OneAmerica",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/4/4e/OneAmerica_logo.svg",
+      category: "Comprehensive",
+      initials: "OA"
+    },
+    {
+      name: "Protective Life",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/5/55/Protective_Life_logo.svg",
+      category: "Final Expense",
+      initials: "PL"
+    },
+    {
+      name: "Prudential Financial",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/5/55/Prudential_Financial_logo.svg",
+      category: "Life Insurance",
+      initials: "PR"
+    },
+    {
+      name: "The Standard",
+      logo: "https://logo.clearbit.com/standard.com",
+      category: "Final Expense",
+      initials: "TS"
+    },
+    {
+      name: "Liberty Bankers",
+      logo: "https://logo.clearbit.com/libertybankers.com",
+      category: "Final Expense",
+      initials: "LB"
     },
     {
       name: "Securian Financial",
-      logo: "https://www.securian.com/content/dam/securian/logos/securian-logo.png",
-      category: "Comprehensive"
+      logo: "https://logo.clearbit.com/securian.com",
+      category: "Comprehensive",
+      initials: "SF"
+    },
+    {
+      name: "National Life Group",
+      logo: "https://logo.clearbit.com/nationallife.com",
+      category: "Life Insurance",
+      initials: "NL"
+    },
+    {
+      name: "North American",
+      logo: "https://logo.clearbit.com/northamericancompany.com",
+      category: "Life Insurance",
+      initials: "NA"
     }
   ];
 
@@ -246,8 +310,8 @@ const GetQuote = () => {
                             const target = e.target as HTMLImageElement;
                             target.style.display = 'none';
                             const fallback = document.createElement('div');
-                            fallback.className = 'w-full h-full flex items-center justify-center bg-primary/10 rounded-lg text-primary font-bold text-sm';
-                            fallback.textContent = company.name.split(' ').map(word => word[0]).join('').slice(0, 2);
+                            fallback.className = 'w-full h-full flex items-center justify-center bg-primary/10 rounded-lg text-primary font-bold text-lg';
+                            fallback.textContent = company.initials;
                             target.parentNode?.appendChild(fallback);
                           }}
                         />
