@@ -77,26 +77,47 @@ const sectionData: SectionData[] = [
 const AnimatedSection: React.FC<{ section: SectionData; index: number }> = ({ section, index }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+      
+      const rect = sectionRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const scrollStart = windowHeight;
+      const scrollEnd = -rect.height;
+      const scrollRange = scrollStart - scrollEnd;
+      
+      let progress = (scrollStart - rect.top) / scrollRange;
+      progress = Math.max(0, Math.min(1, progress));
+      setScrollProgress(progress);
+      
+      // Card becomes visible when it starts entering
+      if (progress > 0.1 && !isVisible) {
+        setIsVisible(true);
+        setIsExiting(false);
+      }
+      
+      // Card starts exiting when next card is about to appear
+      if (progress > 0.9 && !isExiting) {
+        setIsExiting(true);
+      }
+    };
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsExiting(false);
-          setTimeout(() => {
-            setIsVisible(true);
-          }, 100);
+          window.addEventListener('scroll', handleScroll);
+          handleScroll();
         } else {
-          setIsExiting(true);
-          setTimeout(() => {
-            setIsVisible(false);
-          }, 300);
+          window.removeEventListener('scroll', handleScroll);
         }
       },
       {
-        threshold: 0.4,
-        rootMargin: '-50px 0px -50px 0px'
+        threshold: 0,
+        rootMargin: '100px 0px 100px 0px'
       }
     );
 
@@ -105,16 +126,24 @@ const AnimatedSection: React.FC<{ section: SectionData; index: number }> = ({ se
     }
 
     return () => {
+      window.removeEventListener('scroll', handleScroll);
       if (sectionRef.current) {
         observer.unobserve(sectionRef.current);
       }
     };
-  }, [index]);
+  }, [isVisible, isExiting]);
+
+  const translateY = scrollProgress < 0.5 ? (1 - scrollProgress * 2) * 100 : 0;
 
   return (
     <div
       ref={sectionRef}
-      className={`min-h-screen flex items-center justify-center ${section.backgroundColor} relative overflow-hidden transition-all duration-700`}
+      className={`h-screen sticky top-0 flex items-center justify-center ${section.backgroundColor} relative overflow-hidden`}
+      style={{ 
+        zIndex: index + 1,
+        transform: `translateY(${translateY}%)`,
+        transition: 'transform 0.1s ease-out'
+      }}
     >
       {/* Modern Background Elements */}
       <div className="absolute inset-0">
@@ -270,8 +299,16 @@ const ProductsSection = () => {
   return (
     <div id="products" className="relative">
       {sectionData.map((section, index) => (
-        <AnimatedSection key={section.id} section={section} index={index} />
+        <React.Fragment key={section.id}>
+          <AnimatedSection section={section} index={index} />
+          {/* Scroll spacer - creates scroll distance for animations */}
+          {index < sectionData.length - 1 && (
+            <div className="h-screen" />
+          )}
+        </React.Fragment>
       ))}
+      {/* Final spacer to allow last card to complete its animation */}
+      <div className="h-screen" />
     </div>
   );
 };
