@@ -258,7 +258,7 @@ const Navbar = () => {
             <div className="md:hidden">
               <motion.button 
                 onClick={toggleMenu} 
-                className={cn("focus:outline-none relative w-6 h-6", shouldUseDarkText ? "text-gray-700" : "text-white")}
+                className={cn("focus:outline-none relative w-10 h-10 flex items-center justify-center touch-manipulation", shouldUseDarkText ? "text-gray-700" : "text-white")}
                 animate={isMenuOpen ? "open" : "closed"}
               >
                 <motion.div
@@ -293,11 +293,11 @@ const Navbar = () => {
           
           {/* Menu Content */}
           <motion.div
-            className={cn("absolute right-0 top-0 h-full w-80 shadow-2xl", shouldUseWhiteBackground ? "bg-white" : "bg-primary")}
+            className={cn("absolute right-0 top-0 h-full w-full max-w-sm shadow-2xl", shouldUseWhiteBackground ? "bg-white" : "bg-primary")}
             variants={menuVariants}
           >
             {/* Header with close button */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+            <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
               <img 
                 src={shouldUseDarkText ? "/lovable-uploads/610dc05e-0552-4a89-97b1-852580e78ec0.png" : "/lovable-uploads/b09383f5-a02b-439b-b5de-34a1fe9f2a1f.png"} 
                 alt="Agora Logo" 
@@ -305,7 +305,7 @@ const Navbar = () => {
               />
               <motion.button
                 onClick={() => setIsMenuOpen(false)}
-                className={cn("p-2 rounded-lg transition-colors", shouldUseDarkText ? "text-gray-700 hover:bg-gray-100" : "text-white hover:bg-gray-800")}
+                className={cn("p-3 rounded-lg transition-colors touch-manipulation min-h-[44px] min-w-[44px] flex items-center justify-center", shouldUseDarkText ? "text-gray-700 hover:bg-gray-100" : "text-white hover:bg-gray-800")}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -314,11 +314,11 @@ const Navbar = () => {
             </div>
 
             {/* Menu Items */}
-            <div className="px-6 py-4 space-y-2 h-full overflow-y-auto">
+            <div className="px-4 py-4 space-y-2 h-full overflow-y-auto">
               <motion.div variants={menuItemVariants}>
                 <Link 
                   to="/" 
-                  className={cn("block px-4 py-4 rounded-lg text-lg font-medium transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", shouldUseDarkText ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-800")} 
+                  className={cn("block px-4 py-4 rounded-lg text-lg font-medium transition-colors border-l-4 border-transparent hover:border-[#15AFF7] touch-manipulation min-h-[44px] flex items-center", shouldUseDarkText ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-800")} 
                   onClick={() => {
                     setIsMenuOpen(false);
                     window.scrollTo(0, 0);
@@ -331,7 +331,7 @@ const Navbar = () => {
               <motion.div variants={menuItemVariants}>
                 <Link 
                   to="/about" 
-                  className={cn("block px-4 py-4 rounded-lg text-lg font-medium transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", shouldUseDarkText ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-800")} 
+                  className={cn("block px-4 py-4 rounded-lg text-lg font-medium transition-colors border-l-4 border-transparent hover:border-[#15AFF7] touch-manipulation min-h-[44px] flex items-center", shouldUseDarkText ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-800")} 
                   onClick={() => {
                     setIsMenuOpen(false);
                     window.scrollTo(0, 0);
@@ -346,10 +346,10 @@ const Navbar = () => {
                 <div className={cn("px-4 py-2 text-sm font-semibold uppercase tracking-wider", shouldUseDarkText ? "text-gray-500" : "text-gray-400")}>
                   Services
                 </div>
-                <div className="pl-4 space-y-1">
+                <div className="pl-2 space-y-1">
                   <Link 
                     to="/services/term-life" 
-                    className={cn("block px-4 py-3 rounded-lg text-base transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", shouldUseDarkText ? "text-gray-600 hover:bg-gray-50" : "text-gray-300 hover:bg-gray-800")} 
+                    className={cn("block px-4 py-3 rounded-lg text-base transition-colors border-l-4 border-transparent hover:border-[#15AFF7] touch-manipulation min-h-[44px] flex items-center", shouldUseDarkText ? "text-gray-600 hover:bg-gray-50" : "text-gray-300 hover:bg-gray-800")} 
                     onClick={() => {
                       setIsMenuOpen(false);
                       window.scrollTo(0, 0);

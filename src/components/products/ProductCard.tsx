@@ -19,10 +19,10 @@ const ProductCard = ({ product, index, itemVariants }: ProductCardProps) => {
       }}
       whileTap={{ scale: 0.98 }}
     >
-      <Card className="group relative overflow-hidden bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-full transform-gpu will-change-transform">
+      <Card className="group relative overflow-hidden bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-1 h-full transform-gpu will-change-transform">
         <CardContent className="p-0">
           {/* Hero Image */}
-          <div className="relative h-48 overflow-hidden">
+          <div className="relative h-40 md:h-48 overflow-hidden">
             <motion.img 
               src={product.image} 
               alt={`${product.title} visual representation`}
@@ -41,7 +41,7 @@ const ProductCard = ({ product, index, itemVariants }: ProductCardProps) => {
               transition={{ delay: index * 0.1 + 0.2 }}
             ></motion.div>
             <motion.div 
-              className="absolute top-4 left-4"
+              className="absolute top-3 left-3 md:top-4 md:left-4"
               initial={{ scale: 0, rotate: -180 }}
               animate={{ scale: 1, rotate: 0 }}
               transition={{ 
@@ -52,33 +52,33 @@ const ProductCard = ({ product, index, itemVariants }: ProductCardProps) => {
               }}
               whileHover={{ rotate: 360, transition: { duration: 0.6 } }}
             >
-              <div className={`w-12 h-12 rounded-full bg-gradient-to-r ${product.accent} flex items-center justify-center text-white shadow-lg transform-gpu`}>
+              <div className={`w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-r ${product.accent} flex items-center justify-center text-white shadow-lg transform-gpu`}>
                 {product.icon}
               </div>
             </motion.div>
           </div>
           
           {/* Content */}
-          <div className="p-6">
-            <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-gray-800 transition-colors">
+          <div className="p-4 md:p-6">
+            <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3 group-hover:text-gray-800 transition-colors leading-tight">
               {product.title}
             </h3>
             
-            <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+            <p className="text-gray-600 mb-3 md:mb-4 text-sm leading-relaxed">
               {product.description}
             </p>
             
-            <div className="space-y-2 mb-6">
+            <div className="space-y-2 mb-4 md:mb-6">
               {product.features.map((feature, idx) => (
-                <div key={idx} className="flex items-center text-sm text-gray-600">
-                  <div className="w-1.5 h-1.5 bg-[#15AFF7] rounded-full mr-3 flex-shrink-0"></div>
-                  {feature}
+                <div key={idx} className="flex items-start text-sm text-gray-600">
+                  <div className="w-1.5 h-1.5 bg-[#15AFF7] rounded-full mr-3 flex-shrink-0 mt-1.5"></div>
+                  <span className="break-words flex-1">{feature}</span>
                 </div>
               ))}
             </div>
             
             <motion.button 
-              className="w-full bg-gradient-to-r from-[#15AFF7] to-[#0D94D1] text-white px-4 py-3 rounded-lg hover:from-[#0D94D1] hover:to-[#0A7FB0] transition-all duration-300 flex items-center justify-center group/btn font-medium shadow-lg hover:shadow-xl transform-gpu"
+              className="w-full bg-gradient-to-r from-[#15AFF7] to-[#0D94D1] text-white px-4 py-3 rounded-lg hover:from-[#0D94D1] hover:to-[#0A7FB0] transition-all duration-300 flex items-center justify-center group/btn font-medium shadow-lg hover:shadow-xl transform-gpu touch-manipulation min-h-[44px] text-sm md:text-base"
               whileHover={{ scale: 1.02, y: -1 }}
               whileTap={{ scale: 0.98 }}
               initial={{ y: 20, opacity: 0 }}

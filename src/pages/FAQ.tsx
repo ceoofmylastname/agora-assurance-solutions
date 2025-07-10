@@ -164,41 +164,41 @@ const FAQ = () => {
       />
       
       <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
-        <div className="container mx-auto px-4 py-16">
+        <div className="container mx-auto px-2 md:px-4 py-8 md:py-16">
           {/* Header Section */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <div className="text-center mb-8 md:mb-12 px-4">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 leading-tight">
               Frequently Asked Questions
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-6 md:mb-8 leading-relaxed">
               Get instant answers to common questions about insurance coverage, our process, and working with Agora's licensed professionals.
             </p>
             
             {/* Search Bar */}
-            <div className="relative max-w-md mx-auto mb-8">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+            <div className="relative max-w-md mx-auto mb-6 md:mb-8 px-2">
+              <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
               <Input
                 type="text"
-                placeholder="Search frequently asked questions..."
+                placeholder="Search questions..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 pr-4 py-3 text-base"
+                className="pl-12 pr-4 py-3 text-base rounded-lg"
               />
             </div>
           </div>
 
           {/* Popular Questions */}
           {!searchTerm && (
-            <div className="mb-12">
-              <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">Popular Questions</h2>
-              <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+            <div className="mb-8 md:mb-12 px-4">
+              <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-4 md:mb-6 text-center">Popular Questions</h2>
+              <div className="grid gap-3 md:grid-cols-2 md:gap-4 max-w-4xl mx-auto">
                 {popularQuestions.map((item, index) => (
-                  <Card key={index} className="hover:shadow-md transition-shadow cursor-pointer" onClick={() => {
+                  <Card key={index} className="hover:shadow-md transition-shadow cursor-pointer touch-manipulation" onClick={() => {
                     const questionText = item.question;
                     setSearchTerm(questionText);
                   }}>
-                    <CardContent className="p-4">
-                      <h3 className="font-medium text-primary text-sm leading-relaxed">
+                    <CardContent className="p-4 md:p-5">
+                      <h3 className="font-medium text-primary text-sm md:text-base leading-relaxed break-words">
                         {item.question}
                       </h3>
                     </CardContent>
@@ -209,13 +209,13 @@ const FAQ = () => {
           )}
 
           {/* FAQ Categories */}
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto px-4">
             {filteredFAQs.map((category, categoryIndex) => (
-              <div key={categoryIndex} className="mb-8">
-                <h2 className="text-2xl font-semibold text-foreground mb-6 border-b border-border pb-2">
+              <div key={categoryIndex} className="mb-6 md:mb-8">
+                <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-4 md:mb-6 border-b border-border pb-2 break-words">
                   {category.category}
                 </h2>
-                <div className="space-y-4">
+                <div className="space-y-3 md:space-y-4">
                   {category.questions.map((item, questionIndex) => {
                     const globalIndex = categoryIndex * 100 + questionIndex; // Unique index
                     const isOpen = openItems.has(globalIndex);
@@ -226,20 +226,20 @@ const FAQ = () => {
                           <Button
                             variant="ghost"
                             onClick={() => toggleItem(globalIndex)}
-                            className="w-full justify-between p-6 text-left h-auto hover:bg-muted/50"
+                            className="w-full justify-between p-4 md:p-6 text-left h-auto hover:bg-muted/50 touch-manipulation min-h-[44px]"
                           >
-                            <h3 className="text-lg font-medium text-foreground pr-4 leading-relaxed">
+                            <h3 className="text-base md:text-lg font-medium text-foreground pr-3 md:pr-4 leading-relaxed break-words flex-1 text-left">
                               {item.question}
                             </h3>
                             {isOpen ? (
-                              <ChevronUp className="h-5 w-5 text-muted-foreground flex-shrink-0" />
+                              <ChevronUp className="h-5 w-5 text-muted-foreground flex-shrink-0 ml-2" />
                             ) : (
-                              <ChevronDown className="h-5 w-5 text-muted-foreground flex-shrink-0" />
+                              <ChevronDown className="h-5 w-5 text-muted-foreground flex-shrink-0 ml-2" />
                             )}
                           </Button>
                           {isOpen && (
-                            <div className="px-6 pb-6">
-                              <p className="text-muted-foreground leading-relaxed">
+                            <div className="px-4 md:px-6 pb-4 md:pb-6">
+                              <p className="text-muted-foreground leading-relaxed break-words text-sm md:text-base">
                                 {item.answer}
                               </p>
                             </div>
@@ -254,22 +254,22 @@ const FAQ = () => {
           </div>
 
           {filteredFAQs.length === 0 && searchTerm && (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground text-lg">
+            <div className="text-center py-8 md:py-12 px-4">
+              <p className="text-muted-foreground text-base md:text-lg break-words">
                 No questions found matching "{searchTerm}". Try different keywords or browse our categories above.
               </p>
             </div>
           )}
 
           {/* Contact CTA */}
-          <div className="text-center mt-16 p-8 bg-muted/30 rounded-lg">
-            <h2 className="text-2xl font-semibold text-foreground mb-4">
+          <div className="text-center mt-12 md:mt-16 mx-4 p-6 md:p-8 bg-muted/30 rounded-lg">
+            <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-3 md:mb-4 leading-tight">
               Still Have Questions?
             </h2>
-            <p className="text-muted-foreground mb-6">
+            <p className="text-muted-foreground mb-4 md:mb-6 text-sm md:text-base leading-relaxed">
               Our licensed insurance professionals are here to provide personalized guidance for your specific situation.
             </p>
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
+            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 text-base touch-manipulation min-h-[44px]">
               Speak with an Expert
             </Button>
           </div>
