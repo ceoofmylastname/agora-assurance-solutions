@@ -482,28 +482,205 @@ const About = () => {
                     </DialogContent>
                   </Dialog>
                   
-                  <motion.div initial={{
-                  opacity: 0,
-                  x: 20
-                }} animate={{
-                  opacity: 1,
-                  x: 0
-                }} transition={{
-                  duration: 0.6,
-                  delay: 0.7
-                }} className="relative group">
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-600/5 rounded-2xl transform rotate-1 scale-105 group-hover:rotate-2 transition-transform duration-300"></div>
-                    <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300">
-                      <div className="h-20 w-20 rounded-full overflow-hidden mb-4 border-2 border-purple-500/20">
-                        <img alt="Olga Lomova - Chief Strategy Officer" className="w-full h-full object-cover object-top" src="/lovable-uploads/a2fbd740-44fc-4440-90f2-d0ea3ac39d55.png" />
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <motion.div initial={{
+                      opacity: 0,
+                      x: 20
+                    }} animate={{
+                      opacity: 1,
+                      x: 0
+                    }} transition={{
+                      duration: 0.6,
+                      delay: 0.7
+                    }} className="relative group cursor-pointer">
+                        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-600/5 rounded-2xl transform rotate-1 scale-105 group-hover:rotate-2 transition-transform duration-300"></div>
+                        <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300">
+                          <div className="h-20 w-20 rounded-full overflow-hidden mb-4 border-2 border-purple-500/20">
+                            <img alt="Olga Lomova - Chief Strategy Officer" className="w-full h-full object-cover object-top" src="/lovable-uploads/a2fbd740-44fc-4440-90f2-d0ea3ac39d55.png" />
+                          </div>
+                          <h3 className="text-xl font-bold text-gray-900 mb-1">Olga Lomova</h3>
+                          <p className="text-purple-500 font-medium mb-3">Chief Strategy Officer</p>
+                          <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                            An immigrant entrepreneur with deep expertise in financial marketing, Olga leads Agora's growth with a passion for inclusion, innovation, and intelligent expansion.
+                          </p>
+                          <Button variant="outline" size="sm" className="w-full group-hover:bg-purple-500 group-hover:text-white transition-colors">
+                            Learn More
+                          </Button>
+                        </div>
+                      </motion.div>
+                    </DialogTrigger>
+                    
+                    <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-white/95 backdrop-blur-xl border border-white/20 shadow-2xl">
+                      <div className="relative">
+                        {/* Hero Header */}
+                        <div className="relative mb-8 -mx-6 -mt-6 p-8 bg-gradient-to-br from-purple-500/10 to-pink-600/20 rounded-t-lg">
+                          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-600/10 backdrop-blur-sm"></div>
+                          <div className="relative flex flex-col md:flex-row items-center gap-6">
+                            <div className="relative">
+                              <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full blur-lg opacity-30 scale-110"></div>
+                              <img 
+                                src="/lovable-uploads/a2fbd740-44fc-4440-90f2-d0ea3ac39d55.png" 
+                                alt="Olga Lomova - Chief Strategy Officer" 
+                                className="relative w-32 h-32 rounded-full object-cover object-top border-4 border-white shadow-xl"
+                              />
+                            </div>
+                            <div className="text-center md:text-left">
+                              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Olga Lomova</h1>
+                              <div className="flex items-center justify-center md:justify-start gap-2 mb-4">
+                                <Badge variant="default" className="bg-purple-500 hover:bg-purple-500/90">
+                                  Chief Strategy Officer
+                                </Badge>
+                                <Badge variant="outline">
+                                  Innovation Leader
+                                </Badge>
+                              </div>
+                              <p className="text-gray-600 text-lg italic">
+                                "From immigrant entrepreneur to strategic visionary—transforming challenges into opportunities for nationwide impact."
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Content Grid */}
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                          {/* Main Biography */}
+                          <div className="lg:col-span-2 space-y-6">
+                            <div className="bg-gradient-to-br from-purple-50 to-white rounded-xl p-6 border border-purple-100">
+                              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <Trophy className="h-5 w-5 text-purple-500" />
+                                Strategic Leadership Excellence
+                              </h3>
+                              <div className="space-y-4 text-gray-600 leading-relaxed">
+                                <p>
+                                  Olga Lomova serves as the Chief Strategy Officer at Agora Assurance Solutions, where she spearheads strategic initiatives that drive growth and innovation. With over 10 years of experience in the Online Marketing and Financial Services Industry, Olga combines a deep understanding of technology-driven market dynamics with a passion for transforming visionary ideas into actionable plans for consumers across the country.
+                                </p>
+                                <p>
+                                  Before helping found Agora Assurance Solutions in 2024, Olga held key leadership positions at Advantage One Brokers, where she built their communications, branding, and marketing divisions to help create over 10 million in gross revenue sales.
+                                </p>
+                              </div>
+                            </div>
+
+                            <div className="bg-gradient-to-br from-pink-50 to-white rounded-xl p-6 border border-pink-100">
+                              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <Heart className="h-5 w-5 text-pink-500" />
+                                Journey of Resilience
+                              </h3>
+                              <div className="space-y-4 text-gray-600 leading-relaxed">
+                                <p>
+                                  Olga migrated to the United States in 1998 with her family, fleeing Christian persecution from the Soviet Union. Her worldwide connections and strategic acumen have been instrumental in creating strategic partnerships which have created an ecosystem for consumers nationwide to educate and make better informed decisions when shopping for assurance in an uncertain environment.
+                                </p>
+                                <p>
+                                  As Chief Strategy Officer, Olga is committed to fostering a culture of collaboration and innovation at Agora Assurance Solutions. She focuses on aligning the company's long-term vision with actionable strategies, ensuring that every team member is empowered to contribute to the overall mission of providing assurance to consumers nationwide.
+                                </p>
+                              </div>
+                            </div>
+
+                            <div className="bg-gradient-to-br from-indigo-50 to-white rounded-xl p-6 border border-indigo-100">
+                              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <Users className="h-5 w-5 text-indigo-500" />
+                                Personal Values & Community
+                              </h3>
+                              <div className="space-y-4 text-gray-600 leading-relaxed">
+                                <p>
+                                  Outside of work, Olga enjoys being a wife and mother of three, spending time outdoors and is passionate about helping those who struggle to help themselves. This commitment to wanting to protect others reflects her belief in giving back to the community and educating consumers with online transparency.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Sidebar Content */}
+                          <div className="space-y-6">
+                            <div className="bg-gradient-to-br from-purple-500/5 to-pink-600/10 rounded-xl p-6 border border-purple-500/20">
+                              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <Target className="h-5 w-5 text-purple-500" />
+                                Core Expertise
+                              </h3>
+                              <div className="space-y-3">
+                                <div className="flex items-center gap-2">
+                                  <div className="w-2 h-2 rounded-full bg-purple-500"></div>
+                                  <span className="text-sm text-gray-600">Strategic Planning & Innovation</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <div className="w-2 h-2 rounded-full bg-pink-500"></div>
+                                  <span className="text-sm text-gray-600">Online Marketing & Financial Services</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <div className="w-2 h-2 rounded-full bg-indigo-500"></div>
+                                  <span className="text-sm text-gray-600">Brand Development & Communications</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <div className="w-2 h-2 rounded-full bg-violet-500"></div>
+                                  <span className="text-sm text-gray-600">Partnership Development</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <div className="w-2 h-2 rounded-full bg-fuchsia-500"></div>
+                                  <span className="text-sm text-gray-600">Consumer Education & Transparency</span>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="bg-gradient-to-br from-amber-50 to-white rounded-xl p-6 border border-amber-100">
+                              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <Trophy className="h-5 w-5 text-amber-600" />
+                                Education & Background
+                              </h3>
+                              <div className="space-y-3 text-sm">
+                                <div className="flex items-start gap-3">
+                                  <div className="w-2 h-2 rounded-full bg-amber-500 mt-2 flex-shrink-0"></div>
+                                  <div>
+                                    <strong className="text-gray-900">Bachelor of Science in Kinesiology</strong>
+                                    <br />
+                                    <span className="text-gray-600">Sacramento State University</span>
+                                  </div>
+                                </div>
+                                <div className="flex items-start gap-3">
+                                  <div className="w-2 h-2 rounded-full bg-purple-500 mt-2 flex-shrink-0"></div>
+                                  <span className="text-gray-600">10+ years in Online Marketing & Financial Services</span>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="bg-gradient-to-br from-green-50 to-white rounded-xl p-6 border border-green-100">
+                              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <Heart className="h-5 w-5 text-green-600" />
+                                Key Achievements
+                              </h3>
+                              <div className="space-y-3 text-sm">
+                                <div className="flex items-start gap-3">
+                                  <div className="w-2 h-2 rounded-full bg-purple-500 mt-2 flex-shrink-0"></div>
+                                  <span className="text-gray-600">Co-founded Agora Assurance Solutions (2024)</span>
+                                </div>
+                                <div className="flex items-start gap-3">
+                                  <div className="w-2 h-2 rounded-full bg-pink-500 mt-2 flex-shrink-0"></div>
+                                  <span className="text-gray-600">Generated $10M+ in gross revenue at Advantage One Brokers</span>
+                                </div>
+                                <div className="flex items-start gap-3">
+                                  <div className="w-2 h-2 rounded-full bg-green-500 mt-2 flex-shrink-0"></div>
+                                  <span className="text-gray-600">Built comprehensive marketing & branding divisions</span>
+                                </div>
+                                <div className="flex items-start gap-3">
+                                  <div className="w-2 h-2 rounded-full bg-blue-500 mt-2 flex-shrink-0"></div>
+                                  <span className="text-gray-600">Established nationwide consumer education ecosystem</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Bottom Quote */}
+                        <div className="mt-8 p-6 bg-gradient-to-r from-purple-500/10 to-pink-600/10 rounded-xl border border-purple-500/20 text-center">
+                          <p className="text-lg italic text-gray-700 mb-2">
+                            "Olga's journey from immigrant to industry innovator exemplifies the American dream—transforming personal challenges into nationwide solutions that protect and empower families across the country."
+                          </p>
+                          <div className="flex items-center justify-center gap-2 text-sm text-gray-500">
+                            <Heart className="h-4 w-4" />
+                            <span>Building bridges between cultures, communities, and comprehensive coverage</span>
+                          </div>
+                        </div>
                       </div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-1">Olga Lomova</h3>
-                      <p className="text-purple-500 font-medium mb-3">Chief Strategy Officer</p>
-                      <p className="text-gray-600 text-sm leading-relaxed">
-                        An immigrant entrepreneur with deep expertise in financial marketing, Olga leads Agora's growth with a passion for inclusion, innovation, and intelligent expansion.
-                      </p>
-                    </div>
-                  </motion.div>
+                    </DialogContent>
+                  </Dialog>
                 </div>
               </motion.div>
               
