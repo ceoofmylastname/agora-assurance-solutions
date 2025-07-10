@@ -11,6 +11,8 @@ import lifeInsuranceAnalysis from '@/assets/life-insurance-analysis.jpg';
 import mortgageProtectionTruth from '@/assets/mortgage-protection-truth.jpg';
 import retirementStrategyComparison from '@/assets/retirement-strategy-comparison.jpg';
 import finalExpenseGuide from '@/assets/final-expense-guide.jpg';
+import taxStrategies from '@/assets/tax-strategies.jpg';
+import medicalExamTips from '@/assets/medical-exam-tips.jpg';
 
 interface BlogPost {
   id: string;
@@ -78,7 +80,7 @@ const allBlogPosts: BlogPost[] = [
     id: '5',
     title: 'Tax-Advantaged Life Insurance Strategies for High-Income Earners',
     excerpt: 'Advanced planning techniques using life insurance for wealth transfer, estate planning, and tax optimization strategies.',
-    image: '/lovable-uploads/tax-strategies.jpg',
+    image: taxStrategies,
     category: 'Tax Planning',
     readTime: '9 min read',
     author: 'Robert Kim, JD, CPA',
@@ -90,7 +92,7 @@ const allBlogPosts: BlogPost[] = [
     id: '6',
     title: 'Life Insurance Medical Exam: Insider Tips to Get Better Rates',
     excerpt: 'Professional strategies to prepare for your life insurance medical exam and secure the lowest possible premiums.',
-    image: '/lovable-uploads/medical-exam-tips.jpg',
+    image: medicalExamTips,
     category: 'Application Tips',
     readTime: '7 min read',
     author: 'Jennifer Walsh, RN',

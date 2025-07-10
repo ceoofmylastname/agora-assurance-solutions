@@ -8,6 +8,8 @@ import PageLayout from '@/components/PageLayout';
 import SEO from '@/components/SEO';
 import lifeInsuranceAnalysis from '@/assets/life-insurance-analysis.jpg';
 import mortgageProtectionTruth from '@/assets/mortgage-protection-truth.jpg';
+import taxStrategies from '@/assets/tax-strategies.jpg';
+import medicalExamTips from '@/assets/medical-exam-tips.jpg';
 
 interface BlogPostData {
   id: string;
@@ -207,6 +209,364 @@ const blogPostsData: Record<string, BlogPostData> = {
       { id: 'when-it-makes-sense', title: 'When Mortgage Protection Actually Makes Sense' },
       { id: 'better-alternatives', title: 'Better Alternatives: What I Recommend Instead' },
       { id: 'action-steps', title: 'Take Action: Your Next Steps' }
+    ]
+  },
+  'tax-advantaged-life-insurance-strategies': {
+    id: '3',
+    title: 'Tax-Advantaged Life Insurance Strategies for High-Income Earners',
+    content: `
+      <div class="prose prose-lg max-w-none">
+        <h2 id="high-income-challenges">The High-Income Earner's Tax Challenge</h2>
+        <p>High-income earners face unique challenges in wealth preservation and tax optimization. With federal tax rates reaching 37% and additional state taxes, NIIT, and Medicare taxes, effective tax rates can exceed 50% in some states. Life insurance offers powerful strategies to combat these challenges while building generational wealth.</p>
+        
+        <div class="bg-primary/10 border-l-4 border-primary p-6 my-6">
+          <h4>💡 Key Insight</h4>
+          <p>Life insurance is one of the few remaining tax-advantaged vehicles that allows unlimited contributions and tax-free wealth transfer. Unlike 401(k)s and IRAs with contribution limits, properly structured life insurance can accommodate significant wealth accumulation.</p>
+        </div>
+
+        <h2 id="tax-advantages">The Triple Tax Advantage of Life Insurance</h2>
+        
+        <h3>1. Tax-Deferred Growth</h3>
+        <p>Cash value in permanent life insurance policies grows without current taxation. Unlike taxable investments where gains are subject to annual capital gains taxes, life insurance cash value compounds uninterrupted.</p>
+        
+        <h3>2. Tax-Free Access to Cash Value</h3>
+        <p>Through policy loans and withdrawals, you can access cash value without triggering taxable events. This provides liquidity during retirement while preserving the death benefit for heirs.</p>
+        
+        <h3>3. Tax-Free Death Benefits</h3>
+        <p>Death benefits pass to beneficiaries income tax-free, providing efficient wealth transfer regardless of policy size.</p>
+
+        <h2 id="advanced-strategies">Advanced Strategies for Wealth Optimization</h2>
+        
+        <h3>Private Placement Life Insurance (PPLI)</h3>
+        <p>For ultra-high-net-worth individuals, PPLI offers institutional investment options within a life insurance wrapper. Minimum investments typically start at $5-10 million, but provide access to hedge funds, private equity, and other alternative investments with life insurance tax benefits.</p>
+        
+        <div class="bg-secondary/20 p-6 rounded-lg my-6">
+          <h4>PPLI Benefits:</h4>
+          <ul>
+            <li>Access to institutional investment managers</li>
+            <li>No annual taxation on investment gains</li>
+            <li>Flexible premium payments</li>
+            <li>Estate tax advantages</li>
+            <li>Asset protection benefits</li>
+          </ul>
+        </div>
+
+        <h3>Modified Endowment Contract (MEC) Strategies</h3>
+        <p>While MECs lose some tax advantages, they can be powerful for specific situations:</p>
+        <ul>
+          <li><strong>Estate Planning:</strong> MECs provide tax-free death benefits with more flexible funding</li>
+          <li><strong>Asset Protection:</strong> Many states protect MEC cash values from creditors</li>
+          <li><strong>Tax Diversification:</strong> Complement tax-deferred accounts with different withdrawal rules</li>
+        </ul>
+
+        <h2 id="estate-planning">Estate Planning Integration</h2>
+        
+        <h3>Irrevocable Life Insurance Trusts (ILITs)</h3>
+        <p>ILITs remove life insurance from your taxable estate while providing several benefits:</p>
+        <ul>
+          <li>Death benefits avoid estate taxes</li>
+          <li>Crummey powers allow annual exclusion gifts</li>
+          <li>Generation-skipping transfer tax benefits</li>
+          <li>Asset protection for beneficiaries</li>
+        </ul>
+
+        <h3>Split-Dollar Arrangements</h3>
+        <p>Business owners can use split-dollar life insurance to provide executive benefits while maintaining some policy control and cash flow.</p>
+
+        <div class="bg-destructive/10 border-l-4 border-destructive p-6 my-6">
+          <h4>⚠️ Important Considerations</h4>
+          <p>These strategies require careful planning and ongoing management. Tax laws change, and improper implementation can result in unexpected tax consequences. Always work with qualified tax advisors and estate planning attorneys.</p>
+        </div>
+
+        <h2 id="implementation">Implementation Best Practices</h2>
+        
+        <h3>1. Start with Clear Objectives</h3>
+        <p>Define whether your primary goals are estate planning, tax optimization, asset protection, or wealth accumulation. This drives product selection and structure.</p>
+        
+        <h3>2. Choose the Right Insurance Company</h3>
+        <p>Not all insurers offer advanced products. Look for companies with:</p>
+        <ul>
+          <li>Strong financial ratings (A+ or better)</li>
+          <li>Flexible product designs</li>
+          <li>Competitive internal costs</li>
+          <li>Advanced underwriting capabilities</li>
+        </ul>
+
+        <h3>3. Monitor and Adjust</h3>
+        <p>Life insurance strategies require ongoing management. Annual reviews should assess performance, tax law changes, and personal circumstance modifications.</p>
+
+        <h2 id="case-studies">Real-World Case Studies</h2>
+        
+        <h3>Case Study 1: The Tech Executive</h3>
+        <p>A 45-year-old tech executive earning $2 million annually used a $50,000 annual premium whole life policy to create tax-free retirement income. After 20 years, the policy provided $75,000 annual tax-free income while maintaining a $3 million death benefit.</p>
+        
+        <h3>Case Study 2: The Business Owner</h3>
+        <p>A business owner used PPLI to invest $10 million in private equity funds. Over 15 years, the tax-deferred growth resulted in $8 million more wealth compared to taxable investments, while providing $25 million in estate tax-free death benefits.</p>
+
+        <h2 id="action-plan">Your Strategic Action Plan</h2>
+        <ol>
+          <li><strong>Assess Your Tax Situation:</strong> Calculate your effective tax rate including state, federal, and additional taxes</li>
+          <li><strong>Define Objectives:</strong> Prioritize goals between wealth accumulation, estate planning, and tax optimization</li>
+          <li><strong>Evaluate Capacity:</strong> Determine annual premium capacity without affecting lifestyle</li>
+          <li><strong>Build Your Team:</strong> Assemble qualified advisors including tax attorneys, estate planners, and insurance specialists</li>
+          <li><strong>Model Scenarios:</strong> Compare life insurance strategies with alternative investments and tax strategies</li>
+          <li><strong>Implement and Monitor:</strong> Execute the strategy with regular review and adjustment capabilities</li>
+        </ol>
+      </div>
+    `,
+    image: taxStrategies,
+    category: 'Tax Planning',
+    readTime: '9 min read',
+    author: 'Robert Kim, JD, CPA',
+    authorBio: 'Robert is a tax attorney and CPA specializing in advanced wealth planning for high-net-worth families. He has structured over $500 million in tax-advantaged life insurance strategies.',
+    publishDate: 'December 5, 2024',
+    slug: 'tax-advantaged-life-insurance-strategies',
+    tags: ['tax planning', 'estate planning', 'wealth transfer', 'high-income'],
+    tableOfContents: [
+      { id: 'high-income-challenges', title: 'The High-Income Earner\'s Tax Challenge' },
+      { id: 'tax-advantages', title: 'The Triple Tax Advantage of Life Insurance' },
+      { id: 'advanced-strategies', title: 'Advanced Strategies for Wealth Optimization' },
+      { id: 'estate-planning', title: 'Estate Planning Integration' },
+      { id: 'implementation', title: 'Implementation Best Practices' },
+      { id: 'case-studies', title: 'Real-World Case Studies' },
+      { id: 'action-plan', title: 'Your Strategic Action Plan' }
+    ]
+  },
+  'life-insurance-medical-exam-tips': {
+    id: '4',
+    title: 'Life Insurance Medical Exam: Insider Tips to Get Better Rates',
+    content: `
+      <div class="prose prose-lg max-w-none">
+        <h2 id="exam-overview">Understanding the Life Insurance Medical Exam</h2>
+        <p>The life insurance medical exam is your opportunity to demonstrate your insurability and secure the best possible rates. As a registered nurse who has conducted over 3,000 life insurance medical exams, I'm sharing the insider strategies that can help you optimize your results and potentially save thousands in premiums.</p>
+        
+        <div class="bg-primary/10 border-l-4 border-primary p-6 my-6">
+          <h4>💡 Insider Secret</h4>
+          <p>The medical exam accounts for up to 70% of your final rate determination. Small improvements in your exam results can move you from "standard" to "preferred plus" rates, potentially saving 20-30% on premiums.</p>
+        </div>
+
+        <h2 id="preparation-timeline">The 30-Day Preparation Timeline</h2>
+        
+        <h3>30 Days Before Your Exam</h3>
+        <ul>
+          <li><strong>Schedule Strategic Timing:</strong> Avoid exams during stressful periods, illness, or medication changes</li>
+          <li><strong>Health Optimization:</strong> Begin moderate exercise routine if not already active</li>
+          <li><strong>Sleep Routine:</strong> Establish consistent 7-8 hour sleep schedule</li>
+          <li><strong>Medication Review:</strong> Discuss any medications with your doctor; some affect exam results</li>
+        </ul>
+
+        <h3>7 Days Before Your Exam</h3>
+        <ul>
+          <li><strong>Dietary Modifications:</strong> Reduce sodium, increase water intake</li>
+          <li><strong>Alcohol Cessation:</strong> Stop all alcohol consumption</li>
+          <li><strong>Caffeine Regulation:</strong> Maintain consistent (moderate) caffeine intake</li>
+          <li><strong>Exercise Moderation:</strong> Avoid intense workouts that might elevate protein levels</li>
+        </ul>
+
+        <h3>24 Hours Before Your Exam</h3>
+        <ul>
+          <li><strong>Hydration Focus:</strong> Drink 64+ ounces of water</li>
+          <li><strong>Light Meal Prep:</strong> Eat a light, healthy dinner</li>
+          <li><strong>Early Bedtime:</strong> Aim for 8+ hours of quality sleep</li>
+          <li><strong>Medication Timing:</strong> Take prescribed medications as scheduled</li>
+        </ul>
+
+        <h2 id="exam-day-strategies">Exam Day Strategies That Work</h2>
+        
+        <h3>Morning Scheduling Advantages</h3>
+        <p>Schedule your exam between 9-11 AM when possible. Blood pressure is typically lowest, you're well-rested, and you haven't accumulated daily stress. Avoid late afternoon exams when blood pressure naturally rises.</p>
+        
+        <h3>Pre-Exam Routine (2 Hours Before)</h3>
+        <div class="bg-secondary/20 p-6 rounded-lg my-6">
+          <h4>The Optimal Pre-Exam Protocol:</h4>
+          <ol>
+            <li><strong>Light Breakfast:</strong> Oatmeal or whole grain toast (avoid high sodium foods)</li>
+            <li><strong>Hydration:</strong> 16-20 ounces of water</li>
+            <li><strong>Relaxation:</strong> 10 minutes of deep breathing or meditation</li>
+            <li><strong>Comfortable Clothing:</strong> Loose-fitting, easy-to-remove clothing</li>
+            <li><strong>Document Prep:</strong> Gather required paperwork and ID</li>
+          </ol>
+        </div>
+
+        <h2 id="critical-measurements">Optimizing Critical Measurements</h2>
+        
+        <h3>Blood Pressure Optimization</h3>
+        <p>Blood pressure is the most important measurement for rate determination. Here's how to optimize:</p>
+        
+        <ul>
+          <li><strong>Positioning:</strong> Sit quietly for 5 minutes before measurement</li>
+          <li><strong>Arm Position:</strong> Keep arm at heart level, uncrossed legs</li>
+          <li><strong>Breathing:</strong> Slow, deep breaths during measurement</li>
+          <li><strong>Communication:</strong> Ask for multiple readings if the first seems high</li>
+        </ul>
+
+        <h3>Weight Management</h3>
+        <p>If you're borderline between weight categories, these strategies can help:</p>
+        <ul>
+          <li>Schedule exam first thing in the morning (you weigh less)</li>
+          <li>Wear minimal, lightweight clothing</li>
+          <li>Use the bathroom before weighing</li>
+          <li>Avoid high-sodium foods for 48 hours to reduce water retention</li>
+        </ul>
+
+        <h3>Urine Sample Best Practices</h3>
+        <p>Your urine sample tests for protein, glucose, and other health markers:</p>
+        <ul>
+          <li><strong>Hydration Balance:</strong> Well-hydrated but not over-diluted</li>
+          <li><strong>Timing:</strong> Avoid first morning urine (too concentrated)</li>
+          <li><strong>Protein Concerns:</strong> Avoid intense exercise 48 hours before</li>
+          <li><strong>Cleanliness:</strong> Follow midstream collection procedures</li>
+        </ul>
+
+        <h2 id="blood-test-optimization">Blood Test Optimization</h2>
+        
+        <h3>Cholesterol Management</h3>
+        <p>Cholesterol levels significantly impact rates. Short-term optimization strategies:</p>
+        
+        <div class="bg-destructive/10 border-l-4 border-destructive p-6 my-6">
+          <h4>⚠️ Important Note</h4>
+          <p>These are short-term optimization strategies for the exam. Long-term health requires sustainable lifestyle changes. Don't compromise your actual health for insurance rates.</p>
+        </div>
+
+        <ul>
+          <li><strong>Dietary Focus:</strong> Increase fiber, reduce saturated fats for 2 weeks</li>
+          <li><strong>Omega-3 Boost:</strong> Fish oil supplements (consult your doctor first)</li>
+          <li><strong>Exercise Impact:</strong> Moderate exercise can improve ratios</li>
+          <li><strong>Stress Reduction:</strong> High stress can temporarily elevate cholesterol</li>
+        </ul>
+
+        <h3>Blood Sugar Considerations</h3>
+        <p>Even non-diabetics can have elevated glucose levels that affect rates:</p>
+        <ul>
+          <li>Fast 8-12 hours before the exam (water only)</li>
+          <li>Avoid high-carb meals the night before</li>
+          <li>Get adequate sleep (poor sleep elevates glucose)</li>
+          <li>Minimize stress on exam day</li>
+        </ul>
+
+        <h2 id="common-mistakes">Common Mistakes That Hurt Your Rates</h2>
+        
+        <h3>Mistake #1: Over-Preparation</h3>
+        <p>Some applicants make drastic changes that backfire. Avoid:</p>
+        <ul>
+          <li>Extreme dieting or exercise changes</li>
+          <li>Stopping prescribed medications without doctor approval</li>
+          <li>Excessive caffeine reduction (can cause withdrawal symptoms)</li>
+          <li>Crash diets that affect metabolic markers</li>
+        </ul>
+
+        <h3>Mistake #2: Poor Communication</h3>
+        <p>Be honest but strategic in your responses:</p>
+        <ul>
+          <li>Answer questions accurately but don't volunteer unnecessary information</li>
+          <li>If asked about alcohol use, be honest about moderate consumption</li>
+          <li>Don't minimize serious health conditions</li>
+          <li>Ask for clarification if questions are confusing</li>
+        </ul>
+
+        <h3>Mistake #3: Timing Issues</h3>
+        <p>Poor timing can sabotage good preparation:</p>
+        <ul>
+          <li>Scheduling during illness or medication changes</li>
+          <li>Booking immediately after travel or stress</li>
+          <li>Choosing late afternoon appointments</li>
+          <li>Rushing to the appointment (elevates blood pressure)</li>
+        </ul>
+
+        <h2 id="special-situations">Special Situations and Strategies</h2>
+        
+        <h3>If You Have High Blood Pressure</h3>
+        <p>Controlled hypertension doesn't disqualify you, but optimization is crucial:</p>
+        <ul>
+          <li>Ensure medications are taken consistently</li>
+          <li>Bring recent blood pressure logs from home monitoring</li>
+          <li>Schedule exam at your typical medication timing</li>
+          <li>Consider multiple exams if first results are poor</li>
+        </ul>
+
+        <h3>If You're Overweight</h3>
+        <p>Weight classifications are strict, but strategies can help:</p>
+        <ul>
+          <li>Know the exact weight thresholds for your height</li>
+          <li>Consider delaying exam if you're actively losing weight</li>
+          <li>Focus on body fat percentage if you're muscular</li>
+          <li>Provide context for recent weight changes</li>
+        </ul>
+
+        <h2 id="post-exam-strategies">Post-Exam Strategies</h2>
+        
+        <h3>If Results Are Poor</h3>
+        <p>Don't panic if initial results aren't optimal:</p>
+        <ul>
+          <li><strong>Request Re-examination:</strong> Most insurers allow one free re-exam</li>
+          <li><strong>Medical Records:</strong> Provide additional medical documentation</li>
+          <li><strong>Different Insurer:</strong> Shop with companies that have more favorable underwriting</li>
+          <li><strong>Timing Adjustment:</strong> Wait 6-12 months if health issues are temporary</li>
+        </ul>
+
+        <h2 id="examiner-interaction">Working with Your Examiner</h2>
+        
+        <h3>Building Rapport</h3>
+        <p>Your examiner can be an advocate. Build positive relationships by:</p>
+        <ul>
+          <li>Being punctual and prepared</li>
+          <li>Offering a clean, comfortable space for the exam</li>
+          <li>Being cooperative and friendly</li>
+          <li>Asking questions about the process</li>
+        </ul>
+
+        <h3>Professional Requests</h3>
+        <p>You can professionally request:</p>
+        <ul>
+          <li>Multiple blood pressure readings</li>
+          <li>Re-measurement if you feel results are inaccurate</li>
+          <li>Additional time to relax before measurements</li>
+          <li>Explanations of any concerning findings</li>
+        </ul>
+
+        <h2 id="final-checklist">Final Pre-Exam Checklist</h2>
+        <div class="bg-primary/10 p-6 rounded-lg my-6">
+          <h4>24 Hours Before:</h4>
+          <ul>
+            <li>☐ Confirm appointment time and location</li>
+            <li>☐ Prepare required documents and identification</li>
+            <li>☐ Plan light, healthy meals</li>
+            <li>☐ Ensure 8+ hours of sleep</li>
+            <li>☐ Avoid alcohol and excessive caffeine</li>
+          </ul>
+          
+          <h4>Day of Exam:</h4>
+          <ul>
+            <li>☐ Light breakfast (if allowed)</li>
+            <li>☐ Adequate hydration</li>
+            <li>☐ Comfortable, loose clothing</li>
+            <li>☐ Arrive 10 minutes early</li>
+            <li>☐ Relaxation techniques ready</li>
+          </ul>
+        </div>
+
+        <p>Remember, the medical exam is your opportunity to showcase your health and secure the best possible rates. With proper preparation and these insider strategies, you can optimize your results and potentially save thousands of dollars over your policy's lifetime.</p>
+      </div>
+    `,
+    image: medicalExamTips,
+    category: 'Application Tips',
+    readTime: '7 min read',
+    author: 'Jennifer Walsh, RN',
+    authorBio: 'Jennifer is a registered nurse with 12+ years of experience conducting life insurance medical exams. She has helped thousands of applicants optimize their exam results and secure better rates.',
+    publishDate: 'December 3, 2024',
+    slug: 'life-insurance-medical-exam-tips',
+    tags: ['medical exam', 'application process', 'premium optimization'],
+    tableOfContents: [
+      { id: 'exam-overview', title: 'Understanding the Life Insurance Medical Exam' },
+      { id: 'preparation-timeline', title: 'The 30-Day Preparation Timeline' },
+      { id: 'exam-day-strategies', title: 'Exam Day Strategies That Work' },
+      { id: 'critical-measurements', title: 'Optimizing Critical Measurements' },
+      { id: 'blood-test-optimization', title: 'Blood Test Optimization' },
+      { id: 'common-mistakes', title: 'Common Mistakes That Hurt Your Rates' },
+      { id: 'special-situations', title: 'Special Situations and Strategies' },
+      { id: 'post-exam-strategies', title: 'Post-Exam Strategies' },
+      { id: 'examiner-interaction', title: 'Working with Your Examiner' },
+      { id: 'final-checklist', title: 'Final Pre-Exam Checklist' }
     ]
   }
 };
