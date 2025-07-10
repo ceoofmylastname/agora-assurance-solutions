@@ -162,51 +162,161 @@ const ModernContactForm = () => {
   };
 
   const fireConfetti = () => {
-    const duration = 3000;
+    const duration = 5000;
     const animationEnd = Date.now() + duration;
     
     const randomInRange = (min: number, max: number) => {
       return Math.random() * (max - min) + min;
     };
 
-    const colors = ['#15AFF7', '#0D94D1', '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7', '#DDA0DD'];
+    // Enhanced modern color palette with metallics and gradients
+    const modernColors = [
+      '#15AFF7', '#0D94D1', '#4F46E5', '#7C3AED', '#EC4899', '#F59E0B',
+      '#10B981', '#06B6D4', '#8B5CF6', '#F97316', '#EF4444', '#22C55E',
+      '#3B82F6', '#A855F7', '#F472B6', '#FBBF24', '#34D399', '#60A5FA',
+      '#FFD700', '#C0C0C0', '#E6E6FA', '#FF69B4', '#00CED1', '#FF6347'
+    ];
 
-    const interval = setInterval(() => {
+    const shapes = ['circle', 'square'] as const;
+
+    let celebrationStage = 0;
+    
+    // Stage 1: Initial explosion from center
+    setTimeout(() => {
+      confetti({
+        particleCount: 60,
+        startVelocity: 45,
+        spread: 360,
+        origin: { x: 0.5, y: 0.5 },
+        colors: modernColors,
+        shapes: [...shapes],
+        scalar: randomInRange(1.2, 2.0),
+        gravity: randomInRange(0.6, 0.8),
+        drift: randomInRange(-0.6, 0.6),
+      });
+    }, 0);
+
+    // Stage 2: Continuous side cannons with varying intensities
+    const sideCannonInterval = setInterval(() => {
       const timeLeft = animationEnd - Date.now();
+      celebrationStage = Math.floor((duration - timeLeft) / 1000);
 
       if (timeLeft <= 0) {
-        clearInterval(interval);
+        clearInterval(sideCannonInterval);
         return;
       }
 
-      const particleCount = 3;
+      // Dynamic particle count based on stage
+      const baseParticleCount = celebrationStage < 2 ? 20 : 15;
+      const particleVariation = randomInRange(0.7, 1.3);
+      const particleCount = Math.floor(baseParticleCount * particleVariation);
 
-      // Left side confetti
+      // Left side cannon with multiple angles
       confetti({
         particleCount,
-        startVelocity: 30,
-        spread: 70,
-        origin: { x: 0, y: 0.6 },
-        colors: colors,
-        shapes: ['circle', 'square'],
-        scalar: randomInRange(0.8, 1.2),
-        gravity: randomInRange(0.4, 0.6),
-        drift: randomInRange(-0.4, 0.4),
+        startVelocity: randomInRange(35, 55),
+        spread: randomInRange(60, 90),
+        angle: randomInRange(45, 90),
+        origin: { x: randomInRange(0, 0.1), y: randomInRange(0.5, 0.8) },
+        colors: modernColors,
+        shapes: [...shapes],
+        scalar: randomInRange(0.8, 1.8),
+        gravity: randomInRange(0.4, 0.7),
+        drift: randomInRange(0.2, 0.8),
+        ticks: randomInRange(150, 300),
       });
 
-      // Right side confetti
+      // Right side cannon with multiple angles  
       confetti({
         particleCount,
-        startVelocity: 30,
-        spread: 70,
-        origin: { x: 1, y: 0.6 },
-        colors: colors,
-        shapes: ['circle', 'square'],
-        scalar: randomInRange(0.8, 1.2),
-        gravity: randomInRange(0.4, 0.6),
-        drift: randomInRange(-0.4, 0.4),
+        startVelocity: randomInRange(35, 55),
+        spread: randomInRange(60, 90),
+        angle: randomInRange(90, 135),
+        origin: { x: randomInRange(0.9, 1), y: randomInRange(0.5, 0.8) },
+        colors: modernColors,
+        shapes: [...shapes],
+        scalar: randomInRange(0.8, 1.8),
+        gravity: randomInRange(0.4, 0.7),
+        drift: randomInRange(-0.8, -0.2),
+        ticks: randomInRange(150, 300),
       });
-    }, 250);
+
+      // Additional corner bursts
+      if (Math.random() > 0.6) {
+        confetti({
+          particleCount: Math.floor(particleCount * 0.6),
+          startVelocity: randomInRange(25, 40),
+          spread: randomInRange(45, 75),
+          angle: randomInRange(60, 120),
+          origin: { x: randomInRange(0.1, 0.9), y: randomInRange(0.1, 0.3) },
+          colors: modernColors.slice(0, 12),
+          shapes: [...shapes],
+          scalar: randomInRange(0.6, 1.2),
+          gravity: randomInRange(0.3, 0.5),
+          drift: randomInRange(-0.4, 0.4),
+        });
+      }
+
+    }, randomInRange(80, 150));
+
+    // Stage 3: Sparkle shower from top
+    setTimeout(() => {
+      const sparkleInterval = setInterval(() => {
+        confetti({
+          particleCount: randomInRange(8, 15),
+          startVelocity: randomInRange(15, 25),
+          spread: randomInRange(30, 60),
+          angle: 270,
+          origin: { x: randomInRange(0.2, 0.8), y: randomInRange(0, 0.2) },
+          colors: ['#FFD700', '#C0C0C0', '#15AFF7', '#7C3AED', '#F59E0B'],
+          shapes: ['circle'],
+          scalar: randomInRange(0.4, 0.8),
+          gravity: randomInRange(0.2, 0.4),
+          drift: randomInRange(-0.3, 0.3),
+          ticks: randomInRange(100, 200),
+        });
+      }, 200);
+
+      setTimeout(() => clearInterval(sparkleInterval), 2000);
+    }, 1500);
+
+    // Stage 4: Final flourish with large particles
+    setTimeout(() => {
+      confetti({
+        particleCount: 40,
+        startVelocity: 50,
+        spread: 100,
+        angle: 90,
+        origin: { x: 0.5, y: 0.8 },
+        colors: ['#FFD700', '#15AFF7', '#7C3AED', '#10B981', '#F59E0B'],
+        shapes: [...shapes],
+        scalar: randomInRange(1.5, 2.5),
+        gravity: randomInRange(0.5, 0.7),
+        drift: randomInRange(-0.5, 0.5),
+        ticks: 400,
+      });
+    }, 3500);
+
+    // Stage 5: Gentle floating celebration particles
+    setTimeout(() => {
+      const floatingInterval = setInterval(() => {
+        confetti({
+          particleCount: randomInRange(3, 6),
+          startVelocity: randomInRange(10, 20),
+          spread: randomInRange(40, 80),
+          angle: randomInRange(60, 120),
+          origin: { x: randomInRange(0.3, 0.7), y: randomInRange(0.6, 0.9) },
+          colors: ['#FFD700', '#C0C0C0', '#15AFF7', '#E6E6FA'],
+          shapes: ['circle'],
+          scalar: randomInRange(0.5, 1.0),
+          gravity: randomInRange(0.1, 0.3),
+          drift: randomInRange(-0.2, 0.2),
+          ticks: 300,
+        });
+      }, 400);
+
+      setTimeout(() => clearInterval(floatingInterval), 1500);
+    }, 4000);
   };
 
   const handleSubmit = async () => {
