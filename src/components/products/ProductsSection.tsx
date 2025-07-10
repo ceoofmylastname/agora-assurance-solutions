@@ -114,7 +114,7 @@ const AnimatedSection: React.FC<{ section: SectionData; index: number }> = ({ se
   return (
     <div
       ref={sectionRef}
-      className={`min-h-[100svh] sm:min-h-screen flex items-center justify-center ${section.backgroundColor} relative overflow-hidden transition-all duration-700`}
+      className={`min-h-fit sm:min-h-[80vh] lg:min-h-screen flex items-start sm:items-center justify-center ${section.backgroundColor} relative overflow-hidden transition-all duration-700 py-8 sm:py-12 lg:py-0`}
     >
       {/* Modern Background Elements */}
       <div className="absolute inset-0">
@@ -126,7 +126,7 @@ const AnimatedSection: React.FC<{ section: SectionData; index: number }> = ({ se
       {/* Main Content Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
         {/* Mobile-First Layout */}
-        <div className="flex flex-col lg:grid lg:grid-cols-12 gap-3 sm:gap-4 lg:gap-12 items-center min-h-[90svh] sm:min-h-[80vh] lg:min-h-auto py-4 sm:py-6 lg:py-0">
+        <div className="flex flex-col lg:grid lg:grid-cols-12 gap-3 sm:gap-4 lg:gap-12 items-center min-h-fit lg:min-h-auto py-2 sm:py-4 lg:py-0">
           
           {/* Mobile: Number + Icon in same row */}
           <div className="flex items-center justify-center gap-6 sm:gap-8 lg:hidden w-full">
