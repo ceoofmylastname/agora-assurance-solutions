@@ -81,7 +81,7 @@ const AnimatedCard: React.FC<AnimatedCardProps> = ({ card, index }) => {
       className={`sticky top-0 h-screen flex items-center justify-center relative overflow-hidden`}
       style={{ 
         backgroundColor: card.backgroundColor,
-        zIndex: 50 - index
+        zIndex: 10 + index
       }}
     >
       <div className={getAnimationClasses('card')}>

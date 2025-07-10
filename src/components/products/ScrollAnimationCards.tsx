@@ -77,6 +77,8 @@ const sectionData: SectionData[] = [
 const ScrollAnimationCards: React.FC = () => {
   return (
     <div id="products" className="relative">
+      {/* Add spacer height to ensure proper scroll triggering */}
+      <div className="h-screen"></div>
       {sectionData.map((section, index) => (
         <AnimatedCard key={section.id} card={section} index={index} />
       ))}
