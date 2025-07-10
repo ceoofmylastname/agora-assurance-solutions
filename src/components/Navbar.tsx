@@ -141,50 +141,95 @@ const Navbar = () => {
                       Services
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
-                      <div className="w-[600px] p-6">
-                        <div className="grid grid-cols-2 gap-4">
-                          <div className="space-y-3">
-                            <h4 className="font-semibold text-lg text-[#15AFF7] mb-3">Life Insurance</h4>
-                            <Link to="/services/term-life" className="block p-3 space-y-1 rounded-lg hover:bg-gradient-to-r hover:from-[#15AFF7]/10 hover:to-blue-600/10 transition-all duration-300 border border-transparent hover:border-[#15AFF7]/20">
-                              <div className="font-medium">Term Life Insurance</div>
-                              <p className="text-sm text-gray-500">Affordable protection for your family's future</p>
-                            </Link>
-                            <Link to="/services/whole-life" className="block p-3 space-y-1 rounded-lg hover:bg-gradient-to-r hover:from-[#15AFF7]/10 hover:to-blue-600/10 transition-all duration-300 border border-transparent hover:border-[#15AFF7]/20">
-                              <div className="font-medium">Whole Life Insurance</div>
-                              <p className="text-sm text-gray-500">Lifelong protection with cash value growth</p>
-                            </Link>
-                            <Link to="/services/universal-life" className="block p-3 space-y-1 rounded-lg hover:bg-gradient-to-r hover:from-[#15AFF7]/10 hover:to-blue-600/10 transition-all duration-300 border border-transparent hover:border-[#15AFF7]/20">
-                              <div className="font-medium">Universal Life Insurance</div>
-                              <p className="text-sm text-gray-500">Flexible premiums with investment options</p>
-                            </Link>
-                            <Link to="/services/indexed-universal-life" className="block p-3 space-y-1 rounded-lg hover:bg-gradient-to-r hover:from-[#15AFF7]/10 hover:to-blue-600/10 transition-all duration-300 border border-transparent hover:border-[#15AFF7]/20">
-                              <div className="font-medium">Indexed Universal Life</div>
-                              <p className="text-sm text-gray-500">Market-linked growth with downside protection</p>
-                            </Link>
+                      <div className="w-[700px] p-0 bg-white/95 backdrop-blur-xl border border-gray-200/50 shadow-2xl rounded-2xl overflow-hidden">
+                        {/* Premium Header */}
+                        <div className="bg-gradient-to-r from-[#15AFF7] to-blue-600 p-6 text-white">
+                          <h3 className="font-space font-bold text-xl mb-2">Our Services</h3>
+                          <p className="font-space text-blue-100 text-sm font-light">Comprehensive insurance solutions tailored for your needs</p>
+                        </div>
+                        
+                        <div className="p-6">
+                          <div className="grid grid-cols-2 gap-6">
+                            {/* Life Insurance Column */}
+                            <div className="space-y-4">
+                              <div className="flex items-center gap-3 mb-4">
+                                <div className="w-3 h-3 bg-gradient-to-r from-[#15AFF7] to-blue-600 rounded-full"></div>
+                                <h4 className="font-space font-bold text-lg bg-gradient-to-r from-[#15AFF7] to-blue-600 bg-clip-text text-transparent">Life Insurance</h4>
+                              </div>
+                              
+                              <Link to="/services/term-life" className="group block p-4 rounded-xl hover:bg-gradient-to-br hover:from-[#15AFF7]/5 hover:to-blue-600/5 transition-all duration-500 border border-transparent hover:border-[#15AFF7]/20 hover:shadow-lg hover:shadow-[#15AFF7]/10 transform hover:-translate-y-1">
+                                <div className="font-space font-semibold text-gray-800 group-hover:text-[#15AFF7] transition-colors duration-300">Term Life Insurance</div>
+                                <p className="text-sm text-gray-600 font-space font-light mt-1 group-hover:text-gray-700 transition-colors duration-300">Affordable protection for your family's future</p>
+                                <div className="w-0 h-0.5 bg-gradient-to-r from-[#15AFF7] to-blue-600 group-hover:w-full transition-all duration-300 mt-2"></div>
+                              </Link>
+                              
+                              <Link to="/services/whole-life" className="group block p-4 rounded-xl hover:bg-gradient-to-br hover:from-[#15AFF7]/5 hover:to-blue-600/5 transition-all duration-500 border border-transparent hover:border-[#15AFF7]/20 hover:shadow-lg hover:shadow-[#15AFF7]/10 transform hover:-translate-y-1">
+                                <div className="font-space font-semibold text-gray-800 group-hover:text-[#15AFF7] transition-colors duration-300">Whole Life Insurance</div>
+                                <p className="text-sm text-gray-600 font-space font-light mt-1 group-hover:text-gray-700 transition-colors duration-300">Lifelong protection with cash value growth</p>
+                                <div className="w-0 h-0.5 bg-gradient-to-r from-[#15AFF7] to-blue-600 group-hover:w-full transition-all duration-300 mt-2"></div>
+                              </Link>
+                              
+                              <Link to="/services/universal-life" className="group block p-4 rounded-xl hover:bg-gradient-to-br hover:from-[#15AFF7]/5 hover:to-blue-600/5 transition-all duration-500 border border-transparent hover:border-[#15AFF7]/20 hover:shadow-lg hover:shadow-[#15AFF7]/10 transform hover:-translate-y-1">
+                                <div className="font-space font-semibold text-gray-800 group-hover:text-[#15AFF7] transition-colors duration-300">Universal Life Insurance</div>
+                                <p className="text-sm text-gray-600 font-space font-light mt-1 group-hover:text-gray-700 transition-colors duration-300">Flexible premiums with investment options</p>
+                                <div className="w-0 h-0.5 bg-gradient-to-r from-[#15AFF7] to-blue-600 group-hover:w-full transition-all duration-300 mt-2"></div>
+                              </Link>
+                              
+                              <Link to="/services/indexed-universal-life" className="group block p-4 rounded-xl hover:bg-gradient-to-br hover:from-[#15AFF7]/5 hover:to-blue-600/5 transition-all duration-500 border border-transparent hover:border-[#15AFF7]/20 hover:shadow-lg hover:shadow-[#15AFF7]/10 transform hover:-translate-y-1">
+                                <div className="font-space font-semibold text-gray-800 group-hover:text-[#15AFF7] transition-colors duration-300">Indexed Universal Life</div>
+                                <p className="text-sm text-gray-600 font-space font-light mt-1 group-hover:text-gray-700 transition-colors duration-300">Market-linked growth with downside protection</p>
+                                <div className="w-0 h-0.5 bg-gradient-to-r from-[#15AFF7] to-blue-600 group-hover:w-full transition-all duration-300 mt-2"></div>
+                              </Link>
+                            </div>
+                            
+                            {/* Specialized Protection Column */}
+                            <div className="space-y-4">
+                              <div className="flex items-center gap-3 mb-4">
+                                <div className="w-3 h-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
+                                <h4 className="font-space font-bold text-lg bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">Specialized Protection</h4>
+                              </div>
+                              
+                              <Link to="/services/final-expense" className="group block p-4 rounded-xl hover:bg-gradient-to-br hover:from-purple-500/5 hover:to-pink-500/5 transition-all duration-500 border border-transparent hover:border-purple-500/20 hover:shadow-lg hover:shadow-purple-500/10 transform hover:-translate-y-1">
+                                <div className="font-space font-semibold text-gray-800 group-hover:text-purple-600 transition-colors duration-300">Final Expense Insurance</div>
+                                <p className="text-sm text-gray-600 font-space font-light mt-1 group-hover:text-gray-700 transition-colors duration-300">End-of-life coverage made simple</p>
+                                <div className="w-0 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 group-hover:w-full transition-all duration-300 mt-2"></div>
+                              </Link>
+                              
+                              <Link to="/services/mortgage-protection" className="group block p-4 rounded-xl hover:bg-gradient-to-br hover:from-purple-500/5 hover:to-pink-500/5 transition-all duration-500 border border-transparent hover:border-purple-500/20 hover:shadow-lg hover:shadow-purple-500/10 transform hover:-translate-y-1">
+                                <div className="font-space font-semibold text-gray-800 group-hover:text-purple-600 transition-colors duration-300">Mortgage Protection</div>
+                                <p className="text-sm text-gray-600 font-space font-light mt-1 group-hover:text-gray-700 transition-colors duration-300">Keep your home in the family</p>
+                                <div className="w-0 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 group-hover:w-full transition-all duration-300 mt-2"></div>
+                              </Link>
+                              
+                              <Link to="/services/annuities" className="group block p-4 rounded-xl hover:bg-gradient-to-br hover:from-purple-500/5 hover:to-pink-500/5 transition-all duration-500 border border-transparent hover:border-purple-500/20 hover:shadow-lg hover:shadow-purple-500/10 transform hover:-translate-y-1">
+                                <div className="font-space font-semibold text-gray-800 group-hover:text-purple-600 transition-colors duration-300">Annuities</div>
+                                <p className="text-sm text-gray-600 font-space font-light mt-1 group-hover:text-gray-700 transition-colors duration-300">Guaranteed retirement income solutions</p>
+                                <div className="w-0 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 group-hover:w-full transition-all duration-300 mt-2"></div>
+                              </Link>
+                              
+                              <Link to="/services/life-settlements" className="group block p-4 rounded-xl hover:bg-gradient-to-br hover:from-purple-500/5 hover:to-pink-500/5 transition-all duration-500 border border-transparent hover:border-purple-500/20 hover:shadow-lg hover:shadow-purple-500/10 transform hover:-translate-y-1">
+                                <div className="font-space font-semibold text-gray-800 group-hover:text-purple-600 transition-colors duration-300">Life Settlements</div>
+                                <p className="text-sm text-gray-600 font-space font-light mt-1 group-hover:text-gray-700 transition-colors duration-300">Unlock value from existing policies</p>
+                                <div className="w-0 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 group-hover:w-full transition-all duration-300 mt-2"></div>
+                              </Link>
+                              
+                              <Link to="/services/tax-asset-protection" className="group block p-4 rounded-xl hover:bg-gradient-to-br hover:from-purple-500/5 hover:to-pink-500/5 transition-all duration-500 border border-transparent hover:border-purple-500/20 hover:shadow-lg hover:shadow-purple-500/10 transform hover:-translate-y-1">
+                                <div className="font-space font-semibold text-gray-800 group-hover:text-purple-600 transition-colors duration-300">Tax & Asset Protection</div>
+                                <p className="text-sm text-gray-600 font-space font-light mt-1 group-hover:text-gray-700 transition-colors duration-300">Strategic wealth preservation solutions</p>
+                                <div className="w-0 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 group-hover:w-full transition-all duration-300 mt-2"></div>
+                              </Link>
+                            </div>
                           </div>
-                          <div className="space-y-3">
-                            <h4 className="font-semibold text-lg text-[#15AFF7] mb-3">Specialized Protection</h4>
-                            <Link to="/services/final-expense" className="block p-3 space-y-1 rounded-lg hover:bg-gradient-to-r hover:from-[#15AFF7]/10 hover:to-blue-600/10 transition-all duration-300 border border-transparent hover:border-[#15AFF7]/20">
-                              <div className="font-medium">Final Expense Insurance</div>
-                              <p className="text-sm text-gray-500">End-of-life coverage made simple</p>
-                            </Link>
-                            <Link to="/services/mortgage-protection" className="block p-3 space-y-1 rounded-lg hover:bg-gradient-to-r hover:from-[#15AFF7]/10 hover:to-blue-600/10 transition-all duration-300 border border-transparent hover:border-[#15AFF7]/20">
-                              <div className="font-medium">Mortgage Protection</div>
-                              <p className="text-sm text-gray-500">Keep your home in the family</p>
-                            </Link>
-                            <Link to="/services/annuities" className="block p-3 space-y-1 rounded-lg hover:bg-gradient-to-r hover:from-[#15AFF7]/10 hover:to-blue-600/10 transition-all duration-300 border border-transparent hover:border-[#15AFF7]/20">
-                              <div className="font-medium">Annuities</div>
-                              <p className="text-sm text-gray-500">Guaranteed retirement income solutions</p>
-                            </Link>
-                            <Link to="/services/life-settlements" className="block p-3 space-y-1 rounded-lg hover:bg-gradient-to-r hover:from-[#15AFF7]/10 hover:to-blue-600/10 transition-all duration-300 border border-transparent hover:border-[#15AFF7]/20">
-                              <div className="font-medium">Life Settlements</div>
-                              <p className="text-sm text-gray-500">Unlock value from existing policies</p>
-                            </Link>
-                            <Link to="/services/tax-asset-protection" className="block p-3 space-y-1 rounded-lg hover:bg-gradient-to-r hover:from-[#15AFF7]/10 hover:to-blue-600/10 transition-all duration-300 border border-transparent hover:border-[#15AFF7]/20">
-                              <div className="font-medium">Tax & Asset Protection</div>
-                              <p className="text-sm text-gray-500">Strategic wealth preservation solutions</p>
-                            </Link>
-                          </div>
+                        </div>
+                        
+                        {/* Premium Footer */}
+                        <div className="bg-gradient-to-r from-gray-50 to-gray-100 px-6 py-4 border-t border-gray-200/50">
+                          <p className="font-space text-sm text-gray-600 text-center">
+                            Need personalized guidance? 
+                            <button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} className="font-semibold text-[#15AFF7] hover:text-blue-600 ml-1 transition-colors duration-300">
+                              Contact our experts →
+                            </button>
+                          </p>
                         </div>
                       </div>
                     </NavigationMenuContent>
