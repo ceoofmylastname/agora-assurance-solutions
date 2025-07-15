@@ -1,16 +1,82 @@
-import { ArrowLeft, CheckCircle, DollarSign, Shield, TrendingUp, Users, Clock, Heart, Calculator, Target, Building2, Coins } from 'lucide-react';
+
+import { ArrowLeft, CheckCircle, DollarSign, Shield, TrendingUp, Users, Clock, Heart, Calculator, Target, Building2, Coins, Phone, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from "@/components/ui/card";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Button } from "@/components/ui/button";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
 import SEO from '@/components/SEO';
-import businessMeetingAdvisors from '@/assets/business-meeting-advisors.webp';
+import { useToast } from "@/hooks/use-toast";
+
+const formSchema = z.object({
+  firstName: z.string().min(2, "First name must be at least 2 characters"),
+  lastName: z.string().min(2, "Last name must be at least 2 characters"),
+  carrier: z.string().min(1, "Please select your insurance carrier"),
+  years: z.string().min(1, "Please specify years"),
+  months: z.string().min(1, "Please specify months"),
+  coverageAmount: z.string().min(1, "Please enter the coverage amount"),
+  contactMethod: z.enum(["email", "phone"], {
+    required_error: "Please select a contact method",
+  }),
+  consent: z.boolean().refine((val) => val === true, {
+    message: "You must consent to being contacted",
+  }),
+});
 
 const LifeSettlements = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      carrier: "",
+      years: "",
+      months: "",
+      coverageAmount: "",
+      contactMethod: "email",
+      consent: false,
+    },
+  });
+
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    setIsSubmitting(true);
+    try {
+      // Simulate form submission
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      toast({
+        title: "Form Submitted Successfully!",
+        description: "Philip will contact you within 24 hours with your policy evaluation.",
+      });
+      
+      form.reset();
+    } catch (error) {
+      toast({
+        title: "Submission Failed",
+        description: "Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -37,7 +103,6 @@ const LifeSettlements = () => {
       <SEO 
         title="Life Settlements - Turn Your Life Insurance Into Cash | Agora Assurance Solutions"
         description="Discover life settlements - sell your life insurance policy for more than cash value. Get immediate funds while you're alive instead of letting your policy lapse."
-        imageUrl={businessMeetingAdvisors}
         keywords={['life settlements', 'sell life insurance', 'policy sale', 'senior life insurance', 'viatical settlements', 'life insurance cash']}
       />
       
@@ -64,38 +129,101 @@ const LifeSettlements = () => {
                     Life Settlements
                   </motion.div>
                   <motion.h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent" variants={itemVariants}>
-                    Turn Your Life Insurance Into Cash Today
+                    Unlock Your Policy's Hidden Value
                   </motion.h1>
                   <motion.p className="text-xl text-gray-600 mb-8 leading-relaxed" variants={itemVariants}>
-                    A life settlement allows you to sell your life insurance policy for more than the cash surrender value, providing immediate funds when you need them most.
+                    Turn your life insurance policy into immediate cash. Get more than surrender value and stop paying premiums on coverage you no longer need.
                   </motion.p>
                   <motion.div className="flex flex-col sm:flex-row gap-4" variants={itemVariants}>
                     <button 
                       onClick={() => {
-                        const contactSection = document.getElementById('contact');
-                        if (contactSection) {
-                          contactSection.scrollIntoView({ behavior: 'smooth' });
+                        const formSection = document.getElementById('settlement-form');
+                        if (formSection) {
+                          formSection.scrollIntoView({ behavior: 'smooth' });
                         }
                       }}
                       className="px-8 py-4 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-all transform hover:scale-105 shadow-lg font-medium"
                     >
                       Get Policy Evaluation
                     </button>
-                    <button className="px-8 py-4 border-2 border-[#15AFF7] text-[#15AFF7] rounded-lg hover:bg-[#15AFF7] hover:text-white transition-all font-medium">
+                    <button 
+                      onClick={() => {
+                        const learnSection = document.getElementById('how-it-works');
+                        if (learnSection) {
+                          learnSection.scrollIntoView({ behavior: 'smooth' });
+                        }
+                      }}
+                      className="px-8 py-4 border-2 border-[#15AFF7] text-[#15AFF7] rounded-lg hover:bg-[#15AFF7] hover:text-white transition-all font-medium"
+                    >
                       Learn More
                     </button>
                   </motion.div>
                 </div>
                 <motion.div className="relative" variants={itemVariants}>
                   <div className="absolute inset-0 bg-gradient-to-br from-[#15AFF7]/20 to-blue-600/20 rounded-2xl transform rotate-3 scale-105"></div>
-                  <img 
-                    src={businessMeetingAdvisors} 
-                    alt="Professional consultation for life settlements"
-                    className="relative rounded-2xl shadow-xl transform -rotate-1 hover:rotate-0 transition-transform duration-300"
-                  />
+                  <div className="relative bg-white rounded-2xl p-8 shadow-xl transform -rotate-1 hover:rotate-0 transition-transform duration-300">
+                    <div className="text-center">
+                      <div className="w-24 h-24 bg-gradient-to-br from-[#15AFF7] to-blue-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <DollarSign className="w-12 h-12 text-white" />
+                      </div>
+                      <h3 className="text-2xl font-bold mb-2">2-5x More Value</h3>
+                      <p className="text-gray-600">Than cash surrender value</p>
+                      <div className="mt-6 pt-6 border-t border-gray-200">
+                        <div className="flex justify-between items-center mb-2">
+                          <span className="text-sm text-gray-500">Cash Surrender</span>
+                          <span className="text-lg font-semibold text-red-500">$10,000</span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="text-sm text-gray-500">Life Settlement</span>
+                          <span className="text-2xl font-bold text-green-500">$35,000</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </motion.div>
               </motion.div>
             </div>
+          </motion.div>
+
+          {/* What is a Life Settlement Section */}
+          <motion.div 
+            className="mb-16"
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+          >
+            <motion.div className="text-center mb-12" variants={itemVariants}>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">What is a Life Settlement?</h2>
+              <p className="text-gray-600 text-lg max-w-3xl mx-auto">
+                A life settlement is a financial transaction where you sell your existing life insurance policy to a third party for more than its cash surrender value but less than the death benefit.
+              </p>
+            </motion.div>
+            
+            <motion.div className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100" variants={itemVariants}>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div className="relative">
+                  <div className="w-16 h-16 bg-red-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                    <span className="text-2xl font-bold text-red-600">1</span>
+                  </div>
+                  <h3 className="text-lg font-bold mb-2">You Own Policy</h3>
+                  <p className="text-gray-600 text-sm">You have a life insurance policy that you no longer need or can't afford</p>
+                </div>
+                <div className="relative">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                    <span className="text-2xl font-bold text-blue-600">2</span>
+                  </div>
+                  <h3 className="text-lg font-bold mb-2">Sell to Buyer</h3>
+                  <p className="text-gray-600 text-sm">Third party buyer purchases your policy for cash payment</p>
+                </div>
+                <div className="relative">
+                  <div className="w-16 h-16 bg-green-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                    <span className="text-2xl font-bold text-green-600">3</span>
+                  </div>
+                  <h3 className="text-lg font-bold mb-2">Buyer Takes Over</h3>
+                  <p className="text-gray-600 text-sm">Buyer pays all future premiums and receives death benefit</p>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
 
           {/* Key Benefits */}
@@ -106,13 +234,13 @@ const LifeSettlements = () => {
             variants={containerVariants}
           >
             <motion.div className="text-center mb-12" variants={itemVariants}>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Consider a Life Settlement?</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose Life Settlements?</h2>
               <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-                Get more value from your life insurance policy than surrendering it or letting it lapse
+                Transform your underutilized life insurance policy into immediate financial benefits
               </p>
             </motion.div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <motion.div variants={itemVariants} className="relative group">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#15AFF7]/5 to-blue-600/5 rounded-2xl transform rotate-1 scale-105 group-hover:rotate-2 transition-transform duration-300"></div>
                 <Card className="relative bg-white rounded-xl border border-gray-200 p-6 shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300 h-full">
@@ -120,7 +248,7 @@ const LifeSettlements = () => {
                     <DollarSign className="w-10 h-10 text-[#15AFF7] mb-3" />
                     <h3 className="text-lg font-bold text-gray-900 mb-2">Immediate Cash</h3>
                     <p className="text-gray-600 text-sm leading-relaxed">
-                      Receive cash now instead of waiting for the death benefit or losing the policy.
+                      Receive a lump sum payment immediately instead of waiting for the death benefit or losing the policy.
                     </p>
                   </CardContent>
                 </Card>
@@ -133,7 +261,7 @@ const LifeSettlements = () => {
                     <TrendingUp className="w-10 h-10 text-green-500 mb-3" />
                     <h3 className="text-lg font-bold text-gray-900 mb-2">Higher Value</h3>
                     <p className="text-gray-600 text-sm leading-relaxed">
-                      Typically 2-5x more than cash surrender value, maximizing your policy's worth.
+                      Typically receive 2-5 times more than cash surrender value, maximizing your policy's worth.
                     </p>
                   </CardContent>
                 </Card>
@@ -146,7 +274,7 @@ const LifeSettlements = () => {
                     <Shield className="w-10 h-10 text-purple-500 mb-3" />
                     <h3 className="text-lg font-bold text-gray-900 mb-2">No More Premiums</h3>
                     <p className="text-gray-600 text-sm leading-relaxed">
-                      Stop paying expensive premiums on coverage you no longer need.
+                      Stop paying expensive premiums on coverage you no longer need or can't afford.
                     </p>
                   </CardContent>
                 </Card>
@@ -157,9 +285,35 @@ const LifeSettlements = () => {
                 <Card className="relative bg-white rounded-xl border border-gray-200 p-6 shadow-lg transform rotate-1 group-hover:rotate-0 transition-transform duration-300 h-full">
                   <CardContent className="p-0">
                     <Heart className="w-10 h-10 text-orange-500 mb-3" />
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">Flexible Use</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      Use funds for medical care, retirement, debt relief, or improving quality of life.
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+              <motion.div variants={itemVariants} className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-teal-600/5 rounded-2xl transform rotate-1 scale-105 group-hover:rotate-2 transition-transform duration-300"></div>
+                <Card className="relative bg-white rounded-xl border border-gray-200 p-6 shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300 h-full">
+                  <CardContent className="p-0">
+                    <Clock className="w-10 h-10 text-cyan-500 mb-3" />
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">Quick Process</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      Straightforward process handled by our experts. Receive cash within weeks.
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+              <motion.div variants={itemVariants} className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-purple-600/5 rounded-2xl transform -rotate-1 scale-105 group-hover:-rotate-2 transition-transform duration-300"></div>
+                <Card className="relative bg-white rounded-xl border border-gray-200 p-6 shadow-lg transform rotate-1 group-hover:rotate-0 transition-transform duration-300 h-full">
+                  <CardContent className="p-0">
+                    <Shield className="w-10 h-10 text-indigo-500 mb-3" />
                     <h3 className="text-lg font-bold text-gray-900 mb-2">Peace of Mind</h3>
                     <p className="text-gray-600 text-sm leading-relaxed">
-                      Use the funds for medical care, living expenses, or other priorities.
+                      Convert an underutilized asset into financial security for you and your loved ones.
                     </p>
                   </CardContent>
                 </Card>
@@ -167,198 +321,237 @@ const LifeSettlements = () => {
             </div>
           </motion.div>
 
-          {/* Settlement Process */}
+          {/* Meet Philip Section */}
           <motion.div 
             className="mb-16"
             initial="hidden"
             animate="visible"
             variants={containerVariants}
           >
+            <motion.div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 md:p-12" variants={itemVariants}>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                  <motion.div className="inline-block mb-4 px-4 py-2 bg-[#15AFF7]/10 text-[#15AFF7] rounded-full text-sm font-medium" variants={itemVariants}>
+                    Meet Your Expert
+                  </motion.div>
+                  <motion.h2 className="text-3xl md:text-4xl font-bold mb-4" variants={itemVariants}>
+                    Philip Giordano
+                  </motion.h2>
+                  <motion.p className="text-xl text-[#15AFF7] font-semibold mb-4" variants={itemVariants}>
+                    Regional Director - Life Settlements
+                  </motion.p>
+                  <motion.p className="text-gray-600 mb-6 leading-relaxed" variants={itemVariants}>
+                    With years of experience in life settlements, Philip specializes in helping clients unlock the hidden value in their life insurance policies. He works directly with leading settlement companies to ensure you receive the maximum value for your policy.
+                  </motion.p>
+                  <motion.div className="space-y-3" variants={itemVariants}>
+                    <div className="flex items-center">
+                      <Phone className="w-5 h-5 text-[#15AFF7] mr-3" />
+                      <a href="tel:916-288-9400" className="text-lg font-medium hover:text-[#15AFF7] transition-colors">
+                        (916) 288-9400
+                      </a>
+                    </div>
+                    <div className="flex items-center">
+                      <Mail className="w-5 h-5 text-[#15AFF7] mr-3" />
+                      <a href="mailto:lifesettlements@agoraassurancesolutions.com" className="text-lg font-medium hover:text-[#15AFF7] transition-colors">
+                        lifesettlements@agoraassurancesolutions.com
+                      </a>
+                    </div>
+                  </motion.div>
+                </div>
+                <motion.div className="relative" variants={itemVariants}>
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#15AFF7]/20 to-blue-600/20 rounded-2xl transform rotate-3 scale-105"></div>
+                  <img 
+                    src="/lovable-uploads/4f729cbe-cd65-4873-bfa1-27e7df8b3d85.png" 
+                    alt="Philip Giordano - Regional Director"
+                    className="relative rounded-2xl shadow-xl transform -rotate-1 hover:rotate-0 transition-transform duration-300 w-full max-w-md mx-auto"
+                  />
+                </motion.div>
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Settlement Form */}
+          <motion.div 
+            id="settlement-form"
+            className="mb-16"
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+          >
             <motion.div className="text-center mb-12" variants={itemVariants}>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">How Life Settlements Work</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Find Out How Much Your Policy Is Worth</h2>
               <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-                A simple 4-step process to convert your life insurance policy into cash
+                Get a free evaluation of your life insurance policy with no obligation. Philip will review your information and provide a personalized assessment.
               </p>
             </motion.div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                { 
-                  step: "1", 
-                  title: "Policy Evaluation", 
-                  description: "We assess your policy's value and determine if it qualifies for a life settlement",
-                  icon: Calculator
-                },
-                { 
-                  step: "2", 
-                  title: "Market Auction", 
-                  description: "Your policy is presented to qualified buyers who compete for the best offer",
-                  icon: TrendingUp
-                },
-                { 
-                  step: "3", 
-                  title: "Review Offers", 
-                  description: "You review and choose the best offer, with no obligation to accept",
-                  icon: Shield
-                },
-                { 
-                  step: "4", 
-                  title: "Get Paid", 
-                  description: "Once you accept, funds are transferred and premium payments stop",
-                  icon: DollarSign
-                }
-              ].map((item, index) => (
-                <motion.div key={index} variants={itemVariants} className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#15AFF7]/5 to-blue-600/5 rounded-2xl transform rotate-1 scale-105 group-hover:rotate-2 transition-transform duration-300"></div>
-                  <Card className="relative bg-white rounded-xl border border-gray-200 p-6 shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300 h-full">
-                    <CardContent className="p-0">
-                      <div className="flex items-center mb-4">
-                        <div className="w-8 h-8 bg-[#15AFF7] text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">
-                          {item.step}
+            <motion.div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 md:p-12" variants={itemVariants}>
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <FormField
+                      control={form.control}
+                      name="firstName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>First Name *</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Enter first name" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="lastName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Last Name *</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Enter last name" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+
+                  <FormField
+                    control={form.control}
+                    name="carrier"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Insurance Carrier *</FormLabel>
+                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Select your insurance carrier" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="aig">AIG</SelectItem>
+                            <SelectItem value="allianz">Allianz</SelectItem>
+                            <SelectItem value="axa">AXA</SelectItem>
+                            <SelectItem value="lincoln">Lincoln Financial</SelectItem>
+                            <SelectItem value="metlife">MetLife</SelectItem>
+                            <SelectItem value="nationwide">Nationwide</SelectItem>
+                            <SelectItem value="new-york-life">New York Life</SelectItem>
+                            <SelectItem value="northwestern-mutual">Northwestern Mutual</SelectItem>
+                            <SelectItem value="prudential">Prudential</SelectItem>
+                            <SelectItem value="transamerica">Transamerica</SelectItem>
+                            <SelectItem value="other">Other</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <div>
+                    <Label className="text-sm font-medium">How long have you had your policy in force? *</Label>
+                    <div className="grid grid-cols-2 gap-4 mt-2">
+                      <FormField
+                        control={form.control}
+                        name="years"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormControl>
+                              <Input placeholder="Years" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="months"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormControl>
+                              <Input placeholder="Months" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                  </div>
+
+                  <FormField
+                    control={form.control}
+                    name="coverageAmount"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Coverage Amount *</FormLabel>
+                        <FormControl>
+                          <Input placeholder="$500,000" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="contactMethod"
+                    render={({ field }) => (
+                      <FormItem className="space-y-3">
+                        <FormLabel>If Philip needs more information to get you a higher offer, would you like the information texted or emailed to you? *</FormLabel>
+                        <FormControl>
+                          <RadioGroup
+                            onValueChange={field.onChange}
+                            defaultValue={field.value}
+                            className="flex flex-col space-y-2"
+                          >
+                            <div className="flex items-center space-x-2">
+                              <RadioGroupItem value="email" id="email" />
+                              <Label htmlFor="email">Email</Label>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <RadioGroupItem value="phone" id="phone" />
+                              <Label htmlFor="phone">Phone/Text</Label>
+                            </div>
+                          </RadioGroup>
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="consent"
+                    render={({ field }) => (
+                      <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                        <FormControl>
+                          <Checkbox
+                            checked={field.value}
+                            onCheckedChange={field.onChange}
+                          />
+                        </FormControl>
+                        <div className="space-y-1 leading-none">
+                          <FormLabel className="text-sm">
+                            I consent to being contacted by Agora Assurance Solutions regarding my inquiry. I understand that my information will be used in accordance with the privacy policy. *
+                          </FormLabel>
+                          <FormMessage />
                         </div>
-                        <item.icon className="w-6 h-6 text-[#15AFF7]" />
-                      </div>
-                      <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
-                      <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+                      </FormItem>
+                    )}
+                  />
 
-          {/* Qualifying Policies */}
-          <motion.div 
-            className="mb-16"
-            initial="hidden"
-            animate="visible"
-            variants={containerVariants}
-          >
-            <motion.div className="text-center mb-12" variants={itemVariants}>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Qualifying Policies</h2>
-              <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-                Most life insurance policies can qualify for a life settlement with the right circumstances
-              </p>
+                  <div className="flex justify-center pt-6">
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="px-12 py-4 bg-[#15AFF7] hover:bg-[#0D94D1] text-white font-medium text-lg rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300"
+                    >
+                      {isSubmitting ? "Submitting..." : "Get My Policy Evaluation"}
+                    </Button>
+                  </div>
+                </form>
+              </Form>
             </motion.div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <motion.div variants={itemVariants} className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#15AFF7]/5 to-blue-600/5 rounded-2xl transform rotate-1 scale-105 group-hover:rotate-2 transition-transform duration-300"></div>
-                <Card className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300 h-full">
-                  <CardContent className="p-0">
-                    <Shield className="w-12 h-12 text-[#15AFF7] mb-4" />
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">Term Life Policies</h3>
-                    <p className="text-gray-600 mb-4 leading-relaxed">
-                      Convertible term policies that can be converted to permanent insurance often qualify.
-                    </p>
-                    <ul className="space-y-2">
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-[#15AFF7] mt-1 mr-2 flex-shrink-0" />
-                        <span className="text-sm text-gray-600">Convertible term life</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-[#15AFF7] mt-1 mr-2 flex-shrink-0" />
-                        <span className="text-sm text-gray-600">Group term conversions</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-[#15AFF7] mt-1 mr-2 flex-shrink-0" />
-                        <span className="text-sm text-gray-600">Level term policies</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-              </motion.div>
-
-              <motion.div variants={itemVariants} className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-600/5 rounded-2xl transform -rotate-1 scale-105 group-hover:-rotate-2 transition-transform duration-300"></div>
-                <Card className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform rotate-1 group-hover:rotate-0 transition-transform duration-300 h-full">
-                  <CardContent className="p-0">
-                    <TrendingUp className="w-12 h-12 text-green-500 mb-4" />
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">Permanent Policies</h3>
-                    <p className="text-gray-600 mb-4 leading-relaxed">
-                      Whole life, universal life, and variable life policies are excellent candidates.
-                    </p>
-                    <ul className="space-y-2">
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-green-500 mt-1 mr-2 flex-shrink-0" />
-                        <span className="text-sm text-gray-600">Whole life insurance</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-green-500 mt-1 mr-2 flex-shrink-0" />
-                        <span className="text-sm text-gray-600">Universal life policies</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-green-500 mt-1 mr-2 flex-shrink-0" />
-                        <span className="text-sm text-gray-600">Variable life insurance</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-              </motion.div>
-
-              <motion.div variants={itemVariants} className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-600/5 rounded-2xl transform rotate-1 scale-105 group-hover:rotate-2 transition-transform duration-300"></div>
-                <Card className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300 h-full">
-                  <CardContent className="p-0">
-                    <Building2 className="w-12 h-12 text-purple-500 mb-4" />
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">Group & Corporate</h3>
-                    <p className="text-gray-600 mb-4 leading-relaxed">
-                      Group life insurance and corporate-owned policies may also qualify for settlements.
-                    </p>
-                    <ul className="space-y-2">
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-purple-500 mt-1 mr-2 flex-shrink-0" />
-                        <span className="text-sm text-gray-600">Group life conversions</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-purple-500 mt-1 mr-2 flex-shrink-0" />
-                        <span className="text-sm text-gray-600">Corporate owned policies</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-purple-500 mt-1 mr-2 flex-shrink-0" />
-                        <span className="text-sm text-gray-600">Key person insurance</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </div>
-          </motion.div>
-
-          {/* Who It's For */}
-          <motion.div 
-            className="mb-16"
-            initial="hidden"
-            animate="visible"
-            variants={containerVariants}
-          >
-            <motion.div className="text-center mb-12" variants={itemVariants}>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Who Should Consider Life Settlements?</h2>
-              <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-                Life settlements can benefit various individuals in different life circumstances
-              </p>
-            </motion.div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
-                { icon: Users, title: "Seniors (65+)", description: "Policy holders who no longer need the coverage or can't afford premiums" },
-                { icon: Heart, title: "Health Changes", description: "Those with declining health who want to access policy value while alive" },
-                { icon: DollarSign, title: "Financial Hardship", description: "Individuals facing unexpected expenses or reduced income" },
-                { icon: Clock, title: "Changed Circumstances", description: "People whose beneficiaries no longer need the death benefit" },
-                { icon: Target, title: "Business Owners", description: "Entrepreneurs who no longer need key person or business protection" },
-                { icon: Coins, title: "Estate Planners", description: "Those wanting to maximize their estate's liquid assets" }
-              ].map((item, index) => (
-                <motion.div key={index} variants={itemVariants}>
-                  <Card className="h-full text-center hover:shadow-lg transition-all duration-300 hover:scale-105 border-2 border-gray-100 hover:border-[#15AFF7]/30">
-                    <CardContent className="p-6">
-                      <item.icon className="w-12 h-12 text-[#15AFF7] mx-auto mb-4" />
-                      <h3 className="font-bold text-lg text-gray-900 mb-3">{item.title}</h3>
-                      <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
           </motion.div>
 
           {/* CTA Section */}
@@ -371,26 +564,26 @@ const LifeSettlements = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-[#15AFF7]/5 to-blue-600/5 rounded-3xl transform rotate-1 scale-105"></div>
             <div className="relative bg-white rounded-2xl border border-gray-200 p-12 shadow-2xl text-center transform -rotate-1">
               <motion.h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-[#15AFF7] to-blue-600 bg-clip-text text-transparent" variants={itemVariants}>
-                Unlock Your Policy's Hidden Value
+                Your Financial Freedom Awaits
               </motion.h2>
               <motion.p className="text-gray-600 text-xl leading-relaxed max-w-3xl mx-auto mb-8" variants={itemVariants}>
-                Don't let your life insurance policy lapse or settle for minimal cash value. Discover how much your policy could be worth in a life settlement.
+                Don't let your life insurance policy become a financial burden. Contact Philip today for a free consultation and discover how much your policy could be worth in a life settlement.
               </motion.p>
               <motion.div className="flex flex-col sm:flex-row gap-4 justify-center" variants={itemVariants}>
-                <button 
-                  onClick={() => {
-                    const contactSection = document.getElementById('contact');
-                    if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
-                  className="px-8 py-4 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-all transform hover:scale-105 shadow-lg font-medium"
+                <a 
+                  href="tel:916-288-9400"
+                  className="px-8 py-4 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-all transform hover:scale-105 shadow-lg font-medium inline-flex items-center justify-center"
                 >
-                  Get Free Evaluation
-                </button>
-                <button className="px-8 py-4 border-2 border-[#15AFF7] text-[#15AFF7] rounded-lg hover:bg-[#15AFF7] hover:text-white transition-all font-medium">
-                  Speak with Expert
-                </button>
+                  <Phone className="w-5 h-5 mr-2" />
+                  Call (916) 288-9400
+                </a>
+                <a 
+                  href="mailto:lifesettlements@agoraassurancesolutions.com"
+                  className="px-8 py-4 border-2 border-[#15AFF7] text-[#15AFF7] rounded-lg hover:bg-[#15AFF7] hover:text-white transition-all font-medium inline-flex items-center justify-center"
+                >
+                  <Mail className="w-5 h-5 mr-2" />
+                  Send Email
+                </a>
               </motion.div>
             </div>
           </motion.div>

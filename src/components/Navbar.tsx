@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Menu, X, ChevronDown } from "lucide-react";
@@ -200,6 +199,11 @@ const Navbar = () => {
                                 <p className="text-xs text-gray-600 mt-1">Secure your family home</p>
                               </Link>
                               
+                              <Link to="/services/life-settlements" className="group block p-3 rounded-lg hover:bg-gray-50 transition-all duration-200 border border-transparent hover:border-gray-200">
+                                <div className="font-space font-medium text-gray-900 group-hover:text-purple-600 transition-colors text-sm">Life Settlements</div>
+                                <p className="text-xs text-gray-600 mt-1">Turn policy into cash</p>
+                              </Link>
+                              
                               <Link to="/services/annuities" className="group block p-3 rounded-lg hover:bg-gray-50 transition-all duration-200 border border-transparent hover:border-gray-200">
                                 <div className="font-space font-medium text-gray-900 group-hover:text-purple-600 transition-colors text-sm">Annuities</div>
                                 <p className="text-xs text-gray-600 mt-1">Guaranteed retirement income</p>
@@ -273,7 +277,7 @@ const Navbar = () => {
         </div>
       </motion.nav>
 
-      {/* Mobile Navigation Menu - Modern Full Screen Overlay */}
+      {/* Mobile Navigation Menu */}
       {isMenuOpen && (
         <motion.div
           className="fixed inset-0 z-50 md:hidden"
@@ -366,6 +370,16 @@ const Navbar = () => {
                     }}
                   >
                     Whole Life Insurance
+                  </Link>
+                  <Link 
+                    to="/services/life-settlements" 
+                    className={cn("block px-4 py-3 rounded-lg text-base transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", shouldUseDarkText ? "text-gray-600 hover:bg-gray-50" : "text-gray-300 hover:bg-gray-800")} 
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      window.scrollTo(0, 0);
+                    }}
+                  >
+                    Life Settlements
                   </Link>
                   <Link 
                     to="/services/annuities" 
