@@ -1,4 +1,3 @@
-
 import { ArrowLeft, TrendingUp, Shield, DollarSign, Calculator, Clock, Building2, Target, PiggyBank, Banknote, Phone, ChevronDown, ChevronUp, Info } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
@@ -13,10 +12,13 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Slider } from "@/components/ui/slider";
 import SEO from '@/components/SEO';
 import FixedAnnuitiesModal from '@/components/FixedAnnuitiesModal';
+import VariableAnnuitiesModal from '@/components/VariableAnnuitiesModal';
 
 const WealthSolutions = () => {
   const [calculatorExpanded, setCalculatorExpanded] = useState(false);
   const [fixedAnnuitiesModalOpen, setFixedAnnuitiesModalOpen] = useState(false);
+  const [variableAnnuitiesModalOpen, setVariableAnnuitiesModalOpen] = useState(false);
+  
   const [calculatorInputs, setCalculatorInputs] = useState({
     currentAge: 35,
     retirementAge: 65,
@@ -98,6 +100,11 @@ const WealthSolutions = () => {
       <FixedAnnuitiesModal 
         isOpen={fixedAnnuitiesModalOpen} 
         onClose={() => setFixedAnnuitiesModalOpen(false)} 
+      />
+      
+      <VariableAnnuitiesModal 
+        isOpen={variableAnnuitiesModalOpen} 
+        onClose={() => setVariableAnnuitiesModalOpen(false)} 
       />
       
       <section className="pt-16 sm:pt-20 lg:pt-24 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-muted/30 min-h-screen">
@@ -445,12 +452,7 @@ const WealthSolutions = () => {
                   features: ["Market-linked returns", "Investment choices", "Death benefits", "Income riders available"],
                   highlight: true,
                   returnRange: "5-10% Potential",
-                  onLearnMore: () => {
-                    const contactSection = document.getElementById('contact');
-                    if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }
+                  onLearnMore: () => setVariableAnnuitiesModalOpen(true)
                 },
                 {
                   icon: Target,
