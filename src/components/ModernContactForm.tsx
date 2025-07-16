@@ -386,21 +386,47 @@ const ModernContactForm = () => {
       
       const { honeypot, timestamp, ...emailData } = data;
       
-      // Enhanced webhook data construction with explicit phone field logging
+      // Enhanced webhook data with multiple phone field variations for CRM compatibility
       const webhookData = {
+        // Basic contact info
         firstName: emailData.firstName,
         lastName: emailData.lastName,
         email: emailData.email,
-        phone: emailData.phone, // Explicitly include phone
         service: emailData.service,
-        message: emailData.message,
+        
+        // Multiple phone field variations for CRM compatibility
+        phone: emailData.phone,
+        phone_number: emailData.phone,
+        phoneNumber: emailData.phone,
+        contact_phone: emailData.phone,
+        'Phone Number:': emailData.phone,
+        
+        // Enhanced message with phone number included as backup
+        message: `${emailData.message}\n\nContact Details:\nPhone: ${emailData.phone}\nEmail: ${emailData.email}\nService Interest: ${emailData.service}`,
+        
+        // Additional CRM-friendly fields
+        full_name: `${emailData.firstName} ${emailData.lastName}`,
+        lead_source: 'Website Contact Form',
         timestamp: new Date().toISOString(),
-        source: 'contact_form'
+        source: 'contact_form',
+        
+        // LeadConnector specific fields
+        'Questions': emailData.message,
+        'Service - (SL)': emailData.service,
+        'first_name': emailData.firstName,
+        'last_name': emailData.lastName,
+        'email': emailData.email
       };
 
       console.log('=== WEBHOOK DATA DEBUG ===');
       console.log('Complete webhook data:', webhookData);
-      console.log('Webhook phone field:', webhookData.phone);
+      console.log('All phone field variations:', {
+        phone: webhookData.phone,
+        phone_number: webhookData.phone_number,
+        phoneNumber: webhookData.phoneNumber,
+        contact_phone: webhookData.contact_phone,
+        'Phone Number:': webhookData['Phone Number:']
+      });
       console.log('Phone field in webhook?', 'phone' in webhookData);
       console.log('Webhook data stringified:', JSON.stringify(webhookData, null, 2));
 
@@ -421,7 +447,7 @@ const ModernContactForm = () => {
         throw new Error('Webhook submission failed');
       }
       
-      console.log('✅ Webhook submitted successfully with phone:', webhookData.phone);
+      console.log('✅ Webhook submitted successfully with multiple phone field formats');
       
       setIsSubmitted(true);
       
