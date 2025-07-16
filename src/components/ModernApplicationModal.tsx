@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -157,25 +156,65 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
   const currentStepData = steps[currentStep];
   const progress = ((currentStep + 1) / steps.length) * 100;
 
-  const onSubmit = async (data: ApplicationFormData) => {
-    setIsSubmitting(true);
+  const submitToWebhook = async (data: ApplicationFormData, retryCount = 0): Promise<void> => {
+    const webhookUrl = 'https://services.leadconnectorhq.com/hooks/TLhrYb7SRrWrly615tCI/webhook-trigger/a242f4e7-7948-4821-87b6-2c3959e07f78';
+    const maxRetries = 2;
+    
+    const payload = {
+      ...data,
+      formType: 'advisor_application',
+      timestamp: new Date().toISOString(),
+      source: window.location.origin,
+      userAgent: navigator.userAgent,
+      referrer: document.referrer || 'direct'
+    };
+
+    console.log(`🚀 Attempt ${retryCount + 1}: Submitting to webhook:`, webhookUrl);
+    console.log('📋 Payload:', payload);
+
     try {
-      console.log("Submitting application data to webhook:", data);
-      
-      const response = await fetch('https://services.leadconnectorhq.com/hooks/TLhrYb7SRrWrly615tCI/webhook-trigger/a242f4e7-7948-4821-87b6-2c3959e07f78', {
+      const response = await fetch(webhookUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
-        mode: 'no-cors',
-        body: JSON.stringify({
-          ...data,
-          formType: 'advisor_application',
-          timestamp: new Date().toISOString(),
-          source: window.location.origin,
-        }),
+        body: JSON.stringify(payload),
       });
 
+      console.log('📡 Response status:', response.status);
+      console.log('📡 Response headers:', Object.fromEntries(response.headers.entries()));
+
+      if (!response.ok) {
+        const errorText = await response.text().catch(() => 'No response body');
+        console.error(`❌ Webhook failed with status ${response.status}:`, errorText);
+        throw new Error(`Webhook returned ${response.status}: ${response.statusText}`);
+      }
+
+      const responseData = await response.text().catch(() => 'Success');
+      console.log('✅ Webhook response:', responseData);
+      
+    } catch (error) {
+      console.error(`❌ Webhook error (attempt ${retryCount + 1}):`, error);
+      
+      if (retryCount < maxRetries) {
+        console.log(`🔄 Retrying in 1 second... (${retryCount + 1}/${maxRetries})`);
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        return submitToWebhook(data, retryCount + 1);
+      }
+      
+      // If all retries failed, throw the error
+      throw error;
+    }
+  };
+
+  const onSubmit = async (data: ApplicationFormData) => {
+    setIsSubmitting(true);
+    
+    try {
+      await submitToWebhook(data);
+      
+      console.log('🎉 Application submitted successfully!');
       setIsComplete(true);
       
       setTimeout(() => {
@@ -188,11 +227,21 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
         setIsComplete(false);
         setCurrentStep(0);
       }, 2000);
+      
     } catch (error) {
-      console.error("Error submitting application:", error);
+      console.error("💥 Final submission error:", error);
+      
+      let errorMessage = "Something went wrong. Please try again.";
+      
+      if (error instanceof TypeError && error.message.includes('fetch')) {
+        errorMessage = "Network error. Please check your connection and try again.";
+      } else if (error instanceof Error) {
+        errorMessage = `Submission failed: ${error.message}`;
+      }
+      
       toast({
-        title: "Error",
-        description: "Something went wrong. Please try again.",
+        title: "Submission Error",
+        description: errorMessage,
         variant: "destructive",
       });
     } finally {
