@@ -1,5 +1,5 @@
 import { ArrowLeft, TrendingUp, Shield, DollarSign, Calculator, Clock, Building2, Target, PiggyBank, Banknote, Phone, ChevronDown, ChevronUp, Info } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { useEffect, useState } from 'react';
 import PageLayout from '@/components/PageLayout';
@@ -15,6 +15,7 @@ import FixedAnnuitiesModal from '@/components/FixedAnnuitiesModal';
 import VariableAnnuitiesModal from '@/components/VariableAnnuitiesModal';
 
 const WealthSolutions = () => {
+  const navigate = useNavigate();
   const [calculatorExpanded, setCalculatorExpanded] = useState(false);
   const [fixedAnnuitiesModalOpen, setFixedAnnuitiesModalOpen] = useState(false);
   const [variableAnnuitiesModalOpen, setVariableAnnuitiesModalOpen] = useState(false);
@@ -337,12 +338,7 @@ const WealthSolutions = () => {
 
                               <Button 
                                 className="w-full"
-                                onClick={() => {
-                                  const contactSection = document.getElementById('contact');
-                                  if (contactSection) {
-                                    contactSection.scrollIntoView({ behavior: 'smooth' });
-                                  }
-                                }}
+                                onClick={() => navigate('/booking')}
                               >
                                 <Phone className="w-4 h-4 mr-2" />
                                 Discuss These Results with an Advisor
@@ -526,11 +522,11 @@ const WealthSolutions = () => {
               <motion.div className="flex flex-col gap-3 sm:gap-4 justify-center" variants={itemVariants}>
                 <Button 
                   size="lg"
-                  onClick={() => setCalculatorExpanded(true)}
+                  onClick={() => navigate('/booking')}
                   className="text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 w-full sm:w-auto"
                 >
                   <Calculator className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                  Try Wealth Calculator
+                  Schedule Consultation
                 </Button>
                 <Button 
                   variant="outline" 
@@ -539,7 +535,7 @@ const WealthSolutions = () => {
                   className="text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 w-full sm:w-auto"
                 >
                   <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                  Schedule Consultation
+                  Call Now
                 </Button>
               </motion.div>
             </div>
