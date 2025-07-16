@@ -1,4 +1,5 @@
-import { ArrowRight, Linkedin, Mail, Phone } from "lucide-react";
+
+import { ArrowRight, Linkedin, Facebook, Instagram, Mail, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
@@ -96,6 +97,22 @@ const Footer = () => {
                 className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white transition-all hover:bg-white hover:text-[#15AFF7] backdrop-blur-sm"
               >
                 <Linkedin size={16} />
+              </a>
+              <a 
+                href="https://www.facebook.com/profile.php?id=61557048294797" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white transition-all hover:bg-white hover:text-[#15AFF7] backdrop-blur-sm"
+              >
+                <Facebook size={16} />
+              </a>
+              <a 
+                href="https://www.instagram.com/agoraassurancesolutions/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white transition-all hover:bg-white hover:text-[#15AFF7] backdrop-blur-sm"
+              >
+                <Instagram size={16} />
               </a>
             </div>
           </div>
