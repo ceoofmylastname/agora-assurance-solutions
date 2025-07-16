@@ -528,15 +528,6 @@ const WealthSolutions = () => {
                   <Calculator className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   Schedule Consultation
                 </Button>
-                <Button 
-                  variant="outline" 
-                  size="lg"
-                  onClick={() => window.open('tel:+19162889400', '_self')}
-                  className="text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 w-full sm:w-auto"
-                >
-                  <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                  Call Now
-                </Button>
               </motion.div>
             </div>
           </motion.div>
