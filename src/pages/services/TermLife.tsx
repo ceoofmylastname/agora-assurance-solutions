@@ -1,14 +1,18 @@
+
 import { ArrowLeft, CheckCircle, Clock, DollarSign, Shield, Users, TrendingUp, Heart } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from "framer-motion";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from "@/components/ui/card";
 import SEO from '@/components/SEO';
+import TermLifeEducationModal from '@/components/TermLifeEducationModal';
 import termLifeFamily from '@/assets/term-life-family.webp';
 
 const TermLife = () => {
   const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -80,9 +84,7 @@ const TermLife = () => {
                       Get Your Quote
                     </button>
                     <button 
-                      onClick={() => {
-                        window.open('https://quickstart.assurity.com/agoraassurancesolutions', '_blank');
-                      }}
+                      onClick={() => setIsModalOpen(true)}
                       className="px-8 py-4 border-2 border-[#15AFF7] text-[#15AFF7] rounded-lg hover:bg-[#15AFF7] hover:text-white transition-all font-medium"
                     >
                       Learn More
@@ -309,6 +311,11 @@ const TermLife = () => {
           </motion.div>
         </div>
       </section>
+
+      <TermLifeEducationModal 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </PageLayout>
   );
 };
