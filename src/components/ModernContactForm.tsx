@@ -414,8 +414,7 @@ const ModernContactForm = () => {
         'Questions': emailData.message,
         'Service - (SL)': emailData.service,
         'first_name': emailData.firstName,
-        'last_name': emailData.lastName,
-        'email': emailData.email
+        'last_name': emailData.lastName
       };
 
       console.log('=== WEBHOOK DATA DEBUG ===');
