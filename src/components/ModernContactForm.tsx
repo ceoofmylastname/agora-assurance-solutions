@@ -1,9 +1,10 @@
+
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import confetti from 'canvas-confetti';
-import { Send, Mail, User, MessageSquare, ArrowRight, ArrowLeft, CheckCircle, Shield, Home, Heart, TrendingUp, DollarSign, FileText } from 'lucide-react';
+import { Send, Mail, User, MessageSquare, ArrowRight, ArrowLeft, CheckCircle, Shield, Home, Heart, TrendingUp, DollarSign, FileText, Phone } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
@@ -16,6 +17,7 @@ const formSchema = z.object({
   firstName: z.string().min(2, 'First name must be at least 2 characters'),
   lastName: z.string().min(2, 'Last name must be at least 2 characters'),
   email: z.string().email('Please enter a valid email address'),
+  phone: z.string().min(10, 'Please enter a valid phone number').regex(/^[\+]?[1-9][\d]{0,15}$/, 'Please enter a valid phone number'),
   service: z.string().min(1, 'Please select a service'),
   message: z.string().min(10, 'Message must be at least 10 characters'),
   honeypot: z.string().max(0, 'Bot detected'),
@@ -75,6 +77,16 @@ const steps = [
     isQuestion: true
   },
   {
+    id: 'phone',
+    title: 'What\'s your phone number?',
+    subtitle: 'We\'ll use this to contact you about your quote',
+    field: 'phone',
+    icon: Phone,
+    placeholder: '(555) 123-4567',
+    type: 'tel',
+    isQuestion: true
+  },
+  {
     id: 'service',
     title: 'Which insurance service interests you?',
     subtitle: 'Select the service you\'d like to learn more about',
@@ -115,6 +127,7 @@ const ModernContactForm = () => {
       firstName: '',
       lastName: '',
       email: '',
+      phone: '',
       service: '',
       message: '',
       honeypot: '',
@@ -356,6 +369,7 @@ const ModernContactForm = () => {
         firstName: emailData.firstName,
         lastName: emailData.lastName,
         email: emailData.email,
+        phone: emailData.phone,
         service: emailData.service,
         message: emailData.message,
         timestamp: new Date().toISOString(),
@@ -389,6 +403,7 @@ const ModernContactForm = () => {
         firstName: '',
         lastName: '',
         email: '',
+        phone: '',
         service: '',
         message: '',
         honeypot: '',
