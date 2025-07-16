@@ -12,7 +12,6 @@ import retirementStrategyComparison from '@/assets/retirement-strategy-compariso
 import finalExpenseGuide from '@/assets/final-expense-guide.webp';
 import taxStrategies from '@/assets/tax-strategies.webp';
 import medicalExamTips from '@/assets/medical-exam-tips.webp';
-
 interface BlogPostData {
   id: string;
   title: string;
@@ -25,9 +24,11 @@ interface BlogPostData {
   publishDate: string;
   slug: string;
   tags: string[];
-  tableOfContents: { id: string; title: string; }[];
+  tableOfContents: {
+    id: string;
+    title: string;
+  }[];
 }
-
 const blogPostsData: Record<string, BlogPostData> = {
   '2025-life-insurance-rate-analysis': {
     id: '1',
@@ -104,16 +105,25 @@ const blogPostsData: Record<string, BlogPostData> = {
     readTime: '8 min read',
     author: 'Sarah Johnson, CLU',
     authorBio: 'Sarah is a Chartered Life Underwriter with 15+ years of experience in the life insurance industry. She specializes in market analysis and has helped over 2,000 families secure appropriate coverage.',
-     publishDate: 'June 15, 2025',
-     slug: '2025-life-insurance-rate-analysis',
+    publishDate: 'June 15, 2025',
+    slug: '2025-life-insurance-rate-analysis',
     tags: ['life insurance', 'rates', 'market trends', 'underwriting'],
-    tableOfContents: [
-      { id: 'market-overview', title: 'Market Overview: A Year of Significant Changes' },
-       { id: 'underwriting-changes', title: 'Revolutionary Underwriting Changes' },
-       { id: 'rate-strategies', title: 'Proven Strategies to Secure Better Rates' },
-       { id: 'market-predictions', title: '2026 Market Predictions' },
-       { id: 'action-plan', title: 'Your Action Plan for 2025' }
-    ]
+    tableOfContents: [{
+      id: 'market-overview',
+      title: 'Market Overview: A Year of Significant Changes'
+    }, {
+      id: 'underwriting-changes',
+      title: 'Revolutionary Underwriting Changes'
+    }, {
+      id: 'rate-strategies',
+      title: 'Proven Strategies to Secure Better Rates'
+    }, {
+      id: 'market-predictions',
+      title: '2026 Market Predictions'
+    }, {
+      id: 'action-plan',
+      title: 'Your Action Plan for 2025'
+    }]
   },
   'hidden-costs-mortgage-protection': {
     id: '2',
@@ -204,14 +214,25 @@ const blogPostsData: Record<string, BlogPostData> = {
     publishDate: 'May 22, 2025',
     slug: 'hidden-costs-mortgage-protection',
     tags: ['mortgage protection', 'insurance costs', 'expert advice'],
-    tableOfContents: [
-      { id: 'truth-about-mortgage-protection', title: 'The Truth About Mortgage Protection Insurance' },
-      { id: 'cost-comparison', title: 'Real Cost Comparison: The Numbers Don\'t Lie' },
-      { id: 'hidden-costs', title: 'The Hidden Costs They Don\'t Mention' },
-      { id: 'when-it-makes-sense', title: 'When Mortgage Protection Actually Makes Sense' },
-      { id: 'better-alternatives', title: 'Better Alternatives: What I Recommend Instead' },
-      { id: 'action-steps', title: 'Take Action: Your Next Steps' }
-    ]
+    tableOfContents: [{
+      id: 'truth-about-mortgage-protection',
+      title: 'The Truth About Mortgage Protection Insurance'
+    }, {
+      id: 'cost-comparison',
+      title: 'Real Cost Comparison: The Numbers Don\'t Lie'
+    }, {
+      id: 'hidden-costs',
+      title: 'The Hidden Costs They Don\'t Mention'
+    }, {
+      id: 'when-it-makes-sense',
+      title: 'When Mortgage Protection Actually Makes Sense'
+    }, {
+      id: 'better-alternatives',
+      title: 'Better Alternatives: What I Recommend Instead'
+    }, {
+      id: 'action-steps',
+      title: 'Take Action: Your Next Steps'
+    }]
   },
   'tax-advantaged-life-insurance-strategies': {
     id: '3',
@@ -324,15 +345,28 @@ const blogPostsData: Record<string, BlogPostData> = {
     publishDate: 'February 28, 2025',
     slug: 'tax-advantaged-life-insurance-strategies',
     tags: ['tax planning', 'estate planning', 'wealth transfer', 'high-income'],
-    tableOfContents: [
-      { id: 'high-income-challenges', title: 'The High-Income Earner\'s Tax Challenge' },
-      { id: 'tax-advantages', title: 'The Triple Tax Advantage of Life Insurance' },
-      { id: 'advanced-strategies', title: 'Advanced Strategies for Wealth Optimization' },
-      { id: 'estate-planning', title: 'Estate Planning Integration' },
-      { id: 'implementation', title: 'Implementation Best Practices' },
-      { id: 'case-studies', title: 'Real-World Case Studies' },
-      { id: 'action-plan', title: 'Your Strategic Action Plan' }
-    ]
+    tableOfContents: [{
+      id: 'high-income-challenges',
+      title: 'The High-Income Earner\'s Tax Challenge'
+    }, {
+      id: 'tax-advantages',
+      title: 'The Triple Tax Advantage of Life Insurance'
+    }, {
+      id: 'advanced-strategies',
+      title: 'Advanced Strategies for Wealth Optimization'
+    }, {
+      id: 'estate-planning',
+      title: 'Estate Planning Integration'
+    }, {
+      id: 'implementation',
+      title: 'Implementation Best Practices'
+    }, {
+      id: 'case-studies',
+      title: 'Real-World Case Studies'
+    }, {
+      id: 'action-plan',
+      title: 'Your Strategic Action Plan'
+    }]
   },
   'life-insurance-medical-exam-tips': {
     id: '4',
@@ -555,26 +589,45 @@ const blogPostsData: Record<string, BlogPostData> = {
     readTime: '7 min read',
     author: 'Jennifer Walsh, RN',
     authorBio: 'Jennifer is a registered nurse with 12+ years of experience conducting life insurance medical exams. She has helped thousands of applicants optimize their exam results and secure better rates.',
-     publishDate: 'January 15, 2025',
-     slug: 'life-insurance-medical-exam-tips',
-     tags: ['medical exam', 'application process', 'premium optimization'],
-     tableOfContents: [
-       { id: 'exam-overview', title: 'Understanding the Life Insurance Medical Exam' },
-       { id: 'preparation-timeline', title: 'The 30-Day Preparation Timeline' },
-       { id: 'exam-day-strategies', title: 'Exam Day Strategies That Work' },
-       { id: 'critical-measurements', title: 'Optimizing Critical Measurements' },
-       { id: 'blood-test-optimization', title: 'Blood Test Optimization' },
-       { id: 'common-mistakes', title: 'Common Mistakes That Hurt Your Rates' },
-       { id: 'special-situations', title: 'Special Situations and Strategies' },
-       { id: 'post-exam-strategies', title: 'Post-Exam Strategies' },
-       { id: 'examiner-interaction', title: 'Working with Your Examiner' },
-       { id: 'final-checklist', title: 'Final Pre-Exam Checklist' }
-     ]
-   },
-   'annuities-vs-401k-2025-analysis': {
+    publishDate: 'January 15, 2025',
+    slug: 'life-insurance-medical-exam-tips',
+    tags: ['medical exam', 'application process', 'premium optimization'],
+    tableOfContents: [{
+      id: 'exam-overview',
+      title: 'Understanding the Life Insurance Medical Exam'
+    }, {
+      id: 'preparation-timeline',
+      title: 'The 30-Day Preparation Timeline'
+    }, {
+      id: 'exam-day-strategies',
+      title: 'Exam Day Strategies That Work'
+    }, {
+      id: 'critical-measurements',
+      title: 'Optimizing Critical Measurements'
+    }, {
+      id: 'blood-test-optimization',
+      title: 'Blood Test Optimization'
+    }, {
+      id: 'common-mistakes',
+      title: 'Common Mistakes That Hurt Your Rates'
+    }, {
+      id: 'special-situations',
+      title: 'Special Situations and Strategies'
+    }, {
+      id: 'post-exam-strategies',
+      title: 'Post-Exam Strategies'
+    }, {
+      id: 'examiner-interaction',
+      title: 'Working with Your Examiner'
+    }, {
+      id: 'final-checklist',
+      title: 'Final Pre-Exam Checklist'
+    }]
+  },
+  'annuities-vs-401k-2025-analysis': {
     id: '3',
-     title: 'Annuities vs. 401(k): Which Retirement Strategy Wins in 2025?',
-     content: `
+    title: 'Annuities vs. 401(k): Which Retirement Strategy Wins in 2025?',
+    content: `
        <div class="prose prose-lg max-w-none">
          <h2 id="retirement-dilemma">The Modern Retirement Dilemma</h2>
          <p>With traditional pensions nearly extinct and Social Security's long-term viability questioned, Americans face critical decisions about retirement planning. Two popular strategies dominate the conversation: 401(k) plans and annuities. But which delivers better results in 2025's economic environment?</p>
@@ -842,22 +895,43 @@ const blogPostsData: Record<string, BlogPostData> = {
     readTime: '10 min read',
     author: 'David Rodriguez, ChFC',
     authorBio: 'David is a Chartered Financial Consultant specializing in retirement income planning. With 18+ years of experience, he has helped over 3,000 clients optimize their retirement strategies using comprehensive financial analysis.',
-     publishDate: 'April 18, 2025',
-     slug: 'annuities-vs-401k-2025-analysis',
+    publishDate: 'April 18, 2025',
+    slug: 'annuities-vs-401k-2025-analysis',
     tags: ['annuities', '401k', 'retirement planning', 'tax strategies'],
-    tableOfContents: [
-      { id: 'retirement-dilemma', title: 'The Modern Retirement Dilemma' },
-      { id: 'financial-comparison', title: 'Head-to-Head Financial Comparison' },
-      { id: 'tax-implications', title: 'Tax Strategy Analysis' },
-      { id: 'risk-analysis', title: 'Risk Assessment: What Could Go Wrong?' },
-      { id: 'optimal-strategies', title: 'Optimal Strategies by Age and Situation' },
-      { id: 'product-comparison', title: 'Advanced Product Comparison' },
-      { id: 'real-scenarios', title: 'Real-World Scenarios: When Each Strategy Wins' },
-      { id: 'implementation-guide', title: 'Implementation Strategy Guide' },
-      { id: 'common-mistakes', title: 'Common Implementation Mistakes' },
-      { id: '2025-recommendations', title: '2025 Specific Recommendations' },
-      { id: 'conclusion', title: 'The Verdict: There\'s No Universal Winner' }
-    ]
+    tableOfContents: [{
+      id: 'retirement-dilemma',
+      title: 'The Modern Retirement Dilemma'
+    }, {
+      id: 'financial-comparison',
+      title: 'Head-to-Head Financial Comparison'
+    }, {
+      id: 'tax-implications',
+      title: 'Tax Strategy Analysis'
+    }, {
+      id: 'risk-analysis',
+      title: 'Risk Assessment: What Could Go Wrong?'
+    }, {
+      id: 'optimal-strategies',
+      title: 'Optimal Strategies by Age and Situation'
+    }, {
+      id: 'product-comparison',
+      title: 'Advanced Product Comparison'
+    }, {
+      id: 'real-scenarios',
+      title: 'Real-World Scenarios: When Each Strategy Wins'
+    }, {
+      id: 'implementation-guide',
+      title: 'Implementation Strategy Guide'
+    }, {
+      id: 'common-mistakes',
+      title: 'Common Implementation Mistakes'
+    }, {
+      id: '2025-recommendations',
+      title: '2025 Specific Recommendations'
+    }, {
+      id: 'conclusion',
+      title: 'The Verdict: There\'s No Universal Winner'
+    }]
   },
   'complete-final-expense-insurance-guide': {
     id: '4',
@@ -1205,69 +1279,86 @@ const blogPostsData: Record<string, BlogPostData> = {
     publishDate: 'January 8, 2025',
     slug: 'complete-final-expense-insurance-guide',
     tags: ['final expense', 'burial insurance', 'family protection'],
-    tableOfContents: [
-      { id: 'what-is-final-expense', title: 'What Is Final Expense Insurance?' },
-      { id: 'cost-breakdown', title: 'Complete Cost Breakdown: What Does Dying Really Cost?' },
-      { id: 'who-needs-coverage', title: 'Who Needs Final Expense Insurance?' },
-      { id: 'types-of-policies', title: 'Types of Final Expense Policies' },
-      { id: 'application-process', title: 'The Application Process: What to Expect' },
-      { id: 'common-health-questions', title: 'Common Health Questions and How to Answer' },
-      { id: 'cost-analysis', title: 'Cost Analysis: What You\'ll Actually Pay' },
-      { id: 'shopping-strategies', title: 'Smart Shopping Strategies' },
-      { id: 'alternatives', title: 'Alternatives to Final Expense Insurance' },
-      { id: 'family-communication', title: 'Having "The Conversation" with Family' },
-      { id: 'claim-process', title: 'The Claims Process: What Your Family Needs to Know' },
-      { id: 'special-considerations', title: 'Special Considerations and Advanced Strategies' },
-      { id: 'action-plan', title: 'Your Final Expense Action Plan' }
-    ]
+    tableOfContents: [{
+      id: 'what-is-final-expense',
+      title: 'What Is Final Expense Insurance?'
+    }, {
+      id: 'cost-breakdown',
+      title: 'Complete Cost Breakdown: What Does Dying Really Cost?'
+    }, {
+      id: 'who-needs-coverage',
+      title: 'Who Needs Final Expense Insurance?'
+    }, {
+      id: 'types-of-policies',
+      title: 'Types of Final Expense Policies'
+    }, {
+      id: 'application-process',
+      title: 'The Application Process: What to Expect'
+    }, {
+      id: 'common-health-questions',
+      title: 'Common Health Questions and How to Answer'
+    }, {
+      id: 'cost-analysis',
+      title: 'Cost Analysis: What You\'ll Actually Pay'
+    }, {
+      id: 'shopping-strategies',
+      title: 'Smart Shopping Strategies'
+    }, {
+      id: 'alternatives',
+      title: 'Alternatives to Final Expense Insurance'
+    }, {
+      id: 'family-communication',
+      title: 'Having "The Conversation" with Family'
+    }, {
+      id: 'claim-process',
+      title: 'The Claims Process: What Your Family Needs to Know'
+    }, {
+      id: 'special-considerations',
+      title: 'Special Considerations and Advanced Strategies'
+    }, {
+      id: 'action-plan',
+      title: 'Your Final Expense Action Plan'
+    }]
   }
 };
-
 const BlogPost = () => {
-  const { slug } = useParams();
+  const {
+    slug
+  } = useParams();
   const navigate = useNavigate();
   const [readingProgress, setReadingProgress] = useState(0);
   const [activeSection, setActiveSection] = useState('');
-
   const post = slug ? blogPostsData[slug] : null;
-
   useEffect(() => {
     const handleScroll = () => {
       const article = document.querySelector('.blog-content');
       if (article) {
         const totalHeight = article.scrollHeight - window.innerHeight;
-        const progress = (window.scrollY / totalHeight) * 100;
+        const progress = window.scrollY / totalHeight * 100;
         setReadingProgress(Math.min(100, Math.max(0, progress)));
       }
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
   useEffect(() => {
     const observerOptions = {
       rootMargin: '-20% 0px -70% 0px',
       threshold: 0
     };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
           setActiveSection(entry.target.id);
         }
       });
     }, observerOptions);
-
     const sections = document.querySelectorAll('h2[id], h3[id]');
-    sections.forEach((section) => observer.observe(section));
-
+    sections.forEach(section => observer.observe(section));
     return () => observer.disconnect();
   }, [post]);
-
   if (!post) {
-    return (
-      <PageLayout>
+    return <PageLayout>
         <div className="container mx-auto px-4 py-20 text-center">
           <h1 className="text-4xl font-bold text-foreground mb-4">Article Not Found</h1>
           <p className="text-muted-foreground mb-8">The requested blog post could not be found.</p>
@@ -1276,10 +1367,8 @@ const BlogPost = () => {
             Back to Blog
           </Button>
         </div>
-      </PageLayout>
-    );
+      </PageLayout>;
   }
-
   const handleShare = () => {
     if (navigator.share) {
       navigator.share({
@@ -1291,42 +1380,30 @@ const BlogPost = () => {
       navigator.clipboard.writeText(window.location.href);
     }
   };
-
-  return (
-    <PageLayout>
-      <SEO 
-        title={`${post.title} - Agora Assurance Solutions Blog`}
-        description={post.content.replace(/<[^>]*>/g, '').substring(0, 160)}
-        keywords={post.tags}
-        imageUrl={post.image}
-        isBlogPost={true}
-        publishDate={post.publishDate}
-        author={post.author}
-        category={post.category}
-      />
+  return <PageLayout>
+      <SEO title={`${post.title} - Agora Assurance Solutions Blog`} description={post.content.replace(/<[^>]*>/g, '').substring(0, 160)} keywords={post.tags} imageUrl={post.image} isBlogPost={true} publishDate={post.publishDate} author={post.author} category={post.category} />
 
       {/* Reading Progress Bar */}
       <div className="fixed top-0 left-0 w-full h-1 bg-secondary/20 z-50">
-        <div 
-          className="h-full bg-gradient-to-r from-primary to-primary/70 transition-all duration-300"
-          style={{ width: `${readingProgress}%` }}
-        />
+        <div className="h-full bg-gradient-to-r from-primary to-primary/70 transition-all duration-300" style={{
+        width: `${readingProgress}%`
+      }} />
       </div>
 
       <div className="min-h-screen bg-gradient-to-br from-background via-background to-secondary/5">
         {/* Hero Section */}
         <section className="py-20 bg-gradient-to-br from-primary/5 via-background to-secondary/10">
           <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <Button 
-                onClick={() => navigate('/blog')}
-                variant="ghost"
-                className="mb-8 hover:bg-primary/10"
-              >
+            <motion.div initial={{
+            opacity: 0,
+            y: 30
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.6
+          }}>
+              <Button onClick={() => navigate('/blog')} variant="ghost" className="mb-8 hover:bg-primary/10">
                 <ArrowLeft className="mr-2 w-4 h-4" />
                 Back to Blog
               </Button>
@@ -1369,11 +1446,7 @@ const BlogPost = () => {
                 </div>
 
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                  <img 
-                    src={post.image} 
-                    alt={post.title}
-                    className="w-full h-96 object-cover"
-                  />
+                  <img src={post.image} alt={post.title} className="w-full h-96 object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/10 to-transparent" />
                 </div>
               </div>
@@ -1386,12 +1459,16 @@ const BlogPost = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto flex gap-12">
               {/* Table of Contents - Sidebar */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="hidden lg:block w-80 shrink-0"
-              >
+              <motion.div initial={{
+              opacity: 0,
+              x: -30
+            }} animate={{
+              opacity: 1,
+              x: 0
+            }} transition={{
+              duration: 0.6,
+              delay: 0.2
+            }} className="hidden lg:block w-80 shrink-0">
                 <div className="sticky top-24">
                   <Card className="p-6 bg-background/80 backdrop-blur-sm border-0 shadow-lg">
                     <div className="flex items-center gap-2 mb-4">
@@ -1399,58 +1476,50 @@ const BlogPost = () => {
                       <h3 className="font-semibold text-foreground">Table of Contents</h3>
                     </div>
                     <nav className="space-y-2">
-                      {post.tableOfContents.map((item) => (
-                        <a
-                          key={item.id}
-                          href={`#${item.id}`}
-                          className={`block py-2 px-3 rounded-lg text-sm transition-all duration-200 ${
-                            activeSection === item.id
-                              ? 'bg-primary text-primary-foreground font-medium'
-                              : 'text-muted-foreground hover:bg-secondary/50 hover:text-foreground'
-                          }`}
-                        >
+                      {post.tableOfContents.map(item => <a key={item.id} href={`#${item.id}`} className={`block py-2 px-3 rounded-lg text-sm transition-all duration-200 ${activeSection === item.id ? 'bg-primary text-primary-foreground font-medium' : 'text-muted-foreground hover:bg-secondary/50 hover:text-foreground'}`}>
                           {item.title}
-                        </a>
-                      ))}
+                        </a>)}
                     </nav>
                   </Card>
                 </div>
               </motion.div>
 
               {/* Main Content */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="flex-1"
-              >
+              <motion.div initial={{
+              opacity: 0,
+              y: 30
+            }} animate={{
+              opacity: 1,
+              y: 0
+            }} transition={{
+              duration: 0.6,
+              delay: 0.3
+            }} className="flex-1">
                 <Card className="p-8 lg:p-12 bg-background/80 backdrop-blur-sm border-0 shadow-lg">
-                  <div 
-                    className="blog-content prose prose-lg max-w-none"
-                    dangerouslySetInnerHTML={{ __html: post.content }}
-                  />
+                  <div className="blog-content prose prose-lg max-w-none" dangerouslySetInnerHTML={{
+                  __html: post.content
+                }} />
 
                   {/* Tags */}
                   <div className="flex flex-wrap gap-2 mt-12 pt-8 border-t border-border">
                     <span className="text-muted-foreground font-medium mr-2">Tags:</span>
-                    {post.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="bg-secondary/50 text-secondary-foreground px-3 py-1 rounded-full text-sm font-medium"
-                      >
+                    {post.tags.map(tag => <span key={tag} className="bg-secondary/50 text-secondary-foreground px-3 py-1 rounded-full text-sm font-medium">
                         {tag}
-                      </span>
-                    ))}
+                      </span>)}
                   </div>
                 </Card>
 
                 {/* Related Articles CTA */}
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                  className="mt-12"
-                >
+                <motion.div initial={{
+                opacity: 0,
+                y: 30
+              }} animate={{
+                opacity: 1,
+                y: 0
+              }} transition={{
+                duration: 0.6,
+                delay: 0.4
+              }} className="mt-12">
                   <Card className="p-8 bg-gradient-to-br from-primary/5 to-secondary/5 border-0 shadow-lg text-center">
                     <TrendingUp className="w-12 h-12 text-primary mx-auto mb-4" />
                     <h3 className="text-2xl font-bold text-foreground mb-4">
@@ -1461,9 +1530,7 @@ const BlogPost = () => {
                       We'll help you find the right coverage at the best rates.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                      <Button size="lg" className="bg-primary hover:bg-primary/90" onClick={() => navigate('/booking')}>
-                        Book an Appointment
-                      </Button>
+                      
                       <Button size="lg" variant="outline" onClick={() => navigate('/blog')}>
                         Read More Articles
                       </Button>
@@ -1475,8 +1542,6 @@ const BlogPost = () => {
           </div>
         </section>
       </div>
-    </PageLayout>
-  );
+    </PageLayout>;
 };
-
 export default BlogPost;
