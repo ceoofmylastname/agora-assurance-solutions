@@ -1,4 +1,4 @@
-import { ArrowLeft, Shield, Home, Users, DollarSign, Clock, Star, CheckCircle, Target, Heart, TrendingUp, Building, Calculator, Calendar } from 'lucide-react';
+import { ArrowLeft, Shield, Home, Users, DollarSign, Clock, Star, CheckCircle, Target, Heart, TrendingUp, Building, Calculator, Calendar, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { useEffect } from 'react';
@@ -81,13 +81,11 @@ const ProtectionPlans = () => {
                   <Button 
                     variant="outline" 
                     size="lg"
-                    asChild
+                    onClick={() => window.open('tel:+19162889400', '_self')}
                     className="text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 w-full sm:w-auto"
                   >
-                    <Link to="/booking">
-                      <Calendar className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                      Book Consultation
-                    </Link>
+                    <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                    Speak with Broker
                   </Button>
                 </div>
               </motion.div>
