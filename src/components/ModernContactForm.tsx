@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -335,14 +334,34 @@ const ModernContactForm = () => {
 
   const handleSubmit = async () => {
     const isValid = await form.trigger();
-    if (!isValid) return;
+    if (!isValid) {
+      console.log('Form validation failed');
+      return;
+    }
 
     setIsSubmitting(true);
     
     try {
       const data = form.getValues();
       
-      console.log('Form data being submitted:', data);
+      console.log('=== FORM SUBMISSION DEBUG ===');
+      console.log('All form data:', data);
+      console.log('Phone field specifically:', data.phone);
+      console.log('Phone field type:', typeof data.phone);
+      console.log('Phone field length:', data.phone?.length || 0);
+      console.log('Is phone empty?', !data.phone || data.phone.trim() === '');
+      
+      // Enhanced validation for phone field
+      if (!data.phone || data.phone.trim() === '') {
+        console.error('❌ Phone field is empty or undefined');
+        toast({
+          title: "Error",
+          description: "Phone number is required. Please enter your phone number.",
+          variant: "destructive"
+        });
+        setIsSubmitting(false);
+        return;
+      }
       
       // Bot checks
       if (data.honeypot) {
@@ -367,19 +386,23 @@ const ModernContactForm = () => {
       
       const { honeypot, timestamp, ...emailData } = data;
       
-      // Send to webhook (primary method)
+      // Enhanced webhook data construction with explicit phone field logging
       const webhookData = {
         firstName: emailData.firstName,
         lastName: emailData.lastName,
         email: emailData.email,
-        phone: emailData.phone,
+        phone: emailData.phone, // Explicitly include phone
         service: emailData.service,
         message: emailData.message,
         timestamp: new Date().toISOString(),
         source: 'contact_form'
       };
 
-      console.log('Webhook data being sent:', webhookData);
+      console.log('=== WEBHOOK DATA DEBUG ===');
+      console.log('Complete webhook data:', webhookData);
+      console.log('Webhook phone field:', webhookData.phone);
+      console.log('Phone field in webhook?', 'phone' in webhookData);
+      console.log('Webhook data stringified:', JSON.stringify(webhookData, null, 2));
 
       const response = await fetch(WEBHOOK_URL, {
         method: 'POST',
@@ -389,11 +412,16 @@ const ModernContactForm = () => {
         body: JSON.stringify(webhookData),
       });
 
+      console.log('=== WEBHOOK RESPONSE DEBUG ===');
       console.log('Webhook response status:', response.status);
+      console.log('Webhook response ok:', response.ok);
 
       if (!response.ok) {
+        console.error('❌ Webhook submission failed with status:', response.status);
         throw new Error('Webhook submission failed');
       }
+      
+      console.log('✅ Webhook submitted successfully with phone:', webhookData.phone);
       
       setIsSubmitted(true);
       
@@ -417,7 +445,7 @@ const ModernContactForm = () => {
         timestamp: Date.now()
       });
     } catch (error) {
-      console.error('Error sending email:', error);
+      console.error('❌ Error sending email:', error);
       
       toast({
         title: "Error",
@@ -603,7 +631,10 @@ const ModernContactForm = () => {
                                      }}
                                      onKeyDown={handleKeyPress}
                                      value={field.value || ''}
-                                     onChange={field.onChange}
+                                     onChange={(e) => {
+                                       console.log(`${currentStepData.field} field changed:`, e.target.value);
+                                       field.onChange(e);
+                                     }}
                                    />
                                  </motion.div>
                                ) : (
@@ -627,7 +658,13 @@ const ModernContactForm = () => {
                                      }}
                                      onKeyDown={handleKeyPress}
                                      value={field.value || ''}
-                                     onChange={field.onChange}
+                                     onChange={(e) => {
+                                       console.log(`${currentStepData.field} field changed:`, e.target.value);
+                                       if (currentStepData.field === 'phone') {
+                                         console.log('📞 PHONE FIELD UPDATE:', e.target.value);
+                                       }
+                                       field.onChange(e);
+                                     }}
                                    />
                                  </motion.div>
                                )}
