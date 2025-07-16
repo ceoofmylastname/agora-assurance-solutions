@@ -1,4 +1,4 @@
-import { ArrowLeft, Shield, Home, Users, DollarSign, Clock, Star, CheckCircle, Target, Heart, TrendingUp, Building, Calculator, Phone } from 'lucide-react';
+import { ArrowLeft, Shield, Home, Users, DollarSign, Clock, Star, CheckCircle, Target, Heart, TrendingUp, Building, Calculator, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { useEffect } from 'react';
@@ -85,7 +85,7 @@ const ProtectionPlans = () => {
                     className="text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 w-full sm:w-auto"
                   >
                     <Link to="/booking">
-                      <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                      <Calendar className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                       Book Consultation
                     </Link>
                   </Button>
@@ -256,7 +256,7 @@ const ProtectionPlans = () => {
                 { icon: Calculator, title: "40+ Companies", description: "Compare rates from multiple top-rated insurers" },
                 { icon: TrendingUp, title: "Best Rates", description: "Independent shopping ensures competitive pricing" },
                 { icon: Clock, title: "Fast Processing", description: "Quick approvals with immediate coverage options" },
-                { icon: Phone, title: "Expert Support", description: "Licensed professionals guide you through every step" }
+                { icon: Calendar, title: "Expert Support", description: "Licensed professionals guide you through every step" }
               ].map((benefit, index) => (
                 <motion.div key={index} variants={itemVariants}>
                   <Card className="text-center hover:shadow-lg transition-all duration-300 hover:scale-105 border-2 hover:border-primary/20">
@@ -301,7 +301,7 @@ const ProtectionPlans = () => {
                   className="text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 w-full sm:w-auto"
                 >
                   <Link to="/booking">
-                    <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                    <Calendar className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                     Book Consultation
                   </Link>
                 </Button>
