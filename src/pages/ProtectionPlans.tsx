@@ -84,10 +84,10 @@ const ProtectionPlans = () => {
                     asChild
                     className="text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 w-full sm:w-auto"
                   >
-                    <a href="tel:+19162889400">
+                    <Link to="/booking">
                       <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                      Speak with Broker
-                    </a>
+                      Book Consultation
+                    </Link>
                   </Button>
                 </div>
               </motion.div>
@@ -300,10 +300,10 @@ const ProtectionPlans = () => {
                   asChild
                   className="text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 w-full sm:w-auto"
                 >
-                  <a href="tel:+19162889400">
+                  <Link to="/booking">
                     <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                     Book Consultation
-                  </a>
+                  </Link>
                 </Button>
               </motion.div>
             </div>
