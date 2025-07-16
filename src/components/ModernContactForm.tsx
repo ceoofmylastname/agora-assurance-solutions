@@ -37,7 +37,7 @@ const insuranceServices = [
 const EMAILJS_SERVICE_ID = "service_i3h66xg";
 const EMAILJS_TEMPLATE_ID = "template_fgq53nh";
 const EMAILJS_PUBLIC_KEY = "wQmcZvoOqTAhGnRZ3";
-const WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/TLhrYb7SRrWrly615tCI/webhook-trigger/198f9752-05be-412e-b5dc-4dd58a596f56";
+const WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/1thzyIrjG796QMuftwxZ/webhook-trigger/e56b458c-a322-411d-ae46-03b513f475e0";
 
 const steps = [
   {
@@ -386,31 +386,18 @@ const ModernContactForm = () => {
       
       const { honeypot, timestamp, ...emailData } = data;
       
-      // Enhanced webhook data with multiple phone field variations for CRM compatibility
+      // Enhanced webhook data with all form fields
       const webhookData = {
-        // Basic contact info
         firstName: emailData.firstName,
         lastName: emailData.lastName,
         email: emailData.email,
-        service: emailData.service,
-        
-        // Multiple phone field variations for CRM compatibility
         phone: emailData.phone,
-        phone_number: emailData.phone,
-        phoneNumber: emailData.phone,
-        contact_phone: emailData.phone,
-        'Phone Number:': emailData.phone,
-        
-        // Enhanced message with phone number included as backup
-        message: `${emailData.message}\n\nContact Details:\nPhone: ${emailData.phone}\nEmail: ${emailData.email}\nService Interest: ${emailData.service}`,
-        
-        // Additional CRM-friendly fields
+        service: emailData.service,
+        message: emailData.message,
         full_name: `${emailData.firstName} ${emailData.lastName}`,
         lead_source: 'Website Contact Form',
         timestamp: new Date().toISOString(),
         source: 'contact_form',
-        
-        // LeadConnector specific fields
         'Questions': emailData.message,
         'Service - (SL)': emailData.service,
         'first_name': emailData.firstName,
@@ -419,13 +406,6 @@ const ModernContactForm = () => {
 
       console.log('=== WEBHOOK DATA DEBUG ===');
       console.log('Complete webhook data:', webhookData);
-      console.log('All phone field variations:', {
-        phone: webhookData.phone,
-        phone_number: webhookData.phone_number,
-        phoneNumber: webhookData.phoneNumber,
-        contact_phone: webhookData.contact_phone,
-        'Phone Number:': webhookData['Phone Number:']
-      });
       console.log('Phone field in webhook?', 'phone' in webhookData);
       console.log('Webhook data stringified:', JSON.stringify(webhookData, null, 2));
 
@@ -446,7 +426,7 @@ const ModernContactForm = () => {
         throw new Error('Webhook submission failed');
       }
       
-      console.log('✅ Webhook submitted successfully with multiple phone field formats');
+      console.log('✅ Webhook submitted successfully to new endpoint');
       
       setIsSubmitted(true);
       
