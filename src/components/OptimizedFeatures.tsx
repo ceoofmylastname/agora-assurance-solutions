@@ -6,14 +6,12 @@ import { Progress } from "@/components/ui/progress";
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Button } from "@/components/ui/button";
 import AnimatedCounter from "@/components/ui/animated-counter";
-
 const OptimizedFeatures = memo(() => {
   const featuresRef = useRef<HTMLDivElement>(null);
   const [progressValue, setProgressValue] = useState(0);
   const [currentSprint, setCurrentSprint] = useState(1);
   const totalSprints = 3;
   const isMobile = useIsMobile();
-
   const scrollToContact = (e: React.MouseEvent) => {
     e.preventDefault();
     const contactSection = document.getElementById('contact-info');
@@ -23,7 +21,6 @@ const OptimizedFeatures = memo(() => {
       });
     }
   };
-
   useEffect(() => {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -47,7 +44,6 @@ const OptimizedFeatures = memo(() => {
     }
     return () => observer.disconnect();
   }, []);
-  
   useEffect(() => {
     let interval: NodeJS.Timeout;
     const animateProgress = () => {
@@ -71,7 +67,6 @@ const OptimizedFeatures = memo(() => {
       if (interval) clearInterval(interval);
     };
   }, []);
-
   const stepFlowItems = [{
     icon: <Search className="h-10 w-10 text-gray-700" />,
     title: "Smart Comparison Engine",
@@ -85,7 +80,6 @@ const OptimizedFeatures = memo(() => {
     title: "Trusted Carrier Network",
     description: "A-rated insurance companies with proven financial stability"
   }];
-
   const sprintPhases = [{
     name: "Quote",
     icon: <Calculator className="h-4 w-4" />
@@ -99,9 +93,7 @@ const OptimizedFeatures = memo(() => {
     name: "Protect",
     icon: <Shield className="h-4 w-4" />
   }];
-
-  return (
-    <section id="technology" className="bg-gray-50 py-10 md:py-16">
+  return <section id="technology" className="bg-gray-50 py-10 md:py-16">
       <div className="w-full px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <div className="inline-block mb-2 px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">
@@ -115,8 +107,7 @@ const OptimizedFeatures = memo(() => {
         
         <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-8 mb-10 transition-all duration-300 hover:shadow-xl">
           <div ref={featuresRef} className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-            {stepFlowItems.map((item, index) => (
-              <HoverCard key={index}>
+            {stepFlowItems.map((item, index) => <HoverCard key={index}>
                 <HoverCardTrigger asChild>
                   <div className="feature-item bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 h-full cursor-pointer hover-scale">
                     <div className="flex flex-col items-center text-center">
@@ -141,8 +132,7 @@ const OptimizedFeatures = memo(() => {
                     {index === 2 && <p className="text-xs text-gray-500">We only work with financially stable, A-rated carriers with proven track records of paying claims.</p>}
                   </div>
                 </HoverCardContent>
-              </HoverCard>
-            ))}
+              </HoverCard>)}
           </div>
 
           <div className="relative h-16 mb-10">
@@ -181,16 +171,14 @@ const OptimizedFeatures = memo(() => {
               </div>
               
               <div className={cn("grid gap-1 mt-4", isMobile ? "grid-cols-2 gap-y-2" : "grid-cols-4")}>
-                {sprintPhases.map((phase, index) => (
-                  <div key={index} className={cn("text-center p-2 rounded transition-all", progressValue >= index / sprintPhases.length * 100 && progressValue < (index + 1) / sprintPhases.length * 100 ? "bg-blue-50 border border-blue-100" : "bg-gray-50")}>
+                {sprintPhases.map((phase, index) => <div key={index} className={cn("text-center p-2 rounded transition-all", progressValue >= index / sprintPhases.length * 100 && progressValue < (index + 1) / sprintPhases.length * 100 ? "bg-blue-50 border border-blue-100" : "bg-gray-50")}>
                     <div className="flex flex-col items-center">
                       <div className={cn("rounded-full p-1 mb-1", progressValue >= index / sprintPhases.length * 100 ? "bg-blue-100 text-blue-700" : "bg-gray-100 text-gray-500")}>
                         {phase.icon}
                       </div>
                       <span className="text-xs font-medium">{phase.name}</span>
                     </div>
-                  </div>
-                ))}
+                  </div>)}
               </div>
               
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-6 gap-2">
@@ -204,8 +192,12 @@ const OptimizedFeatures = memo(() => {
                   <span className="mr-2">Continuous improvement</span>
                   <div className="flex space-x-1">
                     <span className="inline-block w-2 h-2 bg-gray-300 rounded-full animate-pulse"></span>
-                    <span className="inline-block w-2 h-2 bg-gray-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></span>
-                    <span className="inline-block w-2 h-2 bg-gray-500 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></span>
+                    <span className="inline-block w-2 h-2 bg-gray-400 rounded-full animate-pulse" style={{
+                    animationDelay: '0.2s'
+                  }}></span>
+                    <span className="inline-block w-2 h-2 bg-gray-500 rounded-full animate-pulse" style={{
+                    animationDelay: '0.4s'
+                  }}></span>
                   </div>
                 </div>
               </div>
@@ -240,25 +232,23 @@ const OptimizedFeatures = memo(() => {
             <p className="text-gray-700">Your family's financial future is now protected</p>
             <div className="flex justify-center mt-4 space-x-2">
               <span className="inline-block w-3 h-3 rounded-full bg-gray-300 animate-pulse"></span>
-              <span className="inline-block w-3 h-3 rounded-full bg-gray-500 animate-pulse" style={{ animationDelay: '0.2s' }}></span>
-              <span className="inline-block w-3 h-3 rounded-full bg-gray-700 animate-pulse" style={{ animationDelay: '0.4s' }}></span>
+              <span className="inline-block w-3 h-3 rounded-full bg-gray-500 animate-pulse" style={{
+              animationDelay: '0.2s'
+            }}></span>
+              <span className="inline-block w-3 h-3 rounded-full bg-gray-700 animate-pulse" style={{
+              animationDelay: '0.4s'
+            }}></span>
             </div>
           </div>
         </div>
         
         <div className="text-center">
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-            <Button onClick={scrollToContact} className="inline-flex items-center px-4 sm:px-6 py-3 bg-gray-700 hover:bg-gray-800 text-white rounded-lg shadow-md hover:shadow-lg transition-all group w-full sm:w-auto justify-center">
-              Get Your Free Quote
-              <MessageSquare className="ml-2 w-4 h-4 group-hover:scale-110 transition-transform" />
-            </Button>
+            
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 });
-
 OptimizedFeatures.displayName = 'OptimizedFeatures';
-
 export default OptimizedFeatures;
