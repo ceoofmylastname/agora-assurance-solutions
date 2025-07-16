@@ -132,7 +132,8 @@ const ModernContactForm = () => {
       message: '',
       honeypot: '',
       timestamp: formStartTime
-    }
+    },
+    mode: 'onChange'
   });
 
   const nextStep = () => {
@@ -341,6 +342,8 @@ const ModernContactForm = () => {
     try {
       const data = form.getValues();
       
+      console.log('Form data being submitted:', data);
+      
       // Bot checks
       if (data.honeypot) {
         toast({
@@ -376,6 +379,8 @@ const ModernContactForm = () => {
         source: 'contact_form'
       };
 
+      console.log('Webhook data being sent:', webhookData);
+
       const response = await fetch(WEBHOOK_URL, {
         method: 'POST',
         headers: {
@@ -383,6 +388,8 @@ const ModernContactForm = () => {
         },
         body: JSON.stringify(webhookData),
       });
+
+      console.log('Webhook response status:', response.status);
 
       if (!response.ok) {
         throw new Error('Webhook submission failed');
@@ -595,7 +602,8 @@ const ModernContactForm = () => {
                                        transformStyle: 'preserve-3d'
                                      }}
                                      onKeyDown={handleKeyPress}
-                                     {...field}
+                                     value={field.value || ''}
+                                     onChange={field.onChange}
                                    />
                                  </motion.div>
                                ) : (
@@ -618,7 +626,8 @@ const ModernContactForm = () => {
                                        transformStyle: 'preserve-3d'
                                      }}
                                      onKeyDown={handleKeyPress}
-                                     {...field}
+                                     value={field.value || ''}
+                                     onChange={field.onChange}
                                    />
                                  </motion.div>
                                )}
@@ -637,7 +646,7 @@ const ModernContactForm = () => {
                     render={({ field }) => (
                       <FormItem className="hidden">
                         <FormControl>
-                          <Input {...field} tabIndex={-1} />
+                          <Input {...field} tabIndex={-1} value={field.value || ''} />
                         </FormControl>
                       </FormItem>
                     )}
@@ -649,7 +658,7 @@ const ModernContactForm = () => {
                     render={({ field }) => (
                       <FormItem className="hidden">
                         <FormControl>
-                          <Input type="hidden" {...field} />
+                          <Input type="hidden" {...field} value={field.value || formStartTime} />
                         </FormControl>
                       </FormItem>
                     )}
