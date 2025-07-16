@@ -81,16 +81,13 @@ const ProtectionPlans = () => {
                   <Button 
                     variant="outline" 
                     size="lg"
-                    onClick={() => {
-                      const contactSection = document.getElementById('contact');
-                      if (contactSection) {
-                        contactSection.scrollIntoView({ behavior: 'smooth' });
-                      }
-                    }}
+                    asChild
                     className="text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 w-full sm:w-auto"
                   >
-                    <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                    Speak with Broker
+                    <a href="tel:+19162889400">
+                      <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                      Speak with Broker
+                    </a>
                   </Button>
                 </div>
               </motion.div>
@@ -300,16 +297,13 @@ const ProtectionPlans = () => {
                 <Button 
                   variant="outline" 
                   size="lg"
-                  onClick={() => {
-                    const contactSection = document.getElementById('contact');
-                    if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                  asChild
                   className="text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 w-full sm:w-auto"
                 >
-                  <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                  Book Consultation
+                  <a href="tel:+19162889400">
+                    <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                    Book Consultation
+                  </a>
                 </Button>
               </motion.div>
             </div>
