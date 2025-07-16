@@ -1,14 +1,17 @@
 import { ArrowLeft, CheckCircle, Shield, DollarSign, TrendingUp, Briefcase, Heart, Users } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from "framer-motion";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from "@/components/ui/card";
 import SEO from '@/components/SEO';
+import WholeLifeEducationModal from '@/components/WholeLifeEducationModal';
 import retirementPlanningCouple from '@/assets/retirement-planning-couple.webp';
 
 const WholeLife = () => {
   const navigate = useNavigate();
+  const [isEducationModalOpen, setIsEducationModalOpen] = useState(false);
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -82,7 +85,10 @@ const WholeLife = () => {
                     >
                       Get Your Quote
                     </button>
-                    <button className="px-8 py-4 border-2 border-[#15AFF7] text-[#15AFF7] rounded-lg hover:bg-[#15AFF7] hover:text-white transition-all font-medium">
+                    <button 
+                      onClick={() => setIsEducationModalOpen(true)}
+                      className="px-8 py-4 border-2 border-[#15AFF7] text-[#15AFF7] rounded-lg hover:bg-[#15AFF7] hover:text-white transition-all font-medium"
+                    >
                       Learn More
                     </button>
                   </motion.div>
@@ -350,6 +356,11 @@ const WholeLife = () => {
           </motion.div>
         </div>
       </section>
+
+      <WholeLifeEducationModal 
+        isOpen={isEducationModalOpen}
+        onClose={() => setIsEducationModalOpen(false)}
+      />
     </PageLayout>
   );
 };
