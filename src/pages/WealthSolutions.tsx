@@ -1,3 +1,4 @@
+
 import { ArrowLeft, TrendingUp, Shield, DollarSign, Calculator, Clock, Building2, Target, PiggyBank, Banknote, Phone, ChevronDown, ChevronUp, Info } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
@@ -11,10 +12,11 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
 import SEO from '@/components/SEO';
-import retirementPlanningHero from '@/assets/retirement-planning-hero.webp';
+import FixedAnnuitiesModal from '@/components/FixedAnnuitiesModal';
 
 const WealthSolutions = () => {
   const [calculatorExpanded, setCalculatorExpanded] = useState(false);
+  const [fixedAnnuitiesModalOpen, setFixedAnnuitiesModalOpen] = useState(false);
   const [calculatorInputs, setCalculatorInputs] = useState({
     currentAge: 35,
     retirementAge: 65,
@@ -91,6 +93,11 @@ const WealthSolutions = () => {
         description="Secure retirement income and long-term financial growth with our wealth solutions. Guaranteed retirement income, tax-advantaged growth, and asset protection strategies."
         imageUrl="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2426&q=80"
         keywords={['wealth solutions', 'annuities', 'asset protection', 'retirement income', 'tax-advantaged growth', 'estate planning', 'financial planning']}
+      />
+      
+      <FixedAnnuitiesModal 
+        isOpen={fixedAnnuitiesModalOpen} 
+        onClose={() => setFixedAnnuitiesModalOpen(false)} 
       />
       
       <section className="pt-16 sm:pt-20 lg:pt-24 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-muted/30 min-h-screen">
@@ -428,7 +435,8 @@ const WealthSolutions = () => {
                   description: "Guaranteed returns with principal protection",
                   features: ["Guaranteed interest rates", "Principal protection", "Predictable income", "Tax-deferred growth"],
                   highlight: false,
-                  returnRange: "3-5% Annual"
+                  returnRange: "3-5% Annual",
+                  onLearnMore: () => setFixedAnnuitiesModalOpen(true)
                 },
                 {
                   icon: TrendingUp,
@@ -436,7 +444,13 @@ const WealthSolutions = () => {
                   description: "Growth potential with investment flexibility",
                   features: ["Market-linked returns", "Investment choices", "Death benefits", "Income riders available"],
                   highlight: true,
-                  returnRange: "5-10% Potential"
+                  returnRange: "5-10% Potential",
+                  onLearnMore: () => {
+                    const contactSection = document.getElementById('contact');
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }
                 },
                 {
                   icon: Target,
@@ -444,7 +458,13 @@ const WealthSolutions = () => {
                   description: "Market upside with downside protection",
                   features: ["Market participation", "Principal protection", "Competitive returns", "Flexible terms"],
                   highlight: false,
-                  returnRange: "4-8% Potential"
+                  returnRange: "4-8% Potential",
+                  onLearnMore: () => {
+                    const contactSection = document.getElementById('contact');
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }
                 }
               ].map((strategy, index) => (
                 <motion.div key={index} variants={itemVariants}>
@@ -475,12 +495,7 @@ const WealthSolutions = () => {
                       <Button 
                         variant={strategy.highlight ? "default" : "outline"} 
                         className="w-full text-sm sm:text-base"
-                        onClick={() => {
-                          const contactSection = document.getElementById('contact');
-                          if (contactSection) {
-                            contactSection.scrollIntoView({ behavior: 'smooth' });
-                          }
-                        }}
+                        onClick={strategy.onLearnMore}
                       >
                         Learn More
                       </Button>
