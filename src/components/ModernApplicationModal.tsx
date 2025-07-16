@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -159,9 +160,22 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
   const onSubmit = async (data: ApplicationFormData) => {
     setIsSubmitting(true);
     try {
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      console.log("Submitting application data to webhook:", data);
       
+      const response = await fetch('https://services.leadconnectorhq.com/hooks/TLhrYb7SRrWrly615tCI/webhook-trigger/a242f4e7-7948-4821-87b6-2c3959e07f78', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        mode: 'no-cors',
+        body: JSON.stringify({
+          ...data,
+          formType: 'advisor_application',
+          timestamp: new Date().toISOString(),
+          source: window.location.origin,
+        }),
+      });
+
       setIsComplete(true);
       
       setTimeout(() => {
@@ -175,6 +189,7 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
         setCurrentStep(0);
       }, 2000);
     } catch (error) {
+      console.error("Error submitting application:", error);
       toast({
         title: "Error",
         description: "Something went wrong. Please try again.",
