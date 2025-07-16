@@ -1,4 +1,3 @@
-
 import { ArrowRight, Linkedin, Mail, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -91,7 +90,7 @@ const Footer = () => {
             </div>
             <div className="flex space-x-3">
               <a 
-                href="https://www.linkedin.com/company/agora-assurance-solutions/" 
+                href="https://www.linkedin.com/company/agora-assurance-solutions/posts/?feedView=all" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white transition-all hover:bg-white hover:text-[#15AFF7] backdrop-blur-sm"
