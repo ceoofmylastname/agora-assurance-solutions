@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { Search, Calculator, UserCheck, ShieldCheck } from 'lucide-react';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
+import { useNavigate } from 'react-router-dom';
 
 const steps = [
   {
@@ -35,6 +36,7 @@ const steps = [
 
 const OptimizedHowItWorks = memo(() => {
   const { ref, isInView } = useIntersectionObserver({ threshold: 0.2 });
+  const navigate = useNavigate();
 
   return (
     <section id="how-it-works" ref={ref} className="bg-white py-16 md:py-24 w-full">
@@ -99,12 +101,7 @@ const OptimizedHowItWorks = memo(() => {
                 Get an Instant Quote
               </button>
               <button 
-                onClick={() => {
-                  const contactSection = document.getElementById('contact');
-                  if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
+                onClick={() => navigate('/booking')}
                 className="px-6 py-3 bg-white text-gray-900 border-2 border-gray-200 rounded-lg hover:bg-gray-50 transition-colors font-medium"
               >
                 Book Free Appointment
