@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Search, ChevronDown, ChevronUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import PageLayout from '@/components/PageLayout';
 import SEO from '@/components/SEO';
 import { Input } from '@/components/ui/input';
@@ -280,9 +281,11 @@ const FAQ = () => {
             <p className="text-muted-foreground mb-4 md:mb-6 text-sm md:text-base leading-relaxed">
               Our licensed insurance professionals are here to provide personalized guidance for your specific situation.
             </p>
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 text-base touch-manipulation min-h-[44px]">
-              Speak with an Expert
-            </Button>
+            <Link to="/booking">
+              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 text-base touch-manipulation min-h-[44px]">
+                Speak with an Expert
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
