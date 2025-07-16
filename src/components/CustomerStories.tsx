@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Star, Quote } from 'lucide-react';
@@ -212,7 +211,7 @@ const CustomerStories = () => {
               4.9/5 Customer Rating
             </h3>
             <p className="text-gray-600 text-sm mb-6">
-              Based on <AnimatedCounter end={25000} suffix="+" className="text-gray-600" /> verified customer reviews
+              Based on <AnimatedCounter end={500} suffix="+" className="text-gray-600" /> verified customer reviews
             </p>
             <button 
               onClick={() => {
