@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { X, ChevronRight, ChevronLeft, Check } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
+import confetti from 'canvas-confetti';
 
 const applicationSchema = z.object({
   referredBy: z.string().min(1, 'Please tell us who referred you'),
@@ -131,6 +132,34 @@ const steps = [
   }
 ];
 
+const triggerConfetti = () => {
+  // Left side confetti
+  confetti({
+    particleCount: 100,
+    spread: 70,
+    origin: { x: 0, y: 0.6 },
+    colors: ['#15AFF7', '#3B82F6', '#8B5CF6', '#06B6D4']
+  });
+  
+  // Right side confetti
+  confetti({
+    particleCount: 100,
+    spread: 70,
+    origin: { x: 1, y: 0.6 },
+    colors: ['#15AFF7', '#3B82F6', '#8B5CF6', '#06B6D4']
+  });
+  
+  // Center burst for extra celebration
+  setTimeout(() => {
+    confetti({
+      particleCount: 50,
+      spread: 60,
+      origin: { x: 0.5, y: 0.5 },
+      colors: ['#15AFF7', '#3B82F6', '#8B5CF6', '#06B6D4']
+    });
+  }, 200);
+};
+
 export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
   isOpen,
   onClose,
@@ -215,6 +244,10 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
       await submitToWebhook(data);
       
       console.log('🎉 Application submitted successfully!');
+      
+      // Trigger confetti celebration
+      triggerConfetti();
+      
       setIsComplete(true);
       
       setTimeout(() => {
