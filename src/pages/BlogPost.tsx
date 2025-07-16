@@ -1461,8 +1461,8 @@ const BlogPost = () => {
                       We'll help you find the right coverage at the best rates.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                      <Button size="lg" className="bg-primary hover:bg-primary/90">
-                        Get Free Quote
+                      <Button size="lg" className="bg-primary hover:bg-primary/90" onClick={() => navigate('/booking')}>
+                        Book an Appointment
                       </Button>
                       <Button size="lg" variant="outline" onClick={() => navigate('/blog')}>
                         Read More Articles
