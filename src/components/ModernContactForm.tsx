@@ -37,7 +37,7 @@ const insuranceServices = [
 const EMAILJS_SERVICE_ID = "service_i3h66xg";
 const EMAILJS_TEMPLATE_ID = "template_fgq53nh";
 const EMAILJS_PUBLIC_KEY = "wQmcZvoOqTAhGnRZ3";
-const WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/1thzyIrjG796QMuftwxZ/webhook-trigger/e56b458c-a322-411d-ae46-03b513f475e0";
+const WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/TLhrYb7SRrWrly615tCI/webhook-trigger/198f9752-05be-412e-b5dc-4dd58a596f56";
 
 const steps = [
   {
