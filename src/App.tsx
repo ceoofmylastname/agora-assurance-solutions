@@ -28,6 +28,7 @@ import GetQuote from "./pages/GetQuote";
 import ProtectionPlans from "./pages/ProtectionPlans";
 import LifeCoverage from "./pages/LifeCoverage";
 import WealthSolutions from "./pages/WealthSolutions";
+import SEODashboard from "./pages/admin/SEODashboard";
 
 const App = () => {
   const [queryClient] = useState(() => new QueryClient());
@@ -61,6 +62,7 @@ const App = () => {
             <Route path="/protection-plans" element={<ProtectionPlans />} />
             <Route path="/life-coverage" element={<LifeCoverage />} />
             <Route path="/wealth-solutions" element={<WealthSolutions />} />
+            <Route path="/admin/seo-dashboard" element={<SEODashboard />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
