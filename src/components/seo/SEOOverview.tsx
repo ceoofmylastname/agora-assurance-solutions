@@ -4,150 +4,234 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { TrendingUp, TrendingDown, AlertTriangle, CheckCircle, Eye, Search, Link, Image } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { TrendingUp, TrendingDown, AlertTriangle, CheckCircle, Eye, Search, Image, Zap, RefreshCw } from 'lucide-react';
+import { useSiteScanner } from '@/hooks/useSiteScanner';
 
 export const SEOOverview = () => {
-  const seoScore = 87;
-  const metrics = [
-    { label: 'Organic Traffic', value: '24,891', change: '+12.5%', trend: 'up' },
-    { label: 'Keyword Rankings', value: '1,247', change: '+8.2%', trend: 'up' },
-    { label: 'Backlinks', value: '3,156', change: '-2.1%', trend: 'down' },
-    { label: 'Core Web Vitals', value: '94/100', change: '+5.3%', trend: 'up' }
+  const { metrics, images, pages, isScanning, scanSiteImages } = useSiteScanner();
+
+  if (!metrics) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <div className="text-center space-y-4">
+          <RefreshCw className="h-8 w-8 animate-spin mx-auto text-primary" />
+          <p className="text-muted-foreground">Scanning site for SEO data...</p>
+        </div>
+      </div>
+    );
+  }
+
+  const seoScore = metrics.overallScore;
+  const criticalIssues = [
+    ...(metrics.imagesWithoutAlt > 0 ? [`${metrics.imagesWithoutAlt} images missing alt tags`] : []),
+    ...(pages.some(p => p.issues.length > 0) ? ['Pages with meta data issues'] : [])
   ];
 
-  const issues = [
-    { type: 'warning', message: '23 images missing alt tags', count: 23 },
-    { type: 'error', message: '5 pages with duplicate meta descriptions', count: 5 },
-    { type: 'info', message: '12 opportunities for featured snippets', count: 12 }
-  ];
-
-  const topPages = [
-    { url: '/', traffic: 8945, keywords: 234, position: 1.2 },
-    { url: '/services/term-life', traffic: 6721, keywords: 189, position: 2.1 },
-    { url: '/services/mortgage-protection', traffic: 4532, keywords: 156, position: 1.8 },
-    { url: '/about', traffic: 3210, keywords: 98, position: 2.9 }
-  ];
+  const topPages = pages.map((page, index) => ({
+    url: page.url,
+    title: page.title,
+    issues: page.issues.length,
+    h1: page.h1,
+    rank: index + 1
+  }));
 
   return (
-    <div className="space-y-6">
-      {/* SEO Health Score */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <CheckCircle className="h-5 w-5 text-green-500" />
-            Overall SEO Health Score
-          </CardTitle>
-          <CardDescription>Comprehensive analysis of all SEO factors</CardDescription>
+    <div className="space-y-8">
+      {/* Real-time SEO Health Score */}
+      <Card className="bg-gradient-to-br from-white to-gray-50/50 border-0 shadow-lg">
+        <CardHeader className="pb-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl">
+                <CheckCircle className="h-6 w-6 text-white" />
+              </div>
+              <div>
+                <CardTitle className="text-xl">Live SEO Health Score</CardTitle>
+                <CardDescription>Real-time analysis of all SEO factors</CardDescription>
+              </div>
+            </div>
+            <Button 
+              variant="outline" 
+              size="sm" 
+              onClick={scanSiteImages}
+              disabled={isScanning}
+              className="gap-2"
+            >
+              <RefreshCw className={`h-4 w-4 ${isScanning ? 'animate-spin' : ''}`} />
+              {isScanning ? 'Scanning...' : 'Refresh'}
+            </Button>
+          </div>
         </CardHeader>
         <CardContent>
-          <div className="flex items-center gap-4">
-            <div className="text-4xl font-bold text-green-600">{seoScore}/100</div>
-            <div className="flex-1">
-              <Progress value={seoScore} className="h-3" />
-              <p className="text-sm text-muted-foreground mt-2">
-                Excellent performance. Focus on technical improvements for 90+
-              </p>
+          <div className="flex items-center gap-6">
+            <div className="text-5xl font-bold text-primary">{seoScore}/100</div>
+            <div className="flex-1 space-y-3">
+              <Progress value={seoScore} className="h-4 bg-gray-100" />
+              <div className="flex items-center justify-between text-sm">
+                <p className="text-muted-foreground">
+                  {seoScore >= 90 ? 'Excellent' : seoScore >= 70 ? 'Good' : seoScore >= 50 ? 'Fair' : 'Needs Improvement'}
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  Last updated: {metrics.lastUpdated.toLocaleTimeString()}
+                </p>
+              </div>
             </div>
-            <Badge variant="secondary" className="bg-green-100 text-green-800">
-              Excellent
+            <Badge 
+              className={`px-4 py-2 text-sm font-semibold ${
+                seoScore >= 90 ? 'bg-green-100 text-green-800 border-green-200' :
+                seoScore >= 70 ? 'bg-blue-100 text-blue-800 border-blue-200' :
+                seoScore >= 50 ? 'bg-yellow-100 text-yellow-800 border-yellow-200' :
+                'bg-red-100 text-red-800 border-red-200'
+              }`}
+            >
+              {seoScore >= 90 ? 'Excellent' : seoScore >= 70 ? 'Good' : seoScore >= 50 ? 'Fair' : 'Poor'}
             </Badge>
           </div>
         </CardContent>
       </Card>
 
-      {/* Key Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {metrics.map((metric, index) => (
-          <Card key={index}>
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-muted-foreground">{metric.label}</p>
-                  <div className="flex items-center gap-2 mt-1">
-                    <p className="text-2xl font-bold">{metric.value}</p>
-                    <div className={`flex items-center gap-1 text-sm ${
-                      metric.trend === 'up' ? 'text-green-600' : 'text-red-600'
-                    }`}>
-                      {metric.trend === 'up' ? (
-                        <TrendingUp className="h-4 w-4" />
-                      ) : (
-                        <TrendingDown className="h-4 w-4" />
-                      )}
-                      {metric.change}
-                    </div>
-                  </div>
-                </div>
+      {/* Live Metrics */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <Card className="bg-white border-0 shadow-md hover:shadow-lg transition-shadow">
+          <CardContent className="p-6">
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-blue-100 rounded-lg">
+                <Image className="h-5 w-5 text-blue-600" />
               </div>
-            </CardContent>
-          </Card>
-        ))}
+              <div>
+                <p className="text-2xl font-bold text-gray-900">{metrics.totalImages}</p>
+                <p className="text-sm text-muted-foreground">Total Images</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="bg-white border-0 shadow-md hover:shadow-lg transition-shadow">
+          <CardContent className="p-6">
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-red-100 rounded-lg">
+                <AlertTriangle className="h-5 w-5 text-red-600" />
+              </div>
+              <div>
+                <p className="text-2xl font-bold text-red-600">{metrics.imagesWithoutAlt}</p>
+                <p className="text-sm text-muted-foreground">Missing Alt Tags</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="bg-white border-0 shadow-md hover:shadow-lg transition-shadow">
+          <CardContent className="p-6">
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-green-100 rounded-lg">
+                <CheckCircle className="h-5 w-5 text-green-600" />
+              </div>
+              <div>
+                <p className="text-2xl font-bold text-green-600">
+                  {metrics.totalImages - metrics.imagesWithoutAlt}
+                </p>
+                <p className="text-sm text-muted-foreground">Optimized Images</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="bg-white border-0 shadow-md hover:shadow-lg transition-shadow">
+          <CardContent className="p-6">
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-purple-100 rounded-lg">
+                <Eye className="h-5 w-5 text-purple-600" />
+              </div>
+              <div>
+                <p className="text-2xl font-bold text-purple-600">{metrics.totalPages}</p>
+                <p className="text-sm text-muted-foreground">Pages Analyzed</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
 
-      {/* Issues & Alerts */}
-      <Card>
+      {/* Critical Issues */}
+      {criticalIssues.length > 0 && (
+        <Card className="bg-white border-0 shadow-md">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-red-600">
+              <AlertTriangle className="h-5 w-5" />
+              Critical SEO Issues
+            </CardTitle>
+            <CardDescription>Issues requiring immediate attention</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            {criticalIssues.map((issue, index) => (
+              <Alert key={index} className="border-red-200 bg-red-50">
+                <AlertTriangle className="h-4 w-4 text-red-600" />
+                <AlertDescription className="text-red-800 font-medium">
+                  {issue}
+                </AlertDescription>
+              </Alert>
+            ))}
+          </CardContent>
+        </Card>
+      )}
+
+      {/* AI Recommendations */}
+      <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-200 shadow-md">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <AlertTriangle className="h-5 w-5 text-yellow-500" />
-            SEO Issues & Opportunities
+          <CardTitle className="flex items-center gap-2 text-blue-700">
+            <Zap className="h-5 w-5" />
+            AI-Powered Recommendations
           </CardTitle>
-          <CardDescription>Critical issues requiring attention</CardDescription>
+          <CardDescription>Smart suggestions to improve your SEO performance</CardDescription>
         </CardHeader>
-        <CardContent className="space-y-3">
-          {issues.map((issue, index) => (
-            <Alert key={index} className={`${
-              issue.type === 'error' ? 'border-red-200 bg-red-50' :
-              issue.type === 'warning' ? 'border-yellow-200 bg-yellow-50' :
-              'border-blue-200 bg-blue-50'
-            }`}>
-              <AlertTriangle className={`h-4 w-4 ${
-                issue.type === 'error' ? 'text-red-600' :
-                issue.type === 'warning' ? 'text-yellow-600' :
-                'text-blue-600'
-              }`} />
-              <AlertDescription className="flex items-center justify-between">
-                <span>{issue.message}</span>
-                <Badge variant="outline" className="ml-2">
-                  {issue.count}
-                </Badge>
-              </AlertDescription>
-            </Alert>
-          ))}
+        <CardContent className="space-y-4">
+          <div className="grid gap-4">
+            {metrics.imagesWithoutAlt > 0 && (
+              <div className="p-4 bg-white rounded-lg border border-blue-200">
+                <h4 className="font-semibold text-blue-900 mb-2">Image Optimization Priority</h4>
+                <p className="text-sm text-blue-700">
+                  Add alt text to {metrics.imagesWithoutAlt} images to improve accessibility and SEO. 
+                  This could increase your SEO score by up to {Math.round((metrics.imagesWithoutAlt / metrics.totalImages) * 20)} points.
+                </p>
+                <Button size="sm" className="mt-2" variant="outline">
+                  Fix Images Now
+                </Button>
+              </div>
+            )}
+            
+            <div className="p-4 bg-white rounded-lg border border-blue-200">
+              <h4 className="font-semibold text-blue-900 mb-2">Next Steps</h4>
+              <p className="text-sm text-blue-700">
+                Focus on technical SEO improvements and content optimization to reach the next performance tier.
+              </p>
+            </div>
+          </div>
         </CardContent>
       </Card>
 
-      {/* Top Performing Pages */}
-      <Card>
+      {/* Current Page Analysis */}
+      <Card className="bg-white border-0 shadow-md">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Eye className="h-5 w-5 text-primary" />
-            Top Performing Pages
+            <Search className="h-5 w-5 text-primary" />
+            Current Page Analysis
           </CardTitle>
-          <CardDescription>Pages driving the most organic traffic</CardDescription>
+          <CardDescription>Real-time analysis of the current page</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
             {topPages.map((page, index) => (
-              <div key={index} className="flex items-center justify-between p-3 border rounded-lg">
+              <div key={index} className="flex items-center justify-between p-4 border rounded-lg bg-gray-50">
                 <div className="flex-1">
-                  <p className="font-medium">{page.url}</p>
-                  <div className="flex items-center gap-4 mt-1 text-sm text-muted-foreground">
-                    <span className="flex items-center gap-1">
-                      <Eye className="h-3 w-3" />
-                      {page.traffic.toLocaleString()} visits
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Search className="h-3 w-3" />
-                      {page.keywords} keywords
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <TrendingUp className="h-3 w-3" />
-                      Avg pos: {page.position}
-                    </span>
-                  </div>
+                  <h3 className="font-semibold text-gray-900">{page.url}</h3>
+                  <p className="text-sm text-muted-foreground mt-1">{page.title}</p>
+                  <p className="text-xs text-muted-foreground">H1: {page.h1}</p>
                 </div>
-                <Badge variant="secondary">
-                  #{index + 1}
-                </Badge>
+                <div className="text-right">
+                  <Badge variant={page.issues === 0 ? "default" : "destructive"}>
+                    {page.issues === 0 ? 'Optimized' : `${page.issues} Issues`}
+                  </Badge>
+                </div>
               </div>
             ))}
           </div>
