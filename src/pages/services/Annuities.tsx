@@ -1,5 +1,6 @@
+
 import { ArrowLeft, CheckCircle, PiggyBank, Shield, TrendingUp, DollarSign, Clock, Users, Target, Calculator, Briefcase, Heart } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { useEffect, useState } from 'react';
 import PageLayout from '@/components/PageLayout';
@@ -10,6 +11,7 @@ import retirementPlanningHero from '@/assets/retirement-planning-hero.webp';
 
 const Annuities = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -299,7 +301,10 @@ const Annuities = () => {
                 >
                   Explore Annuity Options
                 </button>
-                <button className="px-8 py-4 border-2 border-[#15AFF7] text-[#15AFF7] rounded-lg hover:bg-[#15AFF7] hover:text-white transition-all font-medium">
+                <button 
+                  onClick={() => navigate('/booking')}
+                  className="px-8 py-4 border-2 border-[#15AFF7] text-[#15AFF7] rounded-lg hover:bg-[#15AFF7] hover:text-white transition-all font-medium"
+                >
                   Schedule Consultation
                 </button>
               </motion.div>
