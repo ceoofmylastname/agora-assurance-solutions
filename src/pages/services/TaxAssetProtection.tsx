@@ -1,5 +1,5 @@
 import { ArrowLeft, CheckCircle, Shield, TrendingUp, Building, FileText, Briefcase, Scale, DollarSign, Users, Clock, Heart } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { useEffect } from 'react';
 import PageLayout from '@/components/PageLayout';
@@ -7,6 +7,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import SEO from '@/components/SEO';
 
 const TaxAssetProtection = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -325,12 +327,7 @@ const TaxAssetProtection = () => {
               </motion.p>
               <motion.div className="flex flex-col sm:flex-row gap-4 justify-center" variants={itemVariants}>
                 <button 
-                  onClick={() => {
-                    const contactSection = document.getElementById('contact');
-                    if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={() => navigate('/booking')}
                   className="px-8 py-4 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-all transform hover:scale-105 shadow-lg font-medium"
                 >
                   Schedule Consultation
