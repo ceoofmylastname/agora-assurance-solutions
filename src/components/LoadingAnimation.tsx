@@ -4,25 +4,22 @@ import { motion } from 'framer-motion';
 
 export const LoadingAnimation = () => {
   return (
-    <div className="flex items-center justify-center">
-      <div className="relative">
+    <div className="flex items-center justify-center p-8">
+      <div className="relative flex space-x-2">
         {[0, 1, 2, 3].map((index) => (
-          <motion.span
+          <motion.div
             key={index}
-            className="absolute inline-block w-4 h-4 bg-purple-500 rounded-full"
+            className="w-3 h-3 bg-primary rounded-full"
             animate={{
-              scale: [1, 1.5, 1],
-              opacity: [1, 0.5, 1]
+              scale: [1, 1.2, 1],
+              opacity: [1, 0.7, 1]
             }}
             transition={{
-              duration: 1.2,
+              duration: 0.8,
               repeat: Infinity,
               repeatType: "loop",
-              delay: index * 0.2,
+              delay: index * 0.1,
               ease: "easeInOut"
-            }}
-            style={{
-              left: `${index * 12}px`
             }}
           />
         ))}

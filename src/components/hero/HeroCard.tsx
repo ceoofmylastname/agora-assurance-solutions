@@ -14,9 +14,24 @@ const HeroCard = ({ icon: Icon, title, description }: HeroCardProps) => {
     <motion.div 
       className="bg-white/95 backdrop-blur-sm p-5 md:p-6 rounded-xl shadow-lg border border-blue-100/50 cursor-pointer overflow-hidden relative group"
       variants={cardVariants}
-      whileHover="hover"
-      whileTap="tap"
-      style={{ perspective: 1000 }}
+      whileHover={{ 
+        y: -8,
+        scale: 1.02,
+        transition: {
+          type: "spring",
+          stiffness: 400,
+          damping: 10
+        }
+      }}
+      whileTap={{ 
+        scale: 0.98,
+        y: -4,
+        transition: {
+          type: "spring",
+          stiffness: 400,
+          damping: 10
+        }
+      }}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       <motion.div 
