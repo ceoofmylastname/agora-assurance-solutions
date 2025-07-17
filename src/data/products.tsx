@@ -1,18 +1,15 @@
-import React from 'react';
-import { Shield, Home, Heart, TrendingUp, DollarSign, FileText } from 'lucide-react';
-import annuitiesCard from '@/assets/annuities-card.webp';
-import termLifeFamily from '@/assets/term-life-family.webp';
-import heroFamilyProtection from '@/assets/hero-family-protection.webp';
-import finalExpenseCouple from '@/assets/final-expense-couple.webp';
-import retirementPlanningCouple from '@/assets/retirement-planning-couple.webp';
+
+import { Heart, Shield, Home, Wallet, TrendingUp, Briefcase, LucideIcon } from 'lucide-react';
 
 export interface Product {
   id: number;
   title: string;
   description: string;
-  icon: JSX.Element;
   features: string[];
   image: string;
+  imageAlt: string;
+  imageTitle: string;
+  icon: React.ReactElement<LucideIcon>;
   gradient: string;
   accent: string;
 }
@@ -21,61 +18,103 @@ export const products: Product[] = [
   {
     id: 1,
     title: "Term Life Insurance",
-    description: "Flexible, affordable coverage for a set term—compare multiple policies side-by-side to protect your loved ones.",
-    icon: <Shield className="w-6 h-6" />,
-    features: ["Affordable premiums", "Flexible terms", "Multiple carrier options", "Instant quotes"],
-    image: termLifeFamily,
-    gradient: "from-slate-900 to-slate-700",
-    accent: "from-blue-500 to-blue-600"
+    description: "Affordable, straightforward protection for your family's most important years",
+    features: [
+      "Coverage amounts from $50,000 to $2M+",
+      "Level premiums for 10, 20, or 30 years", 
+      "No medical exam options available",
+      "Conversion options to permanent coverage"
+    ],
+    image: "/assets/term-life-family.webp",
+    imageAlt: "Happy family with term life insurance protection - Parents and children enjoying security and peace of mind",
+    imageTitle: "Term Life Insurance - Affordable Family Protection",
+    icon: <Heart className="w-5 h-5 md:w-6 md:h-6" />,
+    gradient: "from-rose-500/90 to-pink-500/90",
+    accent: "from-rose-600 to-pink-600"
   },
   {
     id: 2,
-    title: "Mortgage Protection Insurance",
-    description: "Pays off your mortgage if something happens—guaranteed peace of mind that your family keeps the home.",
-    icon: <Home className="w-6 h-6" />,
-    features: ["Mortgage payoff guarantee", "Family home protection", "Decreasing term options", "Quick approval"],
-    image: heroFamilyProtection,
-    gradient: "from-emerald-900 to-emerald-700",
-    accent: "from-emerald-500 to-emerald-600"
+    title: "Final Expense Insurance",
+    description: "Ensure your final wishes are honored without burdening your loved ones",
+    features: [
+      "Coverage from $5,000 to $50,000",
+      "No medical exam required",
+      "Guaranteed acceptance ages 45-85",
+      "Premiums never increase"
+    ],
+    image: "/assets/final-expense-couple.webp",
+    imageAlt: "Elderly couple planning final expense insurance - Dignified seniors securing their legacy and family's future",
+    imageTitle: "Final Expense Insurance - Dignified Legacy Planning",
+    icon: <Shield className="w-5 h-5 md:w-6 md:h-6" />,
+    gradient: "from-blue-500/90 to-indigo-500/90",
+    accent: "from-blue-600 to-indigo-600"
   },
   {
     id: 3,
-    title: "Final Expense Insurance",
-    description: "Lifetime coverage to cover funeral costs and end-of-life expenses with simple, guaranteed benefits.",
-    icon: <Heart className="w-6 h-6" />,
-    features: ["Guaranteed acceptance", "No medical exams", "Fixed premiums", "Immediate coverage"],
-    image: finalExpenseCouple,
-    gradient: "from-purple-900 to-purple-700",
-    accent: "from-purple-500 to-purple-600"
+    title: "Mortgage Protection",
+    description: "Keep your family in their home even if the unexpected happens",
+    features: [
+      "Coverage matches your mortgage balance",
+      "Declining term or level benefit options",
+      "Fast approval process",
+      "Competitive rates for all health classes"
+    ],
+    image: "/assets/hero-family-protection.webp",
+    imageAlt: "Family home mortgage protection - Secure house with happy family enjoying homeownership security",
+    imageTitle: "Mortgage Protection Insurance - Home Security for Families",
+    icon: <Home className="w-5 h-5 md:w-6 md:h-6" />,
+    gradient: "from-green-500/90 to-emerald-500/90",
+    accent: "from-green-600 to-emerald-600"
   },
   {
     id: 4,
-    title: "Annuity Solutions",
-    description: "Fixed & indexed annuities that turn savings into reliable retirement income, with customizable living benefits.",
-    icon: <TrendingUp className="w-6 h-6" />,
-    features: ["Guaranteed income", "Market protection", "Tax advantages", "Flexible withdrawals"],
-    image: retirementPlanningCouple,
-    gradient: "from-orange-900 to-orange-700",
-    accent: "from-orange-500 to-orange-600"
+    title: "Whole Life Insurance",
+    description: "Permanent protection with cash value that grows over time",
+    features: [
+      "Lifelong coverage guaranteed",
+      "Cash value accumulation",
+      "Dividends from mutual companies",
+      "Loan and withdrawal options"
+    ],
+    image: "/assets/retirement-planning-couple.webp",
+    imageAlt: "Whole life insurance planning session - Couple working with advisor on permanent life insurance strategy",
+    imageTitle: "Whole Life Insurance - Permanent Protection with Cash Value",
+    icon: <Wallet className="w-5 h-5 md:w-6 md:h-6" />,
+    gradient: "from-purple-500/90 to-violet-500/90",
+    accent: "from-purple-600 to-violet-600"
   },
   {
     id: 5,
-    title: "Life Settlements",
-    description: "Unlock cash value by selling an unneeded life policy—turn a dormant asset into spendable funds.",
-    icon: <DollarSign className="w-6 h-6" />,
-    features: ["Cash for unused policies", "Free evaluations", "No ongoing premiums", "Immediate liquidity"],
-    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop",
-    gradient: "from-teal-900 to-teal-700",
-    accent: "from-teal-500 to-teal-600"
+    title: "Annuities",
+    description: "Guaranteed retirement income you can never outlive",
+    features: [
+      "Fixed or variable growth options",
+      "Guaranteed lifetime income riders",
+      "Tax-deferred accumulation",
+      "Principal protection available"
+    ],
+    image: "/assets/annuities-retirement-hero.jpg",
+    imageAlt: "Retirement annuities planning - Senior couple reviewing guaranteed income strategies for retirement security",
+    imageTitle: "Annuities - Guaranteed Retirement Income Planning",
+    icon: <TrendingUp className="w-5 h-5 md:w-6 md:h-6" />,
+    gradient: "from-amber-500/90 to-orange-500/90",
+    accent: "from-amber-600 to-orange-600"
   },
   {
     id: 6,
     title: "Tax & Asset Protection",
-    description: "Strategic planning to minimize taxes, shield assets, and safeguard your wealth against life's uncertainties.",
-    icon: <FileText className="w-6 h-6" />,
-    features: ["Tax minimization", "Asset shielding", "Estate planning", "Wealth preservation"],
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=400&fit=crop",
-    gradient: "from-indigo-900 to-indigo-700",
-    accent: "from-indigo-500 to-indigo-600"
+    description: "Advanced strategies to preserve and transfer your wealth efficiently",
+    features: [
+      "Estate planning optimization",
+      "Tax-advantaged life insurance",
+      "Asset protection strategies",
+      "Business succession planning"
+    ],
+    image: "/assets/tax-strategies.webp",
+    imageAlt: "Tax and asset protection strategies - Financial advisors reviewing wealth preservation and tax optimization plans",
+    imageTitle: "Tax & Asset Protection - Advanced Wealth Preservation Strategies",
+    icon: <Briefcase className="w-5 h-5 md:w-6 md:h-6" />,
+    gradient: "from-teal-500/90 to-cyan-500/90",
+    accent: "from-teal-600 to-cyan-600"
   }
 ];

@@ -1,252 +1,244 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
-
-interface Message {
-  id: string;
-  content: string;
-  isUser: boolean;
-  timestamp: Date;
-}
+import { MessageCircle, X, Send, Bot, User, Sparkles } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const MemoryWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [messages, setMessages] = useState([
+    { 
+      sender: 'bot', 
+      text: "Hi there! I'm your AI assistant. How can I help you with insurance today?", 
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) 
+    }
+  ]);
+  const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  }
 
   useEffect(() => {
-    scrollToBottom();
+    scrollToBottom()
   }, [messages]);
 
-  const formatResponse = (text: string) => {
-    return text
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\*(.*?)\*/g, '<em>$1</em>')
-      .replace(/\n/g, '<br>')
-      .replace(/<u>(.*?)<\/u>/g, '<u>$1</u>');
-  };
+  const handleSendMessage = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!inputValue.trim()) return;
 
-  const sendMessage = async () => {
-    if (!inputValue.trim() || isLoading) return;
-
-    const userMessage: Message = {
-      id: Date.now().toString(),
-      content: inputValue,
-      isUser: true,
-      timestamp: new Date()
+    const userMessage = {
+      sender: 'user',
+      text: inputValue,
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     };
 
-    setMessages(prev => [...prev, userMessage]);
+    setMessages(prevMessages => [...prevMessages, userMessage]);
     setInputValue('');
-    setIsLoading(true);
+    setIsTyping(true);
 
-    try {
-      const dateCode = new Date().toISOString().slice(0, 10).replace(/-/g, '');
-      
-      const response = await fetch('https://n8n.a3innercircle.com/webhook/e926a6b0-1bc1-4aec-a665-76da4683c46c', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          date: dateCode,
-          message: inputValue
-        }),
-      });
+    // Simulate AI response after a short delay
+    await new Promise(resolve => setTimeout(resolve, 1500));
 
-      const data = await response.json();
-      
-      if (data && Array.isArray(data) && data[0]?.output) {
-        const botMessage: Message = {
-          id: (Date.now() + 1).toString(),
-          content: data[0].output,
-          isUser: false,
-          timestamp: new Date()
-        };
-        setMessages(prev => [...prev, botMessage]);
-      }
-    } catch (error) {
-      console.error('Error sending message:', error);
-      const errorMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        content: 'Sorry, I encountered an error. Please try again.',
-        isUser: false,
-        timestamp: new Date()
-      };
-      setMessages(prev => [...prev, errorMessage]);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+    const aiResponse = {
+      sender: 'bot',
+      text: `Thanks for your question! Here's some info about ${inputValue}. (This is a demo, so the response is generic.)`,
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    };
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      sendMessage();
-    }
-  };
-
-  const formatTime = (date: Date) => {
-    return date.toLocaleTimeString('en-US', { 
-      hour: '2-digit', 
-      minute: '2-digit',
-      hour12: false 
-    });
+    setMessages(prevMessages => [...prevMessages, aiResponse]);
+    setIsTyping(false);
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
-      {/* Floating Button */}
-      {!isOpen && (
-        <Button
+    <>
+      {/* Floating Chat Button */}
+      <motion.div
+        className="fixed bottom-6 right-6 z-50"
+        initial={{ scale: 0, rotate: -180 }}
+        animate={{ scale: 1, rotate: 0 }}
+        transition={{ 
+          type: "spring",
+          stiffness: 260,
+          damping: 20,
+          delay: 2
+        }}
+      >
+        <button
           onClick={() => setIsOpen(true)}
-          className="h-14 w-14 rounded-full bg-primary hover:bg-primary/90 shadow-lg"
-          size="icon"
+          className="bg-gradient-to-r from-[#15AFF7] to-[#0D94D1] text-white p-4 rounded-full shadow-2xl hover:shadow-3xl transform hover:scale-110 transition-all duration-300 group relative overflow-hidden"
+          title="Chat with AI Assistant - Get instant help with insurance questions"
+          aria-label="Open AI Assistant Chat"
         >
-          <MessageCircle className="h-6 w-6" />
-        </Button>
-      )}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <MessageCircle className="w-6 h-6 relative z-10" />
+          <motion.div
+            className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ repeat: Infinity, duration: 2 }}
+          />
+        </button>
+      </motion.div>
 
-      {/* Chat Widget */}
-      {isOpen && (
-        <div className="bg-white rounded-2xl shadow-2xl border border-border w-80 h-96 flex flex-col overflow-hidden">
-          {/* Header */}
-          <div className="bg-primary text-white p-4 flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white/20">
-                <img 
-                  src="https://static.vecteezy.com/system/resources/previews/049/697/634/non_2x/detailed-brain-graphic-brain-anatomy-illustration-vector.jpg"
-                  alt="Memory"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div>
-                <h3 className="font-medium text-sm">Agora</h3>
-                <p className="text-xs text-white/70">AI Assistant</p>
-              </div>
-            </div>
-            <Button
-              onClick={() => setIsOpen(false)}
-              variant="ghost"
-              size="icon"
-              className="h-8 w-8 text-white hover:bg-white/10"
-            >
-              <X className="h-4 w-4" />
-            </Button>
-          </div>
-
-          {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-muted/30">
-            {messages.length === 0 && (
-              <div className="text-center text-muted-foreground text-sm py-8">
-                <p>Start a conversation with Agora AI</p>
-              </div>
-            )}
+      {/* Chat Modal */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-end justify-end p-4 sm:items-center sm:justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <div className="fixed inset-0 bg-black/20 backdrop-blur-sm" onClick={() => setIsOpen(false)} />
             
-            {messages.map((message) => (
-              <div
-                key={message.id}
-                className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}
+            <motion.div
+              className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[80vh] flex flex-col overflow-hidden border border-gray-200"
+              initial={{ scale: 0.8, y: 100 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.8, y: 100 }}
+              transition={{ type: "spring", damping: 15, stiffness: 300 }}
+            >
+              {/* Header */}
+              <div className="bg-gradient-to-r from-[#15AFF7] to-[#0D94D1] p-4 flex items-center justify-between">
+                <div className="flex items-center space-x-3">
+                  <div className="relative">
+                    <img 
+                      src="/lovable-uploads/f712c1bf-c4fb-4903-ace2-2846fd203ae6.png" 
+                      alt="AI Assistant Avatar - Friendly robot helper for insurance guidance"
+                      title="Your Personal Insurance AI Assistant"
+                      className="w-10 h-10 rounded-full border-2 border-white/30" 
+                    />
+                    <motion.div
+                      className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-white"
+                      animate={{ scale: [1, 1.1, 1] }}
+                      transition={{ repeat: Infinity, duration: 2 }}
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-white font-semibold">AI Assistant</h3>
+                    <p className="text-white/80 text-sm">Always here to help</p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="text-white/80 hover:text-white p-1 rounded-full hover:bg-white/10 transition-colors"
+                  title="Close AI Assistant Chat"
+                  aria-label="Close chat"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Messages */}
+              <div 
+                ref={messagesEndRef}
+                className="flex-1 p-4 space-y-4 overflow-y-auto max-h-96 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100"
               >
-                <div className="max-w-[80%]">
-                  {!message.isUser && (
-                    <div className="flex items-center space-x-2 mb-1">
-                      <div className="w-6 h-6 rounded-full overflow-hidden">
-                        <img 
-                          src="https://static.vecteezy.com/system/resources/previews/049/697/634/non_2x/detailed-brain-graphic-brain-anatomy-illustration-vector.jpg"
-                          alt="Memory"
-                          className="w-full h-full object-cover"
-                        />
+                {messages.map((message, index) => (
+                  <motion.div
+                    key={index}
+                    className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <div className={`flex items-start space-x-2 max-w-[80%] ${
+                      message.sender === 'user' ? 'flex-row-reverse space-x-reverse' : ''
+                    }`}>
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+                        message.sender === 'user' 
+                          ? 'bg-[#15AFF7] text-white' 
+                          : 'bg-gray-100 text-gray-600'
+                      }`}>
+                        {message.sender === 'user' ? (
+                          <User className="w-4 h-4" />
+                        ) : (
+                          <Bot className="w-4 h-4" />
+                        )}
+                      </div>
+                      <div className={`rounded-2xl px-4 py-2 ${
+                        message.sender === 'user'
+                          ? 'bg-[#15AFF7] text-white'
+                          : 'bg-gray-100 text-gray-800'
+                      }`}>
+                        <p className="text-sm leading-relaxed">{message.text}</p>
+                        <span className="text-xs opacity-70 mt-1 block">
+                          {message.timestamp}
+                        </span>
                       </div>
                     </div>
-                  )}
-                  
-                  <div
-                    className={`px-3 py-2 rounded-2xl text-sm ${
-                      message.isUser
-                        ? 'bg-primary text-white rounded-br-md'
-                        : 'bg-white border border-border rounded-bl-md'
-                    }`}
+                  </motion.div>
+                ))}
+                
+                {isTyping && (
+                  <motion.div
+                    className="flex justify-start"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
                   >
-                    {message.isUser ? (
-                      message.content
-                    ) : (
-                      <div 
-                        dangerouslySetInnerHTML={{ 
-                          __html: formatResponse(message.content) 
-                        }} 
-                      />
-                    )}
-                  </div>
-                  
-                  <div className={`text-xs text-muted-foreground mt-1 ${
-                    message.isUser ? 'text-right' : 'text-left'
-                  }`}>
-                    {formatTime(message.timestamp)}
-                  </div>
-                </div>
-              </div>
-            ))}
-            
-            {isLoading && (
-              <div className="flex justify-start">
-                <div className="max-w-[80%]">
-                  <div className="flex items-center space-x-2 mb-1">
-                    <div className="w-6 h-6 rounded-full overflow-hidden">
-                      <img 
-                        src="https://static.vecteezy.com/system/resources/previews/049/697/634/non_2x/detailed-brain-graphic-brain-anatomy-illustration-vector.jpg"
-                        alt="Memory"
-                        className="w-full h-full object-cover"
-                      />
+                    <div className="flex items-center space-x-2">
+                      <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
+                        <Bot className="w-4 h-4 text-gray-600" />
+                      </div>
+                      <div className="bg-gray-100 rounded-2xl px-4 py-2">
+                        <div className="flex space-x-1">
+                          <motion.div
+                            className="w-2 h-2 bg-gray-400 rounded-full"
+                            animate={{ scale: [1, 1.2, 1] }}
+                            transition={{ repeat: Infinity, duration: 1, delay: 0 }}
+                          />
+                          <motion.div
+                            className="w-2 h-2 bg-gray-400 rounded-full"
+                            animate={{ scale: [1, 1.2, 1] }}
+                            transition={{ repeat: Infinity, duration: 1, delay: 0.2 }}
+                          />
+                          <motion.div
+                            className="w-2 h-2 bg-gray-400 rounded-full"
+                            animate={{ scale: [1, 1.2, 1] }}
+                            transition={{ repeat: Infinity, duration: 1, delay: 0.4 }}
+                          />
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <div className="bg-white border border-border rounded-2xl rounded-bl-md px-3 py-2">
-                    <div className="flex space-x-1">
-                      <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce"></div>
-                      <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce animation-delay-100"></div>
-                      <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce animation-delay-200"></div>
-                    </div>
-                  </div>
-                </div>
+                  </motion.div>
+                )}
               </div>
-            )}
-            
-            <div ref={messagesEndRef} />
-          </div>
 
-          {/* Message Input */}
-          <div className="p-4 border-t border-border bg-white">
-            <div className="flex space-x-2">
-              <Textarea
-                ref={textareaRef}
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                onKeyPress={handleKeyPress}
-                placeholder="Type a message..."
-                className="flex-1 min-h-[40px] max-h-[100px] resize-none border-border"
-                disabled={isLoading}
-              />
-              <Button
-                onClick={sendMessage}
-                disabled={!inputValue.trim() || isLoading}
-                size="icon"
-                className="h-10 w-10 bg-primary hover:bg-primary/90"
-              >
-                <Send className="h-4 w-4" />
-              </Button>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
+              {/* Input */}
+              <div className="p-4 border-t border-gray-200 bg-gray-50">
+                <form onSubmit={handleSendMessage} className="flex space-x-2">
+                  <input
+                    type="text"
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    placeholder="Ask about insurance, quotes, or anything..."
+                    className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#15AFF7] focus:border-transparent text-sm"
+                    disabled={isTyping}
+                    title="Type your insurance question here"
+                  />
+                  <motion.button
+                    type="submit"
+                    disabled={!inputValue.trim() || isTyping}
+                    className="bg-[#15AFF7] text-white p-2 rounded-full hover:bg-[#0D94D1] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    title="Send message to AI Assistant"
+                    aria-label="Send message"
+                  >
+                    <Send className="w-5 h-5" />
+                  </motion.button>
+                </form>
+                
+                <div className="flex items-center justify-center mt-2 text-xs text-gray-500">
+                  <Sparkles className="w-3 h-3 mr-1" />
+                  Powered by AI • Instant responses
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 

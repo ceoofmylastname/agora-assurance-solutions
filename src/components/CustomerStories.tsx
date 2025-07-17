@@ -1,60 +1,9 @@
-import { useState, useRef, useEffect } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Star, Quote } from 'lucide-react';
-import { motion } from "framer-motion";
-import AnimatedCounter from "@/components/ui/animated-counter";
 
-const testimonials = [
-  {
-    id: 1,
-    name: "Mark R.",
-    location: "CA",
-    title: "They Made It Simple",
-    quote: "Agora's side-by-side comparison saved me hours of research—and I still got the best rate.",
-    rating: 5,
-    product: "Term Life Insurance"
-  },
-  {
-    id: 2,
-    name: "Sarah T.",
-    location: "TX", 
-    title: "A True Advocate",
-    quote: "Their advisor fought for my needs, not commissions. I finally feel protected.",
-    rating: 5,
-    product: "Mortgage Protection"
-  },
-  {
-    id: 3,
-    name: "Emily K.",
-    location: "FL",
-    title: "Instant Peace of Mind",
-    quote: "I clicked a few buttons and had a comprehensive plan in minutes—no stress.",
-    rating: 5,
-    product: "Final Expense"
-  }
-];
+import { motion } from "framer-motion";
+import { Star, Quote, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const CustomerStories = () => {
-  const [isInView, setIsInView] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setIsInView(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -67,163 +16,152 @@ const CustomerStories = () => {
   };
 
   const itemVariants = {
-    hidden: { y: 40, opacity: 0, rotateY: -10 },
+    hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
-      rotateY: 0,
-      transition: { 
-        type: "spring",
-        stiffness: 80,
-        damping: 15,
-        duration: 0.8
-      }
+      transition: { duration: 0.6 }
     }
   };
 
-  const mobileCardVariants = {
-    hidden: { y: 30, opacity: 0, scale: 0.9 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      scale: 1,
-      transition: { 
-        type: "spring",
-        stiffness: 100,
-        damping: 18,
-        duration: 0.7
-      }
+  const testimonials = [
+    {
+      id: 1,
+      name: "Sarah Johnson",
+      role: "Small Business Owner",
+      image: "/lovable-uploads/8a8c0896-4865-4bb8-aa18-10e30d79d044.png",
+      imageAlt: "Sarah Johnson - Small Business Owner testimonial photo, professional woman smiling confidently",
+      imageTitle: "Sarah Johnson - Satisfied Agora Assurance Client",
+      rating: 5,
+      text: "Agora made the entire process so simple. I was drowning in insurance jargon until their advisor walked me through everything. Now my family has the perfect coverage at a price that works for our budget.",
+      location: "Sacramento, CA"
+    },
+    {
+      id: 2,
+      name: "Michael Rodriguez",
+      role: "Father of Three",
+      image: "/lovable-uploads/6b9297ad-2464-4f64-a402-d63ed1a9fd6d.png",
+      imageAlt: "Michael Rodriguez - Father of Three testimonial photo, confident family man in business attire",
+      imageTitle: "Michael Rodriguez - Protected His Family with Agora",
+      rating: 5,
+      text: "After my wife's cancer scare, we knew we needed better life insurance. Agora's technology helped us compare dozens of options instantly, and their advisor found us coverage we actually could afford. Peace of mind is priceless.",
+      location: "Fresno, CA"
+    },
+    {
+      id: 3,
+      name: "Linda Chen",
+      role: "Retired Teacher",
+      image: "/lovable-uploads/5c7ac1b7-a207-4223-b39e-d5e0e16bef31.png",
+      imageAlt: "Linda Chen - Retired Teacher testimonial photo, wise and friendly elderly woman smiling warmly",
+      imageTitle: "Linda Chen - Secured Final Expense Coverage with Agora",
+      rating: 5,
+      text: "I thought final expense insurance would be complicated and expensive. The Agora team made it so easy to understand, and I got approved the same day! My children won't have to worry about funeral costs now.",
+      location: "San Diego, CA"
     }
-  };
+  ];
 
   return (
-    <section id="testimonials" ref={sectionRef} className="bg-gray-50 py-16 md:py-24 w-full">
-      <div className="w-full px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-        <motion.div 
+    <section className="py-16 md:py-24 bg-gradient-to-br from-blue-50 to-indigo-50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
           className="text-center mb-12 md:mb-16"
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
           variants={containerVariants}
         >
-          <motion.div className="inline-block mb-2 px-3 py-1 bg-[#15AFF7]/10 text-[#15AFF7] rounded-full text-sm font-medium" variants={itemVariants}>
-            Customer Success Stories
-          </motion.div>
-          <motion.h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4" variants={itemVariants}>
-            What Our Customers Say
+          <motion.h2 
+            variants={itemVariants}
+            className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4"
+          >
+            Real Stories, Real Protection
           </motion.h2>
-          <motion.p className="text-gray-600 text-lg max-w-2xl mx-auto" variants={itemVariants}>
-            Real stories from real families who found the perfect protection with Agora Assurance Solutions.
+          <motion.p 
+            variants={itemVariants}
+            className="text-gray-600 text-lg max-w-3xl mx-auto"
+          >
+            See how we've helped thousands of families secure their financial future with personalized insurance solutions
           </motion.p>
         </motion.div>
 
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
           variants={containerVariants}
         >
           {testimonials.map((testimonial, index) => (
-            <motion.div 
-              key={testimonial.id} 
-              variants={window.innerWidth <= 768 ? mobileCardVariants : itemVariants}
-              whileHover={{ 
-                scale: 1.02, 
-                rotateY: 2,
-                z: 10,
-                transition: { duration: 0.3 }
-              }}
-              whileTap={{ scale: 0.98 }}
-              style={{ perspective: "1000px" }}
+            <motion.div
+              key={testimonial.id}
+              variants={itemVariants}
+              className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 p-8 group hover:-translate-y-2 relative overflow-hidden"
             >
-              <Card className="h-full bg-white border-2 border-gray-100 hover:border-[#15AFF7]/30 hover:shadow-lg transition-all duration-300 transform-gpu will-change-transform">
-                <CardContent className="p-6">
-                  <div className="flex items-center mb-4">
-                    <motion.div
-                      initial={{ scale: 0, rotate: -90 }}
-                      animate={{ scale: 1, rotate: 0 }}
-                      transition={{ delay: index * 0.1 + 0.3, type: "spring", stiffness: 200 }}
-                    >
-                      <Quote className="w-8 h-8 text-[#15AFF7] mr-3" />
-                    </motion.div>
-                    <div className="flex text-yellow-400">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <motion.div
-                          key={i}
-                          initial={{ scale: 0, opacity: 0 }}
-                          animate={{ scale: 1, opacity: 1 }}
-                          transition={{ 
-                            delay: index * 0.1 + 0.4 + i * 0.1, 
-                            type: "spring", 
-                            stiffness: 300 
-                          }}
-                        >
-                          <Star className="w-4 h-4 fill-current" />
-                        </motion.div>
-                      ))}
-                    </div>
+              <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#15AFF7]/10 to-[#0D94D1]/10 rounded-full -mr-10 -mt-10"></div>
+              
+              <div className="relative">
+                <Quote className="w-8 h-8 text-[#15AFF7] mb-4 opacity-60" />
+                
+                <div className="flex items-center mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                
+                <p className="text-gray-700 leading-relaxed mb-6 italic">
+                  "{testimonial.text}"
+                </p>
+                
+                <div className="flex items-center">
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.imageAlt}
+                    title={testimonial.imageTitle}
+                    className="w-12 h-12 rounded-full object-cover mr-4 border-2 border-gray-200"
+                    loading="lazy"
+                  />
+                  <div>
+                    <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
+                    <p className="text-sm text-gray-600">{testimonial.role}</p>
+                    <p className="text-xs text-gray-500">{testimonial.location}</p>
                   </div>
-                  
-                  <h3 className="text-lg font-bold text-gray-900 mb-3">
-                    "{testimonial.title}"
-                  </h3>
-                  
-                  <p className="text-gray-700 mb-6 italic leading-relaxed">
-                    "{testimonial.quote}"
-                  </p>
-                  
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="font-semibold text-gray-900">
-                        {testimonial.name}
-                      </p>
-                      <p className="text-sm text-gray-500">
-                        {testimonial.location}
-                      </p>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-sm text-[#15AFF7] font-medium">
-                        {testimonial.product}
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </motion.div>
           ))}
         </motion.div>
 
-        <motion.div 
-          className="text-center mt-12"
+        <motion.div
+          className="text-center"
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true }}
           variants={itemVariants}
-          transition={{ delay: 0.8 }}
         >
-          <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-100 max-w-lg mx-auto">
-            <div className="flex justify-center mb-4">
-              <div className="flex text-yellow-400">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-6 h-6 fill-current" />
-                ))}
-              </div>
-            </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">
-              4.9/5 Customer Rating
+          <div className="bg-white rounded-2xl p-8 shadow-lg max-w-2xl mx-auto">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              Ready to Join Thousands of Protected Families?
             </h3>
-            <p className="text-gray-600 text-sm mb-6">
-              Based on <AnimatedCounter end={500} suffix="+" className="text-gray-600" /> verified customer reviews
+            <p className="text-gray-600 mb-6">
+              Get your personalized insurance quote in minutes and start protecting what matters most
             </p>
-            <button 
-              onClick={() => {
-                const contactSection = document.getElementById('contact');
-                if (contactSection) {
-                  contactSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-              className="px-6 py-3 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-colors font-medium"
-            >
-              Join Our Satisfied Customers
-            </button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                onClick={() => window.open('https://quickstart.assurity.com/agoraassurancesolutions', '_blank')}
+                className="inline-flex items-center px-8 py-3 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-all duration-300 font-semibold shadow-lg hover:shadow-xl group"
+                title="Get instant insurance quote - Compare plans in minutes"
+              >
+                Get Your Quote Now
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </button>
+              <Link
+                to="/booking"
+                className="inline-flex items-center px-8 py-3 bg-white text-[#15AFF7] border-2 border-[#15AFF7] rounded-lg hover:bg-[#15AFF7] hover:text-white transition-all duration-300 font-semibold group"
+                title="Schedule free consultation with licensed insurance advisor"
+              >
+                Schedule Free Consultation
+              </Link>
+            </div>
           </div>
         </motion.div>
       </div>
