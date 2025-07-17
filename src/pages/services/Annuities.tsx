@@ -1,14 +1,16 @@
-import { ArrowLeft, CheckCircle, Shield, DollarSign, TrendingUp, Clock, Heart, Users, Calendar, Briefcase } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { ArrowLeft, CheckCircle, PiggyBank, Shield, TrendingUp, DollarSign, Clock, Users, Target, Calculator, Briefcase, Heart } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from "@/components/ui/card";
 import SEO from '@/components/SEO';
-import retirementPlanningCouple from '@/assets/retirement-planning-couple.webp';
+import FixedAnnuitiesModal from '@/components/FixedAnnuitiesModal';
+import retirementPlanningHero from '@/assets/retirement-planning-hero.webp';
 
 const Annuities = () => {
-  const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -36,10 +38,10 @@ const Annuities = () => {
   return (
     <PageLayout>
       <SEO 
-        title="Annuities - Guaranteed Retirement Income | Agora Assurance Solutions"
-        description="Secure your retirement with annuities that provide guaranteed income for life. Fixed, indexed, immediate, and deferred annuity options available."
-        imageUrl={retirementPlanningCouple}
-        keywords={['annuities', 'retirement income', 'guaranteed income', 'fixed annuity', 'indexed annuity', 'retirement planning']}
+        title="Annuities - Guaranteed Retirement Income for Life | Agora Assurance Solutions"
+        description="Secure your retirement with guaranteed income annuities. Fixed, indexed, and variable options available. Professional guidance to maximize your retirement security."
+        imageUrl={retirementPlanningHero}
+        keywords={['annuities', 'retirement income', 'guaranteed income', 'fixed annuities', 'indexed annuities', 'retirement planning']}
       />
       
       <section className="pt-20 sm:pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white min-h-screen">
@@ -61,28 +63,21 @@ const Annuities = () => {
               <motion.div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center" variants={itemVariants}>
                 <div>
                   <motion.div className="inline-block mb-4 px-4 py-2 bg-[#15AFF7]/10 text-[#15AFF7] rounded-full text-sm font-medium" variants={itemVariants}>
-                    <DollarSign className="inline-block w-4 h-4 mr-2" />
-                    Annuities
+                    <PiggyBank className="inline-block w-4 h-4 mr-2" />
+                    Retirement Annuities
                   </motion.div>
                   <motion.h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent" variants={itemVariants}>
-                    Guaranteed Retirement Income You Can't Outlive
+                    Guaranteed Retirement Income for Life
                   </motion.h1>
                   <motion.p className="text-xl text-gray-600 mb-8 leading-relaxed" variants={itemVariants}>
-                    An annuity turns your savings into guaranteed income for retirement. Make a lump sum or series of payments, and receive monthly income for life or a set period.
+                    Secure your financial future with annuities designed to provide guaranteed income throughout retirement. 
+                    Choose from fixed, indexed, and variable options tailored to your risk tolerance and income goals.
                   </motion.p>
                   <motion.div className="flex flex-col sm:flex-row gap-4" variants={itemVariants}>
                     <button 
-                      onClick={() => {
-                        const contactSection = document.getElementById('contact');
-                        if (contactSection) {
-                          contactSection.scrollIntoView({ behavior: 'smooth' });
-                        }
-                      }}
+                      onClick={() => setIsModalOpen(true)}
                       className="px-8 py-4 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-all transform hover:scale-105 shadow-lg font-medium"
                     >
-                      Get Your Quote
-                    </button>
-                    <button className="px-8 py-4 border-2 border-[#15AFF7] text-[#15AFF7] rounded-lg hover:bg-[#15AFF7] hover:text-white transition-all font-medium">
                       Learn More
                     </button>
                   </motion.div>
@@ -90,136 +85,11 @@ const Annuities = () => {
                 <motion.div className="relative" variants={itemVariants}>
                   <div className="absolute inset-0 bg-gradient-to-br from-[#15AFF7]/20 to-blue-600/20 rounded-2xl transform rotate-3 scale-105"></div>
                   <img 
-                    src={retirementPlanningCouple} 
-                    alt="Secure retirement with guaranteed annuity income"
+                    src={retirementPlanningHero} 
+                    alt="Couple planning retirement with guaranteed annuity income"
                     className="relative rounded-2xl shadow-xl transform -rotate-1 hover:rotate-0 transition-transform duration-300"
                   />
                 </motion.div>
-              </motion.div>
-            </div>
-          </motion.div>
-
-          {/* Types of Annuities */}
-          <motion.div 
-            className="mb-16"
-            initial="hidden"
-            animate="visible"
-            variants={containerVariants}
-          >
-            <motion.div className="text-center mb-12" variants={itemVariants}>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Types of Annuities</h2>
-              <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-                Choose the annuity type that best fits your retirement income needs and risk tolerance
-              </p>
-            </motion.div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <motion.div variants={itemVariants} className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#15AFF7]/5 to-blue-600/5 rounded-2xl transform rotate-1 scale-105 group-hover:rotate-2 transition-transform duration-300"></div>
-                <Card className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300 h-full">
-                  <CardContent className="p-0">
-                    <Shield className="w-12 h-12 text-[#15AFF7] mb-4" />
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">Fixed Annuity</h3>
-                    <p className="text-gray-600 mb-4 leading-relaxed">
-                      Guaranteed interest rate and predictable payouts provide stable, conservative growth for your retirement.
-                    </p>
-                    <ul className="space-y-2">
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-[#15AFF7] mt-1 mr-2 flex-shrink-0" />
-                        <span className="text-sm text-gray-600">Guaranteed interest rate</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-[#15AFF7] mt-1 mr-2 flex-shrink-0" />
-                        <span className="text-sm text-gray-600">Predictable payouts</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-[#15AFF7] mt-1 mr-2 flex-shrink-0" />
-                        <span className="text-sm text-gray-600">Principal protection</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-              </motion.div>
-
-              <motion.div variants={itemVariants} className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-600/5 rounded-2xl transform -rotate-1 scale-105 group-hover:-rotate-2 transition-transform duration-300"></div>
-                <Card className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform rotate-1 group-hover:rotate-0 transition-transform duration-300 h-full">
-                  <CardContent className="p-0">
-                    <TrendingUp className="w-12 h-12 text-green-500 mb-4" />
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">Indexed Annuity</h3>
-                    <p className="text-gray-600 mb-4 leading-relaxed">
-                      Growth tied to a market index with downside protection, offering growth potential without market risk.
-                    </p>
-                    <ul className="space-y-2">
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-green-500 mt-1 mr-2 flex-shrink-0" />
-                        <span className="text-sm text-gray-600">Market index growth potential</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-green-500 mt-1 mr-2 flex-shrink-0" />
-                        <span className="text-sm text-gray-600">Downside protection</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-green-500 mt-1 mr-2 flex-shrink-0" />
-                        <span className="text-sm text-gray-600">Floor protection (usually 0%)</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-              </motion.div>
-
-              <motion.div variants={itemVariants} className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-600/5 rounded-2xl transform rotate-1 scale-105 group-hover:rotate-2 transition-transform duration-300"></div>
-                <Card className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300 h-full">
-                  <CardContent className="p-0">
-                    <Clock className="w-12 h-12 text-purple-500 mb-4" />
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">Immediate Annuity</h3>
-                    <p className="text-gray-600 mb-4 leading-relaxed">
-                      Income begins right away after a single premium payment, perfect for those already in retirement.
-                    </p>
-                    <ul className="space-y-2">
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-purple-500 mt-1 mr-2 flex-shrink-0" />
-                        <span className="text-sm text-gray-600">Immediate income start</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-purple-500 mt-1 mr-2 flex-shrink-0" />
-                        <span className="text-sm text-gray-600">Single premium payment</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-purple-500 mt-1 mr-2 flex-shrink-0" />
-                        <span className="text-sm text-gray-600">Lifetime income options</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-              </motion.div>
-
-              <motion.div variants={itemVariants} className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-red-600/5 rounded-2xl transform -rotate-1 scale-105 group-hover:-rotate-2 transition-transform duration-300"></div>
-                <Card className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform rotate-1 group-hover:rotate-0 transition-transform duration-300 h-full">
-                  <CardContent className="p-0">
-                    <Calendar className="w-12 h-12 text-orange-500 mb-4" />
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">Deferred Annuity</h3>
-                    <p className="text-gray-600 mb-4 leading-relaxed">
-                      Income starts at a future date, allowing your money to grow tax-deferred until retirement.
-                    </p>
-                    <ul className="space-y-2">
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-orange-500 mt-1 mr-2 flex-shrink-0" />
-                        <span className="text-sm text-gray-600">Future income start</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-orange-500 mt-1 mr-2 flex-shrink-0" />
-                        <span className="text-sm text-gray-600">Tax-deferred growth</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-orange-500 mt-1 mr-2 flex-shrink-0" />
-                        <span className="text-sm text-gray-600">Accumulation phase</span>
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
               </motion.div>
             </div>
           </motion.div>
@@ -232,55 +102,56 @@ const Annuities = () => {
             variants={containerVariants}
           >
             <motion.div className="text-center mb-12" variants={itemVariants}>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose Annuities?</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Key Benefits of Annuities</h2>
               <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-                Annuities provide unique benefits that other retirement vehicles cannot match
+                Discover the advantages of securing your retirement with annuities
               </p>
             </motion.div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <motion.div variants={itemVariants} className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#15AFF7]/5 to-blue-600/5 rounded-2xl transform rotate-1 scale-105 group-hover:rotate-2 transition-transform duration-300"></div>
-                <Card className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300 h-full">
-                  <CardContent className="p-0 text-center">
-                    <Heart className="w-12 h-12 text-[#15AFF7] mx-auto mb-4" />
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">Income for Life Options</h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      Choose lifetime income options that guarantee you'll never outlive your money, no matter how long you live.
-                    </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <motion.div variants={itemVariants}>
+                <Card className="h-full text-center hover:shadow-lg transition-all duration-300 hover:scale-105 border-2 border-gray-100 hover:border-[#15AFF7]/30">
+                  <CardContent className="p-6">
+                    <Shield className="w-12 h-12 text-[#15AFF7] mx-auto mb-4" />
+                    <h3 className="font-bold text-lg text-gray-900 mb-3">Guaranteed Income</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">Receive a steady stream of income for life, regardless of market conditions</p>
                   </CardContent>
                 </Card>
               </motion.div>
 
-              <motion.div variants={itemVariants} className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-600/5 rounded-2xl transform -rotate-1 scale-105 group-hover:-rotate-2 transition-transform duration-300"></div>
-                <Card className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform rotate-1 group-hover:rotate-0 transition-transform duration-300 h-full">
-                  <CardContent className="p-0 text-center">
-                    <TrendingUp className="w-12 h-12 text-green-500 mx-auto mb-4" />
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">Tax-Deferred Growth</h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      Your money grows tax-deferred, meaning you don't pay taxes on gains until you start taking withdrawals.
-                    </p>
+              <motion.div variants={itemVariants}>
+                <Card className="h-full text-center hover:shadow-lg transition-all duration-300 hover:scale-105 border-2 border-gray-100 hover:border-[#15AFF7]/30">
+                  <CardContent className="p-6">
+                    <TrendingUp className="w-12 h-12 text-[#15AFF7] mx-auto mb-4" />
+                    <h3 className="font-bold text-lg text-gray-900 mb-3">Tax-Deferred Growth</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">Your investment grows tax-deferred, allowing for potentially higher returns</p>
                   </CardContent>
                 </Card>
               </motion.div>
 
-              <motion.div variants={itemVariants} className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-600/5 rounded-2xl transform rotate-1 scale-105 group-hover:rotate-2 transition-transform duration-300"></div>
-                <Card className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300 h-full">
-                  <CardContent className="p-0 text-center">
-                    <Shield className="w-12 h-12 text-purple-500 mx-auto mb-4" />
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">Optional Enhanced Riders</h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      Add riders for long-term care benefits, death benefits, or enhanced income guarantees.
-                    </p>
+              <motion.div variants={itemVariants}>
+                <Card className="h-full text-center hover:shadow-lg transition-all duration-300 hover:scale-105 border-2 border-gray-100 hover:border-[#15AFF7]/30">
+                  <CardContent className="p-6">
+                    <Clock className="w-12 h-12 text-[#15AFF7] mx-auto mb-4" />
+                    <h3 className="font-bold text-lg text-gray-900 mb-3">Long-Term Security</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">Protect your retirement savings from market volatility and outlive your assets</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+              <motion.div variants={itemVariants}>
+                <Card className="h-full text-center hover:shadow-lg transition-all duration-300 hover:scale-105 border-2 border-gray-100 hover:border-[#15AFF7]/30">
+                  <CardContent className="p-6">
+                    <DollarSign className="w-12 h-12 text-[#15AFF7] mx-auto mb-4" />
+                    <h3 className="font-bold text-lg text-gray-900 mb-3">Customizable Options</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">Choose from various annuity types and features to match your unique needs</p>
                   </CardContent>
                 </Card>
               </motion.div>
             </div>
           </motion.div>
 
-          {/* Who It's For */}
+          {/* Annuity Types */}
           <motion.div 
             className="mb-16"
             initial="hidden"
@@ -288,20 +159,109 @@ const Annuities = () => {
             variants={containerVariants}
           >
             <motion.div className="text-center mb-12" variants={itemVariants}>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Are Annuities Right for You?</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Explore Different Types of Annuities</h2>
               <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-                Annuities are ideal for retirees and pre-retirees who want guaranteed income security
+                Understand the options available to create a secure retirement income stream
+              </p>
+            </motion.div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <motion.div variants={itemVariants}>
+                <Card className="h-full text-center hover:shadow-lg transition-all duration-300 hover:scale-105 border-2 border-gray-100 hover:border-[#15AFF7]/30">
+                  <CardContent className="p-6">
+                    <PiggyBank className="w-12 h-12 text-[#15AFF7] mx-auto mb-4" />
+                    <h3 className="font-bold text-lg text-gray-900 mb-3">Fixed Annuities</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">Offer a guaranteed interest rate and predictable income payments</p>
+                    <ul className="mt-4 space-y-2 text-left">
+                      <li className="flex items-center">
+                        <CheckCircle className="w-4 h-4 text-[#15AFF7] mr-2" />
+                        <span className="text-sm">Safe and reliable</span>
+                      </li>
+                      <li className="flex items-center">
+                        <CheckCircle className="w-4 h-4 text-[#15AFF7] mr-2" />
+                        <span className="text-sm">Consistent returns</span>
+                      </li>
+                      <li className="flex items-center">
+                        <CheckCircle className="w-4 h-4 text-[#15AFF7] mr-2" />
+                        <span className="text-sm">Ideal for conservative investors</span>
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+              <motion.div variants={itemVariants}>
+                <Card className="h-full text-center hover:shadow-lg transition-all duration-300 hover:scale-105 border-2 border-gray-100 hover:border-[#15AFF7]/30">
+                  <CardContent className="p-6">
+                    <TrendingUp className="w-12 h-12 text-[#15AFF7] mx-auto mb-4" />
+                    <h3 className="font-bold text-lg text-gray-900 mb-3">Indexed Annuities</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">Link returns to a market index, offering growth potential with downside protection</p>
+                    <ul className="mt-4 space-y-2 text-left">
+                      <li className="flex items-center">
+                        <CheckCircle className="w-4 h-4 text-[#15AFF7] mr-2" />
+                        <span className="text-sm">Market-linked growth</span>
+                      </li>
+                      <li className="flex items-center">
+                        <CheckCircle className="w-4 h-4 text-[#15AFF7] mr-2" />
+                        <span className="text-sm">Limited risk</span>
+                      </li>
+                      <li className="flex items-center">
+                        <CheckCircle className="w-4 h-4 text-[#15AFF7] mr-2" />
+                        <span className="text-sm">Potential for higher returns</span>
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+              <motion.div variants={itemVariants}>
+                <Card className="h-full text-center hover:shadow-lg transition-all duration-300 hover:scale-105 border-2 border-gray-100 hover:border-[#15AFF7]/30">
+                  <CardContent className="p-6">
+                    <Calculator className="w-12 h-12 text-[#15AFF7] mx-auto mb-4" />
+                    <h3 className="font-bold text-lg text-gray-900 mb-3">Variable Annuities</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">Offer the potential for higher returns through investment in subaccounts</p>
+                    <ul className="mt-4 space-y-2 text-left">
+                      <li className="flex items-center">
+                        <CheckCircle className="w-4 h-4 text-[#15AFF7] mr-2" />
+                        <span className="text-sm">Investment flexibility</span>
+                      </li>
+                      <li className="flex items-center">
+                        <CheckCircle className="w-4 h-4 text-[#15AFF7] mr-2" />
+                        <span className="text-sm">Unlimited growth potential</span>
+                      </li>
+                       <li className="flex items-center">
+                        <CheckCircle className="w-4 h-4 text-[#15AFF7] mr-2" />
+                        <span className="text-sm">Higher risk tolerance required</span>
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* Who Should Consider */}
+          <motion.div 
+            className="mb-16"
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+          >
+            <motion.div className="text-center mb-12" variants={itemVariants}>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Who Should Consider Annuities?</h2>
+              <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+                Annuities can be a valuable tool for various retirement planning needs
               </p>
             </motion.div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
-                { icon: Users, title: "Pre-Retirees", description: "Individuals 5-10 years from retirement who want to ensure guaranteed income" },
-                { icon: Briefcase, title: "Current Retirees", description: "Those already retired who need immediate or near-term income replacement" },
-                { icon: DollarSign, title: "Conservative Investors", description: "People who prefer guaranteed returns over market volatility" },
-                { icon: Shield, title: "Longevity Concerned", description: "Anyone worried about outliving their retirement savings" },
-                { icon: Clock, title: "Pension Replacers", description: "Workers without traditional pensions seeking guaranteed income" },
-                { icon: Heart, title: "Peace of Mind Seekers", description: "Those who value financial security and predictable income above all" }
+                { icon: Users, title: "Retirees", description: "Seeking a steady income stream to cover living expenses" },
+                { icon: Target, title: "Pre-Retirees", description: "Planning for a secure financial future with guaranteed income" },
+                { icon: Briefcase, title: "Business Owners", description: "Looking for tax-advantaged retirement savings options" },
+                { icon: Heart, title: "Risk-Averse Investors", description: "Prioritizing safety and predictable returns over high-risk investments" },
+                { icon: Shield, title: "Estate Planners", description: "Seeking to efficiently transfer wealth to future generations" },
+                { icon: Clock, title: "Long-Term Savers", description: "Building a retirement nest egg with tax-deferred growth" }
               ].map((item, index) => (
                 <motion.div key={index} variants={itemVariants}>
                   <Card className="h-full text-center hover:shadow-lg transition-all duration-300 hover:scale-105 border-2 border-gray-100 hover:border-[#15AFF7]/30">
@@ -326,42 +286,29 @@ const Annuities = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-[#15AFF7]/5 to-blue-600/5 rounded-3xl transform rotate-1 scale-105"></div>
             <div className="relative bg-white rounded-2xl border border-gray-200 p-12 shadow-2xl text-center transform -rotate-1">
               <motion.h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-[#15AFF7] to-blue-600 bg-clip-text text-transparent" variants={itemVariants}>
-                Start Building Your Retirement Income Today
+                Start Planning Your Guaranteed Income
               </motion.h2>
               <motion.p className="text-gray-600 text-xl leading-relaxed max-w-3xl mx-auto mb-8" variants={itemVariants}>
-                Get personalized annuity quotes and discover how guaranteed income can secure your retirement years with confidence.
+                Take control of your retirement security with guaranteed income annuities. Our experts will help you 
+                find the perfect solution for your retirement goals and risk tolerance.
               </motion.p>
               <motion.div className="flex flex-col sm:flex-row gap-4 justify-center" variants={itemVariants}>
                 <button 
-                  onClick={() => {
-                    const contactSection = document.getElementById('contact');
-                    if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={() => setIsModalOpen(true)}
                   className="px-8 py-4 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-all transform hover:scale-105 shadow-lg font-medium"
                 >
-                  Get Free Quote
+                  Explore Annuity Options
                 </button>
-                <button 
-                  onClick={() => {
-                    navigate('/');
-                    setTimeout(() => {
-                      const contactSection = document.getElementById('contact');
-                      if (contactSection) {
-                        contactSection.scrollIntoView({ behavior: 'smooth' });
-                      }
-                    }, 100);
-                  }}
-                  className="px-8 py-4 border-2 border-[#15AFF7] text-[#15AFF7] rounded-lg hover:bg-[#15AFF7] hover:text-white transition-all font-medium"
-                >
-                  Speak with Advisor
+                <button className="px-8 py-4 border-2 border-[#15AFF7] text-[#15AFF7] rounded-lg hover:bg-[#15AFF7] hover:text-white transition-all font-medium">
+                  Schedule Consultation
                 </button>
               </motion.div>
             </div>
           </motion.div>
         </div>
       </section>
+
+      <FixedAnnuitiesModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </PageLayout>
   );
 };

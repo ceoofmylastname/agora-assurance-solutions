@@ -1,13 +1,16 @@
 import { ArrowLeft, CheckCircle, BarChart3, Shield, TrendingUp, DollarSign, Users, Briefcase, Target, PiggyBank, Building2, Coins } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from "@/components/ui/card";
 import SEO from '@/components/SEO';
+import IndexedUniversalLifeModal from '@/components/IndexedUniversalLifeModal';
 import retirementPlanningHero from '@/assets/retirement-planning-hero.webp';
 
 const IndexedUniversalLife = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -71,17 +74,9 @@ const IndexedUniversalLife = () => {
                   </motion.p>
                   <motion.div className="flex flex-col sm:flex-row gap-4" variants={itemVariants}>
                     <button 
-                      onClick={() => {
-                        const contactSection = document.getElementById('contact');
-                        if (contactSection) {
-                          contactSection.scrollIntoView({ behavior: 'smooth' });
-                        }
-                      }}
+                      onClick={() => setIsModalOpen(true)}
                       className="px-8 py-4 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-all transform hover:scale-105 shadow-lg font-medium"
                     >
-                      Get Your Quote
-                    </button>
-                    <button className="px-8 py-4 border-2 border-[#15AFF7] text-[#15AFF7] rounded-lg hover:bg-[#15AFF7] hover:text-white transition-all font-medium">
                       Learn More
                     </button>
                   </motion.div>
@@ -318,12 +313,7 @@ const IndexedUniversalLife = () => {
               </motion.p>
               <motion.div className="flex flex-col sm:flex-row gap-4 justify-center" variants={itemVariants}>
                 <button 
-                  onClick={() => {
-                    const contactSection = document.getElementById('contact');
-                    if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={() => setIsModalOpen(true)}
                   className="px-8 py-4 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-all transform hover:scale-105 shadow-lg font-medium"
                 >
                   Get Free Illustration
@@ -336,6 +326,8 @@ const IndexedUniversalLife = () => {
           </motion.div>
         </div>
       </section>
+
+      <IndexedUniversalLifeModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </PageLayout>
   );
 };
