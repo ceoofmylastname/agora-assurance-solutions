@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -9,14 +8,17 @@ import { Textarea } from '@/components/ui/textarea';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Image, AlertTriangle, CheckCircle, Edit3, Zap, RefreshCw, Sparkles, Download, Globe, FileImage } from 'lucide-react';
+import { Image, AlertTriangle, CheckCircle, Edit3, Zap, RefreshCw, Sparkles, Download, Globe, FileImage, PackageOpen } from 'lucide-react';
 import { useSiteScanner } from '@/hooks/useSiteScanner';
 import { useToast } from '@/hooks/use-toast';
+import { BulkWebPConverter } from './BulkWebPConverter';
+import { convertImageToWebP, downloadBlob } from '@/utils/webpConverter';
 
 export const ImageManager = () => {
   const { images, metrics, isScanning, isConverting, scanSiteImages, updateImageAlt, generateAISuggestion, convertToWebP } = useSiteScanner();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [showBulkConverter, setShowBulkConverter] = useState(false);
   const { toast } = useToast();
 
   const filteredImages = images.filter(img => 
@@ -60,11 +62,16 @@ export const ImageManager = () => {
   };
 
   const handleWebPConversion = async (imageId: string) => {
+    const image = images.find(img => img.id === imageId);
+    if (!image || !image.canConvertToWebP) return;
+
     try {
-      await convertToWebP(imageId);
+      const result = await convertImageToWebP(image.src, image.filename, { quality: 0.8, format: 'webp' });
+      downloadBlob(result.blob, result.filename);
+      
       toast({
         title: "WebP Conversion Complete",
-        description: "Image has been converted and downloaded as WebP format.",
+        description: `Saved ${((result.savingsPercent || 0)).toFixed(1)}% file size. Image downloaded.`,
       });
     } catch (error) {
       toast({
@@ -169,16 +176,29 @@ export const ImageManager = () => {
                   Last scan: {metrics.lastUpdated.toLocaleTimeString()}
                 </Badge>
               )}
-              <Button 
-                variant="outline" 
-                size="sm" 
-                onClick={scanSiteImages}
-                disabled={isScanning}
-                className="gap-2 w-full sm:w-auto"
-              >
-                <RefreshCw className={`h-4 w-4 ${isScanning ? 'animate-spin' : ''}`} />
-                {isScanning ? 'Scanning Site...' : 'Scan All Pages'}
-              </Button>
+              <div className="flex gap-2">
+                {stats.canConvert > 0 && (
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    onClick={() => setShowBulkConverter(true)}
+                    className="gap-2 w-full sm:w-auto"
+                  >
+                    <PackageOpen className="h-4 w-4" />
+                    Bulk Convert ({stats.canConvert})
+                  </Button>
+                )}
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  onClick={scanSiteImages}
+                  disabled={isScanning}
+                  className="gap-2 w-full sm:w-auto"
+                >
+                  <RefreshCw className={`h-4 w-4 ${isScanning ? 'animate-spin' : ''}`} />
+                  {isScanning ? 'Scanning Site...' : 'Scan All Pages'}
+                </Button>
+              </div>
             </div>
           </div>
         </CardHeader>
@@ -383,6 +403,13 @@ export const ImageManager = () => {
           )}
         </CardContent>
       </Card>
+
+      {/* Bulk WebP Converter Modal */}
+      <BulkWebPConverter 
+        images={images}
+        isOpen={showBulkConverter}
+        onClose={() => setShowBulkConverter(false)}
+      />
     </div>
   );
 };
