@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 
 export interface SiteImage {
@@ -16,6 +15,8 @@ export interface SiteImage {
   width?: number;
   height?: number;
   element?: HTMLImageElement;
+  fileSize?: number;
+  canConvertToWebP: boolean;
 }
 
 export interface PageMeta {
@@ -46,136 +47,336 @@ export const useSiteScanner = () => {
   const [pages, setPages] = useState<PageMeta[]>([]);
   const [metrics, setMetrics] = useState<SEOMetrics | null>(null);
   const [isScanning, setIsScanning] = useState(false);
+  const [isConverting, setIsConverting] = useState<string | null>(null);
 
-  const scanSiteImages = async () => {
-    console.log('Starting comprehensive image scan...');
-    setIsScanning(true);
+  // Get all internal links from the current site
+  const getAllSitePages = async (): Promise<string[]> => {
+    const baseUrl = window.location.origin;
+    const visitedUrls = new Set<string>();
+    const urlsToVisit = ['/'];
     
-    try {
-      const scannedImages: SiteImage[] = [];
-      
-      // Scan all IMG elements in the DOM
-      const imageElements = document.querySelectorAll('img');
-      console.log(`Found ${imageElements.length} img elements`);
-      
-      imageElements.forEach((img, index) => {
-        const src = img.src || img.getAttribute('src') || img.getAttribute('data-src') || '';
-        const alt = img.alt || '';
-        const title = img.title || '';
-        
-        if (src && !src.startsWith('data:')) { // Skip data URLs
-          const filename = src.split('/').pop()?.split('?')[0] || `image-${index}`;
-          const format = filename.split('.').pop()?.toUpperCase() || 'UNKNOWN';
-          
-          // Get image dimensions
-          const width = img.naturalWidth || img.width || 0;
-          const height = img.naturalHeight || img.height || 0;
-          
-          scannedImages.push({
-            id: `img-${index}-${Date.now()}`,
-            src,
-            alt,
-            title,
-            filename,
-            format,
-            width,
-            height,
-            usedIn: [window.location.pathname],
-            hasAlt: alt.length > 0,
-            hasTitleAttr: title.length > 0,
-            isOptimized: alt.length > 0 && alt.length <= 125 && format !== 'BMP' && format !== 'TIFF',
-            element: img
-          });
-        }
-      });
+    // Add common pages that might not be linked
+    const commonPages = [
+      '/', '/about', '/blog', '/services', '/contact', '/faq', 
+      '/life-coverage', '/wealth-solutions', '/protection-plans',
+      '/services/term-life', '/services/whole-life', '/services/universal-life',
+      '/services/indexed-universal-life', '/services/final-expense',
+      '/services/mortgage-protection', '/services/annuities'
+    ];
+    
+    commonPages.forEach(page => {
+      if (!urlsToVisit.includes(page)) {
+        urlsToVisit.push(page);
+      }
+    });
 
-      // Scan for CSS background images
-      const elementsWithBgImages = document.querySelectorAll('*');
-      let bgImageCount = 0;
-      
-      elementsWithBgImages.forEach((element, index) => {
-        const computedStyle = window.getComputedStyle(element);
-        const backgroundImage = computedStyle.backgroundImage;
-        
-        if (backgroundImage && backgroundImage !== 'none' && backgroundImage.includes('url(')) {
-          const urlMatch = backgroundImage.match(/url\(['"]?([^'"]+)['"]?\)/);
-          if (urlMatch && urlMatch[1] && !urlMatch[1].startsWith('data:')) {
-            const src = urlMatch[1];
-            const filename = src.split('/').pop()?.split('?')[0] || `bg-image-${bgImageCount}`;
-            const format = filename.split('.').pop()?.toUpperCase() || 'UNKNOWN';
-            
-            scannedImages.push({
-              id: `bg-${bgImageCount}-${Date.now()}`,
-              src,
-              alt: '', // Background images don't have alt text by nature
-              title: '',
-              filename,
-              format,
-              usedIn: [window.location.pathname],
-              hasAlt: false,
-              hasTitleAttr: false,
-              isOptimized: false // Background images are never optimized for accessibility
-            });
-            bgImageCount++;
+    // Scan current page for internal links
+    try {
+      const links = document.querySelectorAll('a[href]');
+      links.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && href.startsWith('/') && !href.startsWith('//')) {
+          const cleanUrl = href.split('#')[0].split('?')[0];
+          if (!urlsToVisit.includes(cleanUrl) && cleanUrl !== '/') {
+            urlsToVisit.push(cleanUrl);
           }
         }
       });
+    } catch (error) {
+      console.log('Could not scan current page for links:', error);
+    }
 
-      // Scan for SVG elements
-      const svgElements = document.querySelectorAll('svg');
-      svgElements.forEach((svg, index) => {
-        const title = svg.querySelector('title')?.textContent || '';
-        const ariaLabel = svg.getAttribute('aria-label') || '';
-        const role = svg.getAttribute('role') || '';
+    return urlsToVisit.slice(0, 20); // Limit to prevent excessive requests
+  };
+
+  const scanPageForImages = async (url: string): Promise<SiteImage[]> => {
+    return new Promise((resolve) => {
+      // Create an iframe to load the page
+      const iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.style.position = 'absolute';
+      iframe.style.top = '-9999px';
+      
+      const cleanup = () => {
+        document.body.removeChild(iframe);
+      };
+
+      iframe.onload = () => {
+        try {
+          const doc = iframe.contentDocument || iframe.contentWindow?.document;
+          if (!doc) {
+            cleanup();
+            resolve([]);
+            return;
+          }
+
+          const scannedImages: SiteImage[] = [];
+          
+          // Scan IMG elements
+          const imageElements = doc.querySelectorAll('img');
+          imageElements.forEach((img, index) => {
+            const src = img.src || img.getAttribute('src') || img.getAttribute('data-src') || '';
+            const alt = img.alt || '';
+            const title = img.title || '';
+            
+            if (src && !src.startsWith('data:')) {
+              const filename = src.split('/').pop()?.split('?')[0] || `image-${index}`;
+              const format = filename.split('.').pop()?.toUpperCase() || 'UNKNOWN';
+              const width = img.naturalWidth || img.width || 0;
+              const height = img.naturalHeight || img.height || 0;
+              
+              scannedImages.push({
+                id: `${url}-img-${index}-${Date.now()}`,
+                src,
+                alt,
+                title,
+                filename,
+                format,
+                width,
+                height,
+                usedIn: [url],
+                hasAlt: alt.length > 0,
+                hasTitleAttr: title.length > 0,
+                isOptimized: alt.length > 0 && alt.length <= 125 && !['BMP', 'TIFF'].includes(format),
+                canConvertToWebP: ['JPG', 'JPEG', 'PNG', 'GIF'].includes(format)
+              });
+            }
+          });
+
+          // Scan CSS background images
+          const elementsWithBgImages = doc.querySelectorAll('*');
+          let bgImageCount = 0;
+          
+          elementsWithBgImages.forEach((element) => {
+            try {
+              const computedStyle = iframe.contentWindow?.getComputedStyle(element);
+              const backgroundImage = computedStyle?.backgroundImage;
+              
+              if (backgroundImage && backgroundImage !== 'none' && backgroundImage.includes('url(')) {
+                const urlMatch = backgroundImage.match(/url\(['"]?([^'"]+)['"]?\)/);
+                if (urlMatch && urlMatch[1] && !urlMatch[1].startsWith('data:')) {
+                  const src = urlMatch[1];
+                  const filename = src.split('/').pop()?.split('?')[0] || `bg-image-${bgImageCount}`;
+                  const format = filename.split('.').pop()?.toUpperCase() || 'UNKNOWN';
+                  
+                  scannedImages.push({
+                    id: `${url}-bg-${bgImageCount}-${Date.now()}`,
+                    src,
+                    alt: '',
+                    title: '',
+                    filename,
+                    format,
+                    usedIn: [url],
+                    hasAlt: false,
+                    hasTitleAttr: false,
+                    isOptimized: false,
+                    canConvertToWebP: ['JPG', 'JPEG', 'PNG', 'GIF'].includes(format)
+                  });
+                  bgImageCount++;
+                }
+              }
+            } catch (e) {
+              // Ignore cross-origin or other access errors
+            }
+          });
+
+          cleanup();
+          resolve(scannedImages);
+        } catch (error) {
+          console.error(`Error scanning ${url}:`, error);
+          cleanup();
+          resolve([]);
+        }
+      };
+
+      iframe.onerror = () => {
+        cleanup();
+        resolve([]);
+      };
+
+      // Set a timeout to prevent hanging
+      setTimeout(() => {
+        cleanup();
+        resolve([]);
+      }, 5000);
+
+      document.body.appendChild(iframe);
+      iframe.src = url;
+    });
+  };
+
+  const scanSiteImages = async () => {
+    console.log('Starting comprehensive site-wide image scan...');
+    setIsScanning(true);
+    
+    try {
+      const allImages: SiteImage[] = [];
+      const allPages = await getAllSitePages();
+      
+      console.log(`Scanning ${allPages.length} pages for images...`);
+      
+      // Scan current page first (immediate feedback)
+      const currentPageImages = await scanCurrentPageImages();
+      allImages.push(...currentPageImages);
+      setImages([...allImages]);
+
+      // Then scan other pages
+      for (const pageUrl of allPages) {
+        if (pageUrl === window.location.pathname) continue; // Skip current page
         
-        scannedImages.push({
-          id: `svg-${index}-${Date.now()}`,
-          src: 'inline-svg',
-          alt: ariaLabel || title,
-          title: title,
-          filename: `svg-${index}.svg`,
-          format: 'SVG',
-          usedIn: [window.location.pathname],
-          hasAlt: (ariaLabel || title).length > 0,
-          hasTitleAttr: title.length > 0,
-          isOptimized: (ariaLabel || title).length > 0 && role === 'img'
-        });
+        try {
+          const pageImages = await scanPageForImages(pageUrl);
+          allImages.push(...pageImages);
+          
+          // Update images in real-time as we scan each page
+          setImages([...allImages]);
+          
+          // Small delay to prevent overwhelming the browser
+          await new Promise(resolve => setTimeout(resolve, 100));
+        } catch (error) {
+          console.error(`Failed to scan ${pageUrl}:`, error);
+        }
+      }
+
+      // Merge duplicate images from different pages
+      const imageMap = new Map<string, SiteImage>();
+      allImages.forEach(img => {
+        const existing = imageMap.get(img.src);
+        if (existing) {
+          existing.usedIn = [...new Set([...existing.usedIn, ...img.usedIn])];
+        } else {
+          imageMap.set(img.src, { ...img });
+        }
       });
 
-      // Remove duplicates based on src
-      const uniqueImages = scannedImages.filter((img, index, self) => 
-        index === self.findIndex(i => i.src === img.src)
-      );
-
-      console.log(`Total unique images found: ${uniqueImages.length}`);
+      const uniqueImages = Array.from(imageMap.values());
       setImages(uniqueImages);
-      
-      // Calculate comprehensive metrics
+
+      // Calculate metrics
       const totalImages = uniqueImages.length;
       const imagesWithoutAlt = uniqueImages.filter(img => !img.hasAlt).length;
-      const imagesNeedingImprovement = uniqueImages.filter(img => 
-        img.hasAlt && !img.isOptimized
-      ).length;
-      
       const overallScore = totalImages > 0 
-        ? Math.round(((totalImages - imagesWithoutAlt - (imagesNeedingImprovement * 0.5)) / totalImages) * 100)
+        ? Math.round(((totalImages - imagesWithoutAlt) / totalImages) * 100)
         : 100;
       
       setMetrics({
         overallScore,
         totalImages,
         imagesWithoutAlt,
-        totalPages: 1, // Current page only
-        pagesWithIssues: (imagesWithoutAlt > 0 || imagesNeedingImprovement > 0) ? 1 : 0,
+        totalPages: allPages.length,
+        pagesWithIssues: imagesWithoutAlt > 0 ? 1 : 0,
         lastUpdated: new Date()
       });
 
-      console.log(`Image scan complete. Score: ${overallScore}%, Missing alt: ${imagesWithoutAlt}`);
+      console.log(`Site-wide scan complete. Found ${totalImages} unique images across ${allPages.length} pages.`);
 
     } catch (error) {
-      console.error('Error during comprehensive image scan:', error);
+      console.error('Error during site-wide image scan:', error);
     } finally {
       setIsScanning(false);
+    }
+  };
+
+  const scanCurrentPageImages = async (): Promise<SiteImage[]> => {
+    const scannedImages: SiteImage[] = [];
+    
+    // Scan all IMG elements in the current DOM
+    const imageElements = document.querySelectorAll('img');
+    imageElements.forEach((img, index) => {
+      const src = img.src || img.getAttribute('src') || img.getAttribute('data-src') || '';
+      const alt = img.alt || '';
+      const title = img.title || '';
+      
+      if (src && !src.startsWith('data:')) {
+        const filename = src.split('/').pop()?.split('?')[0] || `image-${index}`;
+        const format = filename.split('.').pop()?.toUpperCase() || 'UNKNOWN';
+        const width = img.naturalWidth || img.width || 0;
+        const height = img.naturalHeight || img.height || 0;
+        
+        scannedImages.push({
+          id: `current-img-${index}-${Date.now()}`,
+          src,
+          alt,
+          title,
+          filename,
+          format,
+          width,
+          height,
+          usedIn: [window.location.pathname],
+          hasAlt: alt.length > 0,
+          hasTitleAttr: title.length > 0,
+          isOptimized: alt.length > 0 && alt.length <= 125 && !['BMP', 'TIFF'].includes(format),
+          element: img,
+          canConvertToWebP: ['JPG', 'JPEG', 'PNG', 'GIF'].includes(format)
+        });
+      }
+    });
+
+    return scannedImages;
+  };
+
+  const convertToWebP = async (imageId: string): Promise<void> => {
+    const image = images.find(img => img.id === imageId);
+    if (!image || !image.canConvertToWebP) {
+      throw new Error('Image cannot be converted to WebP');
+    }
+
+    setIsConverting(imageId);
+    
+    try {
+      // Create a canvas to convert the image
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      const img = new Image();
+      
+      return new Promise((resolve, reject) => {
+        img.onload = () => {
+          canvas.width = img.naturalWidth;
+          canvas.height = img.naturalHeight;
+          
+          if (ctx) {
+            ctx.drawImage(img, 0, 0);
+            
+            // Convert to WebP with quality 0.8
+            canvas.toBlob(
+              (blob) => {
+                if (blob) {
+                  // Create download link
+                  const url = URL.createObjectURL(blob);
+                  const a = document.createElement('a');
+                  a.href = url;
+                  a.download = image.filename.replace(/\.(jpg|jpeg|png|gif)$/i, '.webp');
+                  document.body.appendChild(a);
+                  a.click();
+                  document.body.removeChild(a);
+                  URL.revokeObjectURL(url);
+                  
+                  setIsConverting(null);
+                  resolve();
+                } else {
+                  reject(new Error('Failed to convert image'));
+                }
+              },
+              'image/webp',
+              0.8
+            );
+          } else {
+            reject(new Error('Could not get canvas context'));
+          }
+        };
+        
+        img.onerror = () => {
+          reject(new Error('Failed to load image'));
+        };
+        
+        img.crossOrigin = 'anonymous';
+        img.src = image.src;
+      });
+    } catch (error) {
+      console.error('WebP conversion failed:', error);
+      throw error;
+    } finally {
+      setIsConverting(null);
     }
   };
 
@@ -216,19 +417,16 @@ export const useSiteScanner = () => {
           ...img, 
           alt: newAlt, 
           hasAlt: newAlt.length > 0,
-          isOptimized: newAlt.length > 0 && newAlt.length <= 125 && img.format !== 'BMP' && img.format !== 'TIFF'
+          isOptimized: newAlt.length > 0 && newAlt.length <= 125 && !['BMP', 'TIFF'].includes(img.format)
         };
         
         // Update the actual DOM element if it exists
         if (img.element) {
           img.element.setAttribute('alt', newAlt);
-          console.log('Updated DOM element alt attribute');
         } else {
-          // Find the element by src if we don't have a direct reference
           const imgElement = document.querySelector(`img[src="${img.src}"]`) as HTMLImageElement;
           if (imgElement) {
             imgElement.setAttribute('alt', newAlt);
-            console.log('Found and updated DOM element alt attribute');
           }
         }
         
@@ -236,84 +434,44 @@ export const useSiteScanner = () => {
       }
       return img;
     }));
-
-    // Recalculate metrics after update
-    setTimeout(() => {
-      const updatedImages = images.map(img => 
-        img.id === imageId 
-          ? { ...img, alt: newAlt, hasAlt: newAlt.length > 0 }
-          : img
-      );
-      const totalImages = updatedImages.length;
-      const imagesWithoutAlt = updatedImages.filter(img => !img.hasAlt).length;
-      const overallScore = totalImages > 0 
-        ? Math.round(((totalImages - imagesWithoutAlt) / totalImages) * 100)
-        : 100;
-      
-      setMetrics(prev => prev ? { ...prev, overallScore, imagesWithoutAlt } : null);
-    }, 100);
   };
 
   const generateAISuggestion = (image: SiteImage): string => {
-    console.log(`Generating AI suggestion for: ${image.filename}`);
-    
     const filename = image.filename.toLowerCase();
-    const currentPath = window.location.pathname.toLowerCase();
+    const usedInPages = image.usedIn.join(', ').toLowerCase();
     
-    // Context-aware suggestions based on current page and filename
-    if (currentPath.includes('life') || currentPath.includes('insurance')) {
+    // Context-aware suggestions based on usage and filename
+    if (usedInPages.includes('life') || usedInPages.includes('insurance')) {
       if (filename.includes('logo')) {
-        return 'Agora Assurance Solutions - Life Insurance and Financial Protection';
+        return 'Agora Assurance Solutions - Life Insurance and Financial Protection Services';
       } else if (filename.includes('hero') || filename.includes('banner')) {
         return 'Professional life insurance consultation protecting families financial future';
       } else if (filename.includes('family') || filename.includes('couple')) {
         return 'Happy family protected by comprehensive life insurance coverage';
-      } else if (filename.includes('advisor') || filename.includes('meeting')) {
-        return 'Life insurance advisor consulting with clients about financial protection';
       }
     }
     
-    if (currentPath.includes('retirement') || currentPath.includes('annuit')) {
-      if (filename.includes('retirement') || filename.includes('planning')) {
-        return 'Retirement financial planning consultation with professional advisor';
-      } else if (filename.includes('couple') || filename.includes('senior')) {
-        return 'Retired couple enjoying financial security through proper retirement planning';
-      }
-    }
-    
-    // Generic insurance-focused suggestions
     if (filename.includes('logo')) {
       return 'Agora Assurance Solutions company logo';
     } else if (filename.includes('hero') || filename.includes('banner')) {
       return 'Professional insurance services protecting your financial future';
-    } else if (filename.includes('family') || filename.includes('couple')) {
-      return 'Family protected by comprehensive insurance coverage';
-    } else if (filename.includes('business') || filename.includes('meeting')) {
-      return 'Insurance consultation meeting with professional advisor';
-    } else if (filename.includes('document') || filename.includes('policy')) {
-      return 'Insurance policy documents and financial planning materials';
     } else {
       return 'Insurance and financial protection services illustration';
     }
   };
 
   useEffect(() => {
-    // Initial comprehensive scan
-    console.log('Initializing site scanner...');
+    // Initial scan
     scanSiteImages();
     scanPageMeta();
 
-    // Set up periodic rescanning to catch dynamic content
+    // Periodic updates every 30 seconds
     const interval = setInterval(() => {
       console.log('Performing periodic site scan...');
       scanSiteImages();
-      scanPageMeta();
-    }, 15000); // Rescan every 15 seconds for more responsive updates
+    }, 30000);
 
-    return () => {
-      console.log('Cleaning up site scanner...');
-      clearInterval(interval);
-    };
+    return () => clearInterval(interval);
   }, []);
 
   return {
@@ -321,9 +479,11 @@ export const useSiteScanner = () => {
     pages,
     metrics,
     isScanning,
+    isConverting,
     scanSiteImages,
     scanPageMeta,
     updateImageAlt,
-    generateAISuggestion
+    generateAISuggestion,
+    convertToWebP
   };
 };
