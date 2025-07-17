@@ -1,20 +1,13 @@
 
-import { motion } from "framer-motion";
 import HeroBanner from "./hero/HeroBanner";
 import HeroCards from "./hero/HeroCards";
-import { containerVariants } from "./hero/HeroAnimations";
 
 const Hero = () => {
   return (
-    <motion.div 
-      className="relative w-full -mt-16" 
-      initial="hidden" 
-      animate="visible" 
-      variants={containerVariants}
-    >
+    <div className="relative w-full -mt-16">
       <HeroBanner />
       <HeroCards />
-    </motion.div>
+    </div>
   );
 };
 

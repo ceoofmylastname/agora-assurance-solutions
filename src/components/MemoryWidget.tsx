@@ -17,6 +17,7 @@ const MemoryWidget = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isOffline, setIsOffline] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { toast } = useToast();
@@ -54,6 +55,9 @@ const MemoryWidget = () => {
     try {
       const dateCode = new Date().toISOString().slice(0, 10).replace(/-/g, '');
       
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+      
       const response = await fetch('https://n8n.a3innercircle.com/webhook/e926a6b0-1bc1-4aec-a665-76da4683c46c', {
         method: 'POST',
         headers: {
@@ -63,10 +67,13 @@ const MemoryWidget = () => {
           date: dateCode,
           message: inputValue
         }),
+        signal: controller.signal
       });
 
+      clearTimeout(timeoutId);
+
       if (!response.ok) {
-        throw new Error(`Server responded with status: ${response.status}`);
+        throw new Error(`Server error: ${response.status}`);
       }
 
       const data = await response.json();
@@ -79,14 +86,17 @@ const MemoryWidget = () => {
           timestamp: new Date()
         };
         setMessages(prev => [...prev, botMessage]);
+        setIsOffline(false);
       } else {
-        throw new Error('Invalid response format from API');
+        throw new Error('Invalid response format');
       }
     } catch (error) {
       console.error('Error sending message:', error);
+      setIsOffline(true);
+      
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
-        content: 'Sorry, I encountered an error. Please try again later.',
+        content: 'I\'m currently offline. Please try again later or contact support for immediate assistance.',
         isUser: false,
         timestamp: new Date()
       };
@@ -94,7 +104,7 @@ const MemoryWidget = () => {
       
       toast({
         title: "Connection Error",
-        description: "Could not connect to AI assistant. Please try again later.",
+        description: "AI assistant is temporarily unavailable. Please try again later.",
         variant: "destructive",
       });
     } finally {
@@ -136,16 +146,14 @@ const MemoryWidget = () => {
           {/* Header */}
           <div className="bg-primary text-primary-foreground p-4 flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white/20">
-                <img 
-                  src="https://static.vecteezy.com/system/resources/previews/049/697/634/non_2x/detailed-brain-graphic-brain-anatomy-illustration-vector.jpg"
-                  alt="Memory"
-                  className="w-full h-full object-cover"
-                />
+              <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                <MessageCircle className="w-6 h-6" />
               </div>
               <div>
-                <h3 className="font-medium text-sm">Agora</h3>
-                <p className="text-xs text-white/70">AI Assistant</p>
+                <h3 className="font-medium text-sm">Agora AI</h3>
+                <p className="text-xs text-white/70">
+                  {isOffline ? 'Offline' : 'AI Assistant'}
+                </p>
               </div>
             </div>
             <Button
@@ -163,6 +171,9 @@ const MemoryWidget = () => {
             {messages.length === 0 && (
               <div className="text-center text-muted-foreground text-sm py-8">
                 <p>Start a conversation with Agora AI</p>
+                {isOffline && (
+                  <p className="text-destructive text-xs mt-2">Currently offline - limited functionality</p>
+                )}
               </div>
             )}
             
@@ -172,18 +183,6 @@ const MemoryWidget = () => {
                 className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}
               >
                 <div className="max-w-[80%]">
-                  {!message.isUser && (
-                    <div className="flex items-center space-x-2 mb-1">
-                      <div className="w-6 h-6 rounded-full overflow-hidden">
-                        <img 
-                          src="https://static.vecteezy.com/system/resources/previews/049/697/634/non_2x/detailed-brain-graphic-brain-anatomy-illustration-vector.jpg"
-                          alt="Memory"
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    </div>
-                  )}
-                  
                   <div
                     className={`px-3 py-2 rounded-2xl text-sm ${
                       message.isUser
@@ -214,20 +213,11 @@ const MemoryWidget = () => {
             {isLoading && (
               <div className="flex justify-start">
                 <div className="max-w-[80%]">
-                  <div className="flex items-center space-x-2 mb-1">
-                    <div className="w-6 h-6 rounded-full overflow-hidden">
-                      <img 
-                        src="https://static.vecteezy.com/system/resources/previews/049/697/634/non_2x/detailed-brain-graphic-brain-anatomy-illustration-vector.jpg"
-                        alt="Memory"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  </div>
                   <div className="bg-white border border-border rounded-2xl rounded-bl-md px-3 py-2">
                     <div className="flex space-x-1">
                       <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce"></div>
-                      <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce animation-delay-100"></div>
-                      <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce animation-delay-200"></div>
+                      <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                      <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
                     </div>
                   </div>
                 </div>
@@ -245,7 +235,7 @@ const MemoryWidget = () => {
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder="Type a message..."
+                placeholder={isOffline ? "AI is offline..." : "Type a message..."}
                 className="flex-1 min-h-[40px] max-h-[100px] resize-none border-border"
                 disabled={isLoading}
               />
