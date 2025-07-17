@@ -1,13 +1,17 @@
+
 import { ArrowLeft, CheckCircle, Settings, Shield, TrendingUp, DollarSign, Users, Briefcase, Target, PiggyBank, Building2, Coins, Clock, Gauge } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from "@/components/ui/card";
 import SEO from '@/components/SEO';
+import UniversalLifeEducationModal from '@/components/UniversalLifeEducationModal';
 import retirementPlanningCouple from '@/assets/retirement-planning-couple.webp';
 
 const UniversalLife = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -71,17 +75,9 @@ const UniversalLife = () => {
                   </motion.p>
                   <motion.div className="flex flex-col sm:flex-row gap-4" variants={itemVariants}>
                     <button 
-                      onClick={() => {
-                        const contactSection = document.getElementById('contact');
-                        if (contactSection) {
-                          contactSection.scrollIntoView({ behavior: 'smooth' });
-                        }
-                      }}
+                      onClick={() => setIsModalOpen(true)}
                       className="px-8 py-4 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-all transform hover:scale-105 shadow-lg font-medium"
                     >
-                      Get Your Quote
-                    </button>
-                    <button className="px-8 py-4 border-2 border-[#15AFF7] text-[#15AFF7] rounded-lg hover:bg-[#15AFF7] hover:text-white transition-all font-medium">
                       Learn More
                     </button>
                   </motion.div>
@@ -328,14 +324,22 @@ const UniversalLife = () => {
                 >
                   Get Custom Quote
                 </button>
-                <button className="px-8 py-4 border-2 border-[#15AFF7] text-[#15AFF7] rounded-lg hover:bg-[#15AFF7] hover:text-white transition-all font-medium">
-                  Schedule Consultation
+                <button 
+                  onClick={() => setIsModalOpen(true)}
+                  className="px-8 py-4 border-2 border-[#15AFF7] text-[#15AFF7] rounded-lg hover:bg-[#15AFF7] hover:text-white transition-all font-medium"
+                >
+                  Learn More
                 </button>
               </motion.div>
             </div>
           </motion.div>
         </div>
       </section>
+
+      <UniversalLifeEducationModal 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </PageLayout>
   );
 };

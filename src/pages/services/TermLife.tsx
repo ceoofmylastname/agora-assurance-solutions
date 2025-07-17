@@ -1,4 +1,3 @@
-
 import { ArrowLeft, CheckCircle, Clock, DollarSign, Shield, Users, TrendingUp, Heart } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from "framer-motion";
@@ -76,16 +75,8 @@ const TermLife = () => {
                   </motion.p>
                   <motion.div className="flex flex-col sm:flex-row gap-4" variants={itemVariants}>
                     <button 
-                      onClick={() => {
-                        window.open('https://quickstart.assurity.com/agoraassurancesolutions', '_blank');
-                      }}
-                      className="px-8 py-4 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-all transform hover:scale-105 shadow-lg font-medium"
-                    >
-                      Get Your Quote
-                    </button>
-                    <button 
                       onClick={() => setIsModalOpen(true)}
-                      className="px-8 py-4 border-2 border-[#15AFF7] text-[#15AFF7] rounded-lg hover:bg-[#15AFF7] hover:text-white transition-all font-medium"
+                      className="px-8 py-4 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-all transform hover:scale-105 shadow-lg font-medium"
                     >
                       Learn More
                     </button>
@@ -286,14 +277,6 @@ const TermLife = () => {
               <motion.div className="flex flex-col sm:flex-row gap-4 justify-center" variants={itemVariants}>
                 <button 
                   onClick={() => {
-                    window.open('https://quickstart.assurity.com/agoraassurancesolutions', '_blank');
-                  }}
-                  className="px-8 py-4 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-all transform hover:scale-105 shadow-lg font-medium"
-                >
-                  Get Free Quote
-                </button>
-                <button 
-                  onClick={() => {
                     navigate('/');
                     setTimeout(() => {
                       const contactSection = document.getElementById('contact');
@@ -302,9 +285,15 @@ const TermLife = () => {
                       }
                     }, 100);
                   }}
+                  className="px-8 py-4 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-all transform hover:scale-105 shadow-lg font-medium"
+                >
+                  Get Free Quote
+                </button>
+                <button 
+                  onClick={() => setIsModalOpen(true)}
                   className="px-8 py-4 border-2 border-[#15AFF7] text-[#15AFF7] rounded-lg hover:bg-[#15AFF7] hover:text-white transition-all font-medium"
                 >
-                  Speak with Advisor
+                  Learn More
                 </button>
               </motion.div>
             </div>
