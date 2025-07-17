@@ -49,6 +49,28 @@ export const useSiteScanner = () => {
   const [isScanning, setIsScanning] = useState(false);
   const [isConverting, setIsConverting] = useState<string | null>(null);
 
+  // Normalize URL for consistent comparison
+  const normalizeUrl = (url: string): string => {
+    try {
+      // Handle relative URLs
+      if (url.startsWith('/')) {
+        url = window.location.origin + url;
+      }
+      
+      // Create URL object to normalize
+      const urlObj = new URL(url);
+      
+      // Remove query parameters and fragments that don't affect the actual image
+      urlObj.search = '';
+      urlObj.hash = '';
+      
+      return urlObj.href;
+    } catch (error) {
+      // If URL parsing fails, return original
+      return url;
+    }
+  };
+
   // Get all internal links from the current site
   const getAllSitePages = async (): Promise<string[]> => {
     const baseUrl = window.location.origin;
@@ -91,6 +113,8 @@ export const useSiteScanner = () => {
 
   const scanPageForImages = async (url: string): Promise<SiteImage[]> => {
     return new Promise((resolve) => {
+      console.log(`Scanning page: ${url}`);
+      
       // Create an iframe to load the page
       const iframe = document.createElement('iframe');
       iframe.style.display = 'none';
@@ -114,20 +138,23 @@ export const useSiteScanner = () => {
           
           // Scan IMG elements
           const imageElements = doc.querySelectorAll('img');
+          console.log(`Found ${imageElements.length} img elements on ${url}`);
+          
           imageElements.forEach((img, index) => {
             const src = img.src || img.getAttribute('src') || img.getAttribute('data-src') || '';
             const alt = img.alt || '';
             const title = img.title || '';
             
-            if (src && !src.startsWith('data:')) {
-              const filename = src.split('/').pop()?.split('?')[0] || `image-${index}`;
+            if (src && !src.startsWith('data:') && !src.includes('placeholder.svg')) {
+              const normalizedSrc = normalizeUrl(src);
+              const filename = normalizedSrc.split('/').pop()?.split('?')[0] || `image-${index}`;
               const format = filename.split('.').pop()?.toUpperCase() || 'UNKNOWN';
               const width = img.naturalWidth || img.width || 0;
               const height = img.naturalHeight || img.height || 0;
               
               scannedImages.push({
                 id: `${url}-img-${index}-${Date.now()}`,
-                src,
+                src: normalizedSrc,
                 alt,
                 title,
                 filename,
@@ -143,8 +170,8 @@ export const useSiteScanner = () => {
             }
           });
 
-          // Scan CSS background images
-          const elementsWithBgImages = doc.querySelectorAll('*');
+          // Scan CSS background images more selectively
+          const elementsWithBgImages = doc.querySelectorAll('[style*="background-image"], .hero, .banner, .bg-');
           let bgImageCount = 0;
           
           elementsWithBgImages.forEach((element) => {
@@ -154,14 +181,14 @@ export const useSiteScanner = () => {
               
               if (backgroundImage && backgroundImage !== 'none' && backgroundImage.includes('url(')) {
                 const urlMatch = backgroundImage.match(/url\(['"]?([^'"]+)['"]?\)/);
-                if (urlMatch && urlMatch[1] && !urlMatch[1].startsWith('data:')) {
-                  const src = urlMatch[1];
-                  const filename = src.split('/').pop()?.split('?')[0] || `bg-image-${bgImageCount}`;
+                if (urlMatch && urlMatch[1] && !urlMatch[1].startsWith('data:') && !urlMatch[1].includes('placeholder')) {
+                  const normalizedSrc = normalizeUrl(urlMatch[1]);
+                  const filename = normalizedSrc.split('/').pop()?.split('?')[0] || `bg-image-${bgImageCount}`;
                   const format = filename.split('.').pop()?.toUpperCase() || 'UNKNOWN';
                   
                   scannedImages.push({
                     id: `${url}-bg-${bgImageCount}-${Date.now()}`,
-                    src,
+                    src: normalizedSrc,
                     alt: '',
                     title: '',
                     filename,
@@ -180,6 +207,7 @@ export const useSiteScanner = () => {
             }
           });
 
+          console.log(`Scanned ${scannedImages.length} total images from ${url}`);
           cleanup();
           resolve(scannedImages);
         } catch (error) {
@@ -209,16 +237,20 @@ export const useSiteScanner = () => {
     console.log('Starting comprehensive site-wide image scan...');
     setIsScanning(true);
     
+    // Reset images state to prevent accumulation
+    setImages([]);
+    
     try {
-      const allImages: SiteImage[] = [];
       const allPages = await getAllSitePages();
-      
       console.log(`Scanning ${allPages.length} pages for images...`);
+      
+      // Collect all images from all pages
+      const allScannedImages: SiteImage[] = [];
       
       // Scan current page first (immediate feedback)
       const currentPageImages = await scanCurrentPageImages();
-      allImages.push(...currentPageImages);
-      setImages([...allImages]);
+      allScannedImages.push(...currentPageImages);
+      console.log(`Current page has ${currentPageImages.length} images`);
 
       // Then scan other pages
       for (const pageUrl of allPages) {
@@ -226,10 +258,8 @@ export const useSiteScanner = () => {
         
         try {
           const pageImages = await scanPageForImages(pageUrl);
-          allImages.push(...pageImages);
-          
-          // Update images in real-time as we scan each page
-          setImages([...allImages]);
+          allScannedImages.push(...pageImages);
+          console.log(`Page ${pageUrl} contributed ${pageImages.length} images`);
           
           // Small delay to prevent overwhelming the browser
           await new Promise(resolve => setTimeout(resolve, 100));
@@ -238,18 +268,37 @@ export const useSiteScanner = () => {
         }
       }
 
-      // Merge duplicate images from different pages
+      console.log(`Total images collected before deduplication: ${allScannedImages.length}`);
+
+      // Improved deduplication: merge images by normalized URL
       const imageMap = new Map<string, SiteImage>();
-      allImages.forEach(img => {
-        const existing = imageMap.get(img.src);
+      
+      allScannedImages.forEach(img => {
+        const normalizedSrc = normalizeUrl(img.src);
+        const existing = imageMap.get(normalizedSrc);
+        
         if (existing) {
+          // Merge the usage pages
           existing.usedIn = [...new Set([...existing.usedIn, ...img.usedIn])];
+          
+          // Keep the image with alt text if available
+          if (!existing.hasAlt && img.hasAlt) {
+            existing.alt = img.alt;
+            existing.hasAlt = true;
+            existing.isOptimized = img.isOptimized;
+          }
         } else {
-          imageMap.set(img.src, { ...img });
+          imageMap.set(normalizedSrc, { 
+            ...img, 
+            src: normalizedSrc,
+            id: `img-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
+          });
         }
       });
 
       const uniqueImages = Array.from(imageMap.values());
+      console.log(`Unique images after deduplication: ${uniqueImages.length}`);
+      
       setImages(uniqueImages);
 
       // Calculate metrics
@@ -287,15 +336,16 @@ export const useSiteScanner = () => {
       const alt = img.alt || '';
       const title = img.title || '';
       
-      if (src && !src.startsWith('data:')) {
-        const filename = src.split('/').pop()?.split('?')[0] || `image-${index}`;
+      if (src && !src.startsWith('data:') && !src.includes('placeholder.svg')) {
+        const normalizedSrc = normalizeUrl(src);
+        const filename = normalizedSrc.split('/').pop()?.split('?')[0] || `image-${index}`;
         const format = filename.split('.').pop()?.toUpperCase() || 'UNKNOWN';
         const width = img.naturalWidth || img.width || 0;
         const height = img.naturalHeight || img.height || 0;
         
         scannedImages.push({
           id: `current-img-${index}-${Date.now()}`,
-          src,
+          src: normalizedSrc,
           alt,
           title,
           filename,
@@ -465,13 +515,8 @@ export const useSiteScanner = () => {
     scanSiteImages();
     scanPageMeta();
 
-    // Periodic updates every 30 seconds
-    const interval = setInterval(() => {
-      console.log('Performing periodic site scan...');
-      scanSiteImages();
-    }, 30000);
-
-    return () => clearInterval(interval);
+    // Remove periodic scanning to prevent interference and accumulation
+    // Only scan on manual trigger or initial load
   }, []);
 
   return {
