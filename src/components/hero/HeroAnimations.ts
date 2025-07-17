@@ -1,3 +1,4 @@
+
 export const containerVariants = {
   hidden: {
     opacity: 0
@@ -58,6 +59,21 @@ export const cardVariants = {
       damping: 15,
       duration: 0.8
     }
+  },
+  hover: {
+    y: -8,
+    scale: 1.02,
+    rotateY: 5,
+    boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+    transition: {
+      type: "spring",
+      stiffness: 400,
+      damping: 10
+    }
+  },
+  tap: {
+    scale: 0.98,
+    y: -4
   }
 };
 
@@ -78,7 +94,14 @@ export const iconVariants = {
   }
 };
 
+// Separate the hover variants since we're applying them differently now
 export const hoverVariants = {
+  initial: {
+    y: 0,
+    scale: 1,
+    rotateY: 0,
+    boxShadow: "0 0 0 rgba(0, 0, 0, 0)"
+  },
   hover: {
     y: -8,
     scale: 1.02,

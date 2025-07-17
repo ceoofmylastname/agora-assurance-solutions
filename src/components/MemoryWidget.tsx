@@ -1,7 +1,9 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
+import { useToast } from '@/hooks/use-toast';
 
 interface Message {
   id: string;
@@ -17,6 +19,7 @@ const MemoryWidget = () => {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const { toast } = useToast();
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -62,6 +65,10 @@ const MemoryWidget = () => {
         }),
       });
 
+      if (!response.ok) {
+        throw new Error(`Server responded with status: ${response.status}`);
+      }
+
       const data = await response.json();
       
       if (data && Array.isArray(data) && data[0]?.output) {
@@ -72,16 +79,24 @@ const MemoryWidget = () => {
           timestamp: new Date()
         };
         setMessages(prev => [...prev, botMessage]);
+      } else {
+        throw new Error('Invalid response format from API');
       }
     } catch (error) {
       console.error('Error sending message:', error);
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
-        content: 'Sorry, I encountered an error. Please try again.',
+        content: 'Sorry, I encountered an error. Please try again later.',
         isUser: false,
         timestamp: new Date()
       };
       setMessages(prev => [...prev, errorMessage]);
+      
+      toast({
+        title: "Connection Error",
+        description: "Could not connect to AI assistant. Please try again later.",
+        variant: "destructive",
+      });
     } finally {
       setIsLoading(false);
     }
@@ -119,7 +134,7 @@ const MemoryWidget = () => {
       {isOpen && (
         <div className="bg-white rounded-2xl shadow-2xl border border-border w-80 h-96 flex flex-col overflow-hidden">
           {/* Header */}
-          <div className="bg-primary text-white p-4 flex items-center justify-between">
+          <div className="bg-primary text-primary-foreground p-4 flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white/20">
                 <img 
@@ -172,7 +187,7 @@ const MemoryWidget = () => {
                   <div
                     className={`px-3 py-2 rounded-2xl text-sm ${
                       message.isUser
-                        ? 'bg-primary text-white rounded-br-md'
+                        ? 'bg-primary text-primary-foreground rounded-br-md'
                         : 'bg-white border border-border rounded-bl-md'
                     }`}
                   >
@@ -238,7 +253,7 @@ const MemoryWidget = () => {
                 onClick={sendMessage}
                 disabled={!inputValue.trim() || isLoading}
                 size="icon"
-                className="h-10 w-10 bg-primary hover:bg-primary/90"
+                className="h-10 w-10 bg-primary hover:bg-primary/90 text-primary-foreground"
               >
                 <Send className="h-4 w-4" />
               </Button>

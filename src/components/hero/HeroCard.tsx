@@ -1,6 +1,7 @@
+
 import { motion } from "framer-motion";
 import { LucideIcon } from "lucide-react";
-import { cardVariants, iconVariants, hoverVariants } from "./HeroAnimations";
+import { cardVariants, iconVariants } from "./HeroAnimations";
 
 interface HeroCardProps {
   icon: LucideIcon;
@@ -15,7 +16,6 @@ const HeroCard = ({ icon: Icon, title, description }: HeroCardProps) => {
       variants={cardVariants}
       whileHover="hover"
       whileTap="tap"
-      animate={hoverVariants}
       style={{ perspective: 1000 }}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
