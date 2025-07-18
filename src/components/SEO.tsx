@@ -3,7 +3,13 @@ import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 import { createOrganizationSchema } from '@/utils/seo/organizationSchema';
 import { createBlogPostSchema } from '@/utils/seo/blogPostSchema';
-import { createMainFAQSchema, getServiceSpecificFAQSchema } from '@/utils/seo/faqSchemas';
+import { 
+  createMainFAQSchema, 
+  getServiceSpecificFAQSchema,
+  createProductComparisonFAQSchema,
+  createGeoSpecificFAQSchema,
+  createVoiceSearchFAQSchema
+} from '@/utils/seo/faqSchemas';
 import { enhanceKeywordsForPath } from '@/utils/seo/keywordEnhancer';
 
 interface SEOProps {
@@ -34,8 +40,8 @@ const SEO: React.FC<SEOProps> = ({
   isBlogPost = false
 }) => {
   const location = useLocation();
-  const currentUrl = `https://agora.yenomai.com${location.pathname}`;
-  const absoluteImageUrl = imageUrl.startsWith('http') ? imageUrl : `https://agora.yenomai.com${imageUrl}`;
+  const currentUrl = `https://agoraassurancesolutions.com${location.pathname}`;
+  const absoluteImageUrl = imageUrl.startsWith('http') ? imageUrl : `https://agoraassurancesolutions.com${imageUrl}`;
 
   // Enhanced keywords for insurance-related pages
   const enhancedKeywords = enhanceKeywordsForPath(location.pathname, keywords);
@@ -55,12 +61,25 @@ const SEO: React.FC<SEOProps> = ({
     category
   }) : null;
 
-  // FAQ schemas
+  // Enhanced FAQ schemas for better coverage
   const mainFAQData = (location.pathname === '/' || location.pathname.includes('faq')) 
     ? createMainFAQSchema() 
     : null;
     
   const serviceSpecificFAQData = getServiceSpecificFAQSchema(location.pathname);
+  
+  // Add comparison and voice search FAQ schemas for homepage and key pages
+  const comparisonFAQData = (location.pathname === '/' || location.pathname.includes('compare')) 
+    ? createProductComparisonFAQSchema() 
+    : null;
+    
+  const geoFAQData = (location.pathname === '/' || location.pathname.includes('quote')) 
+    ? createGeoSpecificFAQSchema() 
+    : null;
+    
+  const voiceSearchFAQData = (location.pathname === '/' || location.pathname.includes('faq')) 
+    ? createVoiceSearchFAQSchema() 
+    : null;
 
   // Combine keywords with any additional category terms
   const keywordString = category 
@@ -131,6 +150,24 @@ const SEO: React.FC<SEOProps> = ({
       {serviceSpecificFAQData && (
         <script type="application/ld+json">
           {JSON.stringify(serviceSpecificFAQData)}
+        </script>
+      )}
+      
+      {comparisonFAQData && (
+        <script type="application/ld+json">
+          {JSON.stringify(comparisonFAQData)}
+        </script>
+      )}
+      
+      {geoFAQData && (
+        <script type="application/ld+json">
+          {JSON.stringify(geoFAQData)}
+        </script>
+      )}
+      
+      {voiceSearchFAQData && (
+        <script type="application/ld+json">
+          {JSON.stringify(voiceSearchFAQData)}
         </script>
       )}
     </Helmet>
