@@ -1,8 +1,9 @@
-
 import PageLayout from '@/components/PageLayout';
 import Hero from '@/components/Hero';
 import SEO from '@/components/SEO';
 import ErrorBoundary from '@/components/ErrorBoundary';
+import BreadcrumbNavigation from '@/components/BreadcrumbNavigation';
+import { PerformanceMonitor } from '@/components/PerformanceMonitor';
 import { useEffect, Suspense } from 'react';
 import { 
   LazyFeatures, 
@@ -29,11 +30,23 @@ const Index = () => {
   return (
     <PageLayout>
       <SEO 
-        title="Agora Assurance Solutions - Your Independent Insurance Partner" 
-        description="Get instant quotes, compare plans, and connect with licensed advisors. Term life, mortgage protection, final expense, annuities & more. Zero confusion, total peace of mind."
+        title="Get Instant Insurance Quotes & Expert Guidance - Agora Assurance" 
+        description="Compare life insurance, mortgage protection, and annuity plans instantly. Get personalized quotes in seconds with guidance from licensed advisors. Zero confusion, total peace of mind."
         imageUrl="/lovable-uploads/99f03d19-d521-4882-9c68-a2bbe122b1f9.png"
-        keywords={['insurance', 'life insurance', 'mortgage protection', 'final expense', 'annuities', 'tax solutions', 'insurance quotes', 'licensed advisors', 'instant quotes', 'family protection']}
+        keywords={[
+          'instant insurance quotes', 
+          'compare life insurance plans', 
+          'mortgage protection insurance', 
+          'final expense coverage', 
+          'retirement annuities', 
+          'licensed insurance advisors', 
+          'personalized insurance quotes', 
+          'family protection planning',
+          'tax-free life insurance benefits',
+          'secure financial future'
+        ]}
       />
+      <BreadcrumbNavigation />
       <ErrorBoundary>
         <Hero />
       </ErrorBoundary>
@@ -77,6 +90,7 @@ const Index = () => {
           <LazyModernContactForm />
         </Suspense>
       </ErrorBoundary>
+      <PerformanceMonitor />
     </PageLayout>
   );
 };

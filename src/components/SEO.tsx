@@ -4,6 +4,10 @@ import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 import { createOrganizationSchema } from '@/utils/seo/organizationSchema';
 import { createBlogPostSchema } from '@/utils/seo/blogPostSchema';
+import { createBreadcrumbSchema, getBreadcrumbsForPath } from '@/utils/seo/breadcrumbSchema';
+import { createLocalBusinessSchema } from '@/utils/seo/reviewSchema';
+import { getLifeInsuranceCalculatorSchema, getMortgageProtectionCalculatorSchema } from '@/utils/seo/calculatorSchema';
+import { getLifeInsuranceServiceSchema, getAnnuitiesServiceSchema, getMortgageProtectionServiceSchema } from '@/utils/seo/serviceSchema';
 import { 
   createMainFAQSchema, 
   getServiceSpecificFAQSchema,
@@ -59,6 +63,11 @@ const SEO: React.FC<SEOProps> = ({
 
   // Generate structured data schemas
   const organizationStructuredData = createOrganizationSchema();
+  const localBusinessStructuredData = createLocalBusinessSchema();
+  
+  // Breadcrumb schema
+  const breadcrumbs = getBreadcrumbsForPath(location.pathname);
+  const breadcrumbStructuredData = breadcrumbs.length > 1 ? createBreadcrumbSchema(breadcrumbs) : null;
   
   const blogPostStructuredData = isBlogPost ? createBlogPostSchema({
     title: finalTitle,
@@ -71,6 +80,12 @@ const SEO: React.FC<SEOProps> = ({
     enhancedKeywords: finalKeywords,
     category
   }) : null;
+
+  // Service-specific schemas
+  const serviceSchema = getServiceSpecificSchema(location.pathname);
+  
+  // Calculator schemas for relevant pages
+  const calculatorSchema = getCalculatorSchema(location.pathname);
 
   // Enhanced FAQ schemas for better coverage
   const mainFAQData = (location.pathname === '/' || location.pathname.includes('faq')) 
@@ -105,6 +120,11 @@ const SEO: React.FC<SEOProps> = ({
       <meta name="keywords" content={keywordString} />
       <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
       
+      {/* Preload critical resources */}
+      <link rel="preload" href="/lovable-uploads/99f03d19-d521-4882-9c68-a2bbe122b1f9.png" as="image" />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={isBlogPost ? 'article' : type} />
       <meta property="og:url" content={currentUrl} />
@@ -118,7 +138,7 @@ const SEO: React.FC<SEOProps> = ({
       {isBlogPost && category && <meta property="article:section" content={category} />}
       {isBlogPost && publishDate && <meta property="article:published_time" content={publishDate} />}
       {isBlogPost && modifiedDate && <meta property="article:modified_time" content={modifiedDate} />}
-      {isBlogPost && <meta property="article:publisher" content="https://agora.yenomai.com" />}
+      {isBlogPost && <meta property="article:publisher" content="https://agoraassurancesolutions.com" />}
       
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -145,6 +165,28 @@ const SEO: React.FC<SEOProps> = ({
       <script type="application/ld+json">
         {JSON.stringify(organizationStructuredData)}
       </script>
+      
+      <script type="application/ld+json">
+        {JSON.stringify(localBusinessStructuredData)}
+      </script>
+      
+      {breadcrumbStructuredData && (
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbStructuredData)}
+        </script>
+      )}
+      
+      {serviceSchema && (
+        <script type="application/ld+json">
+          {JSON.stringify(serviceSchema)}
+        </script>
+      )}
+      
+      {calculatorSchema && (
+        <script type="application/ld+json">
+          {JSON.stringify(calculatorSchema)}
+        </script>
+      )}
       
       {blogPostStructuredData && (
         <script type="application/ld+json">
@@ -183,6 +225,30 @@ const SEO: React.FC<SEOProps> = ({
       )}
     </Helmet>
   );
+};
+
+// Helper functions for schema selection
+const getServiceSpecificSchema = (pathname: string) => {
+  if (pathname.includes('term-life') || pathname.includes('life-insurance')) {
+    return getLifeInsuranceServiceSchema();
+  }
+  if (pathname.includes('annuities')) {
+    return getAnnuitiesServiceSchema();
+  }
+  if (pathname.includes('mortgage-protection')) {
+    return getMortgageProtectionServiceSchema();
+  }
+  return null;
+};
+
+const getCalculatorSchema = (pathname: string) => {
+  if (pathname.includes('term-life') || pathname.includes('life-insurance')) {
+    return getLifeInsuranceCalculatorSchema();
+  }
+  if (pathname.includes('mortgage-protection')) {
+    return getMortgageProtectionCalculatorSchema();
+  }
+  return null;
 };
 
 export default SEO;
