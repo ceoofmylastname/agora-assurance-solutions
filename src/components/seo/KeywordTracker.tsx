@@ -6,87 +6,107 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
-import { Search, TrendingUp, TrendingDown, Target, Plus, Filter } from 'lucide-react';
+import { Search, TrendingUp, TrendingDown, Target, Plus, Filter, MapPin, MessageSquare, BarChart3 } from 'lucide-react';
+import { insuranceKeywords, analyzeKeywordOpportunities, trackKeywordPerformance, type KeywordData } from '@/utils/seo/keywordTracker';
 
 export const KeywordTracker = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
-  const keywords = [
+  // Enhanced keyword data with new categories
+  const keywords: KeywordData[] = [
     {
       keyword: 'life insurance',
-      position: 3,
-      previousPosition: 5,
       searchVolume: 12000,
       difficulty: 65,
+      position: 3,
       url: '/services/term-life',
-      clicks: 890,
-      impressions: 15600,
-      ctr: 5.7
+      category: 'primary',
+      intent: 'commercial'
     },
     {
-      keyword: 'term life insurance',
-      position: 2,
-      previousPosition: 3,
-      searchVolume: 8900,
+      keyword: 'life insurance California',
+      searchVolume: 2400,
       difficulty: 58,
+      position: 2,
       url: '/services/term-life',
-      clicks: 1250,
-      impressions: 18900,
-      ctr: 6.6
+      category: 'geo-specific',
+      intent: 'commercial'
     },
     {
-      keyword: 'mortgage protection insurance',
-      position: 1,
-      previousPosition: 1,
-      searchVolume: 3400,
-      difficulty: 45,
-      url: '/services/mortgage-protection',
-      clicks: 2100,
-      impressions: 8900,
-      ctr: 23.6
+      keyword: 'term vs whole life insurance',
+      searchVolume: 8900,
+      difficulty: 72,
+      position: 5,
+      url: '/services/term-life',
+      category: 'comparison',
+      intent: 'informational'
     },
     {
-      keyword: 'annuities for retirement',
-      position: 7,
-      previousPosition: 4,
-      searchVolume: 2800,
+      keyword: 'what is the best life insurance for seniors',
+      searchVolume: 1800,
       difficulty: 52,
-      url: '/services/annuities',
-      clicks: 125,
-      impressions: 3400,
-      ctr: 3.7
+      position: 7,
+      url: '/services/final-expense',
+      category: 'voice-search',
+      intent: 'informational'
+    },
+    {
+      keyword: 'no medical exam life insurance for seniors',
+      searchVolume: 1200,
+      difficulty: 38,
+      position: 4,
+      url: '/services/final-expense',
+      category: 'long-tail',
+      intent: 'commercial'
     }
   ];
 
-  const opportunities = [
-    { keyword: 'final expense insurance', volume: 4500, difficulty: 35, opportunity: 'high' },
-    { keyword: 'whole life insurance rates', volume: 6700, difficulty: 68, opportunity: 'medium' },
-    { keyword: 'retirement planning', volume: 15600, difficulty: 78, opportunity: 'low' }
-  ];
+  const opportunities = analyzeKeywordOpportunities(keywords.map(k => k.keyword));
+  const performance = trackKeywordPerformance(keywords);
 
-  const getDifficultyColor = (difficulty) => {
+  const filteredKeywords = keywords.filter(keyword => {
+    const matchesSearch = keyword.keyword.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory = selectedCategory === 'all' || keyword.category === selectedCategory;
+    return matchesSearch && matchesCategory;
+  });
+
+  const getDifficultyColor = (difficulty: number) => {
     if (difficulty < 40) return 'text-green-600 bg-green-100';
     if (difficulty < 70) return 'text-yellow-600 bg-yellow-100';
     return 'text-red-600 bg-red-100';
   };
 
-  const getPositionTrend = (current, previous) => {
-    if (current < previous) return { icon: TrendingUp, color: 'text-green-600', text: 'up' };
-    if (current > previous) return { icon: TrendingDown, color: 'text-red-600', text: 'down' };
-    return { icon: Target, color: 'text-gray-600', text: 'same' };
+  const getCategoryIcon = (category: string) => {
+    switch (category) {
+      case 'geo-specific': return <MapPin className="h-4 w-4" />;
+      case 'voice-search': return <MessageSquare className="h-4 w-4" />;
+      case 'comparison': return <BarChart3 className="h-4 w-4" />;
+      default: return <Target className="h-4 w-4" />;
+    }
+  };
+
+  const getCategoryColor = (category: string) => {
+    switch (category) {
+      case 'geo-specific': return 'bg-blue-100 text-blue-800';
+      case 'voice-search': return 'bg-purple-100 text-purple-800';
+      case 'comparison': return 'bg-orange-100 text-orange-800';
+      case 'long-tail': return 'bg-green-100 text-green-800';
+      default: return 'bg-gray-100 text-gray-800';
+    }
   };
 
   return (
     <div className="space-y-6">
-      {/* Keyword Stats */}
+      {/* Enhanced Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center gap-2">
-              <Search className="h-5 w-5 text-primary" />
+              <Target className="h-5 w-5 text-primary" />
               <div>
-                <p className="text-2xl font-bold">{keywords.length}</p>
-                <p className="text-sm text-muted-foreground">Tracked Keywords</p>
+                <p className="text-2xl font-bold">{performance.totalVolume.toLocaleString()}</p>
+                <p className="text-sm text-muted-foreground">Total Search Volume</p>
               </div>
             </div>
           </CardContent>
@@ -94,12 +114,10 @@ export const KeywordTracker = () => {
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center gap-2">
-              <Target className="h-5 w-5 text-green-600" />
+              <MapPin className="h-5 w-5 text-blue-600" />
               <div>
-                <p className="text-2xl font-bold text-green-600">
-                  {keywords.filter(k => k.position <= 3).length}
-                </p>
-                <p className="text-sm text-muted-foreground">Top 3 Positions</p>
+                <p className="text-2xl font-bold text-blue-600">{performance.geoKeywords.length}</p>
+                <p className="text-sm text-muted-foreground">Geo-Specific Keywords</p>
               </div>
             </div>
           </CardContent>
@@ -107,12 +125,10 @@ export const KeywordTracker = () => {
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center gap-2">
-              <TrendingUp className="h-5 w-5 text-blue-600" />
+              <MessageSquare className="h-5 w-5 text-purple-600" />
               <div>
-                <p className="text-2xl font-bold text-blue-600">
-                  {keywords.reduce((sum, k) => sum + k.clicks, 0).toLocaleString()}
-                </p>
-                <p className="text-sm text-muted-foreground">Total Clicks</p>
+                <p className="text-2xl font-bold text-purple-600">{performance.voiceSearchKeywords.length}</p>
+                <p className="text-sm text-muted-foreground">Voice Search Keywords</p>
               </div>
             </div>
           </CardContent>
@@ -120,12 +136,10 @@ export const KeywordTracker = () => {
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center gap-2">
-              <Search className="h-5 w-5 text-purple-600" />
+              <TrendingUp className="h-5 w-5 text-green-600" />
               <div>
-                <p className="text-2xl font-bold text-purple-600">
-                  {(keywords.reduce((sum, k) => sum + k.ctr, 0) / keywords.length).toFixed(1)}%
-                </p>
-                <p className="text-sm text-muted-foreground">Avg CTR</p>
+                <p className="text-2xl font-bold text-green-600">{performance.lowCompetitionKeywords.length}</p>
+                <p className="text-sm text-muted-foreground">Low Competition</p>
               </div>
             </div>
           </CardContent>
@@ -135,8 +149,9 @@ export const KeywordTracker = () => {
       <Tabs defaultValue="tracking" className="space-y-4">
         <TabsList>
           <TabsTrigger value="tracking">Keyword Tracking</TabsTrigger>
-          <TabsTrigger value="research">Research</TabsTrigger>
           <TabsTrigger value="opportunities">Opportunities</TabsTrigger>
+          <TabsTrigger value="geo-targeting">Geo Targeting</TabsTrigger>
+          <TabsTrigger value="voice-search">Voice Search</TabsTrigger>
         </TabsList>
 
         <TabsContent value="tracking" className="space-y-4">
@@ -144,9 +159,9 @@ export const KeywordTracker = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Search className="h-5 w-5" />
-                Keyword Performance
+                Enhanced Keyword Performance
               </CardTitle>
-              <CardDescription>Track rankings and performance metrics</CardDescription>
+              <CardDescription>Track rankings across all keyword categories</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="flex gap-4 mb-6">
@@ -156,10 +171,18 @@ export const KeywordTracker = () => {
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="flex-1"
                 />
-                <Button variant="outline" className="flex items-center gap-2">
-                  <Filter className="h-4 w-4" />
-                  Filter
-                </Button>
+                <select
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                  className="px-3 py-2 border rounded-md"
+                >
+                  <option value="all">All Categories</option>
+                  <option value="geo-specific">Geo-Specific</option>
+                  <option value="voice-search">Voice Search</option>
+                  <option value="comparison">Comparison</option>
+                  <option value="long-tail">Long-tail</option>
+                  <option value="primary">Primary</option>
+                </select>
                 <Button className="flex items-center gap-2">
                   <Plus className="h-4 w-4" />
                   Add Keyword
@@ -167,68 +190,40 @@ export const KeywordTracker = () => {
               </div>
 
               <div className="space-y-4">
-                {keywords.map((keyword, index) => {
-                  const trend = getPositionTrend(keyword.position, keyword.previousPosition);
-                  const TrendIcon = trend.icon;
-                  
-                  return (
-                    <Card key={index} className="p-4">
-                      <div className="flex items-center justify-between">
-                        <div className="space-y-2">
-                          <div className="flex items-center gap-2">
-                            <h3 className="font-semibold">{keyword.keyword}</h3>
-                            <Badge className={getDifficultyColor(keyword.difficulty)}>
-                              Difficulty: {keyword.difficulty}
-                            </Badge>
-                          </div>
-                          <p className="text-sm text-muted-foreground">{keyword.url}</p>
-                        </div>
-                        <div className="flex items-center gap-6 text-right">
-                          <div>
-                            <p className="text-sm text-muted-foreground">Position</p>
-                            <div className="flex items-center gap-2">
-                              <span className="text-2xl font-bold">#{keyword.position}</span>
-                              <TrendIcon className={`h-4 w-4 ${trend.color}`} />
+                {filteredKeywords.map((keyword, index) => (
+                  <Card key={index} className="p-4">
+                    <div className="flex items-center justify-between">
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-2">
+                          <h3 className="font-semibold">{keyword.keyword}</h3>
+                          <Badge className={getCategoryColor(keyword.category)}>
+                            <div className="flex items-center gap-1">
+                              {getCategoryIcon(keyword.category)}
+                              {keyword.category}
                             </div>
-                          </div>
-                          <div>
-                            <p className="text-sm text-muted-foreground">Volume</p>
-                            <p className="font-semibold">{keyword.searchVolume.toLocaleString()}</p>
-                          </div>
-                          <div>
-                            <p className="text-sm text-muted-foreground">Clicks</p>
-                            <p className="font-semibold">{keyword.clicks.toLocaleString()}</p>
-                          </div>
-                          <div>
-                            <p className="text-sm text-muted-foreground">CTR</p>
-                            <p className="font-semibold">{keyword.ctr}%</p>
-                          </div>
+                          </Badge>
+                          <Badge className={getDifficultyColor(keyword.difficulty)}>
+                            Difficulty: {keyword.difficulty}
+                          </Badge>
+                          <Badge variant="outline">
+                            {keyword.intent}
+                          </Badge>
+                        </div>
+                        <p className="text-sm text-muted-foreground">{keyword.url}</p>
+                      </div>
+                      <div className="flex items-center gap-6 text-right">
+                        <div>
+                          <p className="text-sm text-muted-foreground">Position</p>
+                          <span className="text-2xl font-bold">#{keyword.position || 'N/A'}</span>
+                        </div>
+                        <div>
+                          <p className="text-sm text-muted-foreground">Volume</p>
+                          <p className="font-semibold">{keyword.searchVolume.toLocaleString()}</p>
                         </div>
                       </div>
-                    </Card>
-                  );
-                })}
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        <TabsContent value="research" className="space-y-4">
-          <Card>
-            <CardHeader>
-              <CardTitle>Keyword Research</CardTitle>
-              <CardDescription>Discover new keyword opportunities</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                <div className="flex gap-4">
-                  <Input placeholder="Enter seed keyword..." className="flex-1" />
-                  <Button>Research</Button>
-                </div>
-                <div className="text-center py-12 text-muted-foreground">
-                  <Search className="h-12 w-12 mx-auto mb-4 opacity-50" />
-                  <p>Enter a seed keyword to discover related opportunities</p>
-                </div>
+                    </div>
+                  </Card>
+                ))}
               </div>
             </CardContent>
           </Card>
@@ -238,29 +233,26 @@ export const KeywordTracker = () => {
           <Card>
             <CardHeader>
               <CardTitle>Keyword Opportunities</CardTitle>
-              <CardDescription>High-potential keywords to target</CardDescription>
+              <CardDescription>High-potential keywords based on enhanced analysis</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {opportunities.map((opp, index) => (
+                {opportunities.slice(0, 10).map((opp, index) => (
                   <Card key={index} className="p-4">
                     <div className="flex items-center justify-between">
                       <div>
                         <h3 className="font-semibold">{opp.keyword}</h3>
                         <div className="flex items-center gap-2 mt-1">
-                          <Badge className={
-                            opp.opportunity === 'high' ? 'bg-green-100 text-green-800' :
-                            opp.opportunity === 'medium' ? 'bg-yellow-100 text-yellow-800' :
-                            'bg-red-100 text-red-800'
-                          }>
-                            {opp.opportunity.toUpperCase()} opportunity
+                          <Badge className={getCategoryColor(opp.category)}>
+                            {opp.category}
                           </Badge>
+                          <Badge variant="outline">{opp.intent}</Badge>
                         </div>
                       </div>
                       <div className="flex items-center gap-6 text-right">
                         <div>
                           <p className="text-sm text-muted-foreground">Volume</p>
-                          <p className="font-semibold">{opp.volume.toLocaleString()}</p>
+                          <p className="font-semibold">{opp.searchVolume.toLocaleString()}</p>
                         </div>
                         <div>
                           <p className="text-sm text-muted-foreground">Difficulty</p>
@@ -274,6 +266,114 @@ export const KeywordTracker = () => {
                     </div>
                   </Card>
                 ))}
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="geo-targeting" className="space-y-4">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <MapPin className="h-5 w-5" />
+                Geographic Keyword Strategy
+              </CardTitle>
+              <CardDescription>Location-based keyword optimization</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <Card className="p-4">
+                    <h4 className="font-semibold mb-2">Top States</h4>
+                    <div className="space-y-2">
+                      <div className="flex justify-between">
+                        <span>California</span>
+                        <span className="text-sm text-muted-foreground">2,400 vol</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Texas</span>
+                        <span className="text-sm text-muted-foreground">1,800 vol</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Florida</span>
+                        <span className="text-sm text-muted-foreground">1,600 vol</span>
+                      </div>
+                    </div>
+                  </Card>
+                  <Card className="p-4">
+                    <h4 className="font-semibold mb-2">Geo Opportunities</h4>
+                    <div className="space-y-2">
+                      <Badge className="bg-green-100 text-green-800">Arizona +15%</Badge>
+                      <Badge className="bg-blue-100 text-blue-800">Nevada +12%</Badge>
+                      <Badge className="bg-purple-100 text-purple-800">Colorado +8%</Badge>
+                    </div>
+                  </Card>
+                  <Card className="p-4">
+                    <h4 className="font-semibold mb-2">Local Modifiers</h4>
+                    <div className="space-y-1 text-sm">
+                      <div>"near me" - 890 vol</div>
+                      <div>"in [city]" - 650 vol</div>
+                      <div>"local" - 420 vol</div>
+                    </div>
+                  </Card>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="voice-search" className="space-y-4">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <MessageSquare className="h-5 w-5" />
+                Voice Search Optimization
+              </CardTitle>
+              <CardDescription>Conversational and question-based keywords</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-6">
+                <div className="grid gap-4">
+                  {performance.voiceSearchKeywords.map((keyword, index) => (
+                    <Card key={index} className="p-4">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <h4 className="font-medium">"{keyword.keyword}"</h4>
+                          <p className="text-sm text-muted-foreground mt-1">
+                            Intent: {keyword.intent} • Volume: {keyword.searchVolume}
+                          </p>
+                        </div>
+                        <Badge className="bg-purple-100 text-purple-800">
+                          Voice Optimized
+                        </Badge>
+                      </div>
+                    </Card>
+                  ))}
+                </div>
+                
+                <div className="mt-6">
+                  <h4 className="font-semibold mb-3">Voice Search Patterns</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <Card className="p-4">
+                      <h5 className="font-medium mb-2">Question Words</h5>
+                      <div className="space-y-1 text-sm">
+                        <div>"What is..." - High intent</div>
+                        <div>"How much..." - Commercial</div>
+                        <div>"Where can I..." - Local</div>
+                        <div>"Which is..." - Comparison</div>
+                      </div>
+                    </Card>
+                    <Card className="p-4">
+                      <h5 className="font-medium mb-2">Natural Language</h5>
+                      <div className="space-y-1 text-sm">
+                        <div>Conversational tone</div>
+                        <div>Complete sentences</div>
+                        <div>Local context</div>
+                        <div>Action-oriented</div>
+                      </div>
+                    </Card>
+                  </div>
+                </div>
               </div>
             </CardContent>
           </Card>
