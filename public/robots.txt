@@ -3,7 +3,20 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://wrlds.com/sitemap.xml
+Sitemap: https://agoraassurancesolutions.com/sitemap.xml
 
-# Optimize crawling
-Crawl-delay: 10
+# Optimize crawling for insurance content
+Crawl-delay: 5
+
+# Allow crawling of insurance service pages
+Allow: /services/
+Allow: /life-coverage
+Allow: /wealth-solutions
+Allow: /protection-plans
+Allow: /get-quote
+Allow: /blog
+
+# Disallow admin and internal pages
+Disallow: /admin/
+Disallow: /api/
+Disallow: /*.json$

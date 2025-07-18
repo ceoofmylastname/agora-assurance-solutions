@@ -8,14 +8,17 @@ import { Textarea } from '@/components/ui/textarea';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Image, AlertTriangle, CheckCircle, Edit3, Zap, RefreshCw, Sparkles, Download, Globe, FileImage, PackageOpen } from 'lucide-react';
+import { Image, AlertTriangle, CheckCircle, Edit3, Zap, RefreshCw, Sparkles, Download, Globe, FileImage, PackageOpen, Shield, TrendingUp } from 'lucide-react';
 import { useSiteScanner } from '@/hooks/useSiteScanner';
+import { useInsuranceImageOptimizer } from '@/hooks/useInsuranceImageOptimizer';
 import { useToast } from '@/hooks/use-toast';
 import { BulkWebPConverter } from './BulkWebPConverter';
 import { convertImageToWebP, downloadBlob } from '@/utils/webpConverter';
+import { generateInsuranceSpecificAltText } from '@/utils/insuranceImageOptimizer';
 
 export const ImageManager = () => {
-  const { images, metrics, isScanning, isConverting, scanSiteImages, updateImageAlt, generateAISuggestion, convertToWebP } = useSiteScanner();
+  const { images, metrics, isScanning, isConverting, scanSiteImages, updateImageAlt, convertToWebP } = useSiteScanner();
+  const { optimizeAllImages, scanImageIssues, isOptimizing, optimizedCount } = useInsuranceImageOptimizer();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [showBulkConverter, setShowBulkConverter] = useState(false);
@@ -35,6 +38,8 @@ export const ImageManager = () => {
     canConvert: images.filter(img => img.canConvertToWebP).length
   };
 
+  const issueStats = scanImageIssues();
+
   const getStatusColor = (image: any) => {
     if (image.hasAlt && image.isOptimized) return 'text-green-600 bg-green-100 border-green-200';
     if (image.hasAlt) return 'text-yellow-600 bg-yellow-100 border-yellow-200';
@@ -52,13 +57,32 @@ export const ImageManager = () => {
     return 'Missing Alt Text';
   };
 
-  const handleAISuggestion = (image: any) => {
-    const suggestion = generateAISuggestion(image);
+  const handleInsuranceAISuggestion = (image: any) => {
+    const context = {
+      filename: image.filename,
+      usedIn: image.usedIn,
+      element: image.element,
+      isHeroImage: image.src.includes('hero') || image.src.includes('banner'),
+      isTeamMember: image.src.includes('team') || image.src.includes('advisor'),
+      isProductImage: image.src.includes('product') || image.src.includes('coverage'),
+      isCarrierLogo: image.src.includes('logo') || image.src.includes('carrier')
+    };
+    
+    const suggestion = generateInsuranceSpecificAltText(context);
     updateImageAlt(image.id, suggestion);
+    
     toast({
-      title: "AI Alt Text Applied",
-      description: `Generated alt text: "${suggestion.substring(0, 50)}${suggestion.length > 50 ? '...' : ''}"`,
+      title: "Insurance-Specific Alt Text Applied",
+      description: `Generated: "${suggestion.substring(0, 50)}${suggestion.length > 50 ? '...' : ''}"`,
     });
+  };
+
+  const handleBulkOptimization = async () => {
+    await optimizeAllImages();
+    // Refresh the scan to show updated results
+    setTimeout(() => {
+      scanSiteImages();
+    }, 1000);
   };
 
   const handleWebPConversion = async (imageId: string) => {
@@ -84,8 +108,8 @@ export const ImageManager = () => {
 
   return (
     <div className="space-y-6 lg:space-y-8">
-      {/* Real-time Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6">
+      {/* Enhanced Real-time Stats */}
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-6">
         <Card className="bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200">
           <CardContent className="p-4 lg:p-6">
             <div className="flex items-center gap-2 lg:gap-3">
@@ -155,9 +179,23 @@ export const ImageManager = () => {
             </div>
           </CardContent>
         </Card>
+
+        <Card className="bg-gradient-to-br from-indigo-50 to-indigo-100 border-indigo-200">
+          <CardContent className="p-4 lg:p-6">
+            <div className="flex items-center gap-2 lg:gap-3">
+              <div className="p-1.5 lg:p-2 bg-indigo-600 rounded-lg">
+                <Shield className="h-4 w-4 lg:h-5 lg:w-5 text-white" />
+              </div>
+              <div>
+                <p className="text-xl lg:text-2xl font-bold text-indigo-900">{issueStats.noLazyLoading}</p>
+                <p className="text-xs lg:text-sm text-indigo-700">No Lazy Load</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
 
-      {/* Search and Actions */}
+      {/* Enhanced Search and Actions */}
       <Card className="bg-white border-0 shadow-lg">
         <CardHeader>
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
@@ -166,8 +204,8 @@ export const ImageManager = () => {
                 <Globe className="h-6 w-6 text-white" />
               </div>
               <div>
-                <CardTitle className="text-lg lg:text-xl">Site-wide Image SEO Manager</CardTitle>
-                <CardDescription>Real-time scanning and optimization of all website images</CardDescription>
+                <CardTitle className="text-lg lg:text-xl">Insurance Image SEO Manager</CardTitle>
+                <CardDescription>AI-powered optimization for insurance website images</CardDescription>
               </div>
             </div>
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2">
@@ -177,6 +215,16 @@ export const ImageManager = () => {
                 </Badge>
               )}
               <div className="flex gap-2">
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  onClick={handleBulkOptimization}
+                  disabled={isOptimizing}
+                  className="gap-2 w-full sm:w-auto"
+                >
+                  <TrendingUp className={`h-4 w-4 ${isOptimizing ? 'animate-pulse' : ''}`} />
+                  {isOptimizing ? 'Optimizing...' : 'Bulk Optimize'}
+                </Button>
                 {stats.canConvert > 0 && (
                   <Button 
                     variant="outline" 
@@ -185,7 +233,7 @@ export const ImageManager = () => {
                     className="gap-2 w-full sm:w-auto"
                   >
                     <PackageOpen className="h-4 w-4" />
-                    Bulk Convert ({stats.canConvert})
+                    Convert to WebP ({stats.canConvert})
                   </Button>
                 )}
                 <Button 
@@ -196,7 +244,7 @@ export const ImageManager = () => {
                   className="gap-2 w-full sm:w-auto"
                 >
                   <RefreshCw className={`h-4 w-4 ${isScanning ? 'animate-spin' : ''}`} />
-                  {isScanning ? 'Scanning Site...' : 'Scan All Pages'}
+                  {isScanning ? 'Scanning...' : 'Scan Site'}
                 </Button>
               </div>
             </div>
@@ -218,14 +266,23 @@ export const ImageManager = () => {
             <Alert className="mb-6 border-red-200 bg-red-50">
               <AlertTriangle className="h-4 w-4 text-red-600" />
               <AlertDescription className="text-red-800">
-                <strong>{stats.missingAlt} images</strong> across your website are missing alt tags, affecting accessibility and SEO.
+                <strong>{stats.missingAlt} images</strong> are missing alt tags for insurance SEO and accessibility.
+              </AlertDescription>
+            </Alert>
+          )}
+
+          {optimizedCount > 0 && (
+            <Alert className="mb-6 border-green-200 bg-green-50">
+              <CheckCircle className="h-4 w-4 text-green-600" />
+              <AlertDescription className="text-green-800">
+                <strong>{optimizedCount} images</strong> were optimized with insurance-specific alt text and performance improvements.
               </AlertDescription>
             </Alert>
           )}
         </CardContent>
       </Card>
 
-      {/* Images Table */}
+      {/* Enhanced Images Table */}
       <Card className="bg-white border-0 shadow-lg">
         <CardContent className="p-0">
           {filteredImages.length === 0 ? (
@@ -234,7 +291,7 @@ export const ImageManager = () => {
               <h3 className="text-lg font-semibold text-gray-900 mb-2">No Images Found</h3>
               <p className="text-gray-600 mb-4">
                 {images.length === 0 
-                  ? "No images detected. Click 'Scan All Pages' to scan your entire website."
+                  ? "No images detected. Click 'Scan Site' to scan your entire website."
                   : "No images match your search criteria."
                 }
               </p>
@@ -270,6 +327,7 @@ export const ImageManager = () => {
                           src={image.src}
                           alt={image.alt || 'Image preview'}
                           className="w-16 h-16 object-cover rounded-lg border border-gray-200"
+                          loading="lazy"
                           onError={(e) => {
                             e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0zMiAyNFY0ME00MCAzMkgyNCIgc3Ryb2tlPSIjOUNBM0FGIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K';
                           }}
@@ -291,7 +349,7 @@ export const ImageManager = () => {
                           {image.alt ? (
                             <p className="text-sm text-gray-900 truncate">{image.alt}</p>
                           ) : (
-                            <span className="text-red-600 font-medium text-sm">⚠️ Missing</span>
+                            <span className="text-red-600 font-medium text-sm">⚠️ Missing Alt Text</span>
                           )}
                         </div>
                       </TableCell>
@@ -313,11 +371,11 @@ export const ImageManager = () => {
                           <Button 
                             size="sm" 
                             variant="outline" 
-                            onClick={() => handleAISuggestion(image)}
+                            onClick={() => handleInsuranceAISuggestion(image)}
                             className="gap-1 text-xs px-2 py-1"
                           >
-                            <Sparkles className="h-3 w-3" />
-                            AI
+                            <Shield className="h-3 w-3" />
+                            Insurance AI
                           </Button>
                           
                           {image.canConvertToWebP && (
@@ -342,9 +400,9 @@ export const ImageManager = () => {
                             </DialogTrigger>
                             <DialogContent className="max-w-2xl">
                               <DialogHeader>
-                                <DialogTitle>Edit Image Metadata</DialogTitle>
+                                <DialogTitle>Edit Insurance Image Metadata</DialogTitle>
                                 <DialogDescription>
-                                  Update alt text and metadata for better SEO and accessibility
+                                  Update alt text with insurance-specific keywords for better SEO
                                 </DialogDescription>
                               </DialogHeader>
                               <div className="space-y-6">
@@ -353,6 +411,7 @@ export const ImageManager = () => {
                                     src={image.src}
                                     alt={image.alt || 'Image preview'}
                                     className="w-32 h-32 object-cover rounded-lg border"
+                                    loading="lazy"
                                   />
                                   <div className="flex-1 space-y-2">
                                     <p className="font-medium">{image.filename}</p>
@@ -362,23 +421,23 @@ export const ImageManager = () => {
                                       size="sm" 
                                       variant="outline" 
                                       className="gap-2"
-                                      onClick={() => handleAISuggestion(image)}
+                                      onClick={() => handleInsuranceAISuggestion(image)}
                                     >
-                                      <Zap className="h-4 w-4" />
-                                      Generate AI Alt Text
+                                      <Shield className="h-4 w-4" />
+                                      Generate Insurance Alt Text
                                     </Button>
                                   </div>
                                 </div>
                                 
                                 <div className="space-y-4">
                                   <div>
-                                    <Label htmlFor="alt">Alt Text *</Label>
+                                    <Label htmlFor="alt">Insurance-Focused Alt Text *</Label>
                                     <Textarea
                                       id="alt"
                                       value={image.alt}
                                       onChange={(e) => updateImageAlt(image.id, e.target.value)}
-                                      placeholder="Describe the image for screen readers and SEO"
-                                      rows={2}
+                                      placeholder="Describe the image with insurance keywords for better SEO"
+                                      rows={3}
                                     />
                                     <p className="text-xs text-muted-foreground mt-1">
                                       {image.alt.length}/125 characters (recommended max)

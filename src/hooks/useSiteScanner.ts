@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { generateInsuranceSpecificAltText } from '@/utils/insuranceImageOptimizer';
 
 export interface SiteImage {
   id: string;
@@ -487,27 +488,17 @@ export const useSiteScanner = () => {
   };
 
   const generateAISuggestion = (image: SiteImage): string => {
-    const filename = image.filename.toLowerCase();
-    const usedInPages = image.usedIn.join(', ').toLowerCase();
+    const context = {
+      filename: image.filename,
+      usedIn: image.usedIn,
+      element: image.element,
+      isHeroImage: image.src.includes('hero') || image.src.includes('banner'),
+      isTeamMember: image.src.includes('team') || image.src.includes('advisor') || image.src.includes('agent'),
+      isProductImage: image.src.includes('product') || image.src.includes('coverage'),
+      isCarrierLogo: image.src.includes('logo') || image.src.includes('carrier')
+    };
     
-    // Context-aware suggestions based on usage and filename
-    if (usedInPages.includes('life') || usedInPages.includes('insurance')) {
-      if (filename.includes('logo')) {
-        return 'Agora Assurance Solutions - Life Insurance and Financial Protection Services';
-      } else if (filename.includes('hero') || filename.includes('banner')) {
-        return 'Professional life insurance consultation protecting families financial future';
-      } else if (filename.includes('family') || filename.includes('couple')) {
-        return 'Happy family protected by comprehensive life insurance coverage';
-      }
-    }
-    
-    if (filename.includes('logo')) {
-      return 'Agora Assurance Solutions company logo';
-    } else if (filename.includes('hero') || filename.includes('banner')) {
-      return 'Professional insurance services protecting your financial future';
-    } else {
-      return 'Insurance and financial protection services illustration';
-    }
+    return generateInsuranceSpecificAltText(context);
   };
 
   useEffect(() => {
