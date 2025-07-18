@@ -58,6 +58,3 @@ export const getServiceSpecificFAQSchema = (pathname: string) => {
   }
   return null;
 };
-
-// Enhanced main FAQ for homepage and general pages
-export { createMainFAQSchema };
