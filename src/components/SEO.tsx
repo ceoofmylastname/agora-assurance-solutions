@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
@@ -10,7 +11,7 @@ import {
   createGeoSpecificFAQSchema,
   createVoiceSearchFAQSchema
 } from '@/utils/seo/faqSchemas';
-import { enhanceKeywordsForPath } from '@/utils/seo/keywordEnhancer';
+import { optimizeContentForSEO } from '@/utils/seo/contentOptimizer';
 
 interface SEOProps {
   title?: string;
@@ -27,8 +28,8 @@ interface SEOProps {
 }
 
 const SEO: React.FC<SEOProps> = ({
-  title = 'Agora Assurance Solutions',
-  description = 'Your Independent Insurance Partner providing comprehensive life, mortgage, and annuity solutions. Get instant quotes, compare plans, and connect with licensed advisors.',
+  title,
+  description,
   type = 'website',
   name = 'Agora Assurance Solutions',
   imageUrl = '/lovable-uploads/99f03d19-d521-4882-9c68-a2bbe122b1f9.png',
@@ -43,21 +44,31 @@ const SEO: React.FC<SEOProps> = ({
   const currentUrl = `https://agoraassurancesolutions.com${location.pathname}`;
   const absoluteImageUrl = imageUrl.startsWith('http') ? imageUrl : `https://agoraassurancesolutions.com${imageUrl}`;
 
-  // Enhanced keywords for insurance-related pages
-  const enhancedKeywords = enhanceKeywordsForPath(location.pathname, keywords);
+  // Use content optimizer for action-oriented titles and descriptions
+  const optimizedContent = optimizeContentForSEO({
+    pathname: location.pathname,
+    baseTitle: title,
+    baseDescription: description,
+    keywords
+  });
+
+  // Use optimized content if no custom title/description provided
+  const finalTitle = title || optimizedContent.title;
+  const finalDescription = description || optimizedContent.description;
+  const finalKeywords = optimizedContent.keywords;
 
   // Generate structured data schemas
   const organizationStructuredData = createOrganizationSchema();
   
   const blogPostStructuredData = isBlogPost ? createBlogPostSchema({
-    title,
-    description,
+    title: finalTitle,
+    description: finalDescription,
     currentUrl,
     absoluteImageUrl,
     publishDate,
     modifiedDate,
     author,
-    enhancedKeywords,
+    enhancedKeywords: finalKeywords,
     category
   }) : null;
 
@@ -83,13 +94,13 @@ const SEO: React.FC<SEOProps> = ({
 
   // Combine keywords with any additional category terms
   const keywordString = category 
-    ? [...enhancedKeywords, category.toLowerCase()].join(', ') 
-    : enhancedKeywords.join(', ');
+    ? [...finalKeywords, category.toLowerCase()].join(', ') 
+    : finalKeywords.join(', ');
 
   return (
     <Helmet>
-      <title>{title}</title>
-      <meta name="description" content={description} />
+      <title>{finalTitle}</title>
+      <meta name="description" content={finalDescription} />
       <link rel="canonical" href={currentUrl} />
       <meta name="keywords" content={keywordString} />
       <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
@@ -97,8 +108,8 @@ const SEO: React.FC<SEOProps> = ({
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={isBlogPost ? 'article' : type} />
       <meta property="og:url" content={currentUrl} />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
+      <meta property="og:title" content={finalTitle} />
+      <meta property="og:description" content={finalDescription} />
       <meta property="og:image" content={absoluteImageUrl} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
@@ -112,8 +123,8 @@ const SEO: React.FC<SEOProps> = ({
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content={currentUrl} />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
+      <meta name="twitter:title" content={finalTitle} />
+      <meta name="twitter:description" content={finalDescription} />
       <meta name="twitter:image" content={absoluteImageUrl} />
       <meta name="twitter:site" content="@agoraassurance" />
       <meta name="twitter:creator" content="@agoraassurance" />
@@ -123,7 +134,7 @@ const SEO: React.FC<SEOProps> = ({
       <meta name="author" content={author || name} />
       
       {/* Pinterest specific */}
-      <meta name="pinterest:description" content={description} />
+      <meta name="pinterest:description" content={finalDescription} />
       <meta name="pinterest:image" content={absoluteImageUrl} />
       
       {/* Additional SEO meta tags */}
