@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, ExternalLink, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link, useLocation } from 'react-router-dom';
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
@@ -11,6 +11,7 @@ const Navbar = () => {
   const location = useLocation();
   
   const isHomePage = location.pathname === '/';
+  const isCareersPage = location.pathname === '/careers';
   const shouldUseDarkText = !isHomePage || isScrolled;
   const shouldUseWhiteBackground = !isHomePage || isScrolled;
 
@@ -38,6 +39,10 @@ const Navbar = () => {
       });
     }
     setIsMenuOpen(false);
+  };
+
+  const handleLeadsClick = () => {
+    window.open('https://leads.agoraassurancesolutions.com/', '_blank');
   };
 
   const menuVariants = {
@@ -249,6 +254,40 @@ const Navbar = () => {
                     </Link>
                   </NavigationMenuItem>
                   
+                  {/* LEADS Button - Only show on careers page */}
+                  {isCareersPage && (
+                    <NavigationMenuItem>
+                      <motion.button
+                        onClick={handleLeadsClick}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="group relative bg-gradient-to-br from-[#15AFF7] via-[#0D94D1] to-[#0B7BA7] text-white px-4 py-2 rounded-lg shadow-lg hover:shadow-[#15AFF7]/30 transition-all duration-300 overflow-hidden"
+                      >
+                        {/* Animated background effect */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                        
+                        {/* Icon and text container */}
+                        <div className="relative flex items-center space-x-2">
+                          <motion.div
+                            animate={{ rotate: [0, 10, -10, 0] }}
+                            transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+                          >
+                            <Zap className="h-4 w-4 text-yellow-300" />
+                          </motion.div>
+                          
+                          <span className="font-bold text-sm tracking-wide">LEADS</span>
+                          
+                          <motion.div
+                            animate={{ x: [0, 2, 0] }}
+                            transition={{ duration: 1.5, repeat: Infinity }}
+                          >
+                            <ExternalLink className="h-3 w-3 opacity-70" />
+                          </motion.div>
+                        </div>
+                      </motion.button>
+                    </NavigationMenuItem>
+                  )}
+                  
                   <NavigationMenuItem>
                     <button onClick={() => scrollToSection('contact')} className={cn("px-4 py-2 rounded-md transition-colors", shouldUseDarkText ? "bg-gray-200 text-gray-700 hover:bg-gray-300" : "bg-gray-700 text-white hover:bg-gray-600")}>
                       Contact Us
@@ -429,6 +468,23 @@ const Navbar = () => {
                   Agora Advisor Solutions
                 </Link>
               </motion.div>
+              
+              {/* LEADS Button for mobile - Only show on careers page */}
+              {isCareersPage && (
+                <motion.div variants={menuItemVariants} className="pt-2">
+                  <button 
+                    onClick={() => {
+                      handleLeadsClick();
+                      setIsMenuOpen(false);
+                    }}
+                    className="w-full px-4 py-3 bg-gradient-to-br from-[#15AFF7] via-[#0D94D1] to-[#0B7BA7] text-white rounded-lg text-base font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
+                  >
+                    <Zap className="h-4 w-4 text-yellow-300" />
+                    <span>LEADS</span>
+                    <ExternalLink className="h-3 w-3 opacity-70" />
+                  </button>
+                </motion.div>
+              )}
               
               <motion.div variants={menuItemVariants} className="pt-4">
                 <button 
