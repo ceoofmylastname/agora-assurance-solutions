@@ -1,3 +1,4 @@
+
 import PageLayout from '@/components/PageLayout';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -5,6 +6,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ModernApplicationModal } from '@/components/ModernApplicationModal';
+import FloatingLeadsButton from '@/components/FloatingLeadsButton';
 import businessMeetingImage from '@/assets/business-meeting-advisors.webp';
 
 const Careers = () => {
@@ -96,6 +98,8 @@ const Careers = () => {
           </div>
         </section>
       </PageLayout>
+      
+      <FloatingLeadsButton />
       
       <ModernApplicationModal 
         isOpen={isModalOpen} 
