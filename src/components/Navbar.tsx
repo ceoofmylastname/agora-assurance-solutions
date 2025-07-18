@@ -151,7 +151,6 @@ const Navbar = () => {
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
                       <div className="w-[600px] p-0 bg-white border border-gray-200 shadow-xl rounded-xl overflow-hidden">
-                        {/* Clean Header */}
                         <div className="bg-gradient-to-r from-[#15AFF7] to-blue-600 px-6 py-4 text-white">
                           <h3 className="font-space font-bold text-lg">Our Services</h3>
                           <p className="font-space text-blue-100 text-sm">Professional insurance solutions</p>
@@ -159,7 +158,6 @@ const Navbar = () => {
                         
                         <div className="p-5">
                           <div className="grid grid-cols-2 gap-5">
-                            {/* Life Insurance Column */}
                             <div className="space-y-3">
                               <div className="flex items-center gap-2 mb-3">
                                 <div className="w-2 h-2 bg-[#15AFF7] rounded-full"></div>
@@ -187,7 +185,6 @@ const Navbar = () => {
                               </Link>
                             </div>
                             
-                            {/* Specialized Services Column */}
                             <div className="space-y-3">
                               <div className="flex items-center gap-2 mb-3">
                                 <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
@@ -222,7 +219,6 @@ const Navbar = () => {
                           </div>
                         </div>
                         
-                        {/* Compact Footer */}
                         <div className="bg-gray-50 px-6 py-3 border-t border-gray-100">
                           <div className="flex items-center justify-between">
                             <p className="font-space text-xs text-gray-600">Need guidance?</p>
@@ -254,37 +250,23 @@ const Navbar = () => {
                     </Link>
                   </NavigationMenuItem>
                   
-                  {/* LEADS Button - Only show on careers page */}
                   {isCareersPage && (
                     <NavigationMenuItem>
-                      <motion.button
+                      <button
                         onClick={handleLeadsClick}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="group relative bg-gradient-to-br from-[#15AFF7] via-[#0D94D1] to-[#0B7BA7] text-white px-4 py-2 rounded-lg shadow-lg hover:shadow-[#15AFF7]/30 transition-all duration-300 overflow-hidden"
+                        className={cn(
+                          navigationMenuTriggerStyle(),
+                          "bg-[#15AFF7] text-white hover:bg-[#0D94D1] border border-[#15AFF7] hover:border-[#0D94D1] transition-all duration-200 font-semibold relative overflow-hidden group"
+                        )}
                       >
-                        {/* Animated background effect */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-                        
-                        {/* Icon and text container */}
-                        <div className="relative flex items-center space-x-2">
-                          <motion.div
-                            animate={{ rotate: [0, 10, -10, 0] }}
-                            transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
-                          >
-                            <Zap className="h-4 w-4 text-yellow-300" />
-                          </motion.div>
-                          
-                          <span className="font-bold text-sm tracking-wide">LEADS</span>
-                          
-                          <motion.div
-                            animate={{ x: [0, 2, 0] }}
-                            transition={{ duration: 1.5, repeat: Infinity }}
-                          >
-                            <ExternalLink className="h-3 w-3 opacity-70" />
-                          </motion.div>
+                        <div className="flex items-center space-x-2">
+                          <Zap className="h-4 w-4" />
+                          <span>LEADS</span>
+                          <ExternalLink className="h-3 w-3 opacity-70" />
                         </div>
-                      </motion.button>
+                        
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-500" />
+                      </button>
                     </NavigationMenuItem>
                   )}
                   
@@ -297,7 +279,6 @@ const Navbar = () => {
               </NavigationMenu>
             </div>
             
-            {/* Mobile menu button */}
             <div className="md:hidden">
               <motion.button 
                 onClick={toggleMenu} 
@@ -316,7 +297,6 @@ const Navbar = () => {
         </div>
       </motion.nav>
 
-      {/* Mobile Navigation Menu */}
       {isMenuOpen && (
         <motion.div
           className="fixed inset-0 z-50 md:hidden"
@@ -325,7 +305,6 @@ const Navbar = () => {
           exit="exit"
           variants={menuVariants}
         >
-          {/* Backdrop */}
           <motion.div 
             className="absolute inset-0 bg-black/50 backdrop-blur-sm"
             initial={{ opacity: 0 }}
@@ -334,12 +313,10 @@ const Navbar = () => {
             onClick={() => setIsMenuOpen(false)}
           />
           
-          {/* Menu Content */}
           <motion.div
             className={cn("absolute right-0 top-0 h-full w-full max-w-sm shadow-2xl", shouldUseWhiteBackground ? "bg-white" : "bg-primary")}
             variants={menuVariants}
           >
-            {/* Header with close button */}
             <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
               <img 
                 src={shouldUseDarkText ? "/lovable-uploads/610dc05e-0552-4a89-97b1-852580e78ec0.png" : "/lovable-uploads/b09383f5-a02b-439b-b5de-34a1fe9f2a1f.png"} 
@@ -356,7 +333,6 @@ const Navbar = () => {
               </motion.button>
             </div>
 
-            {/* Menu Items */}
             <div className="px-4 py-4 space-y-2 h-full overflow-y-auto">
               <motion.div variants={menuItemVariants}>
                 <Link 
@@ -384,7 +360,6 @@ const Navbar = () => {
                 </Link>
               </motion.div>
               
-              {/* Services Section */}
               <motion.div variants={menuItemVariants} className="space-y-2">
                 <div className={cn("px-4 py-2 text-sm font-semibold uppercase tracking-wider", shouldUseDarkText ? "text-gray-500" : "text-gray-400")}>
                   Services
@@ -469,7 +444,6 @@ const Navbar = () => {
                 </Link>
               </motion.div>
               
-              {/* LEADS Button for mobile - Only show on careers page */}
               {isCareersPage && (
                 <motion.div variants={menuItemVariants} className="pt-2">
                   <button 
@@ -477,9 +451,9 @@ const Navbar = () => {
                       handleLeadsClick();
                       setIsMenuOpen(false);
                     }}
-                    className="w-full px-4 py-3 bg-gradient-to-br from-[#15AFF7] via-[#0D94D1] to-[#0B7BA7] text-white rounded-lg text-base font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
+                    className="w-full px-4 py-3 bg-[#15AFF7] text-white rounded-lg text-base font-medium hover:bg-[#0D94D1] transition-all duration-200 flex items-center justify-center space-x-2"
                   >
-                    <Zap className="h-4 w-4 text-yellow-300" />
+                    <Zap className="h-4 w-4" />
                     <span>LEADS</span>
                     <ExternalLink className="h-3 w-3 opacity-70" />
                   </button>
