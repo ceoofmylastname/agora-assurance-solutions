@@ -1,11 +1,9 @@
-
 import { motion } from "framer-motion";
 import { Calculator, MessageSquare } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
 import heroFamilyProtection from "@/assets/hero-family-protection.webp";
 import { itemVariants } from "./HeroAnimations";
-import { OptimizedImage } from "@/components/ui/optimized-image";
 
 const HeroBanner = () => {
   const isMobile = useIsMobile();
@@ -14,15 +12,14 @@ const HeroBanner = () => {
   return (
     <div className="banner-container bg-[#15AFF7] relative overflow-hidden h-[calc(55vh+4rem)] sm:h-[calc(70vh+4rem)] md:h-[calc(500px+4rem)] lg:h-[calc(550px+4rem)] xl:h-[calc(600px+4rem)] w-full">
       <div className="absolute inset-0 bg-[#15AFF7] w-full">
-        <OptimizedImage 
+        <img 
           src={heroFamilyProtection} 
           alt="Happy multi-generational family sitting together on couch - representing family protection and insurance security" 
           className={`w-full h-full object-cover opacity-70 ${isMobile ? 'object-center' : 'object-[center_top]'}`}
-          priority={true}
-          width={918}
-          height={517}
-          sizes="100vw"
-          quality={80}
+          loading="eager"
+          fetchPriority="high"
+          width={1920}
+          height={1080}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-white"></div>
       </div>

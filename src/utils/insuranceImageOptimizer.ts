@@ -101,15 +101,9 @@ const extractMemberName = (filename: string): string => {
 };
 
 export const optimizeImageForInsurance = (element: HTMLImageElement): void => {
-  // Add loading="lazy" for better performance if not above the fold
+  // Add loading="lazy" for better performance
   if (!element.hasAttribute('loading')) {
-    // Check if image is potentially above the fold (simplified check)
-    const rect = element.getBoundingClientRect();
-    const isAboveTheFold = rect.top < window.innerHeight;
-    
-    if (!isAboveTheFold) {
-      element.setAttribute('loading', 'lazy');
-    }
+    element.setAttribute('loading', 'lazy');
   }
   
   // Add decoding="async" for better rendering performance
@@ -117,25 +111,10 @@ export const optimizeImageForInsurance = (element: HTMLImageElement): void => {
     element.setAttribute('decoding', 'async');
   }
   
-  // Add fetchpriority for important images
+  // Add importance hints for hero images
   const src = element.src.toLowerCase();
   if (src.includes('hero') || src.includes('banner')) {
     element.setAttribute('fetchpriority', 'high');
-  }
-  
-  // Add sizes attribute if missing and image has dimensions
-  if (!element.hasAttribute('sizes') && element.width > 0) {
-    element.setAttribute('sizes', '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw');
-  }
-  
-  // Check if image is unnecessarily large
-  if (element.naturalWidth > 0 && element.width > 0) {
-    // If natural width is more than 3x the display width, log a warning
-    if (element.naturalWidth > element.width * 3) {
-      console.warn('Oversized image detected:', element.src, 
-        `Natural size: ${element.naturalWidth}x${element.naturalHeight}, ` +
-        `Display size: ${element.width}x${element.height}`);
-    }
   }
 };
 
@@ -156,49 +135,5 @@ export const addInsuranceImageStructuredData = (images: any[]): any => {
     "name": "Agora Assurance Solutions Image Gallery",
     "description": "Professional insurance and financial services imagery",
     "image": imageObjects
-  };
-};
-
-// New function to analyze an image for optimization opportunities
-export const analyzeImageOptimizationOpportunities = (
-  img: HTMLImageElement
-): { issues: string[], savings: number } => {
-  const issues: string[] = [];
-  let estimatedSavings = 0;
-  
-  // Check for alt text
-  if (!img.alt || img.alt.length < 10) {
-    issues.push('Missing or inadequate alt text');
-  }
-  
-  // Check for appropriate sizing
-  if (img.naturalWidth > 0 && img.width > 0) {
-    if (img.naturalWidth > img.width * 2) {
-      const potentialSavings = Math.round((1 - (img.width / img.naturalWidth)) * 100);
-      issues.push(`Oversized image (${img.naturalWidth}px vs ${img.width}px display)`);
-      estimatedSavings += potentialSavings;
-    }
-  }
-  
-  // Check for modern format
-  if (!img.src.toLowerCase().endsWith('.webp') && 
-      !img.src.toLowerCase().endsWith('.avif')) {
-    issues.push('Not using modern image format (WebP/AVIF)');
-    estimatedSavings += 30; // Estimate 30% savings with WebP
-  }
-  
-  // Check for lazy loading
-  if (!img.loading || img.loading !== 'lazy') {
-    issues.push('Not using lazy loading');
-  }
-  
-  // Check for responsive attributes
-  if (!img.srcset && !img.sizes && img.naturalWidth > 300) {
-    issues.push('Not using responsive image attributes');
-  }
-  
-  return {
-    issues,
-    savings: Math.min(estimatedSavings, 90) // Cap at 90% to be realistic
   };
 };
