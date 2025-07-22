@@ -22,6 +22,7 @@ const HeroBanner = () => {
           width={918}
           height={517}
           sizes="100vw"
+          quality={80}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-white"></div>
       </div>
