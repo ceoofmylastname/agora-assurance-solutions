@@ -29,17 +29,20 @@ export default defineConfig({
           }
         });
       },
+    },
+    {
+      name: 'transform-html',
+      transformIndexHtml(html: string) {
+        return html.replace(
+          '<meta name="description" content="">',
+          '<meta name="description" content="Get instant insurance quotes & expert guidance. Compare life insurance, mortgage protection, and annuity plans with personalized quotes in seconds. Zero confusion, total peace of mind.">'
+        );
+      },
     }
   ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
-  },
-  transformIndexHtml: (html: string) => {
-    return html.replace(
-      '<meta name="description" content="">',
-      '<meta name="description" content="Get instant insurance quotes & expert guidance. Compare life insurance, mortgage protection, and annuity plans with personalized quotes in seconds. Zero confusion, total peace of mind.">'
-    );
   },
 });
