@@ -1,9 +1,11 @@
+
 import PageLayout from '@/components/PageLayout';
 import Hero from '@/components/Hero';
 import SEO from '@/components/SEO';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import BreadcrumbNavigation from '@/components/BreadcrumbNavigation';
 import { PerformanceMonitor } from '@/components/PerformanceMonitor';
+import InsuranceExplainerWidget from '@/components/InsuranceExplainerWidget';
 import { useEffect, Suspense } from 'react';
 import { 
   LazyFeatures, 
@@ -50,6 +52,18 @@ const Index = () => {
       <ErrorBoundary>
         <Hero />
       </ErrorBoundary>
+      
+      {/* Insurance Explainer Widget Section */}
+      <section className="py-16 px-4 bg-gray-50">
+        <div className="container mx-auto">
+          <ErrorBoundary fallback={<SectionSkeleton />}>
+            <Suspense fallback={<SectionSkeleton />}>
+              <InsuranceExplainerWidget />
+            </Suspense>
+          </ErrorBoundary>
+        </div>
+      </section>
+
       <ErrorBoundary fallback={<CardGridSkeleton />}>
         <Suspense fallback={<CardGridSkeleton />}>
           <LazyProductsSection />

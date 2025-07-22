@@ -1,56 +1,45 @@
 
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
-import path from "path";
-import { componentTagger } from "lovable-tagger";
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react-swc'
+import path from "path"
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
+export default defineConfig({
   server: {
     host: "::",
     port: 8080,
   },
   plugins: [
     react(),
-    mode === 'development' &&
-    componentTagger(),
     {
-      name: 'configure-cache-control-headers',
-      configureServer(server) {
-        server.middlewares.use((req, res, next) => {
-          // For hashed assets (containing a hash in the filename)
-          if (req.url && (
-              /\.[a-zA-Z0-9]{8,}\.(js|css)$/.test(req.url) || // Hashed JS/CSS files
-              /\/lovable-uploads\/[a-zA-Z0-9-]+\.(png|jpg|jpeg|webp|svg|gif)$/.test(req.url) // Uploaded assets with UUIDs
-            )) {
-            res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
-          } 
-          // For non-hashed static assets
-          else if (req.url && /\.(js|css|png|jpg|jpeg|webp|svg|gif|ico|woff|woff2|ttf|eot)$/.test(req.url)) {
-            res.setHeader('Cache-Control', 'public, max-age=604800'); // 7 days
+      name: 'middleware',
+      configureServer(server: any) {
+        server.middlewares.use('/api', (req: any, res: any, next: any) => {
+          if (req.url === '/api/webhooks/stripe') {
+            let body = '';
+            req.on('data', (chunk: any) => {
+              body += chunk.toString();
+            });
+            req.on('end', () => {
+              req.body = body;
+              next();
+            });
+          } else {
+            next();
           }
-          next();
         });
       },
-      transformIndexHtml(html) {
-        // This ensures the plugin runs during build as well
-        return html;
-      },
-    },
-  ].filter(Boolean),
+    }
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  build: {
-    rollupOptions: {
-      output: {
-        // Ensure assets are properly hashed for cache busting
-        assetFileNames: 'assets/[name]-[hash][extname]',
-        chunkFileNames: 'assets/[name]-[hash].js',
-        entryFileNames: 'assets/[name]-[hash].js',
-      },
-    },
+  transformIndexHtml: (html: string) => {
+    return html.replace(
+      '<meta name="description" content="">',
+      '<meta name="description" content="Get instant insurance quotes & expert guidance. Compare life insurance, mortgage protection, and annuity plans with personalized quotes in seconds. Zero confusion, total peace of mind.">'
+    );
   },
-}));
+});
