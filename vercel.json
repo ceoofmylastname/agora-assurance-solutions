@@ -1,0 +1,32 @@
+
+{
+  "headers": [
+    {
+      "source": "/(assets|lovable-uploads)/.*\\.[a-zA-Z0-9]{8,}\\.(js|css)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/lovable-uploads/[a-zA-Z0-9-]+\\.(png|jpg|jpeg|webp|svg|gif)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "\\.(js|css|png|jpg|jpeg|webp|svg|gif|ico|woff|woff2|ttf|eot)$",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800"
+        }
+      ]
+    }
+  ]
+}
