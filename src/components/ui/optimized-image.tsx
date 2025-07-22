@@ -11,6 +11,7 @@ interface OptimizedImageProps extends React.ImgHTMLAttributes<HTMLImageElement> 
   className?: string;
   sizes?: string;
   priority?: boolean;
+  quality?: number;
   onLoad?: () => void;
   fallbackSrc?: string;
 }
@@ -23,6 +24,7 @@ export const OptimizedImage = ({
   className,
   sizes = '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw',
   priority = false,
+  quality = 80,
   onLoad,
   fallbackSrc = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0zMiAyNFY0ME00MCAzMkgyNCIgc3Ryb2tlPSIjOUNBM0FGIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K',
   ...props
@@ -55,7 +57,7 @@ export const OptimizedImage = ({
     const largeWidth = Math.round(width * 1.5);
     
     // Create srcset with width descriptors
-    return `${baseSrc}?w=${smallWidth} ${smallWidth}w, ${baseSrc}?w=${mediumWidth} ${mediumWidth}w, ${baseSrc}?w=${largeWidth} ${largeWidth}w`;
+    return `${baseSrc}?w=${smallWidth}&q=${quality} ${smallWidth}w, ${baseSrc}?w=${mediumWidth}&q=${quality} ${mediumWidth}w, ${baseSrc}?w=${largeWidth}&q=${quality} ${largeWidth}w`;
   };
 
   const handleLoad = () => {
