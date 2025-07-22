@@ -3,10 +3,9 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
-import type { ViteDevServer, Plugin, ConfigEnv } from "vite";
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }: ConfigEnv) => ({
+export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
@@ -17,8 +16,8 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     componentTagger(),
     {
       name: 'configure-cache-control-headers',
-      configureServer(server: ViteDevServer) {
-        server.middlewares.use((req: any, res: any, next: () => void) => {
+      configureServer(server) {
+        server.middlewares.use((req, res, next) => {
           // For hashed assets (containing a hash in the filename)
           if (req.url && (
               /\.[a-zA-Z0-9]{8,}\.(js|css)$/.test(req.url) || // Hashed JS/CSS files
@@ -33,12 +32,12 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
           next();
         });
       },
-      transformIndexHtml(html: string) {
+      transformIndexHtml(html) {
         // This ensures the plugin runs during build as well
         return html;
       },
     },
-  ].filter(Boolean) as Plugin[],
+  ].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

@@ -2,7 +2,7 @@
 {
   "headers": [
     {
-      "source": "/assets/(.+)\\.[a-zA-Z0-9]{8,}\\.(js|css)",
+      "source": "/(assets|lovable-uploads)/.*\\.[a-zA-Z0-9]{8,}\\.(js|css)",
       "headers": [
         {
           "key": "Cache-Control",
