@@ -1,10 +1,9 @@
-
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import confetti from 'canvas-confetti';
-import { Send, Mail, User, MessageSquare, ArrowRight, ArrowLeft, CheckCircle, Shield, Home, Heart, TrendingUp, DollarSign, FileText, Phone, Key } from 'lucide-react';
+import { Send, Mail, User, MessageSquare, ArrowRight, ArrowLeft, CheckCircle, Shield, Home, Heart, TrendingUp, DollarSign, FileText, Phone } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
@@ -21,8 +20,7 @@ const formSchema = z.object({
   service: z.string().min(1, 'Please select a service'),
   message: z.string().min(10, 'Message must be at least 10 characters'),
   honeypot: z.string().max(0, 'Bot detected'),
-  timestamp: z.number(),
-  resendApiKey: z.string().optional()
+  timestamp: z.number()
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -35,11 +33,6 @@ const insuranceServices = [
   { id: 'life-settlements', name: 'Life Settlements', icon: DollarSign },
   { id: 'tax-asset-protection', name: 'Tax & Asset Protection', icon: FileText }
 ];
-
-const EMAILJS_SERVICE_ID = "service_i3h66xg";
-const EMAILJS_TEMPLATE_ID = "template_fgq53nh";
-const EMAILJS_PUBLIC_KEY = "wQmcZvoOqTAhGnRZ3";
-const WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/TLhrYb7SRrWrly615tCI/webhook-trigger/198f9752-05be-412e-b5dc-4dd58a596f56";
 
 const steps = [
   {
@@ -119,8 +112,6 @@ const ModernContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formStartTime] = useState<number>(Date.now());
-  const [resendApiKey, setResendApiKey] = useState<string>('');
-  const [showApiKeyInput, setShowApiKeyInput] = useState(false);
   
   const { toast } = useToast();
   
@@ -134,8 +125,7 @@ const ModernContactForm = () => {
       service: '',
       message: '',
       honeypot: '',
-      timestamp: formStartTime,
-      resendApiKey: ''
+      timestamp: formStartTime
     },
     mode: 'onChange'
   });
@@ -351,10 +341,6 @@ const ModernContactForm = () => {
       
       console.log('=== FORM SUBMISSION DEBUG ===');
       console.log('All form data:', data);
-      console.log('Phone field specifically:', data.phone);
-      console.log('Phone field type:', typeof data.phone);
-      console.log('Phone field length:', data.phone?.length || 0);
-      console.log('Is phone empty?', !data.phone || data.phone.trim() === '');
       
       // Enhanced validation for phone field
       if (!data.phone || data.phone.trim() === '') {
@@ -417,10 +403,7 @@ const ModernContactForm = () => {
         'last_name': emailData.lastName
       };
 
-      console.log('=== WEBHOOK DATA DEBUG ===');
-      console.log('Complete webhook data:', webhookData);
-      console.log('Phone field in webhook?', 'phone' in webhookData);
-      console.log('Webhook data stringified:', JSON.stringify(webhookData, null, 2));
+      const WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/TLhrYb7SRrWrly615tCI/webhook-trigger/198f9752-05be-412e-b5dc-4dd58a596f56";
 
       // Send to webhook
       const response = await fetch(WEBHOOK_URL, {
@@ -431,26 +414,20 @@ const ModernContactForm = () => {
         body: JSON.stringify(webhookData),
       });
 
-      console.log('=== WEBHOOK RESPONSE DEBUG ===');
-      console.log('Webhook response status:', response.status);
-      console.log('Webhook response ok:', response.ok);
-
       if (!response.ok) {
         console.error('❌ Webhook submission failed with status:', response.status);
         throw new Error('Webhook submission failed');
       }
       
-      console.log('✅ Webhook submitted successfully to new endpoint');
+      console.log('✅ Webhook submitted successfully');
 
-      // Send email via Resend if API key is provided
-      if (resendApiKey) {
-        try {
-          await sendContactEmail(emailData, resendApiKey);
-          console.log('✅ Email sent successfully via Resend');
-        } catch (emailError) {
-          console.error('❌ Failed to send email via Resend:', emailError);
-          // Don't fail the entire submission if email fails
-        }
+      // Send email via Supabase edge function
+      try {
+        await sendContactEmail(emailData);
+        console.log('✅ Email sent successfully via Supabase/Resend');
+      } catch (emailError) {
+        console.error('❌ Failed to send email via Supabase/Resend:', emailError);
+        // Don't fail the entire submission if email fails
       }
       
       setIsSubmitted(true);
@@ -472,8 +449,7 @@ const ModernContactForm = () => {
         service: '',
         message: '',
         honeypot: '',
-        timestamp: Date.now(),
-        resendApiKey: ''
+        timestamp: Date.now()
       });
     } catch (error) {
       console.error('❌ Error sending email:', error);
@@ -536,47 +512,6 @@ const ModernContactForm = () => {
             Ready to protect what matters most? Let's discuss your insurance needs and find the perfect solution for you.
           </p>
         </div>
-
-        {/* Resend API Key Input */}
-        {!showApiKeyInput && (
-          <div className="mb-8 text-center">
-            <Button
-              variant="outline"
-              onClick={() => setShowApiKeyInput(true)}
-              className="flex items-center gap-2 mx-auto"
-            >
-              <Key className="w-4 h-4" />
-              Add Resend API Key (Optional)
-            </Button>
-          </div>
-        )}
-
-        {showApiKeyInput && (
-          <div className="mb-8 p-6 bg-white/90 rounded-2xl shadow-lg">
-            <div className="flex items-center gap-2 mb-3">
-              <Key className="w-5 h-5 text-primary" />
-              <h3 className="font-semibold text-foreground">Resend API Key</h3>
-            </div>
-            <p className="text-sm text-muted-foreground mb-4">
-              Enter your Resend API key to receive email notifications when users submit the form.
-            </p>
-            <div className="flex gap-2">
-              <Input
-                type="password"
-                placeholder="re_xxxxxxxxxxxxxxxxxxxxxxxxx"
-                value={resendApiKey}
-                onChange={(e) => setResendApiKey(e.target.value)}
-                className="flex-1"
-              />
-              <Button
-                variant="outline"
-                onClick={() => setShowApiKeyInput(false)}
-              >
-                Hide
-              </Button>
-            </div>
-          </div>
-        )}
         
         {/* Progress Bar */}
         <div className="mb-12">
@@ -598,7 +533,7 @@ const ModernContactForm = () => {
           </div>
         </div>
 
-        {/* Form Container - No background, embedded look */}
+        {/* Form Container */}
         <div className="relative">
           <AnimatePresence mode="wait">
             <motion.div
@@ -768,18 +703,6 @@ const ModernContactForm = () => {
                       <FormItem className="hidden">
                         <FormControl>
                           <Input type="hidden" {...field} value={field.value || formStartTime} />
-                        </FormControl>
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="resendApiKey"
-                    render={({ field }) => (
-                      <FormItem className="hidden">
-                        <FormControl>
-                          <Input type="hidden" {...field} value={resendApiKey} />
                         </FormControl>
                       </FormItem>
                     )}
