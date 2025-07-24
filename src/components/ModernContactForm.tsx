@@ -389,7 +389,15 @@ const ModernContactForm = () => {
         return;
       }
       
-      const { honeypot, timestamp, resendApiKey: apiKey, ...emailData } = data;
+      // Create emailData object with all required properties
+      const emailData = {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        phone: data.phone,
+        service: data.service,
+        message: data.message
+      };
       
       // Enhanced webhook data with all form fields
       const webhookData = {
