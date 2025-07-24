@@ -1,16 +1,17 @@
+
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import confetti from 'canvas-confetti';
-import { Send, Mail, User, MessageSquare, ArrowRight, ArrowLeft, CheckCircle, Shield, Home, Heart, TrendingUp, DollarSign, FileText, Phone } from 'lucide-react';
+import { Send, Mail, User, MessageSquare, ArrowRight, ArrowLeft, CheckCircle, Shield, Home, Heart, TrendingUp, DollarSign, FileText, Phone, Key } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
-import emailjs from 'emailjs-com';
+import { sendContactEmail } from '@/utils/emailService';
 
 const formSchema = z.object({
   firstName: z.string().min(2, 'First name must be at least 2 characters'),
@@ -20,7 +21,8 @@ const formSchema = z.object({
   service: z.string().min(1, 'Please select a service'),
   message: z.string().min(10, 'Message must be at least 10 characters'),
   honeypot: z.string().max(0, 'Bot detected'),
-  timestamp: z.number()
+  timestamp: z.number(),
+  resendApiKey: z.string().optional()
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -117,6 +119,8 @@ const ModernContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formStartTime] = useState<number>(Date.now());
+  const [resendApiKey, setResendApiKey] = useState<string>('');
+  const [showApiKeyInput, setShowApiKeyInput] = useState(false);
   
   const { toast } = useToast();
   
@@ -130,7 +134,8 @@ const ModernContactForm = () => {
       service: '',
       message: '',
       honeypot: '',
-      timestamp: formStartTime
+      timestamp: formStartTime,
+      resendApiKey: ''
     },
     mode: 'onChange'
   });
@@ -384,7 +389,7 @@ const ModernContactForm = () => {
         return;
       }
       
-      const { honeypot, timestamp, ...emailData } = data;
+      const { honeypot, timestamp, resendApiKey: apiKey, ...emailData } = data;
       
       // Enhanced webhook data with all form fields
       const webhookData = {
@@ -409,6 +414,7 @@ const ModernContactForm = () => {
       console.log('Phone field in webhook?', 'phone' in webhookData);
       console.log('Webhook data stringified:', JSON.stringify(webhookData, null, 2));
 
+      // Send to webhook
       const response = await fetch(WEBHOOK_URL, {
         method: 'POST',
         headers: {
@@ -427,6 +433,17 @@ const ModernContactForm = () => {
       }
       
       console.log('✅ Webhook submitted successfully to new endpoint');
+
+      // Send email via Resend if API key is provided
+      if (resendApiKey) {
+        try {
+          await sendContactEmail(emailData, resendApiKey);
+          console.log('✅ Email sent successfully via Resend');
+        } catch (emailError) {
+          console.error('❌ Failed to send email via Resend:', emailError);
+          // Don't fail the entire submission if email fails
+        }
+      }
       
       setIsSubmitted(true);
       
@@ -447,7 +464,8 @@ const ModernContactForm = () => {
         service: '',
         message: '',
         honeypot: '',
-        timestamp: Date.now()
+        timestamp: Date.now(),
+        resendApiKey: ''
       });
     } catch (error) {
       console.error('❌ Error sending email:', error);
@@ -510,6 +528,47 @@ const ModernContactForm = () => {
             Ready to protect what matters most? Let's discuss your insurance needs and find the perfect solution for you.
           </p>
         </div>
+
+        {/* Resend API Key Input */}
+        {!showApiKeyInput && (
+          <div className="mb-8 text-center">
+            <Button
+              variant="outline"
+              onClick={() => setShowApiKeyInput(true)}
+              className="flex items-center gap-2 mx-auto"
+            >
+              <Key className="w-4 h-4" />
+              Add Resend API Key (Optional)
+            </Button>
+          </div>
+        )}
+
+        {showApiKeyInput && (
+          <div className="mb-8 p-6 bg-white/90 rounded-2xl shadow-lg">
+            <div className="flex items-center gap-2 mb-3">
+              <Key className="w-5 h-5 text-primary" />
+              <h3 className="font-semibold text-foreground">Resend API Key</h3>
+            </div>
+            <p className="text-sm text-muted-foreground mb-4">
+              Enter your Resend API key to receive email notifications when users submit the form.
+            </p>
+            <div className="flex gap-2">
+              <Input
+                type="password"
+                placeholder="re_xxxxxxxxxxxxxxxxxxxxxxxxx"
+                value={resendApiKey}
+                onChange={(e) => setResendApiKey(e.target.value)}
+                className="flex-1"
+              />
+              <Button
+                variant="outline"
+                onClick={() => setShowApiKeyInput(false)}
+              >
+                Hide
+              </Button>
+            </div>
+          </div>
+        )}
         
         {/* Progress Bar */}
         <div className="mb-12">
@@ -701,6 +760,18 @@ const ModernContactForm = () => {
                       <FormItem className="hidden">
                         <FormControl>
                           <Input type="hidden" {...field} value={field.value || formStartTime} />
+                        </FormControl>
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="resendApiKey"
+                    render={({ field }) => (
+                      <FormItem className="hidden">
+                        <FormControl>
+                          <Input type="hidden" {...field} value={resendApiKey} />
                         </FormControl>
                       </FormItem>
                     )}
