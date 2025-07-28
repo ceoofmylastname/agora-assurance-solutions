@@ -134,7 +134,10 @@ const About = () => {
               delay: 0.4
             }} className="mb-16">
                 <h2 className="text-3xl font-bold mb-8 text-center">Leadership with Vision</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
+                
+                {/* First Row - 3 Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch mb-12">
+                  {/* Kevin Jenson - CEO */}
                   <Dialog>
                     <DialogTrigger asChild>
                        <motion.div initial={{
@@ -680,9 +683,13 @@ const About = () => {
                         </div>
                       </div>
                     </DialogContent>
-                  </Dialog>
-                  
-                  <Dialog>
+                   </Dialog>
+                </div>
+
+                {/* Second Row - 2 Cards Centered */}
+                <div className="flex justify-center">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
+                    <Dialog>
                     <DialogTrigger asChild>
                       <motion.div initial={{
                       opacity: 0,
@@ -1076,10 +1083,11 @@ const About = () => {
                           </div>
                         </div>
                       </div>
-                    </DialogContent>
-                  </Dialog>
-                </div>
-              </motion.div>
+                     </DialogContent>
+                   </Dialog>
+                  </div>
+                 </div>
+               </motion.div>
               
               <motion.div initial={{
               opacity: 0,
