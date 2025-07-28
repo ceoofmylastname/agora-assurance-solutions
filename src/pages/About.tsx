@@ -890,6 +890,194 @@ const About = () => {
                       </div>
                     </DialogContent>
                   </Dialog>
+                  
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <motion.div initial={{
+                      opacity: 0,
+                      x: 20
+                    }} animate={{
+                      opacity: 1,
+                      x: 0
+                    }} transition={{
+                      duration: 0.6,
+                      delay: 1.2
+                    }} className="relative group cursor-pointer h-full flex flex-col">
+                        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-600/5 rounded-2xl scale-105 transition-all duration-300"></div>
+                        <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg group-hover:shadow-xl transition-shadow duration-300 h-full flex flex-col min-h-[400px]">
+                          <div className="h-20 w-20 rounded-full overflow-hidden mb-4 border-2 border-emerald-500/20">
+                            <img alt="Sean Fogelson - Director of Training & Development" className="w-full h-full object-cover object-center" src="/lovable-uploads/6cf856c2-ebee-49a3-85c9-23f3905aa18b.png" />
+                          </div>
+                          <h3 className="text-xl font-bold text-gray-900 mb-1">Sean Fogelson</h3>
+                          <p className="text-emerald-500 font-medium mb-3">Director of Training & Development</p>
+                           <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">
+                             A visionary leader who pioneered digital communities in the insurance industry and transforms challenges into opportunities through innovative training programs.
+                           </p>
+                          <Button variant="outline" size="sm" className="w-full group-hover:bg-emerald-500 group-hover:text-white transition-colors">
+                            Learn More
+                          </Button>
+                        </div>
+                      </motion.div>
+                    </DialogTrigger>
+                    
+                    <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-white/95 backdrop-blur-xl border border-white/20 shadow-2xl">
+                      <div className="relative">
+                        {/* Hero Header */}
+                        <div className="relative mb-8 -mx-6 -mt-6 p-8 bg-gradient-to-br from-emerald-500/10 to-teal-600/20 rounded-t-lg">
+                          <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-600/10 backdrop-blur-sm"></div>
+                          <div className="relative flex flex-col md:flex-row items-center gap-6">
+                            <div className="relative">
+                              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full blur-lg opacity-30 scale-110"></div>
+                              <img 
+                                src="/lovable-uploads/6cf856c2-ebee-49a3-85c9-23f3905aa18b.png" 
+                                alt="Sean Fogelson - Director of Training & Development" 
+                                className="relative w-32 h-32 rounded-full object-cover object-center border-4 border-white shadow-xl"
+                              />
+                            </div>
+                            <div className="text-center md:text-left">
+                              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Sean Fogelson</h1>
+                              <div className="flex items-center justify-center md:justify-start gap-2 mb-4">
+                                <Badge variant="default" className="bg-emerald-500 hover:bg-emerald-500/90">
+                                  Director of Training & Development
+                                </Badge>
+                                <Badge variant="outline">
+                                  Innovation Pioneer
+                                </Badge>
+                              </div>
+                              <p className="text-gray-600 text-lg italic">
+                                "Transforming adversity into opportunity through innovative leadership and pioneering digital communities."
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Content Grid */}
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                          {/* Main Biography */}
+                          <div className="lg:col-span-2 space-y-6">
+                            <div className="bg-gradient-to-br from-emerald-50 to-white rounded-xl p-6 border border-emerald-100">
+                              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <Trophy className="h-5 w-5 text-emerald-500" />
+                                Innovative Leadership & Entrepreneurial Spirit
+                              </h3>
+                              <div className="space-y-4 text-gray-600 leading-relaxed">
+                                <p>
+                                  Always ahead of the curve, Sean pioneered one of the first Facebook groups for the insurance industry, "Final Expense Coach." This initiative fostered a collaborative community for insurance professionals, showcasing his forward-thinking approach to networking and professional development and shaping the digital landscape nationwide.
+                                </p>
+                                <p>
+                                  Sean's entrepreneurial journey, though challenging, has been defined by his ability to transform adversity into opportunity. He views every setback as a lesson, fueling his determination to learn, adapt, and innovate.
+                                </p>
+                              </div>
+                            </div>
+
+                            <div className="bg-gradient-to-br from-teal-50 to-white rounded-xl p-6 border border-teal-100">
+                              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <Users className="h-5 w-5 text-teal-600" />
+                                Training & Development Excellence
+                              </h3>
+                              <div className="space-y-4 text-gray-600 leading-relaxed">
+                                <p>
+                                  Recognized as a leader in training and development, Sean has built high-performance teams and mentored countless professionals, empowering them to unlock their potential. His approach combines cutting-edge learning strategies with hands-on leadership, cultivating cultures of continuous improvement and collaboration.
+                                </p>
+                                <p>
+                                  Sean believes that true leadership is measured by its impact on teams, clients, and the community. He is passionate about inspiring others to embrace challenges, pursue excellence, and never settle for less than their best.
+                                </p>
+                              </div>
+                            </div>
+
+                            <div className="bg-gradient-to-br from-cyan-50 to-white rounded-xl p-6 border border-cyan-100">
+                              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <TrendingUp className="h-5 w-5 text-cyan-600" />
+                                Key Achievements
+                              </h3>
+                              <div className="space-y-4 text-gray-600 leading-relaxed">
+                                <ul className="space-y-2">
+                                  <li>• Built a multimillion-dollar telecommunications business from the ground up</li>
+                                  <li>• Developed industry-leading training and development programs</li>
+                                  <li>• Mentored aspiring entrepreneurs and business leaders</li>
+                                  <li>• Overcame early business failures to achieve sustained success</li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Sidebar Content */}
+                          <div className="space-y-6">
+                            <div className="bg-gradient-to-br from-emerald-500/5 to-teal-600/10 rounded-xl p-6 border border-emerald-500/20">
+                              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <Target className="h-5 w-5 text-emerald-500" />
+                                Core Expertise
+                              </h3>
+                              <div className="space-y-3">
+                                <div className="flex items-center gap-2">
+                                  <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
+                                  <span className="text-sm text-gray-600">Business Innovation & Growth Strategy</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <div className="w-2 h-2 rounded-full bg-teal-500"></div>
+                                  <span className="text-sm text-gray-600">Team Building & Leadership Development</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <div className="w-2 h-2 rounded-full bg-cyan-500"></div>
+                                  <span className="text-sm text-gray-600">Training Program Design & Facilitation</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                                  <span className="text-sm text-gray-600">Resilience & Change Management</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <div className="w-2 h-2 rounded-full bg-emerald-600"></div>
+                                  <span className="text-sm text-gray-600">Strategic Partnerships & Business Development</span>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="bg-gradient-to-br from-blue-50 to-white rounded-xl p-6 border border-blue-100">
+                              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <Heart className="h-5 w-5 text-blue-600" />
+                                Leadership Philosophy
+                              </h3>
+                              <p className="text-gray-600 text-sm leading-relaxed">
+                                Sean believes that true leadership is measured by its impact on teams, clients, and the community. He is passionate about inspiring others to embrace challenges, pursue excellence, and never settle for less than their best.
+                              </p>
+                            </div>
+
+                            <div className="bg-gradient-to-br from-violet-50 to-white rounded-xl p-6 border border-violet-100">
+                              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <Trophy className="h-5 w-5 text-violet-600" />
+                                Industry Innovation
+                              </h3>
+                              <div className="space-y-3 text-sm">
+                                <div className="flex items-start gap-3">
+                                  <div className="w-2 h-2 rounded-full bg-emerald-500 mt-2 flex-shrink-0"></div>
+                                  <span className="text-gray-600">Pioneer of "Final Expense Coach" Facebook community</span>
+                                </div>
+                                <div className="flex items-start gap-3">
+                                  <div className="w-2 h-2 rounded-full bg-teal-500 mt-2 flex-shrink-0"></div>
+                                  <span className="text-gray-600">Transformed digital landscape for insurance professionals</span>
+                                </div>
+                                <div className="flex items-start gap-3">
+                                  <div className="w-2 h-2 rounded-full bg-cyan-500 mt-2 flex-shrink-0"></div>
+                                  <span className="text-gray-600">Created collaborative learning ecosystems</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Bottom Quote */}
+                        <div className="mt-8 p-6 bg-gradient-to-r from-emerald-500/10 to-teal-600/10 rounded-xl border border-emerald-500/20 text-center">
+                          <p className="text-lg italic text-gray-700 mb-2">
+                            "Sean's journey from telecommunications entrepreneur to insurance industry innovator demonstrates the power of resilience, vision, and commitment to empowering others."
+                          </p>
+                          <div className="flex items-center justify-center gap-2 text-sm text-gray-500">
+                            <Users className="h-4 w-4" />
+                            <span>Building communities, developing leaders, transforming industries</span>
+                          </div>
+                        </div>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
                 </div>
               </motion.div>
               
