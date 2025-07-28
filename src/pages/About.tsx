@@ -23,10 +23,10 @@ const About = () => {
               Back to Home
             </Link>
             
-            {/* Hero Section with 3D Effect */}
+            {/* Hero Section with Clean Alignment */}
             <div className="relative mb-16">
-              <div className="absolute inset-0 bg-gradient-to-r from-[#15AFF7]/10 to-blue-600/10 rounded-3xl transform rotate-1 scale-105"></div>
-              <div className="relative bg-white rounded-2xl shadow-2xl border border-gray-100 p-8 md:p-12 transform -rotate-1">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#15AFF7]/10 to-blue-600/10 rounded-3xl scale-105"></div>
+              <div className="relative bg-white rounded-2xl shadow-2xl border border-gray-100 p-8 md:p-12">
                 <motion.h1 initial={{
                 opacity: 0,
                 y: -20
@@ -90,8 +90,8 @@ const About = () => {
                 duration: 0.6,
                 delay: 0.2
               }} className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#15AFF7]/5 to-blue-600/5 rounded-2xl transform rotate-2 scale-105"></div>
-                  <div className="relative bg-white rounded-2xl p-8 border border-gray-100 shadow-xl transform -rotate-1 hover:rotate-0 transition-transform duration-300">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#15AFF7]/5 to-blue-600/5 rounded-2xl scale-105"></div>
+                  <div className="relative bg-white rounded-2xl p-8 border border-gray-100 shadow-xl transition-shadow duration-300 hover:shadow-2xl">
                     <h3 className="text-2xl font-bold mb-6 text-gray-900">What Makes Us Different</h3>
                     <ul className="space-y-4">
                       <li className="flex items-start group">
@@ -137,7 +137,7 @@ const About = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
                   <Dialog>
                     <DialogTrigger asChild>
-                      <motion.div initial={{
+                       <motion.div initial={{
                       opacity: 0,
                       x: -20
                     }} animate={{
@@ -147,8 +147,8 @@ const About = () => {
                       duration: 0.6,
                       delay: 0.5
                      }} className="relative group cursor-pointer h-full flex flex-col">
-                        <div className="absolute inset-0 bg-gradient-to-br from-[#15AFF7]/5 to-blue-600/5 rounded-2xl transform rotate-1 scale-105 group-hover:rotate-2 transition-transform duration-300"></div>
-                         <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300 h-full flex flex-col min-h-[400px]">
+                        <div className="absolute inset-0 bg-gradient-to-br from-[#15AFF7]/5 to-blue-600/5 rounded-2xl scale-105 transition-all duration-300"></div>
+                         <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg group-hover:shadow-xl transition-shadow duration-300 h-full flex flex-col min-h-[400px]">
                           <div className="h-20 w-20 rounded-full overflow-hidden mb-4 border-2 border-[#15AFF7]/20">
                             <img alt="Kevin Jenson - Founder & CEO" className="w-full h-full object-cover" src="https://storage.googleapis.com/msgsndr/TLhrYb7SRrWrly615tCI/media/686eb76d038ba82a1245496a.jpeg" />
                           </div>
@@ -307,7 +307,7 @@ const About = () => {
                   
                   <Dialog>
                     <DialogTrigger asChild>
-                      <motion.div initial={{
+                       <motion.div initial={{
                       opacity: 0,
                       y: 20
                     }} animate={{
@@ -317,8 +317,8 @@ const About = () => {
                       duration: 0.6,
                       delay: 0.6
                      }} className="relative group cursor-pointer h-full flex flex-col">
-                        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-600/5 rounded-2xl transform -rotate-1 scale-105 group-hover:-rotate-2 transition-transform duration-300"></div>
-                        <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform rotate-1 group-hover:rotate-0 transition-transform duration-300 h-full flex flex-col min-h-[400px]">
+                        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-600/5 rounded-2xl scale-105 transition-all duration-300"></div>
+                        <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg group-hover:shadow-xl transition-shadow duration-300 h-full flex flex-col min-h-[400px]">
                           <div className="h-20 w-20 rounded-full overflow-hidden mb-4 border-2 border-blue-500/20">
                             <img alt="Benjamin Schroeder - Director of Communications" className="w-full h-full object-cover object-top" src="/lovable-uploads/8a8c0896-4865-4bb8-aa18-10e30d79d044.png" />
                           </div>
@@ -484,7 +484,7 @@ const About = () => {
                   
                   <Dialog>
                     <DialogTrigger asChild>
-                      <motion.div initial={{
+                       <motion.div initial={{
                       opacity: 0,
                       x: 20
                     }} animate={{
@@ -494,8 +494,8 @@ const About = () => {
                       duration: 0.6,
                       delay: 0.7
                      }} className="relative group cursor-pointer h-full flex flex-col">
-                        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-600/5 rounded-2xl transform rotate-1 scale-105 group-hover:rotate-2 transition-transform duration-300"></div>
-                         <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300 h-full flex flex-col min-h-[400px]">
+                        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-600/5 rounded-2xl scale-105 transition-all duration-300"></div>
+                         <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg group-hover:shadow-xl transition-shadow duration-300 h-full flex flex-col min-h-[400px]">
                           <div className="h-20 w-20 rounded-full overflow-hidden mb-4 border-2 border-purple-500/20">
                             <img alt="Olga Lomova - Chief Strategy Officer" className="w-full h-full object-cover object-top" src="/lovable-uploads/a2fbd740-44fc-4440-90f2-d0ea3ac39d55.png" />
                           </div>
@@ -694,8 +694,8 @@ const About = () => {
                       duration: 0.6,
                       delay: 0.9
                     }} className="relative group cursor-pointer h-full flex flex-col">
-                        <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-amber-600/5 rounded-2xl transform rotate-1 scale-105 group-hover:rotate-2 transition-transform duration-300"></div>
-                        <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300 h-full flex flex-col min-h-[400px]">
+                        <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-amber-600/5 rounded-2xl scale-105 transition-all duration-300"></div>
+                        <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg group-hover:shadow-xl transition-shadow duration-300 h-full flex flex-col min-h-[400px]">
                           <div className="h-20 w-20 rounded-full overflow-hidden mb-4 border-2 border-orange-500/20">
                             <img alt="Jeff Utley - Director of Advanced Markets" className="w-full h-full object-cover object-center" src="/lovable-uploads/4020c004-3f22-4c03-891b-11e71f0bffbc.png" />
                           </div>
@@ -915,8 +915,8 @@ const About = () => {
                   duration: 0.4,
                   delay: 0.7
                 }} className="relative group">
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#15AFF7]/10 to-blue-600/10 rounded-xl transform rotate-2 scale-105 group-hover:rotate-3 transition-transform duration-300"></div>
-                    <div className="relative bg-white rounded-xl border border-gray-100 p-6 text-center shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#15AFF7]/10 to-blue-600/10 rounded-xl scale-105 transition-all duration-300"></div>
+                    <div className="relative bg-white rounded-xl border border-gray-100 p-6 text-center shadow-lg group-hover:shadow-xl transition-shadow duration-300">
                       <div className="text-3xl font-bold text-[#15AFF7] mb-2">
                         <AnimatedCounter end={50} suffix="+" />
                       </div>
@@ -933,8 +933,8 @@ const About = () => {
                   duration: 0.4,
                   delay: 0.8
                 }} className="relative group">
-                    <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-emerald-600/10 rounded-xl transform -rotate-2 scale-105 group-hover:-rotate-3 transition-transform duration-300"></div>
-                    <div className="relative bg-white rounded-xl border border-gray-100 p-6 text-center shadow-lg transform rotate-1 group-hover:rotate-0 transition-transform duration-300">
+                    <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-emerald-600/10 rounded-xl scale-105 transition-all duration-300"></div>
+                    <div className="relative bg-white rounded-xl border border-gray-100 p-6 text-center shadow-lg group-hover:shadow-xl transition-shadow duration-300">
                       <div className="text-3xl font-bold text-green-500 mb-2">
                         <AnimatedCounter end={500} prefix="$" suffix="M+" />
                       </div>
@@ -951,8 +951,8 @@ const About = () => {
                   duration: 0.4,
                   delay: 0.9
                 }} className="relative group">
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-600/10 rounded-xl transform rotate-2 scale-105 group-hover:rotate-3 transition-transform duration-300"></div>
-                    <div className="relative bg-white rounded-xl border border-gray-100 p-6 text-center shadow-lg transform -rotate-1 group-hover:rotate-0 transition-transform duration-300">
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-600/10 rounded-xl scale-105 transition-all duration-300"></div>
+                    <div className="relative bg-white rounded-xl border border-gray-100 p-6 text-center shadow-lg group-hover:shadow-xl transition-shadow duration-300">
                       <div className="text-3xl font-bold text-purple-500 mb-2">
                         <AnimatedCounter end={25000} suffix="+" />
                       </div>
@@ -969,8 +969,8 @@ const About = () => {
                   duration: 0.4,
                   delay: 1.0
                 }} className="relative group">
-                    <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-red-600/10 rounded-xl transform -rotate-2 scale-105 group-hover:-rotate-3 transition-transform duration-300"></div>
-                    <div className="relative bg-white rounded-xl border border-gray-100 p-6 text-center shadow-lg transform rotate-1 group-hover:rotate-0 transition-transform duration-300">
+                    <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-red-600/10 rounded-xl scale-105 transition-all duration-300"></div>
+                    <div className="relative bg-white rounded-xl border border-gray-100 p-6 text-center shadow-lg group-hover:shadow-xl transition-shadow duration-300">
                       <div className="text-3xl font-bold text-orange-500 mb-2">
                         <AnimatedCounter end={100} suffix="+" />
                       </div>
@@ -990,8 +990,8 @@ const About = () => {
               duration: 0.6,
               delay: 0.8
             }} className="mb-16 relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-[#15AFF7]/5 to-blue-600/5 rounded-3xl transform rotate-1 scale-105"></div>
-                <div className="relative bg-white rounded-2xl border border-gray-200 p-12 shadow-2xl text-center transform -rotate-1">
+                <div className="absolute inset-0 bg-gradient-to-r from-[#15AFF7]/5 to-blue-600/5 rounded-3xl scale-105"></div>
+                <div className="relative bg-white rounded-2xl border border-gray-200 p-12 shadow-2xl text-center">
                   <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-[#15AFF7] to-blue-600 bg-clip-text text-transparent">
                     The Future of Insurance Starts Here
                   </h2>
@@ -1013,8 +1013,8 @@ const About = () => {
               duration: 0.6,
               delay: 1.2
             }} className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-r from-[#15AFF7]/20 to-blue-600/20 rounded-lg transform rotate-1 scale-105 group-hover:rotate-2 transition-transform duration-300"></div>
-                <Link to="/careers" className="relative inline-flex items-center px-8 py-4 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-all transform -rotate-1 group-hover:rotate-0 shadow-lg font-medium">
+                <div className="absolute inset-0 bg-gradient-to-r from-[#15AFF7]/20 to-blue-600/20 rounded-lg scale-105 transition-all duration-300"></div>
+                <Link to="/careers" className="relative inline-flex items-center px-8 py-4 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-colors shadow-lg font-medium">
                   Join Our Team
                   <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
