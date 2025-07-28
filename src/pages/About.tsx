@@ -317,7 +317,7 @@ const About = () => {
                       duration: 0.6,
                       delay: 0.6
                      }} className="relative group cursor-pointer h-full flex flex-col">
-                        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-600/5 rounded-2xl scale-105"></div>
+                        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-600/5 rounded-2xl scale-105 transition-all duration-300"></div>
                         <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col min-h-[400px]">
                           <div className="h-20 w-20 rounded-full overflow-hidden mb-4 border-2 border-blue-500/20">
                             <img alt="Benjamin Schroeder - Director of Communications" className="w-full h-full object-cover object-top" src="/lovable-uploads/8a8c0896-4865-4bb8-aa18-10e30d79d044.png" />
