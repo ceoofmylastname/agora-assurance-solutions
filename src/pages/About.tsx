@@ -1227,12 +1227,29 @@ const About = () => {
                                 <p className="text-gray-600 text-sm leading-relaxed italic">
                                   "Whether he's building out advanced systems, mentoring entrepreneurs, or scaling agency operations, John Melvin is the go-to expert when results matter and innovation leads the way."
                                 </p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                     </DialogContent>
-                   </Dialog>
+                               </div>
+                             </div>
+                           </div>
+                           
+                           {/* Bottom Quote Section */}
+                           <div className="mt-8 p-6 bg-gradient-to-r from-teal-500/10 to-cyan-600/10 rounded-lg border border-teal-500/20">
+                             <div className="flex items-start gap-4">
+                               <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                 <Zap className="w-6 h-6 text-white" />
+                               </div>
+                               <div>
+                                 <p className="text-gray-700 italic mb-3 text-lg leading-relaxed">
+                                   "Innovation isn't just about technology—it's about transforming how we connect with people and deliver value. In insurance, every breakthrough brings us closer to truly protecting what matters most."
+                                 </p>
+                                 <p className="text-teal-600 font-semibold">
+                                   Digital Innovation Pioneer
+                                 </p>
+                               </div>
+                             </div>
+                           </div>
+                         </div>
+                      </DialogContent>
+                    </Dialog>
                  </div>
                </motion.div>
               
