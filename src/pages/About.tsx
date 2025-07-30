@@ -1103,7 +1103,7 @@ const About = () => {
                             <div className="h-20 w-20 rounded-full overflow-hidden mb-4 border-2 border-teal-500/20">
                               <img 
                                 alt="John Melvin, Director of Marketing at Agora Assurance Solutions"
-                                className="w-full h-full object-cover" 
+                                className="w-full h-full object-cover object-top" 
                                 src="/lovable-uploads/6c1f83e5-8bfb-4ebd-8f37-2fe6aec80978.png" 
                               />
                             </div>
