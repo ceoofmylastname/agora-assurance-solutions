@@ -25,7 +25,6 @@ const PageLayout = ({ children, showContact = true }: PageLayoutProps) => {
       {children}
       <Footer />
       {showContact && <FloatingContactButton />}
-      <MemoryWidget />
     </div>
   );
 };
