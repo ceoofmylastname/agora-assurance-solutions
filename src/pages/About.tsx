@@ -686,9 +686,8 @@ const About = () => {
                    </Dialog>
                 </div>
 
-                {/* Second Row - 2 Cards Centered */}
-                <div className="flex justify-center">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
+                {/* Second Row - 3 Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
                     <Dialog>
                     <DialogTrigger asChild>
                       <motion.div initial={{
@@ -1085,7 +1084,97 @@ const About = () => {
                       </div>
                      </DialogContent>
                    </Dialog>
-                  </div>
+
+                   {/* John Melvin - Director of Marketing */}
+                   <Dialog>
+                     <DialogTrigger asChild>
+                       <motion.div initial={{
+                       opacity: 0,
+                       y: 50
+                     }} animate={{
+                       opacity: 1,
+                       y: 0
+                     }} transition={{
+                       duration: 0.6,
+                       delay: 0.8
+                     }} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2 border border-gray-100">
+                         <img 
+                           src="/lovable-uploads/6c1f83e5-8bfb-4ebd-8f37-2fe6aec80978.png" 
+                           alt="John Melvin, Director of Marketing at Agora Assurance Solutions"
+                           className="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-blue-100"
+                         />
+                         <h3 className="text-xl font-semibold mb-2 text-center text-gray-800">John Melvin</h3>
+                         <p className="text-blue-600 text-center font-medium">Director of Marketing</p>
+                         <p className="text-gray-600 text-sm text-center mt-2">AI & Automation Expert</p>
+                       </motion.div>
+                     </DialogTrigger>
+                     <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+                       <div className="grid md:grid-cols-2 gap-8">
+                         <div className="space-y-6">
+                           <div className="text-center">
+                             <img 
+                               src="/lovable-uploads/6c1f83e5-8bfb-4ebd-8f37-2fe6aec80978.png" 
+                               alt="John Melvin, Director of Marketing at Agora Assurance Solutions"
+                               className="w-48 h-48 rounded-full mx-auto mb-6 object-cover border-8 border-blue-100 shadow-lg"
+                             />
+                             <h2 className="text-3xl font-bold text-gray-800 mb-2">John Melvin</h2>
+                             <p className="text-xl text-blue-600 font-semibold mb-2">Director of Marketing</p>
+                             <p className="text-lg text-gray-600">AI & Automation Expert</p>
+                           </div>
+                         </div>
+                         
+                         <div className="space-y-6">
+                           <div>
+                             <h3 className="text-2xl font-bold text-gray-800 mb-4">Professional Journey</h3>
+                             <div className="space-y-4 text-gray-600">
+                               <p>
+                                 John Melvin is a seasoned insurance strategist turned AI & automation expert, with over 15 years of experience helping individuals and businesses protect their futures, scale their operations, and thrive in the digital economy.
+                               </p>
+                               <p>
+                                 John began his career in the insurance and financial services space, where he spent more than a decade guiding clients through life insurance, annuities, and retirement planning. His work helped hundreds of families gain peace of mind, while his reputation grew as a reliable advisor and growth-minded leader.
+                               </p>
+                               <p>
+                                 Between 2019 and 2023, John went all-in on currency trading, honing skills in data analysis, timing, and financial systems thinking—a transition that deepened his technical and strategic mindset.
+                               </p>
+                               <p>
+                                 In 2023, with AI shifting the global business landscape, John pivoted again—this time back to his roots in insurance and finance, now infused with digital marketing, automation, and AI innovation. It was the perfect fusion of his experience and forward-thinking mindset.
+                               </p>
+                             </div>
+                           </div>
+                           
+                           <div>
+                             <h3 className="text-2xl font-bold text-gray-800 mb-4">Current Role & Expertise</h3>
+                             <div className="space-y-4 text-gray-600">
+                               <p>
+                                 Today, John serves as the Director of Marketing for Agora Assurance Solutions, where he leads the company's national growth strategy by implementing data-driven campaigns, AI-powered recruiting systems, and scalable lead generation frameworks.
+                               </p>
+                               <p>
+                                 He's also an AI and automation coach for Billy Gene Is Marketing, where he helps students inside the BGIM program master the new digital frontier and build income-generating systems using AI. John is certified in AI automation through Kane and Alessia Minkus' accelerator and is an active member of Perry Belcher's elite mastermind.
+                               </p>
+                             </div>
+                           </div>
+                           
+                           <div>
+                             <h3 className="text-xl font-bold text-gray-800 mb-3">Core Skills</h3>
+                             <ul className="space-y-2 text-gray-600">
+                               <li>• AI & Automation Consulting</li>
+                               <li>• Funnel Strategy & Lead Generation</li>
+                               <li>• Website Development with Backend Dashboards</li>
+                               <li>• SEO & Answer Engine Optimization (AEO)</li>
+                               <li>• Performance Marketing & Offer Building</li>
+                               <li>• Client Acquisition Systems for Service-Based Businesses</li>
+                             </ul>
+                           </div>
+                           
+                           <div className="bg-blue-50 p-4 rounded-lg">
+                             <p className="text-gray-700 italic">
+                               "Whether he's building out advanced systems, mentoring entrepreneurs, or scaling agency operations, John Melvin is the go-to expert when results matter and innovation leads the way."
+                             </p>
+                           </div>
+                         </div>
+                       </div>
+                     </DialogContent>
+                   </Dialog>
                  </div>
                </motion.div>
               
