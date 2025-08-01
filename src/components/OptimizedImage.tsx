@@ -36,27 +36,17 @@ export const OptimizedImage = ({
 }: OptimizedImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(priority);
-  const [hasError, setHasError] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
   const placeholderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (priority) {
-      setIsInView(true);
-      return;
-    }
-
-    // Fallback: show image after 2 seconds if intersection observer fails
-    const fallbackTimer = setTimeout(() => {
-      setIsInView(true);
-    }, 2000);
+    if (priority) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsInView(true);
           observer.disconnect();
-          clearTimeout(fallbackTimer);
         }
       },
       { rootMargin: '50px' }
@@ -66,20 +56,12 @@ export const OptimizedImage = ({
       observer.observe(placeholderRef.current);
     }
 
-    return () => {
-      observer.disconnect();
-      clearTimeout(fallbackTimer);
-    };
+    return () => observer.disconnect();
   }, [priority]);
 
   const handleLoad = () => {
     setIsLoaded(true);
     onLoad?.();
-  };
-
-  const handleError = () => {
-    setHasError(true);
-    setIsLoaded(true); // Still set loaded to hide loading states
   };
 
   const generateSrcSet = (baseSrc: string) => {
@@ -142,7 +124,7 @@ export const OptimizedImage = ({
       )}
 
       {/* Actual image */}
-      {isInView && !hasError && (
+      {isInView && (
         <img
           ref={imgRef}
           src={src}
@@ -155,22 +137,18 @@ export const OptimizedImage = ({
           fetchPriority={priority ? "high" : "auto"}
           decoding="async"
           onLoad={handleLoad}
-          onError={handleError}
           className={cn(
             "w-full h-full object-cover transition-opacity duration-300",
-            isLoaded ? "opacity-100" : "opacity-0"
+            isLoaded ? "opacity-100" : "opacity-0",
+            // Mobile-first responsive positioning
+            `object-[${mobilePosition}] md:object-[${desktopPosition}]`
           )}
           style={{
-            objectPosition: window.innerWidth < 768 ? mobilePosition : desktopPosition
-          }}
+            objectPosition: `var(--mobile-position, ${mobilePosition})`,
+            '--mobile-position': mobilePosition,
+            '--desktop-position': desktopPosition
+          } as React.CSSProperties}
         />
-      )}
-
-      {/* Error fallback */}
-      {hasError && (
-        <div className="absolute inset-0 bg-gray-200 flex items-center justify-center">
-          <span className="text-gray-500 text-sm">Image unavailable</span>
-        </div>
       )}
 
       {/* Loading skeleton */}
