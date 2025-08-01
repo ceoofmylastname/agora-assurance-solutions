@@ -1,7 +1,6 @@
 import { Calculator, MessageSquare } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
-import heroFamilyProtection from "@/assets/hero-family-protection.webp";
 import { OptimizedImage } from "@/components/OptimizedImage";
 
 const HeroBanner = () => {
@@ -12,8 +11,8 @@ const HeroBanner = () => {
     <div className="banner-container bg-[#15AFF7] relative overflow-hidden h-[calc(60vh+4rem)] sm:h-[calc(65vh+4rem)] md:h-[calc(500px+4rem)] lg:h-[calc(550px+4rem)] xl:h-[calc(600px+4rem)] w-full">
       <div className="absolute inset-0 bg-[#15AFF7] w-full">
         <OptimizedImage
-          src={heroFamilyProtection}
-          alt="Happy family of four - parents and two children enjoying time together outdoors, representing family protection and security"
+          src="https://storage.googleapis.com/msgsndr/9m2UBN29nuaCWceOgW2Z/media/688cd5f649458dfa9f7eb3c8.png"
+          alt="Professional insurance consultation and coverage planning"
           className="w-full h-full opacity-70"
           priority={true}
           placeholder="blur"
