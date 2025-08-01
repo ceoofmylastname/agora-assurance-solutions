@@ -12,6 +12,10 @@ interface OptimizedImageProps {
   blurDataURL?: string;
   sizes?: string;
   onLoad?: () => void;
+  mobileAspectRatio?: string;
+  desktopAspectRatio?: string;
+  mobilePosition?: string;
+  desktopPosition?: string;
 }
 
 export const OptimizedImage = ({
@@ -24,7 +28,11 @@ export const OptimizedImage = ({
   placeholder = 'empty',
   blurDataURL,
   sizes,
-  onLoad
+  onLoad,
+  mobileAspectRatio,
+  desktopAspectRatio,
+  mobilePosition = 'center',
+  desktopPosition = 'center'
 }: OptimizedImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(priority);
@@ -57,6 +65,11 @@ export const OptimizedImage = ({
   };
 
   const generateSrcSet = (baseSrc: string) => {
+    // For uploaded assets, use the original source
+    if (baseSrc.includes('/lovable-uploads/') || baseSrc.includes('/public/')) {
+      return baseSrc;
+    }
+    
     const ext = baseSrc.split('.').pop();
     const base = baseSrc.replace(`.${ext}`, '');
     
@@ -68,6 +81,24 @@ export const OptimizedImage = ({
       ${baseSrc} 1920w
     `.trim();
   };
+
+  const getResponsiveStyles = () => {
+    const mobileStyles = mobileAspectRatio ? { aspectRatio: mobileAspectRatio } : {};
+    const desktopStyles = desktopAspectRatio ? { aspectRatio: desktopAspectRatio } : {};
+    
+    return {
+      mobile: {
+        ...mobileStyles,
+        objectPosition: mobilePosition
+      },
+      desktop: {
+        ...desktopStyles,
+        objectPosition: desktopPosition
+      }
+    };
+  };
+
+  const responsiveStyles = getResponsiveStyles();
 
   return (
     <div 
@@ -108,8 +139,15 @@ export const OptimizedImage = ({
           onLoad={handleLoad}
           className={cn(
             "w-full h-full object-cover transition-opacity duration-300",
-            isLoaded ? "opacity-100" : "opacity-0"
+            isLoaded ? "opacity-100" : "opacity-0",
+            // Mobile-first responsive positioning
+            `object-[${mobilePosition}] md:object-[${desktopPosition}]`
           )}
+          style={{
+            objectPosition: `var(--mobile-position, ${mobilePosition})`,
+            '--mobile-position': mobilePosition,
+            '--desktop-position': desktopPosition
+          } as React.CSSProperties}
         />
       )}
 

@@ -30,7 +30,7 @@ const HeroCards = () => {
   return (
     <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 mx-auto">
       <motion.div 
-        className="mt-6 md:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6" 
+        className="mt-4 sm:mt-6 md:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6" 
         variants={cardContainerVariants} 
         initial="hidden" 
         animate="visible"

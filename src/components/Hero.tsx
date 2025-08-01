@@ -4,10 +4,10 @@ import HeroCards from "./hero/HeroCards";
 
 const Hero = () => {
   return (
-    <div className="relative w-full -mt-16">
+    <section className="relative w-full -mt-16" aria-label="Hero section with insurance services">
       <HeroBanner />
       <HeroCards />
-    </div>
+    </section>
   );
 };
 
