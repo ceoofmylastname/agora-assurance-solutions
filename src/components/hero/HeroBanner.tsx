@@ -9,24 +9,24 @@ const HeroBanner = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="banner-container bg-[#15AFF7] relative overflow-hidden h-[calc(60vh+4rem)] sm:h-[calc(65vh+4rem)] md:h-[calc(500px+4rem)] lg:h-[calc(550px+4rem)] xl:h-[calc(600px+4rem)] w-full">
+    <div className="banner-container bg-[#15AFF7] relative overflow-hidden h-[70vh] sm:h-[75vh] md:h-[80vh] lg:h-[85vh] xl:h-[90vh] w-full">
       <div className="absolute inset-0 bg-[#15AFF7] w-full">
         <OptimizedImage
           src={heroFamilyProtection}
           alt="Happy family of four - parents and two children enjoying time together outdoors, representing family protection and security"
-          className="w-full h-full opacity-90 brightness-110 contrast-105"
+          className="w-full h-full opacity-70"
           priority={true}
           placeholder="blur"
           blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABgDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAABAMCBf/EACUQAAIBAwMEAwEBAAAAAAAAAAECEQADIQQSMUEFUWETInGBkf/EABYBAQEBAAAAAAAAAAAAAAAAAAIDBP/EABwRAAICAwEBAAAAAAAAAAAAAAABAhEDEiExQf/aAAwDAQACEQMRAD8A5/S6epKmppLam2gO4QfEgZcnHH8VKsNQ9q6zK0MJwQcYr0/TVNsIERURFChRgAV5j/kL2itPqzqEKlLrbgBDLzgfFehGVK0VQQAgVTUan7ySjJPFaYiZgJntRh3bsKtpybUcKQBBV6uJpSq7WQqf4/6itKRsQwPFK+T+xJv0lOKaG4LSyMn3z/lEoKVqnBOHF//Z"
           width={1920}
           height={1080}
           sizes="100vw"
-          mobilePosition="center 20%"
-          desktopPosition="center 30%"
+          mobilePosition="center"
+          desktopPosition="center top"
           mobileAspectRatio="4/3"
           desktopAspectRatio="16/9"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-white"></div>
       </div>
       
       <div className="banner-overlay bg-transparent pt-8 sm:pt-16 md:pt-20 lg:pt-28 w-full">
