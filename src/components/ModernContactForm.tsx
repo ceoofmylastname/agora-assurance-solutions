@@ -516,18 +516,22 @@ const ModernContactForm = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <a
               href="tel:916-288-9400"
-              className="flex items-center gap-3 bg-green-600 hover:bg-green-700 text-white px-6 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group"
+              className="group flex items-center gap-4 bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-primary/20"
             >
-              <Phone className="w-5 h-5" />
+              <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center group-hover:bg-white/20 transition-colors">
+                <Phone className="w-5 h-5" />
+              </div>
               <div className="text-left">
-                <div className="font-semibold">Call Now</div>
-                <div className="text-sm opacity-90">916-288-9400</div>
+                <div className="font-semibold text-lg">Call Now</div>
+                <div className="text-sm opacity-90 font-medium">916-288-9400</div>
               </div>
             </a>
             <div className="flex items-center gap-3 text-muted-foreground">
-              <span className="text-lg">or</span>
+              <div className="w-px h-8 bg-border hidden sm:block"></div>
+              <span className="text-lg font-medium">or</span>
+              <div className="w-px h-8 bg-border hidden sm:block"></div>
             </div>
-            <div className="text-lg font-medium text-gray-700">Fill out the form below</div>
+            <div className="text-lg font-semibold text-primary">Fill out the form below</div>
           </div>
         </div>
         
