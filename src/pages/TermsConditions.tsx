@@ -383,8 +383,8 @@ const TermsConditions = () => {
                           <Mail className="w-5 h-5 text-[#15AFF7] mr-3" />
                           <div>
                             <p className="font-medium text-gray-900">Email</p>
-                            <a href="mailto:legal@agoraassurancesolutions.com" className="text-[#15AFF7] hover:underline">
-                              legal@agoraassurancesolutions.com
+                            <a href="mailto:info@agoraassurancesolutions.com" className="text-[#15AFF7] hover:underline">
+                              info@agoraassurancesolutions.com
                             </a>
                           </div>
                         </div>
