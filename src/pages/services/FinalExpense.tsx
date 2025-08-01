@@ -305,9 +305,9 @@ const FinalExpense = () => {
                   <Card className="h-full hover:shadow-lg transition-all duration-300 hover:scale-105 border-2 border-gray-100 hover:border-red-500/30">
                     <CardContent className="p-6">
                       <div className="flex items-center mb-4">
-                        {[...Array(customer.rating)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 text-yellow-500" />
-                        ))}
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 text-yellow-500" fill="currentColor" />
+                    ))}
                       </div>
                       <p className="text-gray-600 text-sm leading-relaxed mb-4">{customer.story}</p>
                       <div className="text-gray-900 font-bold">{customer.name}</div>
