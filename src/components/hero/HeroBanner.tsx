@@ -1,7 +1,6 @@
 import { Calculator, MessageSquare } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
-import heroFamilyProtection from "@/assets/hero-family-protection.webp";
 import { OptimizedImage } from "@/components/OptimizedImage";
 
 const HeroBanner = () => {
@@ -12,12 +11,11 @@ const HeroBanner = () => {
     <div className="banner-container bg-[#15AFF7] relative overflow-hidden h-[70vh] sm:h-[75vh] md:h-[80vh] lg:h-[85vh] xl:h-[90vh] w-full">
       <div className="absolute inset-0 bg-[#15AFF7] w-full">
         <OptimizedImage
-          src={heroFamilyProtection}
+          src="https://storage.googleapis.com/msgsndr/9m2UBN29nuaCWceOgW2Z/media/688cd5f649458dfa9f7eb3c8.png"
           alt="Happy family of four - parents and two children enjoying time together outdoors, representing family protection and security"
           className="w-full h-full opacity-70"
           priority={true}
           placeholder="blur"
-          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABgDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAABAMCBf/EACUQAAIBAwMEAwEBAAAAAAAAAAECEQADIQQSMUEFUWETInGBkf/EABYBAQEBAAAAAAAAAAAAAAAAAAIDBP/EABwRAAICAwEBAAAAAAAAAAAAAAABAhEDEiExQf/aAAwDAQACEQMRAD8A5/S6epKmppLam2gO4QfEgZcnHH8VKsNQ9q6zK0MJwQcYr0/TVNsIERURFChRgAV5j/kL2itPqzqEKlLrbgBDLzgfFehGVK0VQQAgVTUan7ySjJPFaYiZgJntRh3bsKtpybUcKQBBV6uJpSq7WQqf4/6itKRsQwPFK+T+xJv0lOKaG4LSyMn3z/lEoKVqnBOHF//Z"
           width={1920}
           height={1080}
           sizes="100vw"
