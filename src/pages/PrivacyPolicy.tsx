@@ -308,8 +308,8 @@ const PrivacyPolicy = () => {
                           <Mail className="w-5 h-5 text-[#15AFF7] mr-3" />
                           <div>
                             <p className="font-medium text-gray-900">Email</p>
-                            <a href="mailto:privacy@agoraassurancesolutions.com" className="text-[#15AFF7] hover:underline">
-                              privacy@agoraassurancesolutions.com
+                            <a href="mailto:info@agoraassurancesolutions.com" className="text-[#15AFF7] hover:underline">
+                              info@agoraassurancesolutions.com
                             </a>
                           </div>
                         </div>
