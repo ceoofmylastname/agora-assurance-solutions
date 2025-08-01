@@ -9,7 +9,7 @@ const HeroBanner = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="banner-container bg-[#15AFF7] relative overflow-hidden h-[70vh] sm:h-[75vh] md:h-[80vh] lg:h-[85vh] xl:h-[90vh] w-full">
+    <div className="banner-container bg-[#15AFF7] relative overflow-hidden h-[calc(60vh+4rem)] sm:h-[calc(65vh+4rem)] md:h-[calc(500px+4rem)] lg:h-[calc(550px+4rem)] xl:h-[calc(600px+4rem)] w-full">
       <div className="absolute inset-0 bg-[#15AFF7] w-full">
         <OptimizedImage
           src={heroFamilyProtection}
