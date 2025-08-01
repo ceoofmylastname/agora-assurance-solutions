@@ -14,19 +14,19 @@ const HeroBanner = () => {
         <OptimizedImage
           src={heroFamilyProtection}
           alt="Happy family of four - parents and two children enjoying time together outdoors, representing family protection and security"
-          className="w-full h-full opacity-70"
+          className="w-full h-full opacity-90 brightness-110 contrast-105"
           priority={true}
           placeholder="blur"
           blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABgDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAABAMCBf/EACUQAAIBAwMEAwEBAAAAAAAAAAECEQADIQQSMUEFUWETInGBkf/EABYBAQEBAAAAAAAAAAAAAAAAAAIDBP/EABwRAAICAwEBAAAAAAAAAAAAAAABAhEDEiExQf/aAAwDAQACEQMRAD8A5/S6epKmppLam2gO4QfEgZcnHH8VKsNQ9q6zK0MJwQcYr0/TVNsIERURFChRgAV5j/kL2itPqzqEKlLrbgBDLzgfFehGVK0VQQAgVTUan7ySjJPFaYiZgJntRh3bsKtpybUcKQBBV6uJpSq7WQqf4/6itKRsQwPFK+T+xJv0lOKaG4LSyMn3z/lEoKVqnBOHF//Z"
           width={1920}
           height={1080}
           sizes="100vw"
-          mobilePosition="center"
-          desktopPosition="center top"
+          mobilePosition="center 20%"
+          desktopPosition="center 30%"
           mobileAspectRatio="4/3"
           desktopAspectRatio="16/9"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-white"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60"></div>
       </div>
       
       <div className="banner-overlay bg-transparent pt-8 sm:pt-16 md:pt-20 lg:pt-28 w-full">
