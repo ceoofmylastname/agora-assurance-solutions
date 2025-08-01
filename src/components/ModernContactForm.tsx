@@ -498,16 +498,6 @@ const ModernContactForm = () => {
 
   return (
     <section id="contact" className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30 flex items-center justify-center py-16 px-4">
-      {/* Quick Call Option */}
-      <div className="fixed bottom-6 right-6 z-50">
-        <a
-          href="tel:916-288-9400"
-          className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group"
-        >
-          <Phone className="w-5 h-5" />
-          <span className="font-medium">Call 916-288-9400</span>
-        </a>
-      </div>
       <div className="w-full max-w-3xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -518,9 +508,27 @@ const ModernContactForm = () => {
           <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent mb-6">
             CONTACT US
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-8">
             Ready to protect what matters most? Let's discuss your insurance needs and find the perfect solution for you.
           </p>
+          
+          {/* Contact Options */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+            <a
+              href="tel:916-288-9400"
+              className="flex items-center gap-3 bg-green-600 hover:bg-green-700 text-white px-6 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group"
+            >
+              <Phone className="w-5 h-5" />
+              <div className="text-left">
+                <div className="font-semibold">Call Now</div>
+                <div className="text-sm opacity-90">916-288-9400</div>
+              </div>
+            </a>
+            <div className="flex items-center gap-3 text-muted-foreground">
+              <span className="text-lg">or</span>
+            </div>
+            <div className="text-lg font-medium text-gray-700">Fill out the form below</div>
+          </div>
         </div>
         
         {/* Progress Bar */}
