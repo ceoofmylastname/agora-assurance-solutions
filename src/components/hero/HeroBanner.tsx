@@ -13,7 +13,7 @@ const HeroBanner = () => {
         <OptimizedImage
           src="https://storage.googleapis.com/msgsndr/9m2UBN29nuaCWceOgW2Z/media/688cd5f649458dfa9f7eb3c8.png"
           alt="Happy family of four - parents and two children enjoying time together outdoors, representing family protection and security"
-          className="w-full h-full opacity-70"
+          className="w-full h-full opacity-95 brightness-110 contrast-110"
           priority={true}
           placeholder="blur"
           width={1920}
@@ -24,7 +24,7 @@ const HeroBanner = () => {
           mobileAspectRatio="4/3"
           desktopAspectRatio="16/9"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-white"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60"></div>
       </div>
       
       <div className="banner-overlay bg-transparent pt-8 sm:pt-16 md:pt-20 lg:pt-28 w-full">
