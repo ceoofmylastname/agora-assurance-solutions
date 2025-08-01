@@ -498,6 +498,16 @@ const ModernContactForm = () => {
 
   return (
     <section id="contact" className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30 flex items-center justify-center py-16 px-4">
+      {/* Quick Call Option */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <a
+          href="tel:916-288-9400"
+          className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group"
+        >
+          <Phone className="w-5 h-5" />
+          <span className="font-medium">Call 916-288-9400</span>
+        </a>
+      </div>
       <div className="w-full max-w-3xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
