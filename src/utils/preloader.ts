@@ -1,11 +1,13 @@
 // Critical resource preloader
 export const preloadCriticalResources = () => {
-  // Preload hero image
+  // Preload hero image with correct path
   const heroImageLink = document.createElement('link');
   heroImageLink.rel = 'preload';
   heroImageLink.as = 'image';
   heroImageLink.href = '/src/assets/hero-family-protection.webp';
   heroImageLink.type = 'image/webp';
+  heroImageLink.imageSizes = '100vw';
+  heroImageLink.imageSrcset = '/src/assets/hero-family-protection.webp 1920w';
   document.head.appendChild(heroImageLink);
 
   // Preload critical fonts
