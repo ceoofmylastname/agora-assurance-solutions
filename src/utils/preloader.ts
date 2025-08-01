@@ -4,10 +4,10 @@ export const preloadCriticalResources = () => {
   const heroImageLink = document.createElement('link');
   heroImageLink.rel = 'preload';
   heroImageLink.as = 'image';
-  heroImageLink.href = 'https://storage.googleapis.com/msgsndr/9m2UBN29nuaCWceOgW2Z/media/688cd5f649458dfa9f7eb3c8.png';
-  heroImageLink.type = 'image/png';
+  heroImageLink.href = '/src/assets/hero-family-protection.webp';
+  heroImageLink.type = 'image/webp';
   heroImageLink.imageSizes = '100vw';
-  heroImageLink.imageSrcset = 'https://storage.googleapis.com/msgsndr/9m2UBN29nuaCWceOgW2Z/media/688cd5f649458dfa9f7eb3c8.png 1920w';
+  heroImageLink.imageSrcset = '/src/assets/hero-family-protection.webp 1920w';
   document.head.appendChild(heroImageLink);
 
   // Preload critical fonts
