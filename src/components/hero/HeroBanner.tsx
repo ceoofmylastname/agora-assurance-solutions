@@ -13,7 +13,7 @@ const HeroBanner = () => {
       <div className="absolute inset-0 bg-[#15AFF7] w-full">
         <OptimizedImage
           src={heroFamilyProtection}
-          alt="Happy multi-generational family sitting together on couch - representing family protection and insurance security"
+          alt="Happy family of four - parents and two children enjoying time together outdoors, representing family protection and security"
           className={`w-full h-full opacity-70 ${isMobile ? 'object-center' : 'object-[center_top]'}`}
           priority={true}
           placeholder="blur"
