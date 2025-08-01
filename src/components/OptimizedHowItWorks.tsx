@@ -2,6 +2,7 @@ import { memo } from "react";
 import { Search, Calculator, UserCheck, ShieldCheck } from 'lucide-react';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 import { useNavigate } from 'react-router-dom';
+import { MotionOptimized } from '@/components/MotionOptimized';
 
 const steps = [
   {
@@ -39,7 +40,13 @@ const OptimizedHowItWorks = memo(() => {
   const navigate = useNavigate();
 
   return (
-    <section id="how-it-works" ref={ref} className="bg-white py-16 md:py-24 w-full">
+    <MotionOptimized 
+      ref={ref}
+      className="bg-white py-16 md:py-24 w-full"
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      reduced={true}
+    >
       <div className="w-full px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
         <div className={`text-center mb-12 md:mb-16 transition-all duration-700 ${isInView ? 'animate-fade-in opacity-100' : 'opacity-0'}`}>
           <div className="inline-block mb-2 px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">
@@ -110,7 +117,7 @@ const OptimizedHowItWorks = memo(() => {
           </div>
         </div>
       </div>
-    </section>
+    </MotionOptimized>
   );
 });
 

@@ -5,6 +5,9 @@ import ErrorBoundary from '@/components/ErrorBoundary';
 import BreadcrumbNavigation from '@/components/BreadcrumbNavigation';
 import { PerformanceMonitor } from '@/components/PerformanceMonitor';
 import { useEffect, Suspense } from 'react';
+import { LazySection } from '@/components/LazySection';
+import { OptimizedSkeleton } from '@/components/OptimizedSkeleton';
+import { preloadCriticalResources, prefetchNextSections } from '@/utils/preloader';
 import { 
   LazyFeatures, 
   LazyProductsSection, 
@@ -15,16 +18,24 @@ import {
   LazyFAQSection, 
   LazyModernContactForm 
 } from '@/components/LazyComponents';
-import { SectionSkeleton, CardGridSkeleton, ContactFormSkeleton } from '@/components/LoadingFallback';
 
 const Index = () => {
-  // Fix any ID conflicts when the page loads
   useEffect(() => {
+    // Preload critical resources
+    preloadCriticalResources();
+    
+    // Prefetch next sections after hero loads
+    const timer = setTimeout(() => {
+      prefetchNextSections();
+    }, 1000);
+
+    // Fix any ID conflicts when the page loads
     const contactElements = document.querySelectorAll('[id="contact"]');
     if (contactElements.length > 1) {
-      // If there are multiple elements with id="contact", rename one
       contactElements[1].id = 'contact-footer';
     }
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -50,46 +61,69 @@ const Index = () => {
       <ErrorBoundary>
         <Hero />
       </ErrorBoundary>
-      <ErrorBoundary fallback={<CardGridSkeleton />}>
-        <Suspense fallback={<CardGridSkeleton />}>
-          <LazyProductsSection />
-        </Suspense>
-      </ErrorBoundary>
-      <ErrorBoundary fallback={<SectionSkeleton />}>
-        <Suspense fallback={<SectionSkeleton />}>
-          <LazyHowItWorks />
-        </Suspense>
-      </ErrorBoundary>
-      <ErrorBoundary fallback={<SectionSkeleton />}>
-        <Suspense fallback={<SectionSkeleton />}>
-          <LazyFeatures />
-        </Suspense>
-      </ErrorBoundary>
-      <ErrorBoundary fallback={<SectionSkeleton />}>
-        <Suspense fallback={<SectionSkeleton />}>
-          <LazyWhyAgora />
-        </Suspense>
-      </ErrorBoundary>
-      <ErrorBoundary fallback={<SectionSkeleton />}>
-        <Suspense fallback={<SectionSkeleton />}>
-          <LazyCustomerStories />
-        </Suspense>
-      </ErrorBoundary>
-      <ErrorBoundary fallback={<SectionSkeleton />}>
-        <Suspense fallback={<SectionSkeleton />}>
-          <LazyBlogSection />
-        </Suspense>
-      </ErrorBoundary>
-      <ErrorBoundary fallback={<SectionSkeleton />}>
-        <Suspense fallback={<SectionSkeleton />}>
-          <LazyFAQSection />
-        </Suspense>
-      </ErrorBoundary>
-      <ErrorBoundary fallback={<ContactFormSkeleton />}>
-        <Suspense fallback={<ContactFormSkeleton />}>
-          <LazyModernContactForm />
-        </Suspense>
-      </ErrorBoundary>
+      <LazySection fallback={<OptimizedSkeleton variant="card" height="400px" />}>
+        <ErrorBoundary>
+          <Suspense fallback={<OptimizedSkeleton variant="card" height="400px" />}>
+            <LazyProductsSection />
+          </Suspense>
+        </ErrorBoundary>
+      </LazySection>
+
+      <LazySection fallback={<OptimizedSkeleton variant="card" height="350px" />}>
+        <ErrorBoundary>
+          <Suspense fallback={<OptimizedSkeleton variant="card" height="350px" />}>
+            <LazyHowItWorks />
+          </Suspense>
+        </ErrorBoundary>
+      </LazySection>
+
+      <LazySection fallback={<OptimizedSkeleton variant="card" height="300px" />}>
+        <ErrorBoundary>
+          <Suspense fallback={<OptimizedSkeleton variant="card" height="300px" />}>
+            <LazyFeatures />
+          </Suspense>
+        </ErrorBoundary>
+      </LazySection>
+
+      <LazySection fallback={<OptimizedSkeleton variant="card" height="300px" />}>
+        <ErrorBoundary>
+          <Suspense fallback={<OptimizedSkeleton variant="card" height="300px" />}>
+            <LazyWhyAgora />
+          </Suspense>
+        </ErrorBoundary>
+      </LazySection>
+
+      <LazySection fallback={<OptimizedSkeleton variant="card" height="400px" />}>
+        <ErrorBoundary>
+          <Suspense fallback={<OptimizedSkeleton variant="card" height="400px" />}>
+            <LazyCustomerStories />
+          </Suspense>
+        </ErrorBoundary>
+      </LazySection>
+
+      <LazySection fallback={<OptimizedSkeleton variant="card" height="350px" />}>
+        <ErrorBoundary>
+          <Suspense fallback={<OptimizedSkeleton variant="card" height="350px" />}>
+            <LazyBlogSection />
+          </Suspense>
+        </ErrorBoundary>
+      </LazySection>
+
+      <LazySection fallback={<OptimizedSkeleton variant="card" height="300px" />}>
+        <ErrorBoundary>
+          <Suspense fallback={<OptimizedSkeleton variant="card" height="300px" />}>
+            <LazyFAQSection />
+          </Suspense>
+        </ErrorBoundary>
+      </LazySection>
+
+      <LazySection fallback={<OptimizedSkeleton variant="card" height="600px" />}>
+        <ErrorBoundary>
+          <Suspense fallback={<OptimizedSkeleton variant="card" height="600px" />}>
+            <LazyModernContactForm />
+          </Suspense>
+        </ErrorBoundary>
+      </LazySection>
       <PerformanceMonitor />
     </PageLayout>
   );
