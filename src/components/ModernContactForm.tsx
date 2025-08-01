@@ -11,6 +11,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
 import { sendContactEmail } from '@/utils/emailService';
+import { sanitizeInput, sanitizeEmail, sanitizePhone, RateLimiter } from '@/utils/security';
 
 const formSchema = z.object({
   firstName: z.string().min(2, 'First name must be at least 2 characters'),
@@ -112,6 +113,7 @@ const ModernContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formStartTime] = useState<number>(Date.now());
+  const rateLimiter = new RateLimiter(3, 300000); // 3 submissions per 5 minutes
   
   const { toast } = useToast();
   
@@ -334,6 +336,17 @@ const ModernContactForm = () => {
       return;
     }
 
+    // Rate limiting check
+    const clientId = 'contact-form'; // In real app, use IP or user ID
+    if (!rateLimiter.isAllowed(clientId)) {
+      toast({
+        title: "Rate Limit Exceeded",
+        description: "Please wait before submitting another message.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
     
     try {
@@ -375,14 +388,38 @@ const ModernContactForm = () => {
         return;
       }
       
-      // Create emailData object with all required properties
+      // Sanitize and validate all inputs
+      const sanitizedEmail = sanitizeEmail(data.email);
+      const sanitizedPhone = sanitizePhone(data.phone);
+      
+      if (!sanitizedEmail) {
+        toast({
+          title: "Invalid Email",
+          description: "Please enter a valid email address.",
+          variant: "destructive",
+        });
+        setIsSubmitting(false);
+        return;
+      }
+      
+      if (!sanitizedPhone) {
+        toast({
+          title: "Invalid Phone",
+          description: "Please enter a valid phone number.",
+          variant: "destructive",
+        });
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Create emailData object with sanitized data
       const emailData = {
-        firstName: data.firstName,
-        lastName: data.lastName,
-        email: data.email,
-        phone: data.phone,
-        service: data.service,
-        message: data.message
+        firstName: sanitizeInput(data.firstName),
+        lastName: sanitizeInput(data.lastName),
+        email: sanitizedEmail,
+        phone: sanitizedPhone,
+        service: sanitizeInput(data.service),
+        message: sanitizeInput(data.message)
       };
       
       // Enhanced webhook data with all form fields
@@ -403,10 +440,8 @@ const ModernContactForm = () => {
         'last_name': emailData.lastName
       };
 
-      const WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/TLhrYb7SRrWrly615tCI/webhook-trigger/198f9752-05be-412e-b5dc-4dd58a596f56";
-
-      // Send to webhook
-      const response = await fetch(WEBHOOK_URL, {
+      // Send to secure webhook endpoint
+      const response = await fetch('/api/submit-contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

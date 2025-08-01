@@ -4,6 +4,7 @@ import { MessageCircle, X, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import { formatResponse, sanitizeInput, RateLimiter } from '@/utils/security';
 
 interface Message {
   id: string;
@@ -20,6 +21,7 @@ const MemoryWidget = () => {
   const [isOffline, setIsOffline] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const rateLimiter = useRef(new RateLimiter(10, 300000)); // 10 messages per 5 minutes
   const { toast } = useToast();
 
   const scrollToBottom = () => {
@@ -30,20 +32,36 @@ const MemoryWidget = () => {
     scrollToBottom();
   }, [messages]);
 
-  const formatResponse = (text: string) => {
-    return text
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\*(.*?)\*/g, '<em>$1</em>')
-      .replace(/\n/g, '<br>')
-      .replace(/<u>(.*?)<\/u>/g, '<u>$1</u>');
-  };
+  // Removed formatResponse function - now using the secure version from utils/security
 
   const sendMessage = async () => {
     if (!inputValue.trim() || isLoading) return;
 
+    // Rate limiting check
+    const clientId = 'memory-widget'; // In real app, use IP or user ID
+    if (!rateLimiter.current.isAllowed(clientId)) {
+      toast({
+        title: "Rate Limit Exceeded",
+        description: "Please wait before sending another message.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Sanitize input
+    const sanitizedInput = sanitizeInput(inputValue);
+    if (!sanitizedInput) {
+      toast({
+        title: "Invalid Input",
+        description: "Please enter a valid message.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     const userMessage: Message = {
       id: Date.now().toString(),
-      content: inputValue,
+      content: sanitizedInput,
       isUser: true,
       timestamp: new Date()
     };
@@ -58,14 +76,15 @@ const MemoryWidget = () => {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
       
-      const response = await fetch('https://n8n.a3innercircle.com/webhook/e926a6b0-1bc1-4aec-a665-76da4683c46c', {
+      // Use environment variable for webhook URL (moved to edge function)
+      const response = await fetch('/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           date: dateCode,
-          message: inputValue
+          message: sanitizedInput
         }),
         signal: controller.signal
       });
@@ -233,11 +252,12 @@ const MemoryWidget = () => {
               <Textarea
                 ref={textareaRef}
                 value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
+                onChange={(e) => setInputValue(e.target.value.slice(0, 1000))} // Limit input length
                 onKeyPress={handleKeyPress}
                 placeholder={isOffline ? "AI is offline..." : "Type a message..."}
                 className="flex-1 min-h-[40px] max-h-[100px] resize-none border-border"
                 disabled={isLoading}
+                maxLength={1000}
               />
               <Button
                 onClick={sendMessage}

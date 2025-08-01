@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft, Clock, User, Calendar, Share2, BookOpen, TrendingUp, Shield, Heart } from 'lucide-react';
 import PageLayout from '@/components/PageLayout';
 import SEO from '@/components/SEO';
+import { sanitizeHtml } from '@/utils/security';
 import lifeInsuranceAnalysis from '@/assets/life-insurance-analysis.webp';
 import mortgageProtectionTruth from '@/assets/mortgage-protection-truth.webp';
 import retirementStrategyComparison from '@/assets/retirement-strategy-comparison.webp';
@@ -1497,7 +1498,7 @@ const BlogPost = () => {
             }} className="flex-1">
                 <Card className="p-8 lg:p-12 bg-background/80 backdrop-blur-sm border-0 shadow-lg">
                   <div className="blog-content prose prose-lg max-w-none" dangerouslySetInnerHTML={{
-                  __html: post.content
+                  __html: sanitizeHtml(post.content)
                 }} />
 
                   {/* Tags */}
