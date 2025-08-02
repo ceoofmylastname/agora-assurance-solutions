@@ -9,12 +9,27 @@ export const navigateToContact = () => {
     return;
   }
   
-  // If we're already on the home page, smooth scroll to contact section
-  const contactSection = document.getElementById('contact');
-  if (contactSection) {
-    contactSection.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    });
+  // Enhanced scroll with retry for same-page navigation
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+      return true;
+    }
+    return false;
+  };
+
+  // Try immediate scroll, then retry if needed
+  if (!scrollToContact()) {
+    let attempts = 0;
+    const interval = setInterval(() => {
+      attempts++;
+      if (scrollToContact() || attempts >= 30) {
+        clearInterval(interval);
+      }
+    }, 100);
   }
 };

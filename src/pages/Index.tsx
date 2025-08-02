@@ -34,15 +34,35 @@ const Index = () => {
     // Handle scroll to contact section if hash is present
     const handleHashScroll = () => {
       if (window.location.hash === '#contact') {
-        setTimeout(() => {
+        // Preload contact form if hash navigation detected
+        import('@/components/ModernContactForm').then(() => {
+          console.log('Contact form preloaded for hash navigation');
+        });
+
+        const scrollToContact = () => {
           const contactSection = document.getElementById('contact');
           if (contactSection) {
             contactSection.scrollIntoView({
               behavior: 'smooth',
               block: 'start'
             });
+            return true; // Success
           }
-        }, 500); // Wait for components to load
+          return false; // Failed, element not found
+        };
+
+        // Try immediate scroll first
+        if (!scrollToContact()) {
+          // If immediate scroll fails, retry with intervals
+          let attempts = 0;
+          const maxAttempts = 50; // 5 seconds max
+          const interval = setInterval(() => {
+            attempts++;
+            if (scrollToContact() || attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 100); // Check every 100ms
+        }
       }
     };
 
