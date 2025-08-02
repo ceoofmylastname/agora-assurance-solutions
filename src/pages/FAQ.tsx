@@ -572,6 +572,30 @@ const FAQ = () => {
                   "@type": "Answer",
                   "text": "Eligibility depends on age, health profile, and policy type. Submit basic details for a no-cost assessment and offer within days."
                 }
+              },
+              {
+                "@type": "Question",
+                "name": "What's the difference between term life and mortgage protection insurance?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Term life covers any financial need for a set term, while mortgage protection ties the death benefit directly to your loan balance."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the minimum coverage amount for mortgage protection insurance?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Minimums start at $50,000, with higher limits based on your lender's requirements."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How is mortgage protection different from regular term life?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Mortgage protection's benefit decreases as your loan balance declines, ensuring your home is paid off if something happens."
+                }
               }
             ]
           })}
