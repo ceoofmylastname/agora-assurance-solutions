@@ -367,7 +367,22 @@ const IndexedUniversalLifeModal: React.FC<IndexedUniversalLifeModalProps> = ({ i
         </Tabs>
 
         <div className="flex justify-center pt-4 border-t">
-          <Button onClick={onClose} className="bg-[#15AFF7] hover:bg-[#0D94D1] text-white">
+          <Button 
+            onClick={() => {
+              onClose();
+              // Navigate to home page contact section
+              if (window.location.pathname !== '/') {
+                window.location.href = '/#contact-info';
+                return;
+              }
+              
+              const contactSection = document.getElementById('contact-info');
+              if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }} 
+            className="bg-[#15AFF7] hover:bg-[#0D94D1] text-white"
+          >
             Contact a Specialist
           </Button>
         </div>

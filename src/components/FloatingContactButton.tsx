@@ -17,8 +17,15 @@ const FloatingContactButton = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  const scrollToContact = (e: React.MouseEvent) => {
+  const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
+    // If we're not on the home page, navigate there first
+    if (window.location.pathname !== '/') {
+      window.location.href = '/#contact-info';
+      return;
+    }
+    
+    // If we're already on the home page, smooth scroll to contact section
     const contactSection = document.getElementById('contact-info');
     if (contactSection) {
       contactSection.scrollIntoView({
@@ -27,6 +34,14 @@ const FloatingContactButton = () => {
     }
   };
   if (!isVisible) return null;
-  return;
+  
+  return (
+    <Button 
+      onClick={handleContactClick}
+      className="fixed bottom-6 right-6 z-50 bg-[#15AFF7] hover:bg-[#0D94D1] text-white rounded-full p-4 shadow-lg hover:shadow-xl transition-all duration-300 animate-pulse"
+    >
+      <MessageSquare className="w-6 h-6" />
+    </Button>
+  );
 };
 export default FloatingContactButton;

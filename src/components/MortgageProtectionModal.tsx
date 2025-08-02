@@ -467,7 +467,22 @@ const MortgageProtectionModal: React.FC<MortgageProtectionModalProps> = ({ isOpe
         </Tabs>
 
         <div className="flex justify-center pt-4 border-t">
-          <Button onClick={onClose} className="bg-blue-600 hover:bg-blue-700 text-white">
+          <Button 
+            onClick={() => {
+              onClose();
+              // Navigate to home page contact section
+              if (window.location.pathname !== '/') {
+                window.location.href = '/#contact-info';
+                return;
+              }
+              
+              const contactSection = document.getElementById('contact-info');
+              if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }} 
+            className="bg-blue-600 hover:bg-blue-700 text-white"
+          >
             Contact a Specialist
           </Button>
         </div>

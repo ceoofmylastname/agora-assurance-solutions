@@ -215,7 +215,13 @@ const CustomerStories = () => {
             </p>
             <button 
               onClick={() => {
-                const contactSection = document.getElementById('contact');
+                // If we're not on the home page, navigate there first
+                if (window.location.pathname !== '/') {
+                  window.location.href = '/#contact-info';
+                  return;
+                }
+                
+                const contactSection = document.getElementById('contact-info');
                 if (contactSection) {
                   contactSection.scrollIntoView({ behavior: 'smooth' });
                 }

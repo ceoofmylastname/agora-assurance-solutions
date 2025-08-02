@@ -16,8 +16,15 @@ const Features = () => {
   const totalSprints = 3;
   const isMobile = useIsMobile();
 
-  const scrollToContact = (e: React.MouseEvent) => {
+  const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
+    // If we're not on the home page, navigate there first
+    if (window.location.pathname !== '/') {
+      window.location.href = '/#contact-info';
+      return;
+    }
+    
+    // If we're already on the home page, smooth scroll to contact section
     const contactSection = document.getElementById('contact-info');
     if (contactSection) {
       contactSection.scrollIntoView({
@@ -284,7 +291,7 @@ const Features = () => {
           
           <div className="text-center">
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-              <Button onClick={scrollToContact} className="inline-flex items-center px-4 sm:px-6 py-3 bg-gray-700 hover:bg-gray-800 text-white rounded-lg shadow-md hover:shadow-lg transition-all group w-full sm:w-auto justify-center">
+              <Button onClick={handleContactClick} className="inline-flex items-center px-4 sm:px-6 py-3 bg-gray-700 hover:bg-gray-800 text-white rounded-lg shadow-md hover:shadow-lg transition-all group w-full sm:w-auto justify-center">
                 Get Your Free Quote
                 <MessageSquare className="ml-2 w-4 h-4 group-hover:scale-110 transition-transform" />
               </Button>
