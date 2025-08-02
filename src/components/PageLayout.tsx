@@ -26,7 +26,7 @@ const PageLayout = ({ children, showContact = true }: PageLayoutProps) => {
         {children}
       </main>
       <Footer />
-      {showContact && <FloatingContactButton />}
+      {/* {showContact && <FloatingContactButton />} */}
     </div>
   );
 };
