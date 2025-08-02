@@ -7,7 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import SEO from '@/components/SEO';
-import heroFamilyProtection from '@/assets/hero-family-protection.webp';
+const heroFamilyProtection = '/lovable-uploads/99f03d19-d521-4882-9c68-a2bbe122b1f9.png';
 
 const ProtectionPlans = () => {
   useEffect(() => {

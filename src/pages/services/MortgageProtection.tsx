@@ -6,7 +6,7 @@ import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from "@/components/ui/card";
 import SEO from '@/components/SEO';
 import MortgageProtectionModal from '@/components/MortgageProtectionModal';
-import heroFamily from '@/assets/hero-family-protection.webp';
+const heroFamily = '/lovable-uploads/99f03d19-d521-4882-9c68-a2bbe122b1f9.png';
 
 const MortgageProtection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

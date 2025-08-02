@@ -78,7 +78,7 @@ const Index = () => {
       <SEO 
         title="Get Instant Insurance Quotes & Expert Guidance - Agora Assurance" 
         description="Compare life insurance, mortgage protection, and annuity plans instantly. Get personalized quotes in seconds with guidance from licensed advisors. Zero confusion, total peace of mind."
-        imageUrl="/src/assets/hero-family-protection.webp"
+        imageUrl="/lovable-uploads/99f03d19-d521-4882-9c68-a2bbe122b1f9.png"
         keywords={[
           'instant insurance quotes', 
           'compare life insurance plans', 

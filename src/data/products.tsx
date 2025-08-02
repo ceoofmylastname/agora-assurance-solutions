@@ -2,7 +2,7 @@ import React from 'react';
 import { Shield, Home, Heart, TrendingUp, DollarSign, FileText } from 'lucide-react';
 import annuitiesCard from '@/assets/annuities-card.webp';
 import termLifeFamily from '@/assets/term-life-family.webp';
-import heroFamilyProtection from '@/assets/hero-family-protection.webp';
+const heroFamilyProtection = '/lovable-uploads/99f03d19-d521-4882-9c68-a2bbe122b1f9.png';
 import finalExpenseCouple from '@/assets/final-expense-couple.webp';
 import retirementPlanningCouple from '@/assets/retirement-planning-couple.webp';
 
