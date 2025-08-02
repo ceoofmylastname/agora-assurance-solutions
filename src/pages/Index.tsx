@@ -31,11 +31,22 @@ const Index = () => {
       prefetchNextSections();
     }, 1000);
 
-    // Fix any ID conflicts when the page loads
-    const contactElements = document.querySelectorAll('[id="contact"]');
-    if (contactElements.length > 1) {
-      contactElements[1].id = 'contact-footer';
-    }
+    // Handle scroll to contact section if hash is present
+    const handleHashScroll = () => {
+      if (window.location.hash === '#contact') {
+        setTimeout(() => {
+          const contactSection = document.getElementById('contact');
+          if (contactSection) {
+            contactSection.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        }, 500); // Wait for components to load
+      }
+    };
+
+    handleHashScroll();
 
     return () => clearTimeout(timer);
   }, []);
