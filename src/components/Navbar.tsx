@@ -4,6 +4,7 @@ import { Menu, X, ChevronDown, ExternalLink, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link, useLocation } from 'react-router-dom';
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
+import { navigateToContact } from '@/utils/contactNavigation';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -277,7 +278,7 @@ const Navbar = () => {
                   )}
                   
                   <NavigationMenuItem>
-                    <button onClick={() => scrollToSection('contact')} className={cn("px-4 py-2 rounded-md transition-colors", shouldUseDarkText ? "bg-gray-200 text-gray-700 hover:bg-gray-300" : "bg-gray-700 text-white hover:bg-gray-600")}>
+                    <button onClick={navigateToContact} className={cn("px-4 py-2 rounded-md transition-colors", shouldUseDarkText ? "bg-gray-200 text-gray-700 hover:bg-gray-300" : "bg-gray-700 text-white hover:bg-gray-600")}>
                       Contact Us
                     </button>
                   </NavigationMenuItem>
@@ -468,7 +469,7 @@ const Navbar = () => {
               
               <motion.div variants={menuItemVariants} className="pt-4">
                 <button 
-                  onClick={() => scrollToSection('contact')} 
+                  onClick={navigateToContact} 
                   className="w-full px-6 py-4 bg-gradient-to-r from-[#15AFF7] to-blue-600 text-white rounded-lg text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                 >
                   Contact Us
