@@ -29,8 +29,8 @@ const HeroBanner = () => {
             width={1920}
             height={1280}
             sizes="100vw"
-            mobilePosition="center 10%"
-            desktopPosition="center 20%"
+            mobilePosition="center top"
+            desktopPosition="center 10%"
             mobileAspectRatio="4/5"
             desktopAspectRatio="16/9"
           />
