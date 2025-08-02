@@ -556,6 +556,22 @@ const FAQ = () => {
                   "@type": "Answer",
                   "text": "Home improvements, debt consolidation, education, or emergencies. Borrow and repay as needed during the draw period."
                 }
+              },
+              {
+                "@type": "Question",
+                "name": "What is a life settlement?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "A life settlement lets policyholders aged 65+ sell an existing life-insurance policy for a lump sum—more than surrender value, less than death benefit."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do I know if I qualify for a life settlement?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Eligibility depends on age, health profile, and policy type. Submit basic details for a no-cost assessment and offer within days."
+                }
               }
             ]
           })}
