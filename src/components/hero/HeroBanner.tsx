@@ -12,29 +12,12 @@ const HeroBanner = () => {
   return (
     <div className="banner-container bg-[#15AFF7] relative overflow-hidden h-[calc(55vh+4rem)] sm:h-[calc(60vh+4rem)] md:h-[calc(500px+4rem)] lg:h-[calc(550px+4rem)] xl:h-[calc(600px+4rem)] w-full">
       <div className="absolute inset-0 bg-[#15AFF7] w-full">
-        <ErrorBoundaryImage fallback={
-          <div className="w-full h-full bg-gradient-to-b from-[#15AFF7] to-blue-600 flex items-center justify-center">
-            <div className="text-white text-center opacity-70">
-              <div className="text-xl font-semibold">Modern Family Protection</div>
-              <div className="text-sm mt-2">Insurance Solutions</div>
-            </div>
+        <div className="w-full h-full bg-gradient-to-b from-[#15AFF7] to-blue-600 flex items-center justify-center">
+          <div className="text-white text-center opacity-30">
+            <div className="text-xl font-semibold">Modern Family Protection</div>
+            <div className="text-sm mt-2">Insurance Solutions</div>
           </div>
-        }>
-          <OptimizedImage
-            src={heroFamilyImage}
-            alt="Happy family portrait representing family protection and security through insurance"
-            className="w-full h-full opacity-75"
-            priority={true}
-            placeholder="blur"
-            width={1920}
-            height={1280}
-            sizes="100vw"
-            mobilePosition="center center"
-            desktopPosition="center center"
-            mobileAspectRatio="4/5"
-            desktopAspectRatio="16/9"
-          />
-        </ErrorBoundaryImage>
+        </div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-white"></div>
       </div>
       
