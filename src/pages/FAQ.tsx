@@ -372,6 +372,38 @@ const FAQ = () => {
                   "@type": "Answer",
                   "text": "The SECURE Act's RMD and retirement-plan changes do not apply to TFRAs, allowing uninterrupted tax-free growth."
                 }
+              },
+              {
+                "@type": "Question",
+                "name": "What is a Debt Reduction Plan and how does it work?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "A Debt Reduction Plan accelerates your payoff using proven snowball or avalanche methods. We analyze your balances, set a custom schedule, and guide you to eliminate debt faster."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do I pay off my loans faster with Agora's plan?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We recommend either paying smallest balances first (snowball) or highest-interest balances first (avalanche) based on your goals—both slash total interest and shorten payoff time."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I use a HELOC to consolidate my debt?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes—a Home Equity Line of Credit can refinance high-interest debt at lower rates. See if you qualify on our HELOC page."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do you offer an interactive debt-payoff calculator?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Absolutely—we provide a calculator where you enter balances and rates to visualize payoff timelines and interest savings. It's free and instant."
+                }
               }
             ]
           })}
