@@ -24,119 +24,248 @@ const FAQ = () => {
 
   const faqData = [
     {
-      category: "Getting Started with Agora",
+      category: "Tax-Free Retirement Accounts (TFRA)",
       questions: [
         {
-          question: "How is Agora different from other insurance brokers?",
-          answer: "Agora combines cutting-edge technology with independent consumer advocacy. Unlike traditional brokers tied to specific carriers, we compare dozens of top-rated companies instantly to find your best rates and coverage options with zero bias."
+          question: "What is a Tax-Free Retirement Account (TFRA) and who qualifies?",
+          answer: "A TFRA lets you grow retirement savings completely tax-free, with no required minimum distributions or annual contribution limits. Any U.S. resident with earned income can apply."
         },
         {
-          question: "How can I compare insurance plans quickly?",
-          answer: "Explore tailored life, mortgage-protection, final expense, annuity, and tax-solutions plans side-by-side with instant comparisons from top carriers through our advanced comparison platform."
+          question: "How does a TFRA differ from a Roth IRA?",
+          answer: "Unlike a Roth IRA, TFRAs have no RMDs and truly unlimited contributions. Withdrawals—including earnings—are always tax-free, but contributions aren't tax-deductible."
         },
         {
-          question: "How fast can I get a personalized quote?",
-          answer: "Instantly receive customized quotes from top carriers in seconds—no phone calls, forms, or waiting required through our streamlined digital platform."
+          question: "Can I roll over my 401(k) or IRA into a TFRA?",
+          answer: "Yes—you can transfer retirement funds from a 401(k) or traditional IRA into a TFRA without triggering immediate taxes. Your funds then grow and distribute tax-free."
         },
         {
-          question: "Does Agora charge fees for their services?",
-          answer: "No, Agora's services are completely free to consumers. We're compensated directly by insurance carriers when you purchase coverage, so you never pay consultation or comparison fees."
+          question: "Are there any income limits for contributing to a TFRA?",
+          answer: "No—there are no IRS-imposed income or contribution limits for TFRAs, making them ideal for high earners seeking additional tax-free growth. Always check your custodian's policies."
         },
         {
-          question: "Can I speak with a real person at Agora?",
-          answer: "Absolutely. All clients receive hands-on guidance from state-licensed professionals who ensure solutions align with your family's specific goals and budget throughout the entire process."
+          question: "How do I track my TFRA performance?",
+          answer: "Track monthly statements in your secure portal or download CSV reports for deeper analysis. Use our built-in performance dashboard to monitor gains and allocations."
+        },
+        {
+          question: "What is a Roth IRA vs a TFRA?",
+          answer: "A Roth IRA uses after-tax contributions with annual limits and no tax on qualified distributions, while a TFRA has no contribution limits, no RMDs, and tax-free growth and withdrawals."
+        },
+        {
+          question: "How do catch-up contributions work for retirement accounts?",
+          answer: "Account holders aged 50+ can contribute extra above standard limits in many plans—but TFRAs have no caps, so you bypass catch-up rules entirely."
+        },
+        {
+          question: "What is a Roth conversion?",
+          answer: "A Roth conversion transfers funds from a traditional IRA or 401(k) into a Roth IRA by paying taxes on pre-tax amounts; this does not apply to TFRAs since they're post-tax vehicles."
+        },
+        {
+          question: "How does required minimum distribution (RMD) affect my TFRA?",
+          answer: "TFRAs do not have RMD requirements, unlike traditional IRAs and 401(k)s, giving you full control over withdrawal timing."
+        },
+        {
+          question: "What are the tax benefits of a TFRA?",
+          answer: "TFRA earnings and qualified distributions are entirely tax-free, offering an efficient way to grow and transfer wealth."
+        },
+        {
+          question: "Are contributions to a TFRA tax-deductible?",
+          answer: "No—TFRA contributions use after-tax dollars and aren't deductible, but the trade-off is tax-free growth and withdrawals."
+        },
+        {
+          question: "Can I name beneficiaries for my TFRA?",
+          answer: "Yes—you designate primary and contingent beneficiaries to ensure a smooth, tax-free transfer to heirs."
+        },
+        {
+          question: "How does estate planning incorporate my TFRA?",
+          answer: "TFRAs pass outside of probate, providing a direct, tax-free inheritance for your beneficiaries."
+        },
+        {
+          question: "How do Roth IRAs compare to TFRAs?",
+          answer: "Roth IRAs cap annual contributions and enforce qualified distribution rules, whereas TFRAs have no limits, no RMDs, and tax-free distributions anytime."
+        },
+        {
+          question: "What is a SEP IRA?",
+          answer: "A SEP IRA is a retirement plan for self-employed or small business owners with higher contribution limits—but it still has RMDs, unlike a TFRA."
+        },
+        {
+          question: "What is a SIMPLE IRA?",
+          answer: "A SIMPLE IRA is a low-cost plan for small businesses requiring mandatory employer contributions; it has contribution limits and RMDs."
+        },
+        {
+          question: "How do I choose between a brokerage account and a TFRA?",
+          answer: "Consider tax treatment, contribution limits, and distribution flexibility: TFRAs offer tax-free growth with no caps, while brokerage gains are taxable."
+        },
+        {
+          question: "Can I hold real estate in a TFRA?",
+          answer: "Certain self-directed TFRAs allow real estate investments, subject to custodian policies and IRS rules."
+        },
+        {
+          question: "What investment options are available in a TFRA?",
+          answer: "Stocks, bonds, ETFs, mutual funds, and other securities—depending on your TFRA custodian's offerings."
+        },
+        {
+          question: "How much can I contribute annually to my TFRA?",
+          answer: "There are no IRS contribution limits for TFRAs, though custodians may set practical minimums or maximums."
+        },
+        {
+          question: "What happens if I exceed TFRA contribution limits?",
+          answer: "Since TFRAs have no IRS limits, over-contribution isn't a concern—always confirm any custodian rules."
+        },
+        {
+          question: "How do distributions work from my TFRA?",
+          answer: "Qualified withdrawals—including earnings—are tax-free. Non-qualified distributions require proof of basis but avoid tax on gains."
+        },
+        {
+          question: "What is a taxable distribution?",
+          answer: "A distribution without proper basis documentation may be subject to ordinary income tax on amounts exceeding contributions."
+        },
+        {
+          question: "How does Section 72(t) apply to my TFRA?",
+          answer: "Section 72(t) penalty-free early withdrawal rules apply to IRAs/401(k)s—but not to TFRAs, which have no early-withdrawal penalties."
+        },
+        {
+          question: "Can I take a hardship distribution from my TFRA?",
+          answer: "TFRAs do not support hardship withdrawals; consider policy loans or annuity withdrawals for emergencies."
+        },
+        {
+          question: "How does the SECURE Act affect TFRAs?",
+          answer: "The SECURE Act's RMD and retirement-plan changes do not apply to TFRAs, allowing uninterrupted tax-free growth."
         }
       ]
     },
     {
-      category: "Insurance Products & Coverage",
+      category: "Debt Reduction Plans",
       questions: [
         {
-          question: "What services does Agora offer beyond life insurance?",
-          answer: "Comprehensive financial protection including tax strategies, asset protection, annuities, life settlements, and retirement planning solutions tailored to your unique financial situation."
+          question: "What is a Debt Reduction Plan and how does it work?",
+          answer: "A Debt Reduction Plan accelerates your payoff using proven snowball or avalanche methods. We analyze your balances, set a custom schedule, and guide you to eliminate debt faster."
         },
         {
-          question: "How much does $500k term life insurance cost for a 35-year-old?",
-          answer: "Healthy 35-year-olds typically pay $25-50 monthly for $500k term life coverage, depending on term length and health factors."
+          question: "How do I pay off my loans faster with Agora's plan?",
+          answer: "We recommend either paying smallest balances first (snowball) or highest-interest balances first (avalanche) based on your goals—both slash total interest and shorten payoff time."
         },
         {
-          question: "What happens when my term life insurance expires?",
-          answer: "When term life insurance expires, coverage ends. You can often convert to permanent life insurance, renew at higher rates, or purchase new coverage subject to health underwriting."
+          question: "Can I use a HELOC to consolidate my debt?",
+          answer: "Yes—a Home Equity Line of Credit can refinance high-interest debt at lower rates. See if you qualify on our HELOC page."
         },
         {
-          question: "Can I get life insurance if I have diabetes and high blood pressure?",
-          answer: "Yes, many carriers offer coverage for controlled diabetes and hypertension. We specialize in finding policies for pre-existing conditions."
-        },
-        {
-          question: "What's the difference between term and whole life insurance?",
-          answer: "Term life provides temporary coverage at lower costs, while whole life combines permanent protection with cash value growth. Term is ideal for temporary needs; whole life for lifelong protection."
+          question: "Do you offer an interactive debt-payoff calculator?",
+          answer: "Absolutely—we provide a calculator where you enter balances and rates to visualize payoff timelines and interest savings. It's free and instant."
         }
       ]
     },
     {
-      category: "Application Process",
+      category: "Fixed Indexed Annuities (FIA)",
       questions: [
         {
-          question: "How does Agora simplify the insurance process?",
-          answer: "We streamline every step from quote to coverage in 24 hours with transparent, real-time updates and continuous communication throughout your journey with our licensed advisors."
+          question: "What is a Fixed Indexed Annuity (FIA)?",
+          answer: "An FIA ties your principal to a market index—like the S&P 500—for upside gains while guaranteeing you never lose your initial investment. It blends growth potential with downside protection."
         },
         {
-          question: "What information do I need to get an accurate quote?",
-          answer: "Basic personal information including age, health status, coverage amount needed, and beneficiary details. Our smart questionnaire guides you through each step efficiently."
+          question: "What are caps, spreads, and participation rates?",
+          answer: "Caps limit maximum credited gains; spreads reduce gains by a set percentage; participation rates determine what percentage of index gains you receive."
         },
         {
-          question: "How long does it take to get approved for term life insurance?",
-          answer: "Simple term life policies can be approved in 24-48 hours, while larger amounts may take 2-4 weeks for medical underwriting."
+          question: "How long is the surrender charge period?",
+          answer: "Surrender charges typically last 5–10 years, tapering down until you have full liquidity."
         },
         {
-          question: "How to buy life insurance online without talking to a salesman?",
-          answer: "Our digital platform offers complete online application with optional expert support. No pushy sales tactics—just transparent information and choice."
+          question: "What are the surrender charges for fixed indexed annuities?",
+          answer: "Charges apply if you withdraw above the free-withdrawal limit during the surrender-charge period. Review your contract for specifics."
         },
         {
-          question: "Best life insurance companies for people with pre-existing conditions?",
-          answer: "We work with carriers like Mutual of Omaha, Foresters, and American National who specialize in covering diabetes, heart conditions, and other health issues."
+          question: "What is a free withdrawal provision in annuities?",
+          answer: "You can withdraw up to 10 % of your contract value annually without surrender charges."
+        },
+        {
+          question: "How do annuity income riders work?",
+          answer: "Income riders guarantee a lifetime income stream based on a roll-up rate and payout percentage."
+        },
+        {
+          question: "What is a guaranteed lifetime withdrawal benefit (GLWB)?",
+          answer: "A GLWB rider ensures you can withdraw a set percentage of contract value for life, regardless of market performance."
+        },
+        {
+          question: "Can I annuitize my contract for lifetime income?",
+          answer: "Yes—you can convert your annuity into a guaranteed income stream for life."
+        },
+        {
+          question: "What happens when my annuity's surrender charge period ends?",
+          answer: "Surrender charges drop to zero, giving you full liquidity (subject to tax rules)."
+        },
+        {
+          question: "How are annuity earnings taxed?",
+          answer: "Earnings are taxed as ordinary income upon withdrawal or distribution."
+        },
+        {
+          question: "What is the impact of inflation on annuities?",
+          answer: "Inflation can erode fixed payments; consider cost-of-living riders or indexed products for inflation protection."
+        },
+        {
+          question: "How does market volatility impact FIAs?",
+          answer: "Indexed annuities protect principal with downside floors while capturing upside within caps."
+        },
+        {
+          question: "How do interest rate changes affect annuity crediting?",
+          answer: "Crediting rates adjust based on prevailing rates, impacting future interest credits."
+        },
+        {
+          question: "What is a participation rate in FIAs?",
+          answer: "The percentage of index gains credited to your annuity contract."
+        },
+        {
+          question: "How does a floor protect my annuity principal?",
+          answer: "A floor guarantees you won't lose principal during negative index periods."
+        },
+        {
+          question: "How do I withdraw funds from my annuity?",
+          answer: "Submit a withdrawal request in your portal—funds are typically disbursed within 5–7 business days."
+        },
+        {
+          question: "What fees apply to annuity withdrawals?",
+          answer: "Fees depend on surrender schedules, free-withdrawal allowances, and carrier rules."
         }
       ]
     },
     {
-      category: "Service Areas & Support",
+      category: "Home Equity Line of Credit (HELOC)",
       questions: [
         {
-          question: "Which states does Agora serve?",
-          answer: "Agora provides insurance services nationwide across all 50 states, with state-licensed advisors who understand local regulations and carrier availability in your area."
+          question: "How do I qualify for a HELOC?",
+          answer: "Qualify with at least 15 % equity, a solid credit score, and stable income. Rates reset annually but stay below most unsecured loans."
         },
         {
-          question: "Do insurance rates vary by state with Agora?",
-          answer: "Yes, insurance rates can vary by state due to local regulations, demographics, and carrier competition. Our platform shows you the best available rates in your specific location."
-        },
-        {
-          question: "Can I trust Agora with my personal information?",
-          answer: "Absolutely. We use bank-level encryption and strict privacy protocols. Your information is never sold to third parties and is only shared with carriers you choose to work with."
-        },
-        {
-          question: "What if I need help after purchasing my policy?",
-          answer: "Agora provides ongoing support for all policy holders including claims assistance, policy reviews, and life changes that may affect your coverage needs."
+          question: "What can I use my HELOC funds for?",
+          answer: "Home improvements, debt consolidation, education, or emergencies. Borrow and repay as needed during the draw period."
         }
       ]
     },
     {
-      category: "Why Choose Agora",
+      category: "Life Settlements",
       questions: [
         {
-          question: "Why should I choose Agora Assurance Solutions?",
-          answer: "With 50+ years combined experience, 25,000+ lives protected, and $500M+ in tax-free benefits created, we offer technology-driven comparison tools and licensed expert guidance."
+          question: "What is a life settlement?",
+          answer: "A life settlement lets policyholders aged 65+ sell an existing life-insurance policy for a lump sum—more than surrender value, less than death benefit."
         },
         {
-          question: "What makes Agora different from other insurance companies?",
-          answer: "Our unique technology-driven approach combines AI comparison tools with independent consumer advocacy and state-licensed expertise for transparent, personalized service without carrier bias."
+          question: "How do I know if I qualify for a life settlement?",
+          answer: "Eligibility depends on age, health profile, and policy type. Submit basic details for a no-cost assessment and offer within days."
+        }
+      ]
+    },
+    {
+      category: "Mortgage Protection Insurance",
+      questions: [
+        {
+          question: "What's the difference between term life and mortgage protection insurance?",
+          answer: "Term life covers any financial need for a set term, while mortgage protection ties the death benefit directly to your loan balance."
         },
         {
-          question: "How does Agora make money if their service is free?",
-          answer: "Insurance carriers pay us commissions when you purchase coverage through our platform. This standard industry practice allows us to offer free comparison and advisory services to consumers."
+          question: "What is the minimum coverage amount for mortgage protection insurance?",
+          answer: "Minimums start at $50,000, with higher limits based on your lender's requirements."
         },
         {
-          question: "Do you work with reputable insurance companies?",
-          answer: "Yes, we exclusively partner with A-rated or higher insurance carriers with strong financial stability ratings from agencies like AM Best, Standard & Poor's, and Moody's."
+          question: "How is mortgage protection different from regular term life?",
+          answer: "Mortgage protection's benefit decreases as your loan balance declines, ensuring your home is paid off if something happens."
         }
       ]
     }
@@ -151,10 +280,10 @@ const FAQ = () => {
   })).filter(category => category.questions.length > 0);
 
   const popularQuestions = [
-    faqData[0].questions[1], // How can I compare insurance plans quickly?
-    faqData[1].questions[1], // How much does term life insurance cost?
-    faqData[2].questions[0], // How does Agora simplify the insurance process?
-    faqData[4].questions[0]  // Why should I choose Agora Assurance Solutions?
+    faqData[0].questions[0], // What is a Tax-Free Retirement Account (TFRA) and who qualifies?
+    faqData[1].questions[0], // What is a Debt Reduction Plan and how does it work?
+    faqData[2].questions[0], // What is a Fixed Indexed Annuity (FIA)?
+    faqData[3].questions[0]  // How do I qualify for a HELOC?
   ];
 
   return (
