@@ -139,15 +139,11 @@ export const OptimizedImage = ({
           onLoad={handleLoad}
           className={cn(
             "w-full h-full object-cover transition-opacity duration-300",
-            isLoaded ? "opacity-100" : "opacity-0",
-            // Mobile-first responsive positioning
-            `object-[${mobilePosition}] md:object-[${desktopPosition}]`
+            isLoaded ? "opacity-100" : "opacity-0"
           )}
           style={{
-            objectPosition: `var(--mobile-position, ${mobilePosition})`,
-            '--mobile-position': mobilePosition,
-            '--desktop-position': desktopPosition
-          } as React.CSSProperties}
+            objectPosition: window.innerWidth < 768 ? mobilePosition : desktopPosition
+          }}
         />
       )}
 
