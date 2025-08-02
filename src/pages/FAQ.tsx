@@ -404,6 +404,142 @@ const FAQ = () => {
                   "@type": "Answer",
                   "text": "Absolutely—we provide a calculator where you enter balances and rates to visualize payoff timelines and interest savings. It's free and instant."
                 }
+              },
+              {
+                "@type": "Question",
+                "name": "What is a Fixed Indexed Annuity (FIA)?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "An FIA ties your principal to a market index—like the S&P 500—for upside gains while guaranteeing you never lose your initial investment. It blends growth potential with downside protection."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What are caps, spreads, and participation rates?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Caps limit maximum credited gains; spreads reduce gains by a set percentage; participation rates determine what percentage of index gains you receive."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How long is the surrender charge period?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Surrender charges typically last 5–10 years, tapering down until you have full liquidity."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What are the surrender charges for fixed indexed annuities?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Charges apply if you withdraw above the free-withdrawal limit during the surrender-charge period. Review your contract for specifics."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is a free withdrawal provision in annuities?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "You can withdraw up to 10 % of your contract value annually without surrender charges."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do annuity income riders work?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Income riders guarantee a lifetime income stream based on a roll-up rate and payout percentage."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is a guaranteed lifetime withdrawal benefit (GLWB)?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "A GLWB rider ensures you can withdraw a set percentage of contract value for life, regardless of market performance."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I annuitize my contract for lifetime income?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes—you can convert your annuity into a guaranteed income stream for life."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What happens when my annuity's surrender charge period ends?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Surrender charges drop to zero, giving you full liquidity (subject to tax rules)."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How are annuity earnings taxed?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Earnings are taxed as ordinary income upon withdrawal or distribution."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the impact of inflation on annuities?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Inflation can erode fixed payments; consider cost-of-living riders or indexed products for inflation protection."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How does market volatility impact FIAs?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Indexed annuities protect principal with downside floors while capturing upside within caps."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do interest rate changes affect annuity crediting?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Crediting rates adjust based on prevailing rates, impacting future interest credits."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is a participation rate in FIAs?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The percentage of index gains credited to your annuity contract."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How does a floor protect my annuity principal?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "A floor guarantees you won't lose principal during negative index periods."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do I withdraw funds from my annuity?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Submit a withdrawal request in your portal—funds are typically disbursed within 5–7 business days."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What fees apply to annuity withdrawals?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Fees depend on surrender schedules, free-withdrawal allowances, and carrier rules."
+                }
               }
             ]
           })}
