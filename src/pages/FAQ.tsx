@@ -540,6 +540,22 @@ const FAQ = () => {
                   "@type": "Answer",
                   "text": "Fees depend on surrender schedules, free-withdrawal allowances, and carrier rules."
                 }
+              },
+              {
+                "@type": "Question",
+                "name": "How do I qualify for a HELOC?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Qualify with at least 15 % equity, a solid credit score, and stable income. Rates reset annually but stay below most unsecured loans."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What can I use my HELOC funds for?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Home improvements, debt consolidation, education, or emergencies. Borrow and repay as needed during the draw period."
+                }
               }
             ]
           })}
