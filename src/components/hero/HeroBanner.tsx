@@ -1,7 +1,7 @@
 import { Calculator, MessageSquare } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
-import familyPortraitHero from "@/assets/modern-family-hero.jpg";
+import familyPortraitHero from "@/assets/modern-family-portrait-hero.jpg";
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { ErrorBoundaryImage } from "@/components/ErrorBoundaryImage";
 
