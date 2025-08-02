@@ -247,6 +247,19 @@ iframe[src*="consent"],
 [class*="cookiebanner"],
 [id*="CookieBanner"],
 [data-module="cookie"],
+/* Mobile-responsive image styles */
+.mobile-responsive-image {
+  aspect-ratio: var(--aspect-ratio, auto);
+  object-position: var(--object-position, center);
+}
+
+@media (max-width: 767px) {
+  .mobile-responsive-image {
+    aspect-ratio: var(--mobile-aspect-ratio, var(--aspect-ratio, auto));
+    object-position: var(--mobile-object-position, var(--object-position, center));
+  }
+}
+
 [data-name*="cookie"],
 .trustarc-banner-container {
   display: none !important;

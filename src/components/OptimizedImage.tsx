@@ -83,22 +83,16 @@ export const OptimizedImage = ({
   };
 
   const getResponsiveStyles = () => {
-    const mobileStyles = mobileAspectRatio ? { aspectRatio: mobileAspectRatio } : {};
-    const desktopStyles = desktopAspectRatio ? { aspectRatio: desktopAspectRatio } : {};
-    
+    // Use CSS custom properties for responsive behavior
     return {
-      mobile: {
-        ...mobileStyles,
-        objectPosition: mobilePosition
-      },
-      desktop: {
-        ...desktopStyles,
-        objectPosition: desktopPosition
-      }
-    };
+      '--aspect-ratio': desktopAspectRatio || 'auto',
+      '--object-position': desktopPosition || 'center',
+      '--mobile-aspect-ratio': mobileAspectRatio || desktopAspectRatio || 'auto',
+      '--mobile-object-position': mobilePosition || desktopPosition || 'center'
+    } as React.CSSProperties;
   };
 
-  const responsiveStyles = getResponsiveStyles();
+  
 
   return (
     <div 
@@ -138,12 +132,10 @@ export const OptimizedImage = ({
           decoding="async"
           onLoad={handleLoad}
           className={cn(
-            "w-full h-full object-cover transition-opacity duration-300",
+            "w-full h-full object-cover transition-opacity duration-300 mobile-responsive-image",
             isLoaded ? "opacity-100" : "opacity-0"
           )}
-          style={{
-            objectPosition: window.innerWidth < 768 ? mobilePosition : desktopPosition
-          }}
+          style={getResponsiveStyles()}
         />
       )}
 

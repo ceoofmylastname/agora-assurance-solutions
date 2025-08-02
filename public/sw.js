@@ -2,7 +2,6 @@
 const CACHE_NAME = 'agora-insurance-v1';
 const STATIC_CACHE = [
   '/',
-  '/src/assets/hero-family-protection.webp',
   'https://fonts.gstatic.com/s/spacegrotesk/v15/V8mQQoyeyHLkT11dPUxLBzT0DL1E7kSyYGfFwv6E3QjsJgnw.woff2'
 ];
 
@@ -35,10 +34,9 @@ self.addEventListener('fetch', event => {
   // Only handle GET requests
   if (event.request.method !== 'GET') return;
   
-  // Handle static assets
+  // Handle static assets  
   if (event.request.url.includes('/assets/') || 
-      event.request.url.includes('fonts.gstatic.com') ||
-      event.request.url.includes('hero-family-protection.webp')) {
+      event.request.url.includes('fonts.gstatic.com')) {
     
     event.respondWith(
       caches.match(event.request)
