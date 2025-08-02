@@ -4,11 +4,13 @@ import { Menu, X, ChevronDown, ExternalLink, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link, useLocation } from 'react-router-dom';
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
-import { navigateToContact } from '@/utils/contactNavigation';
+import { ContactModal } from '@/components/ContactModal';
+import { setContactModalTrigger } from '@/utils/contactNavigation';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const location = useLocation();
   
   const isHomePage = location.pathname === '/';
@@ -25,7 +27,14 @@ const Navbar = () => {
       }
     };
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    
+    // Set up the modal trigger for the contact navigation utility
+    setContactModalTrigger(() => setIsContactModalOpen(true));
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      setContactModalTrigger(null);
+    };
   }, []);
 
   const toggleMenu = () => {
@@ -278,7 +287,7 @@ const Navbar = () => {
                   )}
                   
                   <NavigationMenuItem>
-                    <button onClick={navigateToContact} className={cn("px-4 py-2 rounded-md transition-colors", shouldUseDarkText ? "bg-gray-200 text-gray-700 hover:bg-gray-300" : "bg-gray-700 text-white hover:bg-gray-600")}>
+                    <button onClick={() => setIsContactModalOpen(true)} className={cn("px-4 py-2 rounded-md transition-colors", shouldUseDarkText ? "bg-gray-200 text-gray-700 hover:bg-gray-300" : "bg-gray-700 text-white hover:bg-gray-600")}>
                       Contact Us
                     </button>
                   </NavigationMenuItem>
@@ -469,7 +478,10 @@ const Navbar = () => {
               
               <motion.div variants={menuItemVariants} className="pt-4">
                 <button 
-                  onClick={navigateToContact} 
+                  onClick={() => {
+                    setIsContactModalOpen(true);
+                    setIsMenuOpen(false);
+                  }} 
                   className="w-full px-6 py-4 bg-gradient-to-r from-[#15AFF7] to-blue-600 text-white rounded-lg text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                 >
                   Contact Us
@@ -479,6 +491,12 @@ const Navbar = () => {
           </motion.div>
         </motion.div>
       )}
+      
+      {/* Contact Modal */}
+      <ContactModal 
+        isOpen={isContactModalOpen} 
+        onOpenChange={setIsContactModalOpen} 
+      />
     </>
   );
 };

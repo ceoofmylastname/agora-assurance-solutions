@@ -1,9 +1,23 @@
 /**
  * Unified contact navigation utility
- * Ensures all contact buttons redirect to the "GET IN TOUCH" section on the home page
+ * Handles both modal trigger and scroll navigation
  */
+
+// Global state for contact modal
+let contactModalTrigger: (() => void) | null = null;
+
+export const setContactModalTrigger = (trigger: (() => void) | null) => {
+  contactModalTrigger = trigger;
+};
+
 export const navigateToContact = () => {
-  // If we're not on the home page, navigate there first
+  // If modal trigger is available, use it
+  if (contactModalTrigger) {
+    contactModalTrigger();
+    return;
+  }
+  
+  // Fallback: navigate to contact section on homepage
   if (window.location.pathname !== '/') {
     window.location.href = '/#contact';
     return;
