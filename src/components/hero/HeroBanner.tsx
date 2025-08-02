@@ -1,7 +1,7 @@
 import { Calculator, MessageSquare } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
-import modernFamilyHero from "@/assets/modern-family-hero.jpg";
+import familyPortraitHero from "@/assets/family-portrait-hero.jpg";
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { ErrorBoundaryImage } from "@/components/ErrorBoundaryImage";
 
@@ -10,7 +10,7 @@ const HeroBanner = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="banner-container bg-[#15AFF7] relative overflow-hidden h-[calc(60vh+4rem)] sm:h-[calc(65vh+4rem)] md:h-[calc(500px+4rem)] lg:h-[calc(550px+4rem)] xl:h-[calc(600px+4rem)] w-full">
+    <div className="banner-container bg-[#15AFF7] relative overflow-hidden h-[calc(55vh+4rem)] sm:h-[calc(60vh+4rem)] md:h-[calc(500px+4rem)] lg:h-[calc(550px+4rem)] xl:h-[calc(600px+4rem)] w-full">
       <div className="absolute inset-0 bg-[#15AFF7] w-full">
         <ErrorBoundaryImage fallback={
           <div className="w-full h-full bg-gradient-to-b from-[#15AFF7] to-blue-600 flex items-center justify-center">
@@ -21,17 +21,17 @@ const HeroBanner = () => {
           </div>
         }>
           <OptimizedImage
-            src={modernFamilyHero}
-            alt="Modern family working together around a table with laptops, representing collaboration, protection, and modern family values"
+            src={familyPortraitHero}
+            alt="Happy modern family portrait - husband, wife and children smiling together, representing family protection and security through insurance"
             className="w-full h-full opacity-75"
             priority={true}
             placeholder="blur"
             width={1920}
             height={1280}
             sizes="100vw"
-            mobilePosition="center 30%"
+            mobilePosition="center 20%"
             desktopPosition="center center"
-            mobileAspectRatio="3/4"
+            mobileAspectRatio="4/5"
             desktopAspectRatio="16/9"
           />
         </ErrorBoundaryImage>
