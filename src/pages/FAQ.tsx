@@ -6,6 +6,7 @@ import SEO from '@/components/SEO';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { Helmet } from 'react-helmet-async';
 
 const FAQ = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -158,6 +159,224 @@ const FAQ = () => {
 
   return (
     <PageLayout>
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is a Tax-Free Retirement Account (TFRA) and who qualifies?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "A TFRA lets you grow retirement savings completely tax-free, with no required minimum distributions or annual contribution limits. Any U.S. resident with earned income can apply."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How does a TFRA differ from a Roth IRA?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Unlike a Roth IRA, TFRAs have no RMDs and truly unlimited contributions. Withdrawals—including earnings—are always tax-free, but contributions aren't tax-deductible."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I roll over my 401(k) or IRA into a TFRA?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes—you can transfer retirement funds from a 401(k) or traditional IRA into a TFRA without triggering immediate taxes. Your funds then grow and distribute tax-free."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Are there any income limits for contributing to a TFRA?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No—there are no IRS-imposed income or contribution limits for TFRAs, making them ideal for high earners seeking additional tax-free growth. Always check your custodian's policies."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do I track my TFRA performance?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Track monthly statements in your secure portal or download CSV reports for deeper analysis. Use our built-in performance dashboard to monitor gains and allocations."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is a Roth IRA vs a TFRA?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "A Roth IRA uses after-tax contributions with annual limits and no tax on qualified distributions, while a TFRA has no contribution limits, no RMDs, and tax-free growth and withdrawals."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do catch-up contributions work for retirement accounts?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Account holders aged 50+ can contribute extra above standard limits in many plans—but TFRAs have no caps, so you bypass catch-up rules entirely."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is a Roth conversion?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "A Roth conversion transfers funds from a traditional IRA or 401(k) into a Roth IRA by paying taxes on pre-tax amounts; this does not apply to TFRAs since they're post-tax vehicles."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How does required minimum distribution (RMD) affect my TFRA?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "TFRAs do not have RMD requirements, unlike traditional IRAs and 401(k)s, giving you full control over withdrawal timing."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What are the tax benefits of a TFRA?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "TFRA earnings and qualified distributions are entirely tax-free, offering an efficient way to grow and transfer wealth."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Are contributions to a TFRA tax-deductible?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No—TFRA contributions use after-tax dollars and aren't deductible, but the trade-off is tax-free growth and withdrawals."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I name beneficiaries for my TFRA?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes—you designate primary and contingent beneficiaries to ensure a smooth, tax-free transfer to heirs."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How does estate planning incorporate my TFRA?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "TFRAs pass outside of probate, providing a direct, tax-free inheritance for your beneficiaries."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do Roth IRAs compare to TFRAs?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Roth IRAs cap annual contributions and enforce qualified distribution rules, whereas TFRAs have no limits, no RMDs, and tax-free distributions anytime."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is a SEP IRA?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "A SEP IRA is a retirement plan for self-employed or small business owners with higher contribution limits—but it still has RMDs, unlike a TFRA."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is a SIMPLE IRA?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "A SIMPLE IRA is a low-cost plan for small businesses requiring mandatory employer contributions; it has contribution limits and RMDs."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do I choose between a brokerage account and a TFRA?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Consider tax treatment, contribution limits, and distribution flexibility: TFRAs offer tax-free growth with no caps, while brokerage gains are taxable."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I hold real estate in a TFRA?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Certain self-directed TFRAs allow real estate investments, subject to custodian policies and IRS rules."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What investment options are available in a TFRA?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Stocks, bonds, ETFs, mutual funds, and other securities—depending on your TFRA custodian's offerings."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How much can I contribute annually to my TFRA?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "There are no IRS contribution limits for TFRAs, though custodians may set practical minimums or maximums."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What happens if I exceed TFRA contribution limits?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Since TFRAs have no IRS limits, over-contribution isn't a concern—always confirm any custodian rules."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do distributions work from my TFRA?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Qualified withdrawals—including earnings—are tax-free. Non-qualified distributions require proof of basis but avoid tax on gains."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is a taxable distribution?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "A distribution without proper basis documentation may be subject to ordinary income tax on amounts exceeding contributions."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How does Section 72(t) apply to my TFRA?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Section 72(t) penalty-free early withdrawal rules apply to IRAs/401(k)s—but not to TFRAs, which have no early-withdrawal penalties."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I take a hardship distribution from my TFRA?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "TFRAs do not support hardship withdrawals; consider policy loans or annuity withdrawals for emergencies."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How does the SECURE Act affect TFRAs?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The SECURE Act's RMD and retirement-plan changes do not apply to TFRAs, allowing uninterrupted tax-free growth."
+                }
+              }
+            ]
+          })}
+        </script>
+      </Helmet>
       <SEO 
         title="Frequently Asked Questions - Agora Assurance Solutions"
         description="Get answers to common questions about life insurance, coverage options, application process, and working with Agora Assurance Solutions. Expert guidance made simple."
