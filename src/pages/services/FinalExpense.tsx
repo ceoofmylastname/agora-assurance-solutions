@@ -6,10 +6,12 @@ import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from "@/components/ui/card";
 import SEO from '@/components/SEO';
 import FinalExpenseEducationModal from '@/components/FinalExpenseEducationModal';
+import { ContactModal } from '@/components/ContactModal';
 import finalExpenseHero from '@/assets/final-expense-hero-couple.jpg';
 
 const FinalExpense = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -342,7 +344,10 @@ const FinalExpense = () => {
                 >
                   Get Coverage Information
                 </button>
-                <button className="px-8 py-4 border-2 border-red-500 text-red-500 rounded-lg hover:bg-red-500 hover:text-white transition-all font-medium">
+                <button 
+                  onClick={() => setIsContactModalOpen(true)}
+                  className="px-8 py-4 border-2 border-red-500 text-red-500 rounded-lg hover:bg-red-500 hover:text-white transition-all font-medium"
+                >
                   Speak with Agent
                 </button>
               </motion.div>
@@ -352,6 +357,7 @@ const FinalExpense = () => {
       </section>
 
       <FinalExpenseEducationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <ContactModal isOpen={isContactModalOpen} onOpenChange={setIsContactModalOpen} />
     </PageLayout>
   );
 };
