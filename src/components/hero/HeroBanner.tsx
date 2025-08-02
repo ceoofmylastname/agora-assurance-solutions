@@ -23,7 +23,7 @@ const HeroBanner = () => {
           <OptimizedImage
             src={familyPortraitHero}
             alt="Happy modern family portrait - husband, wife and children smiling together, representing family protection and security through insurance"
-            className="w-full h-full opacity-75"
+            className="w-full h-full opacity-75 scale-50 object-cover"
             priority={true}
             placeholder="blur"
             width={1920}
