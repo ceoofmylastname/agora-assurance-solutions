@@ -83,12 +83,16 @@ export const OptimizedImage = ({
   };
 
   const getResponsiveStyles = () => {
-    // Use CSS custom properties for responsive behavior
+    // Use CSS custom properties for responsive behavior with enhanced mobile optimization
     return {
       '--aspect-ratio': desktopAspectRatio || 'auto',
       '--object-position': desktopPosition || 'center',
       '--mobile-aspect-ratio': mobileAspectRatio || desktopAspectRatio || 'auto',
-      '--mobile-object-position': mobilePosition || desktopPosition || 'center'
+      '--mobile-object-position': mobilePosition || desktopPosition || 'center',
+      // Enhanced mobile optimization for hero images
+      objectFit: 'cover',
+      width: '100%',
+      height: '100%'
     } as React.CSSProperties;
   };
 
