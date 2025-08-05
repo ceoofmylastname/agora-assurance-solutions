@@ -1372,11 +1372,10 @@ const About = () => {
             }} transition={{
               duration: 0.6,
               delay: 1.2
-            }} className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-r from-[#15AFF7]/20 to-blue-600/20 rounded-lg scale-105 transition-all duration-300"></div>
-                <Link to="/careers" className="relative inline-flex items-center px-8 py-4 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-colors shadow-lg font-medium">
+            }} className="relative">
+                <Link to="/careers" className="group inline-flex items-center px-8 py-4 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-all duration-200 shadow-lg font-medium cursor-pointer hover:shadow-xl hover:scale-105 active:scale-95">
                   Join Our Team
-                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="ml-2 w-4 h-4 group-hover:animate-pulse transition-all" />
                 </Link>
               </motion.div>
             </div>
