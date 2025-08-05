@@ -296,7 +296,7 @@ const About = () => {
                         <div className="relative bg-white rounded-xl border border-gray-200 p-6 shadow-lg group-hover:shadow-xl transition-all duration-300 h-[380px] flex flex-col">
                           <div className="flex justify-center mb-4">
                             <div className="h-20 w-20 rounded-full overflow-hidden border-4 border-indigo-500/30">
-                              <img alt="John Melvin" className="w-full h-full object-cover object-center" src="/lovable-uploads/idea_to_launch_blog_post_pic" />
+                              <img alt="John Melvin" className="w-full h-full object-cover object-center" src="/lovable-uploads/901d8619-8060-4f79-be62-452dfb6c77d2.png" />
                             </div>
                           </div>
                           <div className="text-center flex-grow flex flex-col">
@@ -315,7 +315,7 @@ const About = () => {
                     <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
                       <div className="p-6">
                         <div className="flex items-center gap-6 mb-6">
-                          <img src="/lovable-uploads/idea_to_launch_blog_post_pic" alt="John Melvin" className="w-24 h-24 rounded-full object-cover object-center" />
+                          <img src="/lovable-uploads/901d8619-8060-4f79-be62-452dfb6c77d2.png" alt="John Melvin" className="w-24 h-24 rounded-full object-cover object-center" />
                           <div>
                             <h2 className="text-3xl font-bold text-gray-900">John Melvin</h2>
                             <p className="text-indigo-500 text-xl font-semibold">Director of Marketing</p>
