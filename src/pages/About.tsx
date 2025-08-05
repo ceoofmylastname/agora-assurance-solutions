@@ -916,7 +916,7 @@ const About = () => {
                             <img alt="Sean Fogelson - Director of Training & Development" className="w-full h-full object-cover object-center" src="/lovable-uploads/6cf856c2-ebee-49a3-85c9-23f3905aa18b.png" />
                           </div>
                           <h3 className="text-xl font-bold text-gray-900 mb-1">Sean Fogelson</h3>
-                          <p className="text-emerald-500 font-medium mb-3">Director of Training & Development</p>
+                          <p className="text-emerald-500 font-medium mb-3">National Sales Director</p>
                            <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">
                              A visionary leader who pioneered digital communities in the insurance industry and transforms challenges into opportunities through innovative training programs.
                            </p>
