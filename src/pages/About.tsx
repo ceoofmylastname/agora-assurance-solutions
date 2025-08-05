@@ -9,6 +9,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import AnimatedCounter from "@/components/ui/animated-counter";
+
 const About = () => {
   // Scroll to top on mount
   useEffect(() => {
