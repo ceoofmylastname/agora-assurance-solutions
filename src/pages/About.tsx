@@ -136,8 +136,8 @@ const About = () => {
             }} className="mb-16">
                 <h2 className="text-3xl font-bold mb-8 text-center">Leadership with Vision</h2>
                 
-                {/* Optimized 2x2 Leadership Grid - Desktop & Mobile */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6 md:gap-8 lg:gap-10 xl:gap-12 items-stretch max-w-6xl mx-auto">
+                {/* Fixed 2x2 Leadership Grid - Clean Desktop Layout */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto">
                   {/* Kevin Jenson - CEO */}
                   <Dialog>
                     <DialogTrigger asChild>
