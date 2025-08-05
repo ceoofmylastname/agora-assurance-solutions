@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { AnimatedCounter } from "@/components/ui/animated-counter";
+import AnimatedCounter from "@/components/ui/animated-counter";
 import PageLayout from "@/components/PageLayout";
 
 const About = () => {
