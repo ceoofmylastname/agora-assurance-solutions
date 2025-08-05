@@ -282,7 +282,7 @@ const About = () => {
                   </Dialog>
                 </motion.div>
 
-                {/* John Hyman */}
+                {/* John Melvin */}
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -296,14 +296,14 @@ const About = () => {
                         <div className="relative bg-white rounded-xl border border-gray-200 p-6 shadow-lg group-hover:shadow-xl transition-all duration-300 h-[380px] flex flex-col">
                           <div className="flex justify-center mb-4">
                             <div className="h-20 w-20 rounded-full overflow-hidden border-4 border-indigo-500/30">
-                              <img alt="John Hyman" className="w-full h-full object-cover object-center" src="/lovable-uploads/4f729cbe-cd65-4873-bfa1-27e7df8b3d85.png" />
+                              <img alt="John Melvin" className="w-full h-full object-cover object-center" src="/lovable-uploads/idea_to_launch_blog_post_pic" />
                             </div>
                           </div>
                           <div className="text-center flex-grow flex flex-col">
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">John Hyman</h3>
-                            <p className="text-indigo-500 font-semibold text-base mb-4">Senior Advisor</p>
+                            <h3 className="text-xl font-bold text-gray-900 mb-2">John Melvin</h3>
+                            <p className="text-indigo-500 font-semibold text-base mb-4">Director of Marketing</p>
                             <p className="text-gray-600 text-sm leading-relaxed mb-6 flex-grow">
-                              A seasoned insurance professional with extensive experience in client advisory services and strategic planning guidance.
+                              A seasoned insurance strategist turned AI & automation expert, leading Agora's national growth strategy through data-driven campaigns and innovative technology.
                             </p>
                             <Button variant="outline" className="w-full group-hover:bg-indigo-500 group-hover:text-white transition-colors">
                               Read Full Bio
@@ -315,15 +315,21 @@ const About = () => {
                     <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
                       <div className="p-6">
                         <div className="flex items-center gap-6 mb-6">
-                          <img src="/lovable-uploads/4f729cbe-cd65-4873-bfa1-27e7df8b3d85.png" alt="John Hyman" className="w-24 h-24 rounded-full object-cover object-center" />
+                          <img src="/lovable-uploads/idea_to_launch_blog_post_pic" alt="John Melvin" className="w-24 h-24 rounded-full object-cover object-center" />
                           <div>
-                            <h2 className="text-3xl font-bold text-gray-900">John Hyman</h2>
-                            <p className="text-indigo-500 text-xl font-semibold">Senior Advisor</p>
+                            <h2 className="text-3xl font-bold text-gray-900">John Melvin</h2>
+                            <p className="text-indigo-500 text-xl font-semibold">Director of Marketing</p>
                           </div>
                         </div>
                         <div className="space-y-4 text-gray-600 leading-relaxed">
-                          <p>John Hyman serves as Senior Advisor at Agora Assurance Solutions, bringing decades of experience in insurance and financial services. His expertise spans client advisory services, strategic planning, and comprehensive risk management solutions.</p>
-                          <p>John's consultative approach and deep industry knowledge make him an invaluable resource for both clients and the internal team, ensuring strategic decisions are grounded in practical experience and market insight.</p>
+                          <p>John Melvin is a seasoned insurance strategist turned AI & automation expert, with over 15 years of experience helping individuals and businesses protect their futures, scale their operations, and thrive in the digital economy.</p>
+                          <p>John began his career in the insurance and financial services space, where he spent more than a decade guiding clients through life insurance, annuities, and retirement planning. His work helped hundreds of families gain peace of mind, while his reputation grew as a reliable advisor and growth-minded leader.</p>
+                          <p>Between 2019 and 2023, John went all-in on currency trading, honing skills in data analysis, timing, and financial systems thinking—a transition that deepened his technical and strategic mindset.</p>
+                          <p>In 2023, with AI shifting the global business landscape, John pivoted again—this time back to his roots in insurance and finance, now infused with digital marketing, automation, and AI innovation. It was the perfect fusion of his experience and forward-thinking mindset.</p>
+                          <p>Today, John serves as the Director of Marketing for Agora Assurance Solutions, where he leads the company's national growth strategy by implementing data-driven campaigns, AI-powered recruiting systems, and scalable lead generation frameworks.</p>
+                          <p>He's also an AI and automation coach for Billy Gene Is Marketing, where he helps students inside the BGIM program master the new digital frontier and build income-generating systems using AI. John is certified in AI automation through Kane and Alessia Minkus' accelerator and is an active member of Perry Belcher's elite mastermind, where he continues sharpening his strategies alongside some of the best in the world.</p>
+                          <p>His core skills include AI & Automation Consulting, Funnel Strategy & Lead Generation, Website Development with Backend Dashboards, SEO & Answer Engine Optimization (AEO), Performance Marketing & Offer Building, and Client Acquisition Systems for Service-Based Businesses.</p>
+                          <p>Whether he's building out advanced systems, mentoring entrepreneurs, or scaling agency operations, John Melvin is the go-to expert when results matter and innovation leads the way.</p>
                         </div>
                       </div>
                     </DialogContent>
