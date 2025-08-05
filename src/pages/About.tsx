@@ -1,4 +1,4 @@
-import { ArrowLeft, CheckCircle, ArrowRight, Trophy, Users, Target, Heart, TrendingUp, MapPin, Zap, Award, Lightbulb } from 'lucide-react';
+import { ArrowLeft, CheckCircle, MousePointer, Trophy, Users, Target, Heart, TrendingUp, MapPin, Zap, Award, Lightbulb } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { useEffect, useState } from 'react';
@@ -1375,7 +1375,7 @@ const About = () => {
             }} className="relative">
                 <Link to="/careers" className="group inline-flex items-center px-8 py-4 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-all duration-200 shadow-lg font-medium cursor-pointer hover:shadow-xl hover:scale-105 active:scale-95">
                   Join Our Team
-                  <ArrowRight className="ml-2 w-4 h-4 group-hover:animate-pulse transition-all" />
+                  <MousePointer className="ml-2 w-4 h-4 group-hover:animate-pulse transition-all" />
                 </Link>
               </motion.div>
             </div>
