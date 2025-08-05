@@ -1271,7 +1271,7 @@ const About = () => {
                             <img 
                               alt="Tonya Melson - Insurance Professional"
                               className="w-full h-full object-cover object-center" 
-                              src="/lovable-uploads/de5dd655-f6a5-4ef3-b450-df2723b3efce.png" 
+                              src="/lovable-uploads/3c7a3fb0-824b-4cd7-9e6f-6c247e91bae1.png" 
                             />
                           </div>
                           <h3 className="text-xl font-bold text-gray-900 mb-1">Tonya Melson</h3>
