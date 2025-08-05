@@ -136,8 +136,8 @@ const About = () => {
             }} className="mb-16">
                 <h2 className="text-3xl font-bold mb-8 text-center">Leadership with Vision</h2>
                 
-                {/* Unified 2x2 Leadership Grid - Optimized for All Devices */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch">
+                {/* Optimized 2x2 Leadership Grid - Desktop & Mobile */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6 md:gap-8 lg:gap-10 xl:gap-12 items-stretch max-w-6xl mx-auto">
                   {/* Kevin Jenson - CEO */}
                   <Dialog>
                     <DialogTrigger asChild>
@@ -149,7 +149,7 @@ const About = () => {
                          className="relative group cursor-pointer h-full flex flex-col"
                        >
                         <div className="absolute inset-0 bg-gradient-to-br from-[#15AFF7]/5 to-blue-600/5 rounded-2xl scale-105 transition-all duration-300"></div>
-                         <div className="relative bg-white rounded-xl border border-gray-200 p-6 lg:p-8 shadow-lg group-hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+                         <div className="relative bg-white rounded-xl border border-gray-200 p-6 md:p-8 lg:p-10 shadow-lg group-hover:shadow-xl transition-all duration-300 h-full flex flex-col min-h-[420px] lg:min-h-[450px]">
                           <div className="h-20 w-20 rounded-full overflow-hidden mb-4 border-2 border-[#15AFF7]/20">
                             <img alt="Kevin Jenson - Founder & CEO" className="w-full h-full object-cover" src="https://storage.googleapis.com/msgsndr/TLhrYb7SRrWrly615tCI/media/686eb76d038ba82a1245496a.jpeg" />
                           </div>
