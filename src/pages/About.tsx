@@ -136,8 +136,8 @@ const About = () => {
             }} className="mb-16">
                 <h2 className="text-3xl font-bold mb-8 text-center">Leadership with Vision</h2>
                 
-                {/* First Row - 3 Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch mb-12">
+                {/* Leadership Team - 4 Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8 items-stretch mb-12">
                   {/* Kevin Jenson - CEO */}
                   <Dialog>
                     <DialogTrigger asChild>
@@ -1250,9 +1250,183 @@ const About = () => {
                            </div>
                          </div>
                       </DialogContent>
-                    </Dialog>
-                 </div>
-               </motion.div>
+                     </Dialog>
+
+                  {/* Tonya Melson - Leadership Card */}
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <motion.div initial={{
+                      opacity: 0,
+                      x: 20
+                    }} animate={{
+                      opacity: 1,
+                      x: 0
+                    }} transition={{
+                      duration: 0.6,
+                      delay: 0.9
+                    }} className="relative group cursor-pointer h-full flex flex-col">
+                        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-600/5 rounded-2xl scale-105 transition-all duration-300"></div>
+                        <div className="relative bg-white rounded-xl border border-gray-200 p-8 shadow-lg group-hover:shadow-xl transition-shadow duration-300 h-full flex flex-col min-h-[400px]">
+                          <div className="h-20 w-20 rounded-full overflow-hidden mb-4 border-2 border-purple-500/20">
+                            <img 
+                              alt="Tonya Melson - Insurance Professional"
+                              className="w-full h-full object-cover object-center" 
+                              src="/lovable-uploads/de5dd655-f6a5-4ef3-b450-df2723b3efce.png" 
+                            />
+                          </div>
+                          <h3 className="text-xl font-bold text-gray-900 mb-1">Tonya Melson</h3>
+                          <p className="text-purple-600 font-medium mb-3">Senior Insurance Professional</p>
+                          <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">
+                            A seasoned insurance agent with over 20 years of managerial and clinical experience, uniquely blending expertise in business operations and patient care.
+                          </p>
+                          <Button variant="outline" size="sm" className="w-full group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                            Learn More
+                          </Button>
+                        </div>
+                      </motion.div>
+                    </DialogTrigger>
+                    
+                    <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-white/95 backdrop-blur-xl border border-white/20 shadow-2xl">
+                      <div className="relative">
+                        {/* Hero Header */}
+                        <div className="relative mb-8 -mx-6 -mt-6 p-8 bg-gradient-to-br from-purple-500/10 to-pink-600/20 rounded-t-lg">
+                          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-600/10 backdrop-blur-sm"></div>
+                          <div className="relative flex flex-col md:flex-row items-center gap-6">
+                            <div className="relative">
+                              <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full blur-lg opacity-30 scale-110"></div>
+                              <img 
+                                src="/lovable-uploads/de5dd655-f6a5-4ef3-b450-df2723b3efce.png" 
+                                alt="Tonya Melson - Insurance Professional" 
+                                className="relative w-32 h-32 rounded-full object-cover border-4 border-white shadow-xl"
+                              />
+                            </div>
+                            <div className="text-center md:text-left">
+                              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Tonya Melson</h1>
+                              <div className="flex items-center justify-center md:justify-start gap-2 mb-4">
+                                <Badge variant="default" className="bg-purple-600 hover:bg-purple-600/90">
+                                  Senior Insurance Professional
+                                </Badge>
+                                <Badge variant="outline">
+                                  Clinical & Business Expert
+                                </Badge>
+                              </div>
+                              <p className="text-gray-600 text-lg italic">
+                                "Bridging healthcare expertise with insurance protection to serve families with compassion and clarity."
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Content Grid */}
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                          {/* Main Biography */}
+                          <div className="lg:col-span-2 space-y-6">
+                            <div className="bg-gradient-to-br from-purple-50 to-white rounded-xl p-6 border border-purple-100">
+                              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <Heart className="h-5 w-5 text-purple-600" />
+                                Healthcare & Business Leadership
+                              </h3>
+                              <div className="space-y-4 text-gray-600 leading-relaxed">
+                                <p>
+                                  Tonya Melson is a seasoned insurance agent with over 20 years of managerial and clinical experience, uniquely blending expertise in business operations and patient care. From 2007 through 2023, Tonya successfully managed the operations of a medical office, where she oversaw day-to-day logistics and contributed directly to patient care.
+                                </p>
+                                <p>
+                                  With certifications in dynaROM testing, diet, health, and fitness, she has treated patients for a wide range of injuries using PNF therapy and state-of-the-art medical equipment. This clinical background provides her with a unique perspective on the importance of comprehensive protection planning.
+                                </p>
+                              </div>
+                            </div>
+
+                            <div className="bg-gradient-to-br from-pink-50 to-white rounded-xl p-6 border border-pink-100">
+                              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <Users className="h-5 w-5 text-pink-600" />
+                                Insurance & Mentorship Excellence
+                              </h3>
+                              <div className="space-y-4 text-gray-600 leading-relaxed">
+                                <p>
+                                  Tonya's passion for helping people extends far beyond the clinic. As an insurance professional, she is deeply committed to protecting families and guiding them through critical decisions with clarity and compassion. Her healthcare background gives her unique insight into the real-world importance of proper coverage.
+                                </p>
+                                <p>
+                                  She also takes pride in mentoring fellow insurance agents, offering insight and support to help them build strong, sustainable businesses. Driven, knowledgeable, and service-focused, Tonya brings a rare combination of clinical care and business acumen to every client and colleague she serves.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Sidebar Content */}
+                          <div className="space-y-6">
+                            <div className="bg-gradient-to-br from-purple-500/5 to-pink-600/10 rounded-xl p-6 border border-purple-500/20">
+                              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <Target className="h-5 w-5 text-purple-600" />
+                                Clinical Certifications
+                              </h3>
+                              <div className="space-y-3">
+                                <div className="flex items-center gap-2">
+                                  <div className="w-2 h-2 rounded-full bg-purple-500"></div>
+                                  <span className="text-sm text-gray-600">DynaROM Testing Certification</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <div className="w-2 h-2 rounded-full bg-pink-500"></div>
+                                  <span className="text-sm text-gray-600">Diet & Nutrition Specialist</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <div className="w-2 h-2 rounded-full bg-purple-600"></div>
+                                  <span className="text-sm text-gray-600">Health & Fitness Expert</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <div className="w-2 h-2 rounded-full bg-pink-600"></div>
+                                  <span className="text-sm text-gray-600">PNF Therapy Practitioner</span>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="bg-gradient-to-br from-blue-50 to-white rounded-xl p-6 border border-blue-100">
+                              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <Award className="h-5 w-5 text-blue-600" />
+                                Professional Experience
+                              </h3>
+                              <div className="space-y-3 text-sm">
+                                <div className="flex items-start gap-3">
+                                  <div className="w-2 h-2 rounded-full bg-purple-500 mt-2 flex-shrink-0"></div>
+                                  <span className="text-gray-600">20+ years managerial & clinical experience</span>
+                                </div>
+                                <div className="flex items-start gap-3">
+                                  <div className="w-2 h-2 rounded-full bg-pink-500 mt-2 flex-shrink-0"></div>
+                                  <span className="text-gray-600">Medical office operations management (2007-2023)</span>
+                                </div>
+                                <div className="flex items-start gap-3">
+                                  <div className="w-2 h-2 rounded-full bg-purple-600 mt-2 flex-shrink-0"></div>
+                                  <span className="text-gray-600">Direct patient care & treatment specialist</span>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="bg-gradient-to-br from-green-50 to-white rounded-xl p-6 border border-green-100">
+                              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <Lightbulb className="h-5 w-5 text-green-600" />
+                                Service Philosophy
+                              </h3>
+                              <p className="text-gray-600 text-sm leading-relaxed italic">
+                                "My healthcare background has shown me firsthand how critical proper protection is for families. I'm committed to helping people understand their options and make informed decisions with confidence."
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Bottom Quote */}
+                        <div className="mt-8 p-6 bg-gradient-to-r from-purple-500/10 to-pink-600/10 rounded-xl border border-purple-500/20 text-center">
+                          <p className="text-lg italic text-gray-700 mb-2">
+                            "Tonya's unique combination of clinical expertise and business acumen brings unparalleled depth to client relationships and agent mentorship."
+                          </p>
+                          <div className="flex items-center justify-center gap-2 text-sm text-gray-500">
+                            <Heart className="h-4 w-4" />
+                            <span>Caring for families, protecting futures, mentoring success</span>
+                          </div>
+                        </div>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                  </div>
+                </motion.div>
               
               <motion.div initial={{
               opacity: 0,
