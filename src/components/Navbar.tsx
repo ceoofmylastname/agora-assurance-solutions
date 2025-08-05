@@ -287,7 +287,7 @@ const Navbar = () => {
                   )}
                   
                   <NavigationMenuItem>
-                    <button onClick={() => setIsContactModalOpen(true)} className={cn("px-4 py-2 rounded-md transition-colors", shouldUseDarkText ? "bg-gray-200 text-gray-700 hover:bg-gray-300" : "bg-gray-700 text-white hover:bg-gray-600")}>
+                    <button onClick={() => setIsContactModalOpen(true)} className="px-4 py-2 rounded-md transition-colors bg-[#15AFF7] text-white hover:bg-[#0D94D1]">
                       Contact Us
                     </button>
                   </NavigationMenuItem>
