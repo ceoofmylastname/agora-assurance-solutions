@@ -1,3 +1,4 @@
+
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Trophy, TrendingUp, Target, Heart, Users, MapPin, MousePointer, Lightbulb } from "lucide-react";
@@ -355,7 +356,7 @@ const About = () => {
                           </div>
                           <div className="text-center flex-grow flex flex-col">
                             <h3 className="text-xl font-bold text-gray-900 mb-2">Tonya Melson</h3>
-                            <p className="text-purple-600 font-semibold text-base mb-4">Senior Insurance Professional</p>
+                            <p className="text-purple-600 font-semibold text-base mb-4">Agora Advisor Support</p>
                             <p className="text-gray-600 text-sm leading-relaxed mb-6 flex-grow">
                               Over 20 years bridging healthcare and insurance, Tonya brings unique insights to help families understand their protection needs.
                             </p>
@@ -372,7 +373,7 @@ const About = () => {
                           <img src="/lovable-uploads/3c7a3fb0-824b-4cd7-9e6f-6c247e91bae1.png" alt="Tonya Melson" className="w-24 h-24 rounded-full object-cover object-center" />
                           <div>
                             <h2 className="text-3xl font-bold text-gray-900">Tonya Melson</h2>
-                            <p className="text-purple-600 text-xl font-semibold">Senior Insurance Professional</p>
+                            <p className="text-purple-600 text-xl font-semibold">Agora Advisor Support</p>
                           </div>
                         </div>
                         <div className="space-y-4 text-gray-600 leading-relaxed">
