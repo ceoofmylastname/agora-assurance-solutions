@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -51,7 +52,6 @@ const steps = [
       { value: 'paul-j', label: 'Paul J.' },
       { value: 'shahid-s', label: 'Shahid S.' },
       { value: 'sean-f', label: 'Sean F.' },
-      { value: 'suhail-h', label: 'Suhail H.' },
       { value: 'tonya-m', label: 'Tonya M.' },
       { value: 'smith-e', label: 'Smith E.' },
       { value: 'agora-direct', label: 'Agora Direct' },
