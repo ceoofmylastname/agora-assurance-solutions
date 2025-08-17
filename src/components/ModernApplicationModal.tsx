@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -45,6 +44,7 @@ const steps = [
     type: 'select',
     options: [
       { value: 'adam-t', label: 'Adam T.' },
+      { value: 'antwan-gilkey', label: 'Antwan Gilkey' },
       { value: 'benjamin-s', label: 'Benjamin S.' },
       { value: 'jalil-d', label: 'Jalil D.' },
       { value: 'jeff-u', label: 'Jeff U.' },
