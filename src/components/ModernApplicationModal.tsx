@@ -1,11 +1,12 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { X, ChevronRight, ChevronLeft, Check } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 import confetti from 'canvas-confetti';
+import { supabase } from '@/integrations/supabase/client';
 
 const applicationSchema = z.object({
   referredBy: z.string().min(1, 'Please tell us who referred you'),
@@ -43,21 +44,7 @@ const steps = [
     title: 'Which director referred you?',
     subtitle: 'Select the director who recommended you',
     type: 'select',
-    options: [
-      { value: 'adam-t', label: 'Adam T.' },
-      { value: 'antwan-g', label: 'Antwan G.' },
-      { value: 'benjamin-s', label: 'Benjamin S.' },
-      { value: 'jalil-d', label: 'Jalil D.' },
-      { value: 'jeff-u', label: 'Jeff U.' },
-      { value: 'john-m', label: 'John M.' },
-      { value: 'paul-j', label: 'Paul J.' },
-      { value: 'shahid-s', label: 'Shahid S.' },
-      { value: 'sean-f', label: 'Sean F.' },
-      { value: 'tonya-m', label: 'Tonya M.' },
-      { value: 'smith-e', label: 'Smith E.' },
-      { value: 'agora-direct', label: 'Agora Direct' },
-      { value: 'other', label: 'Other' }
-    ]
+    options: [] // Will be populated dynamically
   },
   {
     id: 'name',
@@ -168,6 +155,7 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
   const [currentStep, setCurrentStep] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
+  const [directors, setDirectors] = useState<{ value: string; label: string }[]>([]);
   
   const {
     register,
@@ -314,6 +302,45 @@ export const ModernApplicationModal: React.FC<ModernApplicationModalProps> = ({
       nextStep();
     }
   };
+
+  // Fetch directors when modal opens
+  useEffect(() => {
+    const fetchDirectors = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('directors')
+          .select('name, value')
+          .eq('active', true)
+          .order('display_order', { ascending: true });
+
+        if (error) throw error;
+        
+        const directorOptions = data?.map(director => ({
+          value: director.value,
+          label: director.name
+        })) || [];
+        
+        setDirectors(directorOptions);
+        
+        // Update the steps array with the fetched directors
+        const directorStepIndex = steps.findIndex(step => step.id === 'referredByDirector');
+        if (directorStepIndex !== -1) {
+          steps[directorStepIndex].options = directorOptions;
+        }
+      } catch (error) {
+        console.error('Error fetching directors:', error);
+        toast({
+          title: "Error",
+          description: "Failed to load directors",
+          variant: "destructive",
+        });
+      }
+    };
+
+    if (isOpen) {
+      fetchDirectors();
+    }
+  }, [isOpen]);
 
   // Handle ESC key
   React.useEffect(() => {
