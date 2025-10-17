@@ -1,4 +1,4 @@
-import { ArrowRight, Linkedin, Facebook, Instagram, Mail, Phone, CheckCircle, Sparkles } from "lucide-react";
+import { ArrowRight, Linkedin, Facebook, Instagram, Mail, Phone, CheckCircle, Sparkles, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
@@ -132,6 +132,13 @@ const Footer = () => {
                 <a href="mailto:info@agoraassurancesolutions.com" className="hover:text-white transition-colors">
                   info@agoraassurancesolutions.com
                 </a>
+              </div>
+              <div className="flex items-start text-white/90 text-sm mb-4">
+                <MapPin className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />
+                <address className="not-italic hover:text-white transition-colors">
+                  1401 21st Street<br />
+                  Sacramento, CA 95811
+                </address>
               </div>
               <div className="flex space-x-3">
                 <a 
