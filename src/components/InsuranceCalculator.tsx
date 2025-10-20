@@ -711,7 +711,7 @@ export default function InsuranceCalculator({ open, onOpenChange, webhookUrl }: 
   }
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
+    <Dialog open={open} onOpenChange={onOpenChange} modal={false}>
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="sr-only">Insurance Calculator - Step {currentStep} of 8</DialogTitle>
