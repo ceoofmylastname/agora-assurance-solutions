@@ -32,7 +32,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send email to your business email
     const emailResponse = await resend.emails.send({
-      from: "Agora Insurance <onboarding@resend.dev>",
+      from: "Agora Insurance <contact@agorainsurance.com>", // Replace with your verified domain
       to: ["info@agorainsurance.com"], // Replace with your business email
       subject: `New Contact Form Submission - ${service}`,
       html: `
@@ -62,7 +62,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send confirmation email to the user
     const confirmationResponse = await resend.emails.send({
-      from: "Agora Insurance <onboarding@resend.dev>",
+      from: "Agora Insurance <contact@agorainsurance.com>", // Replace with your verified domain
       to: [email],
       subject: "Thank you for contacting Agora Insurance!",
       html: `

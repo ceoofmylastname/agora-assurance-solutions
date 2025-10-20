@@ -10,7 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
-import { sendContactEmail, submitToWebhook } from '@/utils/emailService';
+import { sendContactEmail } from '@/utils/emailService';
 import { sanitizeInput, sanitizeEmail, sanitizePhone, RateLimiter } from '@/utils/security';
 
 const formSchema = z.object({
@@ -440,14 +440,21 @@ const ModernContactForm = () => {
         'last_name': emailData.lastName
       };
 
-      // Send to webhook via Supabase edge function
-      try {
-        await submitToWebhook(webhookData);
-        console.log('✅ Webhook submitted successfully');
-      } catch (webhookError) {
-        console.error('❌ Webhook submission failed:', webhookError);
-        // Don't fail the entire submission if webhook fails
+      // Send to secure webhook endpoint
+      const response = await fetch('/api/submit-contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(webhookData),
+      });
+
+      if (!response.ok) {
+        console.error('❌ Webhook submission failed with status:', response.status);
+        throw new Error('Webhook submission failed');
       }
+      
+      console.log('✅ Webhook submitted successfully');
 
       // Send email via Supabase edge function
       try {
