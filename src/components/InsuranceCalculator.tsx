@@ -435,7 +435,7 @@ export default function InsuranceCalculator({ open, onOpenChange, webhookUrl }: 
                     <SelectTrigger className={`pl-10 ${formData.height ? 'border-green-500' : ''} ${errors.height ? 'border-red-500' : ''}`}>
                       <SelectValue placeholder="Select height" />
                     </SelectTrigger>
-                    <SelectContent className="max-h-[300px] overflow-y-auto bg-white">
+                    <SelectContent className="max-h-[300px] overflow-y-auto bg-white pointer-events-auto">
                       {Array.from({ length: 36 }, (_, i) => {
                         const feet = Math.floor((48 + i) / 12);
                         const inches = (48 + i) % 12;
