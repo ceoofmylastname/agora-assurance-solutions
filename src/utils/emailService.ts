@@ -27,3 +27,21 @@ export const sendContactEmail = async (data: EmailData) => {
     throw error;
   }
 };
+
+export const submitToWebhook = async (data: any) => {
+  try {
+    const { data: result, error } = await supabase.functions.invoke('submit-contact', {
+      body: data
+    });
+
+    if (error) {
+      console.error('Supabase function error:', error);
+      throw new Error(`Failed to submit to webhook: ${error.message}`);
+    }
+
+    return result;
+  } catch (error) {
+    console.error('Error calling webhook function:', error);
+    throw error;
+  }
+};
