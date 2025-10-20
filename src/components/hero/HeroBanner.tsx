@@ -16,7 +16,7 @@ const HeroBanner = () => {
           <img
             src={heroFamilyBackground}
             alt="Happy family portrait representing family protection and security through insurance"
-            className="w-full h-full object-cover object-center opacity-75"
+            className="w-full h-full object-cover object-center opacity-90"
             loading="eager"
           />
         ) : (
@@ -31,7 +31,7 @@ const HeroBanner = () => {
             <OptimizedImage
               src={heroFamilyBackground}
               alt="Happy family portrait representing family protection and security through insurance"
-              className="w-full h-full opacity-75"
+              className="w-full h-full opacity-90"
               priority={true}
               placeholder="blur"
               width={1920}
@@ -44,7 +44,7 @@ const HeroBanner = () => {
             />
           </ErrorBoundaryImage>
         )}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-white"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-white"></div>
       </div>
       
       <div className="banner-overlay bg-transparent pt-8 sm:pt-16 md:pt-20 lg:pt-28 w-full">
