@@ -45,21 +45,3 @@ export const submitToWebhook = async (data: any) => {
     throw error;
   }
 };
-
-export const submitInsuranceCalculator = async (data: any) => {
-  try {
-    const { data: result, error } = await supabase.functions.invoke('submit-calculator', {
-      body: data
-    });
-
-    if (error) {
-      console.error('Calculator submission error:', error);
-      throw new Error(`Failed to submit calculator: ${error.message}`);
-    }
-
-    return result;
-  } catch (error) {
-    console.error('Error calling calculator function:', error);
-    throw error;
-  }
-};

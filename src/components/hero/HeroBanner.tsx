@@ -1,16 +1,13 @@
-import { useState } from "react";
-import { Calculator, MessageSquare, TrendingUp } from "lucide-react";
+import { Calculator, MessageSquare } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
 import heroFamilyBackground from "@/assets/hero-family-background.png";
 import { OptimizedImage } from "@/components/OptimizedImage";
 import { ErrorBoundaryImage } from "@/components/ErrorBoundaryImage";
-import InsuranceCalculator from "@/components/InsuranceCalculator";
 
 const HeroBanner = () => {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
-  const [calculatorOpen, setCalculatorOpen] = useState(false);
 
   return (
     <div className="banner-container bg-[#15AFF7] relative overflow-hidden h-[calc(55vh+4rem)] sm:h-[calc(60vh+4rem)] md:h-[calc(500px+4rem)] lg:h-[calc(550px+4rem)] xl:h-[calc(600px+4rem)] w-full">
@@ -69,14 +66,6 @@ const HeroBanner = () => {
               </button>
               
               <button 
-                className="w-full sm:w-auto min-h-[52px] px-6 sm:px-8 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-lg hover:from-blue-600 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl hover:shadow-blue-300/20 flex items-center justify-center group text-sm sm:text-base font-semibold touch-manipulation active:scale-95" 
-                onClick={() => setCalculatorOpen(true)}
-              >
-                Calculate My Coverage
-                <TrendingUp className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform" />
-              </button>
-              
-              <button 
                 className="w-full sm:w-auto min-h-[52px] px-6 sm:px-8 py-3 bg-white text-black rounded-lg hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl hover:shadow-blue-300/20 flex items-center justify-center group text-sm sm:text-base font-semibold border-2 border-white touch-manipulation active:scale-95" 
                 onClick={() => navigate('/booking')}
               >
@@ -87,11 +76,6 @@ const HeroBanner = () => {
           </div>
         </div>
       </div>
-
-      <InsuranceCalculator 
-        open={calculatorOpen}
-        onOpenChange={setCalculatorOpen}
-      />
     </div>
   );
 };
