@@ -9,6 +9,7 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from '@/component
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
 import { motion, AnimatePresence } from 'framer-motion';
 import { sendContactEmail, submitToWebhook } from '@/utils/emailService';
 import { sanitizeInput, sanitizeEmail, sanitizePhone, RateLimiter } from '@/utils/security';
@@ -18,6 +19,7 @@ const formSchema = z.object({
   lastName: z.string().min(2, 'Last name must be at least 2 characters'),
   email: z.string().email('Please enter a valid email address'),
   phone: z.string().min(10, 'Please enter a valid phone number').regex(/^[\+]?[1-9][\d]{0,15}$/, 'Please enter a valid phone number'),
+  smsConsent: z.boolean(),
   service: z.string().min(1, 'Please select a service'),
   message: z.string().min(10, 'Message must be at least 10 characters'),
   honeypot: z.string().max(0, 'Bot detected'),
@@ -82,6 +84,14 @@ const steps = [
     isQuestion: true
   },
   {
+    id: 'smsConsent',
+    title: 'One more thing...',
+    subtitle: 'We\'d like your permission to contact you',
+    field: 'smsConsent',
+    isConsent: true,
+    isQuestion: true
+  },
+  {
     id: 'service',
     title: 'Which insurance service interests you?',
     subtitle: 'Select the service you\'d like to learn more about',
@@ -124,6 +134,7 @@ const ModernContactForm = () => {
       lastName: '',
       email: '',
       phone: '',
+      smsConsent: false,
       service: '',
       message: '',
       honeypot: '',
@@ -419,7 +430,8 @@ const ModernContactForm = () => {
         email: sanitizedEmail,
         phone: sanitizedPhone,
         service: sanitizeInput(data.service),
-        message: sanitizeInput(data.message)
+        message: sanitizeInput(data.message),
+        smsConsent: data.smsConsent
       };
       
       // Enhanced webhook data with all form fields
@@ -430,6 +442,7 @@ const ModernContactForm = () => {
         phone: emailData.phone,
         service: emailData.service,
         message: emailData.message,
+        smsConsent: data.smsConsent,
         full_name: `${emailData.firstName} ${emailData.lastName}`,
         lead_source: 'Website Contact Form',
         timestamp: new Date().toISOString(),
@@ -474,6 +487,7 @@ const ModernContactForm = () => {
         lastName: '',
         email: '',
         phone: '',
+        smsConsent: false,
         service: '',
         message: '',
         honeypot: '',
@@ -657,7 +671,47 @@ const ModernContactForm = () => {
                     />
                   )}
                   
-                  {currentStepData.isQuestion && !currentStepData.isServiceSelection && (
+                  {currentStepData.isConsent && (
+                    <FormField
+                      control={form.control}
+                      name="smsConsent"
+                      render={({ field }) => (
+                        <FormItem>
+                          <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.4 }}
+                            className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-slate-200/50"
+                          >
+                            <div className="flex items-start space-x-4">
+                              <FormControl>
+                                <Checkbox
+                                  checked={field.value}
+                                  onCheckedChange={field.onChange}
+                                  className="mt-1 h-6 w-6 rounded-md border-2 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
+                                />
+                              </FormControl>
+                              <div className="flex-1">
+                                <label 
+                                  htmlFor="smsConsent" 
+                                  className="text-base leading-relaxed text-foreground cursor-pointer"
+                                  onClick={() => field.onChange(!field.value)}
+                                >
+                                  I consent to receive text messages and phone calls from Agora Assurance Solutions regarding insurance quotes, policy information, and follow-up communications. Standard message and data rates may apply. I understand I can opt out at any time by replying STOP to any message or requesting removal during a call.
+                                </label>
+                                <p className="text-sm text-muted-foreground mt-3">
+                                  We respect your privacy and will only contact you regarding your insurance inquiry.
+                                </p>
+                              </div>
+                            </div>
+                            <FormMessage className="mt-4" />
+                          </motion.div>
+                        </FormItem>
+                      )}
+                    />
+                  )}
+                  
+                  {currentStepData.isQuestion && !currentStepData.isServiceSelection && !currentStepData.isConsent && (
                     <FormField
                       control={form.control}
                       name={currentStepData.field as keyof FormValues}
@@ -686,9 +740,9 @@ const ModernContactForm = () => {
                                        filter: 'drop-shadow(0 25px 50px rgba(0,0,0,0.15))',
                                        transformStyle: 'preserve-3d'
                                      }}
-                                     onKeyDown={handleKeyPress}
-                                     value={field.value || ''}
-                                     onChange={(e) => {
+                                      onKeyDown={handleKeyPress}
+                                      value={typeof field.value === 'string' ? field.value : ''}
+                                      onChange={(e) => {
                                        console.log(`${currentStepData.field} field changed:`, e.target.value);
                                        field.onChange(e);
                                      }}
@@ -713,9 +767,9 @@ const ModernContactForm = () => {
                                        filter: 'drop-shadow(0 25px 50px rgba(0,0,0,0.15))',
                                        transformStyle: 'preserve-3d'
                                      }}
-                                     onKeyDown={handleKeyPress}
-                                     value={field.value || ''}
-                                     onChange={(e) => {
+                                      onKeyDown={handleKeyPress}
+                                      value={typeof field.value === 'string' ? field.value : ''}
+                                      onChange={(e) => {
                                        console.log(`${currentStepData.field} field changed:`, e.target.value);
                                        if (currentStepData.field === 'phone') {
                                          console.log('📞 PHONE FIELD UPDATE:', e.target.value);
