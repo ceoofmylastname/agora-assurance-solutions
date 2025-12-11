@@ -20,6 +20,7 @@ const formSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
   phone: z.string().min(10, 'Please enter a valid phone number').regex(/^[\+]?[1-9][\d]{0,15}$/, 'Please enter a valid phone number'),
   smsConsent: z.boolean(),
+  recruitingConsent: z.boolean(),
   service: z.string().min(1, 'Please select a service'),
   message: z.string().min(10, 'Message must be at least 10 characters'),
   honeypot: z.string().max(0, 'Bot detected'),
@@ -135,6 +136,7 @@ const ModernContactForm = () => {
       email: '',
       phone: '',
       smsConsent: false,
+      recruitingConsent: false,
       service: '',
       message: '',
       honeypot: '',
@@ -158,6 +160,16 @@ const ModernContactForm = () => {
   const validateCurrentStep = async () => {
     const step = steps[currentStep];
     if (!step.isQuestion) return true;
+    
+    // Special validation for consent step - require BOTH checkboxes
+    if (step.isConsent) {
+      const smsConsent = form.getValues('smsConsent');
+      const recruitingConsent = form.getValues('recruitingConsent');
+      if (!smsConsent || !recruitingConsent) {
+        return false;
+      }
+      return true;
+    }
     
     const fieldName = step.field as keyof FormValues;
     const result = await form.trigger(fieldName);
@@ -431,7 +443,8 @@ const ModernContactForm = () => {
         phone: sanitizedPhone,
         service: sanitizeInput(data.service),
         message: sanitizeInput(data.message),
-        smsConsent: data.smsConsent
+        smsConsent: data.smsConsent,
+        recruitingConsent: data.recruitingConsent
       };
       
       // Enhanced webhook data with all form fields
@@ -443,6 +456,7 @@ const ModernContactForm = () => {
         service: emailData.service,
         message: emailData.message,
         smsConsent: data.smsConsent,
+        recruitingConsent: data.recruitingConsent,
         full_name: `${emailData.firstName} ${emailData.lastName}`,
         lead_source: 'Website Contact Form',
         timestamp: new Date().toISOString(),
@@ -488,6 +502,7 @@ const ModernContactForm = () => {
         email: '',
         phone: '',
         smsConsent: false,
+        recruitingConsent: false,
         service: '',
         message: '',
         honeypot: '',
@@ -672,43 +687,79 @@ const ModernContactForm = () => {
                   )}
                   
                   {currentStepData.isConsent && (
-                    <FormField
-                      control={form.control}
-                      name="smsConsent"
-                      render={({ field }) => (
-                        <FormItem>
-                          <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.4 }}
-                            className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-slate-200/50"
-                          >
-                            <div className="flex items-start space-x-4">
-                              <FormControl>
-                                <Checkbox
-                                  checked={field.value}
-                                  onCheckedChange={field.onChange}
-                                  className="mt-1 h-6 w-6 rounded-md border-2 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
-                                />
-                              </FormControl>
-                              <div className="flex-1">
-                                <label 
-                                  htmlFor="smsConsent" 
-                                  className="text-base leading-relaxed text-foreground cursor-pointer"
-                                  onClick={() => field.onChange(!field.value)}
-                                >
-                                  I consent to receive text messages and phone calls from Agora Assurance Solutions regarding insurance quotes, policy information, and follow-up communications. Standard message and data rates may apply. I understand I can opt out at any time by replying STOP to any message or requesting removal during a call.
-                                </label>
-                                <p className="text-sm text-muted-foreground mt-3">
-                                  We respect your privacy and will only contact you regarding your insurance inquiry.
-                                </p>
+                    <>
+                      <FormField
+                        control={form.control}
+                        name="smsConsent"
+                        render={({ field }) => (
+                          <FormItem>
+                            <motion.div
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.4 }}
+                              className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-slate-200/50"
+                            >
+                              <div className="flex items-start space-x-4">
+                                <FormControl>
+                                  <Checkbox
+                                    checked={field.value}
+                                    onCheckedChange={field.onChange}
+                                    className="mt-1 h-6 w-6 rounded-md border-2 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
+                                  />
+                                </FormControl>
+                                <div className="flex-1">
+                                  <label 
+                                    htmlFor="smsConsent" 
+                                    className="text-base leading-relaxed text-foreground cursor-pointer"
+                                    onClick={() => field.onChange(!field.value)}
+                                  >
+                                    I consent to receive text messages and phone calls from Agora Assurance Solutions regarding insurance quotes, policy information, and follow-up communications. Standard message and data rates may apply. I understand I can opt out at any time by replying STOP to any message or requesting removal during a call.
+                                  </label>
+                                </div>
                               </div>
-                            </div>
-                            <FormMessage className="mt-4" />
-                          </motion.div>
-                        </FormItem>
-                      )}
-                    />
+                            </motion.div>
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="recruitingConsent"
+                        render={({ field }) => (
+                          <FormItem>
+                            <motion.div
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.4, delay: 0.1 }}
+                              className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-slate-200/50"
+                            >
+                              <div className="flex items-start space-x-4">
+                                <FormControl>
+                                  <Checkbox
+                                    checked={field.value}
+                                    onCheckedChange={field.onChange}
+                                    className="mt-1 h-6 w-6 rounded-md border-2 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
+                                  />
+                                </FormControl>
+                                <div className="flex-1">
+                                  <label 
+                                    htmlFor="recruitingConsent" 
+                                    className="text-base leading-relaxed text-foreground cursor-pointer"
+                                    onClick={() => field.onChange(!field.value)}
+                                  >
+                                    I consent to receive SMS/text messages from Agora Assurance Solutions regarding my inquiry, recruiting updates, interview scheduling, and onboarding.
+                                  </label>
+                                  <p className="text-sm text-muted-foreground mt-3">
+                                    Message frequency varies. Message & data rates may apply.<br />
+                                    Reply STOP to unsubscribe or HELP for help.
+                                  </p>
+                                </div>
+                              </div>
+                              <FormMessage className="mt-4" />
+                            </motion.div>
+                          </FormItem>
+                        )}
+                      />
+                    </>
                   )}
                   
                   {currentStepData.isQuestion && !currentStepData.isServiceSelection && !currentStepData.isConsent && (

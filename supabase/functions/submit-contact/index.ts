@@ -93,7 +93,8 @@ serve(async (req) => {
       phone: sanitizeInput(data.phone),
       service: sanitizeInput(data.service),
       message: sanitizeInput(data.message),
-      smsConsent: typeof data.smsConsent === 'boolean' ? data.smsConsent : false
+      smsConsent: typeof data.smsConsent === 'boolean' ? data.smsConsent : false,
+      recruitingConsent: typeof data.recruitingConsent === 'boolean' ? data.recruitingConsent : false
     };
 
     // Validate email format
@@ -142,7 +143,8 @@ serve(async (req) => {
       'Service - (SL)': sanitizedData.service,
       'first_name': sanitizedData.firstName,
       'last_name': sanitizedData.lastName,
-      sms_consent: sanitizedData.smsConsent
+      sms_consent: sanitizedData.smsConsent,
+      recruiting_consent: sanitizedData.recruitingConsent
     };
 
     // Forward to external webhook with timeout
