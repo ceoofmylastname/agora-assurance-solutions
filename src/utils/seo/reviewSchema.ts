@@ -43,7 +43,7 @@ export const createLocalBusinessSchema = () => ({
   name: 'Agora Assurance Solutions',
   description: 'Independent insurance agency providing comprehensive life, mortgage, and annuity solutions',
   url: 'https://agoraassurancesolutions.com',
-  telephone: '+1-800-555-0123',
+  telephone: '+1-916-848-7907',
   email: 'info@agoraassurance.com',
   address: {
     '@type': 'PostalAddress',

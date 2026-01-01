@@ -185,11 +185,11 @@ const FixedAnnuitiesModal: React.FC<FixedAnnuitiesModalProps> = ({ isOpen, onClo
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Button 
-                  onClick={() => window.open('tel:+19162889400', '_self')}
+                  onClick={() => window.open('tel:+19168487907', '_self')}
                   className="flex items-center gap-2"
                 >
                   <Phone className="w-4 h-4" />
-                  Call (916) 288-9400
+                  Call (916) 848-7907
                 </Button>
                 <Button variant="outline" onClick={onClose}>
                   Close

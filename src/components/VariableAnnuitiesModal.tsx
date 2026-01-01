@@ -219,9 +219,9 @@ const VariableAnnuitiesModal: React.FC<VariableAnnuitiesModalProps> = ({ isOpen,
                 <Button 
                   variant="secondary" 
                   className="bg-white text-primary hover:bg-gray-100"
-                  onClick={() => window.open('tel:+19162889400', '_self')}
+                  onClick={() => window.open('tel:+19168487907', '_self')}
                 >
-                  Call (916) 288-9400
+                  Call (916) 848-7907
                 </Button>
               </div>
             </CardContent>

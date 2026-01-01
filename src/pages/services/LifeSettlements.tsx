@@ -347,8 +347,8 @@ const LifeSettlements = () => {
                   <motion.div className="space-y-2 sm:space-y-3" variants={itemVariants}>
                     <div className="flex items-center">
                       <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-[#15AFF7] mr-2 sm:mr-3 flex-shrink-0" />
-                      <a href="tel:916-288-9400" className="text-base sm:text-lg font-medium hover:text-[#15AFF7] transition-colors touch-manipulation">
-                        (916) 288-9400
+                      <a href="tel:916-848-7907" className="text-base sm:text-lg font-medium hover:text-[#15AFF7] transition-colors touch-manipulation">
+                        (916) 848-7907
                       </a>
                     </div>
                     <div className="flex items-start">
@@ -573,11 +573,11 @@ const LifeSettlements = () => {
               </motion.p>
               <motion.div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center" variants={itemVariants}>
                 <a 
-                  href="tel:916-288-9400"
+                  href="tel:916-848-7907"
                   className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-[#15AFF7] text-white rounded-lg hover:bg-[#0D94D1] transition-all transform hover:scale-105 shadow-lg font-medium inline-flex items-center justify-center touch-manipulation"
                 >
                   <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                  Call (916) 288-9400
+                  Call (916) 848-7907
                 </a>
                 <a 
                   href="mailto:lifesettlements@agoraassurancesolutions.com"
