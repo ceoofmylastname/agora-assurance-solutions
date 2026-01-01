@@ -317,8 +317,8 @@ const PrivacyPolicy = () => {
                           <Phone className="w-5 h-5 text-[#15AFF7] mr-3" />
                           <div>
                             <p className="font-medium text-gray-900">Phone</p>
-                            <a href="tel:+19162889400" className="text-[#15AFF7] hover:underline">
-                              (916) 288-9400
+                            <a href="tel:+19168487907" className="text-[#15AFF7] hover:underline">
+                              (916) 848-7907
                             </a>
                           </div>
                         </div>
