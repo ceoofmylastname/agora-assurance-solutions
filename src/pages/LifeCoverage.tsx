@@ -81,7 +81,7 @@ const LifeCoverage = () => {
                   <Button 
                     variant="outline" 
                     size="lg"
-                    onClick={() => window.open('tel:+19168487907', '_self')}
+                    onClick={() => window.open('tel:+19166595663', '_self')}
                     className="text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 w-full sm:w-auto"
                   >
                     <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />

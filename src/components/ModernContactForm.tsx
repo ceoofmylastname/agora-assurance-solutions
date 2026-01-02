@@ -557,7 +557,7 @@ const ModernContactForm = () => {
           {/* Contact Options */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <a
-              href="tel:916-848-7907"
+              href="tel:916-659-5663"
               className="group flex items-center gap-4 bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-primary/20"
             >
               <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center group-hover:bg-white/20 transition-colors">
@@ -565,7 +565,7 @@ const ModernContactForm = () => {
               </div>
               <div className="text-left">
                 <div className="font-semibold text-lg">Call Now</div>
-                <div className="text-sm opacity-90 font-medium">916-848-7907</div>
+                <div className="text-sm opacity-90 font-medium">916-659-5663</div>
               </div>
             </a>
             <div className="flex items-center gap-3 text-muted-foreground">
