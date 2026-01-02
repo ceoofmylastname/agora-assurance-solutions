@@ -9,7 +9,7 @@ export const createOrganizationSchema = () => ({
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'customer service',
-    telephone: '+1-916-848-7907',
+    telephone: '+1-916-659-5663',
     email: 'info@agoraassurance.com',
     availableLanguage: 'English'
   },
