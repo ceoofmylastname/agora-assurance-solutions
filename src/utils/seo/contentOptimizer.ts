@@ -24,7 +24,7 @@ const actionOrientedDescriptions = {
   '/wealth-solutions': 'Build and protect generational wealth with comprehensive financial strategies. Expert guidance on investments, insurance, and tax optimization. Start your wealth journey today.',
   '/protection-plans': 'Comprehensive protection for every stage of life. Compare insurance options, get instant quotes, and connect with licensed experts. Protect your future starting today.',
   '/get-quote': 'Get your personalized insurance quote in under 60 seconds. Compare rates from top carriers and find the perfect coverage for your needs. Start saving today.',
-  '/about': 'Discover why thousands trust Agora Assurance for their insurance needs. 50+ years combined experience, $500M+ in benefits delivered. Meet our expert team today.',
+  
   '/faq': 'Get instant answers to your insurance questions. Comprehensive FAQ covering life insurance, annuities, quotes, and more. Find solutions to protect your family today.',
   '/blog': 'Stay informed with expert insurance insights and financial strategies. Latest trends, tips, and guides to help you make smart protection decisions for your family.'
 };
@@ -45,7 +45,7 @@ const actionOrientedTitles = {
   '/wealth-solutions': 'Wealth Building Strategies | Expert Financial Guidance',
   '/protection-plans': 'Complete Insurance Protection | Compare Plans & Save',
   '/get-quote': 'Free Insurance Quotes | Compare Rates in 60 Seconds',
-  '/about': 'About Agora Assurance | Your Trusted Insurance Partner',
+  
   '/faq': 'Insurance FAQ | Get Instant Answers to Your Questions',
   '/blog': 'Insurance Insights | Expert Tips & Financial Strategies'
 };
