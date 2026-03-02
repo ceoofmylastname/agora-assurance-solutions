@@ -1,21 +1,43 @@
 
+Goal: make “About Us” fully non-public on all live domains, including the custom domain you tested.
 
-## Plan: Hide the About Us Page
+What I found
+- The codebase is already updated correctly:
+  - `/about` route removed from `src/App.tsx`
+  - About links removed from `src/components/Navbar.tsx`
+- But the two live domains are serving different frontend versions:
+  - `agora-assurance-solutions.lovable.app` = no “About Us”
+  - `agoraassurancesolutions.com` = still shows “About Us”
+- So this is a domain/deployment sync issue (not a remaining Navbar code issue).
 
-Remove the About Us page from public access by removing its route and all navigation links pointing to it. The page file itself will be kept in the codebase but will no longer be reachable.
+Plan
+1) Resync custom domain to current deployment
+- In Publish → Manage domains, verify `agoraassurancesolutions.com` and `www` are attached to this exact project/deployment.
+- If needed: remove and re-add the custom domain(s) to force a fresh binding.
 
-### Changes
+2) Force a fresh frontend rollout
+- Trigger one new frontend publish/update after domain rebind so both domains point to the same latest build.
 
-**1. src/App.tsx**
-- Remove the `/about` route (line 54)
-- Remove the `About` import (line 11)
+3) Hard-hide `/about` at the edge (defense in depth)
+- Add an explicit redirect rule in `public/_redirects`:
+  - `/about  /  301`
+- Keep SPA fallback below it.
 
-**2. src/components/Navbar.tsx**
-- Remove the "About Us" link from the desktop navigation (lines ~155-161)
-- Remove the "About Us" link from the mobile navigation (lines ~366-377)
+4) Remove remaining discoverability references
+- Remove `/about` from:
+  - `public/sitemap.xml`
+  - `src/hooks/useSiteScanner.ts` (commonPages)
+  - `src/hooks/usePageScanner.ts` (commonPages)
+  - `src/utils/seo/breadcrumbSchema.ts` (“about”: “About Us” mapping)
+  - (optional admin demo data) `src/components/seo/TechnicalSEO.tsx`
 
-**3. src/utils/seo/contentOptimizer.ts**
-- Remove the `/about` entries from the SEO metadata maps (lines 27, 48)
+5) Verify end-to-end on both domains
+- Test in normal + incognito:
+  - Top nav has no “About Us”
+  - Visiting `/about` redirects or 404s
+  - Same behavior on both `lovable.app` and custom domain
 
-The page file (`src/pages/About.tsx`) will remain in the codebase in case you want to restore it later. Anyone navigating directly to `/about` will see the 404 page.
-
+Technical details
+- Root cause is domain-version mismatch, not missing code edits.
+- Current code has About removed, but custom domain still serves an older frontend artifact.
+- Adding explicit `/about` redirect and removing sitemap/scanner references ensures About stays non-public even if stale links are discovered.
