@@ -13,7 +13,7 @@ export const usePageScanner = () => {
     
     // Add common pages that might not be linked
     const commonPages = [
-      '/', '/about', '/blog', '/services', '/contact', '/faq', 
+      '/', '/blog', '/services', '/contact', '/faq', 
       '/life-coverage', '/wealth-solutions', '/protection-plans',
       '/services/term-life', '/services/whole-life', '/services/universal-life',
       '/services/indexed-universal-life', '/services/final-expense',

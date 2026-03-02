@@ -40,7 +40,7 @@ export const getBreadcrumbsForPath = (pathname: string): BreadcrumbItem[] => {
       'indexed-universal-life': 'Indexed Universal Life',
       'tax-asset-protection': 'Tax & Asset Protection',
       'life-settlements': 'Life Settlements',
-      'about': 'About Us',
+      
       'blog': 'Blog',
       'faq': 'FAQ',
       'quote': 'Get Quote',

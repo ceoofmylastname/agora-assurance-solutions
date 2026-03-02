@@ -38,7 +38,7 @@ export const TechnicalSEO = () => {
       issue: 'Image Optimization',
       count: 12,
       description: 'Unoptimized images affecting load speed',
-      pages: ['/about', '/services/term-life', '/blog']
+      pages: ['/services/term-life', '/blog']
     }
   ];
 
