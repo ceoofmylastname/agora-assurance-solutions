@@ -1,43 +1,28 @@
 
-Goal: make “About Us” fully non-public on all live domains, including the custom domain you tested.
 
-What I found
-- The codebase is already updated correctly:
-  - `/about` route removed from `src/App.tsx`
-  - About links removed from `src/components/Navbar.tsx`
-- But the two live domains are serving different frontend versions:
-  - `agora-assurance-solutions.lovable.app` = no “About Us”
-  - `agoraassurancesolutions.com` = still shows “About Us”
-- So this is a domain/deployment sync issue (not a remaining Navbar code issue).
+## Fix: Hero Image Not Loading
 
-Plan
-1) Resync custom domain to current deployment
-- In Publish → Manage domains, verify `agoraassurancesolutions.com` and `www` are attached to this exact project/deployment.
-- If needed: remove and re-add the custom domain(s) to force a fresh binding.
+### Root Cause
 
-2) Force a fresh frontend rollout
-- Trigger one new frontend publish/update after domain rebind so both domains point to the same latest build.
+In `src/components/OptimizedImage.tsx`, the `generateSrcSet` function only checks for `/lovable-uploads/` and `/public/` paths to return the original source. Vite-bundled assets (imported from `src/assets/`) get paths like `/assets/hero-family-background-abc123.png`, which don't match either check. The function then generates broken srcset URLs like `hero-family-background-abc123-400w.webp` that don't exist, causing the image to fail loading entirely. Since the image never fires `onLoad`, it stays at `opacity-0` forever.
 
-3) Hard-hide `/about` at the edge (defense in depth)
-- Add an explicit redirect rule in `public/_redirects`:
-  - `/about  /  301`
-- Keep SPA fallback below it.
+### Changes
 
-4) Remove remaining discoverability references
-- Remove `/about` from:
-  - `public/sitemap.xml`
-  - `src/hooks/useSiteScanner.ts` (commonPages)
-  - `src/hooks/usePageScanner.ts` (commonPages)
-  - `src/utils/seo/breadcrumbSchema.ts` (“about”: “About Us” mapping)
-  - (optional admin demo data) `src/components/seo/TechnicalSEO.tsx`
+**`src/components/OptimizedImage.tsx`** -- Fix `generateSrcSet` to handle Vite-bundled assets:
+- Update the condition in `generateSrcSet` to also check for `/assets/` paths (Vite output), and return the original `baseSrc` for those too. A simpler approach: only generate responsive srcset for known CDN/remote URLs, and return the original src for any local/bundled asset.
 
-5) Verify end-to-end on both domains
-- Test in normal + incognito:
-  - Top nav has no “About Us”
-  - Visiting `/about` redirects or 404s
-  - Same behavior on both `lovable.app` and custom domain
+Change the check from:
+```ts
+if (baseSrc.includes('/lovable-uploads/') || baseSrc.includes('/public/')) {
+  return baseSrc;
+}
+```
+To:
+```ts
+if (baseSrc.includes('/lovable-uploads/') || baseSrc.includes('/public/') || baseSrc.includes('/assets/') || baseSrc.startsWith('data:')) {
+  return baseSrc;
+}
+```
 
-Technical details
-- Root cause is domain-version mismatch, not missing code edits.
-- Current code has About removed, but custom domain still serves an older frontend artifact.
-- Adding explicit `/about` redirect and removing sitemap/scanner references ensures About stays non-public even if stale links are discovered.
+This single-line fix will make the hero image (and all other Vite-imported images) load correctly.
+
