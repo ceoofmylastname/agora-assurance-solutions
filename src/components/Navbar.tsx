@@ -12,7 +12,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const location = useLocation();
-  
+
   const isHomePage = location.pathname === '/';
   const isCareersPage = location.pathname === '/careers';
   const shouldUseDarkText = !isHomePage || isScrolled;
@@ -27,10 +27,10 @@ const Navbar = () => {
       }
     };
     window.addEventListener('scroll', handleScroll);
-    
+
     // Set up the modal trigger for the contact navigation utility
     setContactModalTrigger(() => setIsContactModalOpen(true));
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
       setContactModalTrigger(null);
@@ -47,7 +47,7 @@ const Navbar = () => {
       window.location.href = `/#${id}`;
       return;
     }
-    
+
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({
@@ -97,8 +97,8 @@ const Navbar = () => {
   };
 
   const menuItemVariants = {
-    closed: { 
-      x: 50, 
+    closed: {
+      x: 50,
       opacity: 0,
       transition: {
         type: "spring",
@@ -106,8 +106,8 @@ const Navbar = () => {
         damping: 40
       }
     },
-    open: { 
-      x: 0, 
+    open: {
+      x: 0,
       opacity: 1,
       transition: {
         type: "spring",
@@ -124,23 +124,23 @@ const Navbar = () => {
 
   return (
     <>
-      <motion.nav 
-        className={cn("fixed top-0 left-0 right-0 z-40 transition-all duration-300 w-full", shouldUseWhiteBackground ? "bg-white shadow-sm" : "bg-transparent")} 
-        initial={{ opacity: 1, y: 0 }} 
+      <motion.nav
+        className={cn("fixed top-0 left-0 right-0 z-40 transition-all duration-300 w-full", shouldUseWhiteBackground ? "bg-white shadow-sm" : "bg-transparent")}
+        initial={{ opacity: 1, y: 0 }}
         animate={{ opacity: 1, y: 0 }}
       >
         <div className="w-full px-4 sm:px-6 lg:px-8 mx-auto">
           <div className="flex items-center justify-between h-16">
             <div className="flex-shrink-0">
               <Link to="/" className="flex items-center">
-                <img 
-                  src={shouldUseDarkText ? "/lovable-uploads/610dc05e-0552-4a89-97b1-852580e78ec0.png" : "/lovable-uploads/b09383f5-a02b-439b-b5de-34a1fe9f2a1f.png"} 
-                  alt="Agora Assurance Solutions Logo" 
-                  className="h-8 w-auto" 
+                <img
+                  src={shouldUseDarkText ? "/lovable-uploads/610dc05e-0552-4a89-97b1-852580e78ec0.png" : "/lovable-uploads/b09383f5-a02b-439b-b5de-34a1fe9f2a1f.png"}
+                  alt="Agora Assurance Solutions Logo"
+                  className="h-8 w-auto"
                 />
               </Link>
             </div>
-            
+
             {/* Desktop Navigation */}
             <div className="hidden md:block">
               <NavigationMenu className={cn(shouldUseDarkText ? "" : "text-white")}>
@@ -152,8 +152,7 @@ const Navbar = () => {
                       </NavigationMenuLink>
                     </Link>
                   </NavigationMenuItem>
-                  
-                  
+
                   <NavigationMenuItem>
                     <NavigationMenuTrigger className={cn(shouldUseDarkText ? "text-gray-700 hover:text-gray-900" : "text-gray-100 hover:text-white bg-transparent hover:bg-gray-800")}>
                       Services
@@ -164,7 +163,7 @@ const Navbar = () => {
                           <h3 className="font-space font-bold text-lg">Our Services</h3>
                           <p className="font-space text-blue-100 text-sm">Professional insurance solutions</p>
                         </div>
-                        
+
                         <div className="p-5">
                           <div className="grid grid-cols-2 gap-5">
                             <div className="space-y-3">
@@ -172,54 +171,54 @@ const Navbar = () => {
                                 <div className="w-2 h-2 bg-[#15AFF7] rounded-full"></div>
                                 <h4 className="font-space font-semibold text-sm text-gray-800">Life Insurance</h4>
                               </div>
-                              
+
                               <Link to="/services/term-life" className="group block p-3 rounded-lg hover:bg-gray-50 transition-all duration-200 border border-transparent hover:border-gray-200">
                                 <div className="font-space font-medium text-gray-900 group-hover:text-[#15AFF7] transition-colors text-sm">Term Life</div>
                                 <p className="text-xs text-gray-600 mt-1">Affordable family protection</p>
                               </Link>
-                              
+
                               <Link to="/services/whole-life" className="group block p-3 rounded-lg hover:bg-gray-50 transition-all duration-200 border border-transparent hover:border-gray-200">
                                 <div className="font-space font-medium text-gray-900 group-hover:text-[#15AFF7] transition-colors text-sm">Whole Life</div>
                                 <p className="text-xs text-gray-600 mt-1">Lifelong coverage with cash value</p>
                               </Link>
-                              
+
                               <Link to="/services/universal-life" className="group block p-3 rounded-lg hover:bg-gray-50 transition-all duration-200 border border-transparent hover:border-gray-200">
                                 <div className="font-space font-medium text-gray-900 group-hover:text-[#15AFF7] transition-colors text-sm">Universal Life</div>
                                 <p className="text-xs text-gray-600 mt-1">Flexible premiums & investments</p>
                               </Link>
-                              
+
                               <Link to="/services/indexed-universal-life" className="group block p-3 rounded-lg hover:bg-gray-50 transition-all duration-200 border border-transparent hover:border-gray-200">
                                 <div className="font-space font-medium text-gray-900 group-hover:text-[#15AFF7] transition-colors text-sm">Indexed Universal</div>
                                 <p className="text-xs text-gray-600 mt-1">Market upside, downside protection</p>
                               </Link>
                             </div>
-                            
+
                             <div className="space-y-3">
                               <div className="flex items-center gap-2 mb-3">
                                 <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
                                 <h4 className="font-space font-semibold text-sm text-gray-800">Specialized Services</h4>
                               </div>
-                              
+
                               <Link to="/services/final-expense" className="group block p-3 rounded-lg hover:bg-gray-50 transition-all duration-200 border border-transparent hover:border-gray-200">
                                 <div className="font-space font-medium text-gray-900 group-hover:text-purple-600 transition-colors text-sm">Final Expense</div>
                                 <p className="text-xs text-gray-600 mt-1">End-of-life coverage</p>
                               </Link>
-                              
+
                               <Link to="/services/mortgage-protection" className="group block p-3 rounded-lg hover:bg-gray-50 transition-all duration-200 border border-transparent hover:border-gray-200">
                                 <div className="font-space font-medium text-gray-900 group-hover:text-purple-600 transition-colors text-sm">Mortgage Protection</div>
                                 <p className="text-xs text-gray-600 mt-1">Secure your family home</p>
                               </Link>
-                              
+
                               <Link to="/services/life-settlements" className="group block p-3 rounded-lg hover:bg-gray-50 transition-all duration-200 border border-transparent hover:border-gray-200">
                                 <div className="font-space font-medium text-gray-900 group-hover:text-purple-600 transition-colors text-sm">Life Settlements</div>
                                 <p className="text-xs text-gray-600 mt-1">Turn policy into cash</p>
                               </Link>
-                              
+
                               <Link to="/services/annuities" className="group block p-3 rounded-lg hover:bg-gray-50 transition-all duration-200 border border-transparent hover:border-gray-200">
                                 <div className="font-space font-medium text-gray-900 group-hover:text-purple-600 transition-colors text-sm">Annuities</div>
                                 <p className="text-xs text-gray-600 mt-1">Guaranteed retirement income</p>
                               </Link>
-                              
+
                               <Link to="/services/tax-asset-protection" className="group block p-3 rounded-lg hover:bg-gray-50 transition-all duration-200 border border-transparent hover:border-gray-200">
                                 <div className="font-space font-medium text-gray-900 group-hover:text-purple-600 transition-colors text-sm">Tax & Asset Protection</div>
                                 <p className="text-xs text-gray-600 mt-1">Wealth preservation strategies</p>
@@ -227,12 +226,12 @@ const Navbar = () => {
                             </div>
                           </div>
                         </div>
-                        
+
                         <div className="bg-gray-50 px-6 py-3 border-t border-gray-100">
                           <div className="flex items-center justify-between">
                             <p className="font-space text-xs text-gray-600">Need guidance?</p>
-                            <button 
-                              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} 
+                            <button
+                              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                               className="font-space font-medium text-xs text-[#15AFF7] hover:text-blue-600 transition-colors"
                             >
                               Contact Expert →
@@ -242,7 +241,7 @@ const Navbar = () => {
                       </div>
                     </NavigationMenuContent>
                   </NavigationMenuItem>
-                  
+
                   <NavigationMenuItem>
                     <Link to="/faq">
                       <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), shouldUseDarkText ? "text-gray-700 hover:text-gray-900" : "text-gray-100 hover:text-white bg-transparent hover:bg-gray-800")}>
@@ -258,7 +257,7 @@ const Navbar = () => {
                       </NavigationMenuLink>
                     </Link>
                   </NavigationMenuItem>
-                  
+
                   {isCareersPage && (
                     <NavigationMenuItem>
                       <button
@@ -273,12 +272,12 @@ const Navbar = () => {
                           <span>LEADS</span>
                           <ExternalLink className="h-3 w-3 opacity-70" />
                         </div>
-                        
+
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-500" />
                       </button>
                     </NavigationMenuItem>
                   )}
-                  
+
                   <NavigationMenuItem>
                     <button onClick={() => setIsContactModalOpen(true)} className="px-4 py-2 rounded-md transition-colors bg-[#15AFF7] text-white hover:bg-[#0D94D1]">
                       Contact Us
@@ -287,10 +286,10 @@ const Navbar = () => {
                 </NavigationMenuList>
               </NavigationMenu>
             </div>
-            
+
             <div className="md:hidden">
-              <motion.button 
-                onClick={toggleMenu} 
+              <motion.button
+                onClick={toggleMenu}
                 className={cn("focus:outline-none relative w-10 h-10 flex items-center justify-center touch-manipulation", shouldUseDarkText ? "text-gray-700" : "text-white")}
                 animate={isMenuOpen ? "open" : "closed"}
               >
@@ -314,23 +313,23 @@ const Navbar = () => {
           exit="exit"
           variants={menuVariants}
         >
-          <motion.div 
+          <motion.div
             className="absolute inset-0 bg-black/50 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsMenuOpen(false)}
           />
-          
+
           <motion.div
             className={cn("absolute right-0 top-0 h-full w-full max-w-sm shadow-2xl", shouldUseWhiteBackground ? "bg-white" : "bg-primary")}
             variants={menuVariants}
           >
             <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
-              <img 
-                src={shouldUseDarkText ? "/lovable-uploads/610dc05e-0552-4a89-97b1-852580e78ec0.png" : "/lovable-uploads/b09383f5-a02b-439b-b5de-34a1fe9f2a1f.png"} 
-                alt="Agora Logo" 
-                className="h-8 w-auto" 
+              <img
+                src={shouldUseDarkText ? "/lovable-uploads/610dc05e-0552-4a89-97b1-852580e78ec0.png" : "/lovable-uploads/b09383f5-a02b-439b-b5de-34a1fe9f2a1f.png"}
+                alt="Agora Logo"
+                className="h-8 w-auto"
               />
               <motion.button
                 onClick={() => setIsMenuOpen(false)}
@@ -344,9 +343,9 @@ const Navbar = () => {
 
             <div className="px-4 py-4 space-y-2 h-full overflow-y-auto">
               <motion.div variants={menuItemVariants}>
-                <Link 
-                  to="/" 
-                  className={cn("block px-4 py-4 rounded-lg text-lg font-medium transition-colors border-l-4 border-transparent hover:border-[#15AFF7] touch-manipulation min-h-[44px] flex items-center", shouldUseDarkText ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-800")} 
+                <Link
+                  to="/"
+                  className={cn("block px-4 py-4 rounded-lg text-lg font-medium transition-colors border-l-4 border-transparent hover:border-[#15AFF7] touch-manipulation min-h-[44px] flex items-center", shouldUseDarkText ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-800")}
                   onClick={() => {
                     setIsMenuOpen(false);
                     window.scrollTo(0, 0);
@@ -355,16 +354,15 @@ const Navbar = () => {
                   Home
                 </Link>
               </motion.div>
-              
-              
+
               <motion.div variants={menuItemVariants} className="space-y-2">
                 <div className={cn("px-4 py-2 text-sm font-semibold uppercase tracking-wider", shouldUseDarkText ? "text-gray-500" : "text-gray-400")}>
                   Services
                 </div>
                 <div className="pl-2 space-y-1">
-                  <Link 
-                    to="/services/term-life" 
-                    className={cn("block px-4 py-3 rounded-lg text-base transition-colors border-l-4 border-transparent hover:border-[#15AFF7] touch-manipulation min-h-[44px] flex items-center", shouldUseDarkText ? "text-gray-600 hover:bg-gray-50" : "text-gray-300 hover:bg-gray-800")} 
+                  <Link
+                    to="/services/term-life"
+                    className={cn("block px-4 py-3 rounded-lg text-base transition-colors border-l-4 border-transparent hover:border-[#15AFF7] touch-manipulation min-h-[44px] flex items-center", shouldUseDarkText ? "text-gray-600 hover:bg-gray-50" : "text-gray-300 hover:bg-gray-800")}
                     onClick={() => {
                       setIsMenuOpen(false);
                       window.scrollTo(0, 0);
@@ -372,9 +370,9 @@ const Navbar = () => {
                   >
                     Term Life Insurance
                   </Link>
-                  <Link 
-                    to="/services/whole-life" 
-                    className={cn("block px-4 py-3 rounded-lg text-base transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", shouldUseDarkText ? "text-gray-600 hover:bg-gray-50" : "text-gray-300 hover:bg-gray-800")} 
+                  <Link
+                    to="/services/whole-life"
+                    className={cn("block px-4 py-3 rounded-lg text-base transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", shouldUseDarkText ? "text-gray-600 hover:bg-gray-50" : "text-gray-300 hover:bg-gray-800")}
                     onClick={() => {
                       setIsMenuOpen(false);
                       window.scrollTo(0, 0);
@@ -382,9 +380,9 @@ const Navbar = () => {
                   >
                     Whole Life Insurance
                   </Link>
-                  <Link 
-                    to="/services/life-settlements" 
-                    className={cn("block px-4 py-3 rounded-lg text-base transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", shouldUseDarkText ? "text-gray-600 hover:bg-gray-50" : "text-gray-300 hover:bg-gray-800")} 
+                  <Link
+                    to="/services/life-settlements"
+                    className={cn("block px-4 py-3 rounded-lg text-base transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", shouldUseDarkText ? "text-gray-600 hover:bg-gray-50" : "text-gray-300 hover:bg-gray-800")}
                     onClick={() => {
                       setIsMenuOpen(false);
                       window.scrollTo(0, 0);
@@ -392,9 +390,9 @@ const Navbar = () => {
                   >
                     Life Settlements
                   </Link>
-                  <Link 
-                    to="/services/annuities" 
-                    className={cn("block px-4 py-3 rounded-lg text-base transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", shouldUseDarkText ? "text-gray-600 hover:bg-gray-50" : "text-gray-300 hover:bg-gray-800")} 
+                  <Link
+                    to="/services/annuities"
+                    className={cn("block px-4 py-3 rounded-lg text-base transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", shouldUseDarkText ? "text-gray-600 hover:bg-gray-50" : "text-gray-300 hover:bg-gray-800")}
                     onClick={() => {
                       setIsMenuOpen(false);
                       window.scrollTo(0, 0);
@@ -402,9 +400,9 @@ const Navbar = () => {
                   >
                     Annuities
                   </Link>
-                  <Link 
-                    to="/services/final-expense" 
-                    className={cn("block px-4 py-3 rounded-lg text-base transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", shouldUseDarkText ? "text-gray-600 hover:bg-gray-50" : "text-gray-300 hover:bg-gray-800")} 
+                  <Link
+                    to="/services/final-expense"
+                    className={cn("block px-4 py-3 rounded-lg text-base transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", shouldUseDarkText ? "text-gray-600 hover:bg-gray-50" : "text-gray-300 hover:bg-gray-800")}
                     onClick={() => {
                       setIsMenuOpen(false);
                       window.scrollTo(0, 0);
@@ -414,11 +412,11 @@ const Navbar = () => {
                   </Link>
                 </div>
               </motion.div>
-              
+
               <motion.div variants={menuItemVariants}>
-                <Link 
-                  to="/faq" 
-                  className={cn("block px-4 py-4 rounded-lg text-lg font-medium transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", shouldUseDarkText ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-800")} 
+                <Link
+                  to="/faq"
+                  className={cn("block px-4 py-4 rounded-lg text-lg font-medium transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", shouldUseDarkText ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-800")}
                   onClick={() => {
                     setIsMenuOpen(false);
                     window.scrollTo(0, 0);
@@ -429,9 +427,9 @@ const Navbar = () => {
               </motion.div>
 
               <motion.div variants={menuItemVariants}>
-                <Link 
-                  to="/careers" 
-                  className={cn("block px-4 py-4 rounded-lg text-lg font-medium transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", shouldUseDarkText ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-800")} 
+                <Link
+                  to="/careers"
+                  className={cn("block px-4 py-4 rounded-lg text-lg font-medium transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", shouldUseDarkText ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-800")}
                   onClick={() => {
                     setIsMenuOpen(false);
                     window.scrollTo(0, 0);
@@ -440,10 +438,10 @@ const Navbar = () => {
                   Agora Advisor Solutions
                 </Link>
               </motion.div>
-              
+
               {isCareersPage && (
                 <motion.div variants={menuItemVariants} className="pt-2">
-                  <button 
+                  <button
                     onClick={() => {
                       handleLeadsClick();
                       setIsMenuOpen(false);
@@ -456,13 +454,13 @@ const Navbar = () => {
                   </button>
                 </motion.div>
               )}
-              
+
               <motion.div variants={menuItemVariants} className="pt-4">
-                <button 
+                <button
                   onClick={() => {
                     setIsContactModalOpen(true);
                     setIsMenuOpen(false);
-                  }} 
+                  }}
                   className="w-full px-6 py-4 bg-gradient-to-r from-[#15AFF7] to-blue-600 text-white rounded-lg text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                 >
                   Contact Us
@@ -472,11 +470,11 @@ const Navbar = () => {
           </motion.div>
         </motion.div>
       )}
-      
+
       {/* Contact Modal */}
-      <ContactModal 
-        isOpen={isContactModalOpen} 
-        onOpenChange={setIsContactModalOpen} 
+      <ContactModal
+        isOpen={isContactModalOpen}
+        onOpenChange={setIsContactModalOpen}
       />
     </>
   );
