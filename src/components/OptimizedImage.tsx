@@ -66,7 +66,7 @@ export const OptimizedImage = ({
 
   const generateSrcSet = (baseSrc: string) => {
     // For uploaded assets, use the original source
-    if (baseSrc.includes('/lovable-uploads/') || baseSrc.includes('/public/')) {
+    if (baseSrc.includes('/lovable-uploads/') || baseSrc.includes('/public/') || baseSrc.includes('/assets/') || baseSrc.startsWith('data:')) {
       return baseSrc;
     }
     
