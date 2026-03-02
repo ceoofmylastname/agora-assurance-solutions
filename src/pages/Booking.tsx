@@ -190,7 +190,7 @@ const Booking = () => {
                   className="w-full h-full"
                 >
                   <iframe
-                    src="https://crm.agoraassurancesolutions.com/widget/booking/foZnFDUFuB2fu0X5eDZn"
+                    src="https://link.agoraassurancesolutions.com/widget/booking/TC1PNbvj8NYtCxW8x3Qq"
                     width="100%"
                     height={isMobile ? "500" : "600"}
                     frameBorder="0"
