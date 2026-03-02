@@ -2,20 +2,14 @@ import PageLayout from '@/components/PageLayout';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
-import { useEffect, useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { ModernApplicationModal } from '@/components/ModernApplicationModal';
-import businessMeetingImage from '@/assets/business-meeting-advisors.webp';
+import { useEffect } from 'react';
 
 const Careers = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Debug logging
-  console.log("Careers component render, isModalOpen:", isModalOpen);
   
   return (
     <div className="min-h-screen bg-white">
@@ -68,13 +62,14 @@ const Careers = () => {
                     animate={{ opacity: 1, y: 0 }} 
                     transition={{ duration: 0.6, delay: 0.4 }}
                   >
-                    <button 
-                      type="button"
-                      onClick={() => setIsModalOpen(true)}
-                      className="bg-[#15AFF7] hover:bg-[#0D94D1] text-white px-8 py-3 text-lg font-semibold rounded transition-colors cursor-pointer shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                    <a 
+                      href="https://leads.agoraassurancesolutions.com/apply"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block bg-[#15AFF7] hover:bg-[#0D94D1] text-white px-8 py-3 text-lg font-semibold rounded cursor-pointer shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
                     >
                       APPLY NOW
-                    </button>
+                    </a>
                   </motion.div>
                 </div>
                 
@@ -97,10 +92,6 @@ const Careers = () => {
         </section>
       </PageLayout>
       
-      <ModernApplicationModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-      />
     </div>
   );
 };
