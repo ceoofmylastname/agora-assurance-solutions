@@ -97,6 +97,7 @@ const TermsConditions = () => {
                       { id: 'indemnification', title: 'Indemnification' },
                       { id: 'termination', title: 'Termination' },
                       { id: 'governing-law', title: 'Governing Law' },
+                      { id: 'sms-communications', title: 'SMS Communications' },
                       { id: 'contact-us', title: 'Contact Us' }
                     ].map((item) => (
                       <a
@@ -368,12 +369,65 @@ const TermsConditions = () => {
                   </Card>
                 </motion.section>
 
+                <motion.section id="sms-communications" className="mb-12" variants={itemVariants}>
+                  <Card className="border-l-4 border-l-cyan-500 bg-gradient-to-r from-cyan-500/5 to-transparent">
+                    <CardContent className="p-8">
+                      <div className="flex items-center mb-4">
+                        <Phone className="w-6 h-6 text-cyan-500 mr-3" />
+                        <h2 className="text-2xl font-bold text-gray-900">12. SMS Communications & Text Messaging</h2>
+                      </div>
+                      <p className="text-gray-600 mb-4 leading-relaxed">
+                        By opting in to SMS communications from Agora Assurance Solutions, you agree to the following terms regarding text messaging:
+                      </p>
+
+                      <h3 className="text-lg font-semibold mb-2 text-gray-900">Types of Messages</h3>
+                      <p className="text-gray-600 mb-4">We may send the following types of SMS messages with your consent:</p>
+                      <ul className="list-disc pl-6 mb-6 text-gray-600 space-y-2">
+                        <li>Appointment reminders and scheduling confirmations</li>
+                        <li>Policy updates and renewal notifications</li>
+                        <li>Insurance quote information and follow-ups</li>
+                        <li>Marketing and promotional messages (only with explicit opt-in)</li>
+                      </ul>
+
+                      <h3 className="text-lg font-semibold mb-2 text-gray-900">Opt-Out Instructions</h3>
+                      <p className="text-gray-600 mb-4">
+                        You may opt out of receiving SMS messages at any time by replying <strong>STOP</strong> to any text message you receive from us. Upon opting out, you will receive a confirmation message and no further SMS messages will be sent unless you re-subscribe.
+                      </p>
+
+                      <h3 className="text-lg font-semibold mb-2 text-gray-900">Customer Support</h3>
+                      <p className="text-gray-600 mb-4">
+                        For assistance with SMS communications, reply <strong>HELP</strong> to any message or contact us at <a href="tel:+19166595663" className="text-[#15AFF7] hover:underline">(916) 659-5663</a> or <a href="mailto:info@agoraassurancesolutions.com" className="text-[#15AFF7] hover:underline">info@agoraassurancesolutions.com</a>.
+                      </p>
+
+                      <h3 className="text-lg font-semibold mb-2 text-gray-900">Message & Data Rates</h3>
+                      <p className="text-gray-600 mb-4">
+                        Message frequency may vary. Standard message and data rates may apply depending on your mobile carrier and plan. Agora Assurance Solutions is not responsible for any charges incurred from your carrier.
+                      </p>
+
+                      <h3 className="text-lg font-semibold mb-2 text-gray-900">Carrier Liability Disclaimer</h3>
+                      <p className="text-gray-600 mb-4">
+                        Mobile carriers are not liable for delayed or undelivered messages. Message delivery is subject to effective transmission by your mobile carrier and network availability.
+                      </p>
+
+                      <h3 className="text-lg font-semibold mb-2 text-gray-900">Age Restriction</h3>
+                      <p className="text-gray-600 mb-4">
+                        You must be at least 18 years of age to opt in to our SMS communications program. By opting in, you confirm that you are 18 years of age or older.
+                      </p>
+
+                      <p className="text-gray-600">
+                        For more information about how we handle your mobile information, please review our{' '}
+                        <Link to="/privacy" className="text-[#15AFF7] hover:underline">Privacy Policy</Link>.
+                      </p>
+                    </CardContent>
+                  </Card>
+                </motion.section>
+
                 <motion.section id="contact-us" className="mb-12" variants={itemVariants}>
                   <Card className="border-l-4 border-l-[#15AFF7] bg-gradient-to-r from-[#15AFF7]/5 to-transparent">
                     <CardContent className="p-8">
                       <div className="flex items-center mb-4">
                         <Phone className="w-6 h-6 text-[#15AFF7] mr-3" />
-                        <h2 className="text-2xl font-bold text-gray-900">12. Contact Us</h2>
+                        <h2 className="text-2xl font-bold text-gray-900">13. Contact Us</h2>
                       </div>
                       <p className="text-gray-600 mb-6">
                         If you have any questions about these Terms and Conditions, please contact us:

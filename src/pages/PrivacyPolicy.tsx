@@ -95,6 +95,8 @@ const PrivacyPolicy = () => {
                       { id: 'cookies', title: 'Cookies & Tracking' },
                       { id: 'your-rights', title: 'Your Rights' },
                       { id: 'data-retention', title: 'Data Retention' },
+                      { id: 'sms-communications', title: 'SMS Opt-In & Communications' },
+                      { id: 'mobile-info-sharing', title: 'Mobile Information Sharing' },
                       { id: 'contact-us', title: 'Contact Us' }
                     ].map((item) => (
                       <a
@@ -293,12 +295,65 @@ const PrivacyPolicy = () => {
                   </Card>
                 </motion.section>
 
+                <motion.section id="sms-communications" className="mb-12" variants={itemVariants}>
+                  <Card className="border-l-4 border-l-emerald-500 bg-gradient-to-r from-emerald-500/5 to-transparent">
+                    <CardContent className="p-8">
+                      <div className="flex items-center mb-4">
+                        <Phone className="w-6 h-6 text-emerald-500 mr-3" />
+                        <h2 className="text-2xl font-bold text-gray-900">10. SMS Opt-In & Communications</h2>
+                      </div>
+                      <p className="text-gray-600 mb-4 leading-relaxed">
+                        By opting in to receive SMS messages from Agora Assurance Solutions, you consent to receive text messages related to our insurance services. We offer two types of SMS communications:
+                      </p>
+                      <h3 className="text-lg font-semibold mb-3 text-gray-900">Transactional Messages</h3>
+                      <p className="text-gray-600 mb-4">
+                        Appointment reminders, policy updates, quote information, and service-related notifications. These messages are sent to support your active insurance inquiries and policies.
+                      </p>
+                      <h3 className="text-lg font-semibold mb-3 text-gray-900">Marketing Messages</h3>
+                      <p className="text-gray-600 mb-4">
+                        Promotional offers, new product announcements, and educational insurance content. You will only receive marketing messages if you have explicitly opted in.
+                      </p>
+                      <h3 className="text-lg font-semibold mb-3 text-gray-900">Message Frequency & Rates</h3>
+                      <ul className="list-disc pl-6 mb-4 text-gray-600 space-y-2">
+                        <li>Message frequency may vary based on your interactions and preferences</li>
+                        <li>Standard message and data rates may apply depending on your mobile carrier and plan</li>
+                      </ul>
+                      <h3 className="text-lg font-semibold mb-3 text-gray-900">Opt-Out & Help</h3>
+                      <ul className="list-disc pl-6 mb-4 text-gray-600 space-y-2">
+                        <li>Reply <strong>STOP</strong> to any message to opt out of SMS communications at any time</li>
+                        <li>Reply <strong>HELP</strong> for assistance or contact us at (916) 659-5663</li>
+                        <li>Opting out of SMS will not affect your insurance coverage or services</li>
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </motion.section>
+
+                <motion.section id="mobile-info-sharing" className="mb-12" variants={itemVariants}>
+                  <Card className="border-l-4 border-l-rose-500 bg-gradient-to-r from-rose-500/5 to-transparent">
+                    <CardContent className="p-8">
+                      <div className="flex items-center mb-4">
+                        <Shield className="w-6 h-6 text-rose-500 mr-3" />
+                        <h2 className="text-2xl font-bold text-gray-900">11. Mobile Information Sharing</h2>
+                      </div>
+                      <p className="text-gray-600 mb-4 leading-relaxed">
+                        Your consent to receive SMS messages and any mobile information collected through our SMS program will <strong>not be shared with or sold to third parties</strong> for their own marketing or promotional purposes.
+                      </p>
+                      <p className="text-gray-600 mb-4 leading-relaxed">
+                        We may share your mobile information only with SMS service providers and technology partners who assist us in delivering text messages. These providers are contractually obligated to use your information solely for the purpose of delivering our messages and are bound by confidentiality agreements.
+                      </p>
+                      <p className="text-gray-600 leading-relaxed">
+                        For more information about how we protect your data, please review the other sections of this Privacy Policy or contact us directly.
+                      </p>
+                    </CardContent>
+                  </Card>
+                </motion.section>
+
                 <motion.section id="contact-us" className="mb-12" variants={itemVariants}>
                   <Card className="border-l-4 border-l-[#15AFF7] bg-gradient-to-r from-[#15AFF7]/5 to-transparent">
                     <CardContent className="p-8">
                       <div className="flex items-center mb-4">
                         <Phone className="w-6 h-6 text-[#15AFF7] mr-3" />
-                        <h2 className="text-2xl font-bold text-gray-900">10. Contact Us</h2>
+                        <h2 className="text-2xl font-bold text-gray-900">12. Contact Us</h2>
                       </div>
                       <p className="text-gray-600 mb-6">
                         If you have any questions about this Privacy Policy or our privacy practices, please contact us:
