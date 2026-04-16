@@ -272,3 +272,28 @@ iframe[src*="consent"],
   height: 0 !important;
   overflow: hidden !important;
 }
+
+/* TEMPORARY (10DLC compliance): hide all on-site forms. Reverse by removing this block. */
+body.forms-hidden form,
+body.forms-hidden #contact,
+body.forms-hidden [data-lead-form] {
+  display: none !important;
+}
+
+/* TEMPORARY: hide LeadConnector chat widget on /careers only. Reverse by removing this block. */
+body.hide-chat-widget #lc_chat_widget,
+body.hide-chat-widget [id^="lc-"],
+body.hide-chat-widget [id^="lc_"],
+body.hide-chat-widget iframe[src*="leadconnectorhq.com"],
+body.hide-chat-widget div[class*="LCWidget"],
+body.hide-chat-widget div[class*="lc-widget"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  left: -9999px !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}

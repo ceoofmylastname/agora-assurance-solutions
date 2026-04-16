@@ -3,8 +3,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
@@ -33,6 +33,22 @@ import WealthSolutions from "./pages/WealthSolutions";
 import SEODashboard from "./pages/admin/SEODashboard";
 import DirectorsManagement from "./pages/admin/DirectorsManagement";
 
+// TEMPORARY (10DLC compliance): toggles body classes that hide all on-site forms
+// site-wide and hide the LeadConnector chat widget on /careers. Remove this
+// component (and its usage below) plus the matching CSS blocks in index.css to revert.
+const RouteBodyClass = () => {
+  const location = useLocation();
+  useEffect(() => {
+    document.body.classList.add('forms-hidden');
+    if (location.pathname === '/careers') {
+      document.body.classList.add('hide-chat-widget');
+    } else {
+      document.body.classList.remove('hide-chat-widget');
+    }
+  }, [location.pathname]);
+  return null;
+};
+
 const App = () => {
   const [queryClient] = useState(() => new QueryClient({
     defaultOptions: {
@@ -50,6 +66,7 @@ const App = () => {
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <RouteBodyClass />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/about" element={<About />} />
