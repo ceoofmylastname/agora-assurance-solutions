@@ -1,28 +1,9 @@
 
+The user wants only the LeadConnector chat widget to show. The custom `MemoryWidget` is currently rendered in `src/components/PageLayout.tsx` and creates a duplicate floating chat button. I need to remove it.
 
-## Fix: Hero Image Not Loading
+## Plan: Remove duplicate MemoryWidget so only LeadConnector shows
 
-### Root Cause
+**Change:**
+- **`src/components/PageLayout.tsx`**: Remove the `MemoryWidget` import and its `<MemoryWidget />` usage so the custom chat button no longer renders. The LeadConnector script in `index.html` will remain the only chat widget on the site.
 
-In `src/components/OptimizedImage.tsx`, the `generateSrcSet` function only checks for `/lovable-uploads/` and `/public/` paths to return the original source. Vite-bundled assets (imported from `src/assets/`) get paths like `/assets/hero-family-background-abc123.png`, which don't match either check. The function then generates broken srcset URLs like `hero-family-background-abc123-400w.webp` that don't exist, causing the image to fail loading entirely. Since the image never fires `onLoad`, it stays at `opacity-0` forever.
-
-### Changes
-
-**`src/components/OptimizedImage.tsx`** -- Fix `generateSrcSet` to handle Vite-bundled assets:
-- Update the condition in `generateSrcSet` to also check for `/assets/` paths (Vite output), and return the original `baseSrc` for those too. A simpler approach: only generate responsive srcset for known CDN/remote URLs, and return the original src for any local/bundled asset.
-
-Change the check from:
-```ts
-if (baseSrc.includes('/lovable-uploads/') || baseSrc.includes('/public/')) {
-  return baseSrc;
-}
-```
-To:
-```ts
-if (baseSrc.includes('/lovable-uploads/') || baseSrc.includes('/public/') || baseSrc.includes('/assets/') || baseSrc.startsWith('data:')) {
-  return baseSrc;
-}
-```
-
-This single-line fix will make the hero image (and all other Vite-imported images) load correctly.
-
+**Note:** The `MemoryWidget.tsx` file itself will be left in place (unused) so it can be re-enabled later if needed. Let me know if you'd prefer to delete the file entirely.
