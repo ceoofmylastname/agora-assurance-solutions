@@ -34,17 +34,17 @@ import SEODashboard from "./pages/admin/SEODashboard";
 import DirectorsManagement from "./pages/admin/DirectorsManagement";
 
 // TEMPORARY (10DLC compliance): toggles body classes that hide all on-site forms
-// site-wide and hide the LeadConnector chat widget on /careers. Remove this
+// site-wide and hide the LeadConnector chat widget on every page. Remove this
 // component (and its usage below) plus the matching CSS blocks in index.css to revert.
 const RouteBodyClass = () => {
   const location = useLocation();
   useEffect(() => {
     document.body.classList.add('forms-hidden');
-    if (location.pathname === '/careers') {
-      document.body.classList.add('hide-chat-widget');
-    } else {
+    document.body.classList.add('hide-chat-widget');
+
+    return () => {
       document.body.classList.remove('hide-chat-widget');
-    }
+    };
   }, [location.pathname]);
   return null;
 };
