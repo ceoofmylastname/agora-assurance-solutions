@@ -280,13 +280,21 @@ body.forms-hidden [data-lead-form] {
   display: none !important;
 }
 
-/* TEMPORARY: hide LeadConnector chat widget on /careers only. Reverse by removing this block. */
+/* TEMPORARY: hide LeadConnector chat widget site-wide. Reverse by removing this block. */
 body.hide-chat-widget #lc_chat_widget,
 body.hide-chat-widget [id^="lc-"],
 body.hide-chat-widget [id^="lc_"],
+body.hide-chat-widget [class*="lc-"],
+body.hide-chat-widget [class*="lc_"],
 body.hide-chat-widget iframe[src*="leadconnectorhq.com"],
+body.hide-chat-widget iframe[src*="msgsndr.com"],
 body.hide-chat-widget div[class*="LCWidget"],
-body.hide-chat-widget div[class*="lc-widget"] {
+body.hide-chat-widget div[class*="lc-widget"],
+body.hide-chat-widget button[aria-label*="chat widget" i],
+body.hide-chat-widget button[title*="chat" i],
+body.hide-chat-widget [aria-label*="Chat with us" i],
+body.hide-chat-widget [aria-label*="open the chat widget" i],
+body.hide-chat-widget [aria-label*="close the chat widget" i] {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
