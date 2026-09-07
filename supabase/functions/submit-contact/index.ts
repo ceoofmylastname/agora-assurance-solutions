@@ -48,6 +48,58 @@ function validatePhone(phone: string): boolean {
   return cleaned.length === 10 || (cleaned.length === 11 && cleaned.startsWith('1'));
 }
 
+// Mirror every website lead into the Agora Leads Site Supabase project (public.website_leads)
+// via its `receive-website-lead` edge function. Failures are logged but never block the form.
+const AGORA_LEADS_DEFAULT_SYNC_URL =
+  'https://rkkpdomkgsjnytfsypxw.supabase.co/functions/v1/receive-website-lead';
+
+async function syncToAgoraLeads(lead: {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  service: string;
+  message: string;
+  smsTransactionalConsent: boolean;
+  smsMarketingConsent: boolean;
+}): Promise<void> {
+  const secret = Deno.env.get('AGORA_LEADS_SYNC_SECRET');
+  if (!secret) {
+    console.warn('AGORA_LEADS_SYNC_SECRET not set; skipping Agora Leads sync');
+    return;
+  }
+  const url = Deno.env.get('AGORA_LEADS_SYNC_URL') || AGORA_LEADS_DEFAULT_SYNC_URL;
+
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 8000);
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-agora-sync-secret': secret,
+      },
+      body: JSON.stringify({
+        ...lead,
+        leadSource: 'Website Contact Form',
+        sourceSite: 'agora-assurance',
+        submittedAt: new Date().toISOString(),
+      }),
+      signal: controller.signal,
+    });
+    if (!response.ok) {
+      console.error(`Agora Leads sync failed with status: ${response.status}`);
+      return;
+    }
+    const result = await response.json().catch(() => ({}));
+    console.log('Agora Leads sync succeeded', result?.id ?? '');
+  } catch (error) {
+    console.error('Agora Leads sync error:', error);
+  } finally {
+    clearTimeout(timeoutId);
+  }
+}
+
 serve(async (req) => {
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
@@ -93,7 +145,9 @@ serve(async (req) => {
       phone: sanitizeInput(data.phone),
       service: sanitizeInput(data.service),
       message: sanitizeInput(data.message),
-      smsConsent: typeof data.smsConsent === 'boolean' ? data.smsConsent : false
+      smsConsent: typeof data.smsConsent === 'boolean' ? data.smsConsent : false,
+      smsTransactionalConsent: data.smsTransactionalConsent === true,
+      smsMarketingConsent: data.smsMarketingConsent === true
     };
 
     // Validate email format
@@ -117,6 +171,9 @@ serve(async (req) => {
         }
       );
     }
+
+    // Store the lead in the Agora Leads Site database (non-blocking on failure)
+    await syncToAgoraLeads(sanitizedData);
 
     // Get webhook URL from environment variable
     const webhookUrl = Deno.env.get('CONTACT_WEBHOOK_URL');
@@ -142,7 +199,9 @@ serve(async (req) => {
       'Service - (SL)': sanitizedData.service,
       'first_name': sanitizedData.firstName,
       'last_name': sanitizedData.lastName,
-      sms_consent: sanitizedData.smsConsent
+      sms_consent: sanitizedData.smsConsent,
+      smsTransactionalConsent: sanitizedData.smsTransactionalConsent,
+      smsMarketingConsent: sanitizedData.smsMarketingConsent
     };
 
     // Forward to external webhook with timeout
