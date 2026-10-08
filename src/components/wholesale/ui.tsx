@@ -108,11 +108,11 @@ export const SpotlightCard = ({ children, className, glow = BRAND.sky }: { child
       onMouseMove={onMove}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className={cn('relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-sm transition-colors duration-300', hover && 'border-white/20', className)}
+      className={cn('relative overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-[0_1px_2px_rgba(13,34,56,.04)] transition-all duration-300', hover && 'border-[#15AFF7]/50 shadow-[0_24px_60px_-30px_rgba(21,175,247,.45)]', className)}
     >
       <div
         className="pointer-events-none absolute inset-0 transition-opacity duration-300"
-        style={{ opacity: hover ? 1 : 0, background: `radial-gradient(520px circle at ${pos.x}px ${pos.y}px, ${glow}22, transparent 45%)` }}
+        style={{ opacity: hover ? 1 : 0, background: `radial-gradient(520px circle at ${pos.x}px ${pos.y}px, ${glow}14, transparent 45%)` }}
       />
       <div
         className="pointer-events-none absolute inset-0 rounded-3xl transition-opacity duration-300"
@@ -178,14 +178,14 @@ export const GlowButton = ({ children, className, ...rest }: React.ComponentProp
 export const GhostButton = ({ children, className, ...rest }: React.ComponentProps<'a'>) => (
   <a
     {...rest}
-    className={cn('inline-flex items-center justify-center gap-2 min-h-[52px] px-7 rounded-full font-semibold text-white border border-white/20 bg-white/5 hover:bg-white/10 backdrop-blur transition-all', className)}
+    className={cn('inline-flex items-center justify-center gap-2 min-h-[52px] px-7 rounded-full font-semibold text-[#0d2238] border border-gray-300 bg-white hover:border-[#0d2238] hover:bg-gray-50 transition-all', className)}
   >
     {children}
   </a>
 );
 
 /* ---------- Wholesale logo: the agora wordmark with WHOLESALE beneath ---------- */
-export const WholesaleLogo = ({ variant = 'white', className, size = 'md' }: { variant?: 'white' | 'dark'; className?: string; size?: 'sm' | 'md' | 'lg' }) => {
+export const WholesaleLogo = ({ variant = 'dark', className, size = 'md' }: { variant?: 'white' | 'dark'; className?: string; size?: 'sm' | 'md' | 'lg' }) => {
   const h = size === 'lg' ? 'h-12' : size === 'sm' ? 'h-6' : 'h-8';
   const t = size === 'lg' ? 'text-[13px] tracking-[0.5em]' : size === 'sm' ? 'text-[8px] tracking-[0.42em]' : 'text-[9.5px] tracking-[0.46em]';
   return (

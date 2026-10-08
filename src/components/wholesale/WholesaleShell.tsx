@@ -14,8 +14,8 @@ const LINKS = [
   { to: '/wholesale/portal', label: 'Partner sign in' },
 ];
 
-/** Dark layout with the glass Wholesale nav (agora wordmark + WHOLESALE). */
-const WholesaleShell = ({ children, dark = true }: { children: ReactNode; dark?: boolean }) => {
+/** White layout with the Wholesale nav (agora wordmark + WHOLESALE). */
+const WholesaleShell = ({ children }: { children: ReactNode; dark?: boolean }) => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const location = useLocation();
@@ -38,24 +38,24 @@ const WholesaleShell = ({ children, dark = true }: { children: ReactNode; dark?:
   }, [location]);
 
   return (
-    <div className={cn('min-h-screen w-full max-w-[100vw] overflow-x-hidden', dark ? 'bg-[#081626] text-white' : 'bg-gray-50 text-gray-900')}>
-      <header className={cn('fixed top-0 inset-x-0 z-40 transition-all duration-300', scrolled || !dark ? 'bg-[#081626]/80 backdrop-blur-xl border-b border-white/10' : 'bg-transparent')}>
+    <div className="min-h-screen w-full max-w-[100vw] overflow-x-hidden bg-white text-[#0d2238]">
+      <header className={cn('fixed top-0 inset-x-0 z-40 transition-all duration-300', scrolled ? 'bg-white/85 backdrop-blur-xl border-b border-gray-200 shadow-[0_1px_0_rgba(13,34,56,.04)]' : 'bg-white/60 backdrop-blur')}>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-[72px] flex items-center justify-between">
           <Link to="/wholesale" aria-label="Agora Wholesale" className="flex items-center">
-            <WholesaleLogo variant="white" />
+            <WholesaleLogo variant="dark" />
           </Link>
           <nav className="hidden md:flex items-center gap-1">
             {LINKS.map((l) => (
-              <Link key={l.to} to={l.to} className="px-3 py-2 text-sm text-white/70 hover:text-white rounded-full hover:bg-white/5 transition-colors">
+              <Link key={l.to} to={l.to} className="px-3 py-2 text-sm text-gray-600 hover:text-[#0d2238] rounded-full hover:bg-gray-100 transition-colors">
                 {l.label}
               </Link>
             ))}
-            <Link to="/wholesale/apply" className="ml-2 inline-flex items-center gap-1.5 min-h-[40px] px-4 rounded-full bg-white text-[#0d2238] text-sm font-semibold hover:bg-[#15AFF7] hover:text-white transition-colors">
+            <Link to="/wholesale/apply" className="ml-2 inline-flex items-center gap-1.5 min-h-[40px] px-4 rounded-full bg-[#0d2238] text-white text-sm font-semibold hover:bg-[#15AFF7] transition-colors">
               Apply <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link to="/" className="ml-3 px-3 py-2 text-xs text-white/40 hover:text-white/80 transition-colors">Main site</Link>
+            <Link to="/" className="ml-3 px-3 py-2 text-xs text-gray-400 hover:text-gray-700 transition-colors">Main site</Link>
           </nav>
-          <button onClick={() => setOpen(!open)} className="md:hidden w-11 h-11 flex items-center justify-center rounded-full hover:bg-white/10" aria-label="Menu">
+          <button onClick={() => setOpen(!open)} className="md:hidden w-11 h-11 flex items-center justify-center rounded-full hover:bg-gray-100 text-[#0d2238]" aria-label="Menu">
             {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
@@ -65,22 +65,22 @@ const WholesaleShell = ({ children, dark = true }: { children: ReactNode; dark?:
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
-              className="md:hidden border-t border-white/10 bg-[#081626]/95 backdrop-blur-xl px-4 py-3 flex flex-col"
+              className="md:hidden border-t border-gray-200 bg-white/95 backdrop-blur-xl px-4 py-3 flex flex-col"
             >
               {LINKS.map((l) => (
-                <Link key={l.to} to={l.to} className="min-h-[48px] flex items-center px-2 text-base text-white/80 hover:text-white border-b border-white/5">
+                <Link key={l.to} to={l.to} className="min-h-[48px] flex items-center px-2 text-base text-gray-700 hover:text-[#0d2238] border-b border-gray-100">
                   {l.label}
                 </Link>
               ))}
               <Link to="/wholesale/apply" className="mt-3 min-h-[48px] flex items-center justify-center rounded-full bg-[#15AFF7] text-white font-semibold">
                 Apply for access
               </Link>
-              <Link to="/" className="min-h-[44px] flex items-center justify-center text-sm text-white/50">Back to main site</Link>
+              <Link to="/" className="min-h-[44px] flex items-center justify-center text-sm text-gray-400">Back to main site</Link>
             </motion.nav>
           )}
         </AnimatePresence>
       </header>
-      <main className={dark ? '' : 'pt-[72px]'}>{children}</main>
+      <main className="pt-[72px]">{children}</main>
       <Footer />
     </div>
   );

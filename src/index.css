@@ -314,3 +314,10 @@ body.forms-hidden [data-lead-form] {
 @keyframes ws-word { from { transform: translateY(110%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 .ws-word { display: inline-block; animation: ws-word .7s cubic-bezier(.21,.6,.2,1) both; animation-delay: var(--d, 0s); }
 @media (prefers-reduced-motion: reduce) { .ws-rise, .ws-word { animation: none; } }
+
+.ws-grid-light {
+  background-image: linear-gradient(rgba(13,34,56,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(13,34,56,.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 100%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 100%);
+}
