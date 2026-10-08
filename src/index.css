@@ -280,3 +280,37 @@ body.forms-hidden [data-lead-form] {
   display: none !important;
 }
 
+
+
+/* ---------- Wholesale page motion ---------- */
+@keyframes ws-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.ws-marquee { animation: ws-marquee 40s linear infinite; }
+.ws-marquee-rev { animation: ws-marquee 40s linear infinite reverse; }
+.ws-marquee:hover, .ws-marquee-rev:hover { animation-play-state: paused; }
+
+@keyframes ws-spin { to { transform: rotate(360deg); } }
+.ws-beam-border { position: relative; }
+.ws-beam-border::before {
+  content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 1px;
+  background: conic-gradient(from 0deg, transparent 0 70%, #15AFF7 85%, transparent 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  animation: ws-spin 6s linear infinite; pointer-events: none;
+}
+@keyframes ws-float { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-10px) } }
+.ws-float { animation: ws-float 7s ease-in-out infinite; }
+.ws-grid {
+  background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.ws-noise::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .06; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+@media (prefers-reduced-motion: reduce) { .ws-marquee, .ws-marquee-rev, .ws-beam-border::before, .ws-float { animation: none; } }
+
+@keyframes ws-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+.ws-rise { animation: ws-rise .8s cubic-bezier(.21,.6,.2,1) both; animation-delay: var(--d, 0s); }
+@keyframes ws-word { from { transform: translateY(110%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.ws-word { display: inline-block; animation: ws-word .7s cubic-bezier(.21,.6,.2,1) both; animation-delay: var(--d, 0s); }
+@media (prefers-reduced-motion: reduce) { .ws-rise, .ws-word { animation: none; } }

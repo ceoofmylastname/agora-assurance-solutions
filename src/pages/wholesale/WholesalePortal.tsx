@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
   ArrowRight, Cpu, ExternalLink, FileSignature, LayoutGrid, Loader2, LogOut, Mail, PlayCircle, Store, FileText, Link2, ShieldAlert,
 } from 'lucide-react';
-import PageLayout from '@/components/PageLayout';
+import WholesaleShell from '@/components/wholesale/WholesaleShell';
 import SEO from '@/components/SEO';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
@@ -21,12 +21,12 @@ const ICONS: Record<string, typeof Cpu> = {
 const KIND_ICON: Record<string, typeof Link2> = { link: Link2, video: PlayCircle, document: FileText };
 
 const Shell = ({ children }: { children: React.ReactNode }) => (
-  <PageLayout showContact={false}>
+  <WholesaleShell dark={false}>
     <SEO title="Agora Wholesale Partner Portal" description="Sign in to the Agora Wholesale partner portal." />
     <div className="bg-gray-50 min-h-screen">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14">{children}</div>
     </div>
-  </PageLayout>
+  </WholesaleShell>
 );
 
 /* ---------- Sign in ---------- */

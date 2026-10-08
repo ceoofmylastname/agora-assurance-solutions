@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ArrowLeft, ArrowRight, CheckCircle2, Loader2 } from 'lucide-react';
-import PageLayout from '@/components/PageLayout';
+import WholesaleShell from '@/components/wholesale/WholesaleShell';
 import SEO from '@/components/SEO';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
@@ -112,7 +112,7 @@ const WholesaleApply = () => {
     list.includes(value) ? list.filter((x) => x !== value) : [...list, value];
 
   return (
-    <PageLayout showContact={false}>
+    <WholesaleShell dark={false}>
       <SEO
         title="Apply for Agora Wholesale Access"
         description="Tell us about your agency. Approved partners receive a portal login with contracts, technology, leads and tools."
@@ -298,7 +298,7 @@ const WholesaleApply = () => {
           )}
         </div>
       </div>
-    </PageLayout>
+    </WholesaleShell>
   );
 };
 
