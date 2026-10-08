@@ -179,6 +179,7 @@ const Footer = () => {
                 <li><Link to="/services/annuities" className="text-sm text-white/80 hover:text-white transition-colors">Annuity Solutions</Link></li>
                 <li><Link to="/services/life-settlements" className="text-sm text-white/80 hover:text-white transition-colors">Life Settlements</Link></li>
                 <li><Link to="/services/tax-asset-protection" className="text-sm text-white/80 hover:text-white transition-colors">Tax & Asset Protection</Link></li>
+                <li><Link to="/wholesale" className="text-sm text-white font-semibold hover:text-white transition-colors">Agora Wholesale (for agencies)</Link></li>
               </ul>
             </div>
             

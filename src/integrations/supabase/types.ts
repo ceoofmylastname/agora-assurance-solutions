@@ -14,6 +14,24 @@ export type Database = {
   }
   public: {
     Tables: {
+      admin_allowlist: {
+        Row: {
+          created_at: string
+          email: string
+          note: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          note?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          note?: string | null
+        }
+        Relationships: []
+      }
       directors: {
         Row: {
           active: boolean
@@ -125,12 +143,174 @@ export type Database = {
         }
         Relationships: []
       }
+      wholesale_applications: {
+        Row: {
+          agency_name: string
+          agency_size: string
+          carriers: string[]
+          carriers_other: string | null
+          created_at: string
+          current_imo: string
+          email: string
+          first_name: string
+          goals: string | null
+          id: string
+          interests: string[]
+          last_name: string
+          notes: string | null
+          phone: string
+          reviewed_at: string | null
+          reviewed_by: string | null
+          source: string
+          state: string | null
+          status: string
+          updated_at: string
+          user_id: string | null
+          website: string | null
+          weekly_production: string
+        }
+        Insert: {
+          agency_name: string
+          agency_size: string
+          carriers?: string[]
+          carriers_other?: string | null
+          created_at?: string
+          current_imo: string
+          email: string
+          first_name: string
+          goals?: string | null
+          id?: string
+          interests?: string[]
+          last_name: string
+          notes?: string | null
+          phone: string
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          source?: string
+          state?: string | null
+          status?: string
+          updated_at?: string
+          user_id?: string | null
+          website?: string | null
+          weekly_production: string
+        }
+        Update: {
+          agency_name?: string
+          agency_size?: string
+          carriers?: string[]
+          carriers_other?: string | null
+          created_at?: string
+          current_imo?: string
+          email?: string
+          first_name?: string
+          goals?: string | null
+          id?: string
+          interests?: string[]
+          last_name?: string
+          notes?: string | null
+          phone?: string
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          source?: string
+          state?: string | null
+          status?: string
+          updated_at?: string
+          user_id?: string | null
+          website?: string | null
+          weekly_production?: string
+        }
+        Relationships: []
+      }
+      wholesale_members: {
+        Row: {
+          agency_name: string
+          application_id: string | null
+          contact_name: string
+          created_at: string
+          email: string
+          id: string
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          agency_name: string
+          application_id?: string | null
+          contact_name: string
+          created_at?: string
+          email: string
+          id?: string
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          agency_name?: string
+          application_id?: string | null
+          contact_name?: string
+          created_at?: string
+          email?: string
+          id?: string
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "wholesale_members_application_id_fkey"
+            columns: ["application_id"]
+            isOneToOne: false
+            referencedRelation: "wholesale_applications"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      wholesale_resources: {
+        Row: {
+          created_at: string
+          description: string | null
+          display_order: number
+          id: string
+          kind: string
+          published: boolean
+          title: string
+          updated_at: string
+          url: string
+          vertical: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          display_order?: number
+          id?: string
+          kind?: string
+          published?: boolean
+          title: string
+          updated_at?: string
+          url: string
+          vertical: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          display_order?: number
+          id?: string
+          kind?: string
+          published?: boolean
+          title?: string
+          updated_at?: string
+          url?: string
+          vertical?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
       is_admin: { Args: { user_id: string }; Returns: boolean }
+      my_wholesale_role: { Args: never; Returns: string }
     }
     Enums: {
       [_ in never]: never

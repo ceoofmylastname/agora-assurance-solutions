@@ -32,6 +32,10 @@ import LifeCoverage from "./pages/LifeCoverage";
 import WealthSolutions from "./pages/WealthSolutions";
 import SEODashboard from "./pages/admin/SEODashboard";
 import DirectorsManagement from "./pages/admin/DirectorsManagement";
+import Wholesale from "./pages/wholesale/Wholesale";
+import WholesaleApply from "./pages/wholesale/WholesaleApply";
+import WholesalePortal from "./pages/wholesale/WholesalePortal";
+import WholesaleDesk from "./pages/admin/WholesaleDesk";
 
 // TEMPORARY (10DLC compliance): toggles body classes that hide all on-site forms.
 // Remove this component (and its usage below) plus the matching CSS blocks in
@@ -86,6 +90,11 @@ const App = () => {
               <Route path="/protection-plans" element={<ProtectionPlans />} />
               <Route path="/life-coverage" element={<LifeCoverage />} />
               <Route path="/wealth-solutions" element={<WealthSolutions />} />
+              <Route path="/wholesale" element={<Wholesale />} />
+              <Route path="/wholesale/apply" element={<WholesaleApply />} />
+              <Route path="/wholesale/portal" element={<WholesalePortal />} />
+              <Route path="/wholesale/portal/welcome" element={<WholesalePortal />} />
+              <Route path="/admin/wholesale" element={<WholesaleDesk />} />
               <Route path="/admin/seo-dashboard" element={<SEODashboard />} />
               <Route path="/admin/directors" element={<DirectorsManagement />} />
               <Route path="*" element={<NotFound />} />

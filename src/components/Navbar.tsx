@@ -258,6 +258,14 @@ const Navbar = () => {
                     </Link>
                   </NavigationMenuItem>
 
+                  <NavigationMenuItem>
+                    <Link to="/wholesale">
+                      <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), shouldUseDarkText ? "text-gray-700 hover:text-gray-900" : "text-gray-100 hover:text-white bg-transparent hover:bg-gray-800")}>
+                        Wholesale
+                      </NavigationMenuLink>
+                    </Link>
+                  </NavigationMenuItem>
+
                   {isCareersPage && (
                     <NavigationMenuItem>
                       <button
@@ -436,6 +444,19 @@ const Navbar = () => {
                   }}
                 >
                   Agora Advisor Solutions
+                </Link>
+              </motion.div>
+
+              <motion.div variants={menuItemVariants}>
+                <Link
+                  to="/wholesale"
+                  className={cn("block px-4 py-4 rounded-lg text-lg font-medium transition-colors border-l-4 border-transparent hover:border-[#15AFF7]", shouldUseDarkText ? "text-gray-700 hover:bg-gray-50" : "text-gray-200 hover:bg-gray-800")}
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    window.scrollTo(0, 0);
+                  }}
+                >
+                  Wholesale
                 </Link>
               </motion.div>
 

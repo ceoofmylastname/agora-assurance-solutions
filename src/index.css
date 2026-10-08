@@ -274,7 +274,7 @@ iframe[src*="consent"],
 }
 
 /* TEMPORARY (10DLC compliance): hide all on-site forms. Reverse by removing this block. */
-body.forms-hidden form,
+body.forms-hidden form:not([data-keep-form]),
 body.forms-hidden #contact,
 body.forms-hidden [data-lead-form] {
   display: none !important;
