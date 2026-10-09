@@ -45,7 +45,7 @@ const Section = ({ step, title, hint, children }: { step: string; title: string;
   <section className="rounded-2xl border border-gray-200 bg-white p-6 md:p-8">
     <div className="mb-6">
       <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#15AFF7] mb-1">{step}</p>
-      <h2 className="text-xl font-bold text-gray-900">{title}</h2>
+      <h2 className="ws-display text-xl font-bold text-[#0d2238]">{title}</h2>
       {hint && <p className="text-sm text-gray-500 mt-1">{hint}</p>}
     </div>
     {children}
@@ -126,7 +126,7 @@ const WholesaleApply = () => {
           {done ? (
             <div className="rounded-2xl border border-gray-200 bg-white p-8 md:p-12 text-center">
               <CheckCircle2 className="w-14 h-14 text-[#15AFF7] mx-auto mb-4" />
-              <h1 className="text-3xl font-bold text-gray-900 mb-3">Application received</h1>
+              <h1 className="ws-display text-3xl font-bold text-[#0d2238] mb-3">Application received</h1>
               <p className="text-gray-600 leading-relaxed max-w-lg mx-auto mb-6">
                 Thank you. A person on our team reads every application. If your agency is a fit, we will reach out to schedule a call, and once approved your portal invitation arrives by email.
               </p>
@@ -138,7 +138,7 @@ const WholesaleApply = () => {
             <>
               <div className="mb-8">
                 <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#15AFF7] mb-2">Agora Wholesale</p>
-                <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Apply for access</h1>
+                <h1 className="ws-display text-3xl md:text-4xl font-bold text-[#0d2238] mb-2">Apply for access</h1>
                 <p className="text-gray-600">About five minutes. Everything you share stays with Agora's review team.</p>
               </div>
 
@@ -287,7 +287,7 @@ const WholesaleApply = () => {
                     <button
                       type="submit"
                       disabled={submitting}
-                      className="inline-flex items-center justify-center min-h-[52px] px-8 rounded-lg bg-[#15AFF7] hover:bg-[#0D94D1] disabled:opacity-60 text-white font-semibold shadow-lg transition-all active:scale-95"
+                      className="inline-flex items-center justify-center min-h-[52px] px-8 rounded-lg ws-btn disabled:opacity-60 text-white font-semibold shadow-lg transition-all active:scale-95"
                     >
                       {submitting ? <Loader2 className="w-5 h-5 animate-spin" /> : <>Submit application <ArrowRight className="ml-2 w-5 h-5" /></>}
                     </button>

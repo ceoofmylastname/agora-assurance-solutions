@@ -58,7 +58,7 @@ const SignIn = () => {
     <div className="max-w-md mx-auto">
       <div className="rounded-2xl border border-gray-200 bg-white p-8">
         <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#15AFF7] mb-2">Agora Wholesale</p>
-        <h1 className="text-2xl font-bold text-gray-900 mb-1">{mode === 'reset' ? 'Reset your password' : 'Partner sign in'}</h1>
+        <h1 className="ws-display text-2xl font-bold text-[#0d2238] mb-1">{mode === 'reset' ? 'Reset your password' : 'Partner sign in'}</h1>
         <p className="text-sm text-gray-500 mb-6">
           {mode === 'reset' ? 'We will email you a link to choose a new password.' : 'For approved wholesale partners only.'}
         </p>
@@ -111,7 +111,7 @@ const SetPassword = ({ onDone }: { onDone: () => void }) => {
     <div className="max-w-md mx-auto">
       <div className="rounded-2xl border border-gray-200 bg-white p-8">
         <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#15AFF7] mb-2">Welcome</p>
-        <h1 className="text-2xl font-bold text-gray-900 mb-1">Choose your password</h1>
+        <h1 className="ws-display text-2xl font-bold text-[#0d2238] mb-1">Choose your password</h1>
         <p className="text-sm text-gray-500 mb-6">You will use this to sign in to the partner portal from now on.</p>
         <form onSubmit={submit} className="space-y-4" data-keep-form>
           <div>
@@ -203,7 +203,7 @@ const Dashboard = ({ member, onSignOut }: { member: Member; onSignOut: () => voi
         <div className="relative flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <div>
             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#15AFF7] mb-2">Partner portal</p>
-            <h1 className="text-3xl md:text-4xl font-bold mb-1">Welcome back, {firstName}.</h1>
+            <h1 className="ws-display text-3xl md:text-4xl font-bold mb-1">Welcome back, {firstName}.</h1>
             <p className="text-blue-100/80">{member.agency_name}</p>
           </div>
           <button onClick={onSignOut} className="inline-flex items-center justify-center min-h-[44px] px-4 rounded-lg border border-white/30 hover:bg-white/10 text-sm font-medium">

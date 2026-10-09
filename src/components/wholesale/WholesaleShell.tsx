@@ -7,9 +7,10 @@ import { WholesaleLogo } from '@/components/wholesale/ui';
 import { cn } from '@/lib/utils';
 
 const LINKS = [
-  { to: '/wholesale#verticals', label: 'Verticals' },
-  { to: '/wholesale#reporting', label: 'Reporting' },
-  { to: '/wholesale#learn', label: 'Learn' },
+  { to: '/wholesale#learn', label: 'The story' },
+  { to: '/wholesale#calculators', label: 'Calculators' },
+  { to: '/wholesale#offer', label: 'The offer' },
+  { to: '/wholesale#education', label: 'Learn' },
   { to: '/wholesale#guide', label: 'Guide' },
   { to: '/wholesale/portal', label: 'Partner sign in' },
 ];
@@ -38,7 +39,7 @@ const WholesaleShell = ({ children }: { children: ReactNode; dark?: boolean }) =
   }, [location]);
 
   return (
-    <div className="min-h-screen w-full max-w-[100vw] overflow-x-hidden bg-white text-[#0d2238]">
+    <div className="ws min-h-screen w-full max-w-[100vw] overflow-x-hidden bg-white text-[#0d2238]">
       <header className={cn('fixed top-0 inset-x-0 z-40 transition-all duration-300', scrolled ? 'bg-white/85 backdrop-blur-xl border-b border-gray-200 shadow-[0_1px_0_rgba(13,34,56,.04)]' : 'bg-white/60 backdrop-blur')}>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-[72px] flex items-center justify-between">
           <Link to="/wholesale" aria-label="Agora Wholesale" className="flex items-center">
@@ -50,7 +51,7 @@ const WholesaleShell = ({ children }: { children: ReactNode; dark?: boolean }) =
                 {l.label}
               </Link>
             ))}
-            <Link to="/wholesale/apply" className="ml-2 inline-flex items-center gap-1.5 min-h-[40px] px-4 rounded-full bg-[#0d2238] text-white text-sm font-semibold hover:bg-[#15AFF7] transition-colors">
+            <Link to="/wholesale/apply" className="ws-btn ml-2 inline-flex items-center gap-1.5 min-h-[40px] px-4 rounded-full text-white text-sm font-semibold">
               Apply <ArrowRight className="w-4 h-4" />
             </Link>
             <Link to="/" className="ml-3 px-3 py-2 text-xs text-gray-400 hover:text-gray-700 transition-colors">Main site</Link>

@@ -200,3 +200,66 @@ export const WholesaleLogo = ({ variant = 'dark', className, size = 'md' }: { va
 export const Beam = ({ className }: { className?: string }) => (
   <div className={cn('h-px w-full bg-gradient-to-r from-transparent via-[#15AFF7]/60 to-transparent', className)} />
 );
+
+
+/* ---------- Letters: headline that enters letter by letter (CSS-driven) ---------- */
+export const Letters = ({ text, className, letterClassName, delay = 0, step = 0.028 }: { text: string; className?: string; letterClassName?: string; delay?: number; step?: number }) => {
+  let i = 0;
+  return (
+    <span className={cn('inline', className)} aria-label={text} style={{ perspective: 600 }}>
+      {text.split(' ').map((word, wi, arr) => (
+        <span key={wi} className="inline-block whitespace-nowrap">
+          {word.split('').map((ch, ci) => {
+            const d = delay + i++ * step;
+            return <span key={ci} className={cn('ws-letter', letterClassName)} style={{ ['--d' as string]: `${d}s` }} aria-hidden="true">{ch}</span>;
+          })}
+          {wi < arr.length - 1 && <span className="inline-block">&nbsp;</span>}
+        </span>
+      ))}
+    </span>
+  );
+};
+
+/* ---------- Custom brand buttons ---------- */
+export const PrimaryButton = ({ children, className, ...rest }: React.ComponentProps<'a'>) => (
+  <a
+    {...rest}
+    className={cn(
+      'ws-btn group inline-flex items-center justify-center gap-2 min-h-[54px] pl-7 pr-2 rounded-full font-semibold text-white',
+      'shadow-[0_12px_40px_-12px_rgba(21,175,247,.8)] hover:shadow-[0_18px_50px_-12px_rgba(21,175,247,.95)] active:scale-[.98]',
+      className,
+    )}
+  >
+    <span className="relative z-10">{children}</span>
+    <span className="relative z-10 ml-2 w-10 h-10 rounded-full bg-white/15 flex items-center justify-center transition-transform group-hover:translate-x-0.5">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+    </span>
+  </a>
+);
+
+export const SecondaryButton = ({ children, className, ...rest }: React.ComponentProps<'a'>) => (
+  <a
+    {...rest}
+    className={cn(
+      'group inline-flex items-center justify-center gap-2 min-h-[54px] px-7 rounded-full font-semibold text-[#0d2238]',
+      'border border-[#0d2238]/15 bg-white hover:border-[#0d2238] hover:bg-[#0d2238] hover:text-white transition-all active:scale-[.98]',
+      className,
+    )}
+  >
+    {children}
+  </a>
+);
+
+/* ---------- Range slider with live value ---------- */
+export const Range = ({ label, value, min, max, step = 1, onChange, format }: { label: string; value: number; min: number; max: number; step?: number; onChange: (v: number) => void; format: (v: number) => string }) => {
+  const p = ((value - min) / (max - min)) * 100;
+  return (
+    <label className="block">
+      <span className="flex items-baseline justify-between mb-2">
+        <span className="text-sm font-medium text-gray-600">{label}</span>
+        <span className="ws-display text-lg font-semibold text-[#0d2238] tabular-nums">{format(value)}</span>
+      </span>
+      <input type="range" className="ws-range" min={min} max={max} step={step} value={value} onChange={(e) => onChange(Number(e.target.value))} style={{ ['--p' as string]: `${p}%` }} />
+    </label>
+  );
+};

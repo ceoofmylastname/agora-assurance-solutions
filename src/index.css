@@ -321,3 +321,53 @@ body.forms-hidden [data-lead-form] {
   -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 100%);
   mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 100%);
 }
+
+/* ---------- Wholesale type system ---------- */
+.ws { font-family: 'Inter', system-ui, sans-serif; font-feature-settings: "cv11", "ss01"; -webkit-font-smoothing: antialiased; }
+.ws-display { font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-variation-settings: "opsz" 96; letter-spacing: -0.03em; }
+.ws-serif { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+
+/* animated gradient text */
+@keyframes ws-gradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+.ws-gradient-text {
+  background-image: linear-gradient(100deg, #0d2238 0%, #15AFF7 35%, #0D94D1 50%, #15AFF7 65%, #0d2238 100%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: ws-gradient 9s ease-in-out infinite;
+}
+.ws-gradient-sky {
+  background-image: linear-gradient(100deg, #15AFF7 0%, #6fd0ff 30%, #0D94D1 55%, #15AFF7 100%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: ws-gradient 7s ease-in-out infinite;
+}
+
+/* letter-by-letter entrance */
+@keyframes ws-letter { from { opacity: 0; transform: translateY(0.6em) rotateX(-40deg); filter: blur(6px); } to { opacity: 1; transform: translateY(0) rotateX(0); filter: blur(0); } }
+.ws-letter { display: inline-block; animation: ws-letter .7s cubic-bezier(.2,.7,.2,1) both; animation-delay: var(--d, 0s); transform-origin: 50% 100%; will-change: transform, opacity; }
+
+/* aurora blobs */
+@keyframes ws-drift { 0% { transform: translate(0,0) scale(1); } 33% { transform: translate(6%, -4%) scale(1.08); } 66% { transform: translate(-4%, 5%) scale(.96); } 100% { transform: translate(0,0) scale(1); } }
+.ws-blob { position: absolute; border-radius: 9999px; filter: blur(80px); opacity: .55; animation: ws-drift 18s ease-in-out infinite; pointer-events: none; }
+
+/* custom primary button: gradient fill + shine sweep */
+.ws-btn { position: relative; overflow: hidden; isolation: isolate; background-image: linear-gradient(110deg, #0D94D1, #15AFF7 50%, #0D94D1); background-size: 200% 100%; transition: background-position .6s ease, transform .15s ease, box-shadow .3s ease; }
+.ws-btn:hover { background-position: 100% 0; }
+.ws-btn::after { content: ""; position: absolute; inset: 0; background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.35) 50%, transparent 70%); transform: translateX(-120%); transition: transform .7s ease; }
+.ws-btn:hover::after { transform: translateX(120%); }
+
+/* animated gradient ring (for cards / calculator outputs) */
+@keyframes ws-ring { to { --ws-angle: 360deg; } }
+@property --ws-angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+.ws-ring { position: relative; }
+.ws-ring::before { content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 1px;
+  background: conic-gradient(from var(--ws-angle), #15AFF7, #0d2238 30%, #15AFF7 50%, #bfe6ff 70%, #15AFF7);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
+  animation: ws-ring 8s linear infinite; pointer-events: none; }
+
+/* custom range slider */
+.ws-range { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; border-radius: 999px; background: linear-gradient(90deg, #15AFF7 var(--p, 50%), #e5e9f0 var(--p, 50%)); outline: none; }
+.ws-range::-webkit-slider-thumb { -webkit-appearance: none; width: 26px; height: 26px; border-radius: 999px; background: #fff; border: 2px solid #15AFF7; box-shadow: 0 4px 14px rgba(21,175,247,.35); cursor: pointer; }
+.ws-range::-moz-range-thumb { width: 26px; height: 26px; border-radius: 999px; background: #fff; border: 2px solid #15AFF7; box-shadow: 0 4px 14px rgba(21,175,247,.35); cursor: pointer; }
+
+@media (prefers-reduced-motion: reduce) { .ws-gradient-text, .ws-gradient-sky, .ws-letter, .ws-blob, .ws-ring::before { animation: none; } .ws-letter { opacity: 1; transform: none; filter: none; } }

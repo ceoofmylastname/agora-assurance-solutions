@@ -410,7 +410,7 @@ const WholesaleDesk = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 ws">
       <header className="bg-[#0d2238] text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-between gap-4">
           <div>
@@ -418,6 +418,7 @@ const WholesaleDesk = () => {
             <h1 className="text-xl font-bold">Wholesale desk</h1>
           </div>
           <div className="flex items-center gap-2">
+            <Link to="/admin" className="hidden sm:inline-flex items-center min-h-[40px] px-3 rounded-lg border border-white/20 text-sm hover:bg-white/10">All rooms</Link>
             <Link to="/wholesale" className="hidden sm:inline-flex items-center min-h-[40px] px-3 rounded-lg border border-white/20 text-sm hover:bg-white/10">Public page</Link>
             <button onClick={() => signOut()} className="inline-flex items-center min-h-[40px] px-3 rounded-lg border border-white/20 text-sm hover:bg-white/10"><LogOut className="w-4 h-4 mr-2" />Sign out</button>
           </div>
