@@ -184,19 +184,19 @@ export const GhostButton = ({ children, className, ...rest }: React.ComponentPro
   </a>
 );
 
-/* ---------- Wholesale logo: the agora wordmark with WHOLESALE tucked under the "ora" ---------- */
+/* ---------- Wholesale logo: the agora wordmark with WHOLESALE where the old tagline sat ---------- */
 export const WholesaleLogo = ({ variant = 'dark', className, size = 'md' }: { variant?: 'white' | 'dark'; className?: string; size?: 'sm' | 'md' | 'lg' }) => {
-  const h = size === 'lg' ? 'h-12' : size === 'sm' ? 'h-6' : 'h-8';
-  const fontSize = size === 'lg' ? 11 : size === 'sm' ? 5.5 : 7.5;
-  const gap = size === 'lg' ? 5 : size === 'sm' ? 2 : 3;
+  const px = size === 'lg' ? 48 : size === 'sm' ? 24 : 32; // rendered wordmark height
+  // The original "Assurance Solutions" tagline occupied the bottom ~22% of the mark,
+  // under the "ora" (which starts ~47% in), level with the g's descender.
+  const fontSize = Math.round(px * 0.2 * 10) / 10;
   return (
-    <span className={cn('relative inline-block leading-none', className)} style={{ paddingBottom: fontSize + gap }}>
-      <img src={variant === 'white' ? '/wholesale/agora-mark-white.png' : '/wholesale/agora-mark-dark.png'} alt="Agora Wholesale" className={cn(h, 'w-auto block')} />
-      {/* the "ora" starts at ~47% of the wordmark; the caption fills from there to the right edge */}
+    <span className={cn('relative inline-block leading-none', className)} style={{ height: px }}>
+      <img src={variant === 'white' ? '/wholesale/agora-mark-white.png' : '/wholesale/agora-mark-dark.png'} alt="Agora Wholesale" className="block w-auto" style={{ height: px }} />
       <span
         aria-hidden="true"
         className={cn('absolute right-0 flex justify-between font-bold uppercase', variant === 'white' ? 'text-[#15AFF7]' : 'text-[#0d2238]')}
-        style={{ left: '47%', bottom: 0, fontSize, lineHeight: 1 }}
+        style={{ left: '47%', bottom: px * 0.02, fontSize, lineHeight: 1 }}
       >
         {'WHOLESALE'.split('').map((ch, i) => <span key={i}>{ch}</span>)}
       </span>
