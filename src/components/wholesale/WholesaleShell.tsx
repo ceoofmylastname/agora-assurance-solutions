@@ -2,7 +2,7 @@ import { useEffect, useState, type ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowRight, Menu, X } from 'lucide-react';
-import Footer from '@/components/Footer';
+import WholesaleFooter from '@/components/wholesale/WholesaleFooter';
 import { WholesaleLogo } from '@/components/wholesale/ui';
 import { cn } from '@/lib/utils';
 
@@ -82,7 +82,7 @@ const WholesaleShell = ({ children }: { children: ReactNode; dark?: boolean }) =
         </AnimatePresence>
       </header>
       <main className="pt-[72px]">{children}</main>
-      <Footer />
+      <WholesaleFooter />
     </div>
   );
 };

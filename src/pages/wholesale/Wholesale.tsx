@@ -508,7 +508,7 @@ const Wholesale = () => {
       </section>
 
       {/* ============================== FINAL CTA ============================== */}
-      <section className="bg-white py-20">
+      <section className="bg-white pt-20 pb-6">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal>
             <div className="relative overflow-hidden rounded-[2rem] bg-[#0d2238] text-white px-6 py-14 md:px-16 md:py-20 text-center">
