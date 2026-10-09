@@ -184,14 +184,22 @@ export const GhostButton = ({ children, className, ...rest }: React.ComponentPro
   </a>
 );
 
-/* ---------- Wholesale logo: the agora wordmark with WHOLESALE beneath ---------- */
+/* ---------- Wholesale logo: the agora wordmark with WHOLESALE tucked under the "ora" ---------- */
 export const WholesaleLogo = ({ variant = 'dark', className, size = 'md' }: { variant?: 'white' | 'dark'; className?: string; size?: 'sm' | 'md' | 'lg' }) => {
   const h = size === 'lg' ? 'h-12' : size === 'sm' ? 'h-6' : 'h-8';
-  const t = size === 'lg' ? 'text-[13px] tracking-[0.5em]' : size === 'sm' ? 'text-[8px] tracking-[0.42em]' : 'text-[9.5px] tracking-[0.46em]';
+  const fontSize = size === 'lg' ? 11 : size === 'sm' ? 5.5 : 7.5;
+  const gap = size === 'lg' ? 5 : size === 'sm' ? 2 : 3;
   return (
-    <span className={cn('inline-flex flex-col items-start leading-none', className)}>
-      <img src={variant === 'white' ? '/wholesale/agora-mark-white.png' : '/wholesale/agora-mark-dark.png'} alt="Agora" className={cn(h, 'w-auto')} />
-      <span className={cn('mt-1.5 font-semibold uppercase', t, variant === 'white' ? 'text-[#15AFF7]' : 'text-[#0d2238]')}>Wholesale</span>
+    <span className={cn('relative inline-block leading-none', className)} style={{ paddingBottom: fontSize + gap }}>
+      <img src={variant === 'white' ? '/wholesale/agora-mark-white.png' : '/wholesale/agora-mark-dark.png'} alt="Agora Wholesale" className={cn(h, 'w-auto block')} />
+      {/* the "ora" starts at ~47% of the wordmark; the caption fills from there to the right edge */}
+      <span
+        aria-hidden="true"
+        className={cn('absolute right-0 flex justify-between font-bold uppercase', variant === 'white' ? 'text-[#15AFF7]' : 'text-[#0d2238]')}
+        style={{ left: '47%', bottom: 0, fontSize, lineHeight: 1 }}
+      >
+        {'WHOLESALE'.split('').map((ch, i) => <span key={i}>{ch}</span>)}
+      </span>
     </span>
   );
 };
