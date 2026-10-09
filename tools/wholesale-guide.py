@@ -41,13 +41,12 @@ def footer(c, dark=False):
     c.drawRightString(W - M, 0.5 * inch, f'{page_no[0]:02d}')
 
 def logo(c, x, y, h=0.42 * inch, white_variant=False):
-    img = PUB / ('agora-mark-white.png' if white_variant else 'agora-mark-dark.png')
+    """The Agora Wholesale lock-up: the same baked image the website uses
+    (WHOLESALE under the "ora", level with the g's descender)."""
+    img = PUB / ('agora-wholesale-logo-white@2x.png' if white_variant else 'agora-wholesale-logo-dark@2x.png')
     ir = ImageReader(str(img)); iw, ih = ir.getSize()
     w = h * iw / ih
     c.drawImage(ir, x, y, w, h, mask='auto')
-    c.setFont('Helvetica-Bold', 7.5)
-    c.setFillColor(SKY if white_variant else NAVY)
-    c.drawString(x + 1, y - 11, 'W H O L E S A L E')
     return w
 
 def flow(c, x, y, w, h, items):

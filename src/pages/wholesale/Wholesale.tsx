@@ -16,7 +16,7 @@ import { cn } from '@/lib/utils';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 /* Media version: bump when any file in public/wholesale is replaced (the site caches /* for a year). */
-const V = '?v=2';
+const V = '?v=3';
 
 /* ------------------------------------------------------------------ data */
 const VERTICALS = [

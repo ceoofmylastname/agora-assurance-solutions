@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowUp, ArrowUpRight, Download, Facebook, Instagram, Linkedin, Mail, MapPin } from 'lucide-react';
 import { WholesaleLogo } from '@/components/wholesale/ui';
 
-const V = '?v=2';
+const V = '?v=3';
 
 const COLUMNS: { title: string; links: { label: string; to: string; external?: boolean }[] }[] = [
   {
