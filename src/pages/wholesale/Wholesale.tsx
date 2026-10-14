@@ -11,7 +11,7 @@ import Calculators from '@/components/wholesale/Calculators';
 import Platform from '@/components/wholesale/Platform';
 import Roadmap from '@/components/wholesale/Roadmap';
 import Doors from '@/components/wholesale/Doors';
-import ScrollHero from '@/components/wholesale/ScrollHero';
+import StageHero from '@/components/wholesale/StageHero';
 import {
   Counter, Eyebrow, Item, Letters, Marquee, PrimaryButton, Reveal, SecondaryButton, SpotlightCard, Stagger, Tilt,
 } from '@/components/wholesale/ui';
@@ -113,8 +113,8 @@ const Wholesale = () => {
         keywords={['insurance wholesale', 'IMO alternative', 'agency contracts', 'white label insurance platform', 'insurance lead store', 'contract level calculator']}
       />
 
-      {/* ============================== HOOK: scroll-scrubbed orbit ============================== */}
-      <ScrollHero />
+      {/* ============================== HOOK: choose your stage ============================== */}
+      <StageHero />
 
       {/* ============================== MARQUEE ============================== */}
       <section className="border-y border-gray-200 bg-gray-50 py-5">
@@ -434,7 +434,7 @@ const Wholesale = () => {
           <Reveal>
             <div className="relative overflow-hidden rounded-[2rem] bg-[#0d2238] text-white px-6 py-14 md:px-16 md:py-20 text-center">
               {/* the card, in macro, under a navy wash */}
-              <Loop name="door-macro" poster={'/wholesale/door-macro-poster.jpg' + V} className="absolute inset-0 w-full h-full object-cover opacity-60" />
+              <Loop name="floor-loop" poster={'/wholesale/floor-poster.jpg' + V} className="absolute inset-0 w-full h-full object-cover opacity-60" />
               <div className="absolute inset-0 bg-gradient-to-b from-[#0d2238]/80 via-[#0d2238]/70 to-[#0d2238]/90" />
               <div className="ws-blob w-[520px] h-[520px] -top-60 -right-40 bg-[#15AFF7]/40" />
               <div className="relative">
