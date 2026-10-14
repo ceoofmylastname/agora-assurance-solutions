@@ -73,7 +73,7 @@ const TermsHero = () => (
                   <p className="text-[11px] font-semibold tracking-[0.22em] uppercase text-[#0D94D1]">Partner terms</p>
                   <p className="ws-serif text-[1.9rem] leading-tight text-[#0d2238] mt-1">The short version.</p>
                 </div>
-                <p className="text-[10px] font-semibold tracking-[0.18em] uppercase text-gray-400 pt-1 text-right">Agora Wholesale<br />Term sheet</p>
+                <p className="sm:hidden text-[10px] font-semibold tracking-[0.18em] uppercase text-gray-400 pt-1 text-right">Agora Wholesale<br />Term sheet</p>
               </div>
               <dl className="mt-6">
                 {TERMS.map(([k, v, sub], n) => (
