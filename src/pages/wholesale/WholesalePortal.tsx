@@ -143,7 +143,7 @@ const NotApproved = ({ email, status, onSignOut }: { email: string; status: stri
           : <>The account <span className="font-medium">{email}</span> is signed in but is not an approved wholesale partner. If you applied, we will email you once your application is reviewed.</>}
       </p>
       <div className="flex flex-col gap-2">
-        <Link to="/wholesale/apply" className="min-h-[44px] rounded-lg bg-[#0d2238] text-white font-semibold flex items-center justify-center">Apply for access</Link>
+        <Link to="/wholesale/apply" className="min-h-[44px] rounded-lg bg-[#0d2238] text-white font-semibold flex items-center justify-center">Request a partner review</Link>
         <button onClick={onSignOut} className="min-h-[44px] rounded-lg border border-gray-300 text-gray-700 font-medium">Sign out</button>
       </div>
     </div>

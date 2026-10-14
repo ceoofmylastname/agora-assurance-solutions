@@ -34,6 +34,7 @@ import SEODashboard from "./pages/admin/SEODashboard";
 import DirectorsManagement from "./pages/admin/DirectorsManagement";
 import Wholesale from "./pages/wholesale/Wholesale";
 import WholesaleApply from "./pages/wholesale/WholesaleApply";
+import WholesalePlatform from "./pages/wholesale/WholesalePlatform";
 import WholesalePortal from "./pages/wholesale/WholesalePortal";
 import WholesaleDesk from "./pages/admin/WholesaleDesk";
 import AdminHome from "./pages/admin/AdminHome";
@@ -93,6 +94,7 @@ const App = () => {
               <Route path="/wealth-solutions" element={<WealthSolutions />} />
               <Route path="/wholesale" element={<Wholesale />} />
               <Route path="/wholesale/apply" element={<WholesaleApply />} />
+              <Route path="/wholesale/platform" element={<WholesalePlatform />} />
               <Route path="/wholesale/portal" element={<WholesalePortal />} />
               <Route path="/wholesale/portal/welcome" element={<WholesalePortal />} />
               <Route path="/admin" element={<AdminHome />} />

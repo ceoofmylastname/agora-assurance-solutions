@@ -7,12 +7,11 @@ import { WholesaleLogo } from '@/components/wholesale/ui';
 import { cn } from '@/lib/utils';
 
 const LINKS = [
-  { to: '/wholesale#learn', label: 'The story' },
-  { to: '/wholesale#platform', label: 'Platform' },
+  { to: '/wholesale#story', label: 'The story' },
+  { to: '/wholesale#offer', label: 'The terms' },
   { to: '/wholesale#calculators', label: 'Calculators' },
-  { to: '/wholesale#offer', label: 'The offer' },
+  { to: '/wholesale/platform', label: 'Platform' },
   { to: '/wholesale#education', label: 'Learn' },
-  { to: '/wholesale#guide', label: 'Guide' },
   { to: '/wholesale/portal', label: 'Partner sign in' },
 ];
 
@@ -53,7 +52,7 @@ const WholesaleShell = ({ children }: { children: ReactNode; dark?: boolean }) =
               </Link>
             ))}
             <Link to="/wholesale/apply" className="ws-btn ml-2 inline-flex items-center gap-1.5 min-h-[40px] px-4 rounded-full text-white text-sm font-semibold">
-              Apply <ArrowRight className="w-4 h-4" />
+              Request a review <ArrowRight className="w-4 h-4" />
             </Link>
             <Link to="/" className="ml-3 px-3 py-2 text-xs text-gray-400 hover:text-gray-700 transition-colors">Main site</Link>
           </nav>
@@ -75,7 +74,7 @@ const WholesaleShell = ({ children }: { children: ReactNode; dark?: boolean }) =
                 </Link>
               ))}
               <Link to="/wholesale/apply" className="mt-3 min-h-[48px] flex items-center justify-center rounded-full bg-[#15AFF7] text-white font-semibold">
-                Apply for access
+                Request a partner review
               </Link>
               <Link to="/" className="min-h-[44px] flex items-center justify-center text-sm text-gray-400">Back to main site</Link>
             </motion.nav>

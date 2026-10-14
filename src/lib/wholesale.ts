@@ -53,6 +53,19 @@ export const WEEKLY_PRODUCTION: { value: string; label: string }[] = [
   { value: '250k_plus', label: '$250,000+ / week' },
 ];
 
+/** Carriers Agora contracts with at direct level (owner, 2026-10-14). Public on /wholesale. */
+export const AGORA_CARRIERS: string[] = [
+  'North American',
+  'F&G',
+  'National Life Group',
+  'American-Amicable',
+  'Athene',
+  'Foresters Financial',
+  'Royal Neighbors of America',
+  'Ameritas',
+];
+
+/** Carriers an applicant may already write with (apply form). */
 export const CARRIERS: string[] = [
   'North American',
   'National Life Group',
@@ -72,6 +85,9 @@ export const CARRIERS: string[] = [
   'American Equity',
   'Aetna / CVS',
   'Gerber Life',
+  'American-Amicable',
+  'Royal Neighbors of America',
+  'Ameritas',
 ];
 
 export const US_STATES: string[] = [

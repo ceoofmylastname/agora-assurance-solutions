@@ -8,7 +8,7 @@ const V = '?v=3';
 const COLUMNS = [
   { title: 'The story', links: [{ label: 'The ceiling', href: '#learn' }, { label: 'Visibility', href: '#reporting' }, { label: 'The platform', href: '#platform' }, { label: 'The offer', href: '#offer' }] },
   { title: 'Tools', links: [{ label: 'Calculators', href: '#calculators' }, { label: 'Wholesale 101', href: '#education' }, { label: 'Partner guide', href: '/wholesale/agora-wholesale-guide.pdf' + V }] },
-  { title: 'Partners', links: [{ label: 'Apply for access', href: '/wholesale/apply' }, { label: 'Partner sign in', href: '/wholesale/portal' }, { label: 'Agora main site', href: '/' }] },
+  { title: 'Partners', links: [{ label: 'Request a partner review', href: '/wholesale/apply' }, { label: 'Partner sign in', href: '/wholesale/portal' }, { label: 'Agora main site', href: '/' }] },
 ];
 
 /** The halftone wordmark footer, with the Agora lock-up, contact and legal strip above the columns. */

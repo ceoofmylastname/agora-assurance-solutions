@@ -14,10 +14,10 @@ const num = (n: number) => n.toLocaleString('en-US');
 
 /* ---------- 1. Contract level gap ---------- */
 const LevelGap = () => {
-  const [weekly, setWeekly] = useState(10000);
-  const [producers, setProducers] = useState(10);
-  const [level, setLevel] = useState(100);
-  const [points, setPoints] = useState(20);
+  const [weekly, setWeekly] = useState(5000);
+  const [producers, setProducers] = useState(40);
+  const [level, setLevel] = useState(110);
+  const [points, setPoints] = useState(15);
 
   const r = useMemo(() => {
     const annualPremium = weekly * 52 * producers;
@@ -30,7 +30,7 @@ const LevelGap = () => {
     <div className="grid lg:grid-cols-12 gap-8">
       <div className="lg:col-span-7 space-y-6">
         <Range label="Annual premium submitted per producer, per week" value={weekly} min={1000} max={50000} step={500} onChange={setWeekly} format={(v) => usd(v)} />
-        <Range label="Producers writing" value={producers} min={1} max={250} onChange={setProducers} format={num} />
+        <Range label="Producers writing" value={producers} min={1} max={400} onChange={setProducers} format={num} />
         <Range label="Your current contract level" value={level} min={50} max={150} onChange={setLevel} format={pct} />
         <Range label="Points gained on a direct-level contract (illustrative)" value={points} min={5} max={40} onChange={setPoints} format={(v) => `+${v} pts`} />
       </div>
@@ -52,7 +52,7 @@ const LevelGap = () => {
 
 /* ---------- 2. Lead ROI ---------- */
 const LeadRoi = () => {
-  const [leads, setLeads] = useState(50);
+  const [leads, setLeads] = useState(300);
   const [cpl, setCpl] = useState(35);
   const [close, setClose] = useState(12);
   const [avgPrem, setAvgPrem] = useState(1800);

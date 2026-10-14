@@ -482,7 +482,7 @@ const AUTOMATIONS = [
   [Headset, 'Support tickets, automated', 'Agents ask in plain language. The assistant answers from the manual, files a ticket only when a human is needed, and translates both ways.'],
   [ShieldCheck, 'Licensing, step by step', 'A state-by-state licensing dashboard: pre-licensing, exam, fingerprints, application, appointment. Each step checks itself off.'],
   [LineChart, 'Fast Start guides', 'The first fourteen chapters of an agent\'s career, in the portal, with the 3-2-1 list and the first-policy clock built in.'],
-  [ArrowUpRight, 'Scoreboards and gamification', 'Weekly leaderboards, milestone cards and confetti the moment a recruit joins or a policy is placed.'],
+  [ArrowUpRight, 'Scoreboards and gamification', 'Weekly leaderboards and milestone cards the moment a recruit joins or a policy is placed.'],
 ] as const;
 
 const Automations = () => (

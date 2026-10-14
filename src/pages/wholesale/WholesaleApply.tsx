@@ -114,8 +114,8 @@ const WholesaleApply = () => {
   return (
     <WholesaleShell dark={false}>
       <SEO
-        title="Apply for Agora Wholesale Access"
-        description="Tell us about your agency. Approved partners receive a portal login with contracts, technology, leads and tools."
+        title="Request an Agora Wholesale Partner Review"
+        description="Tell us about your agency. A principal reviews every request and schedules a private call with agencies that fit."
       />
       <div className="bg-gray-50 min-h-screen">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 max-w-3xl">
@@ -126,9 +126,9 @@ const WholesaleApply = () => {
           {done ? (
             <div className="rounded-2xl border border-gray-200 bg-white p-8 md:p-12 text-center">
               <CheckCircle2 className="w-14 h-14 text-[#15AFF7] mx-auto mb-4" />
-              <h1 className="ws-display text-3xl font-bold text-[#0d2238] mb-3">Application received</h1>
+              <h1 className="ws-display text-3xl font-bold text-[#0d2238] mb-3">Request received</h1>
               <p className="text-gray-600 leading-relaxed max-w-lg mx-auto mb-6">
-                Thank you. A person on our team reads every application. If your agency is a fit, we will reach out to schedule a call, and once approved your portal invitation arrives by email.
+                Thank you. A principal reads every request. If your agency is a fit, we will reach out to schedule a private call, and once approved your portal invitation arrives by email.
               </p>
               <Link to="/wholesale" className="inline-flex items-center justify-center min-h-[48px] px-6 rounded-lg bg-[#0d2238] text-white font-semibold">
                 Back to Wholesale
@@ -138,7 +138,7 @@ const WholesaleApply = () => {
             <>
               <div className="mb-8">
                 <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#15AFF7] mb-2">Agora Wholesale</p>
-                <h1 className="ws-display text-3xl md:text-4xl font-bold text-[#0d2238] mb-2">Apply for access</h1>
+                <h1 className="ws-display text-3xl md:text-4xl font-bold text-[#0d2238] mb-2">Request a private partner review</h1>
                 <p className="text-gray-600">About five minutes. Everything you share stays with Agora's review team.</p>
               </div>
 
