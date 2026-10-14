@@ -18,23 +18,27 @@ const CHAPTER_MS = 5200;
 type Chapter = {
   id: string; word: string; stage: string; title: string; serif: string;
   model: string; modelW: number; /* fraction of the rock width */
-  object: string; objectLabel: string; objectSub: string;
-  payoff: string; producers: number; weekly: number;
+  object: string; objectLabel: string; add: string; result: string; payoff: string;
+  producers: number; weekly: number;
 };
 
 export const CHAPTERS: Chapter[] = [
-  { id: 'solo', word: 'Solo', stage: 'Solo producer', title: 'The producer', serif: 'who writes every week.',
-    model: '/wholesale/scene-solo.webp' + V, modelW: 0.30, object: '/wholesale/scene-contracts.webp' + V, objectLabel: 'Contracts', objectSub: 'Direct level',
-    payoff: 'A direct-level contract from day one. Nobody above you taking a cut.', producers: 1, weekly: 6500 },
-  { id: 'team', word: 'Team', stage: 'Team', title: 'The team', serif: 'that outgrew its IMO.',
-    model: '/wholesale/scene-team.webp' + V, modelW: 0.42, object: '/wholesale/scene-tech.webp' + V, objectLabel: 'Technology', objectSub: 'Your name on it',
-    payoff: 'Your dashboard, your brand. Promotions that check themselves.', producers: 6, weekly: 32000 },
-  { id: 'agency', word: 'Agency', stage: 'Agency', title: 'The agency', serif: 'with its name on the door.',
-    model: '/wholesale/scene-agency.webp' + V, modelW: 0.46, object: '/wholesale/scene-leads.webp' + V, objectLabel: 'Lead store', objectSub: 'Priced by Agora',
-    payoff: 'Leads priced in the open, routed straight to your floor.', producers: 28, weekly: 140000 },
-  { id: 'million', word: 'Million', stage: 'Million-dollar agency', title: 'The million-dollar', serif: 'agency, built on Agora.',
-    model: '/wholesale/scene-million.webp' + V, modelW: 0.30, object: '/wholesale/scene-tools.webp' + V, objectLabel: 'Tool marketplace', objectSub: 'Partner pricing',
-    payoff: 'Every tool at partner pricing, embedded in your portal.', producers: 120, weekly: 520000 },
+  { id: 'solo', word: 'Solo', stage: 'Solo producer', title: 'Add direct contracts', serif: 'and the producer keeps the spread.',
+    model: '/wholesale/scene-solo.webp' + V, modelW: 0.30, object: '/wholesale/scene-contracts.webp' + V, objectLabel: 'Contracts', add: 'Add direct contracts',
+    result: 'One producer, every dollar at direct level. Nobody above you taking a cut.', payoff: 'Step one: the contracts. Without them nothing else is worth building.',
+    producers: 1, weekly: 6500 },
+  { id: 'team', word: 'Team', stage: 'Team', title: 'Add the technology', serif: 'and a team can run on your name.',
+    model: '/wholesale/scene-team.webp' + V, modelW: 0.42, object: '/wholesale/scene-tech.webp' + V, objectLabel: 'Technology', add: 'Add the technology',
+    result: 'Six producers on one board, promotions that check themselves, your brand on every screen.', payoff: 'Step two: the dashboard. Now you can recruit without drowning in admin.',
+    producers: 6, weekly: 32000 },
+  { id: 'agency', word: 'Agency', stage: 'Agency', title: 'Add the lead store', serif: 'and the floor fills.',
+    model: '/wholesale/scene-agency.webp' + V, modelW: 0.46, object: '/wholesale/scene-leads.webp' + V, objectLabel: 'Lead store', add: 'Add the lead store',
+    result: 'Twenty-eight producers fed by leads priced in the open and routed straight to your desks.', payoff: 'Step three: the leads. A full floor needs a full pipeline.',
+    producers: 28, weekly: 140000 },
+  { id: 'million', word: 'Million', stage: 'Million-dollar agency', title: 'Add the tool marketplace', serif: 'and you have a million-dollar agency.',
+    model: '/wholesale/scene-million.webp' + V, modelW: 0.30, object: '/wholesale/scene-tools.webp' + V, objectLabel: 'Tool marketplace', add: 'Add the tool marketplace',
+    result: 'One hundred and twenty producers, every tool at partner pricing, every carrier on one screen.', payoff: 'Step four: the tools. Everything a big shop pays retail for, at partner pricing.',
+    producers: 120, weekly: 520000 },
 ];
 
 /* floating card slots on desktop: % of the stage box */
@@ -122,18 +126,18 @@ const SceneHero = () => {
         <div className="flex items-center justify-between gap-4">
           <div className="ws-rise inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 backdrop-blur px-3.5 py-1.5 text-xs font-semibold text-white/90">
             <span className="relative flex h-2 w-2"><span className="absolute inline-flex h-full w-full rounded-full bg-[#15AFF7] opacity-75 animate-ping" /><span className="relative inline-flex h-2 w-2 rounded-full bg-[#15AFF7]" /></span>
-            Agora Wholesale <span className="hidden sm:inline text-white/40">·</span><span className="hidden sm:inline"> for agencies that already produce</span>
+            Agora Wholesale <span className="hidden xl:inline text-white/40">·</span><span className="hidden xl:inline"> for agencies that already produce</span>
           </div>
           <div className="hidden md:flex items-center gap-1 rounded-full border border-white/15 bg-white/10 backdrop-blur p-1">
             {CHAPTERS.map((c, n) => (
-              <button key={c.id} onClick={() => pick(n)} className={cn('relative min-h-[36px] px-3.5 rounded-full text-xs font-semibold transition-colors overflow-hidden', n === i ? 'text-white' : 'text-white/60 hover:text-white')}>
+              <button key={c.id} onClick={() => pick(n)} className={cn('relative min-h-[36px] px-3.5 rounded-full text-xs font-semibold transition-colors overflow-hidden whitespace-nowrap', n === i ? 'text-white' : 'text-white/60 hover:text-white')}>
                 {n === i && (
                   <>
                     <motion.span layoutId="chapter-pill" className="absolute inset-0 rounded-full bg-white/15" transition={{ type: 'spring', stiffness: 400, damping: 32 }} />
                     <motion.span key={'bar' + i + String(paused)} className="absolute left-0 bottom-0 h-[2px] bg-[#15AFF7]" initial={{ width: paused ? '100%' : '0%' }} animate={{ width: '100%' }} transition={{ duration: paused ? 0 : CHAPTER_MS / 1000, ease: 'linear' }} />
                   </>
                 )}
-                <span className="relative">0{n + 1} <span className="hidden lg:inline">{c.stage}</span></span>
+                <span className="relative">0{n + 1} <span className="hidden lg:inline">{c.objectLabel}</span><span className="hidden xl:inline text-white/50"> → {c.stage}</span></span>
               </button>
             ))}
           </div>
@@ -145,21 +149,11 @@ const SceneHero = () => {
           onMouseMove={onMove}
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => { setPaused(false); mx.set(0); my.set(0); }}
-          className="relative mt-2 h-[400px] sm:h-[560px] md:h-[680px] lg:h-[720px]"
+          className="relative mt-2 h-[450px] sm:h-[600px] md:h-[720px] lg:h-[760px]"
         >
-          {/* the big word, behind the agency */}
-          <div className="absolute inset-x-0 top-[22%] md:top-[18%] flex justify-center pointer-events-none select-none" style={{ zIndex: 2 }}>
-            <span
-                key={C.id}
-                className="ws-wordin ws-serif leading-none text-[26vw] md:text-[15rem] lg:text-[17rem]"
-                style={{ color: 'transparent', backgroundImage: 'linear-gradient(180deg, rgba(191,230,255,.72) 0%, rgba(191,230,255,.3) 55%, rgba(191,230,255,.08) 100%)', WebkitBackgroundClip: 'text', backgroundClip: 'text' }}
-              >
-                {C.word}
-            </span>
-          </div>
 
           {/* bedrock + agency */}
-          <div className="absolute left-1/2 -translate-x-1/2 top-[34%] md:top-[36%] w-[92%] sm:w-[70%] md:w-[58%] lg:w-[52%] max-w-[780px]" style={{ zIndex: 4 }}>
+          <div className="absolute left-1/2 -translate-x-1/2 top-[30%] md:top-[30%] w-[92%] sm:w-[70%] md:w-[58%] lg:w-[52%] max-w-[760px]" style={{ zIndex: 4 }}>
           <motion.div style={{ x: rockX, y: rockY }}>
             <div className="relative ws-float" style={{ aspectRatio: '1600 / 587' }}>
               {/* mist under the rock */}
@@ -186,28 +180,45 @@ const SceneHero = () => {
                 />
               </div>
 
+              {/* the word, over the cliff face */}
+              <div className="absolute inset-x-0 top-[42%] md:top-[40%] flex justify-center pointer-events-none select-none" style={{ zIndex: 5 }}>
+                <span key={'w' + C.id} className="ws-wordin ws-serif leading-none text-[19vw] sm:text-[7rem] md:text-[8.5rem] lg:text-[9.5rem] text-white" style={{ textShadow: '0 8px 40px rgba(3,14,28,.8), 0 0 60px rgba(21,175,247,.35)' }}>{C.word}</span>
+              </div>
+
               {/* the tag */}
-              <div className="absolute left-1/2 -translate-x-1/2 top-[58%] md:top-[64%]" style={{ zIndex: 5 }}>
+              <div className="absolute left-1/2 -translate-x-1/2 top-[102%] md:top-[104%]" style={{ zIndex: 6 }}>
                 <div
                   key={'tag' + C.id}
-                  className="ws-rise rounded-2xl bg-white text-[#0d2238] px-3.5 py-2 shadow-[0_20px_50px_-20px_rgba(0,0,0,.7)] whitespace-nowrap"
+                  className="ws-rise rounded-2xl bg-white text-[#0d2238] px-3.5 py-2 shadow-[0_20px_50px_-20px_rgba(0,0,0,.7)] whitespace-nowrap max-w-[calc(100vw-2rem)]"
                   style={{ '--d': '1s' } as React.CSSProperties}
                 >
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-gray-500"><Counter to={C.producers} duration={0.8} /> producer{C.producers > 1 ? 's' : ''} · illustrative</p>
-                  <p className="ws-display text-lg md:text-xl font-bold leading-tight tabular-nums"><Counter to={C.weekly} prefix="$" duration={0.9} /> <span className="text-xs font-semibold text-gray-500">/ wk, direct level</span></p>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
+                    <div className="flex items-center gap-1" aria-label="What has been added so far">
+                      {CHAPTERS.map((c, n) => (
+                        <span key={c.id} className={cn('relative w-7 h-7 rounded-lg border flex items-center justify-center transition-all', n <= i ? 'border-[#15AFF7]/40 bg-[#eaf6ff]' : 'border-gray-200 bg-gray-50 opacity-50 grayscale')} title={c.objectLabel}>
+                          <img src={c.object} alt="" className="w-5 h-5 object-contain" draggable={false} />
+                          {n <= i && <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-[#15AFF7] text-white text-[8px] leading-3 text-center font-bold">✓</span>}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="sm:border-l border-gray-200 sm:pl-3">
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-gray-500">{i + 1} of 4 added<span className="hidden sm:inline"> · illustrative</span></p>
+                      <p className="ws-display text-lg md:text-xl font-bold leading-tight tabular-nums"><Counter to={C.producers} duration={0.5} /> <span className="text-xs font-semibold text-gray-500">producer{C.producers > 1 ? 's' : ''}</span> · <Counter to={C.weekly} prefix="$" duration={0.7} /> <span className="text-xs font-semibold text-gray-500">/ wk</span></p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* the payoff line */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-[104%] md:top-[100%] w-[min(92%,420px)]" style={{ zIndex: 6 }}>
+            <div className="absolute left-1/2 -translate-x-1/2 top-[172%] md:top-[138%] w-[min(96%,520px)]" style={{ zIndex: 6 }}>
                 <div
                   key={'pay' + C.id}
                   className="ws-rise ws-glass-dark rounded-2xl px-4 py-3 text-center"
                   style={{ '--d': '1.25s' } as React.CSSProperties}
                 >
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#7fd4ff]">{C.objectLabel} landed</p>
-                  <p className="mt-0.5 text-sm leading-snug text-white/90">{C.payoff}</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#7fd4ff]">Step 0{i + 1} · {C.add}</p>
+                  <p className="mt-0.5 text-sm leading-snug text-white/90">{C.result}</p>
                 </div>
             </div>
           </motion.div>
@@ -244,7 +255,7 @@ const SceneHero = () => {
                 <span className="absolute inset-0 rounded-[1.6rem] ws-float" style={{ animationDelay: `-${s.delay}s`, animationDuration: `${6 + n}s` }}>
                   <img src={c.object} alt="" className={cn('absolute left-1/2 -translate-x-1/2 top-[8%] w-[78%] transition-transform duration-500', active ? 'scale-110 -translate-y-1' : 'group-hover:scale-105')} draggable={false} />
                   <span className="absolute inset-x-0 bottom-0 p-4">
-                    <span className="block text-[10px] font-semibold uppercase tracking-[0.18em] text-[#7fd4ff]">0{n + 1} · {c.objectSub}</span>
+                    <span className="block text-[10px] font-semibold uppercase tracking-[0.18em] text-[#7fd4ff]">Step 0{n + 1} · {n <= i ? 'added' : 'add next'}</span>
                     <span className="block ws-display text-base font-semibold text-white mt-0.5">{c.objectLabel}</span>
                   </span>
                 </span>
@@ -257,7 +268,8 @@ const SceneHero = () => {
         {isMobile && (
           <div className="mt-2 grid grid-cols-4 gap-2">
             {CHAPTERS.map((c, n) => (
-              <button key={c.id} ref={(el) => { cardRefs.current[n] = el; }} onClick={() => pick(n)} aria-label={c.objectLabel} aria-pressed={n === i} className={cn('relative aspect-[4/5] rounded-2xl ws-glass-dark transition-all', n === i ? 'ring-1 ring-[#15AFF7]/70 scale-[1.04]' : 'opacity-80')}>
+              <button key={c.id} ref={(el) => { cardRefs.current[n] = el; }} onClick={() => pick(n)} aria-label={c.objectLabel} aria-pressed={n === i} className={cn('relative aspect-[4/5] rounded-2xl ws-glass-dark transition-all', n === i ? 'ring-1 ring-[#15AFF7]/70 scale-[1.04]' : n < i ? 'opacity-90' : 'opacity-60')}>
+                <span className="absolute top-1.5 left-1.5 text-[8px] font-bold uppercase tracking-wider text-[#7fd4ff]">{n + 1}</span>
                 <img src={c.object} alt="" className="absolute left-1/2 -translate-x-1/2 top-[10%] w-[74%]" draggable={false} />
                 <span className="absolute inset-x-0 bottom-1.5 text-center text-[9px] font-semibold uppercase tracking-wider text-[#7fd4ff]">{c.objectLabel}</span>
               </button>
@@ -273,7 +285,7 @@ const SceneHero = () => {
             <Letters text="build it on direct contracts." delay={0.5} letterClassName="ws-gradient-sky" />
           </h1>
             <p key={'line' + C.id} className="ws-rise mt-5 text-base sm:text-lg text-white/70" style={{ '--d': '.3s' } as React.CSSProperties}>
-              <span className="text-white">{C.title}</span> <span className="ws-serif text-[1.12em] text-[#7fd4ff]">{C.serif}</span> Same rule at every size: the contracts are yours, the tech carries your name, the middle layer is gone.
+              <span className="text-white">{C.title}</span> <span className="ws-serif text-[1.12em] text-[#7fd4ff]">{C.serif}</span> Stack all four and the agency grows a size each time. The middle layer never enters the room.
             </p>
           <div className="mt-7 flex flex-col sm:flex-row sm:items-center justify-center gap-3">
             <PrimaryButton href="#calculators">See what the spread costs you</PrimaryButton>
