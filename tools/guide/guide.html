@@ -1,0 +1,486 @@
+<!doctype html>
+<!-- The Agora Wholesale partner guide. Print source for tools/guide/build.sh,
+     which renders it with headless Chrome to public/wholesale/agora-wholesale-guide.pdf.
+     Copy and terms mirror /wholesale; change both together. -->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Agora Wholesale · Partner Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=block" rel="stylesheet" />
+<style>
+  @page { size: 8.5in 11in; margin: 0; }
+  :root {
+    --navy: #0d2238; --ink: #081626; --sky: #15AFF7; --sky2: #0D94D1; --ice: #eaf6ff; --mist: #f4f8fc;
+    --gray: #5b6b7c; --soft: #8a99a8; --line: #dfe6ee;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #fff; }
+  body { font-family: 'Inter', system-ui, sans-serif; color: #1f2a37; -webkit-print-color-adjust: exact; print-color-adjust: exact; font-size: 10pt; line-height: 1.55; }
+  img { display: block; }
+
+  .page { width: 8.5in; height: 11in; position: relative; overflow: hidden; break-after: page; page-break-after: always; background: #fff; }
+  .page:last-child { break-after: auto; page-break-after: auto; }
+  .pad { position: absolute; inset: 0.8in 0.75in 0.85in; }
+
+  .display { font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-variation-settings: "opsz" 96; letter-spacing: -0.035em; font-weight: 700; color: var(--navy); }
+  .serif { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+  .grad { color: #12a2e6; }
+  .dark .grad { color: #3cbcf8; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 7.5pt; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--sky2); }
+  .eyebrow::before { content: ""; width: 18px; height: 1px; background: currentColor; }
+  .eyebrow.light { color: var(--sky); }
+  .muted { color: var(--gray); }
+
+  /* page chrome */
+  .chrome-top { position: absolute; top: 0.42in; left: 0.75in; right: 0.75in; display: flex; justify-content: space-between; align-items: center; }
+  .chrome-top img { height: 18px; }
+  .chrome-top .sec { font-size: 7pt; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--soft); }
+  .chrome-bot { position: absolute; bottom: 0.42in; left: 0.75in; right: 0.75in; display: flex; justify-content: space-between; font-size: 7pt; color: var(--soft); letter-spacing: 0.04em; border-top: 1px solid var(--line); padding-top: 8px; }
+  .dark .chrome-top .sec, .dark .chrome-bot { color: #7f98b2; }
+  .dark .chrome-bot { border-color: rgba(255,255,255,.12); }
+
+  .bignum { position: absolute; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; letter-spacing: -0.06em; line-height: .8; color: transparent; -webkit-text-stroke: 1px rgba(13,34,56,.08); }
+  .grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(13,34,56,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(13,34,56,.045) 1px, transparent 1px); background-size: 0.5in 0.5in; -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 70%); mask-image: linear-gradient(180deg, #000 0%, transparent 70%); }
+  .glow { position: absolute; border-radius: 50%; background: radial-gradient(closest-side, rgba(21,175,247,.18), transparent); }
+
+  h2.title { font-size: 30pt; line-height: 1.02; margin-top: 12px; }
+  h2.title .serif { font-size: 1.1em; color: var(--sky2); }
+  p.lead { font-size: 12pt; line-height: 1.6; color: var(--gray); margin-top: 14px; }
+
+  .card { border: 1px solid var(--line); border-radius: 16px; background: #fff; }
+  .chip { display: inline-block; font-size: 6.5pt; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; padding: 4px 9px; border-radius: 99px; background: var(--ice); color: var(--sky2); }
+
+  /* term sheet */
+  .sheet { border-radius: 20px; background: #fff; border: 1px solid rgba(13,34,56,.1); box-shadow: 0 30px 70px -30px rgba(13,34,56,.4); overflow: hidden; }
+  .sheet .bar { height: 6px; background: linear-gradient(90deg, var(--navy), var(--sky2), var(--sky)); }
+  .sheet .in { padding: 26px 28px 24px; }
+  .sheet dl > div { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 11px 0; border-top: 1px dashed rgba(13,34,56,.14); }
+  .sheet dt { color: var(--gray); font-size: 9.5pt; }
+  .sheet dd { text-align: right; font-weight: 600; color: var(--navy); font-size: 10.5pt; }
+  .sheet dd small { display: block; font-weight: 400; color: var(--soft); font-size: 8pt; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ 1 · COVER -->
+<section class="page">
+  <div class="grid-bg"></div>
+  <div class="glow" style="width:7in;height:7in;top:-2.6in;right:-2.4in"></div>
+  <div style="position:absolute;top:0.6in;left:0.75in;right:0.75in;display:flex;justify-content:space-between;align-items:center">
+    <img src="../../public/wholesale/agora-wholesale-logo-dark@2x.png" style="height:30px" alt="Agora Wholesale" />
+    <span style="font-size:7.5pt;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--soft)">Partner guide · 2026</span>
+  </div>
+
+  <div style="position:absolute;top:2.05in;left:0.75in;right:0.75in">
+    <span style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(13,34,56,.12);border-radius:99px;padding:6px 13px;font-size:8pt;font-weight:600;color:var(--navy);background:#fff">
+      <span style="width:6px;height:6px;border-radius:50%;background:var(--sky)"></span>Direct-level life and annuity contracts
+    </span>
+    <h1 class="display" style="font-size:54pt;line-height:.96;margin-top:26px;max-width:6.9in">You built the agency.<br /><span class="grad">Your IMO owns the contract.</span></h1>
+    <p style="margin-top:26px;font-size:13pt;line-height:1.55;color:var(--gray);max-width:4.3in"><span class="serif" style="font-size:1.35em;color:var(--navy)">Not anymore.</span> Agora Wholesale puts producing agencies on direct-level contracts with eight carriers. Your agency owns its book. If you ever decide to leave, we release you.</p>
+  </div>
+
+  <img src="img/folio.png" alt="" style="position:absolute;top:4.55in;right:0.55in;width:2.35in;transform:rotate(13deg);filter:drop-shadow(0 34px 40px rgba(13,34,56,.3))" />
+
+  <div style="position:absolute;left:0;right:0;bottom:0;height:2.45in;background:var(--navy);color:#fff;overflow:hidden">
+    <div class="glow" style="width:5in;height:5in;top:-2.6in;left:-1.2in;background:radial-gradient(closest-side,rgba(21,175,247,.35),transparent)"></div>
+    <div style="position:absolute;inset:0.42in 0.75in">
+      <p class="eyebrow light">Direct-level contracts with</p>
+      <div style="margin-top:14px;display:grid;grid-template-columns:repeat(4,1fr);gap:9px 18px">
+        <span class="display" style="color:#fff;font-size:12.5pt;font-weight:600">North American</span>
+        <span class="display" style="color:#fff;font-size:12.5pt;font-weight:600">F&amp;G</span>
+        <span class="display" style="color:#fff;font-size:12.5pt;font-weight:600">National Life Group</span>
+        <span class="display" style="color:#fff;font-size:12.5pt;font-weight:600">American-Amicable</span>
+        <span class="display" style="color:#fff;font-size:12.5pt;font-weight:600">Athene</span>
+        <span class="display" style="color:#fff;font-size:12.5pt;font-weight:600">Foresters Financial</span>
+        <span class="display" style="color:#fff;font-size:12.5pt;font-weight:600">Royal Neighbors of America</span>
+        <span class="display" style="color:#fff;font-size:12.5pt;font-weight:600">Ameritas</span>
+      </div>
+      <div style="position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;font-size:7.5pt;color:#8fb1cf;letter-spacing:.04em;border-top:1px solid rgba(255,255,255,.14);padding-top:10px">
+        <span>agoraassurancesolutions.com/wholesale</span><span>For agencies writing six figures a week</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 2 · WHO WE ARE + CONTENTS -->
+<section class="page">
+  <div class="chrome-top"><img src="../../public/wholesale/agora-wholesale-logo-dark@2x.png" alt="" /><span class="sec">Introduction</span></div>
+  <div class="pad" style="top:1.05in">
+    <p class="eyebrow">Agora Wholesale, in one sentence</p>
+    <p class="display" style="font-size:25pt;line-height:1.12;margin-top:14px;font-weight:600">Direct-level life and annuity contracts for agencies that already produce, <span class="serif" style="color:var(--sky2);font-size:1.12em">with the technology, the leads and the tools stacked on top</span> and your book kept as yours.</p>
+
+    <div style="margin-top:30px;display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:16px;overflow:hidden">
+      <div style="padding:18px 16px;border-right:1px solid var(--line)"><p class="display" style="font-size:26pt;line-height:1">8</p><p class="muted" style="font-size:8.5pt;margin-top:6px;line-height:1.35">carriers at direct level</p></div>
+      <div style="padding:18px 16px;border-right:1px solid var(--line)"><p class="display" style="font-size:26pt;line-height:1">100%</p><p class="muted" style="font-size:8.5pt;margin-top:6px;line-height:1.35">of your book owned by your agency</p></div>
+      <div style="padding:18px 16px;border-right:1px solid var(--line)"><p class="display" style="font-size:19pt;line-height:1.15">On request</p><p class="muted" style="font-size:8.5pt;margin-top:6px;line-height:1.35">release, no hostage contracts</p></div>
+      <div style="padding:18px 16px"><p class="display" style="font-size:26pt;line-height:1">$0</p><p class="muted" style="font-size:8.5pt;margin-top:6px;line-height:1.35">platform fee for contract access</p></div>
+    </div>
+
+    <div style="margin-top:38px;display:grid;grid-template-columns:2.3in 1fr;gap:34px">
+      <div>
+        <p class="eyebrow">Inside</p>
+        <p class="serif" style="font-size:26pt;line-height:1.05;color:var(--navy);margin-top:10px">Everything a principal asks before the first call.</p>
+      </div>
+      <ol style="list-style:none">
+        <li style="display:flex;gap:16px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line)"><span class="display" style="font-size:10pt;color:var(--sky2);width:22px">01</span><span style="flex:1;font-weight:600;color:var(--navy)">The ceiling</span><span class="muted" style="font-size:8.5pt">Why the spread is yours</span><span style="width:24px;text-align:right" class="muted">3</span></li>
+        <li style="display:flex;gap:16px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line)"><span class="display" style="font-size:10pt;color:var(--sky2);width:22px">02</span><span style="flex:1;font-weight:600;color:var(--navy)">The terms</span><span class="muted" style="font-size:8.5pt">The deal on one page</span><span style="width:24px;text-align:right" class="muted">4</span></li>
+        <li style="display:flex;gap:16px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line)"><span class="display" style="font-size:10pt;color:var(--sky2);width:22px">03</span><span style="flex:1;font-weight:600;color:var(--navy)">The carriers</span><span class="muted" style="font-size:8.5pt">Eight, at direct level</span><span style="width:24px;text-align:right" class="muted">5</span></li>
+        <li style="display:flex;gap:16px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line)"><span class="display" style="font-size:10pt;color:var(--sky2);width:22px">04</span><span style="flex:1;font-weight:600;color:var(--navy)">The four doors</span><span class="muted" style="font-size:8.5pt">Contracts, technology, leads, tools</span><span style="width:24px;text-align:right" class="muted">6</span></li>
+        <li style="display:flex;gap:16px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line)"><span class="display" style="font-size:10pt;color:var(--sky2);width:22px">05</span><span style="flex:1;font-weight:600;color:var(--navy)">The platform</span><span class="muted" style="font-size:8.5pt">One screen, every carrier</span><span style="width:24px;text-align:right" class="muted">7</span></li>
+        <li style="display:flex;gap:16px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line)"><span class="display" style="font-size:10pt;color:var(--sky2);width:22px">06</span><span style="flex:1;font-weight:600;color:var(--navy)">Do the math</span><span class="muted" style="font-size:8.5pt">A worked example</span><span style="width:24px;text-align:right" class="muted">8</span></li>
+        <li style="display:flex;gap:16px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line)"><span class="display" style="font-size:10pt;color:var(--sky2);width:22px">07</span><span style="flex:1;font-weight:600;color:var(--navy)">Wholesale 101</span><span class="muted" style="font-size:8.5pt">Six short explainers</span><span style="width:24px;text-align:right" class="muted">9</span></li>
+        <li style="display:flex;gap:16px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line)"><span class="display" style="font-size:10pt;color:var(--sky2);width:22px">08</span><span style="flex:1;font-weight:600;color:var(--navy)">Who it is for, how it works</span><span class="muted" style="font-size:8.5pt">Four steps</span><span style="width:24px;text-align:right" class="muted">10</span></li>
+        <li style="display:flex;gap:16px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><span class="display" style="font-size:10pt;color:var(--sky2);width:22px">09</span><span style="flex:1;font-weight:600;color:var(--navy)">Straight answers</span><span class="muted" style="font-size:8.5pt">Seven questions</span><span style="width:24px;text-align:right" class="muted">11</span></li>
+      </ol>
+    </div>
+  </div>
+  <div class="chrome-bot"><span>Agora Wholesale · Partner guide</span><span>2</span></div>
+</section>
+
+<!-- ============================================================ 3 · THE CEILING -->
+<section class="page">
+  <div class="chrome-top"><img src="../../public/wholesale/agora-wholesale-logo-dark@2x.png" alt="" /><span class="sec">01 · The ceiling</span></div>
+  <span class="bignum" style="font-size:300pt;right:-0.2in;top:0.6in">01</span>
+  <div class="pad" style="top:1.05in">
+    <p class="eyebrow">Chapter one · The ceiling</p>
+    <h2 class="display title" style="max-width:6.4in">You hired the producers. You bought the leads. You run the floor. <span class="serif">So who set your level?</span></h2>
+    <p class="lead" style="max-width:6.2in">A shop that has never seen your numbers did. It holds the contract, decides what you earn on every policy, and keeps the difference. Five carrier statements arrive separately. Nobody shows you the math. The harder your floor works, the more the middle layer makes.</p>
+
+    <div style="margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+      <div class="card" style="padding:16px;background:var(--mist)"><p style="width:26px;height:26px;border-radius:8px;background:#fdecec;color:#e05252;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11pt">×</p><p style="font-weight:600;color:var(--navy);margin-top:10px">Your level</p><p class="muted" style="font-size:9pt;line-height:1.45;margin-top:3px">Set by someone else. Capped at what a national IMO gives an outsider.</p></div>
+      <div class="card" style="padding:16px;background:var(--mist)"><p style="width:26px;height:26px;border-radius:8px;background:#fdecec;color:#e05252;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11pt">×</p><p style="font-weight:600;color:var(--navy);margin-top:10px">Your renewals</p><p class="muted" style="font-size:9pt;line-height:1.45;margin-top:3px">Paid ten points under the people above you, forever.</p></div>
+      <div class="card" style="padding:16px;background:var(--mist)"><p style="width:26px;height:26px;border-radius:8px;background:#fdecec;color:#e05252;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11pt">×</p><p style="font-weight:600;color:var(--navy);margin-top:10px">Your data</p><p class="muted" style="font-size:9pt;line-height:1.45;margin-top:3px">Scattered across carriers. Reconciled by hand, if at all.</p></div>
+    </div>
+
+    <div style="position:absolute;left:0;right:0;bottom:0;height:3.55in;border-radius:20px;overflow:hidden;box-shadow:0 30px 70px -30px rgba(13,34,56,.4)">
+      <img src="../../public/wholesale/floor-poster.jpg" alt="" style="width:100%;height:100%;object-fit:cover" />
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(8,22,38,.82))"></div>
+      <div style="position:absolute;left:24px;right:24px;bottom:20px;display:flex;justify-content:space-between;align-items:flex-end;color:#fff">
+        <p class="serif" style="font-size:22pt;line-height:1.05;max-width:3.8in">Your floor, every week. Their contract, every policy.</p>
+        <p style="font-size:8pt;letter-spacing:.2em;text-transform:uppercase;color:#9fd8ff">Wholesale changes who keeps the spread</p>
+      </div>
+    </div>
+  </div>
+  <div class="chrome-bot"><span>Agora Wholesale · Partner guide</span><span>3</span></div>
+</section>
+
+<!-- ============================================================ 4 · THE TERMS -->
+<section class="page" style="background:var(--mist)">
+  <div class="grid-bg"></div>
+  <div class="chrome-top"><img src="../../public/wholesale/agora-wholesale-logo-dark@2x.png" alt="" /><span class="sec">02 · The terms</span></div>
+  <div class="pad" style="top:1.05in">
+    <p class="eyebrow">Chapter two · The terms</p>
+    <h2 class="display title">Here is the deal, <span class="serif">in plain English.</span></h2>
+    <p class="lead" style="max-width:6.1in">Direct-level contracts are the deal. Technology, leads and tools sit behind four doors in the partner portal. Walk through the ones you need and ignore the rest.</p>
+
+    <div style="margin-top:28px;display:grid;grid-template-columns:1.12fr 1fr;gap:22px;align-items:start">
+      <div class="sheet">
+        <div class="bar"></div>
+        <div class="in">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <div><p style="font-size:7pt;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--sky2)">Partner terms</p><p class="serif" style="font-size:22pt;line-height:1.1;color:var(--navy);margin-top:3px">The short version.</p></div>
+            <p style="font-size:6.5pt;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);text-align:right;line-height:1.5">Agora Wholesale<br />Term sheet</p>
+          </div>
+          <dl style="margin-top:16px">
+            <div><dt>Contracts</dt><dd>Direct level<small>Eight carriers</small></dd></div>
+            <div><dt>Book of business</dt><dd>Owned by your agency</dd></div>
+            <div><dt>Release</dt><dd>On request</dd></div>
+            <div><dt>Platform fee</dt><dd>None</dd></div>
+            <div><dt>Technology, leads, tools</dt><dd>Optional<small>Priced before you buy</small></dd></div>
+            <div><dt>Training</dt><dd>Not required</dd></div>
+          </dl>
+          <div style="margin-top:8px;padding-top:14px;border-top:1px solid rgba(13,34,56,.14);display:flex;justify-content:space-between;align-items:flex-end">
+            <p class="muted" style="font-size:7.5pt;max-width:1.9in;line-height:1.45">Carrier grid and levels are shared privately after review.</p>
+            <div style="text-align:right"><p class="serif" style="font-size:15pt;color:var(--navy);line-height:1">Agora</p><div style="height:1px;width:1.1in;background:rgba(13,34,56,.3);margin:5px 0 4px auto"></div><p style="font-size:6pt;letter-spacing:.2em;text-transform:uppercase;color:var(--soft)">Wholesale desk</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card" style="padding:20px 22px">
+          <p style="font-size:7pt;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--sky2)">What you keep</p>
+          <div style="margin-top:10px">
+            <p style="display:flex;justify-content:space-between;padding:8px 0;border-top:1px solid var(--line)"><span class="muted">Your book of business</span><b style="color:var(--navy)">Yours</b></p>
+            <p style="display:flex;justify-content:space-between;padding:8px 0;border-top:1px solid var(--line)"><span class="muted">Your producers</span><b style="color:var(--navy)">Yours</b></p>
+            <p style="display:flex;justify-content:space-between;padding:8px 0;border-top:1px solid var(--line)"><span class="muted">Your name on the door</span><b style="color:var(--navy)">Yours</b></p>
+            <p style="display:flex;justify-content:space-between;padding:8px 0;border-top:1px solid var(--line)"><span class="muted">Your exit</span><b style="color:var(--navy)">Release on request</b></p>
+          </div>
+        </div>
+        <div class="card" style="padding:20px 22px;margin-top:14px">
+          <p style="font-size:7pt;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--sky2)">What it costs</p>
+          <div style="margin-top:10px">
+            <p style="display:flex;justify-content:space-between;padding:8px 0;border-top:1px solid var(--line)"><span class="muted">Contract access</span><b style="color:var(--navy)">No platform fee</b></p>
+            <p style="display:flex;justify-content:space-between;padding:8px 0;border-top:1px solid var(--line)"><span class="muted">Portal login</span><b style="color:var(--navy)">Included</b></p>
+            <p style="display:flex;justify-content:space-between;padding:8px 0;border-top:1px solid var(--line)"><span class="muted">White-label build</span><b style="color:var(--navy)">Scoped per agency</b></p>
+            <p style="display:flex;justify-content:space-between;padding:8px 0;border-top:1px solid var(--line)"><span class="muted">Leads and tools</span><b style="color:var(--navy)">Per item, priced up front</b></p>
+            <p style="display:flex;justify-content:space-between;padding:8px 0;border-top:1px solid var(--line)"><span class="muted">Training</span><b style="color:var(--navy)">Optional</b></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="chrome-bot"><span>Agora Wholesale · Partner guide</span><span>4</span></div>
+</section>
+
+<!-- ============================================================ 5 · THE CARRIERS -->
+<section class="page dark" style="background:var(--navy);color:#fff">
+  <div class="glow" style="width:8in;height:8in;top:-3in;right:-3.4in;background:radial-gradient(closest-side,rgba(21,175,247,.32),transparent)"></div>
+  <div class="glow" style="width:6in;height:6in;bottom:-3in;left:-2.6in;background:radial-gradient(closest-side,rgba(13,148,209,.3),transparent)"></div>
+  <div class="chrome-top"><img src="../../public/wholesale/agora-wholesale-logo-white@2x.png" alt="" /><span class="sec">03 · The carriers</span></div>
+  <div class="pad" style="top:1.05in">
+    <p class="eyebrow light">Chapter three · The carriers</p>
+    <h2 class="display title" style="color:#fff">Eight carriers. <span class="serif" style="color:#6fd0ff">Direct level.</span></h2>
+    <p class="lead" style="color:#a9c3db;max-width:5.8in">Life, final expense and annuity carriers your producers already know, contracted at direct level. The full carrier grid and your levels are walked through privately on the partner call.</p>
+
+    <ol style="list-style:none;margin-top:34px;display:grid;grid-template-columns:1fr 1fr;column-gap:34px">
+      <li style="display:flex;gap:18px;align-items:baseline;padding:17px 0;border-top:1px solid rgba(255,255,255,.14)"><span class="display" style="color:#15AFF7;font-size:10pt;width:22px">01</span><span class="display" style="color:#fff;font-size:21pt;font-weight:600">North American</span></li>
+      <li style="display:flex;gap:18px;align-items:baseline;padding:17px 0;border-top:1px solid rgba(255,255,255,.14)"><span class="display" style="color:#15AFF7;font-size:10pt;width:22px">05</span><span class="display" style="color:#fff;font-size:21pt;font-weight:600">Athene</span></li>
+      <li style="display:flex;gap:18px;align-items:baseline;padding:17px 0;border-top:1px solid rgba(255,255,255,.14)"><span class="display" style="color:#15AFF7;font-size:10pt;width:22px">02</span><span class="display" style="color:#fff;font-size:21pt;font-weight:600">F&amp;G</span></li>
+      <li style="display:flex;gap:18px;align-items:baseline;padding:17px 0;border-top:1px solid rgba(255,255,255,.14)"><span class="display" style="color:#15AFF7;font-size:10pt;width:22px">06</span><span class="display" style="color:#fff;font-size:21pt;font-weight:600">Foresters Financial</span></li>
+      <li style="display:flex;gap:18px;align-items:baseline;padding:17px 0;border-top:1px solid rgba(255,255,255,.14)"><span class="display" style="color:#15AFF7;font-size:10pt;width:22px">03</span><span class="display" style="color:#fff;font-size:21pt;font-weight:600">National Life Group</span></li>
+      <li style="display:flex;gap:18px;align-items:baseline;padding:17px 0;border-top:1px solid rgba(255,255,255,.14)"><span class="display" style="color:#15AFF7;font-size:10pt;width:22px">07</span><span class="display" style="color:#fff;font-size:21pt;font-weight:600">Royal Neighbors of America</span></li>
+      <li style="display:flex;gap:18px;align-items:baseline;padding:17px 0;border-top:1px solid rgba(255,255,255,.14);border-bottom:1px solid rgba(255,255,255,.14)"><span class="display" style="color:#15AFF7;font-size:10pt;width:22px">04</span><span class="display" style="color:#fff;font-size:21pt;font-weight:600">American-Amicable</span></li>
+      <li style="display:flex;gap:18px;align-items:baseline;padding:17px 0;border-top:1px solid rgba(255,255,255,.14);border-bottom:1px solid rgba(255,255,255,.14)"><span class="display" style="color:#15AFF7;font-size:10pt;width:22px">08</span><span class="display" style="color:#fff;font-size:21pt;font-weight:600">Ameritas</span></li>
+    </ol>
+
+    <div style="position:absolute;left:0;right:0;bottom:0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+      <div style="border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);border-radius:16px;padding:18px"><p style="font-size:7pt;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#6fd0ff">Your level</p><p style="margin-top:6px;color:#d6e6f5;font-size:9.5pt;line-height:1.45">Set by your production, not by a parent shop's politics.</p></div>
+      <div style="border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);border-radius:16px;padding:18px"><p style="font-size:7pt;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#6fd0ff">Your book</p><p style="margin-top:6px;color:#d6e6f5;font-size:9.5pt;line-height:1.45">Owned by your agency, on every carrier on this page.</p></div>
+      <div style="border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);border-radius:16px;padding:18px"><p style="font-size:7pt;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#6fd0ff">Your exit</p><p style="margin-top:6px;color:#d6e6f5;font-size:9.5pt;line-height:1.45">If you decide to move on, ask, and we release you.</p></div>
+    </div>
+  </div>
+  <div class="chrome-bot"><span>Agora Wholesale · Partner guide</span><span>5</span></div>
+</section>
+
+<!-- ============================================================ 6 · THE FOUR DOORS -->
+<section class="page">
+  <div class="chrome-top"><img src="../../public/wholesale/agora-wholesale-logo-dark@2x.png" alt="" /><span class="sec">04 · The four doors</span></div>
+  <div class="pad" style="top:1.05in">
+    <p class="eyebrow">Chapter four · The four doors</p>
+    <h2 class="display title">Four doors. One portal. <span class="serif">Walk through what you need.</span></h2>
+    <p class="lead" style="max-width:6.2in;font-size:11pt">Contracts are available now. Technology, the lead store and the marketplace open to partner agencies in phases, and each lands in the portal the week it goes live.</p>
+
+    <div style="margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <div class="card" style="overflow:hidden">
+        <div style="height:1.25in;position:relative"><img src="../../public/wholesale/contracts.jpg" alt="" style="width:100%;height:100%;object-fit:cover" /><span class="display" style="position:absolute;top:8px;right:14px;font-size:26pt;color:rgba(255,255,255,.85)">01</span></div>
+        <div style="padding:14px 16px 16px"><p class="display" style="font-size:15pt">Contracts</p><p style="color:var(--sky2);font-weight:500;font-size:9pt;margin-top:2px">Direct-level contracts without the IMO tax.</p>
+          <ul style="list-style:none;margin-top:8px;font-size:8.5pt;line-height:1.45;color:#334155">
+            <li style="padding:2px 0 2px 14px;position:relative"><span style="position:absolute;left:0;color:var(--sky)">✓</span>Eight carriers across life, final expense and annuity</li>
+            <li style="padding:2px 0 2px 14px;position:relative"><span style="position:absolute;left:0;color:var(--sky)">✓</span>Renewals paid on the schedule Agora is paid</li>
+            <li style="padding:2px 0 2px 14px;position:relative"><span style="position:absolute;left:0;color:var(--sky)">✓</span>Contracting support for new appointments</li>
+          </ul></div>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div style="height:1.25in;position:relative"><img src="../../public/wholesale/technology.jpg" alt="" style="width:100%;height:100%;object-fit:cover" /><span class="display" style="position:absolute;top:8px;right:14px;font-size:26pt;color:rgba(255,255,255,.85)">02</span></div>
+        <div style="padding:14px 16px 16px"><p class="display" style="font-size:15pt">Technology</p><p style="color:var(--sky2);font-weight:500;font-size:9pt;margin-top:2px">Your agency, running on our systems.</p>
+          <ul style="list-style:none;margin-top:8px;font-size:8.5pt;line-height:1.45;color:#334155">
+            <li style="padding:2px 0 2px 14px;position:relative"><span style="position:absolute;left:0;color:var(--sky)">✓</span>Agency dashboard: production, promotions, leaderboards</li>
+            <li style="padding:2px 0 2px 14px;position:relative"><span style="position:absolute;left:0;color:var(--sky)">✓</span>Onboarding from licensing to first policy</li>
+            <li style="padding:2px 0 2px 14px;position:relative"><span style="position:absolute;left:0;color:var(--sky)">✓</span>Your logo, your colors, your domain</li>
+          </ul></div>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div style="height:1.25in;position:relative"><img src="../../public/wholesale/leads.jpg" alt="" style="width:100%;height:100%;object-fit:cover" /><span class="display" style="position:absolute;top:8px;right:14px;font-size:26pt;color:rgba(255,255,255,.85)">03</span></div>
+        <div style="padding:14px 16px 16px"><p class="display" style="font-size:15pt">Lead store</p><p style="color:var(--sky2);font-weight:500;font-size:9pt;margin-top:2px">Priced by Agora. Shown before you buy.</p>
+          <ul style="list-style:none;margin-top:8px;font-size:8.5pt;line-height:1.45;color:#334155">
+            <li style="padding:2px 0 2px 14px;position:relative"><span style="position:absolute;left:0;color:var(--sky)">✓</span>Per-lead pricing visible up front</li>
+            <li style="padding:2px 0 2px 14px;position:relative"><span style="position:absolute;left:0;color:var(--sky)">✓</span>Source and vertical tagged on every lead</li>
+            <li style="padding:2px 0 2px 14px;position:relative"><span style="position:absolute;left:0;color:var(--sky)">✓</span>Outcome reporting tied back to production</li>
+          </ul></div>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div style="height:1.25in;position:relative"><img src="../../public/wholesale/marketplace.jpg" alt="" style="width:100%;height:100%;object-fit:cover" /><span class="display" style="position:absolute;top:8px;right:14px;font-size:26pt;color:rgba(255,255,255,.85)">04</span></div>
+        <div style="padding:14px 16px 16px"><p class="display" style="font-size:15pt">Tool marketplace</p><p style="color:var(--sky2);font-weight:500;font-size:9pt;margin-top:2px">Every tool an agency needs, at partner pricing.</p>
+          <ul style="list-style:none;margin-top:8px;font-size:8.5pt;line-height:1.45;color:#334155">
+            <li style="padding:2px 0 2px 14px;position:relative"><span style="position:absolute;left:0;color:var(--sky)">✓</span>Annuity and life quoting at partner pricing</li>
+            <li style="padding:2px 0 2px 14px;position:relative"><span style="position:absolute;left:0;color:var(--sky)">✓</span>Estate and tax partners with shared revenue</li>
+            <li style="padding:2px 0 2px 14px;position:relative"><span style="position:absolute;left:0;color:var(--sky)">✓</span>One invoice, one login</li>
+          </ul></div>
+      </div>
+    </div>
+  </div>
+  <div class="chrome-bot"><span>Agora Wholesale · Partner guide</span><span>6</span></div>
+</section>
+
+<!-- ============================================================ 7 · THE PLATFORM -->
+<section class="page" style="background:var(--mist)">
+  <div class="chrome-top"><img src="../../public/wholesale/agora-wholesale-logo-dark@2x.png" alt="" /><span class="sec">05 · The platform</span></div>
+  <div class="pad" style="top:1.05in">
+    <p class="eyebrow">Chapter five · The platform</p>
+    <h2 class="display title">Every carrier, every producer, every week. <span class="serif">One screen.</span></h2>
+    <p class="lead" style="max-width:6.2in;font-size:11pt">The portal comes with the contract. Issued, paid and lapsed business as the carriers report it, promotions that check themselves, and answers that come straight from the carriers' own guides.</p>
+
+    <div style="margin-top:22px;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 70px -34px rgba(13,34,56,.45);height:3.4in">
+      <img src="img/platform-dashboard.jpg" alt="" style="width:100%;height:100%;object-fit:cover" />
+    </div>
+
+    <div style="margin-top:18px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+      <div class="card" style="padding:15px 14px"><p class="display" style="font-size:9pt;color:var(--sky2)">01</p><p style="font-weight:600;color:var(--navy);font-size:9pt;margin-top:4px">Live carrier reporting</p><p class="muted" style="font-size:7.8pt;line-height:1.4;margin-top:3px">Production by carrier, agency, producer and week.</p></div>
+      <div class="card" style="padding:15px 14px"><p class="display" style="font-size:9pt;color:var(--sky2)">02</p><p style="font-weight:600;color:var(--navy);font-size:9pt;margin-top:4px">Promotion engine</p><p class="muted" style="font-size:7.8pt;line-height:1.4;margin-top:3px">Thresholds from your comp plan, checked nightly.</p></div>
+      <div class="card" style="padding:15px 14px"><p class="display" style="font-size:9pt;color:var(--sky2)">03</p><p style="font-weight:600;color:var(--navy);font-size:9pt;margin-top:4px">Recruiting pipeline</p><p class="muted" style="font-size:7.8pt;line-height:1.4;margin-top:3px">ExamFX logins, scores and expirations in one board.</p></div>
+      <div class="card" style="padding:15px 14px"><p class="display" style="font-size:9pt;color:var(--sky2)">04</p><p style="font-weight:600;color:var(--navy);font-size:9pt;margin-top:4px">Underwriting assistant</p><p class="muted" style="font-size:7.8pt;line-height:1.4;margin-top:3px">Answers that cite the carrier guide page.</p></div>
+      <div class="card" style="padding:15px 14px"><p class="display" style="font-size:9pt;color:var(--sky2)">05</p><p style="font-weight:600;color:var(--navy);font-size:9pt;margin-top:4px">Field pre-qual</p><p class="muted" style="font-size:7.8pt;line-height:1.4;margin-top:3px">Four questions, a class and a carrier before the app.</p></div>
+      <div class="card" style="padding:15px 14px"><p class="display" style="font-size:9pt;color:var(--sky2)">06</p><p style="font-weight:600;color:var(--navy);font-size:9pt;margin-top:4px">Market Pulse</p><p class="muted" style="font-size:7.8pt;line-height:1.4;margin-top:3px">What clients are asking, rewritten in your voice.</p></div>
+      <div class="card" style="padding:15px 14px"><p class="display" style="font-size:9pt;color:var(--sky2)">07</p><p style="font-weight:600;color:var(--navy);font-size:9pt;margin-top:4px">Team tree</p><p class="muted" style="font-size:7.8pt;line-height:1.4;margin-top:3px">Every leg and level, with production rolled up.</p></div>
+      <div class="card" style="padding:15px 14px"><p class="display" style="font-size:9pt;color:var(--sky2)">08</p><p style="font-weight:600;color:var(--navy);font-size:9pt;margin-top:4px">Automation</p><p class="muted" style="font-size:7.8pt;line-height:1.4;margin-top:3px">Tickets, licensing steps and onboarding run themselves.</p></div>
+    </div>
+    <p class="muted" style="font-size:7.5pt;margin-top:12px">Carrier feeds connect one carrier at a time and appear in the portal as each comes online. Full tour: agoraassurancesolutions.com/wholesale/platform</p>
+  </div>
+  <div class="chrome-bot"><span>Agora Wholesale · Partner guide</span><span>7</span></div>
+</section>
+
+<!-- ============================================================ 8 · DO THE MATH -->
+<section class="page">
+  <div class="chrome-top"><img src="../../public/wholesale/agora-wholesale-logo-dark@2x.png" alt="" /><span class="sec">06 · Do the math</span></div>
+  <span class="bignum" style="font-size:300pt;right:-0.2in;top:0.6in">06</span>
+  <div class="pad" style="top:1.05in">
+    <p class="eyebrow">Chapter six · Do the math</p>
+    <h2 class="display title">What fifteen points <span class="serif">is worth on your floor.</span></h2>
+    <p class="lead" style="max-width:6.1in;font-size:11pt">A worked example on a floor writing two hundred thousand dollars a week. Run your own numbers on the calculators at agoraassurancesolutions.com/wholesale.</p>
+
+    <div style="margin-top:24px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+      <div class="card" style="padding:14px"><p class="muted" style="font-size:7.5pt;text-transform:uppercase;letter-spacing:.16em">Producers</p><p class="display" style="font-size:20pt;margin-top:4px">40</p></div>
+      <div class="card" style="padding:14px"><p class="muted" style="font-size:7.5pt;text-transform:uppercase;letter-spacing:.16em">Per producer / wk</p><p class="display" style="font-size:20pt;margin-top:4px">$5,000</p></div>
+      <div class="card" style="padding:14px"><p class="muted" style="font-size:7.5pt;text-transform:uppercase;letter-spacing:.16em">Floor / wk</p><p class="display" style="font-size:20pt;margin-top:4px">$200,000</p></div>
+      <div class="card" style="padding:14px"><p class="muted" style="font-size:7.5pt;text-transform:uppercase;letter-spacing:.16em">Annual premium</p><p class="display" style="font-size:20pt;margin-top:4px">$10.4M</p></div>
+    </div>
+
+    <div style="margin-top:16px;border-radius:20px;background:var(--navy);color:#fff;padding:26px 28px;position:relative;overflow:hidden">
+      <div class="glow" style="width:4in;height:4in;top:-2in;right:-1.2in;background:radial-gradient(closest-side,rgba(21,175,247,.4),transparent)"></div>
+      <p style="font-size:7pt;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--sky)">Year-one commission left on the table</p>
+      <p class="display" style="color:#fff;font-size:50pt;line-height:1;margin-top:8px">$1,560,000</p>
+      <p style="color:#a9c3db;margin-top:4px">per year across the floor. That is $130,000 a month.</p>
+
+      <div style="margin-top:22px">
+        <div style="display:flex;justify-content:space-between;font-size:8.5pt;color:#a9c3db"><span>At 110% today</span><span style="color:#fff;font-weight:600">$11,440,000</span></div>
+        <div style="height:12px;border-radius:99px;background:rgba(255,255,255,.08);margin-top:6px"><div style="height:100%;width:88%;border-radius:99px;background:rgba(255,255,255,.35)"></div></div>
+        <div style="display:flex;justify-content:space-between;font-size:8.5pt;color:#a9c3db;margin-top:14px"><span>At 125% direct</span><span style="color:#6fd0ff;font-weight:600">$13,000,000</span></div>
+        <div style="height:12px;border-radius:99px;background:rgba(255,255,255,.08);margin-top:6px"><div style="height:100%;width:100%;border-radius:99px;background:linear-gradient(90deg,#0D94D1,#15AFF7,#6fd0ff)"></div></div>
+      </div>
+    </div>
+
+    <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div class="card" style="padding:16px"><p style="font-weight:600;color:var(--navy)">Renewals compound it</p><p class="muted" style="font-size:8.8pt;line-height:1.45;margin-top:4px">A book you own pays renewals at your level for as long as the policies stay on the books, and it stays yours if you move on.</p></div>
+      <div class="card" style="padding:16px"><p style="font-weight:600;color:var(--navy)">Leads are measured, not guessed</p><p class="muted" style="font-size:8.8pt;line-height:1.45;margin-top:4px">Lead spend sits beside lead outcomes, so you see which sources write business, not just which ones were cheap.</p></div>
+    </div>
+    <div class="card" style="margin-top:14px;overflow:hidden">
+      <div style="display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;font-size:8.5pt;background:var(--mist);border-bottom:1px solid var(--line)">
+        <p style="padding:10px 14px;font-weight:600;color:var(--navy)">The same fifteen points, at your size</p>
+        <p style="padding:10px 14px;text-align:right" class="muted">$100,000 / wk</p>
+        <p style="padding:10px 14px;text-align:right;color:var(--sky2);font-weight:600">$200,000 / wk</p>
+        <p style="padding:10px 14px;text-align:right" class="muted">$500,000 / wk</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;font-size:9pt;border-bottom:1px solid var(--line)">
+        <p style="padding:9px 14px" class="muted">Annual premium</p><p style="padding:9px 14px;text-align:right;color:var(--navy)">$5,200,000</p><p style="padding:9px 14px;text-align:right;color:var(--navy)">$10,400,000</p><p style="padding:9px 14px;text-align:right;color:var(--navy)">$26,000,000</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;font-size:9pt">
+        <p style="padding:9px 14px" class="muted">Year-one difference</p><p class="display" style="padding:9px 14px;text-align:right;font-size:12pt">$780,000</p><p class="display" style="padding:9px 14px;text-align:right;font-size:12pt;color:var(--sky2)">$1,560,000</p><p class="display" style="padding:9px 14px;text-align:right;font-size:12pt">$3,900,000</p>
+      </div>
+    </div>
+    <p class="muted" style="font-size:7pt;margin-top:12px;line-height:1.45">Illustrative only: 110% today against 125% direct, on target premium. Levels, renewals and lead pricing depend on carrier, product and production, and are shared privately after review. Nothing here is an offer of compensation.</p>
+  </div>
+  <div class="chrome-bot"><span>Agora Wholesale · Partner guide</span><span>8</span></div>
+</section>
+
+<!-- ============================================================ 9 · WHOLESALE 101 -->
+<section class="page" style="background:var(--mist)">
+  <div class="chrome-top"><img src="../../public/wholesale/agora-wholesale-logo-dark@2x.png" alt="" /><span class="sec">07 · Wholesale 101</span></div>
+  <div class="pad" style="top:1.05in">
+    <p class="eyebrow">Chapter seven · Wholesale 101</p>
+    <h2 class="display title">Learn the game <span class="serif">before you change it.</span></h2>
+    <p class="lead" style="font-size:11pt">Six short explainers on how wholesale actually works. No jargon.</p>
+
+    <div style="margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div class="card" style="padding:22px 20px"><span class="chip">01 · IMO vs. wholesale</span><p class="display" style="font-size:13.5pt;line-height:1.25;margin-top:12px;font-weight:600">An IMO sits between you and the carrier and keeps the spread. Wholesale means you keep it.</p><p class="muted" style="font-size:9.2pt;line-height:1.55;margin-top:8px">The IMO holds the contract, sets your level, and keeps the difference between what the carrier pays and what you see. Agora Wholesale starts from direct contracts, so that layer is not there.</p></div>
+      <div class="card" style="padding:22px 20px"><span class="chip">02 · Contract levels</span><p class="display" style="font-size:13.5pt;line-height:1.25;margin-top:12px;font-weight:600">A level is the share of first-year premium the carrier pays at your position.</p><p class="muted" style="font-size:9.2pt;line-height:1.55;margin-top:8px">A "120" means 120 percent of target premium in year one. The higher you sit, the more of every policy you keep. Levels differ by carrier and product line, and renewals matter as much as year one.</p></div>
+      <div class="card" style="padding:22px 20px"><span class="chip">03 · White-label</span><p class="display" style="font-size:13.5pt;line-height:1.25;margin-top:12px;font-weight:600">Your brand on the screen, our engine underneath.</p><p class="muted" style="font-size:9.2pt;line-height:1.55;margin-top:8px">The dashboard, promotions, onboarding and reporting with your logo, colors and domain. Your producers never see Agora. Builds are scoped per agency, and the shared portal works without one.</p></div>
+      <div class="card" style="padding:22px 20px"><span class="chip">04 · Lead pricing</span><p class="display" style="font-size:13.5pt;line-height:1.25;margin-top:12px;font-weight:600">Agora sets the price. You see it before you buy.</p><p class="muted" style="font-size:9.2pt;line-height:1.55;margin-top:8px">Leads are tagged by source, vertical and age and priced at cost-plus. Because the lead store and reporting share one system, outcomes feed straight back into your numbers.</p></div>
+      <div class="card" style="padding:22px 20px"><span class="chip">05 · Marketplace</span><p class="display" style="font-size:13.5pt;line-height:1.25;margin-top:12px;font-weight:600">We do not build every tool. We negotiate the price of the best ones.</p><p class="muted" style="font-size:9.2pt;line-height:1.55;margin-top:8px">Quoting engines, rate watchers, estate and tax partners at partner pricing. Where a partner shares revenue on completed work, that share flows to the agency that wrote the client.</p></div>
+      <div class="card" style="padding:22px 20px"><span class="chip">06 · The reporting layer</span><p class="display" style="font-size:13.5pt;line-height:1.25;margin-top:12px;font-weight:600">Think Pentagon, not Army. Agora sees the whole board without running your agency.</p><p class="muted" style="font-size:9.2pt;line-height:1.55;margin-top:8px">Production, renewals and who owes what, across carriers, in one place. Partner agencies plug into the same reporting, and carrier feeds connect one carrier at a time.</p></div>
+    </div>
+  </div>
+  <div class="chrome-bot"><span>Agora Wholesale · Partner guide</span><span>9</span></div>
+</section>
+
+<!-- ============================================================ 10 · WHO + HOW -->
+<section class="page">
+  <div class="chrome-top"><img src="../../public/wholesale/agora-wholesale-logo-dark@2x.png" alt="" /><span class="sec">08 · Who it is for, how it works</span></div>
+  <div class="pad" style="top:1.05in">
+    <p class="eyebrow">Chapter eight · Who it is for</p>
+    <h2 class="display title">Real agencies. Weekly production. <span class="serif">Resources, not pep talks.</span></h2>
+
+    <div style="margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div class="card" style="padding:16px;background:var(--mist)"><p style="color:var(--sky);font-weight:700">✓</p><p style="font-weight:600;color:var(--navy);margin-top:4px">An agency that writes every week</p><p class="muted" style="font-size:8.8pt;line-height:1.45;margin-top:3px">Producers submitting business weekly, and the reporting to prove it.</p></div>
+      <div class="card" style="padding:16px;background:var(--mist)"><p style="color:var(--sky);font-weight:700">✓</p><p style="font-weight:600;color:var(--navy);margin-top:4px">An agency with its own name</p><p class="muted" style="font-size:8.8pt;line-height:1.45;margin-top:3px">You want your brand on the door and Agora running the engine behind it.</p></div>
+      <div class="card" style="padding:16px;background:var(--mist)"><p style="color:var(--sky);font-weight:700">✓</p><p style="font-weight:600;color:var(--navy);margin-top:4px">Tired of the big-shop ceiling</p><p class="muted" style="font-size:8.8pt;line-height:1.45;margin-top:3px">You are capped at the level a national IMO gives an outsider.</p></div>
+      <div class="card" style="padding:16px;background:var(--mist)"><p style="color:var(--sky);font-weight:700">✓</p><p style="font-weight:600;color:var(--navy);margin-top:4px">Ready to own your supply</p><p class="muted" style="font-size:8.8pt;line-height:1.45;margin-top:3px">Leads, tools and contracts you choose, priced where you can see them.</p></div>
+    </div>
+
+    <p class="eyebrow" style="margin-top:36px">How it works</p>
+    <div style="margin-top:16px;position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
+      <div style="position:absolute;top:17px;left:17px;right:17px;height:2px;background:linear-gradient(90deg,var(--sky),var(--navy))"></div>
+      <div style="position:relative"><p class="display" style="width:36px;height:36px;border-radius:50%;background:var(--sky);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12pt;box-shadow:0 0 0 5px #fff">1</p><p style="font-weight:600;color:var(--navy);margin-top:14px">Request a review</p><p class="muted" style="font-size:8.6pt;line-height:1.45;margin-top:3px">Five minutes: agency size, weekly production, current IMO, carriers, and what you want from Agora.</p></div>
+      <div style="position:relative"><p class="display" style="width:36px;height:36px;border-radius:50%;background:var(--sky2);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12pt;box-shadow:0 0 0 5px #fff">2</p><p style="font-weight:600;color:var(--navy);margin-top:14px">Private call</p><p class="muted" style="font-size:8.6pt;line-height:1.45;margin-top:3px">A principal reads every request. If the fit is right, we schedule a call and walk through the carrier grid.</p></div>
+      <div style="position:relative"><p class="display" style="width:36px;height:36px;border-radius:50%;background:#0b6fb0;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12pt;box-shadow:0 0 0 5px #fff">3</p><p style="font-weight:600;color:var(--navy);margin-top:14px">Approval</p><p class="muted" style="font-size:8.6pt;line-height:1.45;margin-top:3px">Approved agencies get a portal invitation by email and set a password.</p></div>
+      <div style="position:relative"><p class="display" style="width:36px;height:36px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12pt;box-shadow:0 0 0 5px #fff">4</p><p style="font-weight:600;color:var(--navy);margin-top:14px">Plug in</p><p class="muted" style="font-size:8.6pt;line-height:1.45;margin-top:3px">Contracts first. Technology, leads and tools are there in the portal when you want them.</p></div>
+    </div>
+
+    <div style="position:absolute;left:0;right:0;bottom:0;height:2.55in;border-radius:20px;overflow:hidden">
+      <img src="../../public/wholesale/owner.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center 35%" />
+      <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.96) 0%,rgba(255,255,255,.75) 42%,transparent 70%)"></div>
+      <p class="serif" style="position:absolute;left:26px;top:50%;transform:translateY(-50%);font-size:23pt;line-height:1.08;color:var(--navy);max-width:3.4in">Wholesale is for the people who already run the floor.</p>
+    </div>
+  </div>
+  <div class="chrome-bot"><span>Agora Wholesale · Partner guide</span><span>10</span></div>
+</section>
+
+<!-- ============================================================ 11 · FAQ -->
+<section class="page" style="background:var(--mist)">
+  <div class="chrome-top"><img src="../../public/wholesale/agora-wholesale-logo-dark@2x.png" alt="" /><span class="sec">09 · Straight answers</span></div>
+  <div class="pad" style="top:1.05in">
+    <p class="eyebrow">Chapter nine · Straight answers</p>
+    <h2 class="display title">Before we talk, <span class="serif">the questions principals ask first.</span></h2>
+
+    <div style="margin-top:24px;columns:2;column-gap:22px">
+      <div class="card" style="padding:16px 18px;break-inside:avoid;margin-bottom:12px"><p style="font-weight:600;color:var(--navy)">Who owns the book of business?</p><p class="muted" style="font-size:9pt;line-height:1.5;margin-top:4px">Your agency does. The book you write through Agora is yours, and so are your producers and your name.</p></div>
+      <div class="card" style="padding:16px 18px;break-inside:avoid;margin-bottom:12px"><p style="font-weight:600;color:var(--navy)">Will you release us if we leave?</p><p class="muted" style="font-size:9pt;line-height:1.5;margin-top:4px">Yes. If you decide to move on, ask and we release you. No hostage contracts.</p></div>
+      <div class="card" style="padding:16px 18px;break-inside:avoid;margin-bottom:12px"><p style="font-weight:600;color:var(--navy)">Which carriers are available?</p><p class="muted" style="font-size:9pt;line-height:1.5;margin-top:4px">North American, F&amp;G, National Life Group, American-Amicable, Athene, Foresters Financial, Royal Neighbors of America and Ameritas, all at direct level. The carrier grid and levels are shared privately after review.</p></div>
+      <div class="card" style="padding:16px 18px;break-inside:avoid;margin-bottom:12px"><p style="font-weight:600;color:var(--navy)">Who is Agora Wholesale for?</p><p class="muted" style="font-size:9pt;line-height:1.5;margin-top:4px">Agencies that already produce: principals with producers writing business every week who want direct-level contracts, their own technology and a lead supply they control.</p></div>
+      <div class="card" style="padding:16px 18px;break-inside:avoid;margin-bottom:12px"><p style="font-weight:600;color:var(--navy)">Is this a hierarchy we have to climb?</p><p class="muted" style="font-size:9pt;line-height:1.5;margin-top:4px">No. Agora is not a ladder. Beyond the contracts, Agora is the visibility and resource layer: reporting, technology, leads and tools in one place, used only if you want them.</p></div>
+      <div class="card" style="padding:16px 18px;break-inside:avoid;margin-bottom:12px"><p style="font-weight:600;color:var(--navy)">What does it cost?</p><p class="muted" style="font-size:9pt;line-height:1.5;margin-top:4px">Contract access has no platform fee. White-labeled technology is a paid build. Leads and marketplace tools are priced per item and shown before you buy. Training is available and never required.</p></div>
+      <div class="card" style="padding:16px 18px;break-inside:avoid;margin-bottom:12px"><p style="font-weight:600;color:var(--navy)">What happens after I request a review?</p><p class="muted" style="font-size:9pt;line-height:1.5;margin-top:4px">A principal reads every request. If your agency fits, we schedule a private call, walk through the carrier grid, and once approved your portal login arrives by email.</p></div>
+    </div>
+  </div>
+  <div class="chrome-bot"><span>Agora Wholesale · Partner guide</span><span>11</span></div>
+</section>
+
+<!-- ============================================================ 12 · BACK COVER -->
+<section class="page dark" style="background:var(--navy);color:#fff">
+  <div class="glow" style="width:9in;height:9in;top:-3.5in;left:-2in;background:radial-gradient(closest-side,rgba(21,175,247,.35),transparent)"></div>
+  <div class="glow" style="width:6in;height:6in;bottom:-2.6in;right:-2.4in;background:radial-gradient(closest-side,rgba(13,148,209,.35),transparent)"></div>
+  <div style="position:absolute;top:0.6in;left:0.75in"><img src="../../public/wholesale/agora-wholesale-logo-white@2x.png" style="height:30px" alt="Agora Wholesale" /></div>
+
+  <div style="position:absolute;top:2.6in;left:0.75in;right:0.75in">
+    <p class="eyebrow light">The next step</p>
+    <h2 class="display" style="color:#fff;font-size:52pt;line-height:.98;margin-top:18px">Stop renting your contracts.<br /><span class="grad">Run your agency on Agora.</span></h2>
+    <p style="margin-top:22px;font-size:13pt;color:#a9c3db;max-width:5in;line-height:1.55">Eight carriers at direct level. Your book stays yours. Release on request.</p>
+
+    <div style="margin-top:34px;display:inline-flex;align-items:center;gap:14px;border-radius:99px;padding:8px 8px 8px 26px;background:linear-gradient(110deg,#0D94D1,#15AFF7);box-shadow:0 18px 44px -14px rgba(21,175,247,.8)">
+      <span style="font-weight:600;font-size:12pt">Request a private partner review</span>
+      <span style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:14pt">→</span>
+    </div>
+    <p style="margin-top:12px;font-size:10pt;color:#d6e6f5">agoraassurancesolutions.com/wholesale/apply</p>
+  </div>
+
+  <div style="position:absolute;left:0.75in;right:0.75in;bottom:0.7in;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;border-top:1px solid rgba(255,255,255,.14);padding-top:18px;font-size:8.5pt;color:#a9c3db;line-height:1.5">
+    <div><p style="font-size:6.5pt;letter-spacing:.2em;text-transform:uppercase;color:#6fd0ff;font-weight:600">Email</p><p style="color:#fff;margin-top:4px">info@agoraassurancesolutions.com</p></div>
+    <div><p style="font-size:6.5pt;letter-spacing:.2em;text-transform:uppercase;color:#6fd0ff;font-weight:600">Office</p><p style="color:#fff;margin-top:4px">1401 21st Street<br />Sacramento, CA 95811</p></div>
+    <div><p style="font-size:6.5pt;letter-spacing:.2em;text-transform:uppercase;color:#6fd0ff;font-weight:600">Partners</p><p style="color:#fff;margin-top:4px">Already approved? Sign in at agoraassurancesolutions.com/wholesale/portal</p></div>
+  </div>
+  <p style="position:absolute;left:0.75in;right:0.75in;bottom:0.32in;font-size:6.5pt;color:#6f8aa5;line-height:1.45">Illustrative figures only. Contract levels, renewals and pricing depend on carrier, product and production and are shared privately after review. Nothing in this guide is an offer of compensation.</p>
+</section>
+
+</body>
+</html>

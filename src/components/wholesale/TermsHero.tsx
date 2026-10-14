@@ -8,7 +8,7 @@ import { Download, LogIn } from 'lucide-react';
 import { Letters, PrimaryButton } from '@/components/wholesale/ui';
 import { AGORA_CARRIERS } from '@/lib/wholesale';
 
-const V = '?v=4';
+const V = '?v=5';
 
 const TERMS: [string, string, string?][] = [
   ['Contracts', 'Direct level', 'Eight carriers'],

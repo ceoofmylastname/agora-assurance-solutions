@@ -3,7 +3,7 @@ import { Download, Facebook, Instagram, Linkedin, Mail, MapPin } from 'lucide-re
 import HalftoneWordmarkFooter from '@/components/ui/halftone-wordmark-footer';
 import { WholesaleLogo } from '@/components/wholesale/ui';
 
-const V = '?v=3';
+const V = '?v=5';
 
 const COLUMNS = [
   { title: 'The story', links: [{ label: 'The ceiling', href: '#learn' }, { label: 'Visibility', href: '#reporting' }, { label: 'The platform', href: '#platform' }, { label: 'The offer', href: '#offer' }] },
@@ -41,7 +41,7 @@ const WholesaleFooter = () => (
       <div className="flex flex-col sm:flex-row sm:items-center gap-4">
         <a href={'/wholesale/agora-wholesale-guide.pdf' + V} download="Agora-Wholesale-Partner-Guide.pdf" className="group inline-flex items-center gap-3 rounded-2xl border border-white/15 bg-white/5 backdrop-blur px-4 py-3 hover:border-[#15AFF7]/60 transition-colors">
           <img src={'/wholesale/guide-cover.webp' + V} alt="" className="w-10 rounded shadow-lg transition-transform group-hover:-translate-y-0.5 group-hover:rotate-[-3deg]" loading="lazy" />
-          <span className="text-left"><span className="block text-sm font-semibold text-white">The partner guide</span><span className="block text-xs text-white/55">Eleven pages, PDF</span></span>
+          <span className="text-left"><span className="block text-sm font-semibold text-white">The partner guide</span><span className="block text-xs text-white/55">Twelve pages, PDF</span></span>
           <span className="w-9 h-9 rounded-full bg-[#15AFF7] text-white flex items-center justify-center"><Download className="w-4 h-4" /></span>
         </a>
         <div className="flex items-center gap-2">
