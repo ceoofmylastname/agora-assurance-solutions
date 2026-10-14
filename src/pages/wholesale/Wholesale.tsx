@@ -11,7 +11,7 @@ import Calculators from '@/components/wholesale/Calculators';
 import Platform from '@/components/wholesale/Platform';
 import Roadmap from '@/components/wholesale/Roadmap';
 import Doors from '@/components/wholesale/Doors';
-import StageHero from '@/components/wholesale/StageHero';
+import SceneHero from '@/components/wholesale/SceneHero';
 import {
   Counter, Eyebrow, Item, Letters, Marquee, PrimaryButton, Reveal, SecondaryButton, SpotlightCard, Stagger, Tilt,
 } from '@/components/wholesale/ui';
@@ -114,7 +114,7 @@ const Wholesale = () => {
       />
 
       {/* ============================== HOOK: choose your stage ============================== */}
-      <StageHero />
+      <SceneHero />
 
       {/* ============================== MARQUEE ============================== */}
       <section className="border-y border-gray-200 bg-gray-50 py-5">

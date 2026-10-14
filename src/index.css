@@ -384,3 +384,22 @@ body.forms-hidden [data-lead-form] {
 @keyframes ws-scan { from { transform: translateY(-100%); } to { transform: translateY(100%); } }
 .ws-scan { animation: ws-scan 2.4s linear infinite; }
 @media (prefers-reduced-motion: reduce) { .ws-dash, .ws-pulse-ring::after, .ws-caret, .ws-scan { animation: none; } }
+
+/* scene hero: rising motes */
+@keyframes ws-mote { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: .9; } 85% { opacity: .5; } 100% { transform: translateY(-110vh); opacity: 0; } }
+.ws-mote { bottom: -4px; animation: ws-mote 12s linear infinite; filter: blur(.5px); }
+@media (prefers-reduced-motion: reduce) { .ws-mote { animation: none; opacity: 0; } }
+/* scene hero: the agency pops onto the bedrock, the old one sinks; keyed elements re-run these on every chapter */
+@keyframes ws-pop { from { opacity: 0; transform: scale(.6) translateY(40px); } 65% { opacity: 1; transform: scale(1.05) translateY(-6px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+.ws-pop { animation: ws-pop .9s cubic-bezier(.2,.8,.3,1) both; animation-delay: var(--d, 0s); transform-origin: 50% 100%; }
+@keyframes ws-sink { from { opacity: 1; transform: scale(1) translateY(0); } to { opacity: 0; transform: scale(.7) translateY(24px); } }
+.ws-sink { animation: ws-sink .5s ease-in both; transform-origin: 50% 100%; pointer-events: none; }
+@keyframes ws-wordin { from { opacity: 0; transform: translateY(36px); } to { opacity: 1; transform: translateY(0); } }
+.ws-wordin { animation: ws-wordin .8s cubic-bezier(.21,.6,.2,1) both; }
+@keyframes ws-vein { 0% { opacity: 0; } 30% { opacity: .85; } 100% { opacity: 0; } }
+.ws-vein { animation: ws-vein 1.2s ease-out both; animation-delay: var(--d, 0s); }
+@media (prefers-reduced-motion: reduce) { .ws-pop, .ws-sink, .ws-wordin, .ws-vein { animation-duration: .01s; animation-delay: 0s; } }
+/* scene hero: an object leaves its card, arcs up, and lands in the agency */
+@keyframes ws-fly { 0% { transform: translate(var(--x0), var(--y0)) scale(1) rotate(0deg); opacity: 1; } 45% { transform: translate(var(--xm), var(--ym)) scale(1.15) rotate(12deg); opacity: 1; } 100% { transform: translate(var(--x1), var(--y1)) scale(.15) rotate(40deg); opacity: 0; } }
+.ws-fly { animation: ws-fly .85s cubic-bezier(.3,.1,.2,1) both; }
+@media (prefers-reduced-motion: reduce) { .ws-fly { animation-duration: .01s; } }
