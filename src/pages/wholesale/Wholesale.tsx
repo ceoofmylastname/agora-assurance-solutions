@@ -11,6 +11,7 @@ import Calculators from '@/components/wholesale/Calculators';
 import Platform from '@/components/wholesale/Platform';
 import Roadmap from '@/components/wholesale/Roadmap';
 import Doors from '@/components/wholesale/Doors';
+import ScrollHero from '@/components/wholesale/ScrollHero';
 import {
   Counter, Eyebrow, Item, Letters, Marquee, PrimaryButton, Reveal, SecondaryButton, SpotlightCard, Stagger, Tilt,
 } from '@/components/wholesale/ui';
@@ -112,79 +113,8 @@ const Wholesale = () => {
         keywords={['insurance wholesale', 'IMO alternative', 'agency contracts', 'white label insurance platform', 'insurance lead store', 'contract level calculator']}
       />
 
-      {/* ============================== HOOK ============================== */}
-      <section className="relative overflow-hidden bg-white">
-        <div className="ws-blob w-[720px] h-[720px] -top-64 -right-40 bg-[#15AFF7]/30" />
-        <div className="ws-blob w-[520px] h-[520px] top-1/2 -left-64 bg-[#bfe6ff]/60" style={{ animationDelay: '-8s' }} />
-        <div className="absolute inset-0 ws-grid-light pointer-events-none" />
-
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 pb-16 md:pt-20 md:pb-24 grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-          <div className="lg:col-span-7">
-            <div className="ws-rise inline-flex items-center gap-2 rounded-full border border-[#0d2238]/10 bg-white/80 backdrop-blur px-3.5 py-1.5 text-xs font-semibold text-[#0d2238] mb-8 shadow-sm">
-              <span className="relative flex h-2 w-2"><span className="absolute inline-flex h-full w-full rounded-full bg-[#15AFF7] opacity-75 animate-ping" /><span className="relative inline-flex h-2 w-2 rounded-full bg-[#15AFF7]" /></span>
-              Agora Wholesale <span className="hidden sm:inline text-gray-400">·</span><span className="hidden sm:inline"> for agencies that already produce</span>
-            </div>
-
-            <h1 className="ws-display text-[2.7rem] leading-[0.98] sm:text-[3.6rem] lg:text-[4.4rem] xl:text-[5rem] font-bold text-[#0d2238]">
-              <Letters text="Your IMO is your" />
-              <br />
-              <Letters text="most expensive" delay={0.4} />
-              <br />
-              <Letters text="employee." delay={0.8} letterClassName="ws-gradient-sky" />
-            </h1>
-
-            <p className="ws-rise mt-7 max-w-xl text-lg sm:text-[1.3rem] text-gray-600 leading-relaxed" style={{ ['--d' as string]: '1.2s' }}>
-              It never makes a call. It never writes a policy. And every week your producers submit, it takes its cut before you see a dollar.
-              <span className="block mt-3 text-[#0d2238] font-medium">Agora Wholesale puts producing agencies on direct-level contracts, their own technology, and a lead supply they control. One login. No hierarchy.</span>
-            </p>
-
-            <div className="ws-rise mt-9 flex flex-col sm:flex-row sm:items-center gap-3" style={{ ['--d' as string]: '1.35s' }}>
-              <PrimaryButton href="#calculators">See what the spread costs you</PrimaryButton>
-              <SecondaryButton href="/wholesale/apply">Apply for access</SecondaryButton>
-              <Link to="/wholesale/portal" className="inline-flex items-center justify-center gap-2 min-h-[52px] px-3 text-gray-500 hover:text-[#0d2238] text-sm font-medium"><LogIn className="w-4 h-4" /> Partner sign in</Link>
-            </div>
-
-            <div className="ws-rise mt-12 grid grid-cols-2 sm:grid-cols-4 gap-6 border-t border-gray-200 pt-8" style={{ ['--d' as string]: '1.5s' }}>
-              {[
-                [4, 'verticals, one portal'],
-                [0, 'middle layers between you and the carrier'],
-                [1, 'login for contracts, tech, leads and tools'],
-                [50, 'states served, nationwide carriers'],
-              ].map(([n, label], i) => (
-                <div key={i}>
-                  <div className="ws-display text-3xl md:text-4xl font-bold text-[#0d2238]"><Counter to={n as number} /></div>
-                  <div className="mt-1 text-xs text-gray-500 leading-snug">{label as string}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="lg:col-span-5 ws-rise" style={{ ['--d' as string]: '0.6s' }}>
-            <div className="relative">
-              <div className="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-[#15AFF7]/25 via-transparent to-[#0d2238]/10 blur-2xl pointer-events-none" />
-              <div className="relative rounded-[1.75rem] overflow-hidden border border-gray-200 shadow-[0_40px_100px_-30px_rgba(13,34,56,.4)] bg-gray-100">
-                <Loop name="hero-loop" poster={'/wholesale/hero-poster.jpg' + V} className="w-full aspect-[4/5] sm:aspect-[16/11] lg:aspect-[4/5] object-cover" />
-                <div className="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-[#0d2238]/80 via-[#0d2238]/20 to-transparent text-white">
-                  <p className="ws-serif text-2xl leading-tight">The handshake that ends the middle layer.</p>
-                  <p className="text-xs text-white/70 mt-1">Direct contracts. Your name on the door.</p>
-                </div>
-              </div>
-              <div className="absolute -left-4 sm:-left-8 top-8 ws-float">
-                <div className="rounded-2xl bg-white/95 backdrop-blur border border-gray-200 shadow-xl px-4 py-3 flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-[#15AFF7] text-white flex items-center justify-center"><Handshake className="w-5 h-5" /></div>
-                  <div><p className="text-sm font-semibold text-[#0d2238]">Partner approved</p><p className="text-xs text-gray-500">Portal invite sent</p></div>
-                </div>
-              </div>
-              <div className="absolute -right-3 sm:-right-6 bottom-24 ws-float" style={{ animationDelay: '-3s' }}>
-                <div className="rounded-2xl bg-white/95 backdrop-blur border border-gray-200 shadow-xl px-4 py-3 flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-[#0d2238] text-[#15AFF7] flex items-center justify-center"><Radar className="w-5 h-5" /></div>
-                  <div><p className="text-sm font-semibold text-[#0d2238]">Every carrier, one screen</p><p className="text-xs text-gray-500">Direct-contract reporting</p></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ============================== HOOK: scroll-scrubbed orbit ============================== */}
+      <ScrollHero />
 
       {/* ============================== MARQUEE ============================== */}
       <section className="border-y border-gray-200 bg-gray-50 py-5">
@@ -503,8 +433,10 @@ const Wholesale = () => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal>
             <div className="relative overflow-hidden rounded-[2rem] bg-[#0d2238] text-white px-6 py-14 md:px-16 md:py-20 text-center">
+              {/* the card, in macro, under a navy wash */}
+              <Loop name="card-macro" poster={'/wholesale/card-macro-poster.jpg' + V} className="absolute inset-0 w-full h-full object-cover opacity-60" />
+              <div className="absolute inset-0 bg-gradient-to-b from-[#0d2238]/80 via-[#0d2238]/70 to-[#0d2238]/90" />
               <div className="ws-blob w-[520px] h-[520px] -top-60 -right-40 bg-[#15AFF7]/40" />
-              <div className="ws-blob w-[400px] h-[400px] -bottom-52 -left-32 bg-[#6fd0ff]/30" style={{ animationDelay: '-9s' }} />
               <div className="relative">
                 <h2 className="ws-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.02]">Stop renting your contracts. <br className="hidden sm:block" /><span className="ws-gradient-sky">Run your agency on Agora.</span></h2>
                 <p className="mt-5 text-lg text-blue-100/75">Five minutes to apply. Every application is read by a person.</p>
