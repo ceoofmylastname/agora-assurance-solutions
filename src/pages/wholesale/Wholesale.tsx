@@ -8,6 +8,9 @@ import {
 import SEO from '@/components/SEO';
 import WholesaleShell from '@/components/wholesale/WholesaleShell';
 import Calculators from '@/components/wholesale/Calculators';
+import Platform from '@/components/wholesale/Platform';
+import Roadmap from '@/components/wholesale/Roadmap';
+import Doors from '@/components/wholesale/Doors';
 import {
   Counter, Eyebrow, Item, Letters, Marquee, PrimaryButton, Reveal, SecondaryButton, SpotlightCard, Stagger, Tilt,
 } from '@/components/wholesale/ui';
@@ -269,6 +272,12 @@ const Wholesale = () => {
         </div>
       </section>
 
+      {/* ============================== THE PLATFORM ============================== */}
+      <Platform />
+
+      {/* ============================== THE ROAD AHEAD ============================== */}
+      <Roadmap />
+
       {/* ============================== CALCULATORS ============================== */}
       <section id="calculators" className="relative bg-white py-20 md:py-28 border-t border-gray-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -293,25 +302,7 @@ const Wholesale = () => {
           </div>
 
           <div className="mt-12 grid lg:grid-cols-12 gap-6">
-            <Stagger className="lg:col-span-7 grid sm:grid-cols-2 gap-4">
-              {[
-                [FileSignature, 'Direct-level contracts', 'No platform fee. Levels shared privately after approval.'],
-                [Cpu, 'White-labeled technology', 'A paid build. Your brand, our engine, your data.'],
-                [Store, 'The lead store', 'Priced by Agora, visible before you buy, tracked after.'],
-                [LayoutGrid, 'The tool marketplace', 'Partner pricing on the tools you already want.'],
-              ].map(([Icon, t, d]) => {
-                const I = Icon as typeof Cpu;
-                return (
-                  <Item key={t as string}>
-                    <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur p-5 h-full">
-                      <div className="w-10 h-10 rounded-xl bg-[#15AFF7] text-white flex items-center justify-center mb-3"><I className="w-5 h-5" /></div>
-                      <p className="ws-display font-semibold text-lg">{t as string}</p>
-                      <p className="text-sm text-blue-100/70 mt-1">{d as string}</p>
-                    </div>
-                  </Item>
-                );
-              })}
-            </Stagger>
+            <div className="lg:col-span-7"><Doors /></div>
             <Reveal dir="left" className="lg:col-span-5">
               <div className="ws-ring rounded-[1.75rem] bg-white text-[#0d2238] p-7 md:p-8 h-full flex flex-col">
                 <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#0D94D1]">What it costs</p>
