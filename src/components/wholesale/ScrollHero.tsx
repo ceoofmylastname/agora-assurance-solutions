@@ -1,7 +1,8 @@
-/* Scroll-scrubbed hero: a brushed-titanium partner card turns 360° as the
-   visitor scrolls, drawn from a frame sequence on a canvas, while the
-   headline lands in three beats (hook → cost → offer). Pinned with GSAP.
-   Phones get the orbit as a looping video with the same three beats stacked. */
+/* Scroll-scrubbed hero, "The door": a heavy navy door in a white void opens as
+   the visitor scrolls and the camera walks through into the agency floor,
+   drawn from a frame sequence on a canvas, while the headline lands in three
+   beats (someone else's name on the door → the cost → your name on the door).
+   Pinned with GSAP. Phones get the walk-through as a looping video. */
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
@@ -13,8 +14,8 @@ import { useIsMobile } from '@/hooks/use-mobile';
 if (typeof window !== 'undefined') gsap.registerPlugin(ScrollTrigger);
 
 const V = '?v=3';
-const FRAMES = 96;
-const frameSrc = (i: number) => `/wholesale/orbit/f${String(i).padStart(3, '0')}.webp${V}`;
+const FRAMES = 120;
+const frameSrc = (i: number) => `/wholesale/door/f${String(i).padStart(3, '0')}.webp${V}`;
 
 const STATS: [number, string][] = [
   [4, 'verticals, one portal'],
@@ -105,11 +106,12 @@ const PinnedHero = () => {
           onUpdate: (self) => { progress.current = self.progress; } },
       });
       // beat 1 visible at rest; fades out, beat 2 in, out, beat 3 in and stays
-      tl.to(beats[0], { opacity: 0, y: -40, duration: 0.18 }, 0.14)
-        .fromTo(beats[1], { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.16 }, 0.3)
-        .to(beats[1], { opacity: 0, y: -40, duration: 0.16 }, 0.56)
-        .fromTo(beats[2], { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.18 }, 0.7)
-        .to('.sh-hint', { opacity: 0, duration: 0.08 }, 0.06);
+      tl.to(beats[0], { opacity: 0, y: -40, duration: 0.16 }, 0.12)
+        .fromTo(beats[1], { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.16 }, 0.26)
+        .to(beats[1], { opacity: 0, y: -40, duration: 0.16 }, 0.52)
+        .fromTo(beats[2], { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.18 }, 0.68)
+        .fromTo('.sh-wash', { opacity: 1 }, { opacity: 0.96, duration: 0.3 }, 0.6)
+        .to('.sh-hint', { opacity: 0, duration: 0.08 }, 0.05);
     }, section);
     return () => ctx.revert();
   }, []);
@@ -121,7 +123,7 @@ const PinnedHero = () => {
         <div className="ws-blob w-[720px] h-[720px] -top-64 -right-40 bg-[#15AFF7]/25" />
         <Orbit progress={progress} />
         {/* readability wash on the text side */}
-        <div className="absolute inset-y-0 left-0 w-[58%] bg-gradient-to-r from-white via-white/85 to-transparent pointer-events-none" />
+        <div className="sh-wash absolute inset-y-0 left-0 w-[68%] bg-gradient-to-r from-white via-white/92 to-transparent pointer-events-none" />
 
         <div className="relative h-full mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* beat 1: the hook */}
@@ -131,15 +133,16 @@ const PinnedHero = () => {
               Agora Wholesale <span className="text-gray-400">·</span> for agencies that already produce
             </div>
             <h1 className="ws-display text-[3.4rem] lg:text-[4.6rem] xl:text-[5.4rem] leading-[0.96] font-bold text-[#0d2238]">
-              <Letters text="Your IMO is your" />
+              <Letters text="Someone else's" />
               <br />
-              <Letters text="most expensive" delay={0.4} />
+              <Letters text="name is on" delay={0.4} />
               <br />
-              <Letters text="employee." delay={0.8} letterClassName="ws-gradient-sky" />
+              <Letters text="your door." delay={0.8} letterClassName="ws-gradient-sky" />
             </h1>
+            <p className="mt-6 max-w-lg text-lg text-gray-600">You hired the producers. You bought the leads. You run the floor. The contract, and the level on it, belong to a shop that has never seen your numbers.</p>
             <p className="sh-hint ws-rise mt-10 inline-flex items-center gap-3 text-sm text-gray-500" style={{ ['--d' as string]: '1.3s' }}>
               <span className="w-9 h-9 rounded-full border border-gray-300 flex items-center justify-center animate-bounce"><ArrowDown className="w-4 h-4" /></span>
-              Scroll to turn the card
+              Scroll to open the door
             </p>
           </div>
 
@@ -147,17 +150,17 @@ const PinnedHero = () => {
           <div className="sh-beat absolute inset-x-4 sm:inset-x-6 lg:inset-x-8 top-[22vh] max-w-2xl opacity-0">
             <p className="text-xs font-semibold tracking-[0.22em] uppercase text-[#0D94D1] mb-5">The cost</p>
             <p className="ws-serif text-[2.6rem] lg:text-[3.6rem] xl:text-[4.2rem] leading-[1.02] text-[#0d2238]">
-              It never makes a call.<br />It never writes a policy.<br />
+              Your IMO never makes a call.<br />It never writes a policy.<br />
               <span className="text-[#15AFF7]">It takes its cut first.</span>
             </p>
-            <p className="mt-6 max-w-lg text-lg text-gray-600">Every week your producers submit, a layer you did not hire is paid before you are. On your renewals too. Forever.</p>
+            <p className="mt-6 max-w-lg text-lg text-gray-600">Every week your producers submit, a layer you did not hire is paid before you are. On your renewals too. Forever. Open the door.</p>
           </div>
 
           {/* beat 3: the offer */}
           <div className="sh-beat absolute inset-x-4 sm:inset-x-6 lg:inset-x-8 top-[16vh] max-w-2xl opacity-0">
             <p className="text-xs font-semibold tracking-[0.22em] uppercase text-[#0D94D1] mb-5">The offer</p>
             <h2 className="ws-display text-[3rem] lg:text-[4rem] xl:text-[4.6rem] leading-[0.98] font-bold text-[#0d2238]">
-              Direct contracts.<br /><span className="ws-serif text-[1.08em] text-[#0D94D1]">Your name on the door.</span>
+              <span className="ws-serif text-[1.08em] text-[#0D94D1]">Your name</span><br />on the door.
             </h2>
             <p className="mt-6 max-w-xl text-lg text-gray-600">Agora Wholesale puts producing agencies on direct-level contracts, their own technology, and a lead supply they control. One login. No hierarchy.</p>
             <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-3">
@@ -187,15 +190,16 @@ const StackedHero = () => (
         Agora Wholesale
       </div>
       <h1 className="ws-display text-[2.7rem] leading-[0.98] font-bold text-[#0d2238]">
-        <Letters text="Your IMO is your" /><br /><Letters text="most expensive" delay={0.4} /><br /><Letters text="employee." delay={0.8} letterClassName="ws-gradient-sky" />
+        <Letters text="Someone else's" /><br /><Letters text="name is on" delay={0.4} /><br /><Letters text="your door." delay={0.8} letterClassName="ws-gradient-sky" />
       </h1>
       <div className="ws-rise mt-8 rounded-[1.75rem] overflow-hidden border border-gray-200 shadow-[0_40px_100px_-30px_rgba(13,34,56,.4)] bg-gray-50" style={{ ['--d' as string]: '0.6s' }}>
-        <video className="w-full aspect-[16/10] object-cover" autoPlay muted loop playsInline poster={'/wholesale/orbit-poster.jpg' + V} aria-hidden="true">
-          <source src={'/wholesale/orbit-loop.webm' + V} type="video/webm" />
-          <source src={'/wholesale/orbit-loop.mp4' + V} type="video/mp4" />
+        <video className="w-full aspect-[16/10] object-cover" autoPlay muted loop playsInline poster={'/wholesale/door-poster.jpg' + V} aria-hidden="true">
+          <source src={'/wholesale/door-loop.webm' + V} type="video/webm" />
+          <source src={'/wholesale/door-loop.mp4' + V} type="video/mp4" />
         </video>
       </div>
-      <p className="ws-serif mt-8 text-[2rem] leading-[1.05] text-[#0d2238]" style={{ ['--d' as string]: '0.9s' }}>It never makes a call. It never writes a policy. <span className="text-[#15AFF7]">It takes its cut first.</span></p>
+      <p className="ws-serif mt-8 text-[2rem] leading-[1.05] text-[#0d2238]" style={{ ['--d' as string]: '0.9s' }}>Your IMO never makes a call. It never writes a policy. <span className="text-[#15AFF7]">It takes its cut first.</span></p>
+      <p className="ws-display mt-6 text-3xl font-bold text-[#0d2238]"><span className="ws-serif text-[1.08em] text-[#0D94D1]">Your name</span> on the door.</p>
       <p className="mt-5 text-lg text-gray-600 leading-relaxed">Agora Wholesale puts producing agencies on direct-level contracts, their own technology, and a lead supply they control. One login. No hierarchy.</p>
       <div className="mt-8 flex flex-col gap-3">
         <PrimaryButton href="#calculators">See what the spread costs you</PrimaryButton>

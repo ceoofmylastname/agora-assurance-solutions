@@ -434,7 +434,7 @@ const Wholesale = () => {
           <Reveal>
             <div className="relative overflow-hidden rounded-[2rem] bg-[#0d2238] text-white px-6 py-14 md:px-16 md:py-20 text-center">
               {/* the card, in macro, under a navy wash */}
-              <Loop name="card-macro" poster={'/wholesale/card-macro-poster.jpg' + V} className="absolute inset-0 w-full h-full object-cover opacity-60" />
+              <Loop name="door-macro" poster={'/wholesale/door-macro-poster.jpg' + V} className="absolute inset-0 w-full h-full object-cover opacity-60" />
               <div className="absolute inset-0 bg-gradient-to-b from-[#0d2238]/80 via-[#0d2238]/70 to-[#0d2238]/90" />
               <div className="ws-blob w-[520px] h-[520px] -top-60 -right-40 bg-[#15AFF7]/40" />
               <div className="relative">

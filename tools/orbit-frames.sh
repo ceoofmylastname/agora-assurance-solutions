@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 # Cuts the card orbit clip into the frame sequence the scroll hero scrubs,
 # plus a looping video + poster for phones.
-#   tools/orbit-frames.sh /path/to/orbit-source.mp4
+#   tools/orbit-frames.sh /path/to/source.mp4 [name=orbit] [frames=96]
+#   → public/wholesale/<name>/fNNN.webp, <name>-loop.{mp4,webm}, <name>-poster.jpg
 set -euo pipefail
 SRC="${1:?source mp4}"
+NAME="${2:-orbit}"
+FRAMES="${3:-96}"
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-OUT="$ROOT/public/wholesale/orbit"
-FRAMES=96
+OUT="$ROOT/public/wholesale/$NAME"
 mkdir -p "$OUT"
 rm -f "$OUT"/f*.webp
 DUR=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$SRC")
@@ -23,7 +25,7 @@ for i, f in enumerate(sorted(tmp.glob('f*.png'))):
 PY2
 rm -rf "$TMP"
 # phone loop + poster
-ffmpeg -y -loglevel error -i "$SRC" -an -vf "scale=1280:-2" -c:v libx264 -preset slow -crf 24 -pix_fmt yuv420p -movflags +faststart "$ROOT/public/wholesale/orbit-loop.mp4"
-ffmpeg -y -loglevel error -i "$SRC" -an -vf "scale=1280:-2" -c:v libvpx-vp9 -b:v 0 -crf 33 -deadline good -cpu-used 2 "$ROOT/public/wholesale/orbit-loop.webm"
-ffmpeg -y -loglevel error -i "$SRC" -frames:v 1 -vf "scale=1440:-2" -q:v 3 "$ROOT/public/wholesale/orbit-poster.jpg"
+ffmpeg -y -loglevel error -i "$SRC" -an -vf "scale=1280:-2" -c:v libx264 -preset slow -crf 24 -pix_fmt yuv420p -movflags +faststart "$ROOT/public/wholesale/$NAME-loop.mp4"
+ffmpeg -y -loglevel error -i "$SRC" -an -vf "scale=1280:-2" -c:v libvpx-vp9 -b:v 0 -crf 33 -deadline good -cpu-used 2 "$ROOT/public/wholesale/$NAME-loop.webm"
+ffmpeg -y -loglevel error -i "$SRC" -frames:v 1 -vf "scale=1440:-2" -q:v 3 "$ROOT/public/wholesale/$NAME-poster.jpg"
 echo "frames: $(ls "$OUT" | wc -l)  size: $(du -sh "$OUT" | cut -f1)"
