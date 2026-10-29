@@ -121,7 +121,7 @@ const IndexedUniversalLifeModal: React.FC<IndexedUniversalLifeModalProps> = ({ i
                   <div className="text-center p-4 border border-gray-200 rounded-lg">
                     <div className="w-12 h-12 bg-[#15AFF7] text-white rounded-full flex items-center justify-center mx-auto mb-3">3</div>
                     <h4 className="font-semibold mb-2">Protected Growth</h4>
-                    <p className="text-sm text-gray-600">Earn market gains up to a cap, but never lose money when markets decline</p>
+                    <p className="text-sm text-gray-600">Earn market gains up to a cap</p>
                   </div>
                 </div>
 
@@ -254,7 +254,7 @@ const IndexedUniversalLifeModal: React.FC<IndexedUniversalLifeModalProps> = ({ i
                     <div className="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
                     <div>
                       <h5 className="font-medium">Downside Protection</h5>
-                      <p className="text-sm text-gray-600">0% floor ensures you never lose money in down markets</p>
+                      <p className="text-sm text-gray-600">0% floor</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">

@@ -54,11 +54,6 @@ export const createSoftwareApplicationSchema = (
     '@type': 'Offer',
     price: '0',
     priceCurrency: 'USD'
-  },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.7',
-    reviewCount: '150'
   }
 });
 

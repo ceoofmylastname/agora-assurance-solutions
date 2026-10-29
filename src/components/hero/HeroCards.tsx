@@ -7,7 +7,7 @@ const cardData = [
   {
     icon: Shield,
     title: "What's the best way to compare term life insurance for young families in Florida?",
-    description: "Compare tailored life, mortgage-protection, final expense, and annuity plans side-by-side with instant quotes from top-rated carriers across all 50 states."
+    description: "Compare tailored life, mortgage-protection, final expense, and annuity plans side-by-side with instant quotes from top-rated carriers."
   },
   {
     icon: Calculator,

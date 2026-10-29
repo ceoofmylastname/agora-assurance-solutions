@@ -125,7 +125,7 @@ const LifeCoverage = () => {
                 { 
                   icon: CheckCircle, 
                   title: "Guaranteed Acceptance", 
-                  description: "Get approved regardless of your health condition - no one is turned away",
+                  description: "Some final expense plans have no medical exam; eligibility and waiting periods vary by plan and state.",
                   color: "text-green-500"
                 },
                 { 

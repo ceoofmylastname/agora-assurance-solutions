@@ -124,7 +124,7 @@ const Footer = () => {
               <div className="mb-4">
                 <h4 className="text-sm font-semibold text-white mb-2">Service Areas</h4>
                 <p className="text-white/80 text-sm">
-                  Providing comprehensive insurance solutions nationwide across all 50 states. Licensed agents available to serve families and businesses throughout the United States.
+                  Providing comprehensive insurance solutions nationwide. Licensed agents available to serve families and businesses throughout the United States.
                 </p>
               </div>
               <div className="flex items-center text-white/90 text-sm mb-4">

@@ -435,7 +435,7 @@ const WealthSolutions = () => {
                 {
                   icon: Shield,
                   title: "Fixed Annuities",
-                  description: "Guaranteed returns with principal protection",
+                  description: "Principal protection. Fixed annuities are not invested in the market; guarantees depend on the issuing insurer's claims-paying ability.",
                   features: ["Guaranteed interest rates", "Principal protection", "Predictable income", "Tax-deferred growth"],
                   highlight: false,
                   returnRange: "3-5% Annual",
@@ -454,7 +454,7 @@ const WealthSolutions = () => {
                   icon: Target,
                   title: "Indexed Annuities",
                   description: "Market upside with downside protection",
-                  features: ["Market participation", "Principal protection", "Competitive returns", "Flexible terms"],
+                  features: ["Market participation", "Competitive returns", "Flexible terms"],
                   highlight: false,
                   returnRange: "4-8% Potential",
                   onLearnMore: () => {

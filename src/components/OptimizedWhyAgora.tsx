@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { Shield, Calculator, Users, Award, Target, TrendingUp, CheckCircle, ArrowRight } from "lucide-react";
+import { Shield, Calculator, Users, Award, CheckCircle, ArrowRight } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import AnimatedCounter from "@/components/ui/animated-counter";
 
@@ -14,11 +14,11 @@ const OptimizedWhyAgora = memo(() => {
             Why should I choose Agora Assurance Solutions?
           </h3>
           <p className="text-gray-600 text-lg max-w-3xl mx-auto">
-            With 50+ years combined experience, 25,000+ lives protected, and $500M+ in tax-free benefits created, we offer technology-driven comparison tools and licensed expert guidance.
+            We offer technology-driven comparison tools and licensed expert guidance. Agora's team can confirm details for your situation.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 max-w-md mx-auto gap-6 mb-16">
           <div className={`bg-blue-50 p-6 rounded-xl border border-blue-200 text-center hover:bg-blue-100 transition-all duration-700 ${isInView ? 'animate-fade-in opacity-100' : 'opacity-0'}`} style={{ animationDelay: '200ms' }}>
             <div className="w-16 h-16 rounded-full bg-blue-200 flex items-center justify-center mx-auto mb-4">
               <Users className="w-8 h-8 text-[#15AFF7]" />
@@ -27,30 +27,6 @@ const OptimizedWhyAgora = memo(() => {
               {isInView && <AnimatedCounter end={50} suffix="+" />} Years
             </h3>
             <p className="text-gray-700">Combined experience protecting families and building financial security</p>
-          </div>
-          
-          <div className={`bg-blue-50 p-6 rounded-xl border border-blue-200 text-center hover:bg-blue-100 transition-all duration-700 ${isInView ? 'animate-fade-in opacity-100' : 'opacity-0'}`} style={{ animationDelay: '400ms' }}>
-            <div className="w-16 h-16 rounded-full bg-blue-200 flex items-center justify-center mx-auto mb-4">
-              <Target className="w-8 h-8 text-[#15AFF7]" />
-            </div>
-            <h3 className="text-gray-900 text-2xl lg:text-3xl font-bold mb-3">
-              {isInView && <AnimatedCounter end={25000} suffix="+" />}
-            </h3>
-            <p className="text-gray-700">
-              Lives protected through our comprehensive insurance and financial solutions
-            </p>
-          </div>
-          
-          <div className={`bg-blue-50 p-6 rounded-xl border border-blue-200 text-center hover:bg-blue-100 transition-all duration-700 ${isInView ? 'animate-fade-in opacity-100' : 'opacity-0'}`} style={{ animationDelay: '600ms' }}>
-            <div className="w-16 h-16 rounded-full bg-blue-200 flex items-center justify-center mx-auto mb-4">
-              <TrendingUp className="w-8 h-8 text-[#15AFF7]" />
-            </div>
-            <h3 className="text-gray-900 text-2xl lg:text-3xl font-bold mb-3">
-              {isInView && <AnimatedCounter end={500} suffix="M" prefix="$" />}
-            </h3>
-            <p className="text-gray-700">
-              In tax-free benefits created for our clients and their families
-            </p>
           </div>
         </div>
         
