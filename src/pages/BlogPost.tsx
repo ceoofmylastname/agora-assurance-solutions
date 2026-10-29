@@ -21,7 +21,7 @@ interface BlogPostData {
   category: string;
   readTime: string;
   author: string;
-  authorBio: string;
+  authorBio?: string;
   publishDate: string;
   slug: string;
   tags: string[];
@@ -104,8 +104,7 @@ const blogPostsData: Record<string, BlogPostData> = {
     image: lifeInsuranceAnalysis,
     category: 'Market Analysis',
     readTime: '8 min read',
-    author: 'Sarah Johnson, CLU',
-    authorBio: 'Sarah is a Chartered Life Underwriter with 15+ years of experience in the life insurance industry. She specializes in market analysis and has helped over 2,000 families secure appropriate coverage.',
+    author: 'Agora Assurance Solutions team',
     publishDate: 'June 15, 2025',
     slug: '2025-life-insurance-rate-analysis',
     tags: ['life insurance', 'rates', 'market trends', 'underwriting'],
@@ -128,11 +127,11 @@ const blogPostsData: Record<string, BlogPostData> = {
   },
   'hidden-costs-mortgage-protection': {
     id: '2',
-    title: 'The Hidden Costs of Mortgage Protection: A Licensed Agent\'s Perspective',
+    title: 'The Hidden Costs of Mortgage Protection: What to Know Before You Buy',
     content: `
       <div class="prose prose-lg max-w-none">
         <h2 id="truth-about-mortgage-protection">The Truth About Mortgage Protection Insurance</h2>
-        <p>After 12 years as a licensed insurance agent, I've seen countless families make costly mistakes with mortgage protection insurance. Today, I'm sharing the industry secrets that most agents won't tell you - and why term life insurance is almost always the better choice.</p>
+        <p>What to know before you buy - and why term life insurance is almost always the better choice.</p>
         
         <div class="bg-destructive/10 border-l-4 border-destructive p-6 my-6">
           <h4>🚨 Industry Confession</h4>
@@ -210,8 +209,7 @@ const blogPostsData: Record<string, BlogPostData> = {
     image: mortgageProtectionTruth,
     category: 'Expert Insights',
     readTime: '6 min read',
-    author: 'Michael Chen, CFP',
-    authorBio: 'Michael is a Certified Financial Planner and licensed insurance agent with expertise in mortgage protection and debt elimination strategies. He has saved clients over $2.3 million in unnecessary insurance costs.',
+    author: 'Agora Assurance Solutions team',
     publishDate: 'May 22, 2025',
     slug: 'hidden-costs-mortgage-protection',
     tags: ['mortgage protection', 'insurance costs', 'expert advice'],
@@ -746,7 +744,6 @@ const blogPostsData: Record<string, BlogPostData> = {
         <h3>Ages 51-65: Pre-Retirement Security</h3>
         <p><strong>Recommended Allocation:</strong> 40% 401(k), 60% Annuities</p>
         <ul>
-          <li>Prioritize principal protection</li>
           <li>Lock in guaranteed retirement income</li>
           <li>Use catch-up contributions for 401(k)</li>
           <li>Consider immediate annuities for near-term income needs</li>
@@ -783,7 +780,7 @@ const blogPostsData: Record<string, BlogPostData> = {
           
           <h4>Fixed Index Annuities:</h4>
           <ul>
-            <li><strong>Best For:</strong> Growth potential with principal protection</li>
+            <li><strong>Best For:</strong> Growth potential with principal protection. Fixed annuities are not invested in the market; guarantees depend on the issuing insurer's claims-paying ability.</li>
             <li><strong>Current Caps:</strong> 8% - 12% annual gains</li>
             <li><strong>Pros:</strong> Market upside participation, no loss risk</li>
             <li><strong>Cons:</strong> Complex products, limited liquidity</li>
@@ -804,7 +801,6 @@ const blogPostsData: Record<string, BlogPostData> = {
         <p><strong>Situation:</strong> Markets return 12% annually for 20 years</p>
         <ul>
           <li><strong>401(k) Result:</strong> Portfolio grows to $1.4 million vs. $976,000 projected</li>
-          <li><strong>Annuity Result:</strong> Guaranteed returns limit upside to projected amounts</li>
           <li><strong>Winner:</strong> 401(k) provides significantly higher wealth accumulation</li>
         </ul>
 
@@ -1437,7 +1433,7 @@ const BlogPost = () => {
                     </div>
                     <div>
                       <p className="font-semibold text-foreground">{post.author}</p>
-                      <p className="text-sm text-muted-foreground">{post.authorBio}</p>
+                      {post.authorBio && <p className="text-sm text-muted-foreground">{post.authorBio}</p>}
                     </div>
                   </div>
                   <Button onClick={handleShare} variant="outline" size="sm">

@@ -128,7 +128,7 @@ const IndexedUniversalLife = () => {
                     <Shield className="w-10 h-10 text-green-500 mb-3" />
                     <h3 className="text-lg font-bold text-gray-900 mb-2">Downside Protection</h3>
                     <p className="text-gray-600 text-sm leading-relaxed">
-                      Floor protection (typically 0%) ensures you never lose money in down markets.
+                      Floor protection (typically 0%).
                     </p>
                   </CardContent>
                 </Card>
@@ -241,10 +241,6 @@ const IndexedUniversalLife = () => {
                       Conservative guaranteed interest option for stable, predictable growth.
                     </p>
                     <ul className="space-y-2">
-                      <li className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-purple-500 mt-1 mr-2 flex-shrink-0" />
-                        <span className="text-sm text-gray-600">Guaranteed returns</span>
-                      </li>
                       <li className="flex items-start">
                         <CheckCircle className="w-4 h-4 text-purple-500 mt-1 mr-2 flex-shrink-0" />
                         <span className="text-sm text-gray-600">No market risk</span>

@@ -48,7 +48,7 @@ export const createMainFAQSchema = () => ({
       name: 'Why should I choose Agora Assurance Solutions?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'With 50+ years combined experience, 25,000+ lives protected, and $500M+ in tax-free benefits created, we offer technology-driven comparison tools and licensed expert guidance.'
+        text: 'We offer technology-driven comparison tools and licensed expert guidance. Agora\'s team can confirm details for your situation.'
       }
     },
     {

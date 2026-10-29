@@ -4,7 +4,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Shield, TrendingUp, Clock, DollarSign, CheckCircle, Info, Phone } from 'lucide-react';
+import { Shield, Clock, DollarSign, CheckCircle, Info, Phone } from 'lucide-react';
 
 interface FixedAnnuitiesModalProps {
   isOpen: boolean;
@@ -16,12 +16,7 @@ const FixedAnnuitiesModal: React.FC<FixedAnnuitiesModalProps> = ({ isOpen, onClo
     {
       icon: Shield,
       title: "Principal Protection",
-      description: "Your initial investment is guaranteed and protected from market losses"
-    },
-    {
-      icon: TrendingUp,
-      title: "Guaranteed Returns",
-      description: "Fixed interest rates provide predictable growth for your retirement savings"
+      description: "Your initial investment is guaranteed and protected from market losses. Fixed annuities are not invested in the market; guarantees depend on the issuing insurer's claims-paying ability."
     },
     {
       icon: Clock,
@@ -142,7 +137,7 @@ const FixedAnnuitiesModal: React.FC<FixedAnnuitiesModalProps> = ({ isOpen, onClo
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
                   <p className="text-sm text-muted-foreground">
-                    <strong>Risk-averse individuals</strong> who want guaranteed returns without market volatility
+                    <strong>Risk-averse individuals</strong>
                   </p>
                 </div>
                 <div className="flex items-start gap-3">

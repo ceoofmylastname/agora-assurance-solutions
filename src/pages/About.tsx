@@ -390,18 +390,12 @@ const About = () => {
             {/* By the Numbers */}
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.6 }} className="mb-16">
               <h2 className="text-3xl font-bold mb-8 text-center">By the Numbers</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="relative bg-white rounded-xl border border-gray-100 p-6 text-center shadow-lg">
                   <div className="text-3xl font-bold text-[#15AFF7] mb-2">
                     <AnimatedCounter end={20} suffix="+" />
                   </div>
                   <div className="text-gray-600 text-sm">years of combined experience</div>
-                </div>
-                <div className="relative bg-white rounded-xl border border-gray-100 p-6 text-center shadow-lg">
-                  <div className="text-3xl font-bold text-blue-600 mb-2">
-                    <AnimatedCounter end={500} suffix="M+" />
-                  </div>
-                  <div className="text-gray-600 text-sm">in benefits created for families</div>
                 </div>
                 <div className="relative bg-white rounded-xl border border-gray-100 p-6 text-center shadow-lg">
                   <div className="text-3xl font-bold text-green-500 mb-2">

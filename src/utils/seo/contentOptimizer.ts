@@ -15,7 +15,7 @@ const actionOrientedDescriptions = {
   '/term-life': 'Get the most affordable term life insurance quotes instantly. Protect your family for pennies a day with coverage up to $5M. Apply online in minutes with no medical exam options.',
   '/whole-life': 'Build wealth while protecting your family with whole life insurance. Guaranteed cash value growth plus lifelong coverage. Get your personalized quote and start building legacy today.',
   '/universal-life': 'Maximize flexibility and growth potential with universal life insurance. Adjust premiums and death benefits as your needs change. Explore indexed and variable options now.',
-  '/indexed-universal-life': 'Capture market upside without downside risk. Indexed Universal Life offers growth potential with principal protection. Calculate your potential returns and get quotes today.',
+  '/indexed-universal-life': 'Capture market upside without downside risk. Indexed Universal Life offers growth potential. Calculate your potential returns and get quotes today.',
   '/final-expense': 'Cover funeral costs and final expenses with guaranteed acceptance life insurance. No medical exams required. Protect your loved ones from financial burden - apply today.',
   '/mortgage-protection': 'Safeguard your family\'s home with mortgage protection insurance. Ensure your mortgage gets paid if something happens to you. Get instant quotes and peace of mind today.',
   '/annuities': 'Secure guaranteed retirement income with top-rated annuities. Compare fixed, variable, and indexed options. Start building your retirement fortress with expert guidance today.',
@@ -128,7 +128,7 @@ export const getServicePageFAQs = (serviceType: string) => {
     'annuities': [
       {
         question: 'What\'s the difference between fixed and variable annuities?',
-        answer: 'Fixed annuities provide guaranteed returns and predictable income. Variable annuities offer growth potential through market investments but include risk. We help you choose based on your risk tolerance and goals.'
+        answer: 'Fixed annuities are not invested in the market; guarantees depend on the issuing insurer\'s claims-paying ability. Variable annuities offer growth potential through market investments but include risk. We help you choose based on your risk tolerance and goals.'
       },
       {
         question: 'When should I start taking annuity payments?',

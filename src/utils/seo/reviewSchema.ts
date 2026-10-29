@@ -11,13 +11,6 @@ export const createReviewSchema = (reviews: ReviewData[]) => ({
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'Agora Assurance Solutions',
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: calculateAverageRating(reviews),
-    reviewCount: reviews.length,
-    bestRating: 5,
-    worstRating: 1
-  },
   review: reviews.map(review => ({
     '@type': 'Review',
     author: {
@@ -55,18 +48,5 @@ export const createLocalBusinessSchema = () => ({
     opens: '09:00',
     closes: '18:00'
   },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.8',
-    reviewCount: '2500',
-    bestRating: '5',
-    worstRating: '1'
-  },
   priceRange: '$$'
 });
-
-function calculateAverageRating(reviews: ReviewData[]): string {
-  if (reviews.length === 0) return '4.8';
-  const sum = reviews.reduce((acc, review) => acc + review.rating, 0);
-  return (sum / reviews.length).toFixed(1);
-}

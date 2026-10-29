@@ -30,19 +30,19 @@ const blogPosts: BlogPost[] = [
     image: lifeInsuranceAnalysis,
     category: 'Market Analysis',
     readTime: '8 min read',
-    author: 'Sarah Johnson, CLU',
+    author: 'Agora Assurance Solutions team',
     publishDate: 'June 15, 2025',
     slug: '2025-life-insurance-rate-analysis',
     featured: true
   },
   {
     id: '2',
-    title: 'The Hidden Costs of Mortgage Protection: A Licensed Agent\'s Perspective',
-    excerpt: 'Industry secrets revealed: Why mortgage protection insurance might not be your best option and what licensed agents won\'t tell you.',
+    title: 'The Hidden Costs of Mortgage Protection: What to Know Before You Buy',
+    excerpt: 'Why mortgage protection insurance might not be your best option.',
     image: mortgageProtectionTruth,
     category: 'Expert Insights',
     readTime: '6 min read',
-    author: 'Michael Chen, CFP',
+    author: 'Agora Assurance Solutions team',
     publishDate: 'May 22, 2025',
     slug: 'hidden-costs-mortgage-protection'
   },

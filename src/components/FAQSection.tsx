@@ -79,7 +79,7 @@ const faqData: FAQItem[] = [
     question: 'What\'s the difference between fixed and variable annuities?',
     answer: 'Fixed annuities provide guaranteed interest rates and predictable payments, protecting your principal from market risk. Variable annuities allow you to invest in sub-accounts (similar to mutual funds) with potential for higher returns but also market risk. Fixed annuities offer security, while variable annuities offer growth potential.',
     category: 'Annuities',
-    keywords: ['fixed vs variable', 'guaranteed returns', 'market risk']
+    keywords: ['fixed vs variable', 'market risk']
   },
   {
     id: '18',

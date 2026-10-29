@@ -40,7 +40,7 @@ export const createVoiceSearchFAQSchema = () => ({
       name: 'Is whole life insurance a good investment?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Whole life insurance serves as a conservative investment with guaranteed cash value growth, tax advantages, and death benefit protection. Returns are typically 4-6% annually. It\'s best viewed as a financial tool combining insurance and conservative investment rather than a standalone investment strategy. Consider your overall financial goals when evaluating whole life.'
+        text: 'Whole life insurance serves as a conservative investment with guaranteed cash value growth, tax advantages, and death benefit protection. It\'s best viewed as a financial tool combining insurance and conservative investment rather than a standalone investment strategy. Consider your overall financial goals when evaluating whole life.'
       }
     },
     {

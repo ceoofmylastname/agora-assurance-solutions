@@ -16,7 +16,7 @@ const WholesaleFooter = () => (
   <HalftoneWordmarkFooter
     wordmark="wholesale"
     label="Agora Assurance Solutions"
-    meta={`© ${new Date().getFullYear()} · Sacramento, CA · Licensed in all 50 states`}
+    meta={`© ${new Date().getFullYear()} · Sacramento, CA`}
     columns={COLUMNS}
     palette={{ background: '#081626', ink: '#e8f3fb', warm: '#15AFF7' }}
     fontFamily="'Bricolage Grotesque', 'Inter', system-ui, sans-serif"

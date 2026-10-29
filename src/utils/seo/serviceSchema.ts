@@ -23,12 +23,7 @@ export const createServiceSchema = (service: ServiceOffering) => ({
     name: area
   })),
   serviceType: service.serviceType,
-  priceRange: service.priceRange || '$$',
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.8',
-    reviewCount: '500'
-  }
+  priceRange: service.priceRange || '$$'
 });
 
 export const createFinancialProductSchema = (
